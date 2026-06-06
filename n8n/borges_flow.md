@@ -47,9 +47,9 @@ Workflow independiente para que Borges investigue un personaje y entregue la Fic
 **Tipo:** Postgres
 **Query:**
 ```sql
-SELECT id, nombre, historia_breve, hook_inicial, categoria, referencias
-FROM humanos_personajes
-WHERE estado = 'investigar'
+SELECT id, protagonist_name, known_for, primary_hook, domain_category, source_notes
+FROM humanos_stories
+WHERE editorial_status = 'researching'
 ORDER BY updated_at ASC
 LIMIT 1;
 ```
@@ -87,8 +87,8 @@ Query: "[NOMBRE] legacy impact why important today 2024 2025
 
 **User Prompt:**
 ```
-Personaje: {{$node["Supabase"].json["nombre"]}}
-Historia breve conocida: {{$node["Supabase"].json["historia_breve"]}}
+Personaje: {{$node["Supabase"].json["protagonist_name"]}}
+Historia breve conocida: {{$node["Supabase"].json["known_for"]}}
 
 Investigación recopilada:
 ORIGEN: {{$node["Tavily_Origen"].json["results"]}}
@@ -107,22 +107,37 @@ Con base en esta información, entrega la Ficha Narrativa completa con los 15 í
 **Operation:** Update
 **Query:**
 ```sql
-UPDATE humanos_personajes
+UPDATE humanos_stories
 SET
-  estado = 'borges_listo',
-  frase_narrativa = '{{frase_narrativa}}',
-  origen = '{{origen}}',
-  conflicto = '{{conflicto}}',
-  decision = '{{decision}}',
-  riesgo = '{{riesgo}}',
-  transformacion = '{{transformacion}}',
-  por_que_importa = '{{por_que_importa}}',
-  hooks_borges = '{{hooks_borges}}',
-  advertencias = '{{advertencias}}',
-  fuentes_sugeridas = '{{fuentes_sugeridas}}',
-  nivel = {{nivel}},
-  recomendacion = '{{recomendacion}}',
-  potencial_serie = {{potencial_serie}}
+  editorial_status = 'researched',
+  one_line_story = '{{one_line_story}}',
+  human_before_success = '{{human_before_success}}',
+  central_conflict = '{{central_conflict}}',
+  key_decision = '{{key_decision}}',
+  main_risk = '{{main_risk}}',
+  transformation = '{{transformation}}',
+  legacy_today = '{{legacy_today}}',
+  hook_family = '{{hook_family}}',
+  primary_hook = '{{primary_hook}}',
+  alternative_hooks = '{{alternative_hooks}}'::jsonb,
+  closing_angle = '{{closing_angle}}',
+  story_level = '{{story_level}}',
+  publish_timing = '{{publish_timing}}',
+  series_potential = {{series_potential}},
+  estimated_episode_count = {{estimated_episode_count}},
+  suggested_episode_titles = '{{suggested_episode_titles}}'::jsonb,
+  narrative_score = {{narrative_score}},
+  familiarity_score = {{familiarity_score}},
+  surprise_score = {{surprise_score}},
+  emotional_score = {{emotional_score}},
+  research_confidence = {{research_confidence}},
+  production_difficulty = {{production_difficulty}},
+  strategic_value = {{strategic_value}},
+  priority_score = {{priority_score}},
+  series_score = {{series_score}},
+  fact_check_status = '{{fact_check_status}}',
+  fact_check_notes = '{{fact_check_notes}}',
+  source_notes = '{{source_notes}}'
 WHERE id = '{{id}}';
 ```
 

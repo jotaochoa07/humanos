@@ -46,8 +46,8 @@ Workflow independiente para que Gabo tome la Ficha Narrativa aprobada de Borges 
 **Query:**
 ```sql
 SELECT *
-FROM humanos_personajes
-WHERE estado = 'aprobado'
+FROM humanos_stories
+WHERE editorial_status = 'approved'
 ORDER BY updated_at ASC
 LIMIT 1;
 ```
@@ -61,21 +61,23 @@ LIMIT 1;
 
 **User Prompt:**
 ```
-PERSONAJE: {{$node["Supabase"].json["nombre"]}}
-NIVEL: {{$node["Supabase"].json["nivel"]}}
-CATEGORÍA: {{$node["Supabase"].json["categoria"]}}
+PERSONAJE: {{$node["Supabase"].json["protagonist_name"]}}
+NIVEL DE HISTORIA: {{$node["Supabase"].json["story_level"]}}
+CATEGORÍA: {{$node["Supabase"].json["domain_category"]}}
 
 FICHA NARRATIVA DE BORGES:
-
-Frase de potencial narrativo: {{frase_narrativa}}
-¿Quién era antes?: {{origen}}
-Conflicto principal: {{conflicto}}
-Decisión clave: {{decision}}
-Riesgo: {{riesgo}}
-Transformación: {{transformacion}}
-¿Por qué importa hoy?: {{por_que_importa}}
-Hooks sugeridos por Borges: {{hooks_borges}}
-Advertencias de verificación: {{advertencias}}
+Frase de potencial narrativo: {{$node["Supabase"].json["one_line_story"]}}
+¿Quién era antes?: {{$node["Supabase"].json["human_before_success"]}}
+Conflicto principal: {{$node["Supabase"].json["central_conflict"]}}
+Decisión clave: {{$node["Supabase"].json["key_decision"]}}
+Riesgo: {{$node["Supabase"].json["main_risk"]}}
+Transformación: {{$node["Supabase"].json["transformation"]}}
+¿Por qué importa hoy?: {{$node["Supabase"].json["legacy_today"]}}
+Familia de hook recomendada: {{$node["Supabase"].json["hook_family"]}}
+Hook principal sugerido: {{$node["Supabase"].json["primary_hook"]}}
+Hooks alternativos: {{$node["Supabase"].json["alternative_hooks"]}}
+Cierre sugerido: {{$node["Supabase"].json["closing_angle"]}}
+Notas de verificación: {{$node["Supabase"].json["fact_check_notes"]}}
 
 Genera los 12 entregables completos según tu system prompt.
 Optimiza para voz humana de Jota (no ElevenLabs todavía).
@@ -84,25 +86,68 @@ Usa [PAUSA] para pausas naturales, no puntuación mecánica.
 
 ---
 
-## Nodo 4: Supabase — Guardar guion
+## Nodo 4: Supabase — Guardar guiones y actualizar historia
 
 **Tipo:** Postgres
-**Operation:** Update
+**Operation:** Multiple Queries / Transactions
 
 ```sql
-UPDATE humanos_personajes
-SET
-  estado = 'gabo_listo',
-  guion_principal = '{{guion_principal}}',
-  guion_corto = '{{guion_corto}}',
-  guion_largo = '{{guion_largo}}',
-  texto_en_pantalla = '{{texto_en_pantalla}}',
-  indicaciones_visuales = '{{indicaciones_visuales}}',
-  cierre_recomendado = '{{cierre_recomendado}}',
-  copy_descripcion = '{{copy_descripcion}}',
-  comentario_fijado = '{{comentario_fijado}}',
-  version_newsletter = '{{version_newsletter}}'
-WHERE id = '{{id}}';
+-- 1. Actualizar el estado editorial de la historia
+UPDATE humanos_stories
+SET editorial_status = 'scripted'
+WHERE id = '{{story_id}}';
+
+-- 2. Insertar el guion principal (short_60)
+INSERT INTO humanos_scripts (
+  story_id,
+  script_type,
+  version,
+  status,
+  title,
+  hook,
+  narration,
+  on_screen_text,
+  scene_breakdown,
+  closing_line,
+  caption,
+  pinned_comment,
+  visual_notes,
+  created_by
+) VALUES (
+  '{{story_id}}',
+  'short_60',
+  1,
+  'draft',
+  '{{title}}',
+  '{{hook}}',
+  '{{narration}}',
+  '{{on_screen_text}}'::jsonb,
+  '{{scene_breakdown}}'::jsonb,
+  '{{closing_line}}',
+  '{{caption}}',
+  '{{pinned_comment}}',
+  '{{visual_notes}}',
+  'Gabo'
+);
+
+-- 3. Insertar el guion corto (short_30)
+INSERT INTO humanos_scripts (
+  story_id,
+  script_type,
+  version,
+  status,
+  hook,
+  narration,
+  created_by
+) VALUES (
+  '{{story_id}}',
+  'short_30',
+  1,
+  'draft',
+  '{{short_hook}}',
+  '{{short_narration}}',
+  'Gabo'
+);
 ```
 
 ---
