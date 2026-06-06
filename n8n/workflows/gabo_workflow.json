@@ -1,0 +1,186 @@
+{
+  "name": "HUMANOS — Flujo Gabo (Guionista)",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual-trigger-gabo",
+      "name": "When clicking 'Execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        100,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * \nFROM humanos_stories \nWHERE editorial_status = 'approved' \nORDER BY updated_at ASC \nLIMIT 1;"
+      },
+      "id": "supabase-read-approved",
+      "name": "Supabase - Leer Ficha Aprobada",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2,
+      "position": [
+        320,
+        300
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "supabase-postgres-credential-id",
+          "name": "Supabase Postgres Connection"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "messages": {
+          "message": [
+            {
+              "role": "system",
+              "content": "Eres Gabo, el Story Architect de HUMANOS. Tu tarea es generar el guion y entregables en formato JSON estricto.\nJSON Schema esperado:\n{\n  \"short_60\": {\n    \"title\": \"string\",\n    \"hook\": \"string\",\n    \"narration\": \"string (guion principal de 45-75s con [PAUSA] y MAYUSCULAS)\",\n    \"on_screen_text\": [{\"time\": \"0-3s\", \"text\": \"string\"}],\n    \"scene_breakdown\": [{\"scene\": \"string\", \"visual\": \"string\"}],\n    \"closing_line\": \"string\",\n    \"caption\": \"string\",\n    \"pinned_comment\": \"string\",\n    \"visual_notes\": \"string\"\n  },\n  \"short_30\": {\n    \"hook\": \"string\",\n    \"narration\": \"string (version de 30s)\"\n  }\n}"
+            },
+            {
+              "role": "user",
+              "content": "=PROTAGONISTA: {{$json.protagonist_name}}\nNIVEL: {{$json.story_level}}\nCATEGORIA: {{$json.domain_category}}\n\nFICHA NARRATIVA:\n- Hook original: {{$json.primary_hook}}\n- Antes: {{$json.human_before_success}}\n- Conflicto: {{$json.central_conflict}}\n- Decisión: {{$json.key_decision}}\n- Riesgo: {{$json.main_risk}}\n- Transformación: {{$json.transformation}}\n- Legado: {{$json.legacy_today}}\n- Cierre sugerido: {{$json.closing_angle}}\n\nGenera los guiones siguiendo las instrucciones."
+            }
+          ]
+        },
+        "options": {
+          "responseFormat": "json_object"
+        }
+      },
+      "id": "openai-gabo-id",
+      "name": "OpenAI - Generar Guion",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        560,
+        300
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "openai-credential-id",
+          "name": "OpenAI Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const output = JSON.parse($input.item.json.choices[0].message.content);\noutput.story_id = $node[\"Supabase - Leer Ficha Aprobada\"].json.id;\noutput.protagonist_name = $node[\"Supabase - Leer Ficha Aprobada\"].json.protagonist_name;\nreturn output;"
+      },
+      "id": "parse-gabo-id",
+      "name": "Parsear JSON Guion",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        780,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "=-- 1. Actualizar estado de la historia\nUPDATE humanos_stories \nSET editorial_status = 'scripted' \nWHERE id = '{{$json.story_id}}';\n\n-- 2. Insertar short_60\nINSERT INTO humanos_scripts (\n  story_id, script_type, version, status, title, hook, narration, \n  on_screen_text, scene_breakdown, closing_line, caption, pinned_comment, visual_notes, created_by\n) VALUES (\n  '{{$json.story_id}}',\n  'short_60',\n  1,\n  'draft',\n  '{{$json.short_60.title.replace(/'/g, \"''\")}}',\n  '{{$json.short_60.hook.replace(/'/g, \"''\")}}',\n  '{{$json.short_60.narration.replace(/'/g, \"''\")}}',\n  '{{JSON.stringify($json.short_60.on_screen_text)}}'::jsonb,\n  '{{JSON.stringify($json.short_60.scene_breakdown)}}'::jsonb,\n  '{{$json.short_60.closing_line.replace(/'/g, \"''\")}}',\n  '{{$json.short_60.caption.replace(/'/g, \"''\")}}',\n  '{{$json.short_60.pinned_comment.replace(/'/g, \"''\")}}',\n  '{{$json.short_60.visual_notes.replace(/'/g, \"''\")}}',\n  'Gabo'\n);\n\n-- 3. Insertar short_30\nINSERT INTO humanos_scripts (\n  story_id, script_type, version, status, hook, narration, created_by\n) VALUES (\n  '{{$json.story_id}}',\n  'short_30',\n  1,\n  'draft',\n  '{{$json.short_30.hook.replace(/'/g, \"''\")}}',\n  '{{$json.short_30.narration.replace(/'/g, \"''\")}}',\n  'Gabo'\n);"
+      },
+      "id": "supabase-save-scripts",
+      "name": "Supabase - Guardar Guiones",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2,
+      "position": [
+        1000,
+        300
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "supabase-postgres-credential-id",
+          "name": "Supabase Postgres Connection"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:5678/webhook/hermes-notification",
+        "sendBody": true,
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "message",
+              "value": "=✍️ GABO TERMINÓ\n\nEl guion de {{$json.protagonist_name}} está listo para grabar.\n\nSe insertó la versión de 60s y 30s en la tabla 'humanos_scripts' en estado 'draft'."
+            }
+          ]
+        }
+      },
+      "id": "notify-gabo-finished",
+      "name": "Notificar Terminado",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        1220,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "When clicking 'Execute'": {
+      "main": [
+        [
+          {
+            "node": "Supabase - Leer Ficha Aprobada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase - Leer Ficha Aprobada": {
+      "main": [
+        [
+          {
+            "node": "OpenAI - Generar Guion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI - Generar Guion": {
+      "main": [
+        [
+          {
+            "node": "Parsear JSON Guion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parsear JSON Guion": {
+      "main": [
+        [
+          {
+            "node": "Supabase - Guardar Guiones",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase - Guardar Guiones": {
+      "main": [
+        [
+          {
+            "node": "Notificar Terminado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "gabo-v1"
+}

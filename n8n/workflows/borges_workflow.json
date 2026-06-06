@@ -1,0 +1,373 @@
+{
+  "name": "HUMANOS — Flujo Borges (Investigación)",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual-trigger-id",
+      "name": "When clicking 'Execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        100,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT id, protagonist_name, known_for, primary_hook, domain_category, source_notes\nFROM humanos_stories\nWHERE editorial_status = 'researching'\nORDER BY updated_at ASC\nLIMIT 1;"
+      },
+      "id": "supabase-read-id",
+      "name": "Supabase - Leer personaje",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2,
+      "position": [
+        320,
+        300
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "supabase-postgres-credential-id",
+          "name": "Supabase Postgres Connection"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.tavily.com/search",
+        "sendBody": true,
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "api_key",
+              "value": "YOUR_TAVILY_API_KEY"
+            },
+            {
+              "name": "query",
+              "value": "={{$json.protagonist_name}} early life childhood poverty family background origin"
+            },
+            {
+              "name": "search_depth",
+              "value": "advanced"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "tavily-origen-id",
+      "name": "Tavily - Origen",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        560,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.tavily.com/search",
+        "sendBody": true,
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "api_key",
+              "value": "YOUR_TAVILY_API_KEY"
+            },
+            {
+              "name": "query",
+              "value": "={{$json.protagonist_name}} failures struggles obstacles rejection difficulties"
+            },
+            {
+              "name": "search_depth",
+              "value": "advanced"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "tavily-conflicto-id",
+      "name": "Tavily - Conflicto",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        560,
+        230
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.tavily.com/search",
+        "sendBody": true,
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "api_key",
+              "value": "YOUR_TAVILY_API_KEY"
+            },
+            {
+              "name": "query",
+              "value": "={{$json.protagonist_name}} key decision risk turning point bet everything"
+            },
+            {
+              "name": "search_depth",
+              "value": "advanced"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "tavily-decision-id",
+      "name": "Tavily - Decision",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        560,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.tavily.com/search",
+        "sendBody": true,
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "api_key",
+              "value": "YOUR_TAVILY_API_KEY"
+            },
+            {
+              "name": "query",
+              "value": "={{$json.protagonist_name}} legacy impact why important today history"
+            },
+            {
+              "name": "search_depth",
+              "value": "advanced"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "tavily-legado-id",
+      "name": "Tavily - Legado",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        560,
+        490
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "messages": {
+          "message": [
+            {
+              "role": "system",
+              "content": "Eres Borges, el Cazador de Protagonistas del proyecto HUMANOS. Tu tarea es generar la Ficha Narrativa del personaje en formato JSON estricto. El JSON debe contener exactamente estos campos:\n{\n  \"one_line_story\": \"string (1 frase)\",\n  \"human_before_success\": \"string (origen/infancia)\",\n  \"central_conflict\": \"string (el gran conflicto)\",\n  \"key_decision\": \"string (la decision crucial)\",\n  \"main_risk\": \"string (que arriesgo)\",\n  \"transformation\": \"string (resultado y cambio)\",\n  \"legacy_today\": \"string (por que importa hoy)\",\n  \"hook_family\": \"string (una de: sabias_que, lo_que_nadie_sabe, antes_de, contradiccion, humano_detras, todo_comenzo, a_punto_de)\",\n  \"primary_hook\": \"string (el hook principal)\",\n  \"alternative_hooks\": [\"string1\", \"string2\", \"string3\", \"string4\"],\n  \"closing_angle\": \"string\",\n  \"story_level\": \"string (microstory, extended_story, miniseries, premium_season)\",\n  \"publish_timing\": \"string (publish_now, soon, hold_for_series, premium_reserve)\",\n  \"series_potential\": true/false,\n  \"estimated_episode_count\": integer,\n  \"suggested_episode_titles\": [\"ep1\", \"ep2\"],\n  \"narrative_score\": integer(1-10),\n  \"familiarity_score\": integer(1-10),\n  \"surprise_score\": integer(1-10),\n  \"emotional_score\": integer(1-10),\n  \"research_confidence\": integer(1-10),\n  \"production_difficulty\": integer(1-10),\n  \"strategic_value\": integer(1-10),\n  \"priority_score\": integer(1-10),\n  \"series_score\": integer(1-10),\n  \"fact_check_status\": \"string (pending, verified, partial, failed)\",\n  \"fact_check_notes\": \"string\",\n  \"source_notes\": \"string\"\n}\nNo incluyas explicaciones ni bloques de codigo markdown, solo el objeto JSON."
+            },
+            {
+              "role": "user",
+              "content": "=Personaje: {{$node[\"Supabase - Leer personaje\"].json[\"protagonist_name\"]}}\nHistoria breve: {{$node[\"Supabase - Leer personaje\"].json[\"known_for\"]}}\nCategoría: {{$node[\"Supabase - Leer personaje\"].json[\"domain_category\"]}}\n\nInvestigación recopilada:\n- ORIGEN: {{JSON.stringify($node[\"Tavily - Origen\"].json.results)}}\n- CONFLICTO: {{JSON.stringify($node[\"Tavily - Conflicto\"].json.results)}}\n- DECISIÓN: {{JSON.stringify($node[\"Tavily - Decision\"].json.results)}}\n- LEGADO: {{JSON.stringify($node[\"Tavily - Legado\"].json.results)}}\n\nGenera la Ficha Narrativa en JSON siguiendo las instrucciones."
+            }
+          ]
+        },
+        "options": {
+          "responseFormat": "json_object"
+        }
+      },
+      "id": "openai-sintetizar-id",
+      "name": "OpenAI - Sintetizar Ficha",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        880,
+        300
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "openai-credential-id",
+          "name": "OpenAI Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const output = JSON.parse($input.item.json.choices[0].message.content);\noutput.id = $node[\"Supabase - Leer personaje\"].json.id;\noutput.protagonist_name = $node[\"Supabase - Leer personaje\"].json.protagonist_name;\nreturn output;"
+      },
+      "id": "parse-json-id",
+      "name": "Parsear JSON",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "=UPDATE humanos_stories\nSET\n  editorial_status = 'researched',\n  one_line_story = '{{$json.one_line_story.replace(/'/g, \"''\")}}',\n  human_before_success = '{{$json.human_before_success.replace(/'/g, \"''\")}}',\n  central_conflict = '{{$json.central_conflict.replace(/'/g, \"''\")}}',\n  key_decision = '{{$json.key_decision.replace(/'/g, \"''\")}}',\n  main_risk = '{{$json.main_risk.replace(/'/g, \"''\")}}',\n  transformation = '{{$json.transformation.replace(/'/g, \"''\")}}',\n  legacy_today = '{{$json.legacy_today.replace(/'/g, \"''\")}}',\n  hook_family = '{{$json.hook_family}}',\n  primary_hook = '{{$json.primary_hook.replace(/'/g, \"''\")}}',\n  alternative_hooks = '{{JSON.stringify($json.alternative_hooks)}}'::jsonb,\n  closing_angle = '{{$json.closing_angle.replace(/'/g, \"''\")}}',\n  story_level = '{{$json.story_level}}',\n  publish_timing = '{{$json.publish_timing}}',\n  series_potential = {{$json.series_potential}},\n  estimated_episode_count = {{$json.estimated_episode_count || 'null'}},\n  suggested_episode_titles = '{{JSON.stringify($json.suggested_episode_titles)}}'::jsonb,\n  narrative_score = {{$json.narrative_score || 'null'}},\n  familiarity_score = {{$json.familiarity_score || 'null'}},\n  surprise_score = {{$json.surprise_score || 'null'}},\n  emotional_score = {{$json.emotional_score || 'null'}},\n  research_confidence = {{$json.research_confidence || 'null'}},\n  production_difficulty = {{$json.production_difficulty || 'null'}},\n  strategic_value = {{$json.strategic_value || 'null'}},\n  priority_score = {{$json.priority_score || 'null'}},\n  series_score = {{$json.series_score || 'null'}},\n  fact_check_status = '{{$json.fact_check_status || \"pending\"}}',\n  fact_check_notes = '{{$json.fact_check_notes.replace(/'/g, \"''\")}}',\n  source_notes = '{{$json.source_notes.replace(/'/g, \"''\")}}'\nWHERE id = '{{$json.id}}';"
+      },
+      "id": "supabase-write-id",
+      "name": "Supabase - Guardar Ficha",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        300
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "supabase-postgres-credential-id",
+          "name": "Supabase Postgres Connection"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:5678/webhook/hermes-notification",
+        "sendBody": true,
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "message",
+              "value": "=🔍 BORGES TERMINÓ\n\nPersonaje: {{$json.protagonist_name}}\nNivel: {{$json.story_level}}\nPrioridad: {{$json.priority_score}}/10\nRecomendación: {{$json.publish_timing}}\n\nFicha guardada en Supabase. ¿Aprobar para Gabo?"
+            }
+          ]
+        }
+      },
+      "id": "hermoso-notify-id",
+      "name": "Notificar a Hermoso",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        1540,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "When clicking 'Execute'": {
+      "main": [
+        [
+          {
+            "node": "Supabase - Leer personaje",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase - Leer personaje": {
+      "main": [
+        [
+          {
+            "node": "Tavily - Origen",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Tavily - Conflicto",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Tavily - Decision",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Tavily - Legado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tavily - Origen": {
+      "main": [
+        [
+          {
+            "node": "OpenAI - Sintetizar Ficha",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tavily - Conflicto": {
+      "main": [
+        [
+          {
+            "node": "OpenAI - Sintetizar Ficha",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Tavily - Decision": {
+      "main": [
+        [
+          {
+            "node": "OpenAI - Sintetizar Ficha",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Tavily - Legado": {
+      "main": [
+        [
+          {
+            "node": "OpenAI - Sintetizar Ficha",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "OpenAI - Sintetizar Ficha": {
+      "main": [
+        [
+          {
+            "node": "Parsear JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parsear JSON": {
+      "main": [
+        [
+          {
+            "node": "Supabase - Guardar Ficha",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase - Guardar Ficha": {
+      "main": [
+        [
+          {
+            "node": "Notificar a Hermoso",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "borges-v1"
+}
