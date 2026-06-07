@@ -41,7 +41,7 @@
           "parameter": [
             {
               "name": "api_key",
-              "value": "YOUR_TAVILY_API_KEY"
+              "value": "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"
             },
             {
               "name": "query",
@@ -73,7 +73,7 @@
           "parameter": [
             {
               "name": "api_key",
-              "value": "YOUR_TAVILY_API_KEY"
+              "value": "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"
             },
             {
               "name": "query",
@@ -105,7 +105,7 @@
           "parameter": [
             {
               "name": "api_key",
-              "value": "YOUR_TAVILY_API_KEY"
+              "value": "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"
             },
             {
               "name": "query",
@@ -137,7 +137,7 @@
           "parameter": [
             {
               "name": "api_key",
-              "value": "YOUR_TAVILY_API_KEY"
+              "value": "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"
             },
             {
               "name": "query",
