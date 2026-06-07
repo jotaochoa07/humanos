@@ -37,22 +37,8 @@
         "method": "POST",
         "url": "https://api.tavily.com/search",
         "sendBody": true,
-        "bodyParametersUi": {
-          "parameter": [
-            {
-              "name": "api_key",
-              "value": "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"
-            },
-            {
-              "name": "query",
-              "value": "={{$json.protagonist_name}} early life childhood poverty family background origin"
-            },
-            {
-              "name": "search_depth",
-              "value": "advanced"
-            }
-          ]
-        },
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"api_key\": \"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\",\n  \"query\": \"{{$json.protagonist_name}} early life childhood poverty family background origin\",\n  \"search_depth\": \"advanced\"\n}\n",
         "options": {}
       },
       "id": "tavily-origen-id",
@@ -69,22 +55,8 @@
         "method": "POST",
         "url": "https://api.tavily.com/search",
         "sendBody": true,
-        "bodyParametersUi": {
-          "parameter": [
-            {
-              "name": "api_key",
-              "value": "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"
-            },
-            {
-              "name": "query",
-              "value": "={{$json.protagonist_name}} failures struggles obstacles rejection difficulties"
-            },
-            {
-              "name": "search_depth",
-              "value": "advanced"
-            }
-          ]
-        },
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"api_key\": \"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\",\n  \"query\": \"{{$json.protagonist_name}} failures struggles obstacles rejection difficulties\",\n  \"search_depth\": \"advanced\"\n}\n",
         "options": {}
       },
       "id": "tavily-conflicto-id",
@@ -101,22 +73,8 @@
         "method": "POST",
         "url": "https://api.tavily.com/search",
         "sendBody": true,
-        "bodyParametersUi": {
-          "parameter": [
-            {
-              "name": "api_key",
-              "value": "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"
-            },
-            {
-              "name": "query",
-              "value": "={{$json.protagonist_name}} key decision risk turning point bet everything"
-            },
-            {
-              "name": "search_depth",
-              "value": "advanced"
-            }
-          ]
-        },
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"api_key\": \"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\",\n  \"query\": \"{{$json.protagonist_name}} key decision risk turning point bet everything\",\n  \"search_depth\": \"advanced\"\n}\n",
         "options": {}
       },
       "id": "tavily-decision-id",
@@ -133,22 +91,8 @@
         "method": "POST",
         "url": "https://api.tavily.com/search",
         "sendBody": true,
-        "bodyParametersUi": {
-          "parameter": [
-            {
-              "name": "api_key",
-              "value": "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"
-            },
-            {
-              "name": "query",
-              "value": "={{$json.protagonist_name}} legacy impact why important today history"
-            },
-            {
-              "name": "search_depth",
-              "value": "advanced"
-            }
-          ]
-        },
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"api_key\": \"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\",\n  \"query\": \"{{$json.protagonist_name}} legacy impact why important today history\",\n  \"search_depth\": \"advanced\"\n}\n",
         "options": {}
       },
       "id": "tavily-legado-id",
