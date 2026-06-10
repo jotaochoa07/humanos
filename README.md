@@ -57,16 +57,27 @@ humanos/
 │   │   ├── personality.md
 │   │   └── prompts/
 │   │       └── system_prompt.md
-│   └── gabo/                 # Story Architect
-│       ├── personality.md
-│       └── prompts/
-│           └── system_prompt.md
+│   ├── veritas/              # Auditor de Confianza
+│   │   ├── SOUL.md
+│   │   ├── personality.md
+│   │   └── prompts/
+│   │       └── system_prompt.md
+│   ├── gabo/                 # Story Architect
+│   │   ├── personality.md
+│   │   └── prompts/
+│   │       └── system_prompt.md
+│   └── hermoso/              # Socio de Operaciones (Alter-ego)
+│       └── SOUL.md
 │
 ├── personajes/
 │   └── plantilla_ficha_personaje.md
 │
 ├── guiones/
 │   └── plantilla_guion.md
+│
+├── research/
+│   ├── plantilla_fact_check.md
+│   └── plantilla_approved_claims.md
 │
 ├── backlog/
 │   └── backlog_personajes.md
@@ -113,9 +124,11 @@ humanos/
 
 | Agente | Rol | Herramienta |
 |---|---|---|
+| **Hermoso** | Socio de Operaciones | Alter-ego / Telegram |
 | **Borges** | Cazador de Protagonistas | n8n + Tavily |
+| **Veritas** | Auditor de Confianza | n8n + OpenAI (Fact checker) |
 | **Gabo** | Story Architect | n8n + OpenAI |
-| **Hermoso** | Notificaciones | Hermes AI + Telegram |
+| **Moore** | Documentary Producer | local assets cross-check |
 
 ---
 

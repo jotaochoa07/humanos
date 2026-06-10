@@ -38,7 +38,7 @@
         "url": "https://api.tavily.com/search",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"api_key\": \"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\",\n  \"query\": \"{{$json.protagonist_name}} early life childhood poverty family background origin\",\n  \"search_depth\": \"advanced\"\n}\n",
+        "jsonBody": "={\n  \"api_key\": \"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\",\n  \"query\": \"{{$node[\\\"Supabase - Leer personaje\\\"].json.protagonist_name}} early life childhood poverty family background origin\",\n  \"search_depth\": \"advanced\"\n}\n",
         "options": {}
       },
       "id": "tavily-origen-id",
@@ -56,7 +56,7 @@
         "url": "https://api.tavily.com/search",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"api_key\": \"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\",\n  \"query\": \"{{$json.protagonist_name}} failures struggles obstacles rejection difficulties\",\n  \"search_depth\": \"advanced\"\n}\n",
+        "jsonBody": "={\n  \"api_key\": \"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\",\n  \"query\": \"{{$node[\\\"Supabase - Leer personaje\\\"].json.protagonist_name}} failures struggles obstacles rejection difficulties\",\n  \"search_depth\": \"advanced\"\n}\n",
         "options": {}
       },
       "id": "tavily-conflicto-id",
@@ -74,7 +74,7 @@
         "url": "https://api.tavily.com/search",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"api_key\": \"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\",\n  \"query\": \"{{$json.protagonist_name}} key decision risk turning point bet everything\",\n  \"search_depth\": \"advanced\"\n}\n",
+        "jsonBody": "={\n  \"api_key\": \"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\",\n  \"query\": \"{{$node[\\\"Supabase - Leer personaje\\\"].json.protagonist_name}} key decision risk turning point bet everything\",\n  \"search_depth\": \"advanced\"\n}\n",
         "options": {}
       },
       "id": "tavily-decision-id",
@@ -92,7 +92,7 @@
         "url": "https://api.tavily.com/search",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"api_key\": \"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\",\n  \"query\": \"{{$json.protagonist_name}} legacy impact why important today history\",\n  \"search_depth\": \"advanced\"\n}\n",
+        "jsonBody": "={\n  \"api_key\": \"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\",\n  \"query\": \"{{$node[\\\"Supabase - Leer personaje\\\"].json.protagonist_name}} legacy impact why important today history\",\n  \"search_depth\": \"advanced\"\n}\n",
         "options": {}
       },
       "id": "tavily-legado-id",
@@ -214,21 +214,6 @@
             "node": "Tavily - Origen",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "Tavily - Conflicto",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Tavily - Decision",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Tavily - Legado",
-            "type": "main",
-            "index": 0
           }
         ]
       ]
@@ -237,7 +222,7 @@
       "main": [
         [
           {
-            "node": "OpenAI - Sintetizar Ficha",
+            "node": "Tavily - Conflicto",
             "type": "main",
             "index": 0
           }
@@ -248,9 +233,9 @@
       "main": [
         [
           {
-            "node": "OpenAI - Sintetizar Ficha",
+            "node": "Tavily - Decision",
             "type": "main",
-            "index": 1
+            "index": 0
           }
         ]
       ]
@@ -259,9 +244,9 @@
       "main": [
         [
           {
-            "node": "OpenAI - Sintetizar Ficha",
+            "node": "Tavily - Legado",
             "type": "main",
-            "index": 2
+            "index": 0
           }
         ]
       ]
@@ -272,7 +257,7 @@
           {
             "node": "OpenAI - Sintetizar Ficha",
             "type": "main",
-            "index": 3
+            "index": 0
           }
         ]
       ]
