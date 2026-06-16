@@ -1,0 +1,23 @@
+{
+  "name": "humanos",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "preview": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts HumanosPreview out/humanos-preview.mp4",
+    "render:brand": "remotion render src/index.ts HumanosBrandReveal out/humanos-brand-reveal.mp4",
+    "render:character": "remotion render src/index.ts HumanosCharacterCard out/humanos-character-card.mp4",
+    "render:transition": "remotion render src/index.ts HumanosTransition out/humanos-transition.mp4",
+    "render:end": "remotion render src/index.ts HumanosEndCard out/humanos-end-card.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.477",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "remotion": "^4.0.477",
+    "typescript": "^6.0.3"
+  },
+  "devDependencies": {}
+}
