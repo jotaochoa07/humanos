@@ -1,22 +1,5 @@
 [
   {
-    "character_name": "Jan Koum",
-    "episode_id": "EP0001",
-    "logged_at": "2026-06-17 09:42:08",
-    "views": 762688,
-    "retention_rate_3s": 0.69,
-    "avg_watch_percentage": 0.56,
-    "duration_seconds": 42.0,
-    "hook_text": "¿Sabías que Jan Koum, el creador de WhatsApp, limpiaba supermercados y subsistía con cupones de alimentos? Nació en Ucra",
-    "themes": [
-      "pobreza",
-      "migración",
-      "obsesión",
-      "privacidad",
-      "resiliencia"
-    ]
-  },
-  {
     "character_name": "Ehud Shabtai",
     "episode_id": "EP0002",
     "logged_at": "2026-06-17 09:45:06",
@@ -48,6 +31,23 @@
       "guerra",
       "rivalidad",
       "deporte"
+    ]
+  },
+  {
+    "character_name": "Jan Koum",
+    "episode_id": "EP0001",
+    "logged_at": "2026-06-30 11:08:55",
+    "views": 721163,
+    "retention_rate_3s": 0.71,
+    "avg_watch_percentage": 0.48,
+    "duration_seconds": 30.0,
+    "hook_text": "EPISODIO 001 — JAN KOUM\n\n¿Sabías que el fundador de WhatsApp dependía de cupones de comida?\n\nAntes de conectar a miles d",
+    "themes": [
+      "pobreza",
+      "migración",
+      "obsesión",
+      "privacidad",
+      "resiliencia"
     ]
   }
 ]

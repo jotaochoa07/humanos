@@ -1,0 +1,80 @@
+[
+  {
+    "scene": 1,
+    "duration": 6.0,
+    "voiceover": "¿Sabías que el fundador de WhatsApp dependía de cupones de comida? Antes de conectar a miles de millones de personas, Jan Koum era un inmigrante intentando sobrevivir. Y tenía una obsesión: la privacidad.",
+    "selected_asset": null,
+    "selected_asset_id": null,
+    "asset_status": "missing",
+    "fallback_asset_id": null,
+    "fallback_strategy": "Usar una imagen genérica de inmigración o archivo de cupones de comida si no se encuentra nada específico de Jan Koum.",
+    "effect": "fade",
+    "caption": "Jan Koum: El Inmigrante Detrás de WhatsApp",
+    "gap_id": "gap_001"
+  },
+  {
+    "scene": 2,
+    "duration": 6.0,
+    "voiceover": "Koum creció en la Unión Soviética, donde el teléfono no era solo un teléfono. Era la posibilidad de que alguien estuviera escuchando. Y cuando un niño aprende que hablar puede ser peligroso, no lo olvida.",
+    "selected_asset": null,
+    "selected_asset_id": null,
+    "asset_status": "missing",
+    "fallback_asset_id": "002",
+    "fallback_strategy": "Utilizar el logo original de WhatsApp de 2009 como un ancla visual a la marca, incluso si no representa directamente la época soviética. Se buscará material de archivo de la URSS.",
+    "effect": "cut",
+    "caption": "La Sombra de la Vigilancia",
+    "gap_id": "gap_002"
+  },
+  {
+    "scene": 3,
+    "duration": 6.0,
+    "voiceover": "A los 16 llegó a Estados Unidos. Sin dinero. Sin inglés. Sin épica. Su madre limpiaba casas. Él barría supermercados. Años después, Facebook lo rechazó. Entonces creó WhatsApp.",
+    "selected_asset": "JAN_001_JAN_KOUM_PORTRAIT_2014.jpg",
+    "selected_asset_id": "001",
+    "asset_status": "available",
+    "fallback_asset_id": "003",
+    "fallback_strategy": "Usar el retrato de Jan Koum de 2014 como punto de partida, acompañado de material de archivo que evoque pobreza y escasez. También se considerará la entrevista de 2012.",
+    "effect": "slow_zoom",
+    "caption": "De la Escasez a la Ambición",
+    "gap_id": null
+  },
+  {
+    "scene": 4,
+    "duration": 6.0,
+    "voiceover": "Una app sin anuncios. Sin juegos. Sin feed. Sin likes. Solo mensajes. Una persona hablando con otra. Y nadie más en la habitación.",
+    "selected_asset": null,
+    "selected_asset_id": null,
+    "asset_status": "missing",
+    "fallback_asset_id": "006",
+    "fallback_strategy": "Mostrar una captura temprana de la interfaz de WhatsApp (asset 006) para ilustrar la simplicidad de la app. Complementar con animación gráfica que represente la comunicación directa y privada.",
+    "effect": "cut",
+    "caption": "El Poder de la Comunicación Directa",
+    "gap_id": "gap_003"
+  },
+  {
+    "scene": 5,
+    "duration": 6.0,
+    "voiceover": "Lo paradójico es que en 2014 vendió WhatsApp a Facebook por 19 mil millones de dólares. Y firmó el acuerdo en el mismo edificio de asistencia social donde, años antes, hacía fila con su madre para recibir comida.",
+    "selected_asset": null,
+    "selected_asset_id": null,
+    "asset_status": "missing",
+    "fallback_asset_id": "007",
+    "fallback_strategy": "Usar el retrato de Forbes de Jan Koum (asset 007) como un símbolo de su éxito financiero. Se buscará material de archivo del edificio de asistencia social o de firmas de acuerdos millonarios.",
+    "effect": "pan_right",
+    "caption": "La Ironía del Destino",
+    "gap_id": "gap_005"
+  },
+  {
+    "scene": 6,
+    "duration": 6.0,
+    "voiceover": "Facebook. La empresa obsesionada con saberlo todo compró una app creada por alguien que desconfiaba de quienes escuchan demasiado. Koum duró cuatro años allí. Luego se fue. Sin manifiesto. Sin drama. Solo se fue. Yo soy Jota y esto es HUMANOS: historias de personas que construyeron desde una herida, una obsesión o una contradicción. Nos vemos en la próxima historia.",
+    "selected_asset": "JAN_001_JAN_KOUM_PORTRAIT_2014.jpg",
+    "selected_asset_id": "001",
+    "asset_status": "available",
+    "fallback_asset_id": "004",
+    "fallback_strategy": "Utilizar el retrato de Jan Koum (asset 001) y la foto del apretón de manos con Zuckerberg (asset 004) para simbolizar el punto culminante y la conclusión de su etapa en Facebook.",
+    "effect": "cut",
+    "caption": "HUMANOS: Historias que Transforman",
+    "gap_id": null
+  }
+]

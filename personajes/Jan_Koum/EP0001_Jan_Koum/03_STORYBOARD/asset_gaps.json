@@ -1,0 +1,45 @@
+[
+  {
+    "gap_id": "gap_001",
+    "scene": 1,
+    "missing_asset": "Fotografía o metraje de archivo específico de Jan Koum utilizando cupones de comida o en una situación de precariedad económica al llegar a EE. UU.",
+    "criticality": "high",
+    "reason": "Establece visualmente la premisa de su lucha inicial y la dependencia de la asistencia social, lo cual es un punto clave de la narrativa.",
+    "suggested_solution": "Buscar en archivos de noticias de la época (finales de los 80s, principios de los 90s) que cubran la inmigración o la asistencia social en Mountain View, California. Contactar a organizaciones de inmigrantes.",
+    "manual_search_queries": [
+      "Jan Koum food stamps 1990s",
+      "Immigrant poverty Mountain View California 1990s",
+      "Social assistance program California 1990s"
+    ],
+    "ai_generation_allowed": false
+  },
+  {
+    "gap_id": "gap_002",
+    "scene": 2,
+    "missing_asset": "Material de archivo o recreación visual de la vida en la Unión Soviética de los años 80/90, haciendo énfasis en la atmósfera de vigilancia telefónica o desconfianza.",
+    "criticality": "medium",
+    "reason": "Proporciona el contexto cultural y el origen de la obsesión de Koum con la privacidad.",
+    "suggested_solution": "Adquirir metraje de archivo de la Unión Soviética de la época, enfocándose en escenas cotidianas, el uso de teléfonos públicos, o representaciones visuales de vigilancia.",
+    "manual_search_queries": [
+      "Soviet Union 1980s telephone surveillance",
+      "KGB surveillance tactics visual",
+      "Life in Soviet Union 1980s everyday"
+    ],
+    "ai_generation_allowed": false
+  },
+  {
+    "gap_id": "gap_003",
+    "scene": 4,
+    "missing_asset": "Recreación visual de la interfaz de WhatsApp en sus primeras versiones, mostrando la simplicidad y el enfoque en la comunicación directa.",
+    "criticality": "medium",
+    "reason": "Ilustra concretamente la propuesta de valor de WhatsApp frente a las redes sociales más complejas.",
+    "suggested_solution": "Utilizar capturas de pantalla históricas si existen (asset 006 es una opción, pero se necesita algo más específico). Si no, crear una animación gráfica que emule la interfaz.",
+    "manual_search_queries": [
+      "Early WhatsApp interface screenshot 2009",
+      "WhatsApp initial design elements",
+      "WhatsApp primitive UI"
+    ],
+    "ai_generation_allowed": true,
+    "ai_generation_prompt": "Create a simple, clean graphic depicting the early WhatsApp user interface on a smartphone screen. Focus on a basic chat window with two participants, emphasizing text messages without advertisements, likes, or a newsfeed. Use a muted color palette reminiscent of early mobile apps."
+  }
+]
