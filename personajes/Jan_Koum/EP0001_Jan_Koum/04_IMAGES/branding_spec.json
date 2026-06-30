@@ -3,31 +3,35 @@
     "category": "PIONERO",
     "name": "JAN KOUM",
     "description": "fundador de whatsapp",
-    "visual_style": "Retrato documental de Jan Koum ocupando gran parte del encuadre vertical, con mirada intensa y seria. Fondo negro profundo. Nombre 'JAN KOUM' en Satoshi ExtraBold cian. Título 'PIONERO' en gris claro arriba y descripción en gris claro abajo."
+    "visual_style": "Retrato documental a sangre, figura central con mirada directa, saturación muy baja y alto contraste, nombre en cian, abundantes espacios vacíos superior e inferior."
   },
   "thumbnail": {
-    "headline": "El inmigrante que creó whatsapp",
-    "highlight_word": "creó",
-    "composition_description": "Retrato de Jan Koum ocupando el 75% de la miniatura, con una mirada directa y desafiante hacia el espectador. Fondo completamente negro. El texto principal 'El inmigrante que...' en blanco, y la palabra 'creó' en cian vibrante."
+    "headline": "De cupones de comida a MIL MILLONES",
+    "highlight_word": "MIL",
+    "composition_description": "Retrato de Jan Koum con expresión seria y mirada directa al espectador, ocupando el 70-80% del encuadre. El fondo está completamente fundido a negro absoluto. El titular 'De cupones de comida a MIL MILLONES' aparece en blanco. La palabra 'MIL' está destacada en cian."
   },
   "midjourney_prompts": [
     {
-      "purpose": "Miniatura",
-      "prompt": "Jan Koum portrait for thumbnail, serious focused expression, direct eye contact with camera, journalistic editorial high fashion photography style, dramatic chiaroscuro natural lighting, deep blacks and high contrast, low saturation, professional portrait camera lens 85mm, subtle 35mm film grain texture --ar 9:16"
+      "purpose": "Retrato para miniatura y B-roll",
+      "prompt": "Jan Koum in a tight close-up, serious and focused expression, direct eye contact with the camera, journalistic editorial style, high contrast black and white, dramatic chiaroscuro lighting, professional 85mm portrait lens, subtle 35mm film grain texture --ar 9:16"
     },
     {
-      "purpose": "B-roll de escena (inmigración/supermercado)",
-      "prompt": "A desolate, low-income immigrant neighborhood street scene in the early 1990s, stark black and white, high contrast, hint of a grocery store façade in background, subtle somber mood, detailed texture, cinematic, shot on film --ar 16:9"
+      "purpose": "B-roll de escena - Inmigración y pobreza",
+      "prompt": "Empty, stark street scene in California, hints of hardship, desaturated, documentary photography, subtle film grain, deep blacks, high contrast, 1990s aesthetic --ar 16:9"
     },
     {
-      "purpose": "B-roll de escena (oficina temprana WhatsApp)",
-      "prompt": "Early 2000s messy office interior, cluttered desks with old computers, whiteboards covered in notes, a sense of hustle and innovation, muted grayscale tones, high contrast, natural light shafts, candid journalistic style, grainy film texture --ar 16:9"
+      "purpose": "B-roll de escena - Obsesión por la privacidad/tecnología",
+      "prompt": "Close-up on hands disassembling old computer components on a dimly lit desk, focused and determined, documentary style, high contrast black and white, subtle film grain, deep blacks, 1990s electronic workshop --ar 16:9"
+    },
+    {
+      "purpose": "B-roll de escena - Fundación de WhatsApp",
+      "prompt": "Abstract representation of two connected nodes on a dark background, minimal lines, subtle glow of cyan connecting them, high contrast, deep blacks, editorial graphic style --ar 16:9"
     }
   ],
   "motion_specs": {
-    "camera_speed": "slow_zoom",
+    "camera_speed": "subtle_zoom",
     "default_transition": "subtle_fade",
-    "branding_color_use": "El color cian se utiliza exclusivamente para resaltar el nombre del personaje en la Character Card y la palabra clave en la miniatura. No se aplica en transiciones ni otros elementos gráficos.",
+    "branding_color_use": "El cian se utiliza exclusivamente para el nombre de Jan Koum en la character card y como acento puntual en los lower thirds si fuera necesario para nombres clave.",
     "titles_font": "Satoshi",
     "subtitles_font": "Inter"
   }

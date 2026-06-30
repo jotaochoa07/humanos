@@ -147,7 +147,31 @@ class MooreAgent:
         """
         editing_notes_md = self.client.complete_text(notes_prompt, system_prompt)
 
-        logs = f" storyboard y producción completados. Se registraron {len(valid_storyboard)} escenas en el storyboard y {len(valid_gaps)} gaps de producción."
+        # Generar asset_shotlist.md
+        asset_shotlist_prompt = f"""
+        Genera una lista de planos accionable llamada "asset_shotlist.md" en formato Markdown para {character_name}.
+        Esta lista servirá como puente de comunicación directo entre Moore (diseño de producción), Commet (búsqueda de assets) y Leonardo (diseño/IA).
+        
+        Usa el siguiente storyboard validado:
+        {json.dumps(valid_storyboard, ensure_ascii=False, indent=2)}
+        
+        El formato de salida DEBE ser limpio, sin explicaciones introductorias ni bloques de código redundantes, estructurado exactamente así:
+        
+        # EP001 - Shot List - {character_name}
+        
+        ## Escena [Número de escena con 2 dígitos, ej: 01]
+        - [Lista de elementos visuales específicos necesarios para esta escena. Ej: Retrato heroico de Jan Koum]
+        - [Estilo de fondo y composición. Ej: Fondo oscuro con mucho espacio negativo]
+        - [Movimiento de cámara. Ej: Paneo horizontal lento o zoom suave]
+        - Duración: [Duración] s
+        - Estado del Asset: [available | missing | reference_only]
+        - Archivo Local: [Nombre físico del archivo si está 'available', o 'Pendiente de búsqueda' si falta]
+        
+        Asegúrate de detallar qué objetos o planos históricos se necesitan en cada frase para que un buscador web (como Commet) pueda encontrar exactamente la imagen o video correspondiente.
+        """
+        asset_shotlist_md = self.client.complete_text(asset_shotlist_prompt, system_prompt)
+
+        logs = f"storyboard y producción completados. Se registraron {len(valid_storyboard)} escenas en el storyboard y {len(valid_gaps)} gaps de producción."
         print(f"[Moore] Diseño de storyboard y producción completado bajo reglas estrictas.")
 
-        return valid_storyboard, valid_gaps, shotlist_md, editing_notes_md, production_package_dict, logs
+        return valid_storyboard, valid_gaps, shotlist_md, editing_notes_md, production_package_dict, asset_shotlist_md, logs

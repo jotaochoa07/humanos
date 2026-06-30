@@ -1,25 +1,20 @@
 {
-  "estimated_voiceover_duration": 30.0,
-  "asset_count": 8,
+  "estimated_voiceover_duration": 36.0,
+  "asset_count": 6,
   "missing_assets_count": 3,
   "estimated_edit_time_hours": 10.0,
-  "music_style": "Documental con tintes de melancolía y resolución.",
-  "visual_style": "Cinemática, con grano ligero y paleta de colores que evoluciona de tonos fríos y grises a tonos más cálidos.",
+  "music_style": "Documental tensión / piano minimalista",
+  "visual_style": "Color gradado cálido, textura de grano de película analógica",
   "required_images": [
-    "Jan Koum portrait 2014 (asset_id: 001, downloaded)",
-    "Jan Koum Forbes profile photo (asset_id: 007, not downloaded)",
-    "Mark Zuckerberg and Jan Koum handshake 2014 (asset_id: 004, not downloaded)"
+    "Jan Koum portrait (available)",
+    "Vintage US food stamp coupon booklet (missing)",
+    "Soviet Union AMT-69 telephone payphone (missing)",
+    "Mark Zuckerberg Keynote Portrait for contrast (missing)"
   ],
   "required_videos": [],
-  "required_motion_graphics": [
-    "Recreación de interfaz temprana de WhatsApp (para gap_003)"
-  ],
+  "required_motion_graphics": [],
   "required_maps": [],
-  "required_historical_screenshots": [
-    "Early WhatsApp user interface screenshot (asset_id: 006, not downloaded)"
-  ],
-  "required_ai_recreations": [
-    "Recreación de interfaz temprana de WhatsApp (para gap_003)"
-  ],
-  "recommended_next_action": "Priorizar la búsqueda manual de imágenes de Jan Koum en situaciones de precariedad y la interfaz temprana de WhatsApp."
+  "required_historical_screenshots": [],
+  "required_ai_recreations": [],
+  "recommended_next_action": "Descargar los assets marcados como 'reference_only' pero con un 'asset_id' válido. Investigar la disponibilidad y licencias de los assets faltantes."
 }

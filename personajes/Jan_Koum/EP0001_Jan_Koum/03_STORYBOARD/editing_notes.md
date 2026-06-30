@@ -1,6 +1,13 @@
 ```markdown
-# Notas de Edición y Estilo - Jan Koum
+# Notas de Edición y Estilo: Jan Koum
 
-## Pautas Generales de Marca de HUMANOS
+**Documental:** HUMANOS
+**Productor:** MOORE
 
-**Filosofía de Marca:** HUMANOS busca una narrativa auténtica, que explore la profundidad de las experiencias humanas a través de testimonios honestos y un estilo visual que refleje la realidad. Evitamos
+## Pautas Generales de Marca HUMANOS
+
+*   **Tono:** Reflexivo, perspicaz, humano, pero también con un toque de urgencia informativa.
+*   **Estética Visual:** Limpia, moderna, tecnológica pero cálida. Se busca contrastar la frialdad inherente a la tecnología con la calidez y complejidad de la experiencia humana.
+*   **Narrativa:** Guiada por la autenticidad y la fidelidad documental. Priorizamos la verdad de los hechos y la experiencia vital de los protagonistas.
+*   **Música y Sonido:** Diseñada para complementar y realzar la narrativa, no para dominarla. Sonidos diegéticos y no diegéticos deben entrelazarse de forma orgánica.
+*   

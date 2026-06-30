@@ -137,7 +137,8 @@ class AssetCollector:
             existing_path = self.deduplicate_asset(file_hash)
             if existing_path:
                 print(f"[Asset Collector] Asset duplicado encontrado. Removiendo descarga temporal y enlazando a: {existing_path}")
-                os.remove(local_file_path)
+                if os.path.abspath(existing_path) != os.path.abspath(local_file_path) and os.path.exists(local_file_path):
+                    os.remove(local_file_path)
                 asset["downloaded"] = True
                 asset["local_path"] = existing_path
                 return asset

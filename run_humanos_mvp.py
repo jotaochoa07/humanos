@@ -154,7 +154,7 @@ def run_mvp(character_name: str, episode_focus: str, themes: list, episode_num: 
         # 5.5 Moore: Storyboard y gaps de producción
         print("[Moore] Iniciando cruce de assets y diseño de producción...")
         moore = MooreAgent(client)
-        storyboard_json, asset_gaps_json, shotlist_md, editing_notes_md, production_package_json, moore_logs = moore.execute_production(
+        storyboard_json, asset_gaps_json, shotlist_md, editing_notes_md, production_package_json, asset_shotlist_md, moore_logs = moore.execute_production(
             character_name, asset_manifest, registry_data, scripts_json, approved_claims_json
         )
 
@@ -163,6 +163,7 @@ def run_mvp(character_name: str, episode_focus: str, themes: list, episode_num: 
         hermoso.write_json(os.path.join(ep_path, "03_STORYBOARD", "asset_gaps.json"), asset_gaps_json)
         hermoso.write_markdown(os.path.join(ep_path, "03_STORYBOARD", "shotlist.md"), shotlist_md)
         hermoso.write_markdown(os.path.join(ep_path, "03_STORYBOARD", "editing_notes.md"), editing_notes_md)
+        hermoso.write_markdown(os.path.join(ep_path, "03_STORYBOARD", "asset_shotlist.md"), asset_shotlist_md)
         hermoso.write_json(os.path.join(ep_path, "03_STORYBOARD", "production_package.json"), production_package_json)
         hermoso.log_agent_run(ep_path, "Moore", "success", moore_logs)
 

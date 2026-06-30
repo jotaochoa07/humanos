@@ -23,3 +23,16 @@ Logs:
 LeonardoAgent ejecutado con éxito para Jan Koum.
 Generadas especificaciones para miniatura, character card y prompts de IA visual.
 --------------------------------------------------
+[2026-06-30 12:23:35] Agent: Veritas_Manual_Audit | Status: success
+Logs:
+Auditoría de guion manual completada por Veritas para Jan Koum. Precisión: 98%. Estado: APPROVED.
+--------------------------------------------------
+[2026-06-30 12:23:51] Agent: Moore | Status: success
+Logs:
+storyboard y producción completados. Se registraron 6 escenas en el storyboard y 3 gaps de producción.
+--------------------------------------------------
+[2026-06-30 12:24:00] Agent: Leonardo | Status: success
+Logs:
+LeonardoAgent ejecutado con éxito para Jan Koum.
+Generadas especificaciones para miniatura, character card y prompts de IA visual.
+--------------------------------------------------
