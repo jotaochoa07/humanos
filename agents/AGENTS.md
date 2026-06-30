@@ -16,6 +16,7 @@ HUMANOS es una biblioteca de microdramas reales sobre personas extraordinarias q
 2. **Priorizar el factor humano sobre el corporativo:** El foco está en el conflicto existencial, las pérdidas, las decisiones difíciles y la transformación del individuo.
 3. **Optimización del tiempo del fundador:** Toda automatización debe reducir la carga operativa de Jota (voz de HUMANOS y director creativo), dándole control de aprobación pero liberándolo de tareas mecánicas.
 4. **Validación antes de la narración:** Ningún guion puede pasar a Gabo sin antes ser auditado y aprobado por Veritas.
+5. **Filtro de Branding Obligatorio:** Ninguna pieza puede ser programada o publicada sin que Leonardo valide y apruebe que su miniatura, portada y propuesta visual cumplen con la Brand Bible y respondan afirmativamente a la pregunta "¿Esto parece HUMANOS?".
 
 ---
 
@@ -30,10 +31,12 @@ El ecosistema de HUMANOS está estructurado en niveles de responsabilidad:
 * **Borges (Cazador de Protagonistas):** Agente de investigación. Usa la API de Tavily para recopilar datos de origen, conflicto, decisiones y legado.
 * **Veritas (Auditor de Confianza):** Fact checker. Evalúa evidencia, asigna scores de confianza y clasifica fuentes de A a F.
 * **Gabo (Story Architect):** Guionista de microdramas. Escribe guiones en formato vertical (30s, 60s, 90s) estructurados en 7 actos.
-* **Curie (Memoria Editorial):** Diseñado para administrar el índice de contenido histórico, evitar repeticiones de historias/hooks y sugerir arcos narrativos. *(Estado: Diseño avanzado. Próxima fase de implementación)*.
+* **Curie (Memoria Editorial):** Diseñado para administrar el índice de contenido histórico, evitar repeticiones de historias/hooks y sugerir arcos narrativos. *(Estado: Activo - Integrada con RAG local turbovec)*.
+* **Leonardo (Director Creativo):** Guardián visual del ecosistema. Define la dirección de arte, crea las character cards, especifica las miniaturas, genera prompts de IA visual y audita que todo el contenido visual y de branding respete el sistema visual de HUMANOS.
 
 ### Nivel Operativo
 * **Moore (Documentary Producer):** Encargado de procesar y validar assets multimedia locales.
+* **Mark (Publisher):** Agente operativo de distribución encargado de programar y automatizar publicaciones en los canales oficiales de redes sociales.
 
 ### Nivel Desarrollo
 * **Antigravity / Codex:** Diseñan, desarrollan y mantienen la infraestructura de software, la base de datos Supabase, los flujos en n8n y los componentes de Remotion.
