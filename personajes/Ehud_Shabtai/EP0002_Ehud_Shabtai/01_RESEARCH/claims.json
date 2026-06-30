@@ -1,0 +1,32 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "character_name": "Ehud Shabtai",
+  "claims": [
+    {
+      "claim_id": "C001",
+      "claim": "Shabtai desarrolló un software de navegación GPS en Israel a principios de la década de 2000, notando la precariedad de los mapas existentes.",
+      "importance": 9
+    },
+    {
+      "claim_id": "C002",
+      "claim": "La base de datos de mapas era propiedad de unas pocas empresas grandes, creando un monopolio y dificultando la actualización.",
+      "importance": 10
+    },
+    {
+      "claim_id": "C003",
+      "claim": "Fundó Waze (originalmente LinQMap) con el objetivo de crear mapas detallados y de código abierto actualizados por la comunidad de conductores.",
+      "importance": 10
+    },
+    {
+      "claim_id": "C004",
+      "claim": "Waze permitió a los usuarios informar sobre tráfico, accidentes y controles de velocidad en tiempo real, mejorando la precisión de la navegación.",
+      "importance": 9
+    },
+    {
+      "claim_id": "C005",
+      "claim": "La plataforma de Waze democratizó la creación y actualización de mapas, desafiando el modelo de negocio tradicional de los gigantes del GPS.",
+      "importance": 10
+    }
+  ]
+}

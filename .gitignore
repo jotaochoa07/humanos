@@ -2,3 +2,8 @@ node_modules/
 out/
 .remotion/
 .DS_Store
+.env
+__pycache__/
+*.pyc
+assets/branding/audio/
+MEDIA_LIBRARY/BRANDING/audio/

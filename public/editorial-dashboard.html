@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HUMANOS Editorial Dashboard</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: hsl(246 38% 6%);
+      --panel-strong: hsl(250 32% 16% / 0.9);
+      --line: hsl(268 100% 78% / 0.24);
+      --text: hsl(270 60% 96%);
+      --muted: hsl(260 18% 70%);
+      --accent: hsl(276 100% 68%);
+      --accent-2: hsl(190 100% 62%);
+      --danger: hsl(0 82% 64%);
+      --success: hsl(142 76% 52%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; color: var(--text);
+      background:
+        radial-gradient(circle at top left, hsl(276 100% 48% / 0.25), transparent 32rem),
+        radial-gradient(circle at bottom right, hsl(190 100% 44% / 0.16), transparent 30rem),
+        linear-gradient(135deg, var(--bg), hsl(258 44% 8%));
+    }
+    .shell { width: min(1240px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 40px; }
+    header { display:flex; justify-content:space-between; gap:24px; align-items:end; margin-bottom: 20px; }
+    .eyebrow { color: var(--accent-2); letter-spacing: .24em; font-size:12px; font-weight:800; text-transform:uppercase; }
+    h1 { margin: 10px 0 0; font-size: clamp(34px, 5vw, 64px); line-height:.92; letter-spacing:-.06em; }
+    .lede { color: var(--muted); max-width: 740px; margin: 14px 0 0; line-height: 1.6; }
+    .toolbar { display:flex; gap:12px; align-items:center; }
+    button, select, input, textarea {
+      font: inherit; border:1px solid var(--line); color: var(--text);
+      background: hsl(250 30% 14% / .78); border-radius:16px;
+    }
+    button { cursor:pointer; padding:12px 16px; font-weight:800; transition: transform 160ms ease, border-color 160ms ease, background 160ms ease; }
+    button:hover { transform: translateY(-1px); border-color: hsl(276 100% 75% / .72); }
+    button.primary { background: linear-gradient(135deg, hsl(276 100% 56%), hsl(190 100% 44%)); border:0; box-shadow: 0 18px 54px hsl(276 100% 50% / .24); }
+    button.ghost { background: hsl(250 30% 14% / .66); }
+    button:disabled { cursor:not-allowed; opacity:.52; transform:none; }
+    .tabs { display:flex; gap:10px; margin: 18px 0 16px; flex-wrap: wrap; }
+    .tab { padding: 10px 14px; border-radius: 999px; background: hsl(250 28% 12% / .72); border: 1px solid var(--line); }
+    .tab.active { background: linear-gradient(135deg, hsl(276 100% 56%), hsl(190 100% 44%)); border-color: transparent; }
+    .searchbar { margin-bottom: 14px; display:grid; gap:8px; }
+    .searchbar input, .review-header input { min-height:52px; padding:0 18px; border-radius:18px; background: hsl(250 30% 12% / .72); backdrop-filter: blur(18px); }
+    .search-hint, .muted { color: var(--muted); font-size:13px; }
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 40;
+      min-width: 280px;
+      max-width: min(520px, calc(100vw - 40px));
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: hsl(250 32% 14% / 0.92);
+      box-shadow: 0 24px 70px hsl(245 40% 2% / 0.5);
+      backdrop-filter: blur(18px);
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: opacity 180ms ease, transform 180ms ease;
+      color: var(--text);
+      font-weight: 700;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    .toast.success { border-color: hsl(142 76% 52% / 0.45); }
+    .toast.error { border-color: hsl(0 82% 64% / 0.55); }
+    .toast.info { border-color: hsl(276 100% 68% / 0.55); }
+    .status { margin-bottom: 18px; min-height: 48px; padding:14px 16px; border:1px solid var(--line); border-radius:18px; background:hsl(250 30% 12% / .54); backdrop-filter: blur(18px); color: var(--muted); }
+    .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+    .card, .review-card {
+      position:relative; overflow:hidden; padding:22px; border:1px solid var(--line); border-radius:28px;
+      background: linear-gradient(145deg, hsl(250 28% 16% / .78), hsl(250 30% 10% / .62));
+      box-shadow: 0 24px 70px hsl(245 40% 2% / .44); backdrop-filter: blur(18px);
+    }
+    .card::before, .review-card::before { content:""; position:absolute; inset:-60% -40% auto auto; width:220px; height:220px; background: radial-gradient(circle, hsl(276 100% 66% / .28), transparent 70%); pointer-events:none; }
+    .category { color: var(--accent-2); font-size:12px; font-weight:900; letter-spacing:.16em; text-transform:uppercase; }
+    .card h2, .review-card h2 { margin: 18px 0 12px; font-size: 28px; letter-spacing:-.04em; }
+    .angle { color: var(--muted); line-height:1.45; min-height: 90px; }
+    .card button { margin-top: 18px; width:100%; }
+    .empty { grid-column:1 / -1; padding:42px; text-align:center; color:var(--muted); border:1px dashed var(--line); border-radius:28px; }
+    .drawer-backdrop { position:fixed; inset:0; display:none; justify-content:flex-end; background:hsl(245 50% 3% / .62); backdrop-filter: blur(8px); z-index:20; }
+    .drawer-backdrop.open { display:flex; }
+    .drawer { width:min(540px, 100%); height:100vh; padding:28px; border-left:1px solid var(--line); background:var(--panel-strong); box-shadow:-30px 0 100px hsl(245 50% 2% / .64); overflow:auto; }
+    .drawer h2 { font-size:36px; line-height:1; letter-spacing:-.05em; margin: 8px 0 24px; }
+    label { display:block; margin:18px 0 8px; color:var(--muted); font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:.12em; }
+    input, select, textarea { width:100%; padding:13px 14px; outline:none; }
+    textarea { min-height: 150px; resize: vertical; line-height:1.5; }
+    .formats { display:grid; gap:10px; }
+    .format { display:flex; gap:10px; align-items:start; padding:14px; border:1px solid var(--line); border-radius:18px; background:hsl(250 24% 12% / .66); }
+    .format input { width:auto; margin-top:4px; accent-color: var(--accent); }
+    .format strong { display:block; }
+    .format span { color: var(--muted); font-size:13px; }
+    .actions { display:flex; gap:10px; margin-top:24px; }
+    .actions button { flex:1; }
+    .review-layout { display:grid; grid-template-columns: 360px 1fr; gap:18px; align-items:start; }
+    .review-list { display:grid; gap: 12px; }
+    .review-item { width:100%; text-align:left; padding:16px; border-radius:20px; background: hsl(250 30% 12% / .72); }
+    .review-item.active { border-color: hsl(276 100% 75% / .85); }
+    .editor { display:grid; gap: 12px; }
+    .editor textarea { min-height: 360px; }
+    .review-top { display:flex; gap:12px; align-items:center; justify-content:space-between; margin-bottom: 14px; flex-wrap: wrap; }
+    .review-title { margin:0; }
+    .hidden { display:none !important; }
+    .package-grid { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 18px; }
+    .package-block { padding: 16px; border: 1px solid var(--line); border-radius: 22px; background: hsl(250 30% 12% / .66); }
+    .package-block h3 { margin: 0 0 10px; font-size: 16px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-2); }
+    .package-block pre { margin: 0; white-space: pre-wrap; word-break: break-word; color: var(--text); line-height: 1.5; font-family: inherit; }
+    .package-block ul { margin: 0; padding-left: 20px; color: var(--text); line-height: 1.5; }
+    .package-wide { grid-column: 1 / -1; }
+    @media (max-width: 920px) { .review-layout { grid-template-columns: 1fr; } }
+    @media (max-width: 720px) { header { display:block; } .toolbar { margin-top:18px; } .shell { width:min(100% - 20px, 1240px); padding-top:24px; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <section>
+        <div class="eyebrow">HUMANOS / Editorial Control</div>
+        <h1>Panel editorial.</h1>
+        <p class="lede">Backlog visual, creación manual y aprobación de guiones en un solo lugar. Sin terminal para el flujo diario.</p>
+      </section>
+      <div class="toolbar">
+        <button id="createManualButton" class="primary">+ Nuevo Personaje</button>
+        <button id="refreshButton">Actualizar</button>
+      </div>
+    </header>
+
+    <div class="tabs">
+      <button id="tabBacklog" class="tab active" type="button">Backlog</button>
+      <button id="tabReview" class="tab" type="button">Guiones pendientes</button>
+    </div>
+
+    <section id="backlogView">
+      <div class="searchbar">
+        <input id="searchInput" type="search" placeholder="Buscar por nombre, categoría o ángulo humano…" autocomplete="off" />
+        <div id="searchHint" class="search-hint">Escribí para filtrar el backlog visible.</div>
+      </div>
+      <div id="status" class="status">Cargando backlog editorial…</div>
+      <section id="grid" class="grid" aria-live="polite"></section>
+    </section>
+
+    <section id="reviewView" class="hidden">
+      <div class="review-top">
+        <div>
+          <h2 class="review-title">Guiones pendientes de aprobación</h2>
+          <div id="reviewHint" class="muted">Cargando episodios…</div>
+        </div>
+      </div>
+      <div class="review-layout">
+        <div id="reviewList" class="review-list"></div>
+        <div class="review-card">
+          <div class="eyebrow">Editor / Guion corto</div>
+          <h2 id="reviewTitle">Seleccioná un episodio</h2>
+          <label for="reviewScript">Texto del guion</label>
+          <textarea id="reviewScript" placeholder="Elegí un episodio para editar su guion corto."></textarea>
+          <div class="actions">
+            <button id="openSelectedButton" type="button" class="ghost">Abrir episodio</button>
+            <button id="saveProduceButton" type="button" class="primary">Guardar y Producir</button>
+          </div>
+        </div>
+      </div>
+      <div class="package-grid">
+        <div class="package-block package-wide">
+          <h3>Paquete editorial completo</h3>
+          <pre id="packageSummary">Abrí un episodio para ver Veritas, Gabo y Moore.</pre>
+        </div>
+        <div class="package-block">
+          <h3>Veritas</h3>
+          <pre id="packageVeritas">—</pre>
+        </div>
+        <div class="package-block">
+          <h3>Gabo</h3>
+          <pre id="packageGabo">—</pre>
+        </div>
+        <div class="package-block package-wide">
+          <h3>Moore</h3>
+          <pre id="packageMoore">—</pre>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <aside id="drawerBackdrop" class="drawer-backdrop" aria-hidden="true">
+    <form id="storyForm" class="drawer">
+      <div class="eyebrow">Configurar episodio</div>
+      <h2 id="drawerTitle">Personaje</h2>
+
+      <div id="protagonistField">
+        <label for="protagonistName">Nombre del protagonista</label>
+        <input id="protagonistName" name="protagonistName" type="text" autocomplete="off" />
+      </div>
+
+      <label for="humanAngle">Ángulo narrativo</label>
+      <textarea id="humanAngle" name="humanAngle" required></textarea>
+
+      <label for="domainCategory">Categoría</label>
+      <select id="domainCategory" name="domainCategory" required></select>
+
+      <label>Extensión / Formato</label>
+      <div class="formats">
+        <label class="format"><input type="radio" name="format" value="short" /> <span><strong>Short</strong>60-90s</span></label>
+        <label class="format"><input type="radio" name="format" value="long" /> <span><strong>Long Form</strong>8-15 min</span></label>
+        <label class="format"><input type="radio" name="format" value="complete" checked /> <span><strong>Completo</strong>Todos los formatos</span></label>
+      </div>
+
+      <div class="actions">
+        <button type="button" id="closeButton">Cancelar</button>
+        <button class="primary" id="startButton" type="submit">Iniciar Investigación</button>
+      </div>
+    </form>
+  </aside>
+
+  <script>
+    const CATEGORIES = ["ENTREPRENEURS","DESIGNERS","ARTISTS","MAKERS","FOUNDERS","BUILDERS","INVENTORS","CREATORS","SCIENTISTS","EXPLORERS","ENGINEERS","VISIONARIES"];
+    const state = { stories: [], selected: null, reviewEpisodes: [], selectedReviewPath: null };
+    const grid = document.getElementById("grid");
+    const searchInput = document.getElementById("searchInput");
+    const searchHint = document.getElementById("searchHint");
+    const status = document.getElementById("status");
+    const drawerBackdrop = document.getElementById("drawerBackdrop");
+    const storyForm = document.getElementById("storyForm");
+    const drawerTitle = document.getElementById("drawerTitle");
+    const protagonistField = document.getElementById("protagonistField");
+    const protagonistName = document.getElementById("protagonistName");
+    const humanAngle = document.getElementById("humanAngle");
+    const domainCategory = document.getElementById("domainCategory");
+    const startButton = document.getElementById("startButton");
+    const backlogView = document.getElementById("backlogView");
+    const reviewView = document.getElementById("reviewView");
+    const reviewHint = document.getElementById("reviewHint");
+    const reviewList = document.getElementById("reviewList");
+    const reviewTitle = document.getElementById("reviewTitle");
+    const reviewScript = document.getElementById("reviewScript");
+    const packageSummary = document.getElementById("packageSummary");
+    const packageVeritas = document.getElementById("packageVeritas");
+    const packageGabo = document.getElementById("packageGabo");
+    const packageMoore = document.getElementById("packageMoore");
+    const saveProduceButton = document.getElementById("saveProduceButton");
+    const openSelectedButton = document.getElementById("openSelectedButton");
+    const tabBacklog = document.getElementById("tabBacklog");
+    const tabReview = document.getElementById("tabReview");
+    const toast = document.getElementById("toast");
+    const sendState = { producing: false };
+    domainCategory.innerHTML = CATEGORIES.map((category) => `<option value="${category}">${category}</option>`).join("");
+    function setStatus(message, tone = "neutral") {
+      status.textContent = message;
+      status.style.color = tone === "error" ? "var(--danger)" : tone === "success" ? "var(--success)" : "var(--muted)";
+    }
+    function showToast(message, tone = "info") {
+      toast.textContent = message;
+      toast.className = `toast show ${tone}`;
+      window.clearTimeout(showToast._timer);
+      showToast._timer = window.setTimeout(() => { toast.className = "toast"; }, 2200);
+    }
+    function normalizeCategory(value) { const category = String(value || "").toUpperCase(); return CATEGORIES.includes(category) ? category : "CREATORS"; }
+    function getFilteredStories() {
+      const query = searchInput.value.trim().toLowerCase();
+      if (!query) return state.stories;
+      return state.stories.filter((story) => [story.protagonist_name, story.human_angle, story.domain_category, story.editorial_status].filter(Boolean).join(" ").toLowerCase().includes(query));
+    }
+    function renderStories() {
+      const visibleStories = getFilteredStories();
+      if (!state.stories.length) { searchHint.textContent = "No hay historias pendientes para buscar."; grid.innerHTML = `<div class="empty">No hay personajes con estado editorial <strong>idea</strong> o <strong>needs_research</strong>.</div>`; return; }
+      searchHint.textContent = searchInput.value.trim() ? `${visibleStories.length} de ${state.stories.length} personajes coinciden con la búsqueda.` : `${state.stories.length} personajes disponibles en el backlog.`;
+      if (!visibleStories.length) { grid.innerHTML = `<div class="empty">No encontré personajes que coincidan con esa búsqueda.</div>`; return; }
+      grid.innerHTML = visibleStories.map((story, index) => `<article class="card"><div class="category">${normalizeCategory(story.domain_category)}</div><h2>${story.protagonist_name || "Unnamed protagonist"}</h2><p class="angle">${story.human_angle || "Sin ángulo humano definido todavía."}</p><button data-index="${index}">Configurar episodio</button></article>`).join("");
+      grid.querySelectorAll("button[data-index]").forEach((button) => button.addEventListener("click", () => openDrawer(getFilteredStories()[Number(button.dataset.index)])));
+    }
+    async function loadStories() {
+      setStatus("Cargando backlog editorial…"); grid.innerHTML = "";
+      try { const response = await fetch("/api/stories"); const data = await response.json(); if (!response.ok) throw new Error(data.error || "No se pudo leer Supabase"); state.stories = data.stories || []; setStatus(`${state.stories.length} personajes pendientes encontrados.`, "success"); renderStories(); }
+      catch (error) { setStatus(error.message, "error"); grid.innerHTML = `<div class="empty">Revisá que el servidor local esté corriendo y que .env tenga SUPABASE_URL y SUPABASE_KEY.</div>`; }
+    }
+    function openDrawer(story) {
+      state.selected = story; drawerTitle.textContent = story.protagonist_name || "Personaje"; protagonistField.style.display = "none"; protagonistName.required = false; protagonistName.value = story.protagonist_name || ""; humanAngle.value = story.human_angle || ""; domainCategory.value = normalizeCategory(story.domain_category); startButton.textContent = "Iniciar Investigación"; drawerBackdrop.classList.add("open"); drawerBackdrop.setAttribute("aria-hidden", "false");
+    }
+    function openCreateDrawer() {
+      state.selected = null; storyForm.reset(); drawerTitle.textContent = "Crear Personaje Nuevo"; protagonistField.style.display = "block"; protagonistName.required = true; protagonistName.value = ""; humanAngle.value = ""; domainCategory.value = "CREATORS"; storyForm.querySelector('input[value="complete"]').checked = true; startButton.textContent = "Crear e Iniciar Investigación"; drawerBackdrop.classList.add("open"); drawerBackdrop.setAttribute("aria-hidden", "false"); protagonistName.focus();
+    }
+    function closeDrawer() { drawerBackdrop.classList.remove("open"); drawerBackdrop.setAttribute("aria-hidden", "true"); protagonistField.style.display = "none"; protagonistName.required = false; storyForm.reset(); storyForm.querySelector('input[value="complete"]').checked = true; startButton.textContent = "Iniciar Investigación"; }
+    async function loadReviewEpisodes() {
+      reviewHint.textContent = "Cargando episodios…";
+      reviewList.innerHTML = "";
+      try { const response = await fetch("/api/review-episodes"); const data = await response.json(); if (!response.ok) throw new Error(data.error || "No se pudieron leer los guiones pendientes"); state.reviewEpisodes = data.episodes || []; reviewHint.textContent = `${state.reviewEpisodes.length} episodios listos para edición.`; renderReviewEpisodes(); if (state.reviewEpisodes[0]) await openReviewEpisode(state.reviewEpisodes[0].episodePath); }
+      catch (error) { reviewHint.textContent = error.message; reviewList.innerHTML = `<div class="empty">No pude leer los guiones pendientes.</div>`; }
+    }
+    function renderReviewEpisodes() {
+      if (!state.reviewEpisodes.length) { reviewList.innerHTML = `<div class="empty">No hay episodios en script_pending_review.</div>`; return; }
+      reviewList.innerHTML = state.reviewEpisodes.map((episode) => `<button class="review-item ${state.selectedReviewPath === episode.episodePath ? 'active' : ''}" type="button" data-path="${episode.episodePath}"><strong>${episode.protagonistName}</strong><div class="muted">${episode.episodeDir}</div></button>`).join("");
+      reviewList.querySelectorAll("button[data-path]").forEach((button) => button.addEventListener("click", () => openReviewEpisode(button.dataset.path)));
+    }
+    async function openReviewEpisode(episodePath) {
+      const response = await fetch(`/api/review-episode?episodePath=${encodeURIComponent(episodePath)}`);
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "No se pudo abrir el episodio");
+      state.selectedReviewPath = data.episodePath;
+      reviewTitle.textContent = data.protagonistName;
+      reviewScript.value = data.scriptShort || "";
+      packageSummary.textContent = `${data.protagonistName} · ${data.status}`;
+      [packageVeritas, packageGabo, packageMoore].forEach((element) => {
+        if (element) delete element.dataset.formatted;
+      });
+      packageVeritas.textContent = JSON.stringify(data.veritas || {}, null, 2);
+      packageGabo.textContent = JSON.stringify(data.gabo || {}, null, 2);
+      packageMoore.textContent = JSON.stringify(data.moore || {}, null, 2);
+      formatEditorialBlocks();
+      renderReviewEpisodes();
+    }
+    async function saveAndProduce() {
+      if (!state.selectedReviewPath || sendState.producing) return;
+      sendState.producing = true;
+      saveProduceButton.disabled = true;
+      saveProduceButton.textContent = "Enviando…";
+      showToast("Enviado a producción", "info");
+      try {
+        const episode = state.reviewEpisodes.find((item) => item.episodePath === state.selectedReviewPath);
+        const response = await fetch("/api/produce", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ episodePath: state.selectedReviewPath, protagonistName: episode?.protagonistName, scriptShort: reviewScript.value.trim() }) });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "No se pudo iniciar la producción");
+        reviewHint.textContent = `${episode?.protagonistName || "Episodio"} enviado a producción. PID: ${data.pid}.`;
+        showToast(`${episode?.protagonistName || "Episodio"} enviado a producción`, "success");
+      } catch (error) { reviewHint.textContent = error.message; }
+      finally {
+        sendState.producing = false;
+        saveProduceButton.disabled = false;
+        saveProduceButton.textContent = "Guardar y Producir";
+      }
+    }
+    function showBacklog() { backlogView.classList.remove("hidden"); reviewView.classList.add("hidden"); tabBacklog.classList.add("active"); tabReview.classList.remove("active"); }
+    function showReview() { reviewView.classList.remove("hidden"); backlogView.classList.add("hidden"); tabReview.classList.add("active"); tabBacklog.classList.remove("active"); if (!state.reviewEpisodes.length) loadReviewEpisodes(); }
+    storyForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const isCreating = state.selected === null;
+      const payload = { id: state.selected?.id, protagonistName: isCreating ? protagonistName.value.trim() : state.selected.protagonist_name, humanAngle: humanAngle.value.trim(), domainCategory: domainCategory.value, format: new FormData(storyForm).get("format") };
+      startButton.disabled = true; startButton.textContent = isCreating ? "Creando…" : "Iniciando…";
+      try { const response = await fetch(isCreating ? "/api/create-and-start" : "/api/start", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) }); const data = await response.json(); if (!response.ok) throw new Error(data.error || "No se pudo iniciar Borges"); setStatus(`${isCreating ? "Personaje creado y Borges iniciado" : "Borges iniciado"} para ${payload.protagonistName}. PID local: ${data.pid}.`, "success"); closeDrawer(); await loadStories(); }
+      catch (error) { setStatus(error.message, "error"); }
+      finally { startButton.disabled = false; startButton.textContent = state.selected === null ? "Crear e Iniciar Investigación" : "Iniciar Investigación"; }
+    });
+    searchInput.addEventListener("input", renderStories);
+    document.getElementById("createManualButton").addEventListener("click", openCreateDrawer);
+    document.getElementById("refreshButton").addEventListener("click", () => { if (tabReview.classList.contains("active")) loadReviewEpisodes(); else loadStories(); });
+    document.getElementById("closeButton").addEventListener("click", closeDrawer);
+    drawerBackdrop.addEventListener("click", (event) => { if (event.target === drawerBackdrop) closeDrawer(); });
+    tabBacklog.addEventListener("click", showBacklog);
+    tabReview.addEventListener("click", showReview);
+    openSelectedButton.addEventListener("click", async () => { if (state.selectedReviewPath) await openReviewEpisode(state.selectedReviewPath); });
+    saveProduceButton.addEventListener("click", saveAndProduce);
+    loadStories();
+  </script>
+</body>
+<style>
+  .json-free-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border: 1px solid rgba(181, 107, 255, 0.28);
+    border-radius: 18px;
+    padding: 16px;
+    margin-top: 12px;
+  }
+  .json-free-card h4 {
+    margin: 0 0 10px;
+    font-size: 14px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #90e8ff;
+  }
+  .claim-block, .draft-block, .source-block {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 12px;
+    margin-top: 12px;
+  }
+  .claim-title {
+    font-size: 15px;
+    line-height: 1.45;
+    color: #f4f1ff;
+    margin-bottom: 10px;
+  }
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .metric-pill {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 8px 10px;
+    font-size: 12px;
+    color: #d7d0ea;
+  }
+  .metric-pill strong {
+    display: block;
+    color: #ffffff;
+    margin-top: 2px;
+    font-size: 13px;
+  }
+  .source-item, .draft-item {
+    background: rgba(10, 12, 24, 0.56);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 12px;
+    margin-top: 8px;
+  }
+  .source-item .title {
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+  }
+  .source-item .url {
+    color: #8fd7ff;
+    word-break: break-all;
+    font-size: 12px;
+  }
+  .source-item .notes {
+    margin-top: 6px;
+    color: #cfc8e6;
+    font-size: 13px;
+  }
+  .draft-label {
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-size: 12px;
+    color: #90e8ff;
+    margin-bottom: 6px;
+  }
+</style>
+<script>
+  function safeParseJson(text) {
+    if (!text) return null;
+    try { return JSON.parse(text); } catch { return null; }
+  }
+
+  function metricPill(label, value) {
+    return `<div class="metric-pill">${label}<strong>${value ?? "—"}</strong></div>`;
+  }
+
+  function renderSources(sources) {
+    if (!Array.isArray(sources) || !sources.length) return "";
+    return `
+      <div class="source-block">
+        <h4>Sources</h4>
+        ${sources.map((source) => `
+          <div class="source-item">
+            <div class="title">${source.title || source.name || "Source"}</div>
+            ${source.url ? `<div class="url">${source.url}</div>` : ""}
+            ${source.notes ? `<div class="notes">${source.notes}</div>` : ""}
+          </div>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  function renderVeritas(value) {
+    const data = typeof value === "string" ? safeParseJson(value) : value;
+    if (!data) return value;
+    const root = data.veritas || data.factCheck || data;
+    const claims = Array.isArray(root.claims)
+      ? root.claims
+      : (Array.isArray(root.approvedClaims) ? root.approvedClaims : (Array.isArray(root) ? root : []));
+    if (!claims.length) {
+      return `
+        <div class="json-free-card">
+          <h4>Veritas</h4>
+          <div class="draft-item">${String(root.status || root.summary || root.message || JSON.stringify(root, null, 2)).replace(/\n/g, "<br>")}</div>
+        </div>
+      `;
+    }
+    return `
+      <div class="json-free-card">
+        <h4>Veritas</h4>
+        ${claims.map((claim) => `
+          <div class="claim-block">
+            <div class="claim-title">${claim.claim || claim.text || "Claim"}</div>
+            <div class="metrics-grid">
+              ${metricPill("confidence", claim.confidence_score ?? claim.confidence ?? "—")}
+              ${metricPill("authority", claim.source_authority ?? "—")}
+              ${metricPill("independence", claim.source_independence ?? "—")}
+              ${metricPill("proximity", claim.primary_source_proximity ?? "—")}
+              ${metricPill("consistency", claim.consistency ?? "—")}
+              ${metricPill("risk", claim.contradiction_risk ?? "—")}
+            </div>
+            ${renderSources(claim.sources)}
+          </div>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  function renderDrafts(value) {
+    const data = typeof value === "string" ? safeParseJson(value) : value;
+    if (!data) return value;
+    const root = data.gabo || data.drafts || data;
+    const blocks = [
+      ["Short", root.short],
+      ["Long Form", root.long],
+      ["Newsletter", root.newsletter],
+      ["Twitter Thread", root.twitter],
+    ];
+    const visible = blocks.filter(([, text]) => text);
+    if (!visible.length) {
+      return `
+        <div class="json-free-card">
+          <h4>Gabo</h4>
+          <div class="draft-item">${String(root.summary || root.message || JSON.stringify(root, null, 2)).replace(/\n/g, "<br>")}</div>
+        </div>
+      `;
+    }
+    return `
+      <div class="json-free-card">
+        <h4>Gabo</h4>
+        ${visible.map(([label, text]) => `
+          <div class="draft-block">
+            <div class="draft-label">${label}</div>
+            <div class="draft-item">${String(text).replace(/\n/g, "<br>")}</div>
+          </div>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  function renderMoore(value) {
+    const data = typeof value === "string" ? safeParseJson(value) : value;
+    if (!data) return value;
+    const root = data.moore || data.storyboard || data.productionPackage || data;
+    const storyboard = Array.isArray(root.storyboard) ? root.storyboard : (Array.isArray(root.scenes) ? root.scenes : []);
+    const shotlist = Array.isArray(root.shotlist) ? root.shotlist : (Array.isArray(root.shots) ? root.shots : []);
+    const assetGaps = Array.isArray(root.assetGaps) ? root.assetGaps : [];
+    const editingNotes = root.editingNotes || root.notes || "";
+
+    const hasContent = storyboard.length || shotlist.length || assetGaps.length || editingNotes;
+    if (!hasContent) {
+      return `
+        <div class="json-free-card">
+          <h4>Moore</h4>
+          <div class="draft-item">${String(root.summary || root.message || JSON.stringify(root, null, 2)).replace(/\n/g, "<br>")}</div>
+        </div>
+      `;
+    }
+
+    return `
+      <div class="json-free-card">
+        <h4>Moore</h4>
+        ${storyboard.length ? `
+          <div class="draft-block">
+            <div class="draft-label">Storyboard</div>
+            ${storyboard.map((scene, index) => `
+              <div class="draft-item">
+                <strong>Scene ${scene.scene || index + 1}</strong><br>
+                ${String(scene.description || scene.text || scene.body || "").replace(/\n/g, "<br>")}
+              </div>
+            `).join("")}
+          </div>
+        ` : ""}
+        ${shotlist.length ? `
+          <div class="draft-block">
+            <div class="draft-label">Shot List</div>
+            ${shotlist.map((shot, index) => `
+              <div class="draft-item">
+                <strong>${shot.type || shot.label || `Shot ${index + 1}`}</strong><br>
+                ${String(shot.description || shot.text || shot.body || "").replace(/\n/g, "<br>")}
+              </div>
+            `).join("")}
+          </div>
+        ` : ""}
+        ${assetGaps.length ? `
+          <div class="draft-block">
+            <div class="draft-label">Asset Gaps</div>
+            ${assetGaps.map((gap) => `
+              <div class="draft-item">${String(gap).replace(/\n/g, "<br>")}</div>
+            `).join("")}
+          </div>
+        ` : ""}
+        ${editingNotes ? `
+          <div class="draft-block">
+            <div class="draft-label">Editing Notes</div>
+            <div class="draft-item">${String(editingNotes).replace(/\n/g, "<br>")}</div>
+          </div>
+        ` : ""}
+      </div>
+    `;
+  }
+
+  function formatEditorialBlocks() {
+    const veritasEl = document.getElementById("packageVeritas");
+    const gaboEl = document.getElementById("packageGabo");
+    const mooreEl = document.getElementById("packageMoore");
+    if (veritasEl && !veritasEl.dataset.formatted) {
+      const raw = veritasEl.textContent?.trim();
+      const parsed = safeParseJson(raw);
+      if (parsed) {
+        veritasEl.innerHTML = renderVeritas(parsed);
+        veritasEl.dataset.formatted = "1";
+      }
+    }
+    if (gaboEl && !gaboEl.dataset.formatted) {
+      const raw = gaboEl.textContent?.trim();
+      const parsed = safeParseJson(raw);
+      if (parsed) {
+        gaboEl.innerHTML = renderDrafts(parsed);
+        gaboEl.dataset.formatted = "1";
+      }
+    }
+    if (mooreEl && !mooreEl.dataset.formatted) {
+      const raw = mooreEl.textContent?.trim();
+      const parsed = safeParseJson(raw);
+      if (parsed) {
+        mooreEl.innerHTML = renderMoore(parsed);
+        mooreEl.dataset.formatted = "1";
+      }
+    }
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    formatEditorialBlocks();
+    const observer = new MutationObserver(() => formatEditorialBlocks());
+    ["packageVeritas", "packageGabo", "packageMoore"].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el, { childList: true, subtree: true, characterData: true });
+    });
+  });
+</script>
+</html>
+

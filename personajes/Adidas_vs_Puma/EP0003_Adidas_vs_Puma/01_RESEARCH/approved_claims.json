@@ -1,0 +1,86 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "subject": "Adidas vs Puma",
+  "approved_claims": [
+    {
+      "claim_id": "C001",
+      "claim": "Rudolf y Adolf Dassler fundaron 'Gebrüder Dassler Schuhfabrik' en 1924, creando calzado deportivo.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C002",
+      "claim": "Jesse Owens ganó cuatro oros olímpicos en 1936 con zapatillas Dassler, aumentando la fama de la empresa.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 90,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C003",
+      "claim": "La relación de los hermanos se deterioró durante la Segunda Guerra Mundial, exacerbada por divergencias personales y políticas.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C004",
+      "claim": "En 1948, Rudolf y Adolf dividieron la empresa: Rudolf fundó Puma y Adolf fundó Adidas, ambos en Herzogenaurach.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 98,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C005",
+      "claim": "La rivalidad entre Adidas y Puma se extendió a Herzogenaurach, dividiendo a la ciudad y a sus habitantes por décadas.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 93,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C006",
+      "claim": "Ambas empresas compitieron ferozmente por patrocinios de atletas y equipos, convirtiéndose en gigantes globales del deporte.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 90,
+      "usage_guidance": "Can be used directly"
+    }
+  ],
+  "rejected_or_blocked_claims": []
+}

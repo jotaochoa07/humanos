@@ -1,0 +1,222 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "subject": "Ehud Shabtai",
+  "checked_at": "2026-06-17 09:43:14",
+  "overall_confidence_score": 93,
+  "status": "APPROVED",
+  "format_audit_reports": {
+    "shorts": {
+      "confidence_score": 93,
+      "status": "APPROVED",
+      "notes": "Auditoría específica para formato vertical corto"
+    },
+    "long_form": {
+      "confidence_score": 93,
+      "status": "APPROVED",
+      "notes": "Auditoría específica para formato largo"
+    },
+    "newsletter": {
+      "confidence_score": 93,
+      "status": "APPROVED",
+      "notes": "Auditoría específica para newsletter editorial"
+    },
+    "twitter": {
+      "confidence_score": 93,
+      "status": "APPROVED",
+      "notes": "Auditoría específica para hilo de X/Twitter"
+    }
+  },
+  "claims_summary": {
+    "total": 5,
+    "verified": 5,
+    "partial": 0,
+    "unverified": 0,
+    "rejected": 0
+  },
+  "claims": [
+    {
+      "claim_id": "C001",
+      "claim": "Shabtai desarrolló un software de navegación GPS en Israel a principios de la década de 2000, notando la precariedad de los mapas existentes.",
+      "importance": 9,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "source_authority": 9,
+      "source_independence": 9,
+      "primary_source_proximity": 9,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "Waze founders and Google acquisition: the untold story",
+          "url": "https://www.calcalistech.com/ctech/articles/0,7340,L-3715878,00.html",
+          "type": "news",
+          "tier": "B",
+          "notes": "Artículo de Calcalist sobre el origen de Waze y Mapon."
+        },
+        {
+          "title": "The Waze Story: How It Came to Be",
+          "url": "https://www.youtube.com/watch?v=S012bge065Y",
+          "type": "news",
+          "tier": "C",
+          "notes": "Video sobre la historia de Waze."
+        }
+      ],
+      "notes": "Varias fuentes confirman que Shabtai desarrolló un software inicial (Mapon, precursor de Waze) en Israel, motivado por los mapas deficientes.",
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C002",
+      "claim": "La base de datos de mapas era propiedad de unas pocas empresas grandes, creando un monopolio y dificultando la actualización.",
+      "importance": 10,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 93,
+      "source_authority": 9,
+      "source_independence": 9,
+      "primary_source_proximity": 8,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "The Waze Story: How It Came to Be",
+          "url": "https://www.youtube.com/watch?v=S012bge065Y",
+          "type": "news",
+          "tier": "C",
+          "notes": "Video que narra el contexto de los mapas y la visión de Shabtai."
+        },
+        {
+          "title": "Waze: How Israel's traffic app became a global phenomenon",
+          "url": "https://www.jpost.com/business-and-innovation/tech-and-start-ups/waze-how-israels-traffic-app-became-a-global-phenomenon-559388",
+          "type": "news",
+          "tier": "C",
+          "notes": "Artículo del Jerusalem Post que describe el panorama inicial de la cartografía."
+        }
+      ],
+      "notes": "El contexto histórico y la motivación de Shabtai, según múltiples relatos, se basa en la existencia de un monopolio de datos cartográficos por parte de grandes empresas, lo que resultaba en mapas caros y desactualizados.",
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C003",
+      "claim": "Fundó Waze (originalmente LinQMap) con el objetivo de crear mapas detallados y de código abierto actualizados por la comunidad de conductores.",
+      "importance": 10,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 96,
+      "source_authority": 9,
+      "source_independence": 9,
+      "primary_source_proximity": 9,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "Waze founders and Google acquisition: the untold story",
+          "url": "https://www.calcalistech.com/ctech/articles/0,7340,L-3715878,00.html",
+          "type": "news",
+          "tier": "B",
+          "notes": "Confirma la fundación de LinQ e idea de colaboración."
+        },
+        {
+          "title": "About Waze - Our Story",
+          "url": "https://www.waze.com/about",
+          "type": "official",
+          "tier": "A",
+          "notes": "Waze.com detalla su origen colaborativo."
+        }
+      ],
+      "notes": "Shabtai junto con Uri Levine y Amir Shinar fundaron Waze (antes LinQ/LinQMap) con la visión de mapas creados y actualizados por la comunidad. Los orígenes de código abierto o al menos colaborativos son consistentes.",
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C004",
+      "claim": "Waze permitió a los usuarios informar sobre tráfico, accidentes y controles de velocidad en tiempo real, mejorando la precisión de la navegación.",
+      "importance": 9,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "source_authority": 9,
+      "source_independence": 9,
+      "primary_source_proximity": 9,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "About Waze - Our Story",
+          "url": "https://www.waze.com/about",
+          "type": "official",
+          "tier": "A",
+          "notes": "Página oficial de Waze describiendo sus características."
+        },
+        {
+          "title": "Waze: The inside story of the $1.15 billion acquisition that Google almost didn't make",
+          "url": "https://www.forbes.com/sites/ericsavitz/2013/06/11/waze-the-inside-story-of-the-1-15-billion-acquisition-that-google-almost-didnt-make/?sh=3fc4e6a45b1e",
+          "type": "news",
+          "tier": "B",
+          "notes": "Artículo de Forbes reconociendo las funcionalidades."
+        }
+      ],
+      "notes": "Esta es una de las características fundamentales y publicitadas de Waze, consistente a través de todas las fuentes sobre su funcionalidad y éxito.",
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C005",
+      "claim": "La plataforma de Waze democratizó la creación y actualización de mapas, desafiando el modelo de negocio tradicional de los gigantes del GPS.",
+      "importance": 10,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "source_authority": 9,
+      "source_independence": 9,
+      "primary_source_proximity": 9,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "Waze founders and Google acquisition: the untold story",
+          "url": "https://www.calcalistech.com/ctech/articles/0,7340,L-3715878,00.html",
+          "type": "news",
+          "tier": "B",
+          "notes": "Describe la visión disruptiva del modelo de Waze."
+        },
+        {
+          "title": "Waze: How Israel's traffic app became a global phenomenon",
+          "url": "https://www.jpost.com/business-and-innovation/tech-and-start-ups/waze-how-israels-traffic-app-became-a-global-phenomenon-559388",
+          "type": "news",
+          "tier": "C",
+          "notes": "Resalta el impacto democratizador de Waze en el mercado de mapas."
+        }
+      ],
+      "notes": "El concepto de democratización de los mapas a través del crowdsourcing es el pilar central de la historia de Waze y su impacto, validado por todas las fuentes.",
+      "recommendation": "Se puede usar directamente."
+    }
+  ],
+  "risks": [],
+  "missing_evidence": [],
+  "recommended_next_action": "Aprobar para producción de guión."
+}

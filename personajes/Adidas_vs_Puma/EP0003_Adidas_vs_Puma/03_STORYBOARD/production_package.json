@@ -1,0 +1,31 @@
+{
+  "estimated_voiceover_duration": 64.0,
+  "asset_count": 8,
+  "missing_assets_count": 6,
+  "estimated_edit_time_hours": 12.0,
+  "music_style": "Documental tension / piano minimalista",
+  "visual_style": "Color gradado cálido, textura de grano de película analógica",
+  "required_images": [
+    "Hermanos Dassler jóvenes (1920s)",
+    "Jesse Owens con zapatillas Dassler (Berlín 1936)",
+    "Herzogenaurach dividido (ilustración o mapa)",
+    "Tumbas de Adi y Rudolf Dassler",
+    "Imágenes de archivo de la Segunda Guerra Mundial",
+    "Fotos de atletas famosos con Adidas y Puma (vintage)"
+  ],
+  "required_videos": [
+    "Clip de Jesse Owens (1936 JJOO)",
+    "Metraje de archivo de la Segunda Guerra Mundial"
+  ],
+  "required_motion_graphics": [
+    "Entrecruce y división de logos de Adidas y Puma",
+    "Animación de mapa de Herzogenaurach dividido",
+    "Placas de texto informativas para fechas y eventos"
+  ],
+  "required_maps": [
+    "Mapa animado o ilustrado de Herzogenaurach"
+  ],
+  "required_historical_screenshots": [],
+  "required_ai_recreations": [],
+  "recommended_next_action": "Priorizar la descarga de los assets '006' (Jesse Owens video) y '005' (Herzogenaurach divided town image) que están referenciados en el manifiesto pero no descargados. Iniciar la búsqueda manual de fotografías de los hermanos Dassler jóvenes y tumbas."
+}

@@ -1,0 +1,93 @@
+[
+  {
+    "scene": 1,
+    "duration": 5.0,
+    "voiceover": "En los 2000, los mapas eran caros, anticuados. Un puñado de empresas tenía el control.",
+    "selected_asset": null,
+    "selected_asset_id": null,
+    "asset_status": "missing",
+    "fallback_asset_id": "002",
+    "fallback_strategy": "Usar la captura de pantalla de la app de Waze de 2010 como fondo de contexto para reflejar la tecnología de la época, aunque sea posterior a los 'mapas de papel antiguos'.",
+    "effect": "fade",
+    "caption": "Mapas obsoletos del 2000",
+    "gap_id": "gap_001"
+  },
+  {
+    "scene": 2,
+    "duration": 5.0,
+    "voiceover": "Ehud Shabtai, en Israel, lo sabía. Desarrollaba software GPS, pero veía la precariedad de todo. Quería más que eso.",
+    "selected_asset": null,
+    "selected_asset_id": null,
+    "asset_status": "missing",
+    "fallback_asset_id": "007",
+    "fallback_strategy": "Tomar la 'Foto de Ehud Shabtai' del manifiesto (aún no descargada) y usarla en primer plano. Si no se descarga, se necesitará pedir una foto de archivo de Ehud de los primeros días.",
+    "effect": "slow_zoom",
+    "caption": "Ehud Shabtai, Desarrollador de GPS",
+    "gap_id": "gap_002"
+  },
+  {
+    "scene": 3,
+    "duration": 5.0,
+    "voiceover": "Su obsesión: un mundo donde cada conductor fuera un cartógrafo. Fundó Waze.",
+    "selected_asset": null,
+    "selected_asset_id": null,
+    "asset_status": "missing",
+    "fallback_asset_id": "004",
+    "fallback_strategy": "Usar el 'Waze logo Google acquisition 2013' como referencia para recrear una animación con el logo original de Waze. Si no está disponible, usar el logo de 2013.",
+    "effect": "text_overlay",
+    "caption": "Nacimiento de Waze",
+    "gap_id": "gap_003"
+  },
+  {
+    "scene": 4,
+    "duration": 8.0,
+    "voiceover": "Era una aplicación de mapas, sí, pero con una diferencia esencial. Los usuarios no solo seguían rutas, las creaban. Reportaban tráfico, accidentes, incluso la posición de radares.",
+    "selected_asset": null,
+    "selected_asset_id": null,
+    "asset_status": "missing",
+    "fallback_asset_id": null,
+    "fallback_strategy": "Crear una animación de pantalla dividida mostrando una interfaz genérica de GPS vs. la interactividad de Waze (iconos de reportes).",
+    "effect": "cut",
+    "caption": "Waze: Mapas generados por la comunidad",
+    "gap_id": "gap_004"
+  },
+  {
+    "scene": 5,
+    "duration": 5.0,
+    "voiceover": "Todo en tiempo real. Miles de personas enviando datos. La comunidad se convertía en la base.",
+    "selected_asset": null,
+    "selected_asset_id": null,
+    "asset_status": "missing",
+    "fallback_asset_id": null,
+    "fallback_strategy": "Crear una animación de un mapa global con puntos de datos que se iluminan y desaparecen. Es un concepto visual que se puede recrear.",
+    "effect": "fade",
+    "caption": "Comunidad en tiempo real",
+    "gap_id": "gap_005"
+  },
+  {
+    "scene": 6,
+    "duration": 7.0,
+    "voiceover": "Así, Waze democratizó la navegación. Un programador y una idea, contra el monopolio de los gigantes. Demostró que un mapa no tiene que venderse. Se puede construir, juntos.",
+    "selected_asset": null,
+    "selected_asset_id": null,
+    "asset_status": "missing",
+    "fallback_asset_id": null,
+    "fallback_strategy": "Crear una animación que enfrente logos genéricos de GPS contra el logo de Waze, seguido de una animación de manos construyendo un mapa digital.",
+    "effect": "cut",
+    "caption": "Waze vs. El Monopolio",
+    "gap_id": "gap_006"
+  },
+  {
+    "scene": 7,
+    "duration": 12.0,
+    "voiceover": "Yo soy Jota y esto es HUMANOS: historias de personas que construyeron desde una herida, una obsesión o una contradicción. Nos vemos en la próxima historia.",
+    "selected_asset": null,
+    "selected_asset_id": null,
+    "asset_status": "missing",
+    "fallback_asset_id": null,
+    "fallback_strategy": "Grabación en estudio de Jota. Este es un nuevo metraje no catalogado en los assets de Borges.",
+    "effect": "fade",
+    "caption": "HUMANOS",
+    "gap_id": "gap_007"
+  }
+]

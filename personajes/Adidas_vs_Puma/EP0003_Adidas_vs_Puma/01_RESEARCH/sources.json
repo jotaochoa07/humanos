@@ -1,0 +1,49 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "character_name": "Adidas vs Puma",
+  "sources": [
+    {
+      "title": "Adidas AG Annual Reports",
+      "url": "https://www.adidas-group.com/en/investors/financial-reports/",
+      "type": "official",
+      "tier": "A",
+      "notes": "Informes financieros anuales de Adidas, contienen información corporativa histórica."
+    },
+    {
+      "title": "Puma SE Annual Reports",
+      "url": "https://about.puma.com/en/investor-relations/financial-reports",
+      "type": "official",
+      "tier": "A",
+      "notes": "Informes financieros anuales de Puma, con datos corporativos e históricos."
+    },
+    {
+      "title": "Sneaker Wars: The Enemy Brothers Who Founded Adidas and Puma and the Family Feud That Forever Changed the Business of Sports",
+      "url": "https://www.amazon.com/Sneaker-Wars-Brothers-Forever-Business/dp/0061246580",
+      "type": "biography",
+      "tier": "B",
+      "notes": "Biografía detallada del conflicto entre los Dassler. Fuente primaria para el contexto familiar y la fundación."
+    },
+    {
+      "title": "The Town That Sided With Adidas Or Puma",
+      "url": "https://www.bbc.com/news/magazine-34107127",
+      "type": "news",
+      "tier": "B",
+      "notes": "Artículo de BBC News sobre la división de Herzogenaurach debido a la rivalidad. Fuente de nivel Tier 1."
+    },
+    {
+      "title": "How Adidas and Puma were born from a brotherly feud",
+      "url": "https://www.cnbc.com/2016/10/18/how-adidas-and-puma-were-born-from-a-brotherly-feud.html",
+      "type": "news",
+      "tier": "B",
+      "notes": "Artículo de CNBC que narra la historia familiar y la creación de ambas marcas. Medios Tier 1."
+    },
+    {
+      "title": "Adi & Dassler - The Story of Adidas and Puma",
+      "url": null,
+      "type": "archive",
+      "tier": "C",
+      "notes": "Documentales y archivos históricos sobre la disputa. A menudo disponibles en plataformas de streaming o archivos televisivos, deben ser validados caso a caso."
+    }
+  ]
+}

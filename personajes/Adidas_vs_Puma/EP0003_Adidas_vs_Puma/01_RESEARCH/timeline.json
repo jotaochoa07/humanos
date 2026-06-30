@@ -1,0 +1,74 @@
+{
+  "timeline": [
+    {
+      "date": "1924",
+      "event": "Adi Dassler funda 'Gebrüder Dassler Schuhfabrik' (Fábrica de Zapatos Hermanos Dassler) con su hermano Rudolf en Herzogenaurach, Alemania.",
+      "importance": "Alto",
+      "source_url": "https://www.adidas-group.com/en/about/history/",
+      "confidence": 10
+    },
+    {
+      "date": "1936",
+      "event": "Jesse Owens gana cuatro medallas de oro en los Juegos Olímpicos de Berlín, usando zapatillas Dassler.",
+      "importance": "Alto",
+      "source_url": "https://olympics.com/en/olympic-games/berlin-1936",
+      "confidence": 10
+    },
+    {
+      "date": "1948",
+      "event": "Los hermanos Adi y Rudolf Dassler se separan debido a disputas personales y profesionales.",
+      "importance": "Alto",
+      "source_url": "https://www.adidas-group.com/en/about/history/",
+      "confidence": 10
+    },
+    {
+      "date": "1949",
+      "event": "Adi Dassler registra oficialmente 'Adi Dassler adidas Sportschuhfabrik' y las tres franjas. Rudolf Dassler funda 'Puma Schuhfabrik Rudolf Dassler'.",
+      "importance": "Alto",
+      "source_url": "https://about.puma.com/en/this-is-puma/history",
+      "confidence": 10
+    },
+    {
+      "date": "1954",
+      "event": "La selección nacional de fútbol de Alemania Occidental gana la Copa del Mundo con botas Adidas, equipadas con tacos atornillables.",
+      "importance": "Medio",
+      "source_url": "https://www.adidas-group.com/en/about/history/",
+      "confidence": 9
+    },
+    {
+      "date": "1960",
+      "event": "Armin Hary, financiado por Puma, gana la medalla de oro en los 100 metros planos en los Juegos Olímpicos de Roma, usando zapatillas Puma.",
+      "importance": "Medio",
+      "source_url": "https://olympics.com/en/athletes/armin-hary",
+      "confidence": 8
+    },
+    {
+      "date": "1970",
+      "event": "Pelé usa botas Puma King en la final de la Copa del Mundo de México, solicitando un último ajuste justo antes del saque inicial televisado.",
+      "importance": "Alto",
+      "source_url": "https://about.puma.com/en/this-is-puma/history",
+      "confidence": 9
+    },
+    {
+      "date": "1978",
+      "event": "Adi Dassler, fundador de Adidas, fallece.",
+      "importance": "Medio",
+      "source_url": "https://www.adidas-group.com/en/about/history/",
+      "confidence": 10
+    },
+    {
+      "date": "1987",
+      "event": "Horst Dassler, hijo de Adi y líder de Adidas, fallece. El control de Adidas pasa a sus hermanas.",
+      "importance": "Bajo",
+      "source_url": "https://www.nytimes.com/1987/04/13/obituaries/horst-dassler-49-a-figure-in-sports-endorsements.html",
+      "confidence": 9
+    },
+    {
+      "date": "2009",
+      "event": "Adidas y Puma juegan un partido de fútbol amistoso en Herzogenaurach para celebrar el Día Internacional de la Paz, marcando un deshielo en la rivalidad.",
+      "importance": "Medio",
+      "source_url": "https://www.dw.com/en/adidas-and-puma-bury-the-hatchet-for-peace/a-4648784",
+      "confidence": 9
+    }
+  ]
+}

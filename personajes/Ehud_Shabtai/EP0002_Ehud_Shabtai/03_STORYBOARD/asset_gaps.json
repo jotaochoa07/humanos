@@ -1,0 +1,86 @@
+[
+  {
+    "gap_id": "gap_001",
+    "scene": 1,
+    "missing_asset": "Montaje de mapas de papel antiguos y pantallas GPS de coches viejos (pixelados, principios de los 2000).",
+    "criticality": "high",
+    "reason": "Establece el contexto visual de la época, crucial para entender la propuesta de valor de Waze.",
+    "suggested_solution": "Búsqueda de metraje de archivo de sistemas GPS de coche pioneros y mapas de papel de finales de los 90/principios de los 2000. Considerar recreación si no hay disponibles.",
+    "manual_search_queries": [
+      "GPS car early 2000s footage",
+      "old paper maps archive",
+      "first GPS navigation systems video"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": "Prompt de generación IA detallado sólo como último recurso si ai_generation_allowed es true"
+  },
+  {
+    "gap_id": "gap_002",
+    "scene": 2,
+    "missing_asset": "Primer plano de Ehud Shabtai, sentado frente a una computadora un poco antigua, quizás frunciendo el ceño o pensativo.",
+    "criticality": "high",
+    "reason": "Introduce visualmente al protagonista en el momento clave de su frustración e ideación.",
+    "suggested_solution": "Descargar y usar '007 - Ehud Shabtai event photo' (si es de la época). Si no, buscar 'Ehud Shabtai young programmer photo'.",
+    "manual_search_queries": [
+      "Ehud Shabtai early days photo",
+      "Ehud Shabtai Waze founder young"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": "Prompt de generación IA detallado sólo como último recurso si ai_generation_allowed es true"
+  },
+  {
+    "gap_id": "gap_003",
+    "scene": 3,
+    "missing_asset": "Animación abstracta de coches dejando un rastro luminoso en un mapa que se va construyendo. Superposición: 'Waze'.",
+    "criticality": "medium",
+    "reason": "Simboliza la idea central de Waze: la construcción colaborativa del mapa por los conductores.",
+    "suggested_solution": "Creación de motion graphics. Usar el 'Logo original de Waze' como referencia para la superposición, idealmente el logo de sus primeros años.",
+    "manual_search_queries": [],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": "Prompt de generación IA detallado sólo como último recurso si ai_generation_allowed es true"
+  },
+  {
+    "gap_id": "gap_004",
+    "scene": 4,
+    "missing_asset": "Pantalla dividida: en un lado, una interfaz de GPS tradicional; en el otro, cómo Waze permite reportar eventos (animación de iconos).",
+    "criticality": "high",
+    "reason": "Explica visualmente la innovación central de Waze y su diferenciador clave frente a la competencia.",
+    "suggested_solution": "Creación de motion graphics. Se requiere recrear interfaces de GPS tradicionales y animar la interfaz de Waze para mostrar las funcionalidades de reporte. Podría usarse '002 - Waze app screenshot 2010' como base para la parte de Waze.",
+    "manual_search_queries": [],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": "Prompt de generación IA detallado sólo como último recurso si ai_generation_allowed es true"
+  },
+  {
+    "gap_id": "gap_005",
+    "scene": 5,
+    "missing_asset": "Mapa global que se ilumina con miles de puntos de datos que aparecen y desaparecen rápidamente, simulando el tráfico en tiempo real. Superposición de texto: 'Datos en tiempo real'.",
+    "criticality": "medium",
+    "reason": "Demuestra visualmente la escala y el dinamismo de la contribución en tiempo real de la comunidad Waze.",
+    "suggested_solution": "Creación de motion graphics. Se puede usar un mapa mundi genérico y animar los puntos de luz.",
+    "manual_search_queries": [],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": "Prompt de generación IA detallado sólo como último recurso si ai_generation_allowed es true"
+  },
+  {
+    "gap_id": "gap_006",
+    "scene": 6,
+    "missing_asset": "Animación que enfrenta logos de grandes empresas de GPS (genéricos) con el logo de Waze, simbolizando 'David vs Goliat'. Luego, manos diversas construyendo colaborativamente un mapa digital.",
+    "criticality": "medium",
+    "reason": "Refuerza la narrativa de 'David contra Goliat' y el poder de la colaboración comunitaria.",
+    "suggested_solution": "Creación de motion graphics con logos estilizados y animación de manos (stock footage o generadas).",
+    "manual_search_queries": [],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": "Prompt de generación IA detallado sólo como último recurso si ai_generation_allowed es true"
+  },
+  {
+    "gap_id": "gap_007",
+    "scene": 7,
+    "missing_asset": "Jota en un espacio limpio y minimalista, mirando a cámara.",
+    "criticality": "high",
+    "reason": "Cierre del programa con el presentador, esencial para la marca HOUSE.",
+    "suggested_solution": "Grabación de metraje original de Jota en estudio.",
+    "manual_search_queries": [],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": "Prompt de generación IA detallado sólo como último recurso si ai_generation_allowed es true"
+  }
+]

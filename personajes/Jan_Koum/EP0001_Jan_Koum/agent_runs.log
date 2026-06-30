@@ -1,0 +1,12 @@
+[2026-06-17 11:04:09] Agent: Borges | Status: success
+Logs:
+Investigación finalizada para Jan Koum. Se recuperaron 6 sugerencias de assets, 7 hitos cronológicos, y el motor de descubrimiento catalogó 8 assets históricos reales. Se extrajeron 6 afirmaciones (claims) y 5 fuentes estructuradas.
+--------------------------------------------------
+[2026-06-17 11:04:26] Agent: Veritas | Status: success
+Logs:
+Fact check completado por Veritas para Jan Koum. Score de confianza global: 93. Status: APPROVED. Resumen de Claims: 6 verified, 0 partial, 0 unverified, 0 rejected.
+--------------------------------------------------
+[2026-06-17 11:04:58] Agent: Gabo | Status: success
+Logs:
+Narrativa multiformato creada bajo reglas estrictas de HUMANOS. Se definieron 7 escenas secuenciales para el guion vertical.
+--------------------------------------------------

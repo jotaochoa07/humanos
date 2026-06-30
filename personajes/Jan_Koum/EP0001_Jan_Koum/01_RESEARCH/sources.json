@@ -1,0 +1,42 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "character_name": "Jan Koum",
+  "sources": [
+    {
+      "title": "Facebook 2014 Q4 Earnings Call Transcript",
+      "url": "https://investor.fb.com/investor-news/press-release-details/2015/Facebook-Reports-Fourth-Quarter-and-Full-Year-2014-Results/default.aspx",
+      "type": "official",
+      "tier": "A",
+      "notes": "Confirmación oficial de la adquisición de WhatsApp y cifras."
+    },
+    {
+      "title": "Brian Acton, Jan Koum - WhatsApp Blog: WhatsApp Joins Facebook",
+      "url": "https://blog.whatsapp.com/100006209587820/jan-koum",
+      "type": "official",
+      "tier": "A",
+      "notes": "Comunicado oficial de WhatsApp sobre la adquisición por Facebook y papel de Koum."
+    },
+    {
+      "title": "Exclusive: Inside the WhatsApp Deal - Forbes",
+      "url": "https://www.forbes.com/sites/parmyolson/2014/02/19/exclusive-inside-the-whatsapp-deal/",
+      "type": "news",
+      "tier": "B",
+      "notes": "Artículo detallado sobre la vida de Koum, su origen humilde en Ucrania y los inicios de WhatsApp."
+    },
+    {
+      "title": "Jan Koum - Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Jan_Koum",
+      "type": "database",
+      "tier": "C",
+      "notes": "Artículo enciclopédico que recopila información de diversas fuentes sobre su biografía."
+    },
+    {
+      "title": "Facebook to Buy WhatsApp for $19 Billion - The New York Times",
+      "url": "https://www.nytimes.com/2014/02/20/technology/facebook-to-buy-whatsapp-for-19-billion.html",
+      "type": "news",
+      "tier": "B",
+      "notes": "Reportaje de noticias relevante sobre la adquisición y su impacto."
+    }
+  ]
+}

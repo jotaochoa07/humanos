@@ -1,0 +1,37 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "character_name": "Jan Koum",
+  "claims": [
+    {
+      "claim_id": "C001",
+      "claim": "Emigró de Ucrania a EE. UU. en 1992, escapando de la pobreza y el antisemitismo.",
+      "importance": 9
+    },
+    {
+      "claim_id": "C002",
+      "claim": "Su familia dependió de asistencia social y cupones de alimentos en Mountain View, California.",
+      "importance": 8
+    },
+    {
+      "claim_id": "C003",
+      "claim": "Trabajó limpiando pisos en un supermercado para ayudar a su madre con cáncer.",
+      "importance": 7
+    },
+    {
+      "claim_id": "C004",
+      "claim": "Cofundó WhatsApp Inc. en 2009 con Brian Acton, tras ser rechazados en Facebook y Twitter.",
+      "importance": 10
+    },
+    {
+      "claim_id": "C005",
+      "claim": "Su aversión a la publicidad y la recopilación de datos fue central en el diseño de WhatsApp, reflejando su desconfianza en el sistema.",
+      "importance": 9
+    },
+    {
+      "claim_id": "C006",
+      "claim": "Vendió WhatsApp a Facebook por $19 mil millones en 2014, logrando una enorme riqueza desde la pobreza extrema.",
+      "importance": 10
+    }
+  ]
+}

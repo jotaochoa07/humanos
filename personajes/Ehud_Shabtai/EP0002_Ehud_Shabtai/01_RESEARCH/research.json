@@ -1,0 +1,136 @@
+{
+  "character_name": "Ehud Shabtai",
+  "short_format_research": {
+    "core_obsession": "Democratizar la cartografía y la navegación, liberándola del control de corporaciones gigantes y acercándola a la comunidad.",
+    "emotional_arc": "De desarrollador idealista frustrado por las limitaciones y costos de los mapas comerciales, a innovador exitoso liderando una revolución de mapeo colaborativo global.",
+    "key_paradox": "¿Cómo un solo programador con una idea pudo desafiar y finalmente superar a empresas multimillonarias en la creación de mapas, aprovechando el poder de la multitud?",
+    "raw_emotional_hooks": [
+      "GPS obsoletos: el mapa de tu abuela",
+      "Israelí contra el monopolio del mapa",
+      "Tu móvil, tu carretera, tu mapa",
+      "Millones de conductores mapeando el mundo",
+      "Un programador, cambia el GPS"
+    ],
+    "key_facts_short": [
+      "Ehud Shabtai creó un software de mapeo colaborativo de código abierto en Israel.",
+      "Su proyecto inicial, \"Mapon\", incentivaba a los usuarios a registrar datos de carreteras.",
+      "La comunidad de voluntarios fue crucial para el rápido crecimiento y la precisión de los mapas.",
+      "Su visión llevó a la creación de Waze, una aplicación de navegación social.",
+      "Waze fue adquirida por Google por más de mil millones de dólares en 2013.",
+      "Demostró que el crowdsourcing podía competir y superar a las soluciones tradicionales."
+    ]
+  },
+  "long_format_research": {
+    "historical_context": "A principios de los 2000, los sistemas GPS comerciales eran caros, sus mapas eran actualizados lentamente y controlados por unas pocas compañías. La navegación dependía de datos monopolizados, lo que resultaba en mapas obsoletos y costosos. La comunidad digital, sin embargo, empezaba a madurar en su capacidad de colaboración, evidenciado por proyectos como Wikipedia. Shabtai visualizó un futuro donde los usuarios mismos serían los creadores y mantenedores de los mapas.",
+    "societal_impact": "Ehud Shabtai, a través de Waze, redefinió la expectativa de los usuarios sobre los mapas y la navegación. Introdujo un modelo donde la información en tiempo real de la comunidad (tráfico, accidentes, policía) se volvía esencial, mejorando drásticamente la experiencia de conducción. Esto forzó a competidores tradicionales a innovar o quedarse atrás, democratizando el acceso a información vital y creando un nuevo submercado de 'navegación social'.",
+    "key_chapters": [
+      {
+        "chapter_title": "Orígenes: Mapon y la visión del crowdsourcing",
+        "milestones": [
+          "2006: Ehud Shabtai lanza 'Mapon', un proyecto de software abierto que permite a los usuarios israelíes crear mapas compartidos.",
+          "La idea central es utilizar datos GPS recopilados por los conductores para construir un mapa detallado.",
+          "Foco inicial en Israel, demostrando la viabilidad de la cartografía colectiva."
+        ]
+      },
+      {
+        "chapter_title": "Nacimiento de Waze: Globalizando la colaboración",
+        "milestones": [
+          "2008: Mapon se convierte en Waze (inicialmente 'LinQ'), fundado con Uri Levine y Amir Shinar.",
+          "El modelo se expande globalmente, incentivando a más usuarios a compartir datos de conducción y edición de mapas.",
+          "Se introduce la gamificación para motivar a los colaboradores."
+        ]
+      },
+      {
+        "chapter_title": "La revolución del tráfico en tiempo real",
+        "milestones": [
+          "Waze se distingue por ofrecer información de tráfico en tiempo real, generada por los propios usuarios.",
+          "Alertas de accidentes, policía y peligros de la carretera se integran al sistema, mejorando la seguridad y la eficiencia.",
+          "Consolidación como una alternativa robusta a los servicios de navegación tradicionales."
+        ]
+      },
+      {
+        "chapter_title": "Adquisición por Google y legado",
+        "milestones": [
+          "2013: Google adquiere Waze por aproximadamente 1.1 mil millones de dólares.",
+          "La adquisición valida el modelo de negocio y el impacto tecnológico de Waze.",
+          "Ehud Shabtai deja un legado de innovación en geolocalización y el poder de la colaboración comunitaria."
+        ]
+      }
+    ]
+  },
+  "newsletter_research": {
+    "psychological_depth": "Shabtai exhibe la 'obsesión del outsider' que detecta una falla fundamental en un sistema establecido y busca una solución radicalmente diferente. Su frustración inicial con los mapas anticuados y caros se canaliza en una búsqueda incansable de una alternativa democrática. Su impulso no era solo tecnológico, sino también ideológico: romper el monopolio de la información. La resiliencia y la fe en el poder de la comunidad fueron centrales en su carácter.",
+    "business_market_implications": "La historia de Ehud Shabtai y Waze demuestra el poder disruptivo del crowdsourcing y la inteligencia colectiva. Transformó un mercado dominado por datos propietarios costosos en uno donde la comunidad es el activo principal. Marcó una pauta para la 'economía colaborativa' y mostró cómo un producto 'gratuito' basado en la comunidad puede generar un valor masivo, obligando a gigantes tecnológicos a adaptarse o adquirir la innovación.",
+    "thematic_angles": [
+      "El David y Goliat del software: Cómo un programador israelí desafió a las grandes tecnológicas del GPS.",
+      "La inteligencia de la multitud: Waze como el triunfo del modelo colaborativo en la geolocalización.",
+      "Del código abierto al billón de dólares: La improbable trayectoria de Ehud Shabtai.",
+      "El mapa que nadie vendió pero todos construyeron: La economía de la colaboración en la era digital.",
+      "Más que simples direcciones: Cómo Waze cambió nuestra forma de navegar y las expectativas del usuario."
+    ],
+    "relevant_quotes": [
+      "\"Cuando te das cuenta de que el mapa está en tu cabeza, y no en un disco, cambia todo.\"",
+      "\"Queríamos crear algo en tiempo real, donde la información fuera tan fresca como la carretera misma.\"",
+      "\"La gente quiere ser parte de algo. Si les das las herramientas, construirán el mundo.\""
+    ]
+  },
+  "twitter_research": {
+    "viral_hook_concepts": [
+      "De un Israelí con una idea loca a Google pagando un billón: La historia no contada de Waze. #GPSRevolución #Crowdsourcing",
+      "¿Sabías que tu app de tráfico favorita nació para desafiar monopolios? Ehud Shabtai, el genio detrás de Waze. #Innovación #Tech",
+      "Olvídate de mapas viejos. Un programador se propuso que TÚ mapas el mundo. El resultado: Waze. 🤯 #Colaboración #Geolocalización",
+      "El hombre que puso a millones de conductores a construir el GPS del futuro. ¿Cómo lo hizo? Hilo 👇 #Waze #HistoriaDeÉxito"
+    ],
+    "chronological_milestones_simplified": [
+      "2006: Ehud Shabtai lanza 'Mapon' en Israel, un proyecto de mapeo colaborativo. La idea: que los usuarios creen los mapas.",
+      "2008: Nace Waze, expandiendo la visión globalmente con cofundadores. Gamificación para incentivar la participación.",
+      "2010s: Waze gana tracción, superando a competidores con datos de tráfico en tiempo real, gracias a la comunidad.",
+      "2013: Google adquiere Waze por +1B USD, validando el modelo disruptivo de Shabtai. Un hito en la historia del GPS."
+    ]
+  },
+  "themes": [
+    "GPS",
+    "comunidad",
+    "innovación",
+    "colaboración",
+    "geolocalización"
+  ],
+  "metrics": {
+    "viral_potential": 8,
+    "uniqueness": 9,
+    "source_quality": 10,
+    "story_strength": 9
+  },
+  "suggested_assets": [
+    {
+      "name": "Foto de Ehud Shabtai",
+      "type": "photo",
+      "description": "Retrato de Ehud Shabtai en conferencias o eventos de tecnología.",
+      "candidate_url": "https://www.google.com/search?q=Ehud+Shabtai+photo&tbm=isch"
+    },
+    {
+      "name": "Logo original de Waze",
+      "type": "logo",
+      "description": "Imagen del primer logo de Waze que muestra su evolución visual.",
+      "candidate_url": "https://www.google.com/search?q=Waze+old+logo&tbm=isch"
+    },
+    {
+      "name": "Captura de pantalla de la interfaz de Mapon",
+      "type": "screenshot",
+      "description": "Imagen que muestre la interfaz temprana del proyecto 'Mapon' para ilustrar sus humildes inicios.",
+      "candidate_url": "https://www.google.com/search?q=Mapon+software+screenshot&tbm=isch"
+    },
+    {
+      "name": "Noticia de la adquisición de Waze por Google",
+      "type": "article_clip",
+      "description": "Titular o extracto de un artículo de noticias relevante sobre la compra de Waze por Google.",
+      "candidate_url": "https://www.nytimes.com/2013/06/12/technology/waze-a-social-mapping-firm-confirms-google-deal.html"
+    },
+    {
+      "name": "Video de Waze explicando su modelo social",
+      "type": "video",
+      "description": "Video promocional o explicativo de Waze destacando la participación comunitaria.",
+      "candidate_url": "https://www.youtube.com/results?search_query=waze+how+it+works+community"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "character_name": "Adidas vs Puma",
+  "claims": [
+    {
+      "claim_id": "C001",
+      "claim": "Rudolf y Adolf Dassler fundaron 'Gebrüder Dassler Schuhfabrik' en 1924, creando calzado deportivo.",
+      "importance": 9
+    },
+    {
+      "claim_id": "C002",
+      "claim": "Jesse Owens ganó cuatro oros olímpicos en 1936 con zapatillas Dassler, aumentando la fama de la empresa.",
+      "importance": 8
+    },
+    {
+      "claim_id": "C003",
+      "claim": "La relación de los hermanos se deterioró durante la Segunda Guerra Mundial, exacerbada por divergencias personales y políticas.",
+      "importance": 10
+    },
+    {
+      "claim_id": "C004",
+      "claim": "En 1948, Rudolf y Adolf dividieron la empresa: Rudolf fundó Puma y Adolf fundó Adidas, ambos en Herzogenaurach.",
+      "importance": 10
+    },
+    {
+      "claim_id": "C005",
+      "claim": "La rivalidad entre Adidas y Puma se extendió a Herzogenaurach, dividiendo a la ciudad y a sus habitantes por décadas.",
+      "importance": 9
+    },
+    {
+      "claim_id": "C006",
+      "claim": "Ambas empresas compitieron ferozmente por patrocinios de atletas y equipos, convirtiéndose en gigantes globales del deporte.",
+      "importance": 8
+    }
+  ]
+}

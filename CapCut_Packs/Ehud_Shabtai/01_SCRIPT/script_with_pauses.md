@@ -1,0 +1,22 @@
+# Guía de Locución: Ehud Shabtai
+
+[Énfasis inicial]
+En los 2000 [Pausa breve] los mapas eran caros [Pausa breve] anticuados [Pausa 1s]
+Un puñado de empresas tenía el control [Pausa 1s]
+Ehud Shabtai [Pausa breve] en Israel [Pausa breve] lo sabía [Pausa 1s]
+ Desarrollaba software GPS [Pausa breve] pero veía la precariedad de todo [Pausa 1s]
+Quería más que eso [Pausa 1s]
+Su obsesión: un mundo donde cada conductor fuera un cartógrafo [Pausa 1s]
+Fundó Waze [Pausa 1s]
+Era una aplicación de mapas [Pausa breve] sí [Pausa breve] pero con una diferencia esencial [Pausa 1s]
+Los usuarios no solo seguían rutas [Pausa breve] las creaban [Pausa 1s]
+ Reportaban tráfico [Pausa breve] accidentes [Pausa breve] incluso la posición de radares [Pausa 1s]
+Todo en tiempo real [Pausa 1s]
+Miles de personas enviando datos [Pausa 1s]
+La comunidad se convertía en la base [Pausa 1s]
+ Así [Pausa breve] Waze democratizó la navegación [Pausa 1s]
+Un programador y una idea [Pausa breve] contra el monopolio de los gigantes [Pausa 1s]
+Demostró que un mapa no tiene que venderse [Pausa 1s]
+Se puede construir [Pausa breve] juntos [Pausa 1s]
+Yo soy Jota y esto es HUMANOS: historias de personas que construyeron desde una herida [Pausa breve] una obsesión o una contradicción [Pausa 1s]
+Nos vemos en la próxima historia.

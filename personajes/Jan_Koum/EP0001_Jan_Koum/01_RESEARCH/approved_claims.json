@@ -1,0 +1,86 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "subject": "Jan Koum",
+  "approved_claims": [
+    {
+      "claim_id": "C001",
+      "claim": "Emigró de Ucrania a EE. UU. en 1992, escapando de la pobreza y el antisemitismo.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C002",
+      "claim": "Su familia dependió de asistencia social y cupones de alimentos en Mountain View, California.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C003",
+      "claim": "Trabajó limpiando pisos en un supermercado para ayudar a su madre con cáncer.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 90,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C004",
+      "claim": "Cofundó WhatsApp Inc. en 2009 con Brian Acton, tras ser rechazados en Facebook y Twitter.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 98,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C005",
+      "claim": "Su aversión a la publicidad y la recopilación de datos fue central en el diseño de WhatsApp, reflejando su desconfianza en el sistema.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C006",
+      "claim": "Vendió WhatsApp a Facebook por $19 mil millones en 2014, logrando una enorme riqueza desde la pobreza extrema.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 98,
+      "usage_guidance": "Can be used directly"
+    }
+  ],
+  "rejected_or_blocked_claims": []
+}

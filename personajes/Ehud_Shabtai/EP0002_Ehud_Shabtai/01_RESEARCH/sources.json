@@ -1,0 +1,49 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "character_name": "Ehud Shabtai",
+  "sources": [
+    {
+      "title": "Waze founders and Google acquisition: the untold story",
+      "url": "https://www.calcalistech.com/ctech/articles/0,7340,L-3715878,00.html",
+      "type": "news",
+      "tier": "B",
+      "notes": "Artículo de Calcalist, medio israelí de negocios, con detalles sobre la fundación de Waze y la adquisición por Google."
+    },
+    {
+      "title": "Waze: The inside story of the $1.15 billion acquisition that Google almost didn't make",
+      "url": "https://www.forbes.com/sites/ericsavitz/2013/06/11/waze-the-inside-story-of-the-1-15-billion-acquisition-that-google-almost-didnt-make/?sh=3fc4e6a45b1e",
+      "type": "news",
+      "tier": "B",
+      "notes": "Artículo de Forbes que cubre la adquisición de Waze por Google, mencionando a los fundadores."
+    },
+    {
+      "title": "Ehud Shabtai's LinkedIn Profile",
+      "url": "https://www.linkedin.com/in/ehudshabtai/",
+      "type": "biography",
+      "tier": "B",
+      "notes": "Perfil profesional directo de Shabtai que valida su participación en Waze."
+    },
+    {
+      "title": "The Waze Story: How It Came to Be",
+      "url": "https://www.youtube.com/watch?v=S012bge065Y",
+      "type": "news",
+      "tier": "C",
+      "notes": "Video que relata la historia de Waze, con menciones a los fundadores. Puede contener entrevistas o recortes."
+    },
+    {
+      "title": "About Waze - Our Story",
+      "url": "https://www.waze.com/about",
+      "type": "official",
+      "tier": "A",
+      "notes": "Página oficial de Waze que proporciona una descripción general de su historia y modelo, aunque con menos detalle sobre individuos."
+    },
+    {
+      "title": "Waze: How Israel's traffic app became a global phenomenon",
+      "url": "https://www.jpost.com/business-and-innovation/tech-and-start-ups/waze-how-israels-traffic-app-became-a-global-phenomenon-559388",
+      "type": "news",
+      "tier": "C",
+      "notes": "Artículo de The Jerusalem Post sobre el éxito de Waze y su origen israelí."
+    }
+  ]
+}

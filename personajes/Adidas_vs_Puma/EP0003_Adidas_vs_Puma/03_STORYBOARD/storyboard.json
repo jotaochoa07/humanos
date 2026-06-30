@@ -1,0 +1,93 @@
+[
+  {
+    "scene": 1,
+    "duration": 6.0,
+    "voiceover": "¿Sabías que Adidas y Puma nacieron de la furia entre dos hermanos? Adi y Rudolf Dassler iniciaron una fábrica de calzado en 1924.",
+    "selected_asset": null,
+    "selected_asset_id": null,
+    "asset_status": "missing",
+    "fallback_asset_id": "003",
+    "fallback_strategy": "Mostrar el logo de Adidas original y luego el de Puma original, alternándolos rápidamente. Para los hermanos jóvenes, buscar fotos de Adi y Rudolf Dassler jóvenes juntos.",
+    "effect": "cut",
+    "caption": "1924: Hermanos Dassler, Una sociedad que cambió el calzado",
+    "gap_id": "gap_001"
+  },
+  {
+    "scene": 2,
+    "duration": 8.0,
+    "voiceover": "Su éxito fue brutal: Jesse Owens ganó cuatro oros olímpicos en 1936 con sus zapatillas, disparando su fama.",
+    "selected_asset": null,
+    "selected_asset_id": null,
+    "asset_status": "missing",
+    "fallback_asset_id": "006",
+    "fallback_strategy": "Ya que el video de Jesse Owens no ha sido descargado, usar el asset 'Rudolf Dassler portrait older' como un plano de contexto mientras se narran los logros de Owens para establecer la fama de la marca familiar.",
+    "effect": "slow_zoom",
+    "caption": "1936: 4 Oros Olímpicos, El Mundo los Conoce",
+    "gap_id": "gap_002"
+  },
+  {
+    "scene": 3,
+    "duration": 7.0,
+    "voiceover": "Pero la hermandad se pudrió con la Segunda Guerra Mundial, por diferencias personales y políticas. El quiebre fue total.",
+    "selected_asset": null,
+    "selected_asset_id": null,
+    "asset_status": "missing",
+    "fallback_asset_id": null,
+    "fallback_strategy": "Mientras no tengamos el material específico de tensión entre los hermanos o el archivo de la SGM, mostrar una toma de las zapatillas Adidas tempranas (asset '007') como un recordatorio del objeto de su conflicto, con una superposición de texto que indique 'Tensión Creciente'.",
+    "effect": "text_overlay",
+    "caption": "Segunda Guerra Mundial: La Fractura",
+    "gap_id": "gap_003"
+  },
+  {
+    "scene": 4,
+    "duration": 8.0,
+    "voiceover": "En 1948, dividieron la empresa sin miramientos. Adi fundó Adidas; Rudolf, Puma.",
+    "selected_asset": "ADI_003_ADIDAS_LOGO_ORIGINAL.svg",
+    "selected_asset_id": "003",
+    "asset_status": "available",
+    "fallback_asset_id": null,
+    "fallback_strategy": null,
+    "effect": "animation",
+    "caption": "1948: La División, Nace una Rivalidad Eterna",
+    "gap_id": null
+  },
+  {
+    "scene": 5,
+    "duration": 12.0,
+    "voiceover": "Herzogenaurach, su ciudad natal, se partió en dos. Literalmente. Los habitantes elegían uno u otro, y las tiendas, los bares, se dividieron por lealtades.",
+    "selected_asset": null,
+    "selected_asset_id": null,
+    "asset_status": "missing",
+    "fallback_asset_id": "005",
+    "fallback_strategy": "Mostrar el logo de Adidas y Puma (asset_id '004') lado a lado sobre un fondo neutro para ilustrar la división. Crear una animación donde los logos se alejan uno del otro.",
+    "effect": "pan_right",
+    "caption": "Herzogenaurach: Dividida",
+    "gap_id": "gap_004"
+  },
+  {
+    "scene": 6,
+    "duration": 13.0,
+    "voiceover": "Cada uno invirtió millones en eclipsar al otro. La guerra fría de las zapatillas convirtió a los hermanos en gigantes globales. Nunca se reconciliaron. Sus imperios crecieron desde una herida que jamás cerró.",
+    "selected_asset": null,
+    "selected_asset_id": null,
+    "asset_status": "missing",
+    "fallback_asset_id": null,
+    "fallback_strategy": "Usar los logos '003' y '004' en un montaje rápido intercalado con imágenes abstractas de competencia o clips de deportes genéricos (si están disponibles), finalizando con un texto en pantalla que diga 'Nunca se reconciliaron'",
+    "effect": "mountage",
+    "caption": "Guerra Fría de las Zapatillas, Una Herida Abierta",
+    "gap_id": "gap_005"
+  },
+  {
+    "scene": 7,
+    "duration": 10.0,
+    "voiceover": "Yo soy Jota y esto es HUMANOS: historias de personas que construyeron desde una herida, una obsesión o una contradicción. Nos vemos en la próxima historia.",
+    "selected_asset": null,
+    "selected_asset_id": null,
+    "asset_status": "missing",
+    "fallback_asset_id": null,
+    "fallback_strategy": "Mostrar una placa con el logo de HUMANOS y el nombre 'Jota', con música de cierre.",
+    "effect": "fade",
+    "caption": null,
+    "gap_id": "gap_006"
+  }
+]

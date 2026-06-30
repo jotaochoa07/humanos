@@ -1,0 +1,73 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "subject": "Ehud Shabtai",
+  "approved_claims": [
+    {
+      "claim_id": "C001",
+      "claim": "Shabtai desarrolló un software de navegación GPS en Israel a principios de la década de 2000, notando la precariedad de los mapas existentes.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C002",
+      "claim": "La base de datos de mapas era propiedad de unas pocas empresas grandes, creando un monopolio y dificultando la actualización.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 93,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C003",
+      "claim": "Fundó Waze (originalmente LinQMap) con el objetivo de crear mapas detallados y de código abierto actualizados por la comunidad de conductores.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 96,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C004",
+      "claim": "Waze permitió a los usuarios informar sobre tráfico, accidentes y controles de velocidad en tiempo real, mejorando la precisión de la navegación.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C005",
+      "claim": "La plataforma de Waze democratizó la creación y actualización de mapas, desafiando el modelo de negocio tradicional de los gigantes del GPS.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "usage_guidance": "Can be used directly"
+    }
+  ],
+  "rejected_or_blocked_claims": []
+}

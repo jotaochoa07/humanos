@@ -1,0 +1,83 @@
+[
+  {
+    "gap_id": "gap_001",
+    "scene": 1,
+    "missing_asset": "Entrecruce rápido de logos viejos de Adidas y Puma (evolución) y una imagen de Adi y Rudolf jóvenes y sonrientes, con subtítulo '1924: Hermanos Dassler'. El asset 'Adolf Dassler at home workshop' no es exactamente una foto de Adi y Rudolf jóvenes y sonrientes juntos.",
+    "criticality": "high",
+    "reason": "Es la imagen inicial que establece la relación fraternal y el origen de la empresa.",
+    "suggested_solution": "Buscar fotografías de 'Gebrüder Dassler Schuhfabrik founders young' o 'Adi and Rudolf Dassler 1920s'.",
+    "manual_search_queries": [
+      "Adi and Rudolf Dassler young 1924",
+      "Gebrüder Dassler Schuhfabrik founders photo"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": ""
+  },
+  {
+    "gap_id": "gap_002",
+    "scene": 2,
+    "missing_asset": "Imagen icónica de Jesse Owens corriendo o recibiendo medalla con zapatillas Dassler en los JJOO de 1936.",
+    "criticality": "high",
+    "reason": "Es la validación visual clave del éxito temprano de la empresa y la base de su fama, vinculando directamente el producto a un evento histórico crucial.",
+    "suggested_solution": "Descargar el video 'Jesse Owens wearing Dassler shoes 1936 Olympics' (asset_id: 006) o buscar fotografías de Jesse Owens en los Juegos Olímpicos de Berlín 1936 que muestren sus zapatillas.",
+    "manual_search_queries": [
+      "Jesse Owens 1936 Olympics Dassler shoes",
+      "Jesse Owens Berlin 1936 running shoes"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": ""
+  },
+  {
+    "gap_id": "gap_003",
+    "scene": 3,
+    "missing_asset": "Transición visual de fotos de los hermanos juntos a imágenes más tensas o distantes, superpuestas con archivo de la Segunda Guerra Mundial.",
+    "criticality": "high",
+    "reason": "Visualiza el momento crítico de la disolución de la relación y el contexto histórico de la Segunda Guerra Mundial como catalizador.",
+    "suggested_solution": "Buscar fotos de los hermanos Dassler con expresiones de tensión o separados, y material de archivo de 'Segunda Guerra Mundial' que pueda simbolizar el conflicto.",
+    "manual_search_queries": [
+      "Adi Rudolf Dassler tensión WWII",
+      "Dassler brothers conflict WW2 images"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": ""
+  },
+  {
+    "gap_id": "gap_004",
+    "scene": 5,
+    "missing_asset": "Mapa o ilustración de Herzogenaurach dividido por un río, con símbolos de Adidas y Puma en lados opuestos y escenas de gente mirando los zapatos de otros en la calle.",
+    "criticality": "high",
+    "reason": "La representación visual de la 'ciudad dividida' es fundamental para mostrar el impacto social de la rivalidad.",
+    "suggested_solution": "Descargar 'Herzogenaurach divided town image' (asset_id: 005) o buscar 'mapa Herzogenaurach división Adidas Puma' o 'gente Herzogenaurach zapatillas'.",
+    "manual_search_queries": [
+      "Herzogenaurach divided Adidas Puma map",
+      "Herzogenaurach residents shoes rivalry"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": ""
+  },
+  {
+    "gap_id": "gap_005",
+    "scene": 6,
+    "missing_asset": "Montaje dinámico de atletas famosos usando Adidas y Puma, resaltando la competencia. Finaliza con imágenes de las tumbas de Adi y Rudolf Dassler, separadas.",
+    "criticality": "high",
+    "reason": "Necesario para ilustrar la 'guerra fría de las zapatillas' y el desenlace trágico de la relación fraternal.",
+    "suggested_solution": "Buscar clips de 'atletas Adidas' y 'atletas Puma' de diferentes épocas. Buscar 'tumbas Adi Dassler' y 'tumbas Rudolf Dassler'.",
+    "manual_search_queries": [
+      "Adidas Puma athletes competition vintage",
+      "Adi Dassler grave Rudolf Dassler grave"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": ""
+  },
+  {
+    "gap_id": "gap_006",
+    "scene": 7,
+    "missing_asset": "Logo de HUMANOS y placa de Jota para el cierre de marca.",
+    "criticality": "medium",
+    "reason": "Elementos esenciales para la identidad y el cierre del documental.",
+    "suggested_solution": "Crear el 'Logo de HUMANOS' y la 'placa de Jota' con la marca del canal.",
+    "manual_search_queries": [],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": ""
+  }
+]

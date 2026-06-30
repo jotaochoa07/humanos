@@ -1,0 +1,12 @@
+{
+  "title": "Added Peter Thiel to HUMANOS",
+  "type": "decision",
+  "scope": "project",
+  "topic_key": "humanos_characters/peter_thiel",
+  "content": {
+    "what": "Added Peter Thiel as investor/visionary to HUMANOS database",
+    "why": "User request - new character for editorial pipeline",
+    "where": "humanos_stories table, Supabase",
+    "learned": "Story assigned to Borges for research phase"
+  }
+}

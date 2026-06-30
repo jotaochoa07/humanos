@@ -1,0 +1,53 @@
+{
+  "timeline": [
+    {
+      "date": "1976",
+      "event": "Nacimiento de Jan Koum en Fastiv, Ucrania SSR",
+      "importance": "Alto",
+      "source_url": "https://www.forbes.com/sites/parthdesai/2022/02/07/ukraine-born-whatsapp-co-founder-jan-koum-honored-with-prestigious-award/?sh=2e724b0f4fd1",
+      "confidence": 10
+    },
+    {
+      "date": "1992",
+      "event": "Emigra con su madre a Mountain View, California",
+      "importance": "Alto",
+      "source_url": "https://www.forbes.com/sites/parthdesai/2022/02/07/ukraine-born-whatsapp-co-founder-jan-koum-honored-with-prestigious-award/?sh=2e724b0f4fd1",
+      "confidence": 10
+    },
+    {
+      "date": "1997",
+      "event": "Comienza a trabajar en Yahoo como ingeniero de infraestructura",
+      "importance": "Medio",
+      "source_url": "https://www.forbes.com/sites/parthdesai/2022/02/07/ukraine-born-whatsapp-co-founder-jan-koum-honored-with-prestigious-award/?sh=2e724b0f4fd1",
+      "confidence": 9
+    },
+    {
+      "date": "2007",
+      "event": "Deja Yahoo",
+      "importance": "Medio",
+      "source_url": "https://www.wired.com/2012/08/whatsapp/",
+      "confidence": 9
+    },
+    {
+      "date": "2009",
+      "event": "Co-funda WhatsApp Inc. con Brian Acton",
+      "importance": "Alto",
+      "source_url": "https://www.wired.com/2012/08/whatsapp/",
+      "confidence": 10
+    },
+    {
+      "date": "Febrero 2014",
+      "event": "Facebook adquiere WhatsApp por aproximadamente $19 mil millones",
+      "importance": "Alto",
+      "source_url": "https://newsroom.fb.com/news/2014/02/facebook-to-acquire-whatsapp/",
+      "confidence": 10
+    },
+    {
+      "date": "Abril 2018",
+      "event": "Anuncia su salida de Facebook y de la junta directiva de la empresa",
+      "importance": "Alto",
+      "source_url": "https://www.cnbc.com/2018/04/30/whatsapp-co-founder-jan-koum-is-leaving-facebook.html",
+      "confidence": 10
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "subject": "Jan Koum",
+  "checked_at": "2026-06-17 11:04:09",
+  "overall_confidence_score": 93,
+  "status": "APPROVED",
+  "format_audit_reports": {
+    "shorts": {
+      "confidence_score": 93,
+      "status": "APPROVED",
+      "notes": "Auditoría específica para formato vertical corto"
+    },
+    "long_form": {
+      "confidence_score": 93,
+      "status": "APPROVED",
+      "notes": "Auditoría específica para formato largo"
+    },
+    "newsletter": {
+      "confidence_score": 93,
+      "status": "APPROVED",
+      "notes": "Auditoría específica para newsletter editorial"
+    },
+    "twitter": {
+      "confidence_score": 93,
+      "status": "APPROVED",
+      "notes": "Auditoría específica para hilo de X/Twitter"
+    }
+  },
+  "claims_summary": {
+    "total": 6,
+    "verified": 6,
+    "partial": 0,
+    "unverified": 0,
+    "rejected": 0
+  },
+  "claims": [
+    {
+      "claim_id": "C001",
+      "claim": "Emigró de Ucrania a EE. UU. en 1992, escapando de la pobreza y el antisemitismo.",
+      "importance": 9,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "source_authority": 9,
+      "source_independence": 9,
+      "primary_source_proximity": 9,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "Exclusive: Inside the WhatsApp Deal - Forbes",
+          "url": "https://www.forbes.com/sites/parmyolson/2014/02/19/exclusive-inside-the-whatsapp-deal/",
+          "type": "news",
+          "tier": "B",
+          "notes": "Detalles sobre su origen y las razones de la migración."
+        },
+        {
+          "title": "Jan Koum - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Jan_Koum",
+          "type": "database",
+          "tier": "C",
+          "notes": "Confirma año y motivos."
+        }
+      ],
+      "notes": "Múltiples fuentes periodísticas y biográficas corroboran esta información, citando al propio Koum.",
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C002",
+      "claim": "Su familia dependió de asistencia social y cupones de alimentos en Mountain View, California.",
+      "importance": 8,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "source_authority": 9,
+      "source_independence": 9,
+      "primary_source_proximity": 9,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "Exclusive: Inside the WhatsApp Deal - Forbes",
+          "url": "https://www.forbes.com/sites/parmyolson/2014/02/19/exclusive-inside-the-whatsapp-deal/",
+          "type": "news",
+          "tier": "B",
+          "notes": "Detalla la dependencia de asistencia social y cupones."
+        },
+        {
+          "title": "Jan Koum - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Jan_Koum",
+          "type": "database",
+          "tier": "C",
+          "notes": "Corrobora uso de cupones de alimentos."
+        }
+      ],
+      "notes": "Ampliamente documentado en entrevistas y artículos sobre su biografía, incluso simbolizado por la firma del acuerdo con Facebook.",
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C003",
+      "claim": "Trabajó limpiando pisos en un supermercado para ayudar a su madre con cáncer.",
+      "importance": 7,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 90,
+      "source_authority": 9,
+      "source_independence": 9,
+      "primary_source_proximity": 8,
+      "consistency": 9,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "Exclusive: Inside the WhatsApp Deal - Forbes",
+          "url": "https://www.forbes.com/sites/parmyolson/2014/02/19/exclusive-inside-the-whatsapp-deal/",
+          "type": "news",
+          "tier": "B",
+          "notes": "Menciona su trabajo limpiando un supermercado y la enfermedad de su madre."
+        },
+        {
+          "title": "Jan Koum - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Jan_Koum",
+          "type": "database",
+          "tier": "C",
+          "notes": "Confirma el trabajo de limpieza y la enfermedad terminal de su madre."
+        }
+      ],
+      "notes": "Detalle biográfico frecuentemente mencionado, aunque su madre trabajaba de niñera, su diagnóstico de cáncer se dio más tarde.",
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C004",
+      "claim": "Cofundó WhatsApp Inc. en 2009 con Brian Acton, tras ser rechazados en Facebook y Twitter.",
+      "importance": 10,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 98,
+      "source_authority": 9,
+      "source_independence": 9,
+      "primary_source_proximity": 9,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "Exclusive: Inside the WhatsApp Deal - Forbes",
+          "url": "https://www.forbes.com/sites/parmyolson/2014/02/19/exclusive-inside-the-whatsapp-deal/",
+          "type": "news",
+          "tier": "B",
+          "notes": "Detalles sobre la fundación de WhatsApp y los rechazos en Facebook/Twitter."
+        },
+        {
+          "title": "Jan Koum - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Jan_Koum",
+          "type": "database",
+          "tier": "C",
+          "notes": "Confirma detalles de la fundación y rechazos."
+        }
+      ],
+      "notes": "Hecho bien documentado y parte pivotal de la narrativa de la empresa.",
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C005",
+      "claim": "Su aversión a la publicidad y la recopilación de datos fue central en el diseño de WhatsApp, reflejando su desconfianza en el sistema.",
+      "importance": 9,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "source_authority": 9,
+      "source_independence": 9,
+      "primary_source_proximity": 9,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "Brian Acton, Jan Koum - WhatsApp Blog: WhatsApp Joins Facebook",
+          "url": "https://blog.whatsapp.com/100006209587820/jan-koum",
+          "type": "official",
+          "tier": "A",
+          "notes": "Comunicados originales de WhatsApp enfatizan la simplicidad y la privacidad."
+        },
+        {
+          "title": "Exclusive: Inside the WhatsApp Deal - Forbes",
+          "url": "https://www.forbes.com/sites/parmyolson/2014/02/19/exclusive-inside-the-whatsapp-deal/",
+          "type": "news",
+          "tier": "B",
+          "notes": "Artículo describe su ethos de privacidad y los orígenes de esa desconfianza."
+        }
+      ],
+      "notes": "Este ethos es un tema recurrente en la historia de WhatsApp y el motivo de la eventual salida de Koum y Acton de Facebook.",
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C006",
+      "claim": "Vendió WhatsApp a Facebook por $19 mil millones en 2014, logrando una enorme riqueza desde la pobreza extrema.",
+      "importance": 10,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 98,
+      "source_authority": 10,
+      "source_independence": 9,
+      "primary_source_proximity": 10,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "Facebook 2014 Q4 Earnings Call Transcript",
+          "url": "https://investor.fb.com/investor-news/press-release-details/2015/Facebook-Reports-Fourth-Quarter-and-Full-Year-2014-Results/default.aspx",
+          "type": "official",
+          "tier": "A",
+          "notes": "Reporte oficial de Facebook a inversores confirmando la cifra y fecha."
+        },
+        {
+          "title": "Facebook to Buy WhatsApp for $19 Billion - The New York Times",
+          "url": "https://www.nytimes.com/2014/02/20/technology/facebook-to-buy-whatsapp-for-19-billion.html",
+          "type": "news",
+          "tier": "B",
+          "notes": "Cobertura de noticias ampliamente verificada, confirmando los detalles financieros."
+        }
+      ],
+      "notes": "El dato de los $19 mil millones es una cifra pública y oficialmente reportada.",
+      "recommendation": "Se puede usar directamente."
+    }
+  ],
+  "risks": [],
+  "missing_evidence": [],
+  "recommended_next_action": "Aprobar para producción de guión."
+}

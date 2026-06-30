@@ -1,0 +1,36 @@
+# Guía de Locución: Jan Koum
+
+[Énfasis inicial]
+¿Sabías que el fundador de WhatsApp dependía de cupones de comida?
+Antes de conectar a miles de millones de personas [Pausa breve] Jan Koum era un inmigrante intentando sobrevivir.
+Y tenía una obsesión: la privacidad.
+Koum creció en la Unión Soviética [Pausa breve] donde el teléfono no era solo un teléfono.
+Era la posibilidad de que alguien estuviera escuchando.
+Y cuando un niño aprende que hablar puede ser peligroso [Pausa breve] no lo olvida.
+A los 16 llegó a Estados Unidos.
+Sin dinero.
+Sin inglés.
+Sin épica.
+Su madre limpiaba casas.
+Él barría supermercados.
+Años después [Pausa breve] Facebook lo rechazó.
+Entonces creó WhatsApp.
+Una app sin anuncios.
+Sin juegos.
+Sin feed.
+Sin likes.
+Solo mensajes.
+Una persona hablando con otra.
+Y nadie más en la habitación.
+Lo paradójico es que en 2014 vendió WhatsApp a Facebook por 19 mil millones de dólares.
+Y firmó el acuerdo en el mismo edificio de asistencia social donde [Pausa breve] años antes [Pausa breve] hacía fila con su madre para recibir comida.
+Facebook.
+La empresa obsesionada con saberlo todo compró una app creada por alguien que desconfiaba de quienes escuchan demasiado.
+Koum duró cuatro años allí.
+Luego se fue.
+Sin manifiesto.
+Sin drama.
+Solo se fue.
+Yo soy Jota y esto es HUMANOS:
+historias de personas que construyeron desde una herida [Pausa breve] una obsesión o una contradicción [Pausa 1s]
+Nos vemos en la próxima historia.

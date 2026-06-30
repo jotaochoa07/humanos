@@ -1,0 +1,25 @@
+{
+  "estimated_voiceover_duration": 47.0,
+  "asset_count": 8,
+  "missing_assets_count": 7,
+  "estimated_edit_time_hours": 12.0,
+  "music_style": "Documental tension / piano minimalista",
+  "visual_style": "Color gradado cálido, textura de grano de película analógica",
+  "required_images": [],
+  "required_videos": [
+    "Metraje de Jota para el cierre."
+  ],
+  "required_motion_graphics": [
+    "Animación abstracta de coches construyendo un mapa (escena 3)",
+    "Animación de pantalla dividida GPS tradicional vs. Waze reportando (escena 4)",
+    "Animación de mapa global con puntos de datos en tiempo real (escena 5)",
+    "Animación 'David vs Goliat' con logos y manos construyendo un mapa (escena 6)"
+  ],
+  "required_maps": [],
+  "required_historical_screenshots": [
+    "Capturas de pantalla de sistemas GPS de principios de los 2000 (coches)",
+    "Capturas de pantalla de interfaces de Waze iniciales"
+  ],
+  "required_ai_recreations": [],
+  "recommended_next_action": "Priorizar la descarga de los assets 007 y 004 del manifiesto. Realizar una búsqueda exhaustiva de metraje de archivo de mapas de papel y GPS de coche de principios de los 2000. Planificar la creación de motion graphics."
+}

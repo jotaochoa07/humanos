@@ -1,0 +1,25 @@
+{
+  "timeline": [
+    {
+      "date": "2007",
+      "event": "Ehud Shabtai desarrolla 'Waze' en su forma original, llamándolo 'LinQ'.",
+      "importance": "Alto",
+      "source_url": "https://www.calcalistech.com/ctech/articles/0,7340,L-3652876,00.html",
+      "confidence": 9
+    },
+    {
+      "date": "2009",
+      "event": "LinQ, cocreado por Ehud Shabtai, se lanza públicamente como Waze, con Uri Levine y Amir Shinar.",
+      "importance": "Alto",
+      "source_url": "https://www.globes.co.il/news/article.aspx?did=1000854611",
+      "confidence": 9
+    },
+    {
+      "date": "Julio 2013",
+      "event": "Google adquiere Waze por aproximadamente 1.100 millones de dólares. Ehud Shabtai era parte del equipo que negoció la venta.",
+      "importance": "Alto",
+      "source_url": "https://www.nytimes.com/2013/06/12/technology/google-to-acquire-waze.html",
+      "confidence": 10
+    }
+  ]
+}

@@ -8,7 +8,8 @@
     "render:brand": "remotion render src/index.ts HumanosBrandReveal out/humanos-brand-reveal.mp4",
     "render:character": "remotion render src/index.ts HumanosCharacterCard out/humanos-character-card.mp4",
     "render:transition": "remotion render src/index.ts HumanosTransition out/humanos-transition.mp4",
-    "render:end": "remotion render src/index.ts HumanosEndCard out/humanos-end-card.mp4"
+    "render:end": "remotion render src/index.ts HumanosEndCard out/humanos-end-card.mp4",
+    "editorial": "node editorial-dashboard-server.mjs"
   },
   "dependencies": {
     "@remotion/cli": "^4.0.477",

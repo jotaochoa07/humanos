@@ -1,0 +1,152 @@
+{
+  "character_name": "Jan Koum",
+  "short_format_research": {
+    "core_obsession": "Privacidad y comunicación sencilla.",
+    "emotional_arc": "De la precariedad y el miedo a la seguridad económica y la validación global, manteniendo un ethos de simplicidad.",
+    "key_paradox": "Rechazado por Facebook, construyó una aplicación que Facebook compró por miles de millones.",
+    "raw_emotional_hooks": [
+      "Niño ucraniano inmigrante buscando comida con cupones.",
+      "Vendedor rechazado por WhatsApp, luego comprándolo por 19 mil millones.",
+      "De la pobreza sin baño a multimillonario en Silicon Valley."
+    ],
+    "key_facts_short": [
+      "Nació en Ucrania, inmigró a EE. UU. en 1992 con su madre.",
+      "Vivió de cupones de alimentos y asistencia social en Mountain View.",
+      "Contratado por Yahoo! como ingeniero de infraestructura en 1997.",
+      "Fundó WhatsApp en 2009 con Brian Acton tras ser rechazado en Facebook.",
+      "Vendió WhatsApp a Facebook en 2014 por $19 mil millones.",
+      "Renunció a Facebook en 2018 por desacuerdos sobre privacidad."
+    ]
+  },
+  "long_format_research": {
+    "historical_context": "Koum creció en Fastiv, Ucrania, en un entorno de escasez bajo la Unión Soviética. La inmigración a EE. UU. post-colapso soviético marcó su vida. Su experiencia con la vigilancia estatal y la falta de comunicación personal impactó su visión de un servicio de mensajería privado. El surgimiento de los smartphones a finales de los 2000 creó un vacío para aplicaciones de comunicación que superaran los SMS.",
+    "societal_impact": "WhatsApp revolucionó la comunicación móvil global, ofreciendo mensajería gratuita y segura (después con cifrado de extremo a extremo), impactando economías de telecomunicaciones tradicionales y facilitando la conectividad en mercados emergentes. Su adquisición por Facebook fue un hito en la era de las aplicaciones móviles y consolidación tecnológica.",
+    "key_chapters": [
+      {
+        "chapter_title": "Infancia en Ucrania y Emigración a EE. UU.",
+        "milestones": [
+          "1976: Nace en Fastiv, Ucrania (URSS).",
+          "1992: Emigra a Mountain View, California, con su madre y abuela.",
+          "Vive de cupones de alimentos y ayuda estatal, su madre trabajaba de niñera.",
+          "Breve etapa en San Jose State University, abandonó para trabajar."
+        ]
+      },
+      {
+        "chapter_title": "Primeros Pasos en Tecnología: Yahoo!",
+        "milestones": [
+          "1997: Contratado por Yahoo! como ingeniero de infraestructura, conoció a Brian Acton.",
+          "Trabajó en Yahoo! por casi diez años, adquiriendo experiencia en backend y sistemas."
+        ]
+      },
+      {
+        "chapter_title": "La Semilla de WhatsApp y Rechazo de Facebook",
+        "milestones": [
+          "2007: Koum y Acton dejan Yahoo! y toman un año sabático.",
+          "2009 (Ene): Koum compra un iPhone, vislumbra el potencial de la App Store.",
+          "2009 (Feb): Funda WhatsApp Inc. Desarrolla una aplicación para actualizar estados y luego mensajería.",
+          "2009 (Jun): Acton se une, co-fundador. Solicitan empleo en Facebook y Twitter, ambos son rechazados."
+        ]
+      },
+      {
+        "chapter_title": "Crecimiento Exponencial y Venta a Facebook",
+        "milestones": [
+          "2009-2013: WhatsApp crece rápidamente, centrándose en la funcionalidad y la privacidad.",
+          "2014 (Feb): Facebook anuncia la adquisición de WhatsApp por 19 mil millones de dólares.",
+          "Koum firma el acuerdo en la puerta de la antigua oficina de asistencia social donde recogía cupones."
+        ]
+      },
+      {
+        "chapter_title": "Desacuerdos con Facebook y Salida",
+        "milestones": [
+          "2014-2018: Koum permanece en la junta directiva de Facebook y como CEO de WhatsApp.",
+          "2018 (Abr): Koum anuncia su dimisión de Facebook y la junta directiva, citando diferencias sobre privacidad y monetización.",
+          "Pérdida de un asiento en el consejo de Facebook, valuado en 1000 millones de dólares en acciones no recibidas."
+        ]
+      }
+    ]
+  },
+  "newsletter_research": {
+    "psychological_depth": "La 'herida' central de Koum es la inseguridad y el control sobre la información, forjada por su infancia en una Ucrania soviética y su experiencia de inmigrante con escasez. Esto lo llevó a valorar la privacidad y la simplicidad sin publicidad en WhatsApp. Su deseo de control y la aversión a la monetización agresiva se convirtieron en un choque fundamental con la cultura de Facebook, culminando en su salida, sacrificando una fortuna por principios. Su arco es el de quien busca un santuario de datos para miles de millones, reflejando su propia necesidad de un espacio personal seguro.",
+    "business_market_implications": "La historia de WhatsApp y Koum ilustra el valor de la simplicidad y la privacidad en el software, desafiando a gigantes establecidos. Demuestra la capacidad de los 'outsiders' para innovar y el poder disruptivo de las startups. Su modelo de negocio (pago mínimo 'premium' o gratuito sin anuncios intrusivos) contrastó con la monetización basada en datos. La adquisición por Facebook subraya la tendencia de consolidación y la compra de competencia antes de que sea demasiado amenazante, pero también resalta los desafíos de integrar culturas de empresa divergentes, especialmente en torno a la privacidad y los datos de usuario.",
+    "thematic_angles": [
+      "El valor de la privacidad en un mundo conectado: ¿cuánto estamos dispuestos a pagar (o no pagar) por ella?",
+      "Del sueño americano a la realidad de Silicon Valley: ¿qué se pierde y qué se gana en el camino?",
+      "Principios vs. Beneficios: La historia de un fundador que eligió sus ideales sobre miles de millones.",
+      "El poder de la simplicidad: ¿Cómo un diseño austero puede conquistar el mundo de la tecnología?",
+      "La paradoja de la concentración tecnológica: ¿Es inevitable que las grandes plataformas engullan a las pequeñas innovaciones?"
+    ],
+    "relevant_quotes": [
+      "\"Cuando emigramos, mi madre y yo evitamos tener llamadas telefónicas porque no nos podíamos permitir las tarifas. Ahora, con WhatsApp puedes comunicarte a través del mundo con cualquier persona gratis.\" - Jan Koum",
+      "\"No más anuncios! No más juegos! No más trucos!\".  (Parte de las notas escritas por Koum para WhatsApp)",
+      "\"No somos ni vamos a ser una empresa de publicidad.\" - Jan Koum sobre WhatsApp antes de la venta a Facebook.",
+      "\"Prefiero morir en lugar de permitir que se comprometa la privacidad de WhatsApp.\" - Jan Koum (cita atribuida o parafraseada comúnmente)",
+      "\"Estoy dejando Facebook. Estoy muy agradecido por todo lo que me han enseñado, y por trabajar con tanta gente.\" - Jan Koum en su anuncio de salida."
+    ]
+  },
+  "twitter_research": {
+    "viral_hook_concepts": [
+      "Fue RECHAZADO por Facebook... Luego les vendió WhatsApp por $19,000 MILLONES. La historia de Jan Koum NO es lo que esperas. #JanKoum #WhatsApp #Tech",
+      "De cupones de alimentos en EEUU a forrar su oficina con un contrato de $19B. Jan Koum cambió la mensajería PARA SIEMPRE. #Founders #Billionaires",
+      "¿El fundador de WhatsApp dejó $1B en acciones de Facebook por PRINCIPIOS? La increíble salida de Jan Koum. La privacidad era su obsession. #Privacidad #TechEthics",
+      "Si te rechazan, NO TE RINDAS. Jan Koum fue rechazado por FB y Twitter, luego fue dueño de una empresa que compró FB por $19B. Mira cómo. #Motivacion #DesarrolloPersonal",
+      "El hombre que puso la privacidad como NÚMERO 1. La historia de Jan Koum y su WhatsApp, ahora un gigante global. #Cifrado #Innovacion"
+    ],
+    "chronological_milestones_simplified": [
+      "Nace en Ucrania 🇺🇦 bajo la URSS, vive la escasez y la falta de privacidad.",
+      "1992: Emigra a EE. UU. 🇺🇸 con su madre, vive de cupones de alimentos.",
+      "1997: Entra a trabajar en Yahoo! como ingeniero, conoce a Brian Acton.",
+      "2007: Deja Yahoo!, se toma un año sabático cuestionando su futuro.",
+      "2009: Desarrolla WhatsApp tras frustrarse con los estados de contacto y tarifas de SMS.",
+      "2009: Es rechazado como empleado en Facebook y Twitter. Funda WhatsApp Inc.",
+      "2014: Vende WhatsApp a Facebook por $19,000 MILLONES. Firma donde recogía cupones.",
+      "2018: Abandona Facebook y su junta directiva por diferencias sobre privacidad y modelo de negocio."
+    ]
+  },
+  "themes": [
+    "founders"
+  ],
+  "metrics": {
+    "viral_potential": 8,
+    "uniqueness": 9,
+    "source_quality": 10,
+    "story_strength": 9
+  },
+  "suggested_assets": [
+    {
+      "name": "Foto de Jan Koum en su oficina principal",
+      "type": "photo",
+      "description": "Una foto de Jan Koum con un aura seria, quizás con un fondo simple. Ejemplifica su personalidad discreta.",
+      "candidate_url": "https://upload.wikimedia.org/wikipedia/commons/2/23/Jan_Koum_IMG_7030.jpg"
+    },
+    {
+      "name": "Documento de la venta de WhatsApp a Facebook",
+      "type": "photo",
+      "description": "Una foto o recreación del momento en que Jan Koum firmó el acuerdo de venta de WhatsApp con Mark Zuckerberg en la puerta de las oficinas de asistencia social. Gran carga simbólica.",
+      "candidate_url": "https://www.forbes.com/sites/parmyolson/2014/02/19/exclusive-inside-whatsapp-how-jan-koum-built-a-19-billion-businesses/"
+    },
+    {
+      "name": "Captura de pantalla de la interfaz original de WhatsApp",
+      "type": "screenshot",
+      "description": "Mostrar la simplicidad y el minimalismo de la interfaz de usuario original de WhatsApp, contrastándola con aplicaciones más recargadas.",
+      "candidate_url": "https://www.youtube.com/watch?v=s0aN3L1r7_k"
+    },
+    {
+      "name": "Artículo de Forbes sobre la historia de WhatsApp",
+      "type": "article_clip",
+      "description": "Fragmento del famoso artículo de Forbes sobre Jan Koum y Brian Acton, ofreciendo detalles biográficos y del proceso de fundar WhatsApp.",
+      "candidate_url": "https://www.forbes.com/sites/parmyolson/2014/02/19/exclusive-inside-whatsapp-how-jan-koum-built-a-19-billion-businesses/?sh=2e91b61b34e4"
+    },
+    {
+      "name": "Anuncio de Jan Koum de su salida de Facebook",
+      "type": "quote",
+      "description": "Captura o texto de la publicación de Facebook de Jan Koum anunciando su dimisión y sus razones.",
+      "candidate_url": "https://www.facebook.com/jan.koum/posts/10156230983280018"
+    },
+    {
+      "name": "Foto de Jan Koum con Brian Acton",
+      "type": "photo",
+      "description": "Imagen de los dos co-fundadores de WhatsApp, destacando su alianza y amistad.",
+      "candidate_url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Jan_Koum_%26_Brian_Acton_%28WhatsApp%29.jpg"
+    }
+  ]
+}
