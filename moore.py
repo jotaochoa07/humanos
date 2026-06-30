@@ -163,6 +163,7 @@ class MooreAgent:
         - [Lista de elementos visuales específicos necesarios para esta escena. Ej: Retrato heroico de Jan Koum]
         - [Estilo de fondo y composición. Ej: Fondo oscuro con mucho espacio negativo]
         - [Movimiento de cámara. Ej: Paneo horizontal lento o zoom suave]
+        - Términos de Búsqueda (Inglés): [Términos clave en inglés optimizados para buscar en Pexels, Getty o Google Images, separados por comas. Ej: jan koum serious portrait, black background]
         - Duración: [Duración] s
         - Estado del Asset: [available | missing | reference_only]
         - Archivo Local: [Nombre físico del archivo si está 'available', o 'Pendiente de búsqueda' si falta]

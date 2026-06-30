@@ -2,36 +2,36 @@
   "character_card": {
     "category": "PIONERO",
     "name": "JAN KOUM",
-    "description": "fundador de whatsapp",
-    "visual_style": "Retrato documental a sangre, figura central con mirada directa, saturación muy baja y alto contraste, nombre en cian, abundantes espacios vacíos superior e inferior."
+    "description": "cofundador de whatsapp",
+    "visual_style": "Retrato documental en primer plano a sangre, ocupando el 80% del espacio. Fondo negro profundo. Nombre en cian, gran tamaño. Abundante espacio negativo superior e inferior. Tipografía Satoshi ExtraBold."
   },
   "thumbnail": {
-    "headline": "De cupones de comida a MIL MILLONES",
-    "highlight_word": "MIL",
-    "composition_description": "Retrato de Jan Koum con expresión seria y mirada directa al espectador, ocupando el 70-80% del encuadre. El fondo está completamente fundido a negro absoluto. El titular 'De cupones de comida a MIL MILLONES' aparece en blanco. La palabra 'MIL' está destacada en cian."
+    "headline": "De cupones a miles de millones",
+    "highlight_word": "millones",
+    "composition_description": "Primer plano de Jan Koum ocupando el 75% de la miniatura, mirando fijamente a cámara. Fondo negro absoluto. Sin elementos distractores."
   },
   "midjourney_prompts": [
     {
-      "purpose": "Retrato para miniatura y B-roll",
-      "prompt": "Jan Koum in a tight close-up, serious and focused expression, direct eye contact with the camera, journalistic editorial style, high contrast black and white, dramatic chiaroscuro lighting, professional 85mm portrait lens, subtle 35mm film grain texture --ar 9:16"
+      "purpose": "Miniatura / Retrato principal",
+      "prompt": "Jan Koum, co-founder of WhatsApp, serious expression, intense gaze, framed in a dramatic journalistic portrait, high contrast black and white, deep shadows, shot on 85mm lens, subtle 35mm film grain, editorial magazine style page --ar 16:9"
     },
     {
-      "purpose": "B-roll de escena - Inmigración y pobreza",
-      "prompt": "Empty, stark street scene in California, hints of hardship, desaturated, documentary photography, subtle film grain, deep blacks, high contrast, 1990s aesthetic --ar 16:9"
+      "purpose": "B-roll fotografía infancia Ucrania",
+      "prompt": "Exterior shot of Soviet-era apartment blocks (Plattenbau), cold, overcast sky, stark atmosphere, with a single vintage Soviet-era telephone booth in the foreground, minimal saturation, high contrast black and white, cinematic documentary style --ar 16:9"
     },
     {
-      "purpose": "B-roll de escena - Obsesión por la privacidad/tecnología",
-      "prompt": "Close-up on hands disassembling old computer components on a dimly lit desk, focused and determined, documentary style, high contrast black and white, subtle film grain, deep blacks, 1990s electronic workshop --ar 16:9"
+      "purpose": "B-roll fotografía Estados Unidos - Asistencia Social",
+      "prompt": "Interior shot of a bleak, utilitarian government assistance office in 1990s USA, with people queuing, harsh fluorescent lighting, subtle grain, high contrast black and white, documentary realism, evoking struggle and anonymity --ar 16:9"
     },
     {
-      "purpose": "B-roll de escena - Fundación de WhatsApp",
-      "prompt": "Abstract representation of two connected nodes on a dark background, minimal lines, subtle glow of cyan connecting them, high contrast, deep blacks, editorial graphic style --ar 16:9"
+      "purpose": "Representación conceptual de WhatsApp",
+      "prompt": "Clean, minimalist composition of two simple speech bubbles in white against a deep black background, conveying direct communication, subtle hint of the cyan accent color (#01C9C7) as a single dividing line, stark, editorial, high contrast --ar 16:9"
     }
   ],
   "motion_specs": {
-    "camera_speed": "subtle_zoom",
+    "camera_speed": "slow_zoom",
     "default_transition": "subtle_fade",
-    "branding_color_use": "El cian se utiliza exclusivamente para el nombre de Jan Koum en la character card y como acento puntual en los lower thirds si fuera necesario para nombres clave.",
+    "branding_color_use": "El cian (#01C9C7) se utiliza de forma puntual en títulos de transición, como en el texto 'HUMANOS' y el nombre de Jan Koum en la Character Card.",
     "titles_font": "Satoshi",
     "subtitles_font": "Inter"
   }

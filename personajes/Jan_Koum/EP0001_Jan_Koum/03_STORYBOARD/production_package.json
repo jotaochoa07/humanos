@@ -1,20 +1,28 @@
 {
   "estimated_voiceover_duration": 36.0,
-  "asset_count": 6,
-  "missing_assets_count": 3,
-  "estimated_edit_time_hours": 10.0,
-  "music_style": "Documental tensión / piano minimalista",
+  "asset_count": 8,
+  "missing_assets_count": 4,
+  "estimated_edit_time_hours": 12.0,
+  "music_style": "Documental tension / piano minimalista",
   "visual_style": "Color gradado cálido, textura de grano de película analógica",
   "required_images": [
-    "Jan Koum portrait (available)",
-    "Vintage US food stamp coupon booklet (missing)",
-    "Soviet Union AMT-69 telephone payphone (missing)",
-    "Mark Zuckerberg Keynote Portrait for contrast (missing)"
+    "JAN_001_JAN_KOUM_PORTRAIT_2014.jpg",
+    "Vintage US Food Stamp Program coupon booklet (asset_id: 006)",
+    "Soviet Union AMT-69 telephone payphone (asset_id: 007)",
+    "Soviet Union grey Plattenbau apartment blocks (asset_id: 008)",
+    "Mark Zuckerberg Keynote Portrait for contrast (asset_id: 004, fallback for scene 6)",
+    "Building of social assistance in Mountain View, California (asset_id: missing, fallback for scene 5)",
+    "Facebook headquarters building in 2014 (asset_id: missing, fallback for scene 6)"
   ],
   "required_videos": [],
   "required_motion_graphics": [],
   "required_maps": [],
-  "required_historical_screenshots": [],
-  "required_ai_recreations": [],
-  "recommended_next_action": "Descargar los assets marcados como 'reference_only' pero con un 'asset_id' válido. Investigar la disponibilidad y licencias de los assets faltantes."
+  "required_historical_screenshots": [
+    "WhatsApp main interface screenshot (no ads/games/feed/likes)"
+  ],
+  "required_ai_recreations": [
+    "Image representing social assistance building in Mountain View, CA (scene 5)",
+    "Image representing Facebook HQ circa 2014 (scene 6)"
+  ],
+  "recommended_next_action": "Activar búsqueda manual para 'US food stamps 1990s photo' y 'Soviet Union surveillance phone booths'."
 }

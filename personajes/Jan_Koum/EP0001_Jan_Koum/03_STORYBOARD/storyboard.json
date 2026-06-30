@@ -5,11 +5,11 @@
     "voiceover": "¿Sabías que el fundador de WhatsApp dependía de cupones de comida? Antes de conectar a miles de millones de personas, Jan Koum era un inmigrante intentando sobrevivir. Y tenía una obsesión: la privacidad.",
     "selected_asset": null,
     "selected_asset_id": null,
-    "asset_status": "reference_only",
-    "fallback_asset_id": null,
-    "fallback_strategy": "The claim is directly supported by the existence of food stamp programs in the US. Visualizing a generic food stamp coupon booklet suffices.",
-    "effect": "slow_zoom",
-    "caption": "Jan Koum y cupones de comida",
+    "asset_status": "missing",
+    "fallback_asset_id": "006",
+    "fallback_strategy": "Utilizar la imagen de cupones de comida de archivo como representación visual del claim.",
+    "effect": "cut",
+    "caption": "Jan Koum, cofundador de WhatsApp",
     "gap_id": "gap_001"
   },
   {
@@ -18,11 +18,11 @@
     "voiceover": "Koum creció en la Unión Soviética, donde el teléfono no era solo un teléfono. Era la posibilidad de que alguien estuviera escuchando. Y cuando un niño aprende que hablar puede ser peligroso, no lo olvida.",
     "selected_asset": null,
     "selected_asset_id": null,
-    "asset_status": "reference_only",
-    "fallback_asset_id": null,
-    "fallback_strategy": "Visualizing a Soviet-era payphone directly addresses the voiceover's point about surveillance and distrust of communication devices.",
+    "asset_status": "missing",
+    "fallback_asset_id": "007",
+    "fallback_strategy": "Utilizar la imagen del teléfono de pago soviético (AMT-69) y los bloques de apartamentos 'Plattenbau' para evocar la atmósfera de vigilancia y el entorno de su infancia.",
     "effect": "pan_right",
-    "caption": "Teléfonos en la Unión Soviética",
+    "caption": "La era soviética: la desconfianza como norma",
     "gap_id": "gap_002"
   },
   {
@@ -34,8 +34,8 @@
     "asset_status": "available",
     "fallback_asset_id": null,
     "fallback_strategy": null,
-    "effect": "cut",
-    "caption": "Jan Koum",
+    "effect": "slow_zoom",
+    "caption": "Jan Koum: De barredor de supermercados a innovador tecnológico",
     "gap_id": null
   },
   {
@@ -48,7 +48,7 @@
     "fallback_asset_id": null,
     "fallback_strategy": null,
     "effect": "text_overlay",
-    "caption": "WhatsApp: Mensajes Directos",
+    "caption": "WhatsApp: Privacidad y comunicación directa",
     "gap_id": null
   },
   {
@@ -57,12 +57,12 @@
     "voiceover": "Lo paradójico es que en 2014 vendió WhatsApp a Facebook por 19 mil millones de dólares. Y firmó el acuerdo en el mismo edificio de asistencia social donde, años antes, hacía fila con su madre para recibir comida.",
     "selected_asset": null,
     "selected_asset_id": null,
-    "asset_status": "reference_only",
-    "fallback_asset_id": null,
-    "fallback_strategy": "Visually reiterate the struggle with food stamps to contrast with the immense wealth gained, highlighting the full circle.",
-    "effect": "fade",
-    "caption": "De la asistencia a los miles de millones",
-    "gap_id": "gap_001"
+    "asset_status": "missing",
+    "fallback_asset_id": "006",
+    "fallback_strategy": "Continuar usando la imagen de cupones de comida (asset 006) como símbolo del contraste entre su pasado y presente, o buscar imágenes de edificios de asistencia social de la época si es factible.",
+    "effect": "cut",
+    "caption": "El contraste del éxito: de la fila por comida a miles de millones",
+    "gap_id": "gap_003"
   },
   {
     "scene": 6,
@@ -70,11 +70,11 @@
     "voiceover": "Facebook. La empresa obsesionada con saberlo todo compró una app creada por alguien que desconfiaba de quienes escuchan demasiado. Koum duró cuatro años allí. Luego se fue. Sin manifiesto. Sin drama. Solo se fue. Yo soy Jota y esto es HUMANOS: historias de personas que construyeron desde una herida, una obsesión o una contradicción. Nos vemos en la próxima historia.",
     "selected_asset": null,
     "selected_asset_id": null,
-    "asset_status": "reference_only",
-    "fallback_asset_id": null,
-    "fallback_strategy": "Use a portrait of Mark Zuckerberg to symbolize Facebook and the contrast with Koum, even though the asset is not downloaded.",
-    "effect": "cut",
-    "caption": "Facebook y Jan Koum",
-    "gap_id": "gap_003"
+    "asset_status": "missing",
+    "fallback_asset_id": "004",
+    "fallback_strategy": "Utilizar el retrato de Mark Zuckerberg como representación de Facebook, en contraste con la historia de Koum.",
+    "effect": "fade",
+    "caption": "HUMANOS: Historias de personas que construyeron desde una herida",
+    "gap_id": "gap_004"
   }
 ]

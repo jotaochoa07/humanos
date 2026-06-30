@@ -2,41 +2,59 @@
   {
     "gap_id": "gap_001",
     "scene": 1,
-    "missing_asset": "Fotografía de un talonario de cupones de comida del Programa de Sellos de Alimentos de EE. UU. (US Food Stamp Program).",
+    "missing_asset": "Imagen de cupones de comida (food stamps) de la época en EE. UU.",
     "criticality": "high",
-    "reason": "El voiceover hace referencia directa a la dependencia de cupones de comida. Una imagen de un talonario real es clave para visualizar esta parte de la narrativa de Koum.",
-    "suggested_solution": "Buscar en archivos digitales de programas de ayuda social de EE. UU. o colecciones de historia social.",
+    "reason": "El claim sobre depender de cupones de comida es un punto crucial para establecer la precariedad inicial de Jan Koum. La imagen es esencial para ilustrar este claim de manera efectiva.",
+    "suggested_solution": "Buscar en archivos históricos digitales de programas de asistencia social de EE. UU. en la década de 1990. Contactar a organizaciones que documenten la historia de la asistencia social en EE. UU.",
     "manual_search_queries": [
-      "Vintage US food stamp coupon booklet",
-      "Food stamps welfare program USA historical photos"
+      "US food stamps 1990s photo",
+      "SNAP benefits historical images",
+      "welfare program coupons USA archive"
     ],
     "ai_generation_allowed": false
   },
   {
     "gap_id": "gap_002",
     "scene": 2,
-    "missing_asset": "Fotografía de un teléfono público soviético AMT-69 u otro modelo representativo de la época soviética.",
-    "criticality": "medium",
-    "reason": "El voiceover evoca la atmósfera de vigilancia en la Unión Soviética, donde el teléfono era un símbolo de posible espionaje. Un teléfono de la época es un fuerte elemento visual de apoyo.",
-    "suggested_solution": "Buscar en archivos fotográficos de la Unión Soviética o colecciones de historia de la tecnología de la comunicación de la época.",
+    "missing_asset": "Material de archivo que represente la vigilancia en la Unión Soviética (teléfonos, arquitectura, ambiente general).",
+    "criticality": "high",
+    "reason": "La narrativa se basa en la desconfianza generada por la vigilancia en la URSS. Se necesitan imágenes evocadoras para transmitir esta atmósfera.",
+    "suggested_solution": "Explorar archivos de fotografía de la era soviética, especialmente aquellos que documenten la vida cotidiana y la infraestructura de comunicación y residencial. Buscar en bancos de imágenes de archivo especializados en historia soviética.",
     "manual_search_queries": [
-      "Soviet Union payphone AMT-69",
-      "USSR public telephone 1970s",
-      "Soviet communication devices"
+      "Soviet Union surveillance phone booths",
+      "DDR Plattenbau apartment blocks daily life",
+      "Soviet era paranoia atmosphere imagery"
     ],
     "ai_generation_allowed": false
   },
   {
     "gap_id": "gap_003",
-    "scene": 6,
-    "missing_asset": "Fotografía del retrato de Mark Zuckerberg de la keynote de F8 2019.",
+    "scene": 5,
+    "missing_asset": "Imagen de un edificio de asistencia social en Mountain View, California, o similar, de mediados de los 90 o principios de los 2000.",
     "criticality": "medium",
-    "reason": "El voiceover establece un contraste entre Facebook (representado por Zuckerberg) y la filosofía de Koum. Aunque el asset no esté descargado, el hecho de que sea solo una referencia permite visualizar el contraste.",
-    "suggested_solution": "El asset_id 004 existe en el manifiesto de Borges, pero no está descargado. Para la producción, se deberá descargar el asset o buscar una alternativa visual similar que represente a Mark Zuckerberg en un contexto de presentación.",
+    "reason": "El punto narrativo clave es la firma del acuerdo de venta en el mismo lugar donde recibía ayuda. La imagen refuerza la magnitud del cambio.",
+    "suggested_solution": "Buscar en archivos de noticias locales de Silicon Valley o California de la época, o en bases de datos de arquitectura de edificios públicos/gubernamentales. Si no se encuentra uno específico, usar una imagen genérica de un edificio de gobierno o centro comunitario de esa época y contexto.",
     "manual_search_queries": [
-      "Mark Zuckerberg F8 2019 keynote photo",
-      "Facebook CEO portrait conference"
+      "Mountain View social services building 1990s",
+      "California welfare office exterior historical",
+      "US government assistance center architecture"
     ],
-    "ai_generation_allowed": false
+    "ai_generation_allowed": true,
+    "ai_generation_prompt": "A photograph depicting the exterior of a nondescript, slightly dated government assistance building in Mountain View, California, circa mid-1990s. The building should appear functional rather than modern, possibly with a sign indicating 'Social Services' or 'Community Center'. The lighting should be neutral day light."
+  },
+  {
+    "gap_id": "gap_004",
+    "scene": 6,
+    "missing_asset": "Material de archivo que represente la sede de Facebook (Meta) y su entorno corporativo en 2014.",
+    "criticality": "medium",
+    "reason": "Para contrastar la compra de WhatsApp por parte de Facebook, es útil tener una imagen de la sede de Facebook en el momento de la adquisición para contextualizar el evento.",
+    "suggested_solution": "Buscar fotografías de la sede de Facebook (Menlo Park) de alrededor de 2014. También se pueden usar imágenes genéricas de edificios corporativos modernos para representar 'Facebook'.",
+    "manual_search_queries": [
+      "Facebook headquarters Menlo Park 2014",
+      "Meta corporate offices images",
+      "Silicon Valley modern office buildings"
+    ],
+    "ai_generation_allowed": true,
+    "ai_generation_prompt": "A modern, sleek corporate office building exterior representing Facebook's headquarters in Menlo Park, California, circa 2014. The architecture should convey innovation and scale, with clean lines and possibly glass facades. Bright, daytime lighting."
   }
 ]
