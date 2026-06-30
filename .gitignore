@@ -7,3 +7,9 @@ __pycache__/
 *.pyc
 assets/branding/audio/
 MEDIA_LIBRARY/BRANDING/audio/
+
+# Audacity projects (very large files)
+*.aup3
+*.aup3-shm
+*.aup3-wal
+

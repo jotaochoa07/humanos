@@ -14,7 +14,12 @@ class GaboAgent:
 
         system_prompt = (
             "Eres GABO, el Narrative Director de HUMANOS. Tu objetivo es convertir la investigación de Borges "
-            "en guiones cortos para videos verticales de 60 a 90 segundos centrado en heridas, obsesiones o contradicciones, no biografías.\n\n"
+            "en dos versiones narrativas principales de cada episodio (V1 Short y V2 Documental), centrado en heridas, obsesiones o contradicciones.\n\n"
+            "REGLAS DE DURACIÓN Y PALABRAS DE HUMANOS (ESTRICTO):\n"
+            "- V1: Short (Reels, TikTok, Shorts): 150 a 180 palabras (≈ 60-75 segundos).\n"
+            "- Short Premium: 180 a 220 palabras (≈ 80-90 segundos).\n"
+            "- Mini documental: 350 a 500 palabras (≈ 3 minutos).\n"
+            "- V2: Documental (YouTube, Podcast, Blog): 800 a 1200 palabras (≈ 8 minutos).\n\n"
             "REGLAS DE FACT CHECKING (OBLIGATORIO):\n"
             "1. SÓLO puedes usar afirmaciones que aparezcan listadas bajo 'approved_claims' en el JSON provisto.\n"
             "2. NO uses de ninguna forma como hechos afirmaciones de la sección 'rejected_or_blocked_claims' o que estén marcadas como UNVERIFIED o REJECTED.\n"
@@ -29,7 +34,7 @@ class GaboAgent:
             "   - 'Nos enseña que...', 'Un visionario...', 'Un genio...', 'El resto es historia...'\n"
             "   - 'No sabía que estaba a punto de cambiar el mundo...'\n"
             "   - Metáforas cursis como 'La privacidad no era una función, era una forma de respirar', 'Una herida muy pequeña', 'El poder de los sueños', 'La magia de creer'.\n"
-            "5. ESTRUCTURA OBLIGATORIA DEL GUION:\n"
+            "5. ESTRUCTURA OBLIGATORIA DEL GUION V1 (SHORT):\n"
             "   - GANCHO: En los primeros 3 segundos. Usar apertura de '¿Sabías que...?', paradoja, escena concreta o contraste numérico. Nunca usar 'La historia de...', 'Pocos saben que...', 'Su nombre resuena...'.\n"
             "   - CONTRASTE HUMANO: Bajar de la escala grande al detalle humano inicial.\n"
             "   - OBSESIÓN CENTRAL: Nombrar rápido la obsesión, herida o contradicción.\n"
@@ -56,8 +61,8 @@ class GaboAgent:
         Toma en cuenta de manera estricta que no debes usar hechos rechazados y debes respetar la guía de uso de cada claim aprobado.
         Genera un objeto JSON que siga exactamente esta estructura:
         {{
-          "script_short": "Locución COMPLETA y corrida del vídeo vertical de 60-90 segundos (aprox 120-170 palabras). Centrada en la obsesión y la paradoja, libre de clichés y moralejas, conversacional y brillante.",
-          "script_long": "Guion narrativo detallado de 8 a 15 minutos en formato Markdown, estructurado en actos (Acto 1: Gancho y paradoja, Acto 2: Construcción y obsesión, Acto 3: Ruptura e impacto). Incluye sugerencias visuales entre corchetes.",
+          "script_short": "Locución COMPLETA y corrida del vídeo vertical V1 Short de 60-75 segundos. Debe tener ESTRICTAMENTE entre 150 y 180 palabras en total. Centrada en la obsesión y la paradoja, conversacional y sin rodeos.",
+          "script_long": "Guion narrativo detallado V2 Documental de 8 a 12 minutos para YouTube, Podcast y Blog. Debe tener ESTRICTAMENTE entre 800 y 1200 palabras en formato Markdown, estructurado en actos (Acto 1: Gancho y paradoja, Acto 2: Construcción y obsesión, Acto 3: Ruptura e impacto). Incluye sugerencias visuales entre corchetes.",
           "newsletter": "Ensayo literario corto (aprox 500 palabras) en markdown, analizando la obsesión y las contradicciones de este caso desde una perspectiva psicológica y de mercado.",
           "twitter_thread": [
             "Tweet 1 (Gancho viral y paradoja)",
@@ -68,7 +73,7 @@ class GaboAgent:
             {{
               "scene": 1,
               "duration": 6.0,
-              "voiceover": "Fragmento exacto y secuencial extraído de 'script_short' para esta escena. La suma de los voiceovers de todas las escenas debe ser idéntica al 'script_short'.",
+              "voiceover": "Fragmento exacto y secuencial extraído de 'script_short' (V1 Short) para esta escena. La suma de los voiceovers de todas las escenas debe ser idéntica al 'script_short'.",
               "visual_intent": "Descripción del material visual real sugerido",
               "required_assets": ["nombre_asset.jpg"],
               "emotional_purpose": "Propósito de tensión o ironía de la escena"
@@ -86,8 +91,8 @@ class GaboAgent:
                 scripts_data["script_short"] = reconstructed
 
         # Extraer guiones y newsletter limpios en variables separadas para los archivos .md
-        script_short_md = f"# Guion Corto: {character_name}\n\n{scripts_data.get('script_short', '')}"
-        script_long_md = f"# Guion Largo: {character_name}\n\n{scripts_data.get('script_long', '')}"
+        script_short_md = f"# Guion Corto (V1 Short): {character_name}\n\n{scripts_data.get('script_short', '')}"
+        script_long_md = f"# Guion Largo (V2 Documental): {character_name}\n\n{scripts_data.get('script_long', '')}"
         newsletter_md = f"# Newsletter HUMANOS: El enigma de {character_name}\n\n{scripts_data.get('newsletter', '')}"
 
         # Generar formato md para el hilo de Twitter
@@ -96,7 +101,7 @@ class GaboAgent:
         for i, tweet in enumerate(thread_list, 1):
             twitter_thread_md += f"### {i}/{len(thread_list)}\n{tweet}\n\n"
 
-        logs = f"Narrativa multiformato creada bajo reglas estrictas de HUMANOS. Se definieron {len(scripts_data.get('scenes', []))} escenas secuenciales para el guion vertical."
+        logs = f"Narrativa multiformato creada bajo reglas de duración estrictas de HUMANOS. Se definieron {len(scripts_data.get('scenes', []))} escenas secuenciales para el guion vertical."
         print(f"[Gabo] Estructura narrativa multiformato finalizada para {character_name}.")
 
         return scripts_data, script_short_md, script_long_md, newsletter_md, twitter_thread_md, logs
