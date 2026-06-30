@@ -2,6 +2,7 @@ import os
 import sys
 import argparse
 import random
+import json
 from openrouter_client import OpenRouterClient
 from hermoso_core import HermosoCore
 from borges import BorgesAgent
@@ -164,6 +165,18 @@ def run_mvp(character_name: str, episode_focus: str, themes: list, episode_num: 
         hermoso.write_markdown(os.path.join(ep_path, "03_STORYBOARD", "editing_notes.md"), editing_notes_md)
         hermoso.write_json(os.path.join(ep_path, "03_STORYBOARD", "production_package.json"), production_package_json)
         hermoso.log_agent_run(ep_path, "Moore", "success", moore_logs)
+
+        # 5.8 Leonardo: Dirección de Arte y Branding
+        print("[Leonardo] Diseñando la dirección de arte y especificaciones visuales...")
+        leonardo = LeonardoAgent(client)
+        branding_spec_json, branding_spec_md, leonardo_logs = leonardo.execute_branding(
+            character_name, scripts_json, storyboard_json, approved_claims_json
+        )
+
+        # Persistir outputs de Leonardo en 04_IMAGES
+        hermoso.write_json(os.path.join(ep_path, "04_IMAGES", "branding_spec.json"), branding_spec_json)
+        hermoso.write_markdown(os.path.join(ep_path, "04_IMAGES", "branding_spec.md"), branding_spec_md)
+        hermoso.log_agent_run(ep_path, "Leonardo", "success", leonardo_logs)
         
         # 6. Generar ASSET_COLLECTION_REPORT.md en 01_RESEARCH
         print("[Asset Collector] Generando reporte de colección e ingesta...")
@@ -280,4 +293,4 @@ if __name__ == "__main__":
         run_mvp(args.character, focus, themes, episode_num=1, stage=args.stage)
         # Generar dashboard de Mark
         mark = MarkAgent()
-        ma
+        mark.generate_conceptual_dashboard()
