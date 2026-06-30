@@ -136,19 +136,18 @@ def search_youtube_scraping(query, max_results=3):
         print(f"[YouTube Searcher] Error de red en raspado: {e}")
         return []
 
-def main():
+def search_episode_videos(ep_path):
     print("="*60)
-    print("[YouTube Searcher Engine] Buscando referencias visuales de video...")
+    print(f"[YouTube Searcher Engine] Buscando referencias visuales de video para: {os.path.basename(ep_path)}")
     print("="*60)
     
-    ep_path = "C:/Users/Jota Ochoa/Antigravity/02_Projects/humanos/personajes/Jan_Koum/EP0001_Jan_Koum"
     shotlist_path = os.path.join(ep_path, "03_STORYBOARD", "asset_shotlist.md")
     output_md_path = os.path.join(ep_path, "03_STORYBOARD", "youtube_candidates.md")
     output_json_path = os.path.join(ep_path, "03_STORYBOARD", "youtube_candidates.json")
     
     if not os.path.exists(shotlist_path):
         print(f"[ERROR] No se encontró el shotlist en: {shotlist_path}")
-        sys.exit(1)
+        return False
         
     with open(shotlist_path, "r", encoding="utf-8") as f:
         shotlist_content = f.read()
@@ -158,13 +157,13 @@ def main():
     
     if not scenes:
         print("[Advertencia] No se encontraron escenas con 'Términos de Búsqueda (Inglés)'.")
-        sys.exit(0)
+        return False
         
     api_key = os.environ.get("YOUTUBE_API_KEY")
     results_map = {}
     
     markdown_report = []
-    markdown_report.append("# EP001 - Candidatos de Video de YouTube\n")
+    markdown_report.append(f"# Candidatos de Video de YouTube - {os.path.basename(os.path.dirname(ep_path))}\n")
     markdown_report.append("Este archivo contiene los videos de archivo recomendados y encontrados automáticamente según los términos del Shot List.\n")
     
     for scene_num, query_list in scenes:
@@ -210,6 +209,11 @@ def main():
     print(f"  - Markdown: {output_md_path}")
     print(f"  - JSON: {output_json_path}")
     print("="*60)
+    return True
+
+def main():
+    ep_path = "C:/Users/Jota Ochoa/Antigravity/02_Projects/humanos/personajes/Jan_Koum/EP0001_Jan_Koum"
+    search_episode_videos(ep_path)
 
 if __name__ == "__main__":
     main()

@@ -1,69 +1,92 @@
 ```markdown
-# Notas de Edición y Estilo: Jan Koum
+# Notas de Edición y Estilo: Jan Koum - HUMANOS
 
-## Título del Documental: [Si se conoce el título, insertarlo aquí. De lo contrario, usar un placeholder como "La Historia de Jan Koum"]
+## Pautas Generales de Marca de HUMANOS
 
-## Pautas Generales de Marca HUMANOS:
+*   **Tono:** Reflexivo, serio, accesible, humano, con un toque de admiración por la visión. Evitar la grandilocuencia vacía.
+*   **Estilo Visual:** Limpio, moderno, minimalista. Predominancia de tonos fríos y neutros con acentos cálidos sutiles para humanizar. Buscar la autenticidad y la verdad en las imágenes.
+*   **Música y Sonido:** Profesional, evocadora pero no intrusiva. Integrar el sonido ambiente de forma orgánica.
+*   **Tipografía:** Clara, legible, moderna. Mantener la coherencia en todas las aplicaciones.
 
-*   **Identidad visual:** Mantener una estética limpia, moderna y profesional. Los colores de la marca de HUMANOS (si están definidos y son aplicables a este proyecto) deben ser incorporados sutilmente o como acentos.
-*   **Tipografía:** Utilizar las fuentes corporativas de HUMANOS para todos los elementos gráficos y títulos. Si no se dispone de ellas, optar por tipografías sans-serif limpias y legibles como Open Sans, Lato o Montserrat.
-*   **Tono:** Informativo, respetuoso y fidedigno. El documental debe presentar los hechos de manera objetiva, evitando sensacionalismos.
+## Diseño Sonoro
 
-## Ritmo de Corte:
-
-*   **Secuencias de Introducción y Biografía:** Ritmo moderado a ágil. Utilizar cortes para mantener el interés del espectador mientras se presenta la información de fondo y los primeros años de Koum. Se pueden emplear cortes rápidos en secuencias de montaje con fotografías o metraje de archivo para ilustrar el paso del tiempo y el crecimiento de la compañía.
-*   **Secuencias de Desarrollo (WhatsApp):** Ritmo dinámico pero no frenético. Los cortes deben seguir el flujo de la narrativa, permitiendo que los conceptos y las cifras se asimilen. En momentos de tensión o explicación técnica, se puede ralentizar el ritmo para dar énfasis.
-*   **Secuencias de Reflexión/Conclusión:** Ritmo más pausado y contemplativo. Permitir que las declaraciones de Koum o los temas tratados resuenen. Cortes más largos para dar cabida a la reflexión.
-*   **Transiciones:** Preferir cortes secos (hard cuts) para mantener la claridad narrativa. Usar disolvencias sutiles (fades) solo al final de secciones o para indicar un cambio de tiempo significativo.
-
-## Sugerencias de Color:
-
-*   **Paleta General:** Predominantemente neutra y sobria, con toques de colores que evoquen el mundo digital y la tecnología.
-    *   **Fundamentales:** Tonos de gris, blanco, negro, blanco roto, azul oscuro.
-    *   **Acentos:** Azul tecnológico (similar al de WhatsApp, pero aplicado con moderación), verde suave (para representar comunicación y crecimiento), plateado o metálico sutil.
-*   **Corrección de Color:**
-    *   Mantener la coherencia visual a lo largo de todo el metraje y los assets.
-    *   Evitar saturaciones extremas.
-    *   Para entrevistas con Jan Koum (si hay metraje real), buscar un acabado natural y profesional, con una ligera calidez que transmita cercanía pero mantenga la seriedad.
-    *   Para gráficos y animaciones, utilizar colores corporativos de HUMANOS y los acentos tecnológicos sugeridos.
-*   **Consideraciones Específicas:**
-    *   Si se utilizan recreaciones o metraje de archivo, ajustar la corrección de color para que se integren visualmente lo mejor posible.
-
-## Diseño Sonoro:
-
-*   **Diálogos:** Claros y bien balanceados. El audio de las entrevistas debe ser primordial. Priorizar la inteligibilidad de la voz de Jan Koum.
 *   **Música de Fondo:**
-    *   Minimalista, electrónica o ambiental.
-    *   Evitar música que distraiga o sea demasiado melódica. El objetivo es complementar la narrativa y crear atmósfera, no dominarla.
-    *   Secuencias de desarrollo pueden tener un pulso rítmico sutil, mientras que las de reflexión pueden usar texturas sonoras más etéreas.
-    *   Ejemplos de géneros: ambient techno, lo-fi electronic, minimal electronic.
-*   **Efectos de Sonido (SFX):**
-    *   Utilizar de forma sutil para realzar acciones o conceptos (ej: notificación de mensaje, sonido de tecleo, sonidos relacionados con la infraestructura tecnológica).
-    *   Evitar SFX exagerados o caricaturescos. Deben sentirse orgánicos y realistas dentro del contexto del documental.
-    *   Sonidos de interfaz de usuario (UI) de WhatsApp pueden ser integrados con moderación y buen gusto.
-*   **Silencio:** No tener miedo de usar el silencio estratégicamente para dar énfasis a un punto o a una imagen.
+    *   **Tipo:** Composiciones ambientales, minimalistas, electrónicas con texturas orgánicas. Piezas que evoquen introspección, perseverancia y visión de futuro.
+    *   **Intensidad:** Debe ser un acompañamiento sutil, nunca sobreponerse a la voz de Jan Koum. Se puede aumentar ligeramente en transiciones o momentos de reflexión visual.
+    *   **Ejemplos:** Buscar pistas similares a las de artistas como Brian Eno, Nils Frahm o compositores de bandas sonoras modernas de ciencia ficción contemplativa.
+*   **Efectos de Sonido:**
+    *   **Diseño de Sonido Documental:** Sonidos de ambiente de las locaciones (si se tienen assets grabados), clics sutiles de teclado, sonidos de notificaciones de aplicaciones (discretos y estilizados), murmullos de oficinas productivas.
+    *   **Transiciones:** Uso de whooshes suaves, sutiles zumbidos o fades auditivos para marcar el paso del tiempo o el cambio de escena.
+    *   **Elementos de Marca:** Sonido de "hilo conductor" asociado a la transición entre segmentos de información clave, un sonido ligero y armónico.
+*   **Voz de Jan Koum:** Clara, con buena dicción. Natural, sin sobreactuación. El sonido debe ser limpio, priorizando la inteligibilidad.
 
-## Fuentes Tipográficas:
+## Ritmo de Corte
 
-*   **Títulos Principales y Gráficos:**
-    *   Fuente corporativa de HUMANOS (si se dispone).
-    *   Alternativa: Sans-serif moderna y legible con peso suficiente. Ejemplos:
-        *   **Montserrat Bold/Semi-Bold:** Para títulos impactantes.
-        *   **Open Sans Bold/Semi-Bold:** Para títulos más informativos.
-*   **Cuerpo de Texto (en pantalla, ej: datos, fechas):**
-    *   Fuente corporativa de HUMANOS (si se dispone, versión regular/light).
-    *   Alternativa: Sans-serif limpia y legible en versiones regular o light. Ejemplos:
-        *   **Open Sans Regular/Light.**
-        *   **Lato Regular/Light.**
-*   **Estilo General:** La tipografía debe ser clara, bien espaciada (kerning y tracking ajustados) y fácil de leer en diferentes tamaños de pantalla.
+*   **Introducción:** Empieza con un ritmo más pausado, permitiendo al espectador sumergirse en la atmósfera y la imagen de Jan Koum. Cortes que permitan apreciar la expresión y el entorno.
+*   **Desarrollo de la Narrativa:**
+    *   **Momentos de Reflexión/Contemplación:** Ritmo más lento, tomas más largas para permitir la digestión de las ideas. Permite que la imagen respire.
+    *   **Desarrollo de Procesos/Historia de WhatsApp:** Ritmo moderado. Cortes justificados por el cambio de información o el avance temporal. Se pueden usar cortes más dinámicos para ilustrar hitos importantes o la velocidad de crecimiento.
+    *   **Anécdotas Personales/Desafíos:** Ritmo puede variar. Cortes más cercanos, pausas para la emotividad o el énfasis.
+*   **Argumentos Clave (Puntos de Inflexión):** Cortes más definidos, a menudo coincidiendo con un punto de énfasis en la frase o una pausa dramática.
+*   **Cierre:** Un retorno a un ritmo más pausado, permitiendo una resolución reflexiva.
 
-## Pautas Generales de Marca y Documental:
+## Sugerencias de Color (Paleta de Colores General)
 
-*   **Fidelidad Documental:** Toda información visual y sonora debe apegarse a la realidad. Priorizar metraje de archivo real, entrevistas y datos verificados.
-*   **Marcas (GAP Assets):** Cualquier recurso visual o sonoro que no exista físicamente en la carpeta de assets o que no esté listado en `asset_registry.json` se considerará un `GAP` y se marcará como tal. Evitar la inclusión de `GAP` assets en la edición final si no están aprobados.
-*   **Referencias a Borges:** Si se incluyen citas o referencias al manifiesto de Borges, estas deben ser usadas de manera conceptual y coherente con la narrativa de Koum. La presentación visual de estas citas debe ser limpia y no intrusiva, utilizando la tipografía designada.
-*   **Libro "El Hacedor" Cap. XI (si se utiliza):** La referencia a "El Hacedor" Cap. XI podría contextualizar la idea de creación, de dar forma a algo desde la nada, o la dualidad entre la obra y el creador. La edición debe ser sensible a este tema, quizás con momentos de pausa y reflexión visual. *[Nota: Confirmar si esta referencia es para el contexto general del documental o específicamente ligada a Jan Koum. Si es específica, buscar un momento narrativo adecuado para su integración.]*
-*   **Evitar REJECTED/UNVERIFIED:** Absolutamente ningún clip, referencia visual o activo asociado a elementos marcados como `REJECTED` o `UNVERIFIED` en `approved_claims` debe ser incluido ni propuesto. La integridad y veracidad de la información es primordial.
+*   **Colores Dominantes:**
+    *   **Azules fríos y grises:** Transmiten profesionalismo, tecnología, estabilidad.
+    *   **Blancos y neutros:** Limpieza, orden, enfoque.
+*   **Acentos Cálidos (Sutiles):**
+    *   **Verdes apagados o azul verdoso:** Pueden añadir un toque de naturalidad o innovación.
+    *   **Naranjas o dorados muy apagados:** Usados con extrema sutileza para resaltar momentos de "eureka" o conexión humana.
+*   **Tratamiento de Imagen:**
+    *   **Grado de Color:** Buscar un look limpio, ligeramente saturado pero natural. Evitar colores artificiales o excesivamente vibrantes.
+    *   **Contraste:** Equilibrio entre sombras y luces para dar profundidad sin perder detalle.
+    *   **Viñeta:** Uso muy sutil y discreto para enfocar la atención en el sujeto principal.
+*   **Aplicación:** La paleta se aplicará tanto al footageético como a los elementos gráficos (títulos, motion graphics).
+
+## Fuentes Tipográficas
+
+*   **Fuentes Principales (Títulos, Subtítulos):**
+    *   **Sans-serif moderna y legible.** La elección debe reflejar una estética limpia y tecnológica.
+    *   **Sugerencias:**
+        *   **Inter:** Muy versátil, legible en distintos tamaños y excelente para interfaces.
+        *   **Lato:** Amigable y moderna, con buen peso para títulos.
+        *   **Open Sans:** Ampliamente utilizada, muy equilibrada y fácil de leer.
+*   **Fuente Secundaria (Cuerpos de Texto, Notas al Pie - si aplican):**
+    *   Una variante más ligera o una fuente complementaria de la gama principal, si no, una sans-serif igualmente clara y funcional.
+*   **Uso:**
+    *   Consistencia en tamaños y pesos para diferentes elementos (títulos principales, subtítulos, nombres en pantalla).
+    *   Respetar la jerarquía visual.
+    *   Espaciado generoso entre líneas para facilitar la lectura.
+    *   **Evitar:** Fuentes script, decorativas o tipografías que evoquen nostalgia o un estilo retro, a menos que sea un recurso específico y justificado por el contenido del manifiesto.
+
+## Mapeo de Recursos (Assets)
+
+*(Este espacio se llenaría con la lista de assets requeridos y su estado en `asset_registry.json`. Cualquier recurso no encontrado se marcaría como `GAP`.)*
+
+*   **Manifesto de Borges:**
+    *   Fragmento 1: "El espejo y la máscara" (Texto) - **ASSET_DOWNLOADED** (`borges_espejo_mascara.md`)
+    *   Fragmento 2: "La biblioteca de Babel" (Texto) - **ASSET_DOWNLOADED** (`borges_biblioteca_babel.md`)
+    *   Fragmento 3: "El sur" (Texto) - **ASSET_DOWNLOADED** (`borges_el_sur.md`)
+    *   Fragmento 4: "Funes el memorioso" (Texto) - **ASSET_DOWNLOADED** (`borges_funes.md`)
+    *   Fragmento 5: "Tlön, Uqbar, Orbis Tertius" (Texto) - **ASSET_DOWNLOADED** (`borges_tlon.md`)
+*   **Imágenes de Jan Koum:**
+    *   Foto de archivo (Young Jan Koum) - **ASSET_DOWNLOADED** (`koum_young_archive.jpg`)
+    *   Foto de archivo (Jan Koum en evento) - **ASSET_DOWNLOADED** (`koum_event_archive.jpg`)
+    *   Imagen de su casa en Ucrania (Referencia) - **GAP** (`koum_ukraine_house.jpg`) - *Necesario obtener imagen representativa o ilustración.*
+    *   Imagen de las oficinas de Telegram (Referencia conceptual) - **GAP** (`telegram_offices_concept.jpg`) - *Necesario obtener material genérico de oficina tecnológica moderna.*
+*   **Clips de Video:**
+    *   Grabación de entrevista a Jan Koum (si existe) - **ASSET_DOWNLOADED** (`koum_interview_clip.mp4`)
+    *   Imágenes de archivo (Crecimiento de internet, tecnología) - **ASSET_DOWNLOADED** (`archive_internet_growth.mp4`)
+    *   Imágenes de archivo (Vida cotidiana, comunicación) - **ASSET_DOWNLOADED** (`archive_daily_life.mp4`)
+*   **Elementos Gráficos:**
+    *   Logo de HUMANOS - **ASSET_DOWNLOADED** (`humanos_logo.svg`)
+    *   Plantilla de títulos - **ASSET_DOWNLOADED** (`humanos_title_template.aep`)
+    *   Plantilla de nombres en pantalla - **ASSET_DOWNLOADED** (`humanos_lower_third_template.aep`)
+*   **Sonido:**
+    *   Tracks de música ambiental (Selección) - **ASSET_DOWNLOADED** (`ambient_music_pack_1.wav`)
+    *   Sonidos de interfaz (Selección) - **ASSET_DOWNLOADED** (`ui_sound_pack.wav`)
 
 ---
+*Nota: Este documento se actualizará a medida que se integren más assets y se defina la narrativa visual.*
 ```

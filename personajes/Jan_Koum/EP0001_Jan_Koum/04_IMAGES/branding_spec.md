@@ -1,87 +1,64 @@
-# Reporte de Dirección de Arte: JAN KOUM - HUMANOS
+### Reporte de Dirección de Arte: Jan Koum - HUMANOS
 
-**Proyecto:** HUMANOS
-**Sujeto:** Jan Koum
-**Fecha:** 24 de mayo de 2023
-
----
-
-## 1. Introducción
-
-Este reporte detalla la dirección de arte y las especificaciones visuales para el contenido relacionado a Jan Koum, cofundador de WhatsApp. El objetivo es mantener la coherencia estética premium, editorial y minimalista definida por el HUMANOS Design System v1.0, asegurando que cada elemento visual refuerce la narrativa y la marca.
+**Fecha:** 23 de Mayo de 2024
+**Tema:** Jan Koum
 
 ---
 
-## 2. Dirección de Arte General
+**1. Auditoría de Branding y Aprobación Visual:**
 
-La narrativa de Jan Koum se centra en su viaje desde Ucrania hasta el éxito en el mundo tecnológico, destacando la resiliencia y la profunda transformación personal y social. La dirección de arte debe reflejar esta trayectoria a través de un contraste visual marcado entre sus orígenes y su logro. El blanco y negro, el alto contraste y el minimalismo serán pilares fundamentales.
-
----
-
-## 3. Especificaciones de Entregables
-
-### 3.1. Miniatura (Thumbnail)
-
-*   **Composición y Justificación:** Se ha optado por un primer plano de Jan Koum, ocupando el 75% del encuadre, con una mirada directa a cámara. Este encuadre maximiza la conexión emocional y la presencia del personaje, cumpliendo con la regla del 60-80% de ocupación, lo que garantiza que el protagonista sea el foco absoluto. El fondo negro absoluto proporciona el espacio negativo necesario para aislar al personaje y transmitir la seriedad inherente a su historia.
-*   **Texto:**
-    *   Titular: "De cupones a miles de **millones**"
-    *   Palabra clave resaltada: "**millones**" en cian (`#01C9C7`).
-    *   El resto del texto en blanco (`#FFFFFF`).
-*   **Tipografía:** Inter para el texto principal. La palabra destacada en cian no solo sigue la guía de marca, sino que enfatiza el logro financiero, un punto clave de su trayectoria. La elección de "millones" en cian es una decisión estratégica para captar la atención sin recurrir a elementos de clickbait.
-
-### 3.2. Character Card
-
-*   **Composición y Justificación:** Se utilizará un retrato documental a sangre, ocupando aproximadamente el 80% del espacio, alineado con la propuesta de la especificación. La escasez de elementos visuales y el fondo negro profundo aseguran la máxima legibilidad y un impacto estético elevado, priorizando la identidad de Jan Koum. El abundante espacio negativo superior e inferior es crucial para la respiración visual y la sensación de producción premium.
-*   **Texto:**
-    *   Categoría superior: "PIONERO" en gris suave (`#A7A7A7`).
-    *   Nombre: "JAN KOUM" en Satoshi ExtraBold, utilizando el cian (`#01C9C7`) como color de énfasis para la marca.
-    *   Descripción/Cargo: "cofundador de whatsapp" en gris suave (`#666666`) y un tamaño menor.
-*   **Tipografía:** Satoshi ExtraBold para el nombre proporciona la fuerza visual y el carácter distintivo requerido para los títulos principales, alineándose perfectamente con la marca HUMANOS.
+*   **Estado de Aprobación:** `APROBADO`
+*   **Auditoría de Branding:**
+    *   El personaje (Jan Koum) es el protagonista central en la miniatura, ocupando aproximadamente el 75% del encuadre, cumpliendo la regla del 60-80%.
+    *   El texto de la miniatura "De cupones a mil millones" tiene 5 palabras, respetando el límite.
+    *   El uso del cian se limita exclusivamente a la palabra clave "mil" en la miniatura y al nombre "Jan Koum" en la *character card*, como se especifica.
+    *   La composición de la miniatura es minimalista, con fondo negro absoluto, permitiendo que el personaje respire y cumpla con el espacio negativo.
+    *   No se han detectado elementos prohibidos (emojis, flechas, círculos llamativos, colores extraños en texto, tipografías inadecuadas).
+*   **Acción/Feedback Corrector:** No aplica.
 
 ---
 
-## 4. Prompts de IA para Generación de Contenido Visual
+**2. Dirección de Arte Detallada para "Jan Koum":**
 
-La generación de prompts se rige por la fórmula editorial premium, buscando consistentemente la estética HUMANOS:
+Este reporte detalla las decisiones estéticas tomadas para la presentación de Jan Koum, asegurando la alineación con el *HUMANOS Design System v1.0*.
 
-*   **Prompt para Miniatura / Retrato Principal:**
-    ```
-    Jan Koum, co-founder of WhatsApp, serious expression, intense gaze, framed in a dramatic journalistic portrait, high contrast black and white, deep shadows, shot on 85mm lens, subtle 35mm film grain, editorial magazine style page --ar 16:9
-    ```
-    *   **Justificación:** Este prompt se enfoca en capturar la esencia documental y seria de Koum. La elección de un retrato periodístico de revista (estilo *Esquire*), alto contraste en blanco y negro, el uso de una lente de retrato clásica (85mm) y un toque de grano de película de 35mm buscan evocar autenticidad, intimidad y una calidad editorial superior. Evita cualquier connotación de stock artificial.
+**Filosofía Aplicada:** Se busca reflejar la trayectoria de Jan Koum desde la precariedad hasta el éxito masivo, utilizando un lenguaje visual sobrio, documental y de alto contraste. La narrativa de "de cupones a miles de millones" se traduce en una imagen de determinación y enfoque, desprovista de adornos superfluos.
 
-*   **Prompt para B-roll Fotografía Infancia Ucrania:**
-    ```
-    Exterior shot of Soviet-era apartment blocks (Plattenbau), cold, overcast sky, stark atmosphere, with a single vintage Soviet-era telephone booth in the foreground, minimal saturation, high contrast black and white, cinematic documentary style --ar 16:9
-    ```
-    *   **Justificación:** Representa visualmente el origen de Koum. Los bloques de apartamentos soviéticos, el cielo nublado y la atmósfera austera, junto al teléfono antiguo como único elemento, refuerzan la idea de un entorno limitado y de una era pasada. El blanco y negro de alto contraste y la baja saturación evocan la dureza y la realidad de la época, sin sentimentalismos.
+**2.1. Diseño de Miniatura:**
 
-*   **Prompt para B-roll Fotografía Estados Unidos - Asistencia Social:**
-    ```
-    Interior shot of a bleak, utilitarian government assistance office in 1990s USA, with people queuing, harsh fluorescent lighting, subtle grain, high contrast black and white, documentary realism, evoking struggle and anonymity --ar 16:9
-    ```
-    *   **Justificación:** Este prompt ilustra el período inicial de lucha y adaptación en Estados Unidos. El entorno austero, la iluminación artificial cruda y la representación de personas en una fila transmiten la sensación de anonimato y las dificultades de la integración y el acceso a servicios básicos. La estética documental realista y el alto contraste son clave para mantener la narrativa sombría pero honesta.
+*   **Encuadre y Composición:** El retrato a sangre de Jan Koum ocupando el 75% del encuadre es intencional. Este primer plano busca forzar la conexión visual entre el espectador y el entrevistado, transmitiendo la seriedad y la intensidad de su historia. El fondo negro absoluto maximiza el contraste y elimina cualquier distracción, dirigiendo toda la atención hacia el rostro y la expresión del protagonista. Esta composición minimalista es fundamental para el ADN de HUMANOS.
+*   **Tipografía:** El titular "De cupones a mil millones" se presenta en Blanco (`#FFFFFF`) para la mayor parte del texto, asegurando legibilidad sobre el fondo oscuro. La palabra "mil" se destaca en Cian (`#01C9C7`), cumpliendo la directriz de usar el color de énfasis para una única palabra clave de alto impacto en el mensaje central. Esto refuerza la idea de transformación y crecimiento monetario de forma sutil pero clara.
+*   **Justificación Estética:** La combinación de un retrato frontal intenso, el espacio negativo del fondo negro y el uso estratégico del cian cumple con la promesa editorial y premium de HUMANOS, haciendo que la miniatura se sienta como la portada de una revista de renombre en lugar de un contenido efímero.
 
-*   **Prompt para Representación Conceptual de WhatsApp:**
-    ```
-    Clean, minimalist composition of two simple speech bubbles in white against a deep black background, conveying direct communication, subtle hint of the cyan accent color (#01C9C7) as a single dividing line, stark, editorial, high contrast --ar 16:9
-    ```
-    *   **Justificación:** Para representar la esencia de WhatsApp de forma conceptual, se opta por una composición extremadamente minimalista. Dos burbujas de diálogo blancas sobre negro profundo comunican simplicidad y comunicación directa, pilares de la aplicación. El uso sutil del cian como línea divisoria es un guiño a nuestra identidad de marca, utilizado de forma funcional y no decorativa. Es una imagen que respira y comunica el concepto central de la plataforma de manera elegante.
+**2.2. Diseño de Character Card:**
+
+*   **Formato y Composición:** La *character card* se presenta en un formato vertical, manteniendo el retrato "a sangre" para una inmersión total. El espacio vacío superior e inferior es crucial para que la información tipográfica sea legible y la composición respire.
+*   **Tipografía:**
+    *   "PIONERO" (categoría) se coloca en un gris suave (`#A7A7A7`) y tamaño pequeño, proporcionando contexto sin dominar.
+    *   El nombre "JAN KOUM" se presenta en **Satoshi ExtraBold**, con un tamaño prominente y el color Cian (`#01C9C7`) como única concesión de color. Esto establece una jerarquía visual inmediata, haciendo del nombre la pieza central de la tarjeta.
+    *   "fundador de whatsapp" (descripción) se muestra en Inter, en un gris secundario (`#666666`), ofreciendo información adicional de manera discreta.
+*   **Justificación Estética:** La tarjeta es un ejercicio de minimalismo editorial. La ausencia de elementos gráficos adicionales y el uso controlado de la tipografía y el color cian para el nombre, alinean perfectamente con la identidad premium y la sobriedad de la marca HUMANOS.
+
+**2.3. Prompts de IA Visual (Midjourney):**
+
+Los prompts se diseñaron para generar imágenes que evocan un estilo documental y editorial, evitando cualquier rastro de artificialidad o estética "stock".
+
+*   **Prompt para Miniatura ("Jan Koum, close-up portrait..."):**
+    *   **Justificación:** Busca capturar la esencia de Jan Koum con una expresión seria y enfocada, mirando directamente a la cámara. El estilo "journalistic editorial photography" y la iluminación "dramatic chiaroscuro" aseguran el alto contraste y las sombras profundas propias de HUMANOS. La desaturación y la textura de grano de película de 35mm refuerzan la estética documental y premium, evitando la apariencia pulida del CGI. El lente 85mm promueve un retrato íntimo.
+*   **Prompt para B-roll ("A young immigrant Jan Koum..."):**
+    *   **Justificación:** Este prompt se enfoca en evocar la etapa de inmigración y esfuerzo. La imagen de una habitación escasamente amueblada, la iluminación dramática y el blanco y negro de alto contraste buscan transmitir austeridad y determinación, elementos narrativos clave de su historia.
+*   **Prompt para B-roll ("Abstract representation of early messaging..."):**
+    *   **Justificación:** Para representar la fundación de WhatsApp de forma estilizada y no literal. Se priorizan líneas limpias, elementos de interfaz minimalistas y el uso de negros profundos con acentos cian. Esto mantiene la estética de la marca en elementos secundarios, evitando la necesidad de imágenes de archivo genéricas y asegurando coherencia visual.
+
+**2.4. Especificaciones de Movimiento y Transiciones (`motion_specs`):**
+
+*   **Velocidad de Cámara (`subtle_zoom`):** El zoom sutil es un reflejo del efecto Ken Burns aplicado a fotografías fijas. Es un movimiento lento y orgánico que aporta dinamismo sin ser intrusivo, similar a cómo se presentaría una imagen en un documental editorial.
+*   **Transición Predeterminada (`subtle_fade`):** Los fundidos suaves son las transiciones más discretas y elegantes, alineadas con la filosofía de no distraer al espectador. Evitan cortes bruscos o efectos llamativos que romperían la atmósfera premium.
+*   **Uso del Cian:** Se reitera que el cian es un accent, no un elemento decorativo masivo. Su aplicación se limita a resaltar información clave, como el nombre del protagonista o una cifra puntual, manteniendo la sobriedad y el impacto funcional que exige la marca.
+*   **Tipografía (`Satoshi`, `Inter`):** El uso de Satoshi para títulos (nombres en *character cards*) y Inter para texto informativo (descripciones) se mantiene consistente, ofreciendo la jerarquía y legibilidad necesarias según el *Design System*.
 
 ---
 
-## 5. Especificaciones de Motion Design
+**Conclusión:**
 
-*   **Velocidad de Cámara:** `slow_zoom`
-    *   **Justificación:** Un zoom lento sobre Jan Koum o los elementos de b-roll permitirá al espectador absorber la información visual y emocional de la imagen, manteniendo la cadencia pausada y reflexiva que define a HUMANOS. Evita la sensación de urgencia o de contenido rápido.
-*   **Transición por Defecto:** `subtle_fade` (fundido suave)
-    *   **Justificación:** La fundición suave entre escenas o imágenes es la opción más limpia y editorial. Minimiza las distracciones y mantiene un flujo visual coherente y premium, en línea con la prohibición de transiciones abruptas o llamativas.
-*   **Uso del Color de Marca:** El cian (`#01C9C7`) se aplicará de forma puntual y estratégica, principalmente en elementos de transición de texto (como el logo "HUMANOS" o la mención del nombre de Jan Koum en la Character Card), asegurando que no compita visualmente sino que sirva como un distintivo funcional y reconocible.
-*   **Fuentes de Títulos:** Satoshi (Bold/ExtraBold), para mantener la jerarquía y el carácter editorial de los títulos principales.
-*   **Fuentes de Subtítulos:** Inter, por su legibilidad y neutralidad, ideal para texto informativo y descripciones.
-
----
-
-## 6. Conclusión
-
-Hemos diseñado la dirección de arte para Jan Koum con una atención meticulosa a los principios del HUMANOS Design System. La sobriedad, el contraste y el enfoque en la narrativa testimonial son la base de todas las piezas visuales, asegurando que el contenido no solo informe sino que también ofrezca una experiencia estética premium y memorable. Cada decisión, desde la composición fotográfica hasta la elección tipográfica y los prompts de IA, está orientada a responder la pregunta fundamental: "¿Esto parece HUMANOS?".
+La dirección de arte para Jan Koum se ha ejecutado con el objetivo primordial de encapsular la esencia de su trayectoria a través de la lente minimalista y editorial de HUMANOS. Cada elemento visual y tipográfico ha sido seleccionado para construir una narrativa potente y coherente, reafirmando la identidad de la marca. La sobriedad, el alto contraste y el uso estratégico de puntos de énfasis de color son las piedras angulares de esta presentación.

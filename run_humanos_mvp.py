@@ -12,6 +12,7 @@ from moore import MooreAgent
 from asset_collector import AssetCollector
 from mark import MarkAgent
 from leonardo import LeonardoAgent
+from scripts.youtube_searcher import search_episode_videos
 
 def run_mvp(character_name: str, episode_focus: str, themes: list, episode_num: int = 1, stage: str = "all"):
     print("="*60)
@@ -166,6 +167,13 @@ def run_mvp(character_name: str, episode_focus: str, themes: list, episode_num: 
         hermoso.write_markdown(os.path.join(ep_path, "03_STORYBOARD", "asset_shotlist.md"), asset_shotlist_md)
         hermoso.write_json(os.path.join(ep_path, "03_STORYBOARD", "production_package.json"), production_package_json)
         hermoso.log_agent_run(ep_path, "Moore", "success", moore_logs)
+
+        # 5.6 Búsqueda automática de videos candidatos en YouTube basados en el Shot List
+        try:
+            search_episode_videos(ep_path)
+        except Exception as e:
+            print(f"[ERROR] Error al buscar candidatos de YouTube: {e}")
+
 
         # 5.8 Leonardo: Dirección de Arte y Branding
         print("[Leonardo] Diseñando la dirección de arte y especificaciones visuales...")

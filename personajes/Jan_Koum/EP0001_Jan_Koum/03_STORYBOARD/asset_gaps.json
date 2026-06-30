@@ -2,59 +2,46 @@
   {
     "gap_id": "gap_001",
     "scene": 1,
-    "missing_asset": "Imagen de cupones de comida (food stamps) de la época en EE. UU.",
+    "missing_asset": "Fotografía de booklet de cupones del Programa de Asistencia de Alimentos (Food Stamp Program) de EE. UU. de los años 90 o principios de los 2000.",
     "criticality": "high",
-    "reason": "El claim sobre depender de cupones de comida es un punto crucial para establecer la precariedad inicial de Jan Koum. La imagen es esencial para ilustrar este claim de manera efectiva.",
-    "suggested_solution": "Buscar en archivos históricos digitales de programas de asistencia social de EE. UU. en la década de 1990. Contactar a organizaciones que documenten la historia de la asistencia social en EE. UU.",
+    "reason": "Es crucial para ilustrar visualmente el pasado de Jan Koum y la dependencia de su familia de la asistencia social, como se menciona en la voz en off y en el claim C002.",
+    "suggested_solution": "Búsqueda manual en archivos digitales de Wikimedia Commons, Archive.org, o colecciones de fotografías históricas. Si no se encuentra, considerar la generación de una imagen representativa.",
     "manual_search_queries": [
-      "US food stamps 1990s photo",
-      "SNAP benefits historical images",
-      "welfare program coupons USA archive"
+      "US food stamp program coupons 1990s",
+      "vintage EBT card image",
+      "food stamps welfare USA historical"
     ],
-    "ai_generation_allowed": false
+    "ai_generation_allowed": true,
+    "ai_generation_prompt": "Create a realistic photograph of a vintage US Food Stamp Program coupon booklet from the early 1990s. The booklet should show signs of wear and tear, with multiple paper coupons inside. The visual style should be muted and slightly desaturated, evoking a sense of financial hardship."
   },
   {
     "gap_id": "gap_002",
     "scene": 2,
-    "missing_asset": "Material de archivo que represente la vigilancia en la Unión Soviética (teléfonos, arquitectura, ambiente general).",
-    "criticality": "high",
-    "reason": "La narrativa se basa en la desconfianza generada por la vigilancia en la URSS. Se necesitan imágenes evocadoras para transmitir esta atmósfera.",
-    "suggested_solution": "Explorar archivos de fotografía de la era soviética, especialmente aquellos que documenten la vida cotidiana y la infraestructura de comunicación y residencial. Buscar en bancos de imágenes de archivo especializados en historia soviética.",
+    "missing_asset": "Fotografía de un teléfono público (payphone) de la Unión Soviética. Preferiblemente un modelo AMT-69 o similar, que transmita una sensación de vigilancia.",
+    "criticality": "medium",
+    "reason": "La voz en off describe cómo los teléfonos en la URSS podían generar desconfianza. Una imagen específica de un teléfono soviético refuerza este contexto histórico y temático.",
+    "suggested_solution": "Búsqueda en Wikimedia Commons, archivos de fotografía de la Guerra Fría, o repositorios de historia soviética. Si no se encuentra, usar imágenes de estética similar o generar una recreación.",
     "manual_search_queries": [
-      "Soviet Union surveillance phone booths",
-      "DDR Plattenbau apartment blocks daily life",
-      "Soviet era paranoia atmosphere imagery"
+      "Soviet Union payphone AMT-69",
+      "USSR public telephone surveillance",
+      "vintage Soviet phone booth"
     ],
-    "ai_generation_allowed": false
+    "ai_generation_allowed": true,
+    "ai_generation_prompt": "Generate a photograph of a vintage Soviet Union payphone, reminiscent of the AMT-69 model. The phone should be in a slightly run-down urban setting, perhaps with generic Brutalist architecture in the background, conveying a sense of a surveillance state. The lighting should be somber."
   },
   {
     "gap_id": "gap_003",
     "scene": 5,
-    "missing_asset": "Imagen de un edificio de asistencia social en Mountain View, California, o similar, de mediados de los 90 o principios de los 2000.",
-    "criticality": "medium",
-    "reason": "El punto narrativo clave es la firma del acuerdo de venta en el mismo lugar donde recibía ayuda. La imagen refuerza la magnitud del cambio.",
-    "suggested_solution": "Buscar en archivos de noticias locales de Silicon Valley o California de la época, o en bases de datos de arquitectura de edificios públicos/gubernamentales. Si no se encuentra uno específico, usar una imagen genérica de un edificio de gobierno o centro comunitario de esa época y contexto.",
+    "missing_asset": "Fotografía del edificio de asistencia social en Mountain View, California, donde Jan Koum hacia fila con su madre, y posteriormente firmó el acuerdo con Facebook. O una imagen representativa que capture el contraste.",
+    "criticality": "high",
+    "reason": "Este es un punto de inflexión emocional y narrativo clave. Visualizar el lugar donde se firmó el acuerdo millonario en el mismo sitio donde buscó ayuda es vital para el impacto del relato.",
+    "suggested_solution": "Búsqueda en archivos locales de Mountain View, registros públicos de edificios de asistencia social, o noticias de la época sobre la adquisición de WhatsApp. Si no se encuentra una imagen específica, se puede crear una composición visual que juegue con el contraste (ej. superponer el logo de Facebook o una imagen de la firma sobre una foto genérica de un edificio de asistencia social).",
     "manual_search_queries": [
-      "Mountain View social services building 1990s",
-      "California welfare office exterior historical",
-      "US government assistance center architecture"
+      "Mountain View social services building history",
+      "building where WhatsApp Facebook deal was signed",
+      "California welfare office photographs 1990s"
     ],
     "ai_generation_allowed": true,
-    "ai_generation_prompt": "A photograph depicting the exterior of a nondescript, slightly dated government assistance building in Mountain View, California, circa mid-1990s. The building should appear functional rather than modern, possibly with a sign indicating 'Social Services' or 'Community Center'. The lighting should be neutral day light."
-  },
-  {
-    "gap_id": "gap_004",
-    "scene": 6,
-    "missing_asset": "Material de archivo que represente la sede de Facebook (Meta) y su entorno corporativo en 2014.",
-    "criticality": "medium",
-    "reason": "Para contrastar la compra de WhatsApp por parte de Facebook, es útil tener una imagen de la sede de Facebook en el momento de la adquisición para contextualizar el evento.",
-    "suggested_solution": "Buscar fotografías de la sede de Facebook (Menlo Park) de alrededor de 2014. También se pueden usar imágenes genéricas de edificios corporativos modernos para representar 'Facebook'.",
-    "manual_search_queries": [
-      "Facebook headquarters Menlo Park 2014",
-      "Meta corporate offices images",
-      "Silicon Valley modern office buildings"
-    ],
-    "ai_generation_allowed": true,
-    "ai_generation_prompt": "A modern, sleek corporate office building exterior representing Facebook's headquarters in Menlo Park, California, circa 2014. The architecture should convey innovation and scale, with clean lines and possibly glass facades. Bright, daytime lighting."
+    "ai_generation_prompt": "Create a dual-image composition. On the left, show a slightly faded and weathered photograph of a typical 1990s US social services building, with a few people visible in the foreground queuing. On the right, show a clean, modern representation of a corporate office interior, perhaps with subtle hints of Facebook branding. The two images should be visually connected by a subtle graphic element or a soft transition, highlighting the contrast between past and present/future for Jan Koum."
   }
 ]
