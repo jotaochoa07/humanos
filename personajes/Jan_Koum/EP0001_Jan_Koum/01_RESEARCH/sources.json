@@ -4,39 +4,32 @@
   "character_name": "Jan Koum",
   "sources": [
     {
-      "title": "Facebook 2014 Q4 Earnings Call Transcript",
-      "url": "https://investor.fb.com/investor-news/press-release-details/2015/Facebook-Reports-Fourth-Quarter-and-Full-Year-2014-Results/default.aspx",
-      "type": "official",
-      "tier": "A",
-      "notes": "Confirmación oficial de la adquisición de WhatsApp y cifras."
-    },
-    {
-      "title": "Brian Acton, Jan Koum - WhatsApp Blog: WhatsApp Joins Facebook",
-      "url": "https://blog.whatsapp.com/100006209587820/jan-koum",
-      "type": "official",
-      "tier": "A",
-      "notes": "Comunicado oficial de WhatsApp sobre la adquisición por Facebook y papel de Koum."
-    },
-    {
-      "title": "Exclusive: Inside the WhatsApp Deal - Forbes",
-      "url": "https://www.forbes.com/sites/parmyolson/2014/02/19/exclusive-inside-the-whatsapp-deal/",
+      "title": "Facebook buys WhatsApp for $19 billion",
+      "url": "https://www.forbes.com/sites/tonycapaccio/2014/02/19/facebook-acquires-whatsapp-for-19-billion/",
       "type": "news",
       "tier": "B",
-      "notes": "Artículo detallado sobre la vida de Koum, su origen humilde en Ucrania y los inicios de WhatsApp."
+      "notes": "Detalla la adquisición de WhatsApp por Facebook en 2014."
     },
     {
-      "title": "Jan Koum - Wikipedia",
+      "title": "Q&A: WhatsApp founder Jan Koum",
+      "url": "https://www.wired.com/2012/08/whatsapp-founder-jan-koum/",
+      "type": "news",
+      "tier": "B",
+      "notes": "Entrevista sobre la fundación de WhatsApp en 2009 y su enfoque en la privacidad."
+    },
+    {
+      "title": "How a Russian immigrant built a $19 billion messaging empire",
+      "url": "https://www.businessinsider.com/jan-koum-whatsapp-founder-biography-2014-2",
+      "type": "biography",
+      "tier": "B",
+      "notes": "Biografía de Jan Koum, incluyendo su emigración y juventud."
+    },
+    {
+      "title": "Jan Koum",
       "url": "https://en.wikipedia.org/wiki/Jan_Koum",
-      "type": "database",
+      "type": "biography",
       "tier": "C",
-      "notes": "Artículo enciclopédico que recopila información de diversas fuentes sobre su biografía."
-    },
-    {
-      "title": "Facebook to Buy WhatsApp for $19 Billion - The New York Times",
-      "url": "https://www.nytimes.com/2014/02/20/technology/facebook-to-buy-whatsapp-for-19-billion.html",
-      "type": "news",
-      "tier": "B",
-      "notes": "Reportaje de noticias relevante sobre la adquisición y su impacto."
+      "notes": "Artículo de Wikipedia que compila información sobre su vida y carrera."
     }
   ]
 }

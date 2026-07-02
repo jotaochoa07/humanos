@@ -88,7 +88,8 @@ class OpenRouterClient:
             "messages": [
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": prompt}
-            ]
+            ],
+            "max_tokens": 8000
         }
 
         req = urllib.request.Request(

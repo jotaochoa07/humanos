@@ -1,0 +1,1 @@
+De vendedor de cupones a multimillonario de Silicon Valley. 💰 Jan Koum, el fundador de WhatsApp, vivió la extrema pobreza y la obsesión por la privacidad. ¿Cómo la reincorporación a Facebook le dio la razón? ¡Descubre su historia inspiradora y cómo renunció a miles de millones, porque para él, la privacidad lo era todo. #WhatsApp #JanKoum #HistoriasDeSiliconValley #Emprendimiento

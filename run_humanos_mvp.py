@@ -222,6 +222,14 @@ def run_mvp(character_name: str, episode_focus: str, themes: list, episode_num: 
         # Estado final del MVP
         hermoso.update_status_local(ep_path, "storyboard_done")
 
+        # 6.5 Generar paquete de distribución en 11_DIST con Mark
+        mark.generate_distribution_package(
+            ep_path=ep_path,
+            character_name=character_name,
+            scripts_data=scripts_json,
+            client=client
+        )
+
         # 7. Registrar métricas simuladas con Mark
         views = random.randint(300000, 800000)
         retention = round(random.uniform(0.60, 0.85), 2)

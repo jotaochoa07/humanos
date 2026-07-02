@@ -1,0 +1,5 @@
+Jan Koum, el cofundador de WhatsApp, pasó de depender de cupones de comida a liderar una empresa valorada en 19 mil millones de dólares. Su viaje, marcado por la inmigración y la falta de recursos en California, forjó una profunda obsesión por la privacidad. Cuando era adolescente, limpiaba pisos en un supermercado mientras su madre trabajaba de limpiadora. Esta dura realidad, sumada a su experiencia en la Unión Soviética donde la vigilancia era una constante, definió su visión: crear una plataforma de comunicación donde la privacidad fuera el pilar fundamental.
+
+Irónicamente, la misma Facebook que rechazó su solicitud de empleo, terminó comprando su creación. Sin embargo, la visión de Koum chocó con la cultura de recolección de datos de Facebook. En 2018, decidió dar un paso al costado, renunciando a miles de millones de dólares para defender aquello que había construido desde su herida: la privacidad. Una historia de principios innegociables frente a la opulencia. 
+
+¿Qué habrías hecho tú en el lugar de Jan Koum? ¿Habrías renunciado a tu visión por miles de millones de dólares?

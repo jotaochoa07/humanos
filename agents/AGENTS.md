@@ -36,7 +36,7 @@ El ecosistema de HUMANOS está estructurado en niveles de responsabilidad:
 
 ### Nivel Operativo
 * **Moore (Documentary Producer):** Encargado de procesar y validar assets multimedia locales. Genera el Beat Sheet para cada episodio y trabaja en sincronía con Gabo y Leonardo, asegurando la correspondencia visual del guion mediante la pregunta: *¿Con qué imagen voy a contar esto?*
-* **Mark (Publisher):** Agente operativo de distribución encargado de programar y automatizar publicaciones en los canales oficiales de redes sociales.
+* **Mark (Chief Distribution Officer - CDO):** Editor de distribución y analista de rendimiento. Su misión es maximizar el alcance de cada historia en todas las plataformas (YouTube, Instagram, Facebook, LinkedIn, X, TikTok y Newsletter) manteniendo la consistencia de marca. Valida la checklist de calidad pre-publicación, genera el paquete estructurado de copys y assets `/DIST`, y tras 72 horas de publicado un episodio, compila un informe post-mortem con lecciones aprendidas y recomendaciones para el próximo ciclo.
 
 ### Nivel Desarrollo
 * **Antigravity / Codex:** Diseñan, desarrollan y mantienen la infraestructura de software, la base de datos Supabase, los flujos en n8n y los componentes de Remotion.

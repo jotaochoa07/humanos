@@ -75,3 +75,15 @@ Logs:
 LeonardoAgent ejecutado con éxito para Jan Koum.
 Generadas especificaciones para miniatura, character card y prompts de IA visual.
 --------------------------------------------------
+[2026-07-02 12:51:23] Agent: Borges | Status: success
+Logs:
+Investigación finalizada para Jan Koum. Se recuperaron 5 sugerencias de assets, 5 hitos cronológicos, y el motor de descubrimiento catalogó 8 assets históricos reales. Se extrajeron 5 afirmaciones (claims) y 4 fuentes estructuradas.
+--------------------------------------------------
+[2026-07-02 12:51:31] Agent: Veritas | Status: success
+Logs:
+Fact check completado por Veritas para Jan Koum. Score de confianza global: 94. Status: APPROVED. Resumen de Claims: 5 verified, 0 partial, 0 unverified, 0 rejected.
+--------------------------------------------------
+[2026-07-02 13:47:15] Agent: Veritas_Manual_Audit | Status: success
+Logs:
+Auditoría de guion manual completada por Veritas para Jan Koum. Precisión: 98%. Estado: APPROVED.
+--------------------------------------------------
