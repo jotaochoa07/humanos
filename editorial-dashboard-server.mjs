@@ -37,7 +37,7 @@ function findEpisodeDirectories() {
     for (const episodeDir of readdirSync(protagonistRoot, { withFileTypes: true }).filter((d) => d.isDirectory() && d.name.startsWith("EP"))) {
       const episodePath = path.join(protagonistRoot, episodeDir.name);
       const state = readJsonIfExists(path.join(episodePath, "pipeline_state.json"));
-      if (!state || state.status !== "script_pending_review") continue;
+      if (!state) continue;
 
       const scriptsPath = path.join(episodePath, "02_SCRIPT", "scripts.json");
       const scriptPath = path.join(episodePath, "02_SCRIPT", "script_short.md");
