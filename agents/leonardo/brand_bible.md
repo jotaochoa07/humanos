@@ -72,11 +72,12 @@ Nuestra paleta es minimalista y de contraste extremo. El uso del color es funcio
 ---
 
 ## 09. Miniaturas (Thumbnails)
-* **Regla del 70-80%:** El rostro del personaje debe ocupar entre el 60% y el 80% de la miniatura. La mirada del personaje debe apuntar directamente al espectador o al texto de curiosidad.
-* **Curiosity Gap:** El texto de la miniatura no debe repetir el título del video. Debe generar intriga intelectual sin caer en el clickbait barato.
-* **Límite de Texto:** Máximo de 5 palabras en la miniatura.
-* **Énfasis en Cian:** Una palabra clave destacada en cian (`#01C9C7`), el resto en blanco.
+* **La Regla del 80/20 (La Imagen Manda):** La fotografía debe vender el **80% de la historia**, y el texto solo el **20%**. Si al quitar todo el texto la imagen sigue siendo poderosa, es una buena miniatura; de lo contrario, se debe buscar una mejor foto.
+* **Regla del 60-75%:** El rostro del personaje debe ocupar estrictamente entre el **60% y el 75% del alto** de la miniatura.
+* **Límite de Texto:** Máximo de **3 palabras** en la miniatura. El texto solo debe despertar curiosidad (Curiosity Gap) y jamás explicar la historia. El nombre del personaje debe estar siempre presente.
+* **Énfasis en Cian:** Una palabra clave o el nombre destacado en cian (`#01C9C7`), el resto en blanco.
 * **Fondo Limpio:** El fondo debe estar desenfocado o fundido a negro absoluto para que el personaje resalte. Nunca usar color rojo.
+
 
 ---
 

@@ -9,6 +9,10 @@
 * **Reconocimiento Inmediato:** El espectador debe identificar que un video pertenece a **HUMANOS** antes de leer el título del video.
 * **Estilo Sobrio y Editorial:** Inspirado en *Diary of a CEO*, *Apple Keynotes* y documentales de *Netflix*.
 * **Cero Sensacionalismo:** Queda terminantemente prohibido el clickbait barato, flechas rojas, círculos de color, emojis o expresiones exageradas de sorpresa. La imagen debe comunicar seriedad e intriga intelectual.
+* **La Regla del 80/20 (La Imagen Manda):** La fotografía debe vender el **80% de la historia**, y el texto solo el **20%**. 
+  > *"Si al quitar todo el texto la imagen sigue siendo poderosa, es una buena miniatura. Si necesita mucho texto para funcionar, hay que buscar una mejor fotografía."*
+  Si la fotografía es lo bastante potente, se debe dejar que la imagen haga el trabajo duro. El texto solo debe despertar la curiosidad (Curiosity Gap), jamás explicar la trama.
+
 
 ---
 
