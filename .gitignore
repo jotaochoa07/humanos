@@ -13,3 +13,13 @@ MEDIA_LIBRARY/BRANDING/audio/
 *.aup3-shm
 *.aup3-wal
 
+# Large media files (prevent GitHub push rejection)
+**/10_EXPORTS/*.mp4
+**/06_AUDIO/*.wav
+**/05_VIDEO/*.mp4
+**/04_IMAGES/01_PORTRAITS/*.mp4
+**/04_IMAGES/02_USSR/*.mp4
+**/04_IMAGES/04_YAHOO/*.mp4
+**/04_IMAGES/08_SUPPORTING/*.mp4
+
+

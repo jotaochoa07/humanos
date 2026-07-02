@@ -7,9 +7,9 @@
     "selected_asset_id": null,
     "asset_status": "reference_only",
     "fallback_asset_id": null,
-    "fallback_strategy": "Utilizar una fotografía representativa de cupones de comida de la época si el asset 006 no se puede obtener.",
-    "effect": "slow_zoom",
-    "caption": "Jan Koum y cupones de comida",
+    "fallback_strategy": "El audio menciona cupones de comida. La imagen de cupones de comida de archivo, aunque no descargada, es representativa. Se buscará activamente y se descargará.",
+    "effect": "fade",
+    "caption": "Jan Koum y cupones de comida.",
     "gap_id": "gap_001"
   },
   {
@@ -20,9 +20,9 @@
     "selected_asset_id": null,
     "asset_status": "reference_only",
     "fallback_asset_id": "008",
-    "fallback_strategy": "Si no se encuentra la imagen del teléfono payphone soviético (007), usar una imagen de edificios de apartamentos soviéticos (008) como contexto ambiental, o generar una imagen de un teléfono antiguo soviético.",
-    "effect": "pan_right",
-    "caption": "Teléfonos en la Unión Soviética",
+    "fallback_strategy": "La escena requiere un contexto visual de la vida en la Unión Soviética, sugiriendo vigilancia. El teléfono antiguo es una buena representación. Si no se puede asegurar, se usará una imagen de bloques de apartamentos soviéticos para dar el contexto ambiental de la época y lugar.",
+    "effect": "pan_left",
+    "caption": "Teléfonos en la Unión Soviética: una época de escucha.",
     "gap_id": "gap_002"
   },
   {
@@ -34,8 +34,8 @@
     "asset_status": "available",
     "fallback_asset_id": null,
     "fallback_strategy": null,
-    "effect": "cut",
-    "caption": "Jan Koum",
+    "effect": "slow_zoom",
+    "caption": "Jan Koum, el inmigrante.",
     "gap_id": null
   },
   {
@@ -48,7 +48,7 @@
     "fallback_asset_id": null,
     "fallback_strategy": null,
     "effect": "text_overlay",
-    "caption": "WhatsApp: Privacidad ante todo",
+    "caption": "WhatsApp: Privacidad y simplicidad.",
     "gap_id": null
   },
   {
@@ -57,11 +57,11 @@
     "voiceover": "Lo paradójico es que en 2014 vendió WhatsApp a Facebook por 19 mil millones de dólares. Y firmó el acuerdo en el mismo edificio de asistencia social donde, años antes, hacía fila con su madre para recibir comida.",
     "selected_asset": null,
     "selected_asset_id": null,
-    "asset_status": "missing",
+    "asset_status": "reference_only",
     "fallback_asset_id": null,
-    "fallback_strategy": "Se necesita una imagen o recreación del edificio de asistencia social donde Jan Koum hacía fila con su madre, y luego realizó la firma del acuerdo con Facebook. Si no se encuentra, se puede usar una superposición de texto con la información o imágenes genéricas de edificios de asistencia social y oficinas corporativas de forma contrastante.",
-    "effect": "cut",
-    "caption": "El círculo se cierra",
+    "fallback_strategy": "La escena requiere un contraste visual entre la pobreza pasada y la riqueza actual. Se usarán imágenes de cupones de comida para evocar el pasado, y la imagen de Jan Koum (asset 001) o el logo de Facebook para representar el presente. Se buscará una imagen del edificio específico si es posible.",
+    "effect": "fade",
+    "caption": "Del edificio de asistencia social a miles de millones.",
     "gap_id": "gap_003"
   },
   {
@@ -72,9 +72,9 @@
     "selected_asset_id": null,
     "asset_status": "reference_only",
     "fallback_asset_id": null,
-    "fallback_strategy": "Usar el retrato de Mark Zuckerberg (004) como representación de Facebook, tal vez con un efecto gráfico que sugiera desconfianza o integración.",
+    "fallback_strategy": "La escena requiere un final visual que resalte la contradicción. Se utilizará una imagen de Mark Zuckerberg para representar a Facebook. Si no se descarga, se puede recurrir a un logo de Facebook o una imagen genérica de oficinas corporativas modernas.",
     "effect": "cut",
-    "caption": "HUMANOS",
-    "gap_id": "gap_006"
+    "caption": "HUMANOS: Historias de vida.",
+    "gap_id": "gap_004"
   }
 ]

@@ -2,46 +2,53 @@
   {
     "gap_id": "gap_001",
     "scene": 1,
-    "missing_asset": "Fotografía de booklet de cupones del Programa de Asistencia de Alimentos (Food Stamp Program) de EE. UU. de los años 90 o principios de los 2000.",
+    "missing_asset": "Imagen de un folleto de cupones de comida del programa Food Stamp de EE. UU. de los años 90.",
     "criticality": "high",
-    "reason": "Es crucial para ilustrar visualmente el pasado de Jan Koum y la dependencia de su familia de la asistencia social, como se menciona en la voz en off y en el claim C002.",
-    "suggested_solution": "Búsqueda manual en archivos digitales de Wikimedia Commons, Archive.org, o colecciones de fotografías históricas. Si no se encuentra, considerar la generación de una imagen representativa.",
+    "reason": "Ilustra directamente la dependencia de Jan Koum y su familia de la asistencia social, un punto clave en su origen humilde.",
+    "suggested_solution": "Buscar en archivos de historia social de EE. UU. o Wikimedia Commons con términos como 'US food stamps 1990s booklet'.",
     "manual_search_queries": [
-      "US food stamp program coupons 1990s",
-      "vintage EBT card image",
-      "food stamps welfare USA historical"
+      "vintage food stamp booklet USA 1990s",
+      "food stamps archive USA"
     ],
-    "ai_generation_allowed": true,
-    "ai_generation_prompt": "Create a realistic photograph of a vintage US Food Stamp Program coupon booklet from the early 1990s. The booklet should show signs of wear and tear, with multiple paper coupons inside. The visual style should be muted and slightly desaturated, evoking a sense of financial hardship."
+    "ai_generation_allowed": false
   },
   {
     "gap_id": "gap_002",
     "scene": 2,
-    "missing_asset": "Fotografía de un teléfono público (payphone) de la Unión Soviética. Preferiblemente un modelo AMT-69 o similar, que transmita una sensación de vigilancia.",
+    "missing_asset": "Fotografía de bloques de apartamentos (Plattenbau) de la Unión Soviética, evocando un ambiente de vida de la época.",
     "criticality": "medium",
-    "reason": "La voz en off describe cómo los teléfonos en la URSS podían generar desconfianza. Una imagen específica de un teléfono soviético refuerza este contexto histórico y temático.",
-    "suggested_solution": "Búsqueda en Wikimedia Commons, archivos de fotografía de la Guerra Fría, o repositorios de historia soviética. Si no se encuentra, usar imágenes de estética similar o generar una recreación.",
+    "reason": "Establece el contexto visual de la infancia de Koum en la Unión Soviética, sugiriendo el ambiente opresivo y de vigilancia.",
+    "suggested_solution": "Buscar en Wikimedia Commons o archivos fotográficos de Europa del Este con términos como 'Soviet apartment blocks', 'Plattenbau DDR'.",
     "manual_search_queries": [
-      "Soviet Union payphone AMT-69",
-      "USSR public telephone surveillance",
-      "vintage Soviet phone booth"
+      "Soviet Union residential buildings",
+      "post-soviet era apartment blocks"
     ],
-    "ai_generation_allowed": true,
-    "ai_generation_prompt": "Generate a photograph of a vintage Soviet Union payphone, reminiscent of the AMT-69 model. The phone should be in a slightly run-down urban setting, perhaps with generic Brutalist architecture in the background, conveying a sense of a surveillance state. The lighting should be somber."
+    "ai_generation_allowed": false
   },
   {
     "gap_id": "gap_003",
     "scene": 5,
-    "missing_asset": "Fotografía del edificio de asistencia social en Mountain View, California, donde Jan Koum hacia fila con su madre, y posteriormente firmó el acuerdo con Facebook. O una imagen representativa que capture el contraste.",
-    "criticality": "high",
-    "reason": "Este es un punto de inflexión emocional y narrativo clave. Visualizar el lugar donde se firmó el acuerdo millonario en el mismo sitio donde buscó ayuda es vital para el impacto del relato.",
-    "suggested_solution": "Búsqueda en archivos locales de Mountain View, registros públicos de edificios de asistencia social, o noticias de la época sobre la adquisición de WhatsApp. Si no se encuentra una imagen específica, se puede crear una composición visual que juegue con el contraste (ej. superponer el logo de Facebook o una imagen de la firma sobre una foto genérica de un edificio de asistencia social).",
+    "missing_asset": "Fotografía o referencia visual del edificio específico donde Jan Koum firmó el acuerdo de venta de WhatsApp a Facebook, o un edificio de asistencia social representativo de la época.",
+    "criticality": "medium",
+    "reason": "Enfatiza el poderoso contraste narrativo entre el pasado de pobreza y el presente de éxito financiero.",
+    "suggested_solution": "Investigar la ubicación de la firma del acuerdo o buscar imágenes de centros de asistencia social en Mountain View, California, de principios de los 2000s.",
     "manual_search_queries": [
-      "Mountain View social services building history",
-      "building where WhatsApp Facebook deal was signed",
-      "California welfare office photographs 1990s"
+      "Facebook HQ Palo Alto 2014",
+      "social services building Mountain View California photo"
     ],
-    "ai_generation_allowed": true,
-    "ai_generation_prompt": "Create a dual-image composition. On the left, show a slightly faded and weathered photograph of a typical 1990s US social services building, with a few people visible in the foreground queuing. On the right, show a clean, modern representation of a corporate office interior, perhaps with subtle hints of Facebook branding. The two images should be visually connected by a subtle graphic element or a soft transition, highlighting the contrast between past and present/future for Jan Koum."
+    "ai_generation_allowed": false
+  },
+  {
+    "gap_id": "gap_004",
+    "scene": 6,
+    "missing_asset": "Retrato de Mark Zuckerberg en un contexto relacionado con Facebook (ej. una keynote, una entrevista).",
+    "criticality": "medium",
+    "reason": "Proporciona una representación visual directa de Facebook, la contraparte en la narrativa, y completa el círculo de la historia con los fundadores de ambas empresas.",
+    "suggested_solution": "Buscar en archivos de noticias tecnológicas, bancos de imágenes o Wikimedia Commons 'Mark Zuckerberg F8' o 'Mark Zuckerberg keynote'.",
+    "manual_search_queries": [
+      "Mark Zuckerberg Facebook keynote image",
+      "Mark Zuckerberg portrait 2014-2018"
+    ],
+    "ai_generation_allowed": false
   }
 ]

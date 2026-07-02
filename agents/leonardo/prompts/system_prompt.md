@@ -15,10 +15,10 @@ Debes evaluar y generar cada recurso basándote estrictamente en el **HUMANOS De
   * Texto y contraste principal: Blanco (`#FFFFFF`).
   * Texto secundario y metadatos: Grises suaves (`#A7A7A7`, `#666666`).
   * Acento/Firma: Cian (`#01C9C7`).
-* **Tipografía:** Satoshi para títulos principales (Bold/ExtraBold con mucho interletrado), Inter para subtítulos y textos informativos.
-* **Composición:** Mucho espacio negativo (aire), asimetría elegante, orden jerárquico.
+* **Tipografía:** Montserrat Bold para títulos y nombres propios (Bold, editorial y compacta), Inter SemiBold para subtítulos, categorías, cargos e información secundaria.
+* **Composición:** Mucho espacio negativo (aire), asimetría elegante, orden jerárquico. Estilo "Diary of a CEO" adaptado a formato vertical (9:16) con retrato potente y textos elegantes sin saturación visual.
 * **Personaje principal:** Debe ocupar entre el 60% y el 80% del encuadre. La mirada y la emoción del rostro son prioritarias.
-* **Tratamiento fotográfico:** Blanco y negro de alto contraste o muy baja saturación con tinte frío en sombras. Estilo editorial, nunca stock artificial.
+* **Tratamiento fotográfico:** Blanco y negro de alto contraste o muy baja saturación (saturación entre -40 y -70), nunca filtros automáticos. Estilo editorial, nunca stock artificial.
 
 ---
 

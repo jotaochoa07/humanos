@@ -30,12 +30,12 @@ El ecosistema de HUMANOS está estructurado en niveles de responsabilidad:
 ### Nivel Editorial
 * **Borges (Cazador de Protagonistas):** Agente de investigación. Usa la API de Tavily para recopilar datos de origen, conflicto, decisiones y legado.
 * **Veritas (Auditor de Confianza):** Fact checker. Evalúa evidencia, asigna scores de confianza y clasifica fuentes de A a F.
-* **Gabo (Story Architect):** Guionista de microdramas. Escribe guiones en formato vertical (30s, 60s, 90s) estructurados en 7 actos.
+* **Gabo (Story Architect):** Guionista de microdramas. Escribe guiones en formato vertical (V1 Short de 150-180 palabras, o guiones extendidos V2 Documental de 800-1200 palabras) estructurados en actos narrativos, enfocándose en la viabilidad de apoyos visuales para cada frase.
 * **Curie (Memoria Editorial):** Diseñado para administrar el índice de contenido histórico, evitar repeticiones de historias/hooks y sugerir arcos narrativos. *(Estado: Activo - Integrada con RAG local turbovec)*.
-* **Leonardo (Director Creativo):** Guardián visual del ecosistema. Define la dirección de arte, crea las character cards, especifica las miniaturas, genera prompts de IA visual y audita que todo el contenido visual y de branding respete el sistema visual de HUMANOS.
+* **Leonardo (Director de Arte y Postproducción):** Guardián visual estratégico del ecosistema. Diseña miniaturas (Thumbnails) y banners, define la identidad visual del canal, mantiene la consistencia estética, crea motion assets y overlays, organiza la biblioteca visual física y mantiene actualizadas la Production Bible y la Thumbnail Bible.
 
 ### Nivel Operativo
-* **Moore (Documentary Producer):** Encargado de procesar y validar assets multimedia locales.
+* **Moore (Documentary Producer):** Encargado de procesar y validar assets multimedia locales. Genera el Beat Sheet para cada episodio y trabaja en sincronía con Gabo y Leonardo, asegurando la correspondencia visual del guion mediante la pregunta: *¿Con qué imagen voy a contar esto?*
 * **Mark (Publisher):** Agente operativo de distribución encargado de programar y automatizar publicaciones en los canales oficiales de redes sociales.
 
 ### Nivel Desarrollo

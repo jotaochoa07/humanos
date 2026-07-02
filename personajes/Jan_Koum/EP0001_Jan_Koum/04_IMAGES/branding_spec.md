@@ -1,64 +1,73 @@
-### Reporte de Dirección de Arte: Jan Koum - HUMANOS
-
-**Fecha:** 23 de Mayo de 2024
-**Tema:** Jan Koum
+Aquí tienes el reporte de dirección de arte para Jan Koum, enfocado en alinear las propuestas visuales con la identidad de HUMANOS.
 
 ---
 
-**1. Auditoría de Branding y Aprobación Visual:**
+# Reporte de Dirección de Arte: HUMANOS - JAN KOUM
 
-*   **Estado de Aprobación:** `APROBADO`
-*   **Auditoría de Branding:**
-    *   El personaje (Jan Koum) es el protagonista central en la miniatura, ocupando aproximadamente el 75% del encuadre, cumpliendo la regla del 60-80%.
-    *   El texto de la miniatura "De cupones a mil millones" tiene 5 palabras, respetando el límite.
-    *   El uso del cian se limita exclusivamente a la palabra clave "mil" en la miniatura y al nombre "Jan Koum" en la *character card*, como se especifica.
-    *   La composición de la miniatura es minimalista, con fondo negro absoluto, permitiendo que el personaje respire y cumpla con el espacio negativo.
-    *   No se han detectado elementos prohibidos (emojis, flechas, círculos llamativos, colores extraños en texto, tipografías inadecuadas).
-*   **Acción/Feedback Corrector:** No aplica.
+**Fecha:** 2024-02-28
+**Director Creativo:** Leonardo
+
+## 1. Auditoría y Aprobación Visual
+
+**Caracter Card:** `APROBADO`
+**Miniatura:** `APROBADO`
 
 ---
 
-**2. Dirección de Arte Detallada para "Jan Koum":**
+## 2. Auditoría de Branding
 
-Este reporte detalla las decisiones estéticas tomadas para la presentación de Jan Koum, asegurando la alineación con el *HUMANOS Design System v1.0*.
+*   **Personaje como Protagonista:**
+    *   **Character Card:** Cumple con la especificación. El retrato ocupa el 75% del encuadre. La mirada es potente y la composición asimétrica con espacio negativo respeta el diseño.
+    *   **Miniatura:** Cumple con la especificación. El retrato ocupa el 75% del encuadre vertical (9:16), con mirada penetrante. Fondo negro absoluto.
+*   **Texto en Miniatura:** Cumple con la especificación. El texto "De la POBREZA a los miles de millones" no excede las 5 palabras clave principales, y la palabra "POBREZA" es la única resaltada en cian.
+*   **Uso del Cian (#01C9C7):**
+    *   **Character Card:** Utilizado correctamente para el nombre "JAN KOUM".
+    *   **Miniatura:** Utilizado de forma exclusiva y precisa para la palabra "POBREZA".
+*   **Composición y Espacio Negativo:** Ambas piezas maximizan el uso del espacio negativo negro profundo (`#090909` o negro absoluto), permitiendo que el retrato del personaje y los textos esenciales respiren. La asimetría es elegante y jerárquica.
+*   **Elementos Prohibidos:** No se detectan emojis, flechas, círculos, colores primarios chillones, o tipografías no permitidas. La estética es consistentemente editorial y premium.
+*   **Tratamiento Fotográfico:** Los prompts solicitan explícitamente blanco y negro de alto contraste, baja saturación o saturación negativa, similar a un estilo editorial de revista. El grano de película sutil añade una textura analógica y premium.
 
-**Filosofía Aplicada:** Se busca reflejar la trayectoria de Jan Koum desde la precariedad hasta el éxito masivo, utilizando un lenguaje visual sobrio, documental y de alto contraste. La narrativa de "de cupones a miles de millones" se traduce en una imagen de determinación y enfoque, desprovista de adornos superfluos.
+---
 
-**2.1. Diseño de Miniatura:**
+## 3. Justificación Estética y Técnica
 
-*   **Encuadre y Composición:** El retrato a sangre de Jan Koum ocupando el 75% del encuadre es intencional. Este primer plano busca forzar la conexión visual entre el espectador y el entrevistado, transmitiendo la seriedad y la intensidad de su historia. El fondo negro absoluto maximiza el contraste y elimina cualquier distracción, dirigiendo toda la atención hacia el rostro y la expresión del protagonista. Esta composición minimalista es fundamental para el ADN de HUMANOS.
-*   **Tipografía:** El titular "De cupones a mil millones" se presenta en Blanco (`#FFFFFF`) para la mayor parte del texto, asegurando legibilidad sobre el fondo oscuro. La palabra "mil" se destaca en Cian (`#01C9C7`), cumpliendo la directriz de usar el color de énfasis para una única palabra clave de alto impacto en el mensaje central. Esto refuerza la idea de transformación y crecimiento monetario de forma sutil pero clara.
-*   **Justificación Estética:** La combinación de un retrato frontal intenso, el espacio negativo del fondo negro y el uso estratégico del cian cumple con la promesa editorial y premium de HUMANOS, haciendo que la miniatura se sienta como la portada de una revista de renombre en lugar de un contenido efímero.
+### 3.1. Character Card: JAN KOUM
 
-**2.2. Diseño de Character Card:**
-
-*   **Formato y Composición:** La *character card* se presenta en un formato vertical, manteniendo el retrato "a sangre" para una inmersión total. El espacio vacío superior e inferior es crucial para que la información tipográfica sea legible y la composición respire.
+*   **Encuadre y Composición:**
+    *   La elección de un encuadre que ocupe el 75% del sujeto asegura que la presencia de Jan Koum sea dominante y que su mirada pueda conectar directamente con el espectador. La asimetría, con el texto ubicado en la parte inferior izquierda, crea una tensión visual elegante y evita la rigidez centralizada, característica del minimalismo editorial. El amplísimo espacio negativo negro refuerza el tono sobrio y premium de HUMANOS.
 *   **Tipografía:**
-    *   "PIONERO" (categoría) se coloca en un gris suave (`#A7A7A7`) y tamaño pequeño, proporcionando contexto sin dominar.
-    *   El nombre "JAN KOUM" se presenta en **Satoshi ExtraBold**, con un tamaño prominente y el color Cian (`#01C9C7`) como única concesión de color. Esto establece una jerarquía visual inmediata, haciendo del nombre la pieza central de la tarjeta.
-    *   "fundador de whatsapp" (descripción) se muestra en Inter, en un gris secundario (`#666666`), ofreciendo información adicional de manera discreta.
-*   **Justificación Estética:** La tarjeta es un ejercicio de minimalismo editorial. La ausencia de elementos gráficos adicionales y el uso controlado de la tipografía y el color cian para el nombre, alinean perfectamente con la identidad premium y la sobriedad de la marca HUMANOS.
+    *   "INMIGRANTE FUNDADOR" en **Inter SemiBold** blanco, pequeño y superior, establece el contexto de forma discreta.
+    *   "JAN KOUM" en **Montserrat Bold** y el distintivo cian (`#01C9C7`) es el punto focal, comunicando importancia y marca. Su tamaño y color son imponentes pero controlados.
+    *   "Fundador de WhatsApp" en **Inter SemiBold** blanco, inferior, proporciona la información clave de forma ordenada y secundaria.
+*   **Tratamiento Visual:** El prompt especifica un "Retrato potente en blanco y negro de alto contraste, saturación ajustada a -60%", lo cual se alinea perfectamente con la directriz de fotografía editorial de HUMANOS, buscando emular la intensidad y la profundidad de los retratos periodísticos de alta gama.
 
-**2.3. Prompts de IA Visual (Midjourney):**
+### 3.2. Miniatura: "De la POBREZA a los miles de millones"
 
-Los prompts se diseñaron para generar imágenes que evocan un estilo documental y editorial, evitando cualquier rastro de artificialidad o estética "stock".
+*   **Texto y Jerarquía:**
+    *   La narrativa se construye con "De la" y "a los miles de millones" en **Montserrat Bold** blanco.
+    *   La palabra clave "POBREZA" es resaltada de forma única en **Montserrat Bold** cian (`#01C9C7`). Esta selección estratégica del color cian no solo cumple con las directrices de marca, sino que crea un contraste visual impactante contra el negro y el blanco, atrayendo la atención hacia el punto de inflexión de la narrativa. La limitación a una palabra clave en cian es crucial para mantener la elegancia y evitar el exceso.
+*   **Composición:** El retrato potente de Jan Koum a sangre contra un fondo negro absoluto (`#090909`) asegura un foco total en la historia y el personaje, eliminando cualquier distracción visual. La composición 9:16 es ideal para plataformas verticales.
+*   **Justificación del Titular:** El titular elegido, "De la POBREZA a los miles de millones", genera un *curiosity gap* intelectual y emocional, alineado con la filosofía de HUMANOS de contar historias de transformación sin caer en el clickbait sensacionalista. La palabra resaltada ("POBREZA") apunta directamente al conflicto original del personaje.
 
-*   **Prompt para Miniatura ("Jan Koum, close-up portrait..."):**
-    *   **Justificación:** Busca capturar la esencia de Jan Koum con una expresión seria y enfocada, mirando directamente a la cámara. El estilo "journalistic editorial photography" y la iluminación "dramatic chiaroscuro" aseguran el alto contraste y las sombras profundas propias de HUMANOS. La desaturación y la textura de grano de película de 35mm refuerzan la estética documental y premium, evitando la apariencia pulida del CGI. El lente 85mm promueve un retrato íntimo.
-*   **Prompt para B-roll ("A young immigrant Jan Koum..."):**
-    *   **Justificación:** Este prompt se enfoca en evocar la etapa de inmigración y esfuerzo. La imagen de una habitación escasamente amueblada, la iluminación dramática y el blanco y negro de alto contraste buscan transmitir austeridad y determinación, elementos narrativos clave de su historia.
-*   **Prompt para B-roll ("Abstract representation of early messaging..."):**
-    *   **Justificación:** Para representar la fundación de WhatsApp de forma estilizada y no literal. Se priorizan líneas limpias, elementos de interfaz minimalistas y el uso de negros profundos con acentos cian. Esto mantiene la estética de la marca en elementos secundarios, evitando la necesidad de imágenes de archivo genéricas y asegurando coherencia visual.
+### 3.3. Prompts de IA Visual
 
-**2.4. Especificaciones de Movimiento y Transiciones (`motion_specs`):**
+Los prompts generados están diseñados para producir imágenes que se adhieren estrictamente a la estética de HUMANOS:
 
-*   **Velocidad de Cámara (`subtle_zoom`):** El zoom sutil es un reflejo del efecto Ken Burns aplicado a fotografías fijas. Es un movimiento lento y orgánico que aporta dinamismo sin ser intrusivo, similar a cómo se presentaría una imagen en un documental editorial.
-*   **Transición Predeterminada (`subtle_fade`):** Los fundidos suaves son las transiciones más discretas y elegantes, alineadas con la filosofía de no distraer al espectador. Evitan cortes bruscos o efectos llamativos que romperían la atmósfera premium.
-*   **Uso del Cian:** Se reitera que el cian es un accent, no un elemento decorativo masivo. Su aplicación se limita a resaltar información clave, como el nombre del protagonista o una cifra puntual, manteniendo la sobriedad y el impacto funcional que exige la marca.
-*   **Tipografía (`Satoshi`, `Inter`):** El uso de Satoshi para títulos (nombres en *character cards*) y Inter para texto informativo (descripciones) se mantiene consistente, ofreciendo la jerarquía y legibilidad necesarias según el *Design System*.
+*   **Identidad Visual:** Se enfatiza el "journalistic high-fashion editorial portrait photography style", "dramatic chiaroscuro natural lighting", "deep blacks and high contrast", "B&W" o "desaturated colors", y "subtle 35mm film grain texture". Estas son las bases de nuestro tratamiento fotográfico premium.
+*   **Lente y Perspectiva:** El uso de lentes de retrato como 85mm o 105mm asegura una profundidad de campo adecuada, aislando al sujeto y logrando un bokeh sutil si el fondo no es negro absoluto.
+*   **Versatilidad:** Se generan prompts para un retrato principal (Character Card, Thumbnail) y dos opciones de B-roll con condiciones de iluminación y atmósfera distintas ("modern office background", "US supermarket sweeping floors"). Cada uno busca evocar realismo, drama y un sentido de época o contexto, siempre dentro de la paleta y el mood de HUMANOS.
+*   **Prohibición Evitada:** Los prompts no incluyen términos como "hiperrealista", "perfecto", ni referencias a stock, asegurando la autenticidad y el carácter editorial de las imágenes.
+
+### 3.4. Especificaciones de Motion Design
+
+*   **Velocidad de Cámara:** Los movimientos lentos ("slow_zoom_in | pan_left_slow") y la transición por defecto ("subtle_fade_to_black") reflejan la naturaleza pausada y reflexiva del contenido de HUMANOS.
+*   **Uso del Color:** La directiva de reservar el cian (`#01C9C7`) exclusivamente para el nombre en la Character Card y el resaltado en la miniatura es fundamental. Esto asegura que el color de marca sea un acento potente y no una decoración genérica de las animaciones.
+*   **Tipografía:** El uso consistente de **Montserrat Bold** para títulos y **Inter SemiBold** para subtítulos garantizará la coherencia tipográfica en cualquier elemento gráfico o de animación.
 
 ---
 
-**Conclusión:**
+## 4. Conclusión
 
-La dirección de arte para Jan Koum se ha ejecutado con el objetivo primordial de encapsular la esencia de su trayectoria a través de la lente minimalista y editorial de HUMANOS. Cada elemento visual y tipográfico ha sido seleccionado para construir una narrativa potente y coherente, reafirmando la identidad de la marca. La sobriedad, el alto contraste y el uso estratégico de puntos de énfasis de color son las piedras angulares de esta presentación.
+Las propuestas para Jan Koum cumplen con todos los requisitos del Design System v1.0 de HUMANOS. La dirección de arte proyectada es coherente, premium y editorial, enfocándose en la figura central del personaje y comunicando su historia con la sobriedad y la intensidad que la marca exige. Cada elemento visual ha sido seleccionado y justificado para maximizar el impacto narrativo y la conexión emocional, manteniendo siempre nuestra identidadminimalista y de alto contraste.
+
+---

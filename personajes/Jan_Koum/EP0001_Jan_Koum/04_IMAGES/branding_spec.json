@@ -1,34 +1,34 @@
 {
   "character_card": {
-    "category": "PIONERO",
+    "category": "INMIGRANTE FUNDADOR",
     "name": "JAN KOUM",
-    "description": "fundador de whatsapp",
-    "visual_style": "Retrato documental en primer plano a sangre, mirando directamente a la cámara con intensidad. Fondo negro absoluto. Nombre gigante en cian. Abundantes espacios vacíos en la parte superior e inferior de la tarjeta minimalista."
+    "description": "Fundador de WhatsApp",
+    "visual_style": "Retrato potente en blanco y negro de alto contraste, saturación ajustada a -60%. El sujeto ocupa el 75% del encuadre, mirando directamente a cámara con intensidad. Composición asimétrica con abundante espacio negativo negro profundo (#090909) en la parte inferior izquierda, donde se ubican los textos."
   },
   "thumbnail": {
-    "headline": "De cupones a mil millones",
-    "highlight_word": "mil",
-    "composition_description": "Retrato de Jan Koum ocupando el 75% del encuadre, mirando intensamente a cámara. Fondo completamente negro para maximizar el contraste y el enfoque en el personaje. El titular 'De cupones a mil millones' en blanco, con la palabra 'mil' en cian."
+    "headline": "De la POBREZA a los miles de millones",
+    "highlight_word": "POBREZA",
+    "composition_description": "Retrato de Jan Koum ocupando el 75% del encuadre vertical (9:16), con mirada penetrante. Fondo negro absoluto (#090909). El texto 'De la' y 'a los miles de millones' en Montserrat Bold blanco, y 'POBREZA' en Montserrat Bold cian (#01C9C7). Sin otros elementos visuales."
   },
   "midjourney_prompts": [
     {
-      "purpose": "Retrato de miniatura",
-      "prompt": "Jan Koum, close-up portrait, serious focused expression, direct eye contact with camera, journalistic editorial photography style, dramatic chiaroscuro lighting, deep blacks and high contrast, desaturated tones, professional portrait lens 85mm, subtle 35mm film grain texture --ar 9:16"
+      "purpose": "Retrato principal para Character Card y Thumbnail",
+      "prompt": "Jan Koum, intense direct gaze, serious expression, journalistic high-fashion editorial portrait photography style, dramatic chiaroscuro natural lighting, deep blacks and high contrast, B&W, subtle 35mm film grain texture, shot on 85mm lens --ar 9:16"
     },
     {
-      "purpose": "B-roll - Inmigración y pobreza",
-      "prompt": "A young immigrant Jan Koum, looking weathered and determined, in a dimly lit room with sparse furniture, subtle documentary photography style, natural dramatic lighting, high contrast black and white, hint of film grain, 35mm lens --ar 16:9"
+      "purpose": "B-roll de escena - Vendiendo WhatsApp a Facebook",
+      "prompt": "Jan Koum signing a document, serious expression, modern office background slightly blurred, dramatic sidelighting, deep blacks and high contrast, desaturated colors, subtle 35mm film grain texture, shot on 105mm lens --ar 16:9"
     },
     {
-      "purpose": "B-roll - Fundación de WhatsApp",
-      "prompt": "Abstract representation of early messaging, clean lines, minimal interface elements, deep blacks and subtle cyan accents, editorial photography, high contrast, no people --ar 16:9"
+      "purpose": "B-roll de escena - Inmigrante empezando en EE.UU.",
+      "prompt": "Young Jan Koum in a US supermarket sweeping floors, somber expression, utilitarianist Soviet-era aesthetic background, harsh overhead lighting, deep blacks and high contrast, B&W, subtle 35mm film grain texture, shot on 85mm lens --ar 16:9"
     }
   ],
   "motion_specs": {
-    "camera_speed": "subtle_zoom",
-    "default_transition": "subtle_fade",
-    "branding_color_use": "El cian se utiliza como un acento puntual para resaltar datos o nombres clave, como el nombre 'Jan Koum' en la character card o una palabra específica en el texto introductorio.",
-    "titles_font": "Satoshi",
-    "subtitles_font": "Inter"
+    "camera_speed": "slow_zoom_in | pan_left_slow",
+    "default_transition": "subtle_fade_to_black",
+    "branding_color_use": "El color cian (#01C9C7) se usará exclusivamente para el nombre de Jan Koum en la Character Card, y como resaltado en la miniatura. No se aplicará en transiciones o elementos gráficos generales de animación.",
+    "titles_font": "Montserrat Bold",
+    "subtitles_font": "Inter SemiBold"
   }
 }

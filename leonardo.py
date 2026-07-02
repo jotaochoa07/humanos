@@ -50,19 +50,19 @@ class LeonardoAgent:
         El formato de respuesta DEBE ser un JSON con los siguientes campos:
         {{
           "character_card": {{
-            "category": "BUILDER | PIONERO | CIENTÍFICO | etc.",
-            "name": "Nombre en mayúsculas (ej: JAN KOUM)",
-            "description": "Logro o cargo breve en minúsculas (ej: fundador de whatsapp)",
-            "visual_style": "Descripción corta de la composición siguiendo la Brand Bible (ej: Retrato documental en primer plano a sangre, fondo fundido a negro, nombre cian, abundantes espacios vacíos)"
+            "category": "INMIGRANTE | BUILDER | etc. (Inter SemiBold, Blanco, mayúsculas)",
+            "name": "Nombre en mayúsculas (Montserrat Bold, cian #01C9C7, ej: JAN KOUM)",
+            "description": "Cargo breve (Inter SemiBold, Blanco, ej: Fundador de WhatsApp)",
+            "visual_style": "Descripción de la composición siguiendo la Brand Bible (ej: Retrato de alto contraste en escala de grises con saturación -50, alineación inferior izquierda con mucho aire/espacio negativo)"
           }},
           "thumbnail": {{
-            "headline": "Texto corto de curiosidad en minúsculas excepto énfasis (máximo 5 palabras, ej: El hombre que CAMBIÓ la comunicación)",
-            "highlight_word": "Palabra exacta a resaltar en cian (ej: CAMBIÓ)",
-            "composition_description": "Instrucciones de composición (rostro del personaje ocupando 70-80% de la miniatura, mirada poderosa, fondo desenfocado y oscuro)"
+            "headline": "Texto corto de curiosidad en minúsculas excepto énfasis (estilo Diary of a CEO en formato vertical 9:16, máximo 5 palabras, ej: De la POBREZA a los miles de millones)",
+            "highlight_word": "Palabra exacta a resaltar en cian (ej: POBREZA)",
+            "composition_description": "Instrucciones de composición (rostro del personaje ocupando 70-80% de la miniatura, mirada poderosa enfocando a la cámara, fondo oscuro fundido a negro, textos en tipografía Montserrat Bold)"
           }},
           "midjourney_prompts": [
             {{
-              "purpose": "Retrato de miniatura / B-roll de escena / etc.",
+              "purpose": "Retrato de miniatura en B/N / B-roll de escena / etc.",
               "prompt": "El prompt en inglés optimizado para Midjourney o Flux siguiendo las leyes de fotografía documental y la fórmula de Leonardo"
             }}
           ],
@@ -70,8 +70,8 @@ class LeonardoAgent:
             "camera_speed": "subtle_zoom | pan_slow",
             "default_transition": "subtle_fade | ken_burns",
             "branding_color_use": "Explicación breve de cómo se introduce el cian en las animaciones de este episodio",
-            "titles_font": "Satoshi",
-            "subtitles_font": "Inter"
+            "titles_font": "Montserrat Bold",
+            "subtitles_font": "Inter SemiBold"
           }}
         }}
         """

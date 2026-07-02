@@ -35,13 +35,12 @@ Nuestra paleta es minimalista y de contraste extremo. El uso del color es funcio
 ---
 
 ## 05. Tipografía
-* **Tipografía Principal: Inter**
-  * Usada para subtítulos, cuerpo de texto y descripciones.
-  * Legible, geométrica y neutral.
-* **Tipografía Alternativa: Satoshi**
-  * Usada para títulos principales y character cards.
-  * Preferiblemente en pesos **Bold** o **ExtraBold**.
-  * Mucho espacio de interletrado (tracking) para dar una sensación editorial y aireada.
+* **Tipografía Principal: Montserrat Bold**
+  * Usada para títulos principales, nombres de personajes y portadas/character cards.
+  * Otorga una presencia editorial fuerte y estructurada.
+* **Tipografía Secundaria: Inter SemiBold**
+  * Usada para categorías, cargos, descripciones, datos y subtítulos.
+  * Proporciona máxima legibilidad y sobriedad en tamaños pequeños o dinámicos.
 
 ---
 
@@ -85,10 +84,11 @@ Nuestra paleta es minimalista y de contraste extremo. El uso del color es funcio
 * **Formato:** Vertical (9:16).
 * **Composición:** Fotografía a sangre (que ocupe casi toda la pantalla), espacio negativo abundante arriba y abajo.
 * **Tipografía:**
-  * Categoría superior en texto muy pequeño (ej. "BUILDER" o "PIONERO") en gris suave.
-  * Nombre enorme del personaje en Satoshi Bold/ExtraBold.
-  * Cargo/Logro breve abajo en tipografía pequeña (ej. "Fundador de WhatsApp").
+  * Categoría superior en texto muy pequeño (ej. "INMIGRANTE") en blanco, usando **Inter SemiBold**.
+  * Nombre enorme del personaje en **Montserrat Bold** y cian (`#01C9C7`).
+  * Cargo/Logro breve abajo en tipografía pequeña en blanco, usando **Inter SemiBold** (ej. "Fundador de WhatsApp").
 * **Uso del color:** El cian se aplica únicamente al nombre del personaje.
+* **Posición:** Ubicada en la esquina inferior izquierda con mucho aire.
 
 ---
 
