@@ -135,15 +135,19 @@ Borges → Veritas → Gabo → Moore → Narración → CapCut → Revisión �
 ---
 
 # Organización del Proyecto
-La organización estructurada del material vive en Windows (directorio raíz `Studio_CapCut`), no en la base de datos interna de CapCut.
+La organización estructurada del material vive en Windows (en la ruta raíz `C:\Users\Jota Ochoa\Studio_CapCut`), no en la base de datos interna de CapCut.
 
-### Carpeta Studio_CapCut
-* `Templates/`
-* `Projects/`
-* `Assets/`
-* `Music/`
-* `SFX/`
-* `Exports/`
+### Estructura Studio_CapCut
+* **Carpeta Raíz:** `C:\Users\Jota Ochoa\Studio_CapCut`
+* **Proyectos de Edición:** `C:\Users\Jota Ochoa\Studio_CapCut\Projects\HUMANOS`
+* **Estructura Interna:**
+  * `Templates/`
+  * `Projects/`
+  * `Assets/`
+  * `Music/`
+  * `SFX/`
+  * `Exports/`
+
 
 ---
 
