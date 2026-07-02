@@ -86,6 +86,12 @@ function loadEpisodePayload(episodePath) {
   const readText = (filePath) => (existsSync(filePath) ? readFileSync(filePath, "utf8") : "");
   const readJson = (filePath) => (existsSync(filePath) ? JSON.parse(readFileSync(filePath, "utf8")) : null);
 
+  const distDir = path.join(safePath, "11_DIST");
+  const readDistFile = (platform, filename) => {
+    const filePath = path.join(distDir, platform, filename);
+    return existsSync(filePath) ? readFileSync(filePath, "utf8") : "";
+  };
+
   return {
     protagonistName,
     episodePath: safePath,
@@ -110,6 +116,45 @@ function loadEpisodePayload(episodePath) {
       editingNotes: readText(path.join(storyboardDir, "editing_notes.md")),
       assetGaps: readJson(path.join(storyboardDir, "asset_gaps.json")),
       productionPackage: readJson(path.join(storyboardDir, "production_package.json")),
+    },
+    mark: {
+      checklist: readJson(path.join(distDir, "checklist_report.json")),
+      youtube: {
+        title: readDistFile("youtube", "title.txt"),
+        caption: readDistFile("youtube", "caption.md"),
+        hashtags: readDistFile("youtube", "hashtags.txt"),
+        pinnedComment: readDistFile("youtube", "pinned_comment.txt"),
+        keywords: readDistFile("youtube", "keywords.txt"),
+        thumbnailExists: existsSync(path.join(distDir, "youtube", "thumbnail.png")),
+        thumbnailPath: path.join(distDir, "youtube", "thumbnail.png").replace(/\\/g, "/")
+      },
+      instagram: {
+        caption: readDistFile("instagram", "caption.md"),
+        hashtags: readDistFile("instagram", "hashtags.txt"),
+        alt: readDistFile("instagram", "alt.txt"),
+        thumbnailExists: existsSync(path.join(distDir, "instagram", "thumbnail.png")),
+        thumbnailPath: path.join(distDir, "instagram", "thumbnail.png").replace(/\\/g, "/")
+      },
+      facebook: {
+        caption: readDistFile("facebook", "caption.md"),
+        cta: readDistFile("facebook", "cta.txt"),
+        thumbnailExists: existsSync(path.join(distDir, "facebook", "thumbnail.png")),
+        thumbnailPath: path.join(distDir, "facebook", "thumbnail.png").replace(/\\/g, "/")
+      },
+      linkedin: {
+        learningPost: readDistFile("linkedin", "learning_post.md"),
+      },
+      tiktok: {
+        caption: readDistFile("tiktok", "caption.md"),
+        hashtags: readDistFile("tiktok", "hashtags.txt"),
+        hook: readDistFile("tiktok", "hook.txt"),
+      },
+      x: {
+        thread: readDistFile("x", "thread.md"),
+      },
+      newsletter: {
+        post: readDistFile("newsletter", "newsletter_post.md"),
+      }
     },
     scriptsJson,
   };
@@ -318,6 +363,14 @@ const server = createServer(async (req, res) => {
     if (req.method === "GET" && url.pathname === "/api/stories") return void await handleStories(res);
     if (req.method === "GET" && url.pathname === "/api/review-episodes") return void await handleReviewEpisodes(res);
     if (req.method === "GET" && url.pathname === "/api/review-episode") return void await handleReviewEpisode(req, res, url);
+    if (req.method === "GET" && url.pathname === "/api/image") {
+      const imgPath = url.searchParams.get("path");
+      if (imgPath && existsSync(imgPath)) {
+        res.writeHead(200, { "Content-Type": "image/png" });
+        return void res.end(readFileSync(imgPath));
+      }
+      return sendJson(res, 404, { error: "Image not found" });
+    }
     if (req.method === "POST" && url.pathname === "/api/start") return void await handleStart(req, res);
     if (req.method === "POST" && url.pathname === "/api/create-and-start") return void await handleCreateAndStart(req, res);
     if (req.method === "POST" && url.pathname === "/api/produce") return void await handleProduce(req, res);

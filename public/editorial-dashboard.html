@@ -182,6 +182,10 @@
           <h3>Moore</h3>
           <pre id="packageMoore">—</pre>
         </div>
+        <div class="package-block package-wide">
+          <h3>Mark (Distribución / Buffer)</h3>
+          <div id="packageMark">—</div>
+        </div>
       </div>
     </section>
   </main>
@@ -242,6 +246,7 @@
     const packageVeritas = document.getElementById("packageVeritas");
     const packageGabo = document.getElementById("packageGabo");
     const packageMoore = document.getElementById("packageMoore");
+    const packageMark = document.getElementById("packageMark");
     const saveProduceButton = document.getElementById("saveProduceButton");
     const openSelectedButton = document.getElementById("openSelectedButton");
     const tabBacklog = document.getElementById("tabBacklog");
@@ -304,12 +309,13 @@
       reviewTitle.textContent = data.protagonistName;
       reviewScript.value = data.scriptShort || "";
       packageSummary.textContent = `${data.protagonistName} · ${data.status}`;
-      [packageVeritas, packageGabo, packageMoore].forEach((element) => {
+      [packageVeritas, packageGabo, packageMoore, packageMark].forEach((element) => {
         if (element) delete element.dataset.formatted;
       });
       packageVeritas.textContent = JSON.stringify(data.veritas || {}, null, 2);
       packageGabo.textContent = JSON.stringify(data.gabo || {}, null, 2);
       packageMoore.textContent = JSON.stringify(data.moore || {}, null, 2);
+      packageMark.textContent = JSON.stringify(data.mark || {}, null, 2);
       formatEditorialBlocks();
       renderReviewEpisodes();
     }
@@ -430,6 +436,30 @@
     font-size: 12px;
     color: #90e8ff;
     margin-bottom: 6px;
+  }
+  .checklist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  .checklist-item.checked {
+    color: var(--success);
+    border-color: rgba(142, 228, 175, 0.25);
+  }
+  .checklist-item.failed {
+    color: var(--danger);
+    border-color: rgba(255, 107, 107, 0.25);
   }
 </style>
 <script>
@@ -588,10 +618,108 @@
     `;
   }
 
+  function renderChecklist(checklist) {
+    if (!checklist) return "Sin datos de checklist pre-publicación.";
+    return `
+      <div class="checklist-grid">
+        ${Object.entries(checklist).map(([item, checked]) => `
+          <div class="checklist-item ${checked ? 'checked' : 'failed'}">
+            <span>${checked ? '✔' : '✖'}</span> ${item}
+          </div>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  function renderMark(value) {
+    const data = typeof value === "string" ? safeParseJson(value) : value;
+    if (!data) return value;
+    const root = data.mark || data;
+    
+    if (!root || (!root.youtube && !root.checklist)) {
+      return `<div class="empty">No se ha generado el paquete de distribución (/DIST) todavía. Ejecuta la producción del episodio.</div>`;
+    }
+
+    const checklistHtml = renderChecklist(root.checklist);
+
+    return `
+      <div class="json-free-card">
+        <h4>Checklist de Calidad Pre-Publicación</h4>
+        ${checklistHtml}
+      </div>
+
+      <div class="dist-platforms-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 16px; margin-top: 16px;">
+        <div class="json-free-card" style="margin-top: 0;">
+          <h4>YouTube Shorts</h4>
+          <div class="draft-item">
+            <strong>Título:</strong> ${root.youtube?.title || "—"}<br><br>
+            <strong>Descripción:</strong> ${String(root.youtube?.caption || "—").replace(/\n/g, "<br>")}<br><br>
+            <strong>Hashtags:</strong> <code>${root.youtube?.hashtags || "—"}</code><br><br>
+            <strong>Comentario fijado:</strong> ${root.youtube?.pinnedComment || "—"}<br><br>
+            <strong>Keywords SEO:</strong> ${root.youtube?.keywords || "—"}<br><br>
+            ${root.youtube?.thumbnailExists ? `<strong>Portada:</strong><br><img src="/api/image?path=${encodeURIComponent(root.youtube?.thumbnailPath)}" style="width: 120px; border-radius: 12px; margin-top: 8px; border: 1px solid var(--line);" />` : ""}
+          </div>
+        </div>
+
+        <div class="json-free-card" style="margin-top: 0;">
+          <h4>Instagram Reels</h4>
+          <div class="draft-item">
+            <strong>Caption:</strong> ${String(root.instagram?.caption || "—").replace(/\n/g, "<br>")}<br><br>
+            <strong>Hashtags:</strong> <code>${root.instagram?.hashtags || "—"}</code><br><br>
+            <strong>Texto ALT:</strong> ${root.instagram?.alt || "—"}<br><br>
+            ${root.instagram?.thumbnailExists ? `<strong>Portada:</strong><br><img src="/api/image?path=${encodeURIComponent(root.instagram?.thumbnailPath)}" style="width: 120px; border-radius: 12px; margin-top: 8px; border: 1px solid var(--line);" />` : ""}
+          </div>
+        </div>
+
+        <div class="json-free-card" style="margin-top: 0;">
+          <h4>TikTok</h4>
+          <div class="draft-item">
+            <strong>Hook Text (Pantalla):</strong> ${root.tiktok?.hook || "—"}<br><br>
+            <strong>Caption:</strong> ${String(root.tiktok?.caption || "—").replace(/\n/g, "<br>")}<br><br>
+            <strong>Hashtags:</strong> <code>${root.tiktok?.hashtags || "—"}</code>
+          </div>
+        </div>
+
+        <div class="json-free-card" style="margin-top: 0;">
+          <h4>Facebook Reels</h4>
+          <div class="draft-item">
+            <strong>Caption:</strong> ${String(root.facebook?.caption || "—").replace(/\n/g, "<br>")}<br><br>
+            <strong>Llamado a la Acción (CTA):</strong> ${root.facebook?.cta || "—"}<br><br>
+            <strong>Hashtags:</strong> <code>${root.facebook?.hashtags || "—"}</code><br><br>
+            ${root.facebook?.thumbnailExists ? `<strong>Portada:</strong><br><img src="/api/image?path=${encodeURIComponent(root.facebook?.thumbnailPath)}" style="width: 120px; border-radius: 12px; margin-top: 8px; border: 1px solid var(--line);" />` : ""}
+          </div>
+        </div>
+
+        <div class="json-free-card" style="grid-column: 1 / -1; margin-top: 0;">
+          <h4>LinkedIn (Aprendizaje)</h4>
+          <div class="draft-item" style="font-family: inherit; line-height: 1.6;">
+            ${String(root.linkedin?.learningPost || "—").replace(/\n/g, "<br>")}
+          </div>
+        </div>
+
+        <div class="json-free-card" style="grid-column: 1 / -1; margin-top: 0;">
+          <h4>X (Twitter Thread)</h4>
+          <div class="draft-item" style="font-family: inherit; line-height: 1.5;">
+            ${String(root.x?.thread || "—").replace(/\n/g, "<br>")}
+          </div>
+        </div>
+
+        <div class="json-free-card" style="grid-column: 1 / -1; margin-top: 0;">
+          <h4>Newsletter (Artículo largo)</h4>
+          <div class="draft-item" style="font-family: inherit; line-height: 1.6;">
+            ${String(root.newsletter?.post || "—").replace(/\n/g, "<br>")}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
   function formatEditorialBlocks() {
     const veritasEl = document.getElementById("packageVeritas");
     const gaboEl = document.getElementById("packageGabo");
     const mooreEl = document.getElementById("packageMoore");
+    const markEl = document.getElementById("packageMark");
+    
     if (veritasEl && !veritasEl.dataset.formatted) {
       const raw = veritasEl.textContent?.trim();
       const parsed = safeParseJson(raw);
@@ -616,12 +744,20 @@
         mooreEl.dataset.formatted = "1";
       }
     }
+    if (markEl && !markEl.dataset.formatted) {
+      const raw = markEl.textContent?.trim();
+      const parsed = safeParseJson(raw);
+      if (parsed) {
+        markEl.innerHTML = renderMark(parsed);
+        markEl.dataset.formatted = "1";
+      }
+    }
   }
 
   window.addEventListener("DOMContentLoaded", () => {
     formatEditorialBlocks();
     const observer = new MutationObserver(() => formatEditorialBlocks());
-    ["packageVeritas", "packageGabo", "packageMoore"].forEach((id) => {
+    ["packageVeritas", "packageGabo", "packageMoore", "packageMark"].forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el, { childList: true, subtree: true, characterData: true });
     });
