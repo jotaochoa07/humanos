@@ -134,6 +134,7 @@
     <div class="tabs">
       <button id="tabBacklog" class="tab active" type="button">Backlog</button>
       <button id="tabReview" class="tab" type="button">Guiones pendientes</button>
+      <button id="tabPublisher" class="tab" type="button">Publisher</button>
     </div>
 
     <section id="backlogView">
@@ -182,9 +183,30 @@
           <h3>Moore</h3>
           <pre id="packageMoore">—</pre>
         </div>
-        <div class="package-block package-wide">
-          <h3>Mark (Distribución / Buffer)</h3>
-          <div id="packageMark">—</div>
+      </div>
+    </section>
+
+    <section id="publisherView" class="hidden">
+      <div class="review-top">
+        <div>
+          <h2 class="review-title">Publicador de Episodios Finalizados (Publisher)</h2>
+          <div id="publisherHint" class="muted">Cargando episodios finalizados…</div>
+        </div>
+      </div>
+      <div class="review-layout">
+        <div id="publisherList" class="review-list"></div>
+        <div class="review-card" style="grid-column: span 1;">
+          <div class="eyebrow">Visualizador de Entrega / Buffer</div>
+          <h2 id="publisherTitle">Seleccioná un episodio</h2>
+          
+          <div id="publisherVideoContainer" style="margin-top: 16px; display: none; margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 8px;">Video Final Exportado</label>
+            <video id="publisherVideoPlayer" src="" controls style="width: 100%; border-radius: 18px; border: 1px solid var(--line); background: #000; max-height: 480px;"></video>
+          </div>
+
+          <div id="packageMark">
+            <div class="empty">Seleccioná un episodio de la lista para auditar sus copys e imágenes de redes.</div>
+          </div>
         </div>
       </div>
     </section>
@@ -223,7 +245,7 @@
 
   <script>
     const CATEGORIES = ["ENTREPRENEURS","DESIGNERS","ARTISTS","MAKERS","FOUNDERS","BUILDERS","INVENTORS","CREATORS","SCIENTISTS","EXPLORERS","ENGINEERS","VISIONARIES"];
-    const state = { stories: [], selected: null, reviewEpisodes: [], selectedReviewPath: null };
+    const state = { stories: [], selected: null, reviewEpisodes: [], selectedReviewPath: null, publisherEpisodes: [], selectedPublisherPath: null };
     const grid = document.getElementById("grid");
     const searchInput = document.getElementById("searchInput");
     const searchHint = document.getElementById("searchHint");
@@ -251,6 +273,13 @@
     const openSelectedButton = document.getElementById("openSelectedButton");
     const tabBacklog = document.getElementById("tabBacklog");
     const tabReview = document.getElementById("tabReview");
+    const tabPublisher = document.getElementById("tabPublisher");
+    const publisherView = document.getElementById("publisherView");
+    const publisherHint = document.getElementById("publisherHint");
+    const publisherList = document.getElementById("publisherList");
+    const publisherTitle = document.getElementById("publisherTitle");
+    const publisherVideoContainer = document.getElementById("publisherVideoContainer");
+    const publisherVideoPlayer = document.getElementById("publisherVideoPlayer");
     const toast = document.getElementById("toast");
     const sendState = { producing: false };
     domainCategory.innerHTML = CATEGORIES.map((category) => `<option value="${category}">${category}</option>`).join("");
@@ -339,8 +368,71 @@
         saveProduceButton.textContent = "Guardar y Producir";
       }
     }
-    function showBacklog() { backlogView.classList.remove("hidden"); reviewView.classList.add("hidden"); tabBacklog.classList.add("active"); tabReview.classList.remove("active"); }
-    function showReview() { reviewView.classList.remove("hidden"); backlogView.classList.add("hidden"); tabReview.classList.add("active"); tabBacklog.classList.remove("active"); if (!state.reviewEpisodes.length) loadReviewEpisodes(); }
+    function showBacklog() { backlogView.classList.remove("hidden"); reviewView.classList.add("hidden"); publisherView.classList.add("hidden"); tabBacklog.classList.add("active"); tabReview.classList.remove("active"); tabPublisher.classList.remove("active"); }
+    function showReview() { reviewView.classList.remove("hidden"); backlogView.classList.add("hidden"); publisherView.classList.add("hidden"); tabReview.classList.add("active"); tabBacklog.classList.remove("active"); tabPublisher.classList.remove("active"); if (!state.reviewEpisodes.length) loadReviewEpisodes(); }
+    function showPublisher() { publisherView.classList.remove("hidden"); backlogView.classList.add("hidden"); reviewView.classList.add("hidden"); tabPublisher.classList.add("active"); tabBacklog.classList.remove("active"); tabReview.classList.remove("active"); if (!state.publisherEpisodes.length) loadPublisherEpisodes(); }
+
+    async function loadPublisherEpisodes() {
+      publisherHint.textContent = "Cargando episodios finalizados…";
+      publisherList.innerHTML = "";
+      try {
+        const response = await fetch("/api/publisher-episodes");
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "No se pudieron leer los episodios finalizados");
+        state.publisherEpisodes = data.episodes || [];
+        publisherHint.textContent = `${state.publisherEpisodes.length} episodios listos en el Publisher.`;
+        renderPublisherEpisodes();
+        if (state.publisherEpisodes[0]) await openPublisherEpisode(state.publisherEpisodes[0].episodePath);
+      } catch (error) {
+        publisherHint.textContent = error.message;
+        publisherList.innerHTML = `<div class="empty">No pude leer los episodios finalizados.</div>`;
+      }
+    }
+
+    function renderPublisherEpisodes() {
+      if (!state.publisherEpisodes.length) {
+        publisherList.innerHTML = `<div class="empty">No hay episodios listos en el Publisher.</div>`;
+        return;
+      }
+      publisherList.innerHTML = state.publisherEpisodes.map((episode) => `
+        <button class="review-item ${state.selectedPublisherPath === episode.episodePath ? 'active' : ''}" type="button" data-path="${episode.episodePath}">
+          <strong>${episode.protagonistName}</strong>
+          <div class="muted">${episode.episodeDir} · ${episode.status}</div>
+        </button>
+      `).join("");
+      publisherList.querySelectorAll("button[data-path]").forEach((button) => {
+        button.addEventListener("click", () => openPublisherEpisode(button.dataset.path));
+      });
+    }
+
+    async function openPublisherEpisode(episodePath) {
+      state.selectedPublisherPath = episodePath;
+      renderPublisherEpisodes();
+      try {
+        const response = await fetch(`/api/review-episode?episodePath=${encodeURIComponent(episodePath)}`);
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "No se pudo cargar el episodio");
+
+        publisherTitle.textContent = data.protagonistName;
+        
+        if (data.mark?.finalVideoExists) {
+          publisherVideoPlayer.src = `/api/video?path=${encodeURIComponent(data.mark.finalVideoPath)}`;
+          publisherVideoContainer.style.display = "block";
+        } else {
+          publisherVideoPlayer.src = "";
+          publisherVideoContainer.style.display = "none";
+        }
+
+        const packageMarkEl = document.getElementById("packageMark");
+        if (packageMarkEl) {
+          delete packageMarkEl.dataset.formatted;
+          packageMarkEl.textContent = JSON.stringify(data.mark || {}, null, 2);
+        }
+        formatEditorialBlocks();
+      } catch (error) {
+        showToast(error.message, "error");
+      }
+    }
     storyForm.addEventListener("submit", async (event) => {
       event.preventDefault();
       const isCreating = state.selected === null;
@@ -352,11 +444,16 @@
     });
     searchInput.addEventListener("input", renderStories);
     document.getElementById("createManualButton").addEventListener("click", openCreateDrawer);
-    document.getElementById("refreshButton").addEventListener("click", () => { if (tabReview.classList.contains("active")) loadReviewEpisodes(); else loadStories(); });
+    document.getElementById("refreshButton").addEventListener("click", () => {
+      if (tabReview.classList.contains("active")) loadReviewEpisodes();
+      else if (tabPublisher.classList.contains("active")) loadPublisherEpisodes();
+      else loadStories();
+    });
     document.getElementById("closeButton").addEventListener("click", closeDrawer);
     drawerBackdrop.addEventListener("click", (event) => { if (event.target === drawerBackdrop) closeDrawer(); });
     tabBacklog.addEventListener("click", showBacklog);
     tabReview.addEventListener("click", showReview);
+    tabPublisher.addEventListener("click", showPublisher);
     openSelectedButton.addEventListener("click", async () => { if (state.selectedReviewPath) await openReviewEpisode(state.selectedReviewPath); });
     saveProduceButton.addEventListener("click", saveAndProduce);
     loadStories();

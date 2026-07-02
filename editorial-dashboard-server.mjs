@@ -37,7 +37,7 @@ function findEpisodeDirectories() {
     for (const episodeDir of readdirSync(protagonistRoot, { withFileTypes: true }).filter((d) => d.isDirectory() && d.name.startsWith("EP"))) {
       const episodePath = path.join(protagonistRoot, episodeDir.name);
       const state = readJsonIfExists(path.join(episodePath, "pipeline_state.json"));
-      if (!state) continue;
+      if (!state || state.status !== "script_pending_review") continue;
 
       const scriptsPath = path.join(episodePath, "02_SCRIPT", "scripts.json");
       const scriptPath = path.join(episodePath, "02_SCRIPT", "script_short.md");
@@ -52,6 +52,35 @@ function findEpisodeDirectories() {
         scriptLong: scriptsJson?.script_long || "",
         newsletter: scriptsJson?.newsletter || "",
         twitterThread: scriptsJson?.twitter_thread || "",
+        category: scriptsJson?.domain_category || "",
+      });
+    }
+  }
+
+  return episodes.sort((a, b) => a.protagonistName.localeCompare(b.protagonistName));
+}
+
+function findPublisherEpisodes() {
+  const personasRoot = getPersonajesRoot();
+  if (!existsSync(personasRoot)) return [];
+
+  const episodes = [];
+  for (const protagonistFolder of readdirSync(personasRoot, { withFileTypes: true }).filter((d) => d.isDirectory())) {
+    const protagonistRoot = path.join(personasRoot, protagonistFolder.name);
+    for (const episodeDir of readdirSync(protagonistRoot, { withFileTypes: true }).filter((d) => d.isDirectory() && d.name.startsWith("EP"))) {
+      const episodePath = path.join(protagonistRoot, episodeDir.name);
+      const distDir = path.join(episodePath, "11_DIST");
+      if (!existsSync(distDir)) continue;
+
+      const state = readJsonIfExists(path.join(episodePath, "pipeline_state.json"));
+      const scriptsPath = path.join(episodePath, "02_SCRIPT", "scripts.json");
+      const scriptsJson = readJsonIfExists(scriptsPath, {});
+
+      episodes.push({
+        protagonistName: protagonistFolder.name.replaceAll("_", " "),
+        episodeDir: episodeDir.name,
+        episodePath,
+        status: state?.status || "unknown",
         category: scriptsJson?.domain_category || "",
       });
     }
@@ -92,6 +121,16 @@ function loadEpisodePayload(episodePath) {
     return existsSync(filePath) ? readFileSync(filePath, "utf8") : "";
   };
 
+  const exportsDir = path.join(safePath, "10_EXPORTS");
+  let finalVideoPath = "";
+  if (existsSync(exportsDir)) {
+    const files = readdirSync(exportsDir);
+    const mp4File = files.find(f => f.endsWith(".mp4"));
+    if (mp4File) {
+      finalVideoPath = path.join(exportsDir, mp4File).replace(/\\/g, "/");
+    }
+  }
+
   return {
     protagonistName,
     episodePath: safePath,
@@ -118,6 +157,8 @@ function loadEpisodePayload(episodePath) {
       productionPackage: readJson(path.join(storyboardDir, "production_package.json")),
     },
     mark: {
+      finalVideoPath,
+      finalVideoExists: !!finalVideoPath,
       checklist: readJson(path.join(distDir, "checklist_report.json")),
       youtube: {
         title: readDistFile("youtube", "title.txt"),
@@ -362,6 +403,7 @@ const server = createServer(async (req, res) => {
     const url = new URL(req.url || "/", `http://localhost:${PORT}`);
     if (req.method === "GET" && url.pathname === "/api/stories") return void await handleStories(res);
     if (req.method === "GET" && url.pathname === "/api/review-episodes") return void await handleReviewEpisodes(res);
+    if (req.method === "GET" && url.pathname === "/api/publisher-episodes") return void sendJson(res, 200, { episodes: findPublisherEpisodes() });
     if (req.method === "GET" && url.pathname === "/api/review-episode") return void await handleReviewEpisode(req, res, url);
     if (req.method === "GET" && url.pathname === "/api/image") {
       const imgPath = url.searchParams.get("path");
@@ -370,6 +412,14 @@ const server = createServer(async (req, res) => {
         return void res.end(readFileSync(imgPath));
       }
       return sendJson(res, 404, { error: "Image not found" });
+    }
+    if (req.method === "GET" && url.pathname === "/api/video") {
+      const videoPath = url.searchParams.get("path");
+      if (videoPath && existsSync(videoPath)) {
+        res.writeHead(200, { "Content-Type": "video/mp4" });
+        return void res.end(readFileSync(videoPath));
+      }
+      return sendJson(res, 404, { error: "Video not found" });
     }
     if (req.method === "POST" && url.pathname === "/api/start") return void await handleStart(req, res);
     if (req.method === "POST" && url.pathname === "/api/create-and-start") return void await handleCreateAndStart(req, res);
