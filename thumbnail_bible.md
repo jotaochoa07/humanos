@@ -13,7 +13,8 @@
 ---
 
 ## 2. Composición y Encuadre
-* **La Regla del 70-80%:** El rostro del personaje principal debe ocupar entre el 60% y el 80% de la composición.
+* **La Regla del 60-75%:** El rostro del personaje principal debe ocupar estrictamente entre el **60% y el 75% del alto** de la imagen o miniatura.
+* **Presencia Obligatoria:** El nombre del personaje debe estar siempre presente en la miniatura o portada.
 * **La Mirada Manda:** Priorizar retratos donde el personaje mire directamente a la lente, con una expresión seria, determinada o introspectiva.
 * **Fondo Absoluto:** El fondo debe ser negro puro (`#090909`), fundido a negro o extremadamente desenfocado en sombras frías para aislar al personaje de cualquier distracción.
 
@@ -22,12 +23,12 @@
 ## 3. Tipografía y Jerarquía
 * **Título de Énfasis (Montserrat Bold):** Usado para la palabra o concepto clave (ej: `JAN KOUM`).
 * **Subtexto o Categoría (Inter SemiBold):** Usado para metadatos, cargos o conceptos contextuales pequeños (ej: `PRIVACIDAD` o `INMIGRANTE`).
-* **Regla de Texto:** Máximo **3 palabras** en miniaturas verticales (9:16) y hasta **5 palabras** en horizontales (16:9).
+* **Regla de Texto:** Máximo **3 palabras** en miniaturas o portadas. El texto solo debe despertar la curiosidad (Curiosity Gap), jamás explicar la historia. Deja que la fotografía potente haga el trabajo.
 
 ---
 
 ## 4. Sistema Cromático y Firmas
-* **Firma Cian (#01C9C7):** Se usa exclusivamente para destacar el nombre del personaje o una única palabra clave de curiosidad de alto impacto emocional.
+* **Firma Cian (#01C9C7):** Se usa exclusivamente para destacar el nombre del personaje o una única palabra clave de curiosidad de alto impacto emocional. Un único color de acento.
 * **Texto de Contraste:** Blanco (`#FFFFFF`).
 * **Restricción:** No se permite ningún otro color de acento (como amarillo, verde o rojo) para evitar desvirtuar la firma cromática de la marca.
 
@@ -47,10 +48,21 @@
 
 ---
 
-## 6. Checklist de Aprobación de Miniatura (Leonardo Quality Gate)
-* [ ] ¿El rostro ocupa entre el 60% y 80% del lienzo?
+## 6. Entregables Obligatorios por Episodio (Mandatory Deliverables)
+Para cada episodio producido en HUMANOS, el Director de Arte (Leonardo) debe generar o especificar exactamente dos piezas finales:
+1. **`[Nº de Episodio]_character_card.mp4`** (Asset de video animado de presentación del personaje).
+2. **`[Nº de Episodio]_thumbnail.png`** (Asset de imagen de la miniatura/portada).
+
+*Esta regla se aplica siempre, sin excepción.*
+
+---
+
+## 7. Checklist de Aprobación de Miniatura (Leonardo Quality Gate)
+* [ ] ¿El rostro ocupa entre el 60% y 75% del alto del lienzo?
+* [ ] ¿El nombre del personaje está presente?
 * [ ] ¿El fondo está libre de distracciones y es negro/desenfocado?
-* [ ] ¿El texto tiene un límite estricto de máximo 3 palabras (vertical) o 5 (horizontal)?
+* [ ] ¿El texto tiene un límite estricto de máximo 3 palabras?
 * [ ] ¿El cian (`#01C9C7`) se usa solo para resaltar una única palabra o el nombre?
 * [ ] ¿Se eliminaron emojis, flechas y elementos de clickbait comercial?
 * [ ] ¿Las tipografías son estrictamente Montserrat Bold e Inter SemiBold?
+
