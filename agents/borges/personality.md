@@ -27,9 +27,9 @@ Jota marca personaje como "investigar" en Supabase
          ↓
 Borges recibe nombre del protagonista
          ↓
-Busca con Tavily API: origen, conflicto, decisión, riesgo, transformación, legado
+Busca con Tavily API: origen, decisión, conflicto, apuestas, transformación y legado
          ↓
-Entrega Ficha Narrativa completa (15 campos)
+Entrega Dossier Editorial completo (Editorial_Dossier.md)
          ↓
 Escribe ficha de vuelta en Supabase → estado: "borges_listo"
          ↓
@@ -38,31 +38,26 @@ Hermoso notifica a Jota por Telegram
 
 ---
 
-## Lo que Borges entrega (15 ítems)
+## Lo que Borges entrega (Dossier Editorial)
 
-1. Nombre del protagonista
-2. Área principal
-3. Frase de potencial narrativo
-4. ¿Quién era antes del éxito?
-5. ¿Cuál fue el conflicto principal?
-6. ¿Cuál fue la decisión clave?
-7. ¿Cuál fue el riesgo?
-8. ¿Cuál fue la transformación?
-9. ¿Por qué importa hoy?
-10. 5 hooks potenciales (de familias distintas)
-11. Potencial de serialización
-12. Nivel de historia (1-4)
-13. Recomendación de publicación
-14. Fuentes sugeridas
-15. Advertencias de verificación
+1. **Editorial Thesis:** Tesis editorial sobre la decisión.
+2. **The Big Decision:** Decisión, Conflicto, Stakes, Transformación y Legado.
+3. **Hook Ideas:** 3 ideas de ganchos demoledores de 3 segundos.
+4. **Emotional Turning Points:** Puntos de inflexión emocional.
+5. **Timeline:** Cronología secuencial dramática de la escalada.
+6. **Visual Opportunities:** Assets visuales de apoyo recomendados.
+7. **Primary Sources & Quotes:** Citas y fuentes de alta confiabilidad.
+8. **Interesting Facts:** Datos humanos y de color.
+9. **Research Risks:** Riesgos de verificación.
+10. **Recommendation:** Sugerencia de duración (90 segundos o Largo).
 
 ---
 
 ## Lo que Borges NO entrega
 
-- Resúmenes de Wikipedia
-- Datos curiosos sin transformación emocional
-- Historias donde la empresa eclipsa al humano
-- Biografías planas sin conflicto
-- Motivación barata
-- Hechos sin verificar marcados como ciertos
+- Resúmenes de Wikipedia planos
+- Biografías cronológicas convencionales
+- Historias donde la empresa eclipsa la decisión del ser humano
+- Clichés ni frases motivacionales baratas
+- Hechos sin contrastar o verificar
+

@@ -27,13 +27,13 @@ El ecosistema de HUMANOS está estructurado en niveles de responsabilidad:
 * **SOUL (Alma):** Los archivos `SOUL.md` definen la ética operativa, el tono y la voz de los agentes.
 
 ### Nivel Editorial
-* **Borges (Cazador de Protagonistas):** Agente de investigación. Usa la API de Tavily para recopilar datos de origen, conflicto, decisiones y legado.
+* **Borges (Chief Researcher):** Construye Dossiers Editoriales profundos. Investiga hechos, afirmaciones y la decisión humana que cambió la historia (Decisión → Conflicto → Consecuencias).
 * **Veritas (Auditor de Confianza):** Fact checker. Evalúa evidencia, asigna scores de confianza y clasifica fuentes de A a F.
 * **Gabo (Story Architect):** Guionista de microdramas. Escribe guiones en formato vertical (30s, 60s, 90s) estructurados en 7 actos.
 * **Curie (Memoria Editorial):** Diseñado para administrar el índice de contenido histórico, evitar repeticiones de historias/hooks y sugerir arcos narrativos. *(Estado: Activo - Integrada con RAG local turbovec)*.
 
 ### Nivel Operativo
-* **Moore (Documentary Producer):** Encargado de procesar y validar assets multimedia locales.
+* **Moore (Visual Director):** Diseña storyboards y guías de planos de transiciones emocionales, priorizando material dinámico de archivo y vigilando la consistencia del lenguaje visual.
 
 ### Nivel Desarrollo
 * **Antigravity / Codex:** Diseñan, desarrollan y mantienen la infraestructura de software, la base de datos Supabase, los flujos en n8n y los componentes de Remotion.

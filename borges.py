@@ -10,7 +10,7 @@ class BorgesAgent:
     def execute_research(self, character_name: str, episode_focus: str, themes: list) -> tuple:
         """
         Ejecuta la investigación de Borges a través del LLM.
-        Devuelve (research_json_dict, timeline_json_dict, sources_markdown_str, asset_manifest_json_dict, logs_str).
+        Devuelve (research_json_dict, timeline_json_dict, sources_markdown_str, asset_manifest_json_dict, claims_json_dict, sources_json_dict, dossier_markdown_str, logs_str).
         """
         print(f"[Borges] Iniciando investigación profunda de: {character_name}...")
         
@@ -23,8 +23,10 @@ class BorgesAgent:
                 print(f"[Borges] Curie recuperó {len(local_docs)} fragmentos relevantes.")
 
         system_prompt = (
-            "Eres BORGES, el Research Director del proyecto HUMANOS. Tu objetivo es investigar hechos reales, "
-            "hitos históricos y cronologías validadas. Sé extremadamente conciso y breve en tus descripciones y campos de texto para mantener el JSON compacto. No alucines información. "
+            "Eres BORGES, el Chief Researcher del proyecto HUMANOS. Tu objetivo es investigar hechos reales, "
+            "hitos históricos y decisiones críticas para construir Dossiers Editoriales. "
+            "Tu enfoque es: Decisión -> Conflicto -> Consecuencias. Sé extremadamente conciso en tus descripciones "
+            "y campos de texto para mantener el JSON compacto. No alucines información. "
             "Prioriza fuentes reales e históricas. Debes responder estrictamente en formato JSON utilizando el esquema solicitado."
         )
         
@@ -227,13 +229,68 @@ class BorgesAgent:
         """
         sources_data = self.client.complete_json(sources_json_prompt, system_prompt)
 
+        # ----------------- EDITORIAL DOSSIER GENERATION -----------------
+        print(f"[Borges - Editorial Dossier Generator] Generando el Editorial Dossier (Editorial_Dossier.md)...")
+        
+        dossier_prompt = f"""
+        Actúa como BORGES, el Chief Researcher de HUMANOS. Tu misión es redactar el Editorial Dossier definitivo en formato Markdown para {character_name}.
+        Enfoque de investigación: {episode_focus}
+        
+        Usa los siguientes datos estructurados que has descubierto:
+        - Investigación Base: {json.dumps(research_data, ensure_ascii=False)}
+        - Cronología: {json.dumps(timeline_data, ensure_ascii=False)}
+        - Afirmaciones Clave: {json.dumps(claims_data, ensure_ascii=False)}
+        
+        Debes formatear la salida estrictamente en Markdown, con el siguiente contenido estructurado:
+        
+        # Editorial Dossier: {character_name}
+        
+        ## 1. Editorial Thesis
+        Una tesis editorial potente sobre el personaje y su decisión. ¿Por qué esta historia importa hoy? (Enfoque humano, no de negocios plano).
+        
+        ## 2. The Big Decision
+        - **La Decisión Clave:** Detalle del punto de no retorno.
+        - **El Conflicto Existencial:** El choque de fuerzas opuestas.
+        - **The Stakes (Riesgos y Pérdidas):** Qué estaba en juego y qué sacrificó.
+        - **La Transformación:** La metamorfosis del personaje y su entorno.
+        - **El Legado Histórico:** Por qué resuena hoy.
+        
+        ## 3. Hook Ideas
+        Propón exactamente 3 ideas de ganchos (hooks) de 3 segundos específicos para video vertical, enfocados en la paradoja o decisión.
+        
+        ## 4. Emotional Turning Points
+        Los picos y valles emocionales de la historia que guiarán la narración y edición.
+        
+        ## 5. Timeline
+        Una cronología dramática y simplificada enfocada en la escalada hacia la decisión y sus consecuencias directas (no eventos irrelevantes de su niñez o retiro).
+        
+        ## 6. Visual Opportunities
+        Lista de assets visuales concretos a buscar para hacer sentir el drama (entrevistas históricas, fotos de época, videos, mapas de conflicto, interfaces antiguas, recortes de prensa).
+        
+        ## 7. Primary Sources & Quotes
+        - Citas textuales verificadas que demuestren su obsesión o conflicto.
+        - Libros, documentales o bases de datos de alta credibilidad (Tier A/B).
+        
+        ## 8. Interesting Facts
+        Datos curiosos de color que aporten textura humana o paradoja a la historia.
+        
+        ## 9. Research Risks
+        Advertencias sobre datos inciertos, leyendas urbanas o puntos grises que Veritas debe auditar.
+        
+        ## 10. Recommendation
+        Elección de formato: "90 segundos" (Short) o "Long Documentary" con justificación editorial detallada.
+        
+        Escribe únicamente el contenido de Markdown limpio.
+        """
+        dossier_md = self.client.complete_text(dossier_prompt, system_prompt)
+
         logs = (
             f"Investigación finalizada para {character_name}. Se recuperaron {len(research_data.get('suggested_assets', []))} sugerencias de assets, "
             f"{len(timeline_data.get('timeline', []))} hitos cronológicos, y el motor de descubrimiento catalogó {len(asset_manifest.get('assets', []))} assets históricos reales. "
             f"Se extrajeron {len(claims_data.get('claims', []))} afirmaciones (claims) y {len(sources_data.get('sources', []))} fuentes estructuradas."
         )
-        print(f"[Borges] Investigación, afirmaciones y fuentes estructuradas completadas con éxito.")
+        print(f"[Borges] Investigación, afirmaciones, fuentes y Dossier Editorial completados con éxito.")
 
-        return research_data, timeline_data, sources_md, asset_manifest, claims_data, sources_data, logs
+        return research_data, timeline_data, sources_md, asset_manifest, claims_data, sources_data, dossier_md, logs
 
 

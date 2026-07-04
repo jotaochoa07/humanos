@@ -6,7 +6,7 @@ class MooreAgent:
     def __init__(self, client: OpenRouterClient):
         self.client = client
 
-    def execute_production(self, character_name: str, manifest_data: dict, registry_data: list, scripts_data: dict, approved_claims: dict) -> tuple:
+    def execute_production(self, character_name: str, manifest_data: dict, registry_data: list, scripts_data: dict, approved_claims: dict, dossier_markdown: str = "") -> tuple:
         """
         Ejecuta el diseño de producción de Moore cruzando con los assets reales.
         Devuelve (storyboard_json_dict, asset_gaps_json_dict, shotlist_md_str, editing_notes_md_str, production_package_json_dict, logs_str).
@@ -14,11 +14,22 @@ class MooreAgent:
         print(f"[Moore] Analizando escenas de Gabo y mapeando de forma estricta contra assets reales descargados...")
 
         system_prompt = (
-            "Eres MOORE, el Documentary Producer de HUMANOS. Tu prioridad es la fidelidad documental. "
-            "Asocias el guion con assets reales del manifiesto de Borges y marcas de forma honesta como gap todo "
-            "recurso que no exista físicamente en la carpeta o que no haya sido descargado en el asset_registry.json.\n"
-            "REGLA DE EVITAR RECHAZADOS: No debes incluir ni proponer tomas, referencias visuales, clips o assets relacionados con hechos marcados como REJECTED o UNVERIFIED en approved_claims."
+            "Eres MOORE, el Visual Director de HUMANOS. Tu prioridad es la fuerza cinematográfica y la fidelidad documental.\n"
+            "REGLAS VISUALES Y DE STORYBOARD:\n"
+            "1. NO construyas storyboards basados puramente en orden cronológico aburrido. Organízalos en torno a las transiciones emocionales: Conflicto -> Decisión -> Consecuencia.\n"
+            "2. PREGUNTA CLAVE: Para cada escena, ¿qué visual hace que esta decisión humana se sienta más grande?\n"
+            "3. PRIORIZACIÓN DE RECURSOS: Metraje en video, entrevistas, documentales de YouTube, mapas, recortes de periódicos e interfaces antiguas. Deja las imágenes fijas estáticas como último recurso (y aplícales Keyframe motions).\n"
+            "4. DURACIONES: La duración total estimada del voiceover debe ser entre 75-90 segundos (máximo 90s). Si se excede, marca una advertencia en la acción recomendada.\n"
+            "5. LENGUAJE VISUAL: CERO efectos CapCut chillonas o de distorsión. El movimiento se crea con Ken Burns (slow_zoom, pan_left, pan_right, pan_up, pan_down, reveal).\n"
+            "6. SUBTÍTULOS: Máximo dos líneas, un keyword resaltado.\n"
+            "7. TRANSICIONES: 80% Hard Cuts, 20% Short Dissolves. Nada de barridos chimbos.\n"
+            "8. REGLA DE EVITAR RECHAZADOS: No debes incluir ni proponer tomas o assets que respalden hechos catalogados como UNVERIFIED o REJECTED por Veritas.\n"
+            "9. ASSET GAPS: Si un recurso clave no está en asset_registry.json, márcalo honestamente como 'missing' o 'reference_only', asígnale un gap_id y descríbelo en 'asset_gaps'."
         )
+
+        dossier_context = ""
+        if dossier_markdown:
+            dossier_context = f"\n\n[DOSSIER EDITORIAL DE REFERENCIA (BORGES)]:\n{dossier_markdown}"
 
         prompt = f"""
         A partir de las escenas de Gabo:
@@ -32,6 +43,7 @@ class MooreAgent:
 
         Y los archivos que YA están descargados y confirmados físicamente en el registro (asset_registry.json):
         {json.dumps(registry_data, ensure_ascii=False, indent=2)}
+        {dossier_context}
 
         Genera un objeto JSON estructurado con los siguientes campos:
         {{
@@ -46,7 +58,7 @@ class MooreAgent:
               "fallback_asset_id": "asset_id alternativo del manifest de Borges (si aplica) o null",
               "fallback_strategy": "Explicación breve de qué hacer visualmente ante el gap",
               "effect": "slow_zoom | pan_left | pan_right | fade | cut | text_overlay",
-              "caption": "Subtítulo de apoyo en pantalla",
+              "caption": "Subtítulo de apoyo en pantalla (máximo 2 líneas, destaca una keyword)",
               "gap_id": "gap_001 o null" // Si asset_status es missing o reference_only, debes asignar un gap_id único
             }}
           ],
@@ -54,11 +66,11 @@ class MooreAgent:
             {{
               "gap_id": "gap_001",
               "scene": 1,
-              "missing_asset": "Descripción detallada del asset faltante",
+              "missing_asset": "Descripción detallada del asset faltante (privilegia clips de video históricos, fotos de época, recortes de prensa)",
               "criticality": "high | medium | low",
-              "reason": "Por qué se necesita este recurso visual históricamente",
-              "suggested_solution": "Cómo adquirirlo manualmente (ej: buscar en archivo histórico, prensa local)",
-              "manual_search_queries": ["búsqueda recomendada 1", "búsqueda recomendada 2"],
+              "reason": "Por qué se necesita este recurso visual históricamente para acentuar el Conflicto/Decisión",
+              "suggested_solution": "Cómo adquirirlo manualmente (ej: buscar en archivo histórico, prensa local, buscar entrevista de YouTube)",
+              "manual_search_queries": ["búsqueda recomendada en inglés 1", "búsqueda recomendada en inglés 2"],
               "ai_generation_allowed": false,
               "ai_generation_prompt": "Prompt de generación IA detallado sólo como último recurso si ai_generation_allowed es true"
             }}
@@ -68,14 +80,14 @@ class MooreAgent:
             "asset_count": 12,
             "missing_assets_count": 3,
             "estimated_edit_time_hours": 12.0,
-            "music_style": "Documental tension / piano minimalista",
-            "visual_style": "Color gradado cálido, textura de grano de película analógica",
+            "music_style": "Documental tension / piano minimalista / sonido de época",
+            "visual_style": "Cinematográfico, color gradado cálido con grano de película analógica, fondos oscuros de alta tensión",
             "required_images": ["Lista de imágenes fijas necesarias (retratos reales, fotos de época)"],
-            "required_videos": ["Lista de clips de video históricos o metraje de archivo necesario"],
+            "required_videos": ["Lista de clips de video históricos o metraje de archivo necesario de YouTube / Pexels"],
             "required_motion_graphics": ["Lista de motion graphics y gráficos animados necesarios"],
             "required_maps": ["Lista de mapas geográficos o animaciones de mapas necesarias"],
             "required_historical_screenshots": ["Lista de capturas históricas de interfaces, software o prensa necesaria"],
-            "required_ai_recreations": ["Lista de prompts o ideas para recrear pasajes visualmente con IA"],
+            "required_ai_recreations": ["Lista de prompts o ideas para recrear pasajes visualmente con IA si no hay otra opción"],
             "recommended_next_action": "Búsqueda manual de retratos del taller en 1948."
           }}
         }}

@@ -38,7 +38,7 @@ def run_mvp(character_name: str, episode_focus: str, themes: list, episode_num: 
         # 3. Borges: Investigación y clasificación
         hermoso.update_status_local(ep_path, "research_in_progress")
         borges = BorgesAgent(client)
-        research_json, timeline_json, sources_md, asset_manifest, claims_json, sources_json, borges_logs = borges.execute_research(
+        research_json, timeline_json, sources_md, asset_manifest, claims_json, sources_json, dossier_md, borges_logs = borges.execute_research(
             character_name, episode_focus, themes
         )
         
@@ -51,6 +51,7 @@ def run_mvp(character_name: str, episode_focus: str, themes: list, episode_num: 
         hermoso.write_json(os.path.join(ep_path, "01_RESEARCH", "research.json"), research_json)
         hermoso.write_json(os.path.join(ep_path, "01_RESEARCH", "timeline.json"), timeline_json)
         hermoso.write_markdown(os.path.join(ep_path, "01_RESEARCH", "sources.md"), sources_md)
+        hermoso.write_markdown(os.path.join(ep_path, "01_RESEARCH", "Editorial_Dossier.md"), dossier_md)
         hermoso.write_json(os.path.join(ep_path, "01_RESEARCH", "asset_manifest.json"), asset_manifest)
         hermoso.write_json(os.path.join(ep_path, "01_RESEARCH", "claims.json"), claims_json)
         hermoso.write_json(os.path.join(ep_path, "01_RESEARCH", "sources.json"), sources_json)
@@ -112,6 +113,7 @@ def run_mvp(character_name: str, episode_focus: str, themes: list, episode_num: 
         approved_claims_file = os.path.join(ep_path, "01_RESEARCH", "approved_claims.json")
         scripts_file = os.path.join(ep_path, "02_SCRIPT", "scripts.json")
         manifest_file = os.path.join(ep_path, "01_RESEARCH", "asset_manifest.json")
+        dossier_file = os.path.join(ep_path, "01_RESEARCH", "Editorial_Dossier.md")
         
         if not (os.path.exists(research_file) and os.path.exists(approved_claims_file) and os.path.exists(scripts_file)):
             print(f"[ERROR] No se encontraron archivos de la etapa previa. Ejecuta primero `--stage write`.")
@@ -125,6 +127,14 @@ def run_mvp(character_name: str, episode_focus: str, themes: list, episode_num: 
             scripts_json = json.load(f)
         with open(manifest_file, "r", encoding="utf-8") as f:
             asset_manifest = json.load(f)
+
+        dossier_md = ""
+        if os.path.exists(dossier_file):
+            with open(dossier_file, "r", encoding="utf-8") as f:
+                dossier_md = f.read()
+        elif 'dossier_md' in locals():
+            # dossier_md ya está en el scope si se ejecutó 'write' en esta misma corrida
+            pass
 
         # 4.5 Veritas: Quality Gate Final del Guion Editado
         veritas = VeritasAgent(client)
@@ -156,7 +166,7 @@ def run_mvp(character_name: str, episode_focus: str, themes: list, episode_num: 
         print("[Moore] Iniciando cruce de assets y diseño de producción...")
         moore = MooreAgent(client)
         storyboard_json, asset_gaps_json, shotlist_md, editing_notes_md, production_package_json, asset_shotlist_md, moore_logs = moore.execute_production(
-            character_name, asset_manifest, registry_data, scripts_json, approved_claims_json
+            character_name, asset_manifest, registry_data, scripts_json, approved_claims_json, dossier_markdown=dossier_md
         )
 
         # Persistir outputs de Moore en 03_STORYBOARD

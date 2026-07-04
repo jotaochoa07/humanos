@@ -1,38 +1,38 @@
 {
   "timeline": [
     {
-      "date": "Desconocido (antes de 1992)",
-      "event": "Nacimiento en Fastiv, Ucrania en una casa sin servicios básicos.",
+      "date": "1976",
+      "event": "Nacimiento de Jan Koum en Fastiv, Ucrania.",
       "importance": "Bajo",
-      "source_url": "https://www.biographies.com",
+      "source_url": "https://www.forbes.com/profile/jan-koum/",
       "confidence": 9
     },
     {
-      "date": "1992",
-      "event": "Emigró a los Estados Unidos (Mountain View, California) a los 16 años.",
+      "date": "c. 1992",
+      "event": "Emigración de Jan Koum a Estados Unidos (Mountain View, California) a los 16 años con su madre y abuela.",
       "importance": "Alto",
-      "source_url": "https://www.wired.com",
-      "confidence": 10
+      "source_url": "https://www.wired.com/story/jan-koum-whatsapp-ukraine-russia-war/",
+      "confidence": 9
     },
     {
-      "date": "Desconocido (juventud)",
-      "event": "Trabajó como barrendero en un supermercado mientras su madre trabajaba de niñera.",
-      "importance": "Bajo",
-      "source_url": "https://www.wired.com",
-      "confidence": 9
+      "date": "c. 1992-1997",
+      "event": "Trabajó como barrendero en un supermercado mientras su madre hacía trabajos de niñera para subsistir.",
+      "importance": "Medio",
+      "source_url": "https://www.wired.com/story/jan-koum-whatsapp-ukraine-russia-war/",
+      "confidence": 8
     },
     {
       "date": "2009",
-      "event": "Fundó WhatsApp, enfocándose en la privacidad y ausencia de publicidad.",
+      "event": "Fundación de WhatsApp, enfocada en privacidad y sin publicidad.",
       "importance": "Alto",
-      "source_url": "https://www.whatsapp.com/about",
-      "confidence": 10
+      "source_url": "https://www.wired.com/story/jan-koum-whatsapp-ukraine-russia-war/",
+      "confidence": 9
     },
     {
-      "date": "2014",
-      "event": "Facebook adquirió WhatsApp por $19 mil millones de dólares.",
+      "date": "Febrero 2014",
+      "event": "Adquisición de WhatsApp por Facebook por 19 mil millones de dólares.",
       "importance": "Alto",
-      "source_url": "https://www.forbes.com/sites/kellyphillipser/2014/02/19/facebook-to-acquire-whatsapp-for-19-billion/",
+      "source_url": "https://www.forbes.com/billionaires/list/2/#version2",
       "confidence": 10
     }
   ]

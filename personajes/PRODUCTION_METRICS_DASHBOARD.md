@@ -1,11 +1,11 @@
-# HUMANOS - Dashboard Conceptual de Aprendizaje
-Última actualización: 2026-07-02 10:01:21
+# HUMANOS - Dashboard de Rendimiento Editorial
+Última actualización: 2026-07-04 08:12:05
 
-## Resumen del Canal
+## Resumen de Rendimiento
 - **Total de Episodios Medidos:** 3
-- **Formato Ganador Actual:** Short Format (<=90s)
+- **Formato Ganador:** Short Format (<=90s)
 
-## 1. Ganchos (Hooks) con Mayor Retención a los 3s
+## 1. Ganchos con Mayor Retención (3s Hook Rate)
 1. **Ehud Shabtai** (69.0% Retención)
    > "En los 2000, los mapas eran caros, anticuados. Un puñado de empresas tenía el control. Ehud Shabtai, en Israel, lo sabía"
 2. **Adidas vs Puma** (68.0% Retención)
@@ -34,7 +34,7 @@ Antes de conectar a miles d"
 - **Rivalidad:** 52.0%
 - **Deporte:** 52.0%
 
-## 3. Recomendaciones de Optimización de Mark
+## 3. Lecciones y Recomendaciones de Mark
 - 💡 Priorizar temas sobre 'pobreza' (retención promedio del 56.0%).
 - 💡 El gancho de Ehud Shabtai tuvo la mayor retención a los 3s (69.0%). Replicar su estructura de contraste directo.
 - 💡 El formato con mejor retención promedio actualmente es Short Format (<=90s).

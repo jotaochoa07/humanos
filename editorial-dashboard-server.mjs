@@ -136,6 +136,7 @@ function loadEpisodePayload(episodePath) {
     episodePath: safePath,
     status: state?.status || "unknown",
     scriptShort,
+    dossier: readText(path.join(researchDir, "Editorial_Dossier.md")),
     veritas: {
       factCheck: readJson(path.join(researchDir, "fact_check.json")),
       approvedClaims: readJson(path.join(researchDir, "approved_claims.json")),
@@ -152,6 +153,7 @@ function loadEpisodePayload(episodePath) {
     moore: {
       storyboard: readJson(path.join(storyboardDir, "storyboard.json")),
       shotlist: readText(path.join(storyboardDir, "shotlist.md")),
+      assetShotlist: readText(path.join(storyboardDir, "asset_shotlist.md")),
       editingNotes: readText(path.join(storyboardDir, "editing_notes.md")),
       assetGaps: readJson(path.join(storyboardDir, "asset_gaps.json")),
       productionPackage: readJson(path.join(storyboardDir, "production_package.json")),

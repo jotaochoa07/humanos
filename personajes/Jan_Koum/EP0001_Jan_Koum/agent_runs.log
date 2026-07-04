@@ -87,3 +87,15 @@ Fact check completado por Veritas para Jan Koum. Score de confianza global: 94. 
 Logs:
 Auditoría de guion manual completada por Veritas para Jan Koum. Precisión: 98%. Estado: APPROVED.
 --------------------------------------------------
+[2026-07-04 08:11:38] Agent: Borges | Status: success
+Logs:
+Investigación finalizada para Jan Koum. Se recuperaron 5 sugerencias de assets, 5 hitos cronológicos, y el motor de descubrimiento catalogó 8 assets históricos reales. Se extrajeron 6 afirmaciones (claims) y 6 fuentes estructuradas.
+--------------------------------------------------
+[2026-07-04 08:11:50] Agent: Veritas | Status: success
+Logs:
+Fact check completado por Veritas para Jan Koum. Score de confianza global: 85. Status: APPROVED. Resumen de Claims: 5 verified, 1 partial, 0 unverified, 0 rejected.
+--------------------------------------------------
+[2026-07-04 08:12:05] Agent: Gabo | Status: success
+Logs:
+Narrativa multiformato creada bajo reglas de duración estrictas de HUMANOS. Se definieron 7 escenas secuenciales para el guion vertical.
+--------------------------------------------------

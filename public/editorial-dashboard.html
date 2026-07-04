@@ -171,6 +171,10 @@
           <h3>Paquete editorial completo</h3>
           <pre id="packageSummary">Abrí un episodio para ver Veritas, Gabo y Moore.</pre>
         </div>
+        <div class="package-block package-wide">
+          <h3>Dossier Editorial (Borges)</h3>
+          <div id="packageDossier" class="draft-item" style="font-family: inherit; line-height: 1.6; white-space: pre-wrap; margin-top: 0; background: none; border: none; padding: 0;">—</div>
+        </div>
         <div class="package-block">
           <h3>Veritas</h3>
           <pre id="packageVeritas">—</pre>
@@ -341,6 +345,10 @@
       [packageVeritas, packageGabo, packageMoore, packageMark].forEach((element) => {
         if (element) delete element.dataset.formatted;
       });
+      const packageDossier = document.getElementById("packageDossier");
+      if (packageDossier) {
+        packageDossier.innerHTML = data.dossier ? data.dossier.replace(/\n/g, "<br>") : "Sin dossier editorial generado.";
+      }
       packageVeritas.textContent = JSON.stringify(data.veritas || {}, null, 2);
       packageGabo.textContent = JSON.stringify(data.gabo || {}, null, 2);
       packageMoore.textContent = JSON.stringify(data.moore || {}, null, 2);
@@ -656,13 +664,14 @@
   function renderMoore(value) {
     const data = typeof value === "string" ? safeParseJson(value) : value;
     if (!data) return value;
-    const root = data.moore || data.storyboard || data.productionPackage || data;
-    const storyboard = Array.isArray(root.storyboard) ? root.storyboard : (Array.isArray(root.scenes) ? root.scenes : []);
-    const shotlist = Array.isArray(root.shotlist) ? root.shotlist : (Array.isArray(root.shots) ? root.shots : []);
+    const root = data.moore || data;
+    const storyboard = Array.isArray(root.storyboard) ? root.storyboard : [];
+    const shotlist = root.shotlist || "";
+    const assetShotlist = root.assetShotlist || "";
     const assetGaps = Array.isArray(root.assetGaps) ? root.assetGaps : [];
     const editingNotes = root.editingNotes || root.notes || "";
 
-    const hasContent = storyboard.length || shotlist.length || assetGaps.length || editingNotes;
+    const hasContent = storyboard.length || shotlist || assetShotlist || assetGaps.length || editingNotes;
     if (!hasContent) {
       return `
         <div class="json-free-card">
@@ -674,41 +683,51 @@
 
     return `
       <div class="json-free-card">
-        <h4>Moore</h4>
+        <h4>Moore (Visual Director)</h4>
         ${storyboard.length ? `
           <div class="draft-block">
-            <div class="draft-label">Storyboard</div>
+            <div class="draft-label">Storyboard (Emotional Transitions)</div>
             ${storyboard.map((scene, index) => `
               <div class="draft-item">
-                <strong>Scene ${scene.scene || index + 1}</strong><br>
-                ${String(scene.description || scene.text || scene.body || "").replace(/\n/g, "<br>")}
+                <strong>Escena ${scene.scene || index + 1}</strong> (${scene.duration || 5}s) · <em>${scene.effect || 'cut'}</em><br>
+                <strong>Locución:</strong> ${scene.voiceover || '—'}<br>
+                <strong>Visual/Asset:</strong> ${scene.selected_asset || '—'} [${scene.asset_status || 'missing'}]<br>
+                ${scene.fallback_strategy ? `<strong>Fallback:</strong> ${scene.fallback_strategy}<br>` : ''}
+                <strong>Subtítulo:</strong> "${scene.caption || '—'}"
               </div>
             `).join("")}
           </div>
         ` : ""}
-        ${shotlist.length ? `
+        ${shotlist ? `
           <div class="draft-block">
             <div class="draft-label">Shot List</div>
-            ${shotlist.map((shot, index) => `
-              <div class="draft-item">
-                <strong>${shot.type || shot.label || `Shot ${index + 1}`}</strong><br>
-                ${String(shot.description || shot.text || shot.body || "").replace(/\n/g, "<br>")}
-              </div>
-            `).join("")}
+            <div class="draft-item" style="font-family: inherit; line-height: 1.6; white-space: pre-wrap;">${String(shotlist).replace(/\n/g, "<br>")}</div>
+          </div>
+        ` : ""}
+        ${assetShotlist ? `
+          <div class="draft-block">
+            <div class="draft-label">Asset Shot List (Technical Guide)</div>
+            <div class="draft-item" style="font-family: inherit; line-height: 1.6; white-space: pre-wrap;">${String(assetShotlist).replace(/\n/g, "<br>")}</div>
           </div>
         ` : ""}
         ${assetGaps.length ? `
           <div class="draft-block">
             <div class="draft-label">Asset Gaps</div>
             ${assetGaps.map((gap) => `
-              <div class="draft-item">${String(gap).replace(/\n/g, "<br>")}</div>
+              <div class="draft-item">
+                <strong>${gap.gap_id || 'GAP'}: ${gap.missing_asset || 'Asset faltante'}</strong> (Escena ${gap.scene || '—'})<br>
+                <strong>Prioridad:</strong> ${gap.criticality || '—'}<br>
+                <strong>Razón:</strong> ${gap.reason || '—'}<br>
+                <strong>Solución sugerida:</strong> ${gap.suggested_solution || '—'}<br>
+                <strong>Búsquedas sugeridas:</strong> <code>${(gap.manual_search_queries || []).join(", ") || '—'}</code>
+              </div>
             `).join("")}
           </div>
         ` : ""}
         ${editingNotes ? `
           <div class="draft-block">
             <div class="draft-label">Editing Notes</div>
-            <div class="draft-item">${String(editingNotes).replace(/\n/g, "<br>")}</div>
+            <div class="draft-item" style="font-family: inherit; line-height: 1.6; white-space: pre-wrap;">${String(editingNotes).replace(/\n/g, "<br>")}</div>
           </div>
         ` : ""}
       </div>

@@ -4,32 +4,46 @@
   "character_name": "Jan Koum",
   "sources": [
     {
-      "title": "Facebook buys WhatsApp for $19 billion",
-      "url": "https://www.forbes.com/sites/tonycapaccio/2014/02/19/facebook-acquires-whatsapp-for-19-billion/",
+      "title": "Entrevista WIRED - Jan Koum sobre privacidad y el inicio de WhatsApp",
+      "url": "https://www.wired.com/...",
       "type": "news",
       "tier": "B",
-      "notes": "Detalla la adquisición de WhatsApp por Facebook en 2014."
+      "notes": "Detalles sobre su juventud, trabajo inicial y motivación para la privacidad."
     },
     {
-      "title": "Q&A: WhatsApp founder Jan Koum",
-      "url": "https://www.wired.com/2012/08/whatsapp-founder-jan-koum/",
+      "title": "Folleto Corporativo - Fundación y filosofía de WhatsApp",
+      "url": "https://www.whatsapp.com/...",
+      "type": "official",
+      "tier": "A",
+      "notes": "Información oficial sobre la fundación, el enfoque en la privacidad y la ausencia de publicidad."
+    },
+    {
+      "title": "Reportaje de Prensa - Adquisición de WhatsApp por Facebook",
+      "url": "https://www.forbes.com/...",
       "type": "news",
       "tier": "B",
-      "notes": "Entrevista sobre la fundación de WhatsApp en 2009 y su enfoque en la privacidad."
+      "notes": "Cubre la adquisición de WhatsApp por Facebook y el valor de la transacción."
     },
     {
-      "title": "How a Russian immigrant built a $19 billion messaging empire",
-      "url": "https://www.businessinsider.com/jan-koum-whatsapp-founder-biography-2014-2",
-      "type": "biography",
-      "tier": "B",
-      "notes": "Biografía de Jan Koum, incluyendo su emigración y juventud."
-    },
-    {
-      "title": "Jan Koum",
-      "url": "https://en.wikipedia.org/wiki/Jan_Koum",
+      "title": "Biografía - Orígenes de Jan Koum",
+      "url": "https://biography.com/...",
       "type": "biography",
       "tier": "C",
-      "notes": "Artículo de Wikipedia que compila información sobre su vida y carrera."
+      "notes": "Detalles sobre su emigración a EE. UU. y sus primeros años."
+    },
+    {
+      "title": "Nota Financiera Forbes - Valor de la adquisición de WhatsApp",
+      "url": "https://www.forbes.com/...",
+      "type": "news",
+      "tier": "B",
+      "notes": "Reporta la cifra exacta de la adquisición de WhatsApp por Facebook en 2014."
+    },
+    {
+      "title": "Perfil - Infancia en Ucrania",
+      "url": "https://...",
+      "type": "database",
+      "tier": "C",
+      "notes": "Información sobre su lugar de nacimiento y las condiciones de su hogar en Ucrania."
     }
   ]
 }

@@ -28,14 +28,14 @@ El ecosistema de HUMANOS está estructurado en niveles de responsabilidad:
 * **SOUL (Alma):** Los archivos `SOUL.md` definen la ética operativa, el tono y la voz de los agentes.
 
 ### Nivel Editorial
-* **Borges (Cazador de Protagonistas):** Agente de investigación. Usa la API de Tavily para recopilar datos de origen, conflicto, decisiones y legado.
+* **Borges (Chief Researcher):** Construye Dossiers Editoriales profundos. Investiga hechos, afirmaciones y la decisión humana que cambió la historia (Decisión → Conflicto → Consecuencias).
 * **Veritas (Auditor de Confianza):** Fact checker. Evalúa evidencia, asigna scores de confianza y clasifica fuentes de A a F.
 * **Gabo (Story Architect):** Guionista de microdramas. Escribe guiones en formato vertical (V1 Short de 150-180 palabras, o guiones extendidos V2 Documental de 800-1200 palabras) estructurados en actos narrativos, enfocándose en la viabilidad de apoyos visuales para cada frase.
 * **Curie (Memoria Editorial):** Diseñado para administrar el índice de contenido histórico, evitar repeticiones de historias/hooks y sugerir arcos narrativos. *(Estado: Activo - Integrada con RAG local turbovec)*.
 * **Leonardo (Director de Arte y Postproducción):** Guardián visual estratégico del ecosistema. Diseña miniaturas (Thumbnails) y banners, define la identidad visual del canal, mantiene la consistencia estética, crea motion assets y overlays, organiza la biblioteca visual física y mantiene actualizadas la Production Bible y la Thumbnail Bible.
 
 ### Nivel Operativo
-* **Moore (Documentary Producer):** Encargado de procesar y validar assets multimedia locales. Genera el Beat Sheet para cada episodio y trabaja en sincronía con Gabo y Leonardo, asegurando la correspondencia visual del guion mediante la pregunta: *¿Con qué imagen voy a contar esto?*
+* **Moore (Visual Director):** Diseña storyboards y guías de planos de transiciones emocionales, priorizando material dinámico de archivo y vigilando la consistencia del lenguaje visual. Trabaja en sincronía con Gabo y Leonardo, asegurando la correspondencia visual del guion mediante la pregunta: *¿Qué visual hace que esta decisión se sienta más grande?*
 * **Mark (Chief Distribution Officer - CDO):** Editor de distribución y analista de rendimiento. Su misión es maximizar el alcance de cada historia en todas las plataformas (YouTube, Instagram, Facebook, LinkedIn, X, TikTok y Newsletter) manteniendo la consistencia de marca. Valida la checklist de calidad pre-publicación, genera el paquete estructurado de copys y assets `/DIST`, y tras 72 horas de publicado un episodio, compila un informe post-mortem con lecciones aprendidas y recomendaciones para el próximo ciclo.
 
 ### Nivel Desarrollo

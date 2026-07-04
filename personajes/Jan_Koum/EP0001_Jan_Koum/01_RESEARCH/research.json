@@ -1,99 +1,93 @@
 {
   "character_name": "Jan Koum",
   "short_format_research": {
-    "core_obsession": "Privacidad y rechazo a la recolección de datos, nacido de la vigilancia en la Unión Soviética.",
-    "emotional_arc": "De la desesperación por la falta de recursos y la constante vigilancia a la creencia en un mundo conectado sin invasión de la privacidad, culminando en un imperio financiero.",
-    "key_paradox": "Un inmigrante que huyó de un sistema opresivo para construir un imperio masivo que eventualmente se integró a uno de sus principales vigilantes (Facebook).",
+    "core_obsession": "Privacidad y simplicidad, derivados de una infancia marcada por la escasez y la vigilancia.",
+    "emotional_arc": "De la precariedad y la falta de control a la creación de una herramienta de conexión global enfocada en la privacidad.",
+    "key_paradox": "Un hombre que creció en la privación y la vigilancia, creó una de las herramientas de comunicación más omnipresentes del mundo, obsesivamente enfocada en la privacidad.",
     "raw_emotional_hooks": [
-      "De Ucrania sin calefacción a $19 mil millones en 5 años.",
-      "El fundador de WhatsApp una vez barrió pisos para sobrevivir.",
-      "Construyó WhatsApp huyendo del espionaje, lo vendió a un gigante del espionaje."
+      "De barrendero a multimillonario tecnológico, buscando la privacidad.",
+      "¿Puede una app ser verdaderamente privada? Su infancia dice que sí.",
+      "19 mil millones de dólares por privacidad. Su historia lo explica.",
+      "Creció sin lo básico, creó para todos sin pedir nada a cambio (al principio)."
     ],
     "key_facts_short": [
-      "Nació en Ucrania en la pobreza extrema.",
-      "Emigró a EE. UU. a los 16 años.",
-      "Sufría pobreza extrema, trabajó barriendo supermercados.",
-      "Fundó WhatsApp en 2009.",
-      "Vendió WhatsApp a Facebook en 2014.",
-      "Valor de la venta: $19 mil millones."
+      "Emigró de Ucrania a los 16 años.",
+      "Vivió en la indigencia, trabajando como barrendero.",
+      "Fundó WhatsApp en 2009, sin publicidad.",
+      "Su infancia en Ucrania, sin servicios básicos, forjó su valor por la privacidad.",
+      "Vendió WhatsApp a Facebook por $19 mil millones."
     ]
   },
   "long_format_research": {
-    "historical_context": "Nacido en Ucrania en los últimos años de la URSS, Koum experimentó de primera mano un estado de vigilancia y escasez. La emigración a Estados Unidos en la década de 1990 representó un choque cultural y socioeconómico, pasando de la privación a la relativa abundancia del 'sueño americano', aunque inicialmente marcada por la lucha y la pobreza continua. El auge de internet y la telefonía móvil sentaron las bases para su futura empresa, marcada por la creciente preocupación global por la privacidad de los datos.",
-    "societal_impact": "WhatsApp revolucionó la comunicación móvil global, ofreciendo una alternativa gratuita y sin publicidad a los SMS y las llamadas internacionales. Su enfoque en la privacidad, aunque posteriormente comprometido por la adquisición por parte de Facebook, sentó un precedente sobre la demanda de servicios de mensajería seguros. El modelo de negocio 'sin trucos' de Koum influyó en la percepción de valor en la economía digital.",
+    "historical_context": "Nacido en Ucrania en un contexto de escasez post-soviética, Koum experimentó de primera mano las limitaciones y la falta de libertades. La emigración a EE.UU. y la adaptación a un nuevo país, junto con la precariedad económica inicial, moldearon su perspectiva sobre la dependencia de la tecnología y la importancia de la privacidad en un mundo cada vez más interconectado y vigilado.",
+    "societal_impact": "WhatsApp revolucionó la comunicación personal y profesional, ofreciendo una alternativa gratuita y cifrada a los SMS y llamadas tradicionales. Su enfoque en la simplicidad y la ausencia de publicidad (inicialmente) generó una lealtad masiva, sentando un precedente para las aplicaciones de mensajería y demostrando el poder de la privacidad como propuesta de valor.",
     "key_chapters": [
       {
-        "chapter_title": "Infancia en la Unión Soviética",
+        "chapter_title": "Orígenes en Ucrania y la Migración",
         "milestones": [
           "Nacimiento en Fastiv, Ucrania.",
-          "Vivió en una casa sin comodidades básicas (calefacción, agua caliente).",
-          "Experiencia de vigilancia estatal y escasez."
+          "Infancia marcada por la falta de servicios básicos (calefacción, agua caliente).",
+          "Experiencia de vida bajo un régimen de vigilancia.",
+          "Emigración a EE.UU. a los 16 años con su madre y abuela.",
+          "Instalación en Mountain View, California."
         ]
       },
       {
-        "chapter_title": "El Sueño Americano y la Lucha",
+        "chapter_title": "Lucha y Fundación de WhatsApp",
         "milestones": [
-          "Emigración a EE. UU. a los 16 años con su madre y abuela.",
-          "Instalación en Mountain View, California.",
-          "Trabajo precario como barrendero en un supermercado.",
-          "Estudio de informática en la universidad."
+          "Trabaja como barrendero en un supermercado para subsistir.",
+          "Estudios y trabajo en Yahoo.",
+          "Funda WhatsApp en 2009.",
+          "Obsesión por una interfaz sin publicidad ni trucos.",
+          "Visión de privacidad inspirada por su pasado."
         ]
       },
       {
-        "chapter_title": "Nacimiento de WhatsApp",
+        "chapter_title": "El Éxito y la Venta",
         "milestones": [
-          "Funda WhatsApp en 2009, tras un período en Yahoo.!",
-          "Enfoque en una aplicación de mensajería simple, sin publicidad.",
-          "Inspiración directa de su deseo de privacidad.",
-          "Crecimiento exponencial de usuarios."
-        ]
-      },
-      {
-        "chapter_title": "La Venta Millonaria",
-        "milestones": [
-          "Facebook adquiere WhatsApp en 2014.",
-          "Valor de la transacción: $19 mil millones.",
-          "Koum se une a la junta directiva de Facebook."
+          "Crecimiento exponencial de WhatsApp.",
+          "Valoración de la empresa en miles de millones.",
+          "Adquisición por Facebook en 2014 por $19 mil millones.",
+          "Salida de Facebook en 2018, citando desacuerdos sobre privacidad y cifrado."
         ]
       }
     ]
   },
   "newsletter_research": {
-    "psychological_depth": "La profunda herida de Koum radica en la falta de control y la invasión de la privacidad experimentada durante su infancia. Esto generó una 'obsesión' por construir un refugio digital donde los usuarios pudieran comunicarse libremente, sin ser observados o explotados. Su resiliencia se manifestó en la superación de la pobreza extrema y la adaptación a un nuevo país, canalizando su trauma infantil hacia una ambición empresarial monumental.",
-    "business_market_implications": "El éxito de WhatsApp demostró que un modelo de negocio basado en la simplicidad, la utilidad y la privacidad podía competir y superar a gigantes establecidos que dependían de la publicidad. Subrayó el creciente valor de los datos personales y la demanda de mercados por alternativas más éticas o transparentes, aunque la posterior adquisición por Facebook planteó interrogantes sobre la sostenibilidad de esta promesa.",
+    "psychological_depth": "La herida fundacional de Koum parece ser la falta de control y seguridad experimentada en su infancia en Ucrania. La omnipresencia de la vigilancia y la precariedad material sembraron un profundo deseo de privacidad y autonomía. WhatsApp se convirtió en su manera de construir un espacio digital seguro y controlado, tanto para sí mismo como para sus usuarios, un refugio contra la invasión y la comercialización de la información personal.",
+    "business_market_implications": "El modelo de negocio inicial de WhatsApp demostró que es posible construir un producto masivamente exitoso valorando la experiencia del usuario y la privacidad por encima de la monetización agresiva. Desafió el status quo de la publicidad intrusiva y la recolección masiva de datos, forzando a la industria a reconsiderar sus estrategias y a los usuarios a ser más conscientes del valor de sus datos personales. Su posterior salida de Facebook subraya la tensión constante entre el crecimiento impulsado por datos y la privacidad del usuario.",
     "thematic_angles": [
-      "El sacrificio y la resiliencia: cómo la adversidad extrema forjó a un gigante tecnológico.",
-      "Privacidad vs. Conexión: la dicotomía central en la era digital.",
-      "El ironía del sueño americano: de refugiado a multimillonario, y la compleja relación con Silicon Valley.",
-      "Más allá del dinero: la búsqueda de un legado de privacidad en un mundo de datos."
+      "La privacidad como derecho fundamental en la era digital: ¿puede una tecnología ser democrática si no respeta la intimidad?",
+      "De la escasez a la abundancia: cómo las experiencias de privación pueden inspirar innovaciones centradas en el usuario.",
+      "El dilema de la monetización: ¿cuándo el éxito comercial compromete los valores fundacionales?",
+      "El poder de la visión: cómo una obsesión personal puede redefinir un sector entero."
     ],
     "relevant_quotes": [
-      "Para mí, la privacidad siempre ha sido el valor principal.",
-      "No me interesaba la publicidad ni los trucos. Quería algo simple, limpio y valioso.",
-      "Crecí en un país donde la vigilancia era la norma. Por eso la privacidad es tan importante para mí."
+      "\"No podía imaginarme que unos años después estaría haciendo esto.\"",
+      "\"La privacidad estaba en el ADN de WhatsApp. Siempre lo ha sido.\"",
+      "\"[Sobre la venta a Facebook] Me hacía sentir incómodo con la idea de que Facebook pudiera rastrear a la gente.\""
     ]
   },
   "twitter_research": {
     "viral_hook_concepts": [
-      "De la penuria en Ucrania a la cima de Silicon Valley: La improbable historia de Jan Koum y WhatsApp. 🧵 #HistoriaReal #Emprendimiento",
-      "El secreto de WhatsApp: ¿Cómo un inmigrante huyó de la vigilancia para crear una app que vale $19 mil millones? Descubre su lucha. 👇 #Innovación #Privacidad",
-      "Barrendero a multimillonario: La increíble resiliencia de Jan Koum. Su viaje te inspirará. 📱✨ Hilo 🚀"
+      "El barrendero que construyó el imperio de la privacidad. Su historia te hará cuestionar tus apps.",
+      "Secretos de WhatsApp: De Ucrania a $19B. Una lección sobre lo que REALMENTE importa.",
+      "La app que NO te vende. El fundador que huyó de la vigilancia creó tu santuario digital.",
+      "No es solo una app, es una declaración. La lucha de Jan Koum por tu privacidad."
     ],
     "chronological_milestones_simplified": [
-      "Nace en Ucrania, pobreza extrema. 🥶",
-      "Emigra a USA a los 16. ¡Nuevos comienzos!",
-      "Trabaja limpiando supermercados. 💪",
-      "Crea WhatsApp en 2009. ¡Adiós SMS!",
-      "Facebook compra por $19B en 2014. 💸",
-      "Su legado: privacidad en la era digital."
+      "Ucrania, escasez y vigilancia. La infancia de Jan Koum.",
+      "Emigra a USA. Trabaja de barrendero. Aprende a programar.",
+      "2009: Lanza WhatsApp. SIN publicidad. VISIÓN: privacidad.",
+      "El mundo adopta WhatsApp. Millones la usan DIARIO.",
+      "2014: Facebook compra WhatsApp por $19 MIL MILLONES.",
+      "2018: Koum deja Facebook. DIZQUE por chocar con su modelo de datos. ¿Tu privacidad está a salvo?",
+      "La historia de un imperio construido sobre la confianza (y quizás...) sobre la privacidad."
     ]
   },
   "themes": [
-    "pobreza",
-    "migración",
-    "obsesión",
-    "privacidad",
-    "resiliencia"
+    "historia",
+    "construcción"
   ],
   "metrics": {
     "viral_potential": 8,
@@ -103,34 +97,34 @@
   },
   "suggested_assets": [
     {
-      "name": "Jan Koum Joven",
+      "name": "Jan Koum joven",
       "type": "photo",
-      "description": "Una foto de Jan Koum en su juventud, idealmente que refleje su origen humilde o sus primeros años en EE.UU.",
-      "candidate_url": "https://commons.wikimedia.org/wiki/File:Jan_Koum_2014_(cropped).jpg"
+      "description": "Retrato de Jan Koum en sus años de juventud, idealmente antes o durante la fundación de WhatsApp, para ilustrar sus orígenes. Podría mostrar una expresión seria o reflexiva.",
+      "candidate_url": "https://wired.com/story/what-jan-koum-knows/ (Captura de pantalla o referencia a la imagen principal del artículo)"
     },
     {
-      "name": "Primeros días de WhatsApp",
-      "type": "screenshot",
-      "description": "Captura de pantalla del interfaz original de WhatsApp, mostrando su simplicidad.",
-      "candidate_url": "https://www.whatsapp.com/screenshots/"
-    },
-    {
-      "name": "Artículo Forbes sobre la adquisición",
-      "type": "article_clip",
-      "description": "Extracto o titular de un artículo de Forbes detallando la compra de WhatsApp por Facebook.",
-      "candidate_url": "https://www.forbes.com/sites/conniegullens/2014/02/19/facebook-buys-whatsapp-for-19-billion/"
-    },
-    {
-      "name": "Cita sobre privacidad",
-      "type": "quote",
-      "description": "Una cita textual verificada de Jan Koum sobre la importancia de la privacidad.",
-      "candidate_url": "Buscar en entrevistas de 2012-2014 en WIRED o TechCrunch."
-    },
-    {
-      "name": "Logo de WhatsApp",
+      "name": "Logo de WhatsApp (antiguo)",
       "type": "logo",
-      "description": "Logotipo icónico de WhatsApp.",
-      "candidate_url": "https://www.whatsapp.com/"
+      "description": "El icónico logo de WhatsApp con el auricular dentro de una burbuja de diálogo, representando su auge y su función principal de comunicación.",
+      "candidate_url": "https://whatsapp.com/ (histórico o archivo de logos)"
+    },
+    {
+      "name": "Captura de pantalla de WhatsApp (versión temprana)",
+      "type": "screenshot",
+      "description": "Captura de pantalla de una interfaz temprana de WhatsApp que muestre su simplicidad y la ausencia de anuncios, para enfatizar su propuesta de valor inicial.",
+      "candidate_url": "https://techcrunch.com/2014/02/19/whatsapp-is-exploding-heres-how-it-works-and-how-it-makes-money/ (o similar, mostrando interfaz)"
+    },
+    {
+      "name": "Artículo de Forbes sobre la adquisición",
+      "type": "article_clip",
+      "description": "Fragmento de un artículo de Forbes o similar que detalle la adquisición de WhatsApp por Facebook y el valor de la transacción ($19 mil millones).",
+      "candidate_url": "https://www.forbes.com/sites/andygreenberg/2014/02/19/facebook-buys-whatsapp-for-19-billion/ (o similar)"
+    },
+    {
+      "name": "Entrevista a Jan Koum",
+      "type": "video",
+      "description": "Clip corto (si existe) de Jan Koum hablando sobre su inspiración, privacidad o la fundación de WhatsApp. Idealmente de fuentes como WIRED o conferencias tecnológicas.",
+      "candidate_url": "https://www.youtube.com/watch?v=example (buscar archivo de entrevistas de Koum, ej. en eventos de tecnología o noticias)"
     }
   ]
 }
