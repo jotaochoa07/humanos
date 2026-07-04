@@ -156,17 +156,26 @@ function loadEpisodePayload(episodePath) {
 
   const exportsDir = path.join(safePath, "10_EXPORTS");
   let finalVideoPath = "";
+  let characterCardPath = "";
+  let characterCardExists = false;
   if (existsSync(exportsDir)) {
     const files = readdirSync(exportsDir);
     const mp4File = files.find(f => f.endsWith(".mp4"));
     if (mp4File) {
       finalVideoPath = path.join(exportsDir, mp4File).replace(/\\/g, "/");
     }
+    const cardFile = files.find(f => f.toLowerCase() === "character_card_canva_img.png");
+    if (cardFile) {
+      characterCardPath = path.join(exportsDir, cardFile).replace(/\\/g, "/");
+      characterCardExists = true;
+    }
   }
 
   return {
     protagonistName,
     episodePath: safePath,
+    characterCardExists,
+    characterCardPath,
     status: state?.status || "unknown",
     scriptShort,
     dossier: readText(path.join(researchDir, "Editorial_Dossier.md")),

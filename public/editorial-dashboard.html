@@ -205,6 +205,10 @@
           <h2 id="finalizedTitle">Seleccioná un episodio</h2>
           <label>Guion corto aprobado</label>
           <div id="finalizedScriptText" class="draft-item" style="white-space: pre-wrap; font-family: inherit; line-height: 1.5; min-height: 120px; border: 1px solid var(--line); border-radius: 14px; padding: 14px; background: hsl(250 30% 10% / .4);">—</div>
+          <div id="finalizedCardContainer" style="margin-top: 16px; display: none; margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 8px;">Ficha de Personaje (Character Card)</label>
+            <img id="finalizedCardImage" src="" style="width: 100%; border-radius: 18px; border: 1px solid var(--line); background: #000; max-height: 360px; object-fit: contain;" />
+          </div>
           <div class="actions">
             <button id="openSelectedFinalizedButton" type="button" class="ghost">Actualizar Vista</button>
           </div>
@@ -329,6 +333,8 @@
     const finalizedGabo = document.getElementById("finalizedGabo");
     const finalizedMoore = document.getElementById("finalizedMoore");
     const openSelectedFinalizedButton = document.getElementById("openSelectedFinalizedButton");
+    const finalizedCardContainer = document.getElementById("finalizedCardContainer");
+    const finalizedCardImage = document.getElementById("finalizedCardImage");
     const publisherView = document.getElementById("publisherView");
     const publisherHint = document.getElementById("publisherHint");
     const publisherList = document.getElementById("publisherList");
@@ -474,6 +480,14 @@
         finalizedTitle.textContent = data.protagonistName;
         finalizedScriptText.textContent = data.scriptShort || "Sin guion corto.";
         
+        if (data.characterCardExists) {
+          finalizedCardImage.src = `/api/image?path=${encodeURIComponent(data.characterCardPath)}`;
+          finalizedCardContainer.style.display = "block";
+        } else {
+          finalizedCardImage.src = "";
+          finalizedCardContainer.style.display = "none";
+        }
+
         if (finalizedDossier) {
           finalizedDossier.innerHTML = data.dossier ? data.dossier.replace(/\n/g, "<br>") : "Sin dossier editorial generado.";
         }
