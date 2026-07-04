@@ -1,0 +1,95 @@
+{
+  "timeline": [
+    {
+      "date": "Noviembre 9, 1914",
+      "event": "Nacimiento de Hedwig Eva Maria Kiesler en Viena, Austria.",
+      "importance": "Bajo",
+      "source_url": "https://www.britannica.com/biography/Hedy-Lamarr",
+      "confidence": 10
+    },
+    {
+      "date": "1933",
+      "event": "Protagoniza la película checa 'Éxtasis', que causó controversia por su desnudez.",
+      "importance": "Medio",
+      "source_url": "https://www.smithsonianmag.com/smithsonian-institution/how-hedy-lamarr-hollywood-star-invented-spread-spectrum-technology-180954449/",
+      "confidence": 9
+    },
+    {
+      "date": "1937",
+      "event": "Se casa con Friedrich Mandl, un rico fabricante de armamento.",
+      "importance": "Medio",
+      "source_url": "https://www.biography.com/actors/hedy-lamarr",
+      "confidence": 9
+    },
+    {
+      "date": "1938",
+      "event": "Huye de su esposo y de Viena, viajando a Londres.",
+      "importance": "Medio",
+      "source_url": "https://www.womenshistory.org/articles/hedy-lamarr",
+      "confidence": 9
+    },
+    {
+      "date": "1939",
+      "event": "Firma un contrato con MGM y se traslada a Hollywood, cambiando su nombre a Hedy Lamarr.",
+      "importance": "Alto",
+      "source_url": "https://www.britannica.com/biography/Hedy-Lamarr",
+      "confidence": 10
+    },
+    {
+      "date": "1941",
+      "event": "Junto a George Antheil, patenta el sistema 'Frequency Hopping Spread Spectrum'.",
+      "importance": "Alto",
+      "source_url": "https://www.loc.gov/everyday-mysteries/item/who-invented-wi-fi/",
+      "confidence": 10
+    },
+    {
+      "date": "1942",
+      "event": "La Marina de EE.UU. rechaza inicialmente la patente, considerándola impracticable.",
+      "importance": "Alto",
+      "source_url": "https://www.smithsonianmag.com/innovation/how-hedy-lamarr-invented-spread-spectrum-technology-180954449/",
+      "confidence": 9
+    },
+    {
+      "date": "1942",
+      "event": "Participa activamente en la 'Sinclair Library' para vender bonos de guerra durante la Segunda Guerra Mundial.",
+      "importance": "Medio",
+      "source_url": "https://www.womenshistory.org/articles/hedy-lamarr",
+      "confidence": 8
+    },
+    {
+      "date": "Década de 1950",
+      "event": "Su carrera cinematográfica declina. Se enfrenta a problemas financieros y personales.",
+      "importance": "Medio",
+      "source_url": "https://www.biography.com/actors/hedy-lamarr",
+      "confidence": 9
+    },
+    {
+      "date": "1962",
+      "event": "La patente del 'Frequency Hopping' expira sin ser utilizada ampliamente por el ejército estadounidense durante la guerra.",
+      "importance": "Alto",
+      "source_url": "https://www.history.com/news/hedy-lamarr-frequency-hopping-wireless-technology",
+      "confidence": 8
+    },
+    {
+      "date": "1997",
+      "event": "Recibe el Premio Pioneer de la Electronic Frontier Foundation (EFF) por su contribución a la tecnología inalámbrica.",
+      "importance": "Alto",
+      "source_url": "https://www.eff.org/awards/pioneer/recipients/1997",
+      "confidence": 10
+    },
+    {
+      "date": "Enero 19, 2000",
+      "event": "Muere en Casselberry, Florida, a los 85 años.",
+      "importance": "Bajo",
+      "source_url": "https://www.britannica.com/biography/Hedy-Lamarr",
+      "confidence": 10
+    },
+    {
+      "date": "Siglo XXI",
+      "event": "Su invención del 'Frequency Hopping' se convierte en la base de tecnologías como Wi-Fi, GPS y Bluetooth.",
+      "importance": "Alto",
+      "source_url": "https://www.wired.com/2012/11/hedy-lamarr-spread-spectrum/",
+      "confidence": 10
+    }
+  ]
+}

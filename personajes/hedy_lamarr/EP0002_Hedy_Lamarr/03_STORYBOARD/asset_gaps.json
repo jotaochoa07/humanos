@@ -1,0 +1,86 @@
+[
+  {
+    "gap_id": "gap_001",
+    "scene": 1,
+    "missing_asset": "High-quality, iconic portrait of Hedy Lamarr from her Hollywood peak, evoking both glamour and a hint of intelligence.",
+    "criticality": "high",
+    "reason": "Establishes the central paradox immediately and sets a visually strong opening tone.",
+    "suggested_solution": "Search for professional studio portraits from the 1930s-1940s, especially iconic publicity shots or film stills released during her peak fame.",
+    "manual_search_queries": [
+      "Hedy Lamarr iconic Hollywood portrait",
+      "Hedy Lamarr publicity photo 1930s",
+      "Hedy Lamarr 'Ecstasy' poster"
+    ],
+    "ai_generation_allowed": false
+  },
+  {
+    "gap_id": "gap_002",
+    "scene": 2,
+    "missing_asset": "Archival footage or high-quality still images of Hedy Lamarr in a more private, intellectual setting (e.g., surrounded by technical sketches, documents, or in a laboratory-like environment), intercut with relevant WWII imagery (maps, ships, radio equipment).",
+    "criticality": "high",
+    "reason": "Visually contrasts her public persona with her secret intellectual pursuits and the wartime context, crucial for the 'conflict' phase.",
+    "suggested_solution": "Look for interviews with Lamarr where she discusses her inventions, or photos from her personal archive. Search for contemporary newsreel footage of wartime innovation or general WWII scenes.",
+    "manual_search_queries": [
+      "Hedy Lamarr invention interview clip",
+      "WWII radio technology footage",
+      "Hedy Lamarr patent sketches"
+    ],
+    "ai_generation_allowed": false
+  },
+  {
+    "gap_id": "gap_003",
+    "scene": 3,
+    "missing_asset": "Animated graphic illustrating the concept of 'frequency hopping spread spectrum' and visual representation of the US Navy rejecting the patent, such as a stamped 'rejected' seal on patent documents or a graphic of a closed door.",
+    "criticality": "high",
+    "reason": "Crucial for explaining the technical concept simply and showing the direct 'conflict' of invention being dismissed.",
+    "suggested_solution": "Commission a motion graphics artist to create a simplified animation of frequency hopping. Source images of US Navy insignia or patent office stamps from the era for overlay.",
+    "manual_search_queries": [
+      "frequency hopping animation explanation",
+      "US Navy patent rejection process WWII",
+      "patent document illustration"
+    ],
+    "ai_generation_allowed": true,
+    "ai_generation_prompt": "Generate a dynamic, infographic-style animation showing a signal jumping between multiple color-coded frequencies in a seemingly random pattern, representing Hedy Lamarr's 'frequency hopping' invention. Superimpose this with a graphic of the US Navy seal being stamped with a red 'REJECTED' mark."
+  },
+  {
+    "gap_id": "gap_004",
+    "scene": 4,
+    "missing_asset": "A clear, high-resolution image of the original patent cover for Hedy Lamarr and George Antheil's invention.",
+    "criticality": "high",
+    "reason": "Provides tangible proof of the inventorship and serves as a visual bridge between the past and its modern implications.",
+    "suggested_solution": "Search patent databases (USPTO, Google Patents) or historical archives for 'US Patent 2,292,387'.",
+    "manual_search_queries": [
+      "Hedy Lamarr George Antheil patent 2292387 cover",
+      "US Patent 2,292,387"
+    ],
+    "ai_generation_allowed": false
+  },
+  {
+    "gap_id": "gap_005",
+    "scene": 5,
+    "missing_asset": "A pensive or late-career photograph of Hedy Lamarr that subtly conveys wisdom or a sense of being misunderstood. Additionally, a visual element that can be overlaid to represent technological concepts (e.g., abstract circuit patterns, binary code, or radio wave forms).",
+    "criticality": "medium",
+    "reason": "To visually reinforce the summary and emotional weight of her paradoxical life and legacy.",
+    "suggested_solution": "Search for Lamarr's later-life portraits, or photos taken during interviews discussing her inventions. Look for abstract tech graphics that can be used as overlays.",
+    "manual_search_queries": [
+      "Hedy Lamarr late career photo",
+      "Hedy Lamarr thoughtful portrait",
+      "abstract technology overlay"
+    ],
+    "ai_generation_allowed": true,
+    "ai_generation_prompt": "Generate an ethereal overlay of glowing blue binary code and subtle radio wave patterns, designed to be superimposed over a portrait of Hedy Lamarr, representing her hidden technological genius."
+  },
+  {
+    "gap_id": "gap_006",
+    "scene": 6,
+    "missing_asset": "The official HUMANOS logo, and potentially a representative visual for 'Jota' if a direct shot is unavailable (e.g., a stylized microphone, a silhouette, or a graphic representing storytelling).",
+    "criticality": "high",
+    "reason": "Essential for brand identity and closing the narrative with host recognition.",
+    "suggested_solution": "Obtain the official HUMANOS logo asset. If a visual for Jota is required, design a simple, abstract graphic to represent the host.",
+    "manual_search_queries": [
+      "HUMANOS logo file",
+      "Jota host graphics HUMANOS"
+    ],
+    "ai_generation_allowed": false
+  }
+]

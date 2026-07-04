@@ -1,0 +1,34 @@
+{
+  "character_card": {
+    "category": "INVENTORA | ACTRIZ",
+    "name": "HEDY LAMARR",
+    "description": "Pionera del Salto de Frecuencia",
+    "visual_style": "Retrato cinematográfico minimalista en blanco y negro de alto contraste, con Hedy Lamarr ocupando el 60-80% del encuadre, mirada directa y penetrante enfocando a la cámara. Composición asimétrica con abundante espacio negativo en la parte superior derecha. Sin elementos decorativos, solo la esencia del personaje."
+  },
+  "thumbnail": {
+    "headline": "el rostro y la mente oculta",
+    "highlight_word": "mente",
+    "composition_description": "Fotografía de Hedy Lamarr en primer plano, ocupando el 70% del encuadre vertical. Mirada intensa y seria directamente a la cámara. El fondo es un negro absoluto y desenfocado. El texto 'el rostro y la mente oculta' en Montserrat Bold blanco, con la palabra 'mente' en cian (#01C9C7)."
+  },
+  "midjourney_prompts": [
+    {
+      "purpose": "Retrato de miniatura y B-roll",
+      "prompt": "Hedy Lamarr, close-up portrait, intense gaze looking directly at the camera, serious expression, journalistic editorial photography style inspired by Esquire, dramatic chiaroscuro lighting, deep blacks and high contrast, desaturated to -60, 85mm portrait lens, subtle 35mm film grain texture, high detail, cinematic --ar 9:16"
+    },
+    {
+      "purpose": "Representación visual de patente/invención",
+      "prompt": "Schematic illustration of a frequency hopping system, inspired by Hedy Lamarr's patent, clean lines, stark contrast, deep blacks, subtle blue glow accents for technological elements, minimal details, blueprint aesthetic, technical drawing style --ar 9:16"
+    },
+    {
+      "purpose": "Contexto Hollywood / Actriz",
+      "prompt": "Hedy Lamarr in a classic Hollywood studio portrait, subtle vintage film noir lighting, elegant pose, melancholic expression, desaturated to -40, shot on 70mm film, Hasselblad style --ar 9:16"
+    }
+  ],
+  "motion_specs": {
+    "camera_speed": "slow_zoom",
+    "default_transition": "subtle_fade",
+    "branding_color_use": "El color cian (#01C9C7) se utiliza exclusivamente para destacar la palabra clave 'mente' en la miniatura y en el nombre de Hedy Lamarr en la character card. Puede aparecer sutilmente en gráficos de transición o en elementos de texto puntuales si una afirmación clave lo amerita.",
+    "titles_font": "Montserrat Bold",
+    "subtitles_font": "Inter SemiBold"
+  }
+}

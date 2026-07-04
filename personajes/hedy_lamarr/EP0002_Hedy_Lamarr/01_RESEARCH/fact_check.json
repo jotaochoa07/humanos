@@ -1,0 +1,254 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "subject": "Hedy Lamarr",
+  "checked_at": "2026-07-04 08:27:00",
+  "overall_confidence_score": 96,
+  "status": "APPROVED",
+  "format_audit_reports": {
+    "shorts": {
+      "confidence_score": 96,
+      "status": "APPROVED",
+      "notes": "La audición cubre todos los formatos."
+    },
+    "long_form": {
+      "confidence_score": 96,
+      "status": "APPROVED",
+      "notes": "La audición cubre todos los formatos."
+    },
+    "newsletter": {
+      "confidence_score": 96,
+      "status": "APPROVED",
+      "notes": "La audición cubre todos los formatos."
+    },
+    "twitter": {
+      "confidence_score": 96,
+      "status": "APPROVED",
+      "notes": "La audición cubre todos los formatos."
+    }
+  },
+  "claims_summary": {
+    "total": 6,
+    "verified": 6,
+    "partial": 0,
+    "unverified": 0,
+    "rejected": 0
+  },
+  "claims": [
+    {
+      "claim_id": "C001",
+      "claim": "Hedy Lamarr fue una actriz de Hollywood aclamada por su belleza, conocida como 'la mujer más bella del mundo'.",
+      "importance": 9,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "source_authority": 9,
+      "source_independence": 8,
+      "primary_source_proximity": 9,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "Hedy Lamarr",
+          "url": "https://www.imdb.com/name/nm0000004/",
+          "type": "database",
+          "tier": "D",
+          "notes": "IMDb: Listado de películas y títulos de Hollywood."
+        },
+        {
+          "title": "Hedy Lamarr: Inventing the Future",
+          "url": "https://www.womenshistory.org/education-public-programs/programs/hedy-lamarr-inventing-future",
+          "type": "biography",
+          "tier": "B",
+          "notes": "Biografía del Museo Nacional de Historia de la Mujer."
+        }
+      ],
+      "notes": "Su belleza fue ampliamente reconocida en Hollywood, y la prensa a menudo la describía así.",
+      "recommendation": "Puede usarse directamente."
+    },
+    {
+      "claim_id": "C002",
+      "claim": "Lamarr co-inventó un sistema de 'salto de frecuencia' (frequency hopping) para guiar torpedos durante la Segunda Guerra Mundial.",
+      "importance": 10,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 100,
+      "source_authority": 10,
+      "source_independence": 9,
+      "primary_source_proximity": 9,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "Hedy Lamarr's Patent for a Secret Communication System",
+          "url": "https://patents.google.com/patent/US2290663A",
+          "type": "archive",
+          "tier": "A",
+          "notes": "Patente original de Hedy Lamarr y George Antheil."
+        },
+        {
+          "title": "Hedy Lamarr: Inventing the Future",
+          "url": "https://www.womenshistory.org/education-public-programs/programs/hedy-lamarr-inventing-future",
+          "type": "biography",
+          "tier": "B",
+          "notes": "Biografía del Museo Nacional de Historia de la Mujer."
+        }
+      ],
+      "notes": "La patente describe el sistema y su aplicación para la comunicación secreta, incluyendo guiar torpedos.",
+      "recommendation": "Puede usarse directamente."
+    },
+    {
+      "claim_id": "C003",
+      "claim": "La patente de su invención fue inicialmente ignorada por la Marina de los EE. UU. y no se utilizó hasta décadas después.",
+      "importance": 8,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 100,
+      "source_authority": 9,
+      "source_independence": 9,
+      "primary_source_proximity": 8,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "The real Hedy Lamarr: Hollywood star and war hero inventor",
+          "url": "https://www.theguardian.com/film/2017/apr/09/hedy-lamarr-hollywood-star-and-war-hero-inventor",
+          "type": "news",
+          "tier": "C",
+          "notes": "Artículo de The Guardian sobre su invención."
+        },
+        {
+          "title": "Hedy Lamarr: Inventing the Future",
+          "url": "https://www.womenshistory.org/education-public-programs/programs/hedy-lamarr-inventing-future",
+          "type": "biography",
+          "tier": "B",
+          "notes": "Biografía del Museo Nacional de Historia de la Mujer."
+        }
+      ],
+      "notes": "Se reconoce que la Marina no adoptó la tecnología durante la guerra, pero se usó más tarde.",
+      "recommendation": "Puede usarse directamente."
+    },
+    {
+      "claim_id": "C004",
+      "claim": "Lamarr deseaba ser reconocida por su intelecto y contribuciones científicas, no solo por su apariencia física.",
+      "importance": 9,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "long_form",
+        "newsletter"
+      ],
+      "confidence_score": 90,
+      "source_authority": 9,
+      "source_independence": 9,
+      "primary_source_proximity": 8,
+      "consistency": 9,
+      "contradiction_risk": 2,
+      "sources": [
+        {
+          "title": "Hedy Lamarr: Inventing the Future",
+          "url": "https://www.womenshistory.org/education-public-programs/programs/hedy-lamarr-inventing-future",
+          "type": "biography",
+          "tier": "B",
+          "notes": "Biografía del Museo Nacional de Historia de la Mujer."
+        },
+        {
+          "title": "Hedy Lamarr, Actress and Inventor, Dies at 85",
+          "url": "https://www.nytimes.com/1999/01/11/obituaries/hedy-lamarr-actress-and-inventor-dies-at-85.html",
+          "type": "news",
+          "tier": "B",
+          "notes": "Obituario del New York Times que menciona su frustración por ser vista solo como un rostro."
+        }
+      ],
+      "notes": "Las fuentes biográficas y obituarios sugieren una insatisfacción con la superficialidad de su fama.",
+      "recommendation": "Se puede usar, mencionando que es una interpretación basada en su frustración y deseo de ser más que una cara bonita."
+    },
+    {
+      "claim_id": "C005",
+      "claim": "El sistema de salto de frecuencia es un precursor de tecnologías modernas como Wi-Fi, GPS y Bluetooth.",
+      "importance": 7,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 100,
+      "source_authority": 9,
+      "source_independence": 9,
+      "primary_source_proximity": 8,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "The real Hedy Lamarr: Hollywood star and war hero inventor",
+          "url": "https://www.theguardian.com/film/2017/apr/09/hedy-lamarr-hollywood-star-and-war-hero-inventor",
+          "type": "news",
+          "tier": "C",
+          "notes": "Artículo de The Guardian que detalla la conexión con tecnologías modernas."
+        },
+        {
+          "title": "Hedy Lamarr: Inventing the Future",
+          "url": "https://www.womenshistory.org/education-public-programs/programs/hedy-lamarr-inventing-future",
+          "type": "biography",
+          "tier": "B",
+          "notes": "Biografía del Museo Nacional de Historia de la Mujer."
+        }
+      ],
+      "notes": "Varias fuentes confirman que su invención es la base de estas tecnologías.",
+      "recommendation": "Puede usarse directamente."
+    },
+    {
+      "claim_id": "C006",
+      "claim": "Su vida representó la dualidad entre ser un ícono de belleza y una mente innovadora subestimada.",
+      "importance": 10,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "long_form",
+        "newsletter"
+      ],
+      "confidence_score": 95,
+      "source_authority": 9,
+      "source_independence": 9,
+      "primary_source_proximity": 8,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "Hedy Lamarr: Inventing the Future",
+          "url": "https://www.womenshistory.org/education-public-programs/programs/hedy-lamarr-inventing-future",
+          "type": "biography",
+          "tier": "B",
+          "notes": "Biografía del Museo Nacional de Historia de la Mujer."
+        },
+        {
+          "title": "The real Hedy Lamarr: Hollywood star and war hero inventor",
+          "url": "https://www.theguardian.com/film/2017/apr/09/hedy-lamarr-hollywood-star-and-war-hero-inventor",
+          "type": "news",
+          "tier": "C",
+          "notes": "Artículo de The Guardian que compara su fama y su invento."
+        }
+      ],
+      "notes": "La narrativa de su vida en las fuentes consultadas se centra en este contraste.",
+      "recommendation": "Puede usarse directamente."
+    }
+  ],
+  "risks": [],
+  "missing_evidence": [],
+  "recommended_next_action": "Aprobar para producción de guión."
+}

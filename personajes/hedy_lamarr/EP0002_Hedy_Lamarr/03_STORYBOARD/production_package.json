@@ -1,0 +1,32 @@
+{
+  "estimated_voiceover_duration": 70.0,
+  "asset_count": 12,
+  "missing_assets_count": 6,
+  "estimated_edit_time_hours": 14.0,
+  "music_style": "Documental tensa, piano minimalista, sutil toque de época",
+  "visual_style": "Cinematográfico, color gradado cálido con grano de película analógica, fondos oscuros y de alta tensión.",
+  "required_images": [
+    "Hedy_Lamarr_Portrait_Iconic.jpg",
+    "Lamarr_Sketching_Conceptual.jpg",
+    "US_Navy_Logo_Blocked.png",
+    "Patent_Cover_Lamarr_Antheil.jpg",
+    "Lamarr_Late_Photo.jpg",
+    "HUMANOS_Logo.png",
+    "Hedy_Lamarr_publicity_photo_for_Algiers.jpg",
+    "Hedy_Lamarr_studio_portrait.jpg",
+    "Screenshot_Hedy_Lamarr_Samson_Delilah.jpg"
+  ],
+  "required_videos": [
+    "WWII_Archive_Footage.mp4"
+  ],
+  "required_motion_graphics": [
+    "Frequency_Hopping_Diagram_Animation.gif"
+  ],
+  "required_maps": [],
+  "required_historical_screenshots": [],
+  "required_ai_recreations": [
+    "generar una animación infográfica del concepto de 'salto de frecuencia' superpuesta con un sello de 'RECHAZADO' de la Marina.",
+    "Generar una superposición etérea de código binario y ondas de radio para ilustrar la genialidad oculta de Lamarr."
+  ],
+  "recommended_next_action": "Priorizar la búsqueda manual de metraje de archivo de la Segunda Guerra Mundial (barcos, aviones) y retratos icónicos y de época tardía de Hedy Lamarr."
+}

@@ -1,0 +1,82 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "subject": "Hedy Lamarr",
+  "approved_claims": [
+    {
+      "claim_id": "C001",
+      "claim": "Hedy Lamarr fue una actriz de Hollywood aclamada por su belleza, conocida como 'la mujer más bella del mundo'.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "usage_guidance": "Puede usarse directamente"
+    },
+    {
+      "claim_id": "C002",
+      "claim": "Lamarr co-inventó un sistema de 'salto de frecuencia' (frequency hopping) para guiar torpedos durante la Segunda Guerra Mundial.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 100,
+      "usage_guidance": "Puede usarse directamente"
+    },
+    {
+      "claim_id": "C003",
+      "claim": "La patente de su invención fue inicialmente ignorada por la Marina de los EE. UU. y no se utilizó hasta décadas después.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 100,
+      "usage_guidance": "Puede usarse directamente"
+    },
+    {
+      "claim_id": "C004",
+      "claim": "Lamarr deseaba ser reconocida por su intelecto y contribuciones científicas, no solo por su apariencia física.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "long_form",
+        "newsletter"
+      ],
+      "confidence_score": 90,
+      "usage_guidance": "Se puede usar, mencionando que es una interpretación basada en su frustración y deseo de ser más que una cara bonita."
+    },
+    {
+      "claim_id": "C005",
+      "claim": "El sistema de salto de frecuencia es un precursor de tecnologías modernas como Wi-Fi, GPS y Bluetooth.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 100,
+      "usage_guidance": "Puede usarse directamente"
+    },
+    {
+      "claim_id": "C006",
+      "claim": "Su vida representó la dualidad entre ser un ícono de belleza y una mente innovadora subestimada.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "long_form",
+        "newsletter"
+      ],
+      "confidence_score": 95,
+      "usage_guidance": "Puede usarse directamente"
+    }
+  ],
+  "rejected_or_blocked_claims": []
+}

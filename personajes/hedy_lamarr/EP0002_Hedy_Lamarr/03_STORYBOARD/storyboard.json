@@ -1,0 +1,80 @@
+[
+  {
+    "scene": 1,
+    "duration": 7.0,
+    "voiceover": "¿Sabías que la mujer más bella del mundo era también la inventora secreta detrás del Wi-Fi? Hedy Lamarr (C001) pasó a la historia como una estrella de Hollywood, un ícono de belleza.",
+    "selected_asset": null,
+    "selected_asset_id": null,
+    "asset_status": "missing",
+    "fallback_asset_id": "001",
+    "fallback_strategy": "Use 'Hedy Lamarr portrait' as a static image with Ken Burns effect. Introduce 'Hedy Lamarr publicity photo for 'Algiers'' for contextual variety.",
+    "effect": "slow_zoom",
+    "caption": "Hedy Lamarr: Ícono de Belleza.",
+    "gap_id": "gap_001"
+  },
+  {
+    "scene": 2,
+    "duration": 10.0,
+    "voiceover": "Pero mientras la cámara la enfocaba, su mente trabajaba en otra frecuencia. Ella quería ser reconocida por su intelecto (C004), no solo por su rostro.\n\nDurante la Segunda Guerra Mundial, la preocupación de Lamarr por el conflicto la llevó a colaborar con George Antheil. Juntos, desarrollaron un sistema de 'salto de frecuencia' para guiar torpedos (C002).",
+    "selected_asset": null,
+    "selected_asset_id": null,
+    "asset_status": "missing",
+    "fallback_asset_id": "002",
+    "fallback_strategy": "Use 'Hedy Lamarr studio portrait' with Ken Burns effect. Supplement with 'Screenshot of Hedy Lamarr in 'Samson and Delilah' (1949)' for visual context.",
+    "effect": "pan_right",
+    "caption": "Mente Brillante, Época de Guerra.",
+    "gap_id": "gap_002"
+  },
+  {
+    "scene": 3,
+    "duration": 8.0,
+    "voiceover": "La idea era simple: cambiar la frecuencia de la señal constantemente para que el enemigo no pudiera interceptarla. Pero la Marina de los Estados Unidos ignoró su invento. Lo consideraron poco práctico.",
+    "selected_asset": null,
+    "selected_asset_id": null,
+    "asset_status": "missing",
+    "fallback_asset_id": "007",
+    "fallback_strategy": "Display the cover of 'Hedy Lamarr's U.S. Patent No. 2,292,387' with a slow zoom. Overlay subtle animated lines representing radio waves to illustrate the 'frequency hopping' concept.",
+    "effect": "slow_zoom",
+    "caption": "Invención Ignorada por la Marina.",
+    "gap_id": "gap_003"
+  },
+  {
+    "scene": 4,
+    "duration": 8.5,
+    "voiceover": "La patente expiró, olvidada. Irónico, ¿verdad? La misma tecnología que pudo haber cambiado el rumbo de la guerra, terminó sentando las bases para el Wi-Fi, el GPS y el Bluetooth que usamos hoy (C005).",
+    "selected_asset": null,
+    "selected_asset_id": null,
+    "asset_status": "missing",
+    "fallback_asset_id": "003",
+    "fallback_strategy": "Show 'Hedy Lamarr and George Antheil, patent drawing' with a pan effect. Transition to illustrative graphics of modern wireless devices.",
+    "effect": "cut",
+    "caption": "La Tecnología que Construyó Nuestro Futuro.",
+    "gap_id": "gap_004"
+  },
+  {
+    "scene": 5,
+    "duration": 7.5,
+    "voiceover": "Hedy Lamarr vivió atrapada en esa paradoja: adorada por su físico, subestimada por su cerebro. La inventora que la Marina no escuchó, se convirtió en la base invisible de nuestra comunicación moderna.",
+    "selected_asset": null,
+    "selected_asset_id": null,
+    "asset_status": "missing",
+    "fallback_asset_id": "006",
+    "fallback_strategy": "Use 'Hedy Lamarr publicity photo for 'Algiers'' for a contemplative feel. Overlay abstract binary code or sound wave patterns.",
+    "effect": "fade",
+    "caption": "Admire por su rostro, Subestimada por su mente.",
+    "gap_id": "gap_005"
+  },
+  {
+    "scene": 6,
+    "duration": 4.0,
+    "voiceover": "Yo soy Jota y esto es HUMANOS: historias de personas que construyeron desde una herida, una obsesión o una contradicción. Nos vemos en la próxima historia.",
+    "selected_asset": null,
+    "selected_asset_id": null,
+    "asset_status": "missing",
+    "fallback_asset_id": null,
+    "fallback_strategy": "Display the HUMANOS logo. If a representative image of Jota is not available, use a stylized graphic or text animation.",
+    "effect": "text_overlay",
+    "caption": "HUMANOS: Historias de la condición humana.",
+    "gap_id": "gap_006"
+  }
+]

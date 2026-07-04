@@ -1,0 +1,42 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "character_name": "Hedy Lamarr",
+  "sources": [
+    {
+      "title": "Hedy Lamarr's Patent for a Secret Communication System",
+      "url": "https://patents.google.com/patent/US2290663A",
+      "type": "archive",
+      "tier": "A",
+      "notes": "Original patent filing by Hedy Lamarr and George Antheil, demonstrating her invention's technical details."
+    },
+    {
+      "title": "Hedy Lamarr: Inventing the Future",
+      "url": "https://www.womenshistory.org/education-public-programs/programs/hedy-lamarr-inventing-future",
+      "type": "biography",
+      "tier": "B",
+      "notes": "Biography from the National Women's History Museum, detailing her dual career as an actress and inventor."
+    },
+    {
+      "title": "Hedy Lamarr, Actress and Inventor, Dies at 85",
+      "url": "https://www.nytimes.com/1999/01/11/obituaries/hedy-lamarr-actress-and-inventor-dies-at-85.html",
+      "type": "news",
+      "tier": "B",
+      "notes": "New York Times obituary, acknowledging her significant invention alongside her film career."
+    },
+    {
+      "title": "The real Hedy Lamarr: Hollywood star and war hero inventor",
+      "url": "https://www.theguardian.com/film/2017/apr/09/hedy-lamarr-hollywood-star-and-war-hero-inventor",
+      "type": "news",
+      "tier": "C",
+      "notes": "Guardian article highlighting her invention and its impact on modern technology."
+    },
+    {
+      "title": "Hedy Lamarr",
+      "url": "https://www.imdb.com/name/nm0000004/",
+      "type": "database",
+      "tier": "D",
+      "notes": "IMDb entry, primarily focused on her acting career but provides a consolidated view of her filmography."
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+Encasillada por su belleza en Hollywood, Hedy Lamarr demostró que su mente era igual de fascinante. Su invento ignorado sentó las bases del WiFi y Bluetooth. Descubre la historia de la mujer que inventó el futuro. 👇 #HedyLamarr #Innovacion #Historia #Tecnologia
