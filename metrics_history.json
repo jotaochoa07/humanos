@@ -34,20 +34,17 @@
     ]
   },
   {
-    "character_name": "Jan Koum",
+    "character_name": "Hedy Lamarr",
     "episode_id": "EP0001",
-    "logged_at": "2026-07-02 10:01:21",
-    "views": 753969,
-    "retention_rate_3s": 0.68,
-    "avg_watch_percentage": 0.56,
-    "duration_seconds": 36.0,
-    "hook_text": "EPISODIO 001 — JAN KOUM\n\n¿Sabías que el fundador de WhatsApp dependía de cupones de comida?\n\nAntes de conectar a miles d",
+    "logged_at": "2026-07-04 09:12:55",
+    "views": 508439,
+    "retention_rate_3s": 0.71,
+    "avg_watch_percentage": 0.53,
+    "duration_seconds": 70.0,
+    "hook_text": "EPISODIO 002: Hedy Lamarr (HE-di La-MAR)\n\n¿Qué pasa cuando el mundo decide que una mujer hermosa no puede ser brillante?",
     "themes": [
-      "pobreza",
-      "migración",
-      "obsesión",
-      "privacidad",
-      "resiliencia"
+      "historia",
+      "construcción"
     ]
   }
 ]

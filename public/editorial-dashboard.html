@@ -134,6 +134,7 @@
     <div class="tabs">
       <button id="tabBacklog" class="tab active" type="button">Backlog</button>
       <button id="tabReview" class="tab" type="button">Guiones pendientes</button>
+      <button id="tabFinalized" class="tab" type="button">Finalizados</button>
       <button id="tabPublisher" class="tab" type="button">Publisher</button>
     </div>
 
@@ -186,6 +187,45 @@
         <div class="package-block package-wide">
           <h3>Moore</h3>
           <pre id="packageMoore">—</pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="finalizedView" class="hidden">
+      <div class="review-top">
+        <div>
+          <h2 class="review-title">Episodios Finalizados (Diseño de Producción)</h2>
+          <div id="finalizedHint" class="muted">Cargando episodios finalizados…</div>
+        </div>
+      </div>
+      <div class="review-layout">
+        <div id="finalizedList" class="review-list"></div>
+        <div class="review-card">
+          <div class="eyebrow">Dossier / Guion Corto Finalizado</div>
+          <h2 id="finalizedTitle">Seleccioná un episodio</h2>
+          <label>Guion corto aprobado</label>
+          <div id="finalizedScriptText" class="draft-item" style="white-space: pre-wrap; font-family: inherit; line-height: 1.5; min-height: 120px; border: 1px solid var(--line); border-radius: 14px; padding: 14px; background: hsl(250 30% 10% / .4);">—</div>
+          <div class="actions">
+            <button id="openSelectedFinalizedButton" type="button" class="ghost">Actualizar Vista</button>
+          </div>
+        </div>
+      </div>
+      <div class="package-grid">
+        <div class="package-block package-wide">
+          <h3>Dossier Editorial (Borges)</h3>
+          <div id="finalizedDossier" class="draft-item" style="font-family: inherit; line-height: 1.6; white-space: pre-wrap; margin-top: 0; background: none; border: none; padding: 0;">—</div>
+        </div>
+        <div class="package-block">
+          <h3>Veritas</h3>
+          <pre id="finalizedVeritas">—</pre>
+        </div>
+        <div class="package-block">
+          <h3>Gabo</h3>
+          <pre id="finalizedGabo">—</pre>
+        </div>
+        <div class="package-block package-wide">
+          <h3>Moore</h3>
+          <pre id="finalizedMoore">—</pre>
         </div>
       </div>
     </section>
@@ -249,7 +289,7 @@
 
   <script>
     const CATEGORIES = ["ENTREPRENEURS","DESIGNERS","ARTISTS","MAKERS","FOUNDERS","BUILDERS","INVENTORS","CREATORS","SCIENTISTS","EXPLORERS","ENGINEERS","VISIONARIES"];
-    const state = { stories: [], selected: null, reviewEpisodes: [], selectedReviewPath: null, publisherEpisodes: [], selectedPublisherPath: null };
+    const state = { stories: [], selected: null, reviewEpisodes: [], selectedReviewPath: null, finalizedEpisodes: [], selectedFinalizedPath: null, publisherEpisodes: [], selectedPublisherPath: null };
     const grid = document.getElementById("grid");
     const searchInput = document.getElementById("searchInput");
     const searchHint = document.getElementById("searchHint");
@@ -277,7 +317,18 @@
     const openSelectedButton = document.getElementById("openSelectedButton");
     const tabBacklog = document.getElementById("tabBacklog");
     const tabReview = document.getElementById("tabReview");
+    const tabFinalized = document.getElementById("tabFinalized");
     const tabPublisher = document.getElementById("tabPublisher");
+    const finalizedView = document.getElementById("finalizedView");
+    const finalizedHint = document.getElementById("finalizedHint");
+    const finalizedList = document.getElementById("finalizedList");
+    const finalizedTitle = document.getElementById("finalizedTitle");
+    const finalizedScriptText = document.getElementById("finalizedScriptText");
+    const finalizedDossier = document.getElementById("finalizedDossier");
+    const finalizedVeritas = document.getElementById("finalizedVeritas");
+    const finalizedGabo = document.getElementById("finalizedGabo");
+    const finalizedMoore = document.getElementById("finalizedMoore");
+    const openSelectedFinalizedButton = document.getElementById("openSelectedFinalizedButton");
     const publisherView = document.getElementById("publisherView");
     const publisherHint = document.getElementById("publisherHint");
     const publisherList = document.getElementById("publisherList");
@@ -376,9 +427,68 @@
         saveProduceButton.textContent = "Guardar y Producir";
       }
     }
-    function showBacklog() { backlogView.classList.remove("hidden"); reviewView.classList.add("hidden"); publisherView.classList.add("hidden"); tabBacklog.classList.add("active"); tabReview.classList.remove("active"); tabPublisher.classList.remove("active"); }
-    function showReview() { reviewView.classList.remove("hidden"); backlogView.classList.add("hidden"); publisherView.classList.add("hidden"); tabReview.classList.add("active"); tabBacklog.classList.remove("active"); tabPublisher.classList.remove("active"); if (!state.reviewEpisodes.length) loadReviewEpisodes(); }
-    function showPublisher() { publisherView.classList.remove("hidden"); backlogView.classList.add("hidden"); reviewView.classList.add("hidden"); tabPublisher.classList.add("active"); tabBacklog.classList.remove("active"); tabReview.classList.remove("active"); if (!state.publisherEpisodes.length) loadPublisherEpisodes(); }
+    function showBacklog() { backlogView.classList.remove("hidden"); reviewView.classList.add("hidden"); finalizedView.classList.add("hidden"); publisherView.classList.add("hidden"); tabBacklog.classList.add("active"); tabReview.classList.remove("active"); tabFinalized.classList.remove("active"); tabPublisher.classList.remove("active"); }
+    function showReview() { reviewView.classList.remove("hidden"); backlogView.classList.add("hidden"); finalizedView.classList.add("hidden"); publisherView.classList.add("hidden"); tabReview.classList.add("active"); tabBacklog.classList.remove("active"); tabFinalized.classList.remove("active"); tabPublisher.classList.remove("active"); if (!state.reviewEpisodes.length) loadReviewEpisodes(); }
+    function showFinalized() { finalizedView.classList.remove("hidden"); backlogView.classList.add("hidden"); reviewView.classList.add("hidden"); publisherView.classList.add("hidden"); tabFinalized.classList.add("active"); tabBacklog.classList.remove("active"); tabReview.classList.remove("active"); tabPublisher.classList.remove("active"); if (!state.finalizedEpisodes.length) loadFinalizedEpisodes(); }
+    function showPublisher() { publisherView.classList.remove("hidden"); backlogView.classList.add("hidden"); reviewView.classList.add("hidden"); finalizedView.classList.add("hidden"); tabPublisher.classList.add("active"); tabBacklog.classList.remove("active"); tabReview.classList.remove("active"); tabFinalized.classList.remove("active"); if (!state.publisherEpisodes.length) loadPublisherEpisodes(); }
+
+    async function loadFinalizedEpisodes() {
+      finalizedHint.textContent = "Cargando episodios finalizados…";
+      finalizedList.innerHTML = "";
+      try {
+        const response = await fetch("/api/finalized-episodes");
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "No se pudieron leer los episodios finalizados");
+        state.finalizedEpisodes = data.episodes || [];
+        finalizedHint.textContent = `${state.finalizedEpisodes.length} episodios listos.`;
+        renderFinalizedEpisodes();
+        if (state.finalizedEpisodes[0]) await openFinalizedEpisode(state.finalizedEpisodes[0].episodePath);
+      } catch (error) {
+        finalizedHint.textContent = error.message;
+        finalizedList.innerHTML = `<div class="empty">No pude leer los episodios finalizados.</div>`;
+      }
+    }
+
+    function renderFinalizedEpisodes() {
+      if (!state.finalizedEpisodes.length) {
+        finalizedList.innerHTML = `<div class="empty">No hay episodios finalizados listos.</div>`;
+        return;
+      }
+      finalizedList.innerHTML = state.finalizedEpisodes.map((episode) => `
+        <button class="review-item ${state.selectedFinalizedPath === episode.episodePath ? 'active' : ''}" type="button" data-path="${episode.episodePath}">
+          <strong>${episode.protagonistName}</strong>
+          <div class="muted">${episode.episodeDir}</div>
+        </button>
+      `).join("");
+      finalizedList.querySelectorAll("button[data-path]").forEach((button) => {
+        button.addEventListener("click", () => openFinalizedEpisode(button.dataset.path));
+      });
+    }
+
+    async function openFinalizedEpisode(episodePath) {
+      try {
+        const response = await fetch(`/api/review-episode?episodePath=${encodeURIComponent(episodePath)}`);
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "No se pudo abrir el episodio");
+        state.selectedFinalizedPath = data.episodePath;
+        finalizedTitle.textContent = data.protagonistName;
+        finalizedScriptText.textContent = data.scriptShort || "Sin guion corto.";
+        
+        if (finalizedDossier) {
+          finalizedDossier.innerHTML = data.dossier ? data.dossier.replace(/\n/g, "<br>") : "Sin dossier editorial generado.";
+        }
+        [finalizedVeritas, finalizedGabo, finalizedMoore].forEach((element) => {
+          if (element) delete element.dataset.formatted;
+        });
+        finalizedVeritas.textContent = JSON.stringify(data.veritas || {}, null, 2);
+        finalizedGabo.textContent = JSON.stringify(data.gabo || {}, null, 2);
+        finalizedMoore.textContent = JSON.stringify(data.moore || {}, null, 2);
+        formatEditorialBlocks();
+        renderFinalizedEpisodes();
+      } catch (err) {
+        showToast(err.message, "error");
+      }
+    }
 
     async function loadPublisherEpisodes() {
       publisherHint.textContent = "Cargando episodios finalizados…";
@@ -469,6 +579,7 @@
     document.getElementById("createManualButton").addEventListener("click", openCreateDrawer);
     document.getElementById("refreshButton").addEventListener("click", () => {
       if (tabReview.classList.contains("active")) loadReviewEpisodes();
+      else if (tabFinalized.classList.contains("active")) loadFinalizedEpisodes();
       else if (tabPublisher.classList.contains("active")) loadPublisherEpisodes();
       else loadStories();
     });
@@ -476,8 +587,10 @@
     drawerBackdrop.addEventListener("click", (event) => { if (event.target === drawerBackdrop) closeDrawer(); });
     tabBacklog.addEventListener("click", showBacklog);
     tabReview.addEventListener("click", showReview);
+    tabFinalized.addEventListener("click", showFinalized);
     tabPublisher.addEventListener("click", showPublisher);
     openSelectedButton.addEventListener("click", async () => { if (state.selectedReviewPath) await openReviewEpisode(state.selectedReviewPath); });
+    openSelectedFinalizedButton.addEventListener("click", async () => { if (state.selectedFinalizedPath) await openFinalizedEpisode(state.selectedFinalizedPath); });
     saveProduceButton.addEventListener("click", saveAndProduce);
     loadStories();
   </script>
@@ -858,6 +971,10 @@
     const mooreEl = document.getElementById("packageMoore");
     const markEl = document.getElementById("packageMark");
     
+    const finalizedVeritasEl = document.getElementById("finalizedVeritas");
+    const finalizedGaboEl = document.getElementById("finalizedGabo");
+    const finalizedMooreEl = document.getElementById("finalizedMoore");
+
     if (veritasEl && !veritasEl.dataset.formatted) {
       const raw = veritasEl.textContent?.trim();
       const parsed = safeParseJson(raw);
@@ -890,12 +1007,37 @@
         markEl.dataset.formatted = "1";
       }
     }
+
+    if (finalizedVeritasEl && !finalizedVeritasEl.dataset.formatted) {
+      const raw = finalizedVeritasEl.textContent?.trim();
+      const parsed = safeParseJson(raw);
+      if (parsed) {
+        finalizedVeritasEl.innerHTML = renderVeritas(parsed);
+        finalizedVeritasEl.dataset.formatted = "1";
+      }
+    }
+    if (finalizedGaboEl && !finalizedGaboEl.dataset.formatted) {
+      const raw = finalizedGaboEl.textContent?.trim();
+      const parsed = safeParseJson(raw);
+      if (parsed) {
+        finalizedGaboEl.innerHTML = renderDrafts(parsed);
+        finalizedGaboEl.dataset.formatted = "1";
+      }
+    }
+    if (finalizedMooreEl && !finalizedMooreEl.dataset.formatted) {
+      const raw = finalizedMooreEl.textContent?.trim();
+      const parsed = safeParseJson(raw);
+      if (parsed) {
+        finalizedMooreEl.innerHTML = renderMoore(parsed);
+        finalizedMooreEl.dataset.formatted = "1";
+      }
+    }
   }
 
   window.addEventListener("DOMContentLoaded", () => {
     formatEditorialBlocks();
     const observer = new MutationObserver(() => formatEditorialBlocks());
-    ["packageVeritas", "packageGabo", "packageMoore", "packageMark"].forEach((id) => {
+    ["packageVeritas", "packageGabo", "packageMoore", "packageMark", "finalizedVeritas", "finalizedGabo", "finalizedMoore"].forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el, { childList: true, subtree: true, characterData: true });
     });

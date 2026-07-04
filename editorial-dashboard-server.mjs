@@ -60,6 +60,39 @@ function findEpisodeDirectories() {
   return episodes.sort((a, b) => a.protagonistName.localeCompare(b.protagonistName));
 }
 
+function findFinalizedEpisodes() {
+  const personasRoot = getPersonajesRoot();
+  if (!existsSync(personasRoot)) return [];
+
+  const episodes = [];
+  for (const protagonistFolder of readdirSync(personasRoot, { withFileTypes: true }).filter((d) => d.isDirectory())) {
+    const protagonistRoot = path.join(personasRoot, protagonistFolder.name);
+    for (const episodeDir of readdirSync(protagonistRoot, { withFileTypes: true }).filter((d) => d.isDirectory() && d.name.startsWith("EP"))) {
+      const episodePath = path.join(protagonistRoot, episodeDir.name);
+      const state = readJsonIfExists(path.join(episodePath, "pipeline_state.json"));
+      if (!state || state.status !== "storyboard_done") continue;
+
+      const scriptsPath = path.join(episodePath, "02_SCRIPT", "scripts.json");
+      const scriptPath = path.join(episodePath, "02_SCRIPT", "script_short.md");
+      const scriptsJson = readJsonIfExists(scriptsPath, {});
+
+      episodes.push({
+        protagonistName: protagonistFolder.name.replaceAll("_", " "),
+        episodeDir: episodeDir.name,
+        episodePath,
+        status: state.status,
+        scriptShort: existsSync(scriptPath) ? stripMarkdownTitle(readFileSync(scriptPath, "utf8")) : (scriptsJson?.script_short || ""),
+        scriptLong: scriptsJson?.script_long || "",
+        newsletter: scriptsJson?.newsletter || "",
+        twitterThread: scriptsJson?.twitter_thread || "",
+        category: scriptsJson?.domain_category || "",
+      });
+    }
+  }
+
+  return episodes.sort((a, b) => a.protagonistName.localeCompare(b.protagonistName));
+}
+
 function findPublisherEpisodes() {
   const personasRoot = getPersonajesRoot();
   if (!existsSync(personasRoot)) return [];
@@ -406,6 +439,7 @@ const server = createServer(async (req, res) => {
     const url = new URL(req.url || "/", `http://localhost:${PORT}`);
     if (req.method === "GET" && url.pathname === "/api/stories") return void await handleStories(res);
     if (req.method === "GET" && url.pathname === "/api/review-episodes") return void await handleReviewEpisodes(res);
+    if (req.method === "GET" && url.pathname === "/api/finalized-episodes") return void sendJson(res, 200, { episodes: findFinalizedEpisodes() });
     if (req.method === "GET" && url.pathname === "/api/publisher-episodes") return void sendJson(res, 200, { episodes: findPublisherEpisodes() });
     if (req.method === "GET" && url.pathname === "/api/review-episode") return void await handleReviewEpisode(req, res, url);
     if (req.method === "GET" && url.pathname === "/api/image") {
