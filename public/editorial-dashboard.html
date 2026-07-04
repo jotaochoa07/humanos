@@ -446,9 +446,24 @@
       const isCreating = state.selected === null;
       const payload = { id: state.selected?.id, protagonistName: isCreating ? protagonistName.value.trim() : state.selected.protagonist_name, humanAngle: humanAngle.value.trim(), domainCategory: domainCategory.value, format: new FormData(storyForm).get("format") };
       startButton.disabled = true; startButton.textContent = isCreating ? "Creando…" : "Iniciando…";
-      try { const response = await fetch(isCreating ? "/api/create-and-start" : "/api/start", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) }); const data = await response.json(); if (!response.ok) throw new Error(data.error || "No se pudo iniciar Borges"); setStatus(`${isCreating ? "Personaje creado y Borges iniciado" : "Borges iniciado"} para ${payload.protagonistName}. PID local: ${data.pid}.`, "success"); closeDrawer(); await loadStories(); }
-      catch (error) { setStatus(error.message, "error"); }
-      finally { startButton.disabled = false; startButton.textContent = state.selected === null ? "Crear e Iniciar Investigación" : "Iniciar Investigación"; }
+      showToast(`Iniciando investigación para ${payload.protagonistName}...`, "info");
+      try {
+        const response = await fetch(isCreating ? "/api/create-and-start" : "/api/start", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "No se pudo iniciar Borges");
+        setStatus(`${isCreating ? "Personaje creado y Borges iniciado" : "Borges iniciado"} para ${payload.protagonistName}. PID local: ${data.pid}.`, "success");
+        showToast(`Investigación iniciada para ${payload.protagonistName}`, "success");
+        closeDrawer();
+        await loadStories();
+      }
+      catch (error) {
+        setStatus(error.message, "error");
+        showToast(error.message, "error");
+      }
+      finally {
+        startButton.disabled = false;
+        startButton.textContent = state.selected === null ? "Crear e Iniciar Investigación" : "Iniciar Investigación";
+      }
     });
     searchInput.addEventListener("input", renderStories);
     document.getElementById("createManualButton").addEventListener("click", openCreateDrawer);
