@@ -1,5 +1,5 @@
 # HUMANOS - Dashboard de Rendimiento Editorial
-Última actualización: 2026-07-04 09:12:55
+Última actualización: 2026-07-04 12:51:14
 
 ## Resumen de Rendimiento
 - **Total de Episodios Medidos:** 3

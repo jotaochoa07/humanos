@@ -100,6 +100,26 @@ def run_mvp(character_name: str, episode_focus: str, themes: list, episode_num: 
         print(f"Edita los guiones en: {os.path.join(ep_path, '02_SCRIPT')}")
         
         if stage == "write":
+            try:
+                print(f"[YouTube Searcher] Buscando fuentes de video iniciales en YouTube para: {character_name}...")
+                from scripts.youtube_searcher import search_youtube_scraping
+                query = f"{character_name} documentary biography"
+                videos = search_youtube_scraping(query, max_results=5)
+                if videos:
+                    sources_path = os.path.join(ep_path, "01_RESEARCH", "sources.md")
+                    if os.path.exists(sources_path):
+                        with open(sources_path, "r", encoding="utf-8") as f:
+                            content = f.read()
+                        
+                        yt_markdown = "\n\n## YouTube Video Reference Sources (Scraped)\n"
+                        for v in videos:
+                            yt_markdown += f"*   **[{v['title']}]({v['url']})** - Canal: {v['channel']} (Duración: {v['duration']})\n"
+                        
+                        with open(sources_path, "w", encoding="utf-8") as f:
+                            f.write(content + yt_markdown)
+                        print(f"[YouTube Searcher] {len(videos)} fuentes de video añadidas a sources.md.")
+            except Exception as e:
+                print(f"[ERROR] Error al añadir fuentes de YouTube: {e}")
             return True
 
     # ------------------------------------------------------------------
