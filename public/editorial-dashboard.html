@@ -683,10 +683,11 @@
     const storyboard = Array.isArray(root.storyboard) ? root.storyboard : [];
     const shotlist = root.shotlist || "";
     const assetShotlist = root.assetShotlist || "";
+    const youtubeCandidates = root.youtubeCandidates || "";
     const assetGaps = Array.isArray(root.assetGaps) ? root.assetGaps : [];
     const editingNotes = root.editingNotes || root.notes || "";
 
-    const hasContent = storyboard.length || shotlist || assetShotlist || assetGaps.length || editingNotes;
+    const hasContent = storyboard.length || shotlist || assetShotlist || youtubeCandidates || assetGaps.length || editingNotes;
     if (!hasContent) {
       return `
         <div class="json-free-card">
@@ -723,6 +724,12 @@
           <div class="draft-block">
             <div class="draft-label">Asset Shot List (Technical Guide)</div>
             <div class="draft-item" style="font-family: inherit; line-height: 1.6; white-space: pre-wrap;">${String(assetShotlist).replace(/\n/g, "<br>")}</div>
+          </div>
+        ` : ""}
+        ${youtubeCandidates ? `
+          <div class="draft-block">
+            <div class="draft-label">Búsqueda Automática de Videos (YouTube)</div>
+            <div class="draft-item" style="font-family: inherit; line-height: 1.6; white-space: pre-wrap;">${String(youtubeCandidates).replace(/\n/g, "<br>")}</div>
           </div>
         ` : ""}
         ${assetGaps.length ? `

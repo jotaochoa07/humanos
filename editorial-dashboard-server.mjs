@@ -154,6 +154,7 @@ function loadEpisodePayload(episodePath) {
       storyboard: readJson(path.join(storyboardDir, "storyboard.json")),
       shotlist: readText(path.join(storyboardDir, "shotlist.md")),
       assetShotlist: readText(path.join(storyboardDir, "asset_shotlist.md")),
+      youtubeCandidates: readText(path.join(storyboardDir, "youtube_candidates.md")),
       editingNotes: readText(path.join(storyboardDir, "editing_notes.md")),
       assetGaps: readJson(path.join(storyboardDir, "asset_gaps.json")),
       productionPackage: readJson(path.join(storyboardDir, "production_package.json")),
