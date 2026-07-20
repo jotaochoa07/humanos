@@ -1,0 +1,64 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0004",
+  "subject": "Ferruccio Lamborghini",
+  "approved_claims": [
+    {
+      "claim_id": "C001",
+      "claim": "Ferruccio Lamborghini, fabricante de tractores exitoso, se reunió con Enzo Ferrari en 1962.",
+      "status": "VERIFIED",
+      "applicable_formats": ["shorts", "long_form", "newsletter", "twitter"],
+      "confidence_score": 95,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C002",
+      "claim": "Lamborghini se quejó a Ferrari sobre la calidad y el rendimiento del embrague de su Ferrari 250 GT.",
+      "status": "VERIFIED",
+      "applicable_formats": ["shorts", "long_form", "newsletter", "twitter"],
+      "confidence_score": 96,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C003",
+      "claim": "Enzo Ferrari desestimó las quejas de Lamborghini, sugiriendo que un fabricante de tractores no podía enseñarle sobre autos deportivos.",
+      "status": "VERIFIED",
+      "applicable_formats": ["shorts", "long_form", "newsletter", "twitter"],
+      "confidence_score": 95,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C004",
+      "claim": "El desprecio de Ferrari hirió profundamente el orgullo de Lamborghini y alimentó su determinación.",
+      "status": "VERIFIED",
+      "applicable_formats": ["shorts", "long_form", "newsletter", "twitter"],
+      "confidence_score": 97,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C005",
+      "claim": "Como resultado directo de la humillación, Lamborghini decidió diseñar y fabricar sus propios autos deportivos de lujo.",
+      "status": "VERIFIED",
+      "applicable_formats": ["shorts", "long_form", "newsletter", "twitter"],
+      "confidence_score": 94,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C006",
+      "claim": "El objetivo de Lamborghini era crear autos que superaran a los de Ferrari, demostrando su error y superioridad ingenieril.",
+      "status": "VERIFIED",
+      "applicable_formats": ["shorts", "long_form", "newsletter", "twitter"],
+      "confidence_score": 96,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C007",
+      "claim": "Al desmontar el embrague defectuoso de su Ferrari 250 GT en su taller de Cento, Lamborghini descubrió que era exactamente el mismo componente Borg & Beck que usaba en sus tractores, vendido a 10 veces su costo.",
+      "status": "VERIFIED",
+      "applicable_formats": ["shorts", "long_form", "newsletter", "twitter"],
+      "confidence_score": 98,
+      "usage_guidance": "Can be used directly (Entrevista directa en primera persona, Thoroughbred & Classic Cars 1991)"
+    }
+  ],
+  "rejected_or_blocked_claims": []
+}

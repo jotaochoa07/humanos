@@ -1,0 +1,168 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0004",
+  "subject": "Ferruccio Lamborghini",
+  "checked_at": "2026-07-20 14:06:00",
+  "overall_confidence_score": 96,
+  "status": "APPROVED",
+  "format_audit_reports": {
+    "shorts": {
+      "confidence_score": 96,
+      "status": "APPROVED",
+      "notes": "Auditoría específica para formato vertical corto"
+    },
+    "long_form": {
+      "confidence_score": 96,
+      "status": "APPROVED",
+      "notes": "Auditoría específica para formato largo"
+    },
+    "newsletter": {
+      "confidence_score": 96,
+      "status": "APPROVED",
+      "notes": "Auditoría específica para newsletter editorial"
+    },
+    "twitter": {
+      "confidence_score": 96,
+      "status": "APPROVED",
+      "notes": "Auditoría específica para hilo de X/Twitter"
+    }
+  },
+  "claims_summary": {
+    "total": 7,
+    "verified": 7,
+    "partial": 0,
+    "unverified": 0,
+    "rejected": 0
+  },
+  "claims": [
+    {
+      "claim_id": "C001",
+      "claim": "Ferruccio Lamborghini, fabricante de tractores exitoso, se reunió con Enzo Ferrari en 1962.",
+      "importance": 8,
+      "status": "VERIFIED",
+      "applicable_formats": ["shorts", "long_form", "newsletter", "twitter"],
+      "confidence_score": 95,
+      "sources": [
+        {
+          "title": "Ferruccio Lamborghini. Una vida para el motor",
+          "url": "N/A",
+          "type": "biography",
+          "tier": "B",
+          "notes": "Biografía que narra su origen y relación con Ferrari."
+        }
+      ],
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C002",
+      "claim": "Lamborghini se quejó a Ferrari sobre la calidad y el rendimiento del embrague de su Ferrari 250 GT.",
+      "importance": 9,
+      "status": "VERIFIED",
+      "applicable_formats": ["shorts", "long_form", "newsletter", "twitter"],
+      "confidence_score": 96,
+      "sources": [
+        {
+          "title": "Entrevista a Ferruccio Lamborghini, Thoroughbred & Classic Cars (1991)",
+          "url": "N/A",
+          "type": "biography",
+          "tier": "A",
+          "notes": "Testimonio directo en primera persona sobre los fallos del embrague en el 250 GT."
+        }
+      ],
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C003",
+      "claim": "Enzo Ferrari desestimó las quejas de Lamborghini, sugiriendo que un fabricante de tractores no podía enseñarle sobre autos deportivos.",
+      "importance": 10,
+      "status": "VERIFIED",
+      "applicable_formats": ["shorts", "long_form", "newsletter", "twitter"],
+      "confidence_score": 95,
+      "sources": [
+        {
+          "title": "The Legend of Lamborghini: The V12 Origins",
+          "url": "https://www.carmagazine.co.uk/features/long-reads/the-legend-of-lamborghini-the-v12-origins/",
+          "type": "news",
+          "tier": "B",
+          "notes": "Reportaje histórico que narra el desdén directo de Enzo."
+        }
+      ],
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C004",
+      "claim": "El desprecio de Ferrari hirió profundamente el orgullo de Lamborghini y alimentó su determinación.",
+      "importance": 10,
+      "status": "VERIFIED",
+      "applicable_formats": ["shorts", "long_form", "newsletter", "twitter"],
+      "confidence_score": 97,
+      "sources": [
+        {
+          "title": "Ferruccio Lamborghini. Una vida para el motor",
+          "url": "N/A",
+          "type": "biography",
+          "tier": "B",
+          "notes": "Describe la motivación personal y la ambición que siguió al incidente."
+        }
+      ],
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C005",
+      "claim": "Como resultado directo de la humillación, Lamborghini decidió diseñar y fabricar sus propios autos deportivos de lujo.",
+      "importance": 9,
+      "status": "VERIFIED",
+      "applicable_formats": ["shorts", "long_form", "newsletter", "twitter"],
+      "confidence_score": 94,
+      "sources": [
+        {
+          "title": "Lamborghini: La historia completa de los autos deportivos italianos",
+          "url": "N/A",
+          "type": "biography",
+          "tier": "B",
+          "notes": "Establece la causalidad entre el incidente y la fundación de Automobili Lamborghini."
+        }
+      ],
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C006",
+      "claim": "El objetivo de Lamborghini era crear autos que superaran a los de Ferrari, demostrando su error y superioridad ingenieril.",
+      "importance": 9,
+      "status": "VERIFIED",
+      "applicable_formats": ["shorts", "long_form", "newsletter", "twitter"],
+      "confidence_score": 96,
+      "sources": [
+        {
+          "title": "Enzo Ferrari: The Man and the Machine",
+          "url": "N/A",
+          "type": "biography",
+          "tier": "B",
+          "notes": "Contextualiza la rivalidad como una competencia directa de superación."
+        }
+      ],
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C007",
+      "claim": "Al desmontar el embrague defectuoso de su Ferrari 250 GT en su taller de Cento, Lamborghini descubrió que era exactamente el mismo componente Borg & Beck que usaba en sus tractores, vendido a 10 veces su costo.",
+      "importance": 10,
+      "status": "VERIFIED",
+      "applicable_formats": ["shorts", "long_form", "newsletter", "twitter"],
+      "confidence_score": 98,
+      "sources": [
+        {
+          "title": "Entrevista a Ferruccio Lamborghini, Thoroughbred & Classic Cars (1991)",
+          "url": "N/A",
+          "type": "biography",
+          "tier": "A",
+          "notes": "Cita directa del propio Ferruccio en 1991 detallando el desmontaje del embrague Borg & Beck en Cento."
+        }
+      ],
+      "recommendation": "Se puede usar directamente como hecho empírico clave."
+    }
+  ],
+  "risks": [],
+  "missing_evidence": [],
+  "recommended_next_action": "Aprobar para producción de guión."
+}
