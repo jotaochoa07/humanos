@@ -1,0 +1,19 @@
+{
+  "episode": "EP0002_Hedy_Lamarr",
+  "timestamp": "2026-07-20T09:47:02.918752",
+  "mode": "immediate",
+  "report": {
+    "creator_intent": "Destacar la vida y el legado de Hedy Lamarr, subrayando la contradicción entre su reconocimiento superficial como símbolo de belleza y su genio innovador no valorado en su tiempo. Además, resaltar cómo su invención revolucionaria sentó las bases para tecnologías modernas como el Bluetooth y el Wi-Fi.",
+    "editorial_delta": "Jota mantuvo la estructura y contenido principal del borrador original de Gabo, con pocas modificaciones notables. No se realizaron cortes significativos ni cambios de ritmo. Los únicos ajustes fueron menores, como la eliminación de una redundancia en la frase 'Décadas después, ese mismo principio...' y la omisión de un fragmento final del párrafo sobre el llamado a reconocer la capacidad femenina en Borges, que no estaba presente en el guion final.",
+    "what_worked": "La versión final conserva la estructura narrativa clara y coherente del borrador original. La historia de Hedy Lamarr es contada de manera fluida y con un tono que mantiene el enganche del oyente. La información clave sobre su invención y su impacto en la tecnología moderna se presenta de manera efectiva y fácil de entender.",
+    "what_surprised": "Lo más sorprendente es que Jota no realizó cambios sustanciales en el borrador de Gabo. Esto sugiere que el guion original ya capturaba efectivamente la esencia y el mensaje de la historia de Hedy Lamarr, y que no se necesitaban ajustes importantes para mejorar su calidad.",
+    "next_experiment": "Probar un giro dramático al inicio del episodio, como comenzar con una cita de Hedy Lamarr o un fragmento de la época en que vivió, para captar la atención del oyente de manera más inmediata y personal.",
+    "proposed_observations": [
+      {
+        "axis": "hook_structure",
+        "title": "Efectividad del Gancho Inicial",
+        "description": "El gancho inicial del borrador original, que plantea la pregunta sobre la discriminación entre belleza y genio, es mantenido en la versión final sin cambios. Esto sugiere que Jota considera que la introducción es efectiva y capta la atención del oyente de manera adecuada. Sin embargo, se podría experimentar con un giro más dramático en futuros episodios para ver si mejora el engagement inicial."
+      }
+    ]
+  }
+}

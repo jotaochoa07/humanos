@@ -20,8 +20,9 @@ class OpenRouterClient:
             "X-Title": "HUMANOS AI Agent System"
         }
 
+        model_name = os.environ.get("OPENROUTER_MODEL", "qwen/qwen-2.5-72b-instruct")
         payload = {
-            "model": "google/gemini-2.5-flash-lite",
+            "model": model_name,
             "messages": [
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": prompt}
@@ -83,8 +84,9 @@ class OpenRouterClient:
             "X-Title": "HUMANOS AI Agent System"
         }
 
+        model_name = os.environ.get("OPENROUTER_MODEL", "qwen/qwen-2.5-72b-instruct")
         payload = {
-            "model": "google/gemini-2.5-flash-lite",
+            "model": model_name,
             "messages": [
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": prompt}

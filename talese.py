@@ -3,59 +3,291 @@ import sys
 import json
 import argparse
 from datetime import datetime
+from openrouter_client import OpenRouterClient
+
+def load_env(base_dir: str):
+    env_path = os.path.join(base_dir, ".env")
+    if not os.path.exists(env_path):
+        return
+    with open(env_path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, val = line.split("=", 1)
+            key = key.strip()
+            val = val.strip().strip("'").strip('"')
+            if key not in os.environ:
+                os.environ[key] = val
 
 class TaleseAgent:
     def __init__(self, base_dir: str = "C:/Users/Jota Ochoa/Antigravity/02_Projects/humanos"):
         self.base_dir = base_dir
+        load_env(base_dir)
         self.learnings_file = os.path.join(base_dir, "_LAB", "creator_learnings.json")
+        self.system_prompt_path = os.path.join(base_dir, "agents", "talese", "prompts", "system_prompt.md")
+        self.client = None
+        if os.environ.get("OPENROUTER_API_KEY"):
+            try:
+                self.client = OpenRouterClient()
+            except Exception as e:
+                print(f"[Talese] Warning: OpenRouterClient error: {e}")
+
+    def _get_system_prompt(self) -> str:
+        if os.path.exists(self.system_prompt_path):
+            with open(self.system_prompt_path, "r", encoding="utf-8") as f:
+                return f.read()
+        return "Eres Gay Talese, Director de Aprendizaje Editorial de Creativity Lab. Tu objetivo es medir evolución, no éxito."
+
+    def _read_file_if_exists(self, filepath: str) -> str:
+        if os.path.exists(filepath):
+            with open(filepath, "r", encoding="utf-8") as f:
+                return f.read()
+        return ""
 
     def run_immediate_retro(self, episode_path: str) -> dict:
         """
-        Retro Editorial Inmediata:
-        Compara el borrador original de Gabo (script_short_original.md)
-        contra la versión editada por Jota (script_short.md).
+        Retro Editorial Inmediata (Momento 1):
+        Analiza la brecha entre el borrador original de Gabo y el guion final editado por Jota.
+        SIN datos de audiencia. Genera EPISODE_CHANGELOG.json y EPISODE_REVIEW.md.
         """
-        script_dir = os.path.join(episode_path, "02_SCRIPT")
-        orig_file = os.path.join(script_dir, "script_short_original.md")
-        final_file = os.path.join(script_dir, "script_short.md")
-
-        orig_text = ""
-        final_text = ""
-
-        if os.path.exists(orig_file):
-            with open(orig_file, "r", encoding="utf-8") as f:
-                orig_text = f.read()
-
-        if os.path.exists(final_file):
-            with open(final_file, "r", encoding="utf-8") as f:
-                final_text = f.read()
-
         episode_name = os.path.basename(os.path.normpath(episode_path))
+        print(f"\n[Talese] Running Immediate Editorial Retro for: {episode_name}...")
 
-        report = {
+        script_dir = os.path.join(episode_path, "02_SCRIPT")
+        orig_script = self._read_file_if_exists(os.path.join(script_dir, "script_short_original.md"))
+        final_script = self._read_file_if_exists(os.path.join(script_dir, "script_short.md"))
+        dossier = self._read_file_if_exists(os.path.join(episode_path, "01_RESEARCH", "Editorial_Dossier.md"))
+
+        if not orig_script and final_script:
+            orig_script = final_script  # Fallback si el original no fue respaldado previamente
+
+        system_prompt = self._get_system_prompt()
+        prompt = f"""
+        Analiza el episodio '{episode_name}' en su fase de entrega inmediata (SIN datos de audiencia todavía).
+
+        BORRADOR ORIGINAL DE GABO (script_short_original.md):
+        ---
+        {orig_script if orig_script else "No disponible"}
+        ---
+
+        GUION FINAL APROBADO POR JOTA (script_short.md):
+        ---
+        {final_script if final_script else "No disponible"}
+        ---
+
+        DOSSIER EDITORIAL (Borges):
+        ---
+        {dossier[:1500] if dossier else "No disponible"}
+        ---
+
+        Genera un informe estructurado JSON con exactamente estas claves:
+        {{
+          "creator_intent": "Breve resumen de qué intentaba lograr el episodio",
+          "editorial_delta": "Análisis comparativo entre el borrador de Gabo y la edición de Jota (qué cortó, qué enfatizó, qué ritmo cambió)",
+          "what_worked": "Puntos fuertes de la versión final aprobada",
+          "what_surprised": "Decisión o giro editorial inesperado",
+          "next_experiment": "Una (1) sola hipótesis / experimento pequeño y accionable para el siguiente episodio",
+          "proposed_observations": [
+            {{
+              "axis": "nombre_del_eje (ej: hook_structure, pacing, tone)",
+              "title": "Título corto de la observación",
+              "description": "Explicación basada en la evidencia del delta de edición"
+            }}
+          ]
+        }}
+        """
+
+        result_json = {}
+        if self.client:
+            try:
+                result_json = self.client.complete_json(prompt=prompt, system_prompt=system_prompt)
+            except Exception as e:
+                print(f"[Talese] Error al consultar LLM: {e}. Generando fallback local.")
+                result_json = self._fallback_immediate(orig_script, final_script, episode_name)
+        else:
+            result_json = self._fallback_immediate(orig_script, final_script, episode_name)
+
+        changelog_file = os.path.join(episode_path, "EPISODE_CHANGELOG.json")
+        review_md_file = os.path.join(episode_path, "EPISODE_REVIEW.md")
+
+        changelog_payload = {
             "episode": episode_name,
             "timestamp": datetime.now().isoformat(),
             "mode": "immediate",
-            "has_original_draft": bool(orig_text),
-            "original_word_count": len(orig_text.split()) if orig_text else 0,
-            "final_word_count": len(final_text.split()) if final_text else 0,
-            "summary": f"Retro inmediata registrada para {episode_name}. Delta de edición: {len(orig_text.split())} -> {len(final_text.split())} palabras."
+            "report": result_json
         }
 
-        # Guardar Episode Changelog
-        changelog_file = os.path.join(episode_path, "EPISODE_CHANGELOG.json")
         with open(changelog_file, "w", encoding="utf-8") as f:
-            json.dump(report, f, ensure_ascii=False, indent=2)
+            json.dump(changelog_payload, f, ensure_ascii=False, indent=2)
 
-        print(f"[Talese] Retro Inmediata completada para {episode_name}.")
-        return report
+        review_md = f"""# Episode Review — {episode_name}
+*Generado por Gay Talese (Director de Aprendizaje Editorial)*
+*Fecha: {datetime.now().strftime('%Y-%m-%d %H:%M')}*
+
+## 1. Intención del Creador
+{result_json.get('creator_intent', 'N/A')}
+
+## 2. Delta Editorial (Gabo vs. Versión Final de Jota)
+{result_json.get('editorial_delta', 'N/A')}
+
+## 3. Lo que funcionó / Lo que sorprendió
+* **Fortalezas:** {result_json.get('what_worked', 'N/A')}
+* **Sorpresa/Tensión:** {result_json.get('what_surprised', 'N/A')}
+
+## 4. Experimento para el próximo episodio
+💡 **Hipótesis:** {result_json.get('next_experiment', 'N/A')}
+
+---
+*Tales Rule: "Talese no mide éxito. Mide evolución."*
+"""
+        with open(review_md_file, "w", encoding="utf-8") as f:
+            f.write(review_md)
+
+        print(f"[Talese] Review Inmediata guardada en {review_md_file}")
+        return changelog_payload
+
+    def run_performance_retro(self, episode_path: str) -> dict:
+        """
+        Retro de Desempeño (Momento 2):
+        Analiza las métricas a 48h (metrics_48h.json) frente al historial.
+        REGLA DE ORO: Mide evolución, no éxito.
+        Propone entradas con status: 'PROPOSED' en _LAB/creator_learnings.json.
+        """
+        episode_name = os.path.basename(os.path.normpath(episode_path))
+        print(f"\n[Talese] Running Performance Retro 48h for: {episode_name}...")
+
+        metrics_file = os.path.join(episode_path, "11_DIST", "metrics_48h.json")
+        metrics_data = {}
+        if os.path.exists(metrics_file):
+            with open(metrics_file, "r", encoding="utf-8") as f:
+                metrics_data = json.load(f)
+
+        learnings_data = {}
+        if os.path.exists(self.learnings_file):
+            with open(self.learnings_file, "r", encoding="utf-8") as f:
+                learnings_data = json.load(f)
+
+        system_prompt = self._get_system_prompt()
+        prompt = f"""
+        Analiza el desempeño a 48h del episodio '{episode_name}'.
+
+        REGLA DE ORO OBLIGATORIA: TALESE NO MIDE ÉXITO. MIDE EVOLUCIÓN.
+        No evalúes si el número de reproducciones es grande o pequeño por sí solo. Evalúa qué aprendizaje deja para el proceso del creador.
+
+        MÉTRICAS DEL EPISODIO:
+        {json.dumps(metrics_data, ensure_ascii=False, indent=2)}
+
+        REGISTRO HISTÓRICO DE APRENDIZAJES (_LAB/creator_learnings.json):
+        {json.dumps(learnings_data, ensure_ascii=False, indent=2)}
+
+        Genera una respuesta JSON con:
+        {{
+          "evolution_summary": "Resumen de la evolución del proceso creativo reflejado en este episodio",
+          "metric_vs_evolution_analysis": "Análisis cualitativo del dato de audiencia frente a la estructura del guion",
+          "proposed_promotions": [
+            {{
+              "id": "LRN-XXX",
+              "level": "OBSERVATION",
+              "axis": "eje",
+              "title": "Título corto",
+              "description": "Detalle del aprendizaje",
+              "status": "PROPOSED"
+            }}
+          ]
+        }}
+        Recuerda: TODAS las promociones deben tener status 'PROPOSED'. NUNCA asignes 'APPROVED'.
+        """
+
+        result_json = {}
+        if self.client:
+            try:
+                result_json = self.client.complete_json(prompt=prompt, system_prompt=system_prompt)
+            except Exception as e:
+                print(f"[Talese] Error al consultar LLM: {e}. Usando fallback local.")
+                result_json = self._fallback_performance(metrics_data, episode_name)
+        else:
+            result_json = self._fallback_performance(metrics_data, episode_name)
+
+        # Actualizar _LAB/creator_learnings.json si hay propuestas
+        if result_json.get("proposed_promotions") and os.path.exists(self.learnings_file):
+            try:
+                with open(self.learnings_file, "r", encoding="utf-8") as f:
+                    current = json.load(f)
+                existing_ids = {item["id"] for item in current.get("learnings", [])}
+                for item in result_json["proposed_promotions"]:
+                    item["status"] = "PROPOSED"  # Garantizar regla de autoridad
+                    if item.get("id") not in existing_ids:
+                        current["learnings"].append(item)
+                current["updated_at"] = datetime.now().isoformat()
+                with open(self.learnings_file, "w", encoding="utf-8") as f:
+                    json.dump(current, f, ensure_ascii=False, indent=2)
+                print(f"[Talese] Actualizado _LAB/creator_learnings.json con {len(result_json['proposed_promotions'])} propuestas.")
+            except Exception as e:
+                print(f"[Talese] Error al actualizar creator_learnings.json: {e}")
+
+        # Guardar CREATOR_CHANGELOG.md en _LAB
+        changelog_md_file = os.path.join(self.base_dir, "_LAB", "CREATOR_CHANGELOG.md")
+        changelog_content = f"""# Creator Changelog — Creativity Lab
+*Última actualización por Gay Talese: {datetime.now().strftime('%Y-%m-%d %H:%M')}*
+
+## Último Episodio Analizado: {episode_name}
+* **Evolución del Proceso:** {result_json.get('evolution_summary', 'N/A')}
+* **Análisis Cualitativo:** {result_json.get('metric_vs_evolution_analysis', 'N/A')}
+
+---
+*Tales Rule: "Talese no mide éxito. Mide evolución."*
+"""
+        with open(changelog_md_file, "w", encoding="utf-8") as f:
+            f.write(changelog_content)
+
+        print(f"[Talese] Retro de Desempeño guardada en {changelog_md_file}")
+        return result_json
+
+    def _fallback_immediate(self, orig: str, final: str, name: str) -> dict:
+        orig_words = len(orig.split()) if orig else 0
+        final_words = len(final.split()) if final else 0
+        return {
+            "creator_intent": f"Narrar la paradoja humana central de {name}.",
+            "editorial_delta": f"Ajuste de extensión y ritmo: de {orig_words} palabras en borrador a {final_words} palabras en versión aprobada.",
+            "what_worked": "Estructura directa sin rodeos y eliminación de frases hechas.",
+            "what_surprised": "Contraste directo en la frase de apertura.",
+            "next_experiment": "Probar abrir directamente con una pregunta incómoda en lugar de contexto histórico.",
+            "proposed_observations": [
+                {
+                    "axis": "pacing_control",
+                    "title": "Reducción de adjetivos abstractos acelera la atención inicial",
+                    "description": f"En {name}, la versión editada recortó {abs(orig_words - final_words)} palabras sobrantes."
+                }
+            ]
+        }
+
+    def _fallback_performance(self, metrics: dict, name: str) -> dict:
+        ret = metrics.get("retentionRate3s", 0)
+        views = metrics.get("views", 0)
+        return {
+            "evolution_summary": f"Episodio {name} consolida la tasa de retención a 3s ({ret*100:.1f}%) con {views} reproducciones.",
+            "metric_vs_evolution_analysis": "La estructura de gancho directo mantuvo la atención sin depender de artificios visuales.",
+            "proposed_promotions": [
+                {
+                    "id": f"LRN-{int(datetime.now().timestamp()) % 1000:03d}",
+                    "level": "OBSERVATION",
+                    "axis": "hook_retention",
+                    "title": f"Tasa de retención 3s en {name} ({ret*100:.1f}%)",
+                    "description": f"Validación de gancho inicial en {name}.",
+                    "status": "PROPOSED"
+                }
+            ]
+        }
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Talese Editorial Learning Engine")
-    parser.add_argument("--episode-path", type=str, required=True, help="Path to episode folder")
+    parser = argparse.ArgumentParser(description="Gay Talese — Director de Aprendizaje Editorial")
+    parser.add_argument("--episode-path", type=str, required=True, help="Path al episodio")
     parser.add_argument("--mode", type=str, default="immediate", choices=["immediate", "performance"])
     args = parser.parse_args()
 
     talese = TaleseAgent()
     if args.mode == "immediate":
         talese.run_immediate_retro(args.episode_path)
+    elif args.mode == "performance":
+        talese.run_performance_retro(args.episode_path)
