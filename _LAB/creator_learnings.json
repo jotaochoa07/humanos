@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-07-20T09:47:43.448640",
+  "updated_at": "2026-07-20T10:53:00.000000",
   "description": "Registro longitudinal del Creator Lab para HUMANOS (Cliente Cero). Almacena aprendizajes etiquetados en tres niveles: OBSERVATION -> SIGNAL -> PATTERN.",
   "learnings": [
     {
@@ -25,16 +25,28 @@
       "level": "OBSERVATION",
       "axis": "hook_structure",
       "title": "Ganchos basados en datos sorprendentes generan mayor curiosidad inicial",
-      "description": "El uso de datos sorprendentes y concretos, como el número de prototipos, ha demostrado aumentar significativamente la tasa de retención a los 3 segundos. Este patrón sugiere que los ganchos que presentan información inesperada y relevante son más efectivos para capturar la atención del espectador desde el principio.",
-      "status": "PROPOSED"
+      "description": "Propuesta legacy de Qwen 72B descartada por sobrealcance conceptual en muestra N=1.",
+      "status": "REJECTED",
+      "rejected_at": "2026-07-20"
     },
     {
       "id": "LRN-003",
       "level": "OBSERVATION",
       "axis": "retention_rate",
       "title": "Uso de elementos de superación personal mejora la retención a largo plazo",
-      "description": "La narrativa que enfatiza la superación personal y los desafíos superados, como en el caso de James Dyson, contribuye a una mayor retención a lo largo del episodio. Los espectadores parecen estar más comprometidos con historias de resiliencia y triunfo.",
-      "status": "PROPOSED"
+      "description": "Propuesta legacy de Qwen 72B descartada por sobrealcance conceptual en muestra N=1.",
+      "status": "REJECTED",
+      "rejected_at": "2026-07-20"
+    },
+    {
+      "id": "LRN-004",
+      "level": "OBSERVATION",
+      "axis": "retention_structure",
+      "title": "Brecha entre retención de gancho (3s) y retención promedio del episodio",
+      "description": "En EP0003 se detecta una caída de 15 puntos porcentuales entre la retención a los 3s (79%) y el avg_watch_percentage (64%). Esto sugiere que el desarrollo posterior al gancho -el cuerpo narrativo- no sostiene con la misma fuerza la promesa inicial. Es evidencia puntual de un solo episodio; debe observarse si este patrón de 'drop-off post-gancho' se repite en próximos episodios antes de considerarlo SIGNAL.",
+      "status": "PROPOSED",
+      "proposed_by": "Claude Sonnet 5",
+      "created_at": "2026-07-20"
     }
   ]
 }

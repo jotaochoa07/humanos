@@ -48,6 +48,7 @@ function findEpisodeDirectories() {
         episodeDir: episodeDir.name,
         episodePath,
         status: state.status,
+        lastUpdated: state.last_updated || "",
         scriptShort: existsSync(scriptPath) ? stripMarkdownTitle(readFileSync(scriptPath, "utf8")) : (scriptsJson?.script_short || ""),
         scriptLong: scriptsJson?.script_long || "",
         newsletter: scriptsJson?.newsletter || "",
@@ -57,7 +58,7 @@ function findEpisodeDirectories() {
     }
   }
 
-  return episodes.sort((a, b) => a.protagonistName.localeCompare(b.protagonistName));
+  return episodes.sort((a, b) => b.lastUpdated.localeCompare(a.lastUpdated));
 }
 
 function findFinalizedEpisodes() {
