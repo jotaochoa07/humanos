@@ -1,33 +1,32 @@
 [
   {
-    "character_name": "Ehud Shabtai",
-    "episode_id": "EP0002",
+    "character_name": "Jan Koum",
+    "episode_id": "EP0001",
     "logged_at": "2026-06-17 09:45:06",
     "views": 657002,
     "retention_rate_3s": 0.69,
     "avg_watch_percentage": 0.52,
     "duration_seconds": 47.0,
-    "hook_text": "En los 2000, los mapas eran caros, anticuados. Un puñado de empresas tenía el control. Ehud Shabtai, en Israel, lo sabía",
+    "hook_text": "De la pobreza extrema a fundar WhatsApp sin gastar un dólar en publicidad.",
     "themes": [
-      "GPS",
-      "comunidad",
-      "innovación",
-      "colaboración",
-      "geolocalización"
+      "privacidad",
+      "construcción",
+      "persistencia"
     ]
   },
   {
     "character_name": "Hedy Lamarr",
-    "episode_id": "EP0001",
+    "episode_id": "EP0002",
     "logged_at": "2026-07-04 09:12:55",
     "views": 508439,
     "retention_rate_3s": 0.71,
     "avg_watch_percentage": 0.53,
     "duration_seconds": 70.0,
-    "hook_text": "EPISODIO 002: Hedy Lamarr (HE-di La-MAR)\n\n¿Qué pasa cuando el mundo decide que una mujer hermosa no puede ser brillante?",
+    "hook_text": "¿Qué pasa cuando el mundo decide que una mujer hermosa no puede ser brillante?",
     "themes": [
       "historia",
-      "construcción"
+      "tecnología",
+      "paradoja"
     ]
   },
   {
@@ -38,10 +37,11 @@
     "retention_rate_3s": 0.79,
     "avg_watch_percentage": 0.64,
     "duration_seconds": 75.0,
-    "hook_text": "¿Qué tan loco debes estar para construir 5.127 prototipos antes de conseguir uno que funcione?\n\nNo fueron 20. Ni 100. Fu",
+    "hook_text": "¿Qué tan loco debes estar para construir 5.127 prototipos antes de conseguir uno que funcione?",
     "themes": [
       "historia",
-      "construcción"
+      "construcción",
+      "obsesión"
     ]
   }
 ]
