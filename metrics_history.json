@@ -17,23 +17,6 @@
     ]
   },
   {
-    "character_name": "Adidas vs Puma",
-    "episode_id": "EP0003",
-    "logged_at": "2026-06-17 09:47:34",
-    "views": 655099,
-    "retention_rate_3s": 0.68,
-    "avg_watch_percentage": 0.52,
-    "duration_seconds": 64.0,
-    "hook_text": "¿Sabías que Adidas y Puma nacieron de la furia entre dos hermanos? Adi y Rudolf Dassler iniciaron una fábrica de calzado",
-    "themes": [
-      "conflicto",
-      "negocios",
-      "guerra",
-      "rivalidad",
-      "deporte"
-    ]
-  },
-  {
     "character_name": "Hedy Lamarr",
     "episode_id": "EP0001",
     "logged_at": "2026-07-04 09:12:55",
@@ -42,6 +25,20 @@
     "avg_watch_percentage": 0.53,
     "duration_seconds": 70.0,
     "hook_text": "EPISODIO 002: Hedy Lamarr (HE-di La-MAR)\n\n¿Qué pasa cuando el mundo decide que una mujer hermosa no puede ser brillante?",
+    "themes": [
+      "historia",
+      "construcción"
+    ]
+  },
+  {
+    "character_name": "James Dyson",
+    "episode_id": "EP0003",
+    "logged_at": "2026-07-16 23:43:39",
+    "views": 366548,
+    "retention_rate_3s": 0.79,
+    "avg_watch_percentage": 0.64,
+    "duration_seconds": 75.0,
+    "hook_text": "¿Qué tan loco debes estar para construir 5.127 prototipos antes de conseguir uno que funcione?\n\nNo fueron 20. Ni 100. Fu",
     "themes": [
       "historia",
       "construcción"

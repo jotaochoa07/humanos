@@ -33,6 +33,8 @@ El ecosistema de HUMANOS está estructurado en niveles de responsabilidad:
 * **Gabo (Story Architect):** Guionista de microdramas. Escribe guiones en formato vertical (V1 Short de 150-180 palabras, o guiones extendidos V2 Documental de 800-1200 palabras) estructurados en actos narrativos, enfocándose en la viabilidad de apoyos visuales para cada frase.
 * **Curie (Memoria Editorial):** Diseñado para administrar el índice de contenido histórico, evitar repeticiones de historias/hooks y sugerir arcos narrativos. *(Estado: Activo - Integrada con RAG local turbovec)*.
 * **Leonardo (Director de Arte y Postproducción):** Guardián visual estratégico del ecosistema. Diseña miniaturas (Thumbnails) y banners, define la identidad visual del canal, mantiene la consistencia estética, crea motion assets y overlays, organiza la biblioteca visual física y mantiene actualizadas la Production Bible y la Thumbnail Bible.
+* **Tales / Gay Talese (Director de Aprendizaje Editorial):** Mentor del Creator Lab. Analiza la brecha entre borradores y versión final, evalúa la evolución del creador (no métricas de vanidad), mantiene la memoria longitudinal cross-episodio (`_LAB/creator_learnings.json`) en 3 niveles (`OBSERVATION` → `SIGNAL` → `PATTERN`) y genera el Episode Changelog y Creator Changelog.
+
 
 ### Nivel Operativo
 * **Moore (Visual Director):** Diseña storyboards y guías de planos de transiciones emocionales, priorizando material dinámico de archivo y vigilando la consistencia del lenguaje visual. Trabaja en sincronía con Gabo y Leonardo, asegurando la correspondencia visual del guion mediante la pregunta: *¿Qué visual hace que esta decisión se sienta más grande?*

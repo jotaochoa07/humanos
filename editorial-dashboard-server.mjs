@@ -298,15 +298,44 @@ async function supabaseRequest(endpoint, { method = "GET", body } = {}) {
   return data;
 }
 
-function startPipeline(protagonistName, humanAngle, domainCategory) {
+function getNextEpisodeNumber() {
+  const personasRoot = getPersonajesRoot();
+  if (!existsSync(personasRoot)) return 1;
+
+  let maxEpisode = 0;
+  try {
+    for (const protagonistFolder of readdirSync(personasRoot, { withFileTypes: true }).filter((d) => d.isDirectory())) {
+      const protagonistRoot = path.join(personasRoot, protagonistFolder.name);
+      for (const episodeDir of readdirSync(protagonistRoot, { withFileTypes: true }).filter((d) => d.isDirectory() && d.name.startsWith("EP"))) {
+        const match = episodeDir.name.match(/^EP(\d+)/);
+        if (match) {
+          const num = parseInt(match[1], 10);
+          if (num > maxEpisode) {
+            maxEpisode = num;
+          }
+        }
+      }
+    }
+  } catch (error) {
+    console.error("Error al calcular el siguiente número de episodio:", error);
+  }
+  return maxEpisode + 1;
+}
+
+function startPipeline(protagonistName, humanAngle, domainCategory, episodeNum) {
   const { env } = getSupabaseConfig();
-  const child = spawn("python", [
+  const args = [
     "run_humanos_mvp.py",
     "--character", protagonistName,
     "--focus", humanAngle,
     "--themes", domainCategory.toLowerCase(),
     "--stage", "write",
-  ], {
+  ];
+  if (episodeNum) {
+    args.push("--episode", String(episodeNum));
+  }
+
+  const child = spawn("python", args, {
     cwd: __dirname,
     env,
     shell: false,
@@ -349,7 +378,8 @@ async function handleStart(req, res) {
     body: { editorial_status: "researching", domain_category: domainCategory.toLowerCase(), human_angle: humanAngle },
   });
 
-  const child = startPipeline(protagonistName, humanAngle, domainCategory);
+  const episodeNum = getNextEpisodeNumber();
+  const child = startPipeline(protagonistName, humanAngle, domainCategory, episodeNum);
   child.on("exit", async (code) => {
     console.log(`[pipeline:${protagonistName}] exited with code ${code}`);
     if (code !== 0) {
@@ -379,7 +409,8 @@ async function handleCreateAndStart(req, res) {
   });
 
   const insertedStory = Array.isArray(insertResult) ? insertResult[0] : null;
-  const child = startPipeline(protagonistName, humanAngle, domainCategory);
+  const episodeNum = getNextEpisodeNumber();
+  const child = startPipeline(protagonistName, humanAngle, domainCategory, episodeNum);
   child.on("exit", async (code) => {
     console.log(`[pipeline:${protagonistName}] exited with code ${code}`);
     if (code !== 0 && insertedStory?.id) {
@@ -405,12 +436,47 @@ async function handleProduce(req, res) {
   const safePath = getEpisodeByPath(episodePath);
   const scriptDir = path.join(safePath, "02_SCRIPT");
   const scriptShortPath = path.join(scriptDir, "script_short.md");
+  const scriptOriginalPath = path.join(scriptDir, "script_short_original.md");
   const scriptsPath = path.join(scriptDir, "scripts.json");
+
+  // Preservar borrador original de Gabo antes de sobreescribir
+  if (!existsSync(scriptOriginalPath) && existsSync(scriptShortPath)) {
+    try {
+      const originalContent = readFileSync(scriptShortPath, "utf8");
+      writeFileSync(scriptOriginalPath, originalContent, "utf8");
+      console.log(`[Gabo Draft] Preservado guion original en ${scriptOriginalPath}`);
+    } catch (e) {
+      console.error("[Gabo Draft] Error al preservar guion original:", e);
+    }
+  }
+
   const updatedScripts = { ...(payload.scriptsJson || {}), script_short: scriptShort };
   writeFileSync(scriptShortPath, `# Guion Corto: ${protagonistName}\n\n${scriptShort}\n`, "utf8");
   writeFileSync(scriptsPath, JSON.stringify(updatedScripts, null, 2) + "\n", "utf8");
 
-  const child = spawn("python", ["run_humanos_mvp.py", "--character", protagonistName, "--stage", "produce"], {
+  // Talese Hook STUB: Disparo en segundo plano no bloqueante para Retro Inmediata
+  try {
+    const taleseScript = path.join(__dirname, "talese.py");
+    if (existsSync(taleseScript)) {
+      const taleseChild = spawn("python", ["talese.py", "--episode-path", safePath, "--mode", "immediate"], {
+        cwd: __dirname,
+        env: getSupabaseConfig().env,
+        detached: true,
+        stdio: "ignore"
+      });
+      taleseChild.unref();
+      console.log(`[Talese Hook] Disparado stub de retro inmediata para ${protagonistName}`);
+    } else {
+      console.log(`[Talese Hook] Standby - talese.py no existe aún.`);
+    }
+  } catch (taleseErr) {
+    console.error("[Talese Hook] Error no bloqueante en el stub:", taleseErr);
+  }
+
+  const match = path.basename(safePath).match(/^EP(\d+)/);
+  const episodeNum = match ? parseInt(match[1], 10) : 1;
+
+  const child = spawn("python", ["run_humanos_mvp.py", "--character", protagonistName, "--stage", "produce", "--episode", String(episodeNum)], {
     cwd: __dirname,
     env: getSupabaseConfig().env,
     shell: false,
@@ -437,6 +503,62 @@ async function handleProduce(req, res) {
   sendJson(res, 202, { ok: true, message: "Producción iniciada", pid: child.pid });
 }
 
+async function handleSaveMetrics(req, res) {
+  const body = await readBody(req);
+  const episodePath = String(body.episodePath || "").trim();
+  const protagonistName = String(body.protagonistName || "").trim();
+  const safePath = getEpisodeByPath(episodePath);
+  if (!safePath || !protagonistName) return sendJson(res, 400, { error: "Faltan datos obligatorios del episodio" });
+
+  const distDir = path.join(safePath, "11_DIST");
+  if (!existsSync(distDir)) {
+    const { mkdirSync } = await import("node:fs");
+    mkdirSync(distDir, { recursive: true });
+  }
+
+  const metricsFile = path.join(distDir, "metrics_48h.json");
+  const metricsData = {
+    episodePath: safePath,
+    protagonistName,
+    updatedAt: new Date().toISOString(),
+    views: Number(body.views || 0),
+    retentionRate3s: Number(body.retentionRate3s || 0),
+    avgWatchPercentage: Number(body.avgWatchPercentage || 0),
+    durationSeconds: Number(body.durationSeconds || 0),
+    notes: String(body.notes || ""),
+    platformMetrics: body.platformMetrics || {}
+  };
+
+  writeFileSync(metricsFile, JSON.stringify(metricsData, null, 2), "utf8");
+
+  // Actualizar historial global en metrics_history.json vía MarkAgent
+  const match = path.basename(safePath).match(/^EP(\d+)/);
+  const episodeId = match ? `EP${match[1].padStart(4, "0")}` : "EP_UNKNOWN";
+  
+  try {
+    const markProc = spawn("python", [
+      "-c",
+      `from mark import MarkAgent; mark = MarkAgent(); mark.log_metrics("${protagonistName}", "${episodeId}", ${metricsData.views}, ${metricsData.retentionRate3s}, ${metricsData.avgWatchPercentage}, ${metricsData.durationSeconds}, "${(metricsData.notes || '').replace(/"/g, '\\"')}", [])`
+    ], { cwd: __dirname, env: getSupabaseConfig().env });
+  } catch (e) {
+    console.error("[Save Metrics] Error al actualizar Mark history:", e);
+  }
+
+  sendJson(res, 200, { ok: true, message: "Métricas 48h guardadas con éxito", metricsData });
+}
+
+async function handleGetMetrics(req, res, url) {
+  const episodePath = url.searchParams.get("episodePath");
+  const safePath = getEpisodeByPath(episodePath);
+  if (!safePath) return sendJson(res, 404, { error: "Episodio no encontrado" });
+
+  const metricsFile = path.join(safePath, "11_DIST", "metrics_48h.json");
+  if (existsSync(metricsFile)) {
+    return sendJson(res, 200, JSON.parse(readFileSync(metricsFile, "utf8")));
+  }
+  return sendJson(res, 200, { views: 0, retentionRate3s: 0, avgWatchPercentage: 0, durationSeconds: 0, notes: "", platformMetrics: {} });
+}
+
 async function serveStatic(res, filePath, contentType) {
   const content = await readFile(filePath);
   res.writeHead(200, { "Content-Type": contentType });
@@ -451,6 +573,7 @@ const server = createServer(async (req, res) => {
     if (req.method === "GET" && url.pathname === "/api/finalized-episodes") return void sendJson(res, 200, { episodes: findFinalizedEpisodes() });
     if (req.method === "GET" && url.pathname === "/api/publisher-episodes") return void sendJson(res, 200, { episodes: findPublisherEpisodes() });
     if (req.method === "GET" && url.pathname === "/api/review-episode") return void await handleReviewEpisode(req, res, url);
+    if (req.method === "GET" && url.pathname === "/api/get-metrics") return void await handleGetMetrics(req, res, url);
     if (req.method === "GET" && url.pathname === "/api/image") {
       const imgPath = url.searchParams.get("path");
       if (imgPath && existsSync(imgPath)) {
@@ -470,6 +593,7 @@ const server = createServer(async (req, res) => {
     if (req.method === "POST" && url.pathname === "/api/start") return void await handleStart(req, res);
     if (req.method === "POST" && url.pathname === "/api/create-and-start") return void await handleCreateAndStart(req, res);
     if (req.method === "POST" && url.pathname === "/api/produce") return void await handleProduce(req, res);
+    if (req.method === "POST" && url.pathname === "/api/save-metrics") return void await handleSaveMetrics(req, res);
     if (req.method === "GET" && (url.pathname === "/" || url.pathname === "/editorial")) return void await serveStatic(res, path.join(__dirname, "public", "editorial-dashboard.html"), "text/html; charset=utf-8");
     sendJson(res, 404, { error: "Not found" });
   } catch (error) {
@@ -481,3 +605,4 @@ const server = createServer(async (req, res) => {
 server.listen(PORT, "127.0.0.1", () => {
   console.log(`HUMANOS Editorial Dashboard running at http://127.0.0.1:${PORT}`);
 });
+

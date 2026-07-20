@@ -113,6 +113,51 @@
     .package-block pre { margin: 0; white-space: pre-wrap; word-break: break-word; color: var(--text); line-height: 1.5; font-family: inherit; }
     .package-block ul { margin: 0; padding-left: 20px; color: var(--text); line-height: 1.5; }
     .package-wide { grid-column: 1 / -1; }
+    
+    /* Estilos Premium para Details y Summary (Disclosure Triangles) */
+    details.package-block {
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+      cursor: pointer;
+    }
+    details.package-block:hover {
+      border-color: hsl(276 100% 75% / 0.4);
+      background: hsl(250 30% 14% / .75);
+    }
+    details.package-block summary {
+      display: flex;
+      align-items: center;
+      list-style: none; /* Oculta la flecha nativa fea del navegador */
+      outline: none;
+    }
+    details.package-block summary::-webkit-details-marker {
+      display: none; /* Oculta la flecha en navegadores basados en Webkit */
+    }
+    details.package-block summary h3 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0;
+      width: 100%;
+      user-select: none;
+    }
+    /* El Disclosure Triangle hecho con un pseudo-elemento animado */
+    details.package-block summary h3::before {
+      content: "▶";
+      display: inline-block;
+      font-size: 11px;
+      color: var(--accent-2);
+      transition: transform 0.24s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    details.package-block[open] summary h3::before {
+      transform: rotate(90deg);
+    }
+    /* Estilo del contenedor interno una vez desplegado */
+    details.package-block pre, details.package-block div.draft-item {
+      padding-top: 14px;
+      margin-top: 10px;
+      border-top: 1px solid var(--line);
+      cursor: default; /* Evita que el cursor se vea con puntero de link dentro del contenido */
+    }
     @media (max-width: 920px) { .review-layout { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { header { display:block; } .toolbar { margin-top:18px; } .shell { width:min(100% - 20px, 1240px); padding-top:24px; } }
   </style>
@@ -168,26 +213,26 @@
         </div>
       </div>
       <div class="package-grid">
-        <div class="package-block package-wide">
-          <h3>Paquete editorial completo</h3>
-          <pre id="packageSummary">Abrí un episodio para ver Veritas, Gabo y Moore.</pre>
-        </div>
-        <div class="package-block package-wide">
-          <h3>Dossier Editorial (Borges)</h3>
+        <details class="package-block package-wide" open>
+          <summary><h3>Dossier Editorial (Borges)</h3></summary>
           <div id="packageDossier" class="draft-item" style="font-family: inherit; line-height: 1.6; white-space: pre-wrap; margin-top: 0; background: none; border: none; padding: 0;">—</div>
-        </div>
-        <div class="package-block">
-          <h3>Veritas</h3>
+        </details>
+        <details class="package-block">
+          <summary><h3>Veritas (Audit)</h3></summary>
           <pre id="packageVeritas">—</pre>
-        </div>
-        <div class="package-block">
-          <h3>Gabo</h3>
+        </details>
+        <details class="package-block">
+          <summary><h3>Gabo (Drafts)</h3></summary>
           <pre id="packageGabo">—</pre>
-        </div>
-        <div class="package-block package-wide">
-          <h3>Moore</h3>
+        </details>
+        <details class="package-block package-wide" open>
+          <summary><h3>Moore (Storyboard & Assets)</h3></summary>
           <pre id="packageMoore">—</pre>
-        </div>
+        </details>
+        <details class="package-block package-wide">
+          <summary><h3>Mark (Distribution Pack)</h3></summary>
+          <pre id="packageMarkReview">—</pre>
+        </details>
       </div>
     </section>
 
@@ -215,22 +260,22 @@
         </div>
       </div>
       <div class="package-grid">
-        <div class="package-block package-wide">
-          <h3>Dossier Editorial (Borges)</h3>
+        <details class="package-block package-wide" open>
+          <summary><h3>Dossier Editorial (Borges)</h3></summary>
           <div id="finalizedDossier" class="draft-item" style="font-family: inherit; line-height: 1.6; white-space: pre-wrap; margin-top: 0; background: none; border: none; padding: 0;">—</div>
-        </div>
-        <div class="package-block">
-          <h3>Veritas</h3>
+        </details>
+        <details class="package-block">
+          <summary><h3>Veritas (Audit)</h3></summary>
           <pre id="finalizedVeritas">—</pre>
-        </div>
-        <div class="package-block">
-          <h3>Gabo</h3>
+        </details>
+        <details class="package-block">
+          <summary><h3>Gabo (Drafts)</h3></summary>
           <pre id="finalizedGabo">—</pre>
-        </div>
-        <div class="package-block package-wide">
-          <h3>Moore</h3>
+        </details>
+        <details class="package-block package-wide" open>
+          <summary><h3>Moore (Storyboard & Assets)</h3></summary>
           <pre id="finalizedMoore">—</pre>
-        </div>
+        </details>
       </div>
     </section>
 
@@ -252,7 +297,7 @@
             <video id="publisherVideoPlayer" src="" controls style="width: 100%; border-radius: 18px; border: 1px solid var(--line); background: #000; max-height: 480px;"></video>
           </div>
 
-          <div id="packageMark">
+          <div id="packageMarkPublisher">
             <div class="empty">Seleccioná un episodio de la lista para auditar sus copys e imágenes de redes.</div>
           </div>
         </div>
@@ -399,7 +444,7 @@
       reviewTitle.textContent = data.protagonistName;
       reviewScript.value = data.scriptShort || "";
       packageSummary.textContent = `${data.protagonistName} · ${data.status}`;
-      [packageVeritas, packageGabo, packageMoore, packageMark].forEach((element) => {
+      [packageVeritas, packageGabo, packageMoore, packageMarkReview].forEach((element) => {
         if (element) delete element.dataset.formatted;
       });
       const packageDossier = document.getElementById("packageDossier");
@@ -409,7 +454,7 @@
       packageVeritas.textContent = JSON.stringify(data.veritas || {}, null, 2);
       packageGabo.textContent = JSON.stringify(data.gabo || {}, null, 2);
       packageMoore.textContent = JSON.stringify(data.moore || {}, null, 2);
-      packageMark.textContent = JSON.stringify(data.mark || {}, null, 2);
+      packageMarkReview.textContent = JSON.stringify(data.mark || {}, null, 2);
       formatEditorialBlocks();
       renderReviewEpisodes();
     }
@@ -555,7 +600,7 @@
           publisherVideoContainer.style.display = "none";
         }
 
-        const packageMarkEl = document.getElementById("packageMark");
+        const packageMarkEl = document.getElementById("packageMarkPublisher");
         if (packageMarkEl) {
           delete packageMarkEl.dataset.formatted;
           packageMarkEl.textContent = JSON.stringify(data.mark || {}, null, 2);
@@ -896,6 +941,48 @@
     `;
   }
 
+  async function saveMetrics(encodedEpisodePath, protagonistName) {
+    const episodePath = decodeURIComponent(encodedEpisodePath);
+    const views = Number(document.getElementById("metricViews")?.value || 0);
+    const retentionRate3s = Number(document.getElementById("metricRetention")?.value || 0);
+    const avgWatchPercentage = Number(document.getElementById("metricWatchPct")?.value || 0);
+    const durationSeconds = Number(document.getElementById("metricDuration")?.value || 0);
+    const notes = document.getElementById("metricNotes")?.value || "";
+
+    try {
+      const res = await fetch("/api/save-metrics", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ episodePath, protagonistName, views, retentionRate3s, avgWatchPercentage, durationSeconds, notes })
+      });
+      const data = await res.json();
+      if (res.ok) {
+        showToast("Métricas 48h guardadas con éxito", "success");
+      } else {
+        showToast(data.error || "Error al guardar métricas", "error");
+      }
+    } catch (err) {
+      showToast("Error de conexión al guardar métricas", "error");
+    }
+  }
+
+  async function loadMetricsForPublisher(episodePath) {
+    if (!episodePath) return;
+    try {
+      const res = await fetch(`/api/get-metrics?episodePath=${encodeURIComponent(episodePath)}`);
+      if (res.ok) {
+        const metrics = await res.json();
+        if (document.getElementById("metricViews")) document.getElementById("metricViews").value = metrics.views || "";
+        if (document.getElementById("metricRetention")) document.getElementById("metricRetention").value = metrics.retentionRate3s || "";
+        if (document.getElementById("metricWatchPct")) document.getElementById("metricWatchPct").value = metrics.avgWatchPercentage || "";
+        if (document.getElementById("metricDuration")) document.getElementById("metricDuration").value = metrics.durationSeconds || "";
+        if (document.getElementById("metricNotes")) document.getElementById("metricNotes").value = metrics.notes || "";
+      }
+    } catch (err) {
+      console.error("Error al cargar métricas:", err);
+    }
+  }
+
   function renderMark(value) {
     const data = typeof value === "string" ? safeParseJson(value) : value;
     if (!data) return value;
@@ -907,10 +994,43 @@
 
     const checklistHtml = renderChecklist(root.checklist);
 
+    if (root.episodePath) {
+      setTimeout(() => loadMetricsForPublisher(root.episodePath), 100);
+    }
+
     return `
       <div class="json-free-card">
         <h4>Checklist de Calidad Pre-Publicación</h4>
         ${checklistHtml}
+      </div>
+
+      <div class="json-free-card" style="margin-top: 16px; border: 1px solid var(--accent-2);">
+        <h4>📊 Carga / Registro de Métricas 48h (Tales & Mark Engine)</h4>
+        <form id="metricsForm" onsubmit="event.preventDefault(); saveMetrics('${encodeURIComponent(root.episodePath || '')}', '${(root.protagonistName || '').replace(/'/g, "\\'")}');" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 10px; align-items: end;">
+          <div>
+            <label style="margin-top:0;">Vistas Totales (Global)</label>
+            <input type="number" id="metricViews" placeholder="ej. 50000" min="0" required />
+          </div>
+          <div>
+            <label style="margin-top:0;">Retención 3s Hook (0-1)</label>
+            <input type="number" step="0.01" id="metricRetention" placeholder="ej. 0.75 (75%)" min="0" max="1" required />
+          </div>
+          <div>
+            <label style="margin-top:0;">% Promedio Visto (0-1)</label>
+            <input type="number" step="0.01" id="metricWatchPct" placeholder="ej. 0.60 (60%)" min="0" max="1" required />
+          </div>
+          <div>
+            <label style="margin-top:0;">Duración (segundos)</label>
+            <input type="number" id="metricDuration" placeholder="ej. 75" min="0" required />
+          </div>
+          <div style="grid-column: 1 / -1;">
+            <label style="margin-top:0;">Notas / Aprendizaje del Creador (48h)</label>
+            <textarea id="metricNotes" style="min-height: 60px;" placeholder="¿Qué funcionó? (ej. Cifra del hook disparó retención inicial)"></textarea>
+          </div>
+          <div style="grid-column: 1 / -1; display: flex; justify-content: flex-end;">
+            <button type="submit" class="primary" style="width: auto; padding: 10px 24px;">Guardar Métricas 48h</button>
+          </div>
+        </form>
       </div>
 
       <div class="dist-platforms-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 16px; margin-top: 16px;">
@@ -983,7 +1103,8 @@
     const veritasEl = document.getElementById("packageVeritas");
     const gaboEl = document.getElementById("packageGabo");
     const mooreEl = document.getElementById("packageMoore");
-    const markEl = document.getElementById("packageMark");
+    const markReviewEl = document.getElementById("packageMarkReview");
+    const markPublisherEl = document.getElementById("packageMarkPublisher");
     
     const finalizedVeritasEl = document.getElementById("finalizedVeritas");
     const finalizedGaboEl = document.getElementById("finalizedGabo");
@@ -1013,12 +1134,20 @@
         mooreEl.dataset.formatted = "1";
       }
     }
-    if (markEl && !markEl.dataset.formatted) {
-      const raw = markEl.textContent?.trim();
+    if (markReviewEl && !markReviewEl.dataset.formatted) {
+      const raw = markReviewEl.textContent?.trim();
       const parsed = safeParseJson(raw);
       if (parsed) {
-        markEl.innerHTML = renderMark(parsed);
-        markEl.dataset.formatted = "1";
+        markReviewEl.innerHTML = renderMark(parsed);
+        markReviewEl.dataset.formatted = "1";
+      }
+    }
+    if (markPublisherEl && !markPublisherEl.dataset.formatted) {
+      const raw = markPublisherEl.textContent?.trim();
+      const parsed = safeParseJson(raw);
+      if (parsed) {
+        markPublisherEl.innerHTML = renderMark(parsed);
+        markPublisherEl.dataset.formatted = "1";
       }
     }
 
@@ -1051,7 +1180,7 @@
   window.addEventListener("DOMContentLoaded", () => {
     formatEditorialBlocks();
     const observer = new MutationObserver(() => formatEditorialBlocks());
-    ["packageVeritas", "packageGabo", "packageMoore", "packageMark", "finalizedVeritas", "finalizedGabo", "finalizedMoore"].forEach((id) => {
+    ["packageVeritas", "packageGabo", "packageMoore", "packageMarkReview", "packageMarkPublisher", "finalizedVeritas", "finalizedGabo", "finalizedMoore"].forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el, { childList: true, subtree: true, characterData: true });
     });
