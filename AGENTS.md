@@ -40,9 +40,16 @@ El ecosistema de HUMANOS está estructurado en niveles de responsabilidad:
 
 ---
 
-## 4. CONVENCIONES Y RESTRICCIONES EDITORIALES
-* **Estructura de 7 Actos:** Personaje → Conflicto → Decisión → Riesgo → Resultado → Transformación → Reflexión.
-* **Estilo de escritura:** Frases cortas (10-12 palabras), uso de `[PAUSA]` para ritmo conversacional, MAYÚSCULAS en 1-3 palabras clave por párrafo para indicar énfasis, y cero emojis.
+## 4. CONVENCIONES Y RESTRICCIONES EDITORIALES (EL MANIFIESTO EDITORIAL)
+
+### El Núcleo de HUMANOS: Psicología e Imágenes Inolvidables
+1. **EL PUNTO DE NO RETORNO**: No contamos biografías ni imperios. Contamos el instante psicológico del que ya no hubo regreso. Cada episodio responde implícitamente a: *«¿Cuál fue el momento que cambió la trayectoria de esta persona?»* (la puerta de Maranello cerrándose tras el insulto de Enzo; el sobre de los bonos de comida).
+2. **LAS ANCLAS MENTALES (Escenas > Datos)**: Las personas no recuerdan fechas ni datos abstractos en Wikipedia. Recuerdan escenas visuales concretas que puedan dibujar de memoria (ej: Dyson y sus 5.127 prototipos tirados al contenedor; Ferruccio con grasa de tractor desmontando un Ferrari y descubriendo su propio embrague). Todo episodio DEBE orbitar sobre una Escena Ancla Mental.
+3. **ANTES DE CAMBIAR EL MUNDO, ALGO CAMBIÓ A ESTA PERSONA**: El protagonista no es el imperio ni el producto; el protagonista es el **cambio de identidad**.
+
+* **Estructura Narrativa:** Estado Estable → Escena de Ruptura (Frase/Insulto/Pérdida) → Cambio de Identidad → Consecuencia/Imperio.
+* **Estilo de escritura:** Frases cortas, mucho aire, ritmo de locución directo con pausas dramáticas.
+* **Gay Talese (Director de Aprendizaje Editorial):** Evalúa de forma longitudinal la evolución del delta editorial, asegurando que cada episodio consolide una ancla mental e instancie el Manifiesto.
 * **Lo que HUMANOS NO es:**
   * No es un canal de curiosidades genéricas.
   * No es un canal motivacional / autoayuda barata.

@@ -8,21 +8,31 @@
 
 **La empresa es el escenario. La persona es la historia.**
 
-La tecnología es el escenario. La persona es la historia.
-La innovación es el escenario. La persona es la historia.
-La ciencia es el escenario. La persona es la historia.
+- No es la biografía.
+- No es el éxito.
+- No son los millones.
+- **Es el instante psicológico en que una frase, una pérdida, un rechazo o una obsesión cambia la trayectoria de una persona.**
+
+---
+
+## El Manifiesto Editorial de HUMANOS
+
+1. **El Punto de No Retorno**: Cada episodio debe responder implícitamente a la pregunta:
+   > *"¿Cuál fue el momento del que ya no hubo regreso?"*
+2. **Imágenes e Historias Inolvidables (Las Anclas Mentales)**: Las personas no recuerdan fechas ni datos abstractos en Wikipedia. Recuerdan escenas visuales concretas (ej: James Dyson y sus 5.127 prototipos tirados a la basura; Jan Koum en la fila de los bonos de comida; Ferruccio Lamborghini desmontando un Ferrari en su taller y descubriendo su propio embrague de tractor). Todo episodio DEBE contener una escena que el espectador pueda dibujar de memoria.
+3. **El Orden que lo Cambia Todo**: No decimos *"Esta persona cambió el mundo"*. Decimos *"Antes de cambiar el mundo, algo cambió a esta persona"*. El protagonista no es el imperio; el protagonista es la **transformación de identidad**.
 
 ---
 
 ## Qué es HUMANOS
 
-Una biblioteca de microdramas reales sobre personas extraordinarias.
+Una biblioteca de microdramas reales sobre personas extraordinarias narrados como recuerdos inolvidables.
 
 No estamos construyendo un canal de curiosidades.
-No estamos construyendo un canal de motivación.
+No estamos construyendo un canal motivacional barato.
 No estamos construyendo resúmenes de Wikipedia.
 
-Estamos construyendo una propiedad intelectual basada en historias humanas reales narradas como entretenimiento.
+Estamos construyendo una propiedad intelectual basada en escenas inolvidables sobre transformaciones humanas reales.
 
 ---
 
@@ -30,7 +40,7 @@ Estamos construyendo una propiedad intelectual basada en historias humanas reale
 
 Emprendedores, builders, creadores, personas curiosas interesadas en tecnología, ciencia, arte, innovación y liderazgo.
 
-Personas que admiran a quienes construyen cosas desde cero.
+Personas que admiran a quienes construyen cosas desde una herida o una obsesión.
 
 La audiencia debe terminar pensando:
 
