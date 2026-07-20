@@ -597,7 +597,7 @@ async function handleTaleseLab(res) {
   sendJson(res, 200, {
     creatorChangelog,
     creatorLearnings: creatorLearnings.learnings || [],
-    episodeReviews: episodeReviews.sort((a, b) => a.episodeDir.localeCompare(b.episodeDir))
+    episodeReviews: episodeReviews.sort((a, b) => b.episodeDir.localeCompare(a.episodeDir))
   });
 }
 
