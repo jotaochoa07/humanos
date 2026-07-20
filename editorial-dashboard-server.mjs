@@ -242,6 +242,10 @@ function loadEpisodePayload(episodePath) {
         post: readDistFile("newsletter", "newsletter_post.md"),
       }
     },
+    talese: {
+      review: readText(path.join(safePath, "EPISODE_REVIEW.md")),
+      changelog: readJson(path.join(safePath, "EPISODE_CHANGELOG.json")),
+    },
     scriptsJson,
   };
 }
@@ -559,6 +563,43 @@ async function handleGetMetrics(req, res, url) {
   return sendJson(res, 200, { views: 0, retentionRate3s: 0, avgWatchPercentage: 0, durationSeconds: 0, notes: "", platformMetrics: {} });
 }
 
+async function handleTaleseLab(res) {
+  const labDir = path.join(__dirname, "_LAB");
+  const changelogPath = path.join(labDir, "CREATOR_CHANGELOG.md");
+  const learningsPath = path.join(labDir, "creator_learnings.json");
+
+  const creatorChangelog = existsSync(changelogPath) ? readFileSync(changelogPath, "utf8") : "Aún no hay Changelog acumulativo generado.";
+  const creatorLearnings = existsSync(learningsPath) ? readJsonIfExists(learningsPath, { learnings: [] }) : { learnings: [] };
+
+  const personasRoot = getPersonajesRoot();
+  const episodeReviews = [];
+  if (existsSync(personasRoot)) {
+    for (const protagonistFolder of readdirSync(personasRoot, { withFileTypes: true }).filter((d) => d.isDirectory())) {
+      const protagonistRoot = path.join(personasRoot, protagonistFolder.name);
+      for (const episodeDir of readdirSync(protagonistRoot, { withFileTypes: true }).filter((d) => d.isDirectory() && d.name.startsWith("EP"))) {
+        const episodePath = path.join(protagonistRoot, episodeDir.name);
+        const reviewFile = path.join(episodePath, "EPISODE_REVIEW.md");
+        const changelogFile = path.join(episodePath, "EPISODE_CHANGELOG.json");
+        if (existsSync(reviewFile)) {
+          episodeReviews.push({
+            protagonistName: protagonistFolder.name.replaceAll("_", " "),
+            episodeDir: episodeDir.name,
+            episodePath,
+            reviewContent: readFileSync(reviewFile, "utf8"),
+            changelogData: readJsonIfExists(changelogFile, null)
+          });
+        }
+      }
+    }
+  }
+
+  sendJson(res, 200, {
+    creatorChangelog,
+    creatorLearnings: creatorLearnings.learnings || [],
+    episodeReviews: episodeReviews.sort((a, b) => a.episodeDir.localeCompare(b.episodeDir))
+  });
+}
+
 async function serveStatic(res, filePath, contentType) {
   const content = await readFile(filePath);
   res.writeHead(200, { "Content-Type": contentType });
@@ -574,6 +615,7 @@ const server = createServer(async (req, res) => {
     if (req.method === "GET" && url.pathname === "/api/publisher-episodes") return void sendJson(res, 200, { episodes: findPublisherEpisodes() });
     if (req.method === "GET" && url.pathname === "/api/review-episode") return void await handleReviewEpisode(req, res, url);
     if (req.method === "GET" && url.pathname === "/api/get-metrics") return void await handleGetMetrics(req, res, url);
+    if (req.method === "GET" && url.pathname === "/api/talese-lab") return void await handleTaleseLab(res);
     if (req.method === "GET" && url.pathname === "/api/image") {
       const imgPath = url.searchParams.get("path");
       if (imgPath && existsSync(imgPath)) {
