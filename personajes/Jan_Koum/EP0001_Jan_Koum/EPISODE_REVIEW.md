@@ -1,19 +1,19 @@
 # Episode Review — EP0001_Jan_Koum
 *Generado por Gay Talese (Director de Aprendizaje Editorial)*
-*Fecha: 2026-07-20 09:46*
+*Fecha: 2026-07-20 09:59*
 
 ## 1. Intención del Creador
-El episodio busca narrar la historia de Jan Koum, enfocándose en su infancia precaria en Ucrania, su emigración a Estados Unidos, y la fundación de WhatsApp con un enfoque radical en la privacidad. El objetivo es resaltar la paradoja entre su pasado y su éxito, y cómo sus principios han enfrentado desafíos en el mundo tecnológico.
+El episodio busca instalar la narrativa fundacional de HUMANOS a través de Jan Koum: un inmigrante forjado por la precariedad y la vigilancia que construye, como respuesta a su herida, una plataforma que devuelve control y privacidad a millones. La estructura sigue el molde herida-obsesión-contradicción que ancla la identidad de la serie, cerrando con la tensión no resuelta entre principios y venta a Facebook.
 
 ## 2. Delta Editorial (Gabo vs. Versión Final de Jota)
-No se observan cambios significativos entre el borrador original de Gabo y la versión final aprobada por Jota. Esto sugiere que Jota consideró que el borrador de Gabo ya cumplía con los objetivos narrativos y no requirió ajustes substanciales.
+No existe delta. El archivo 'script_short.md' es idéntico, línea por línea, al borrador original de Gabo 'script_short_original.md'. No hubo cortes, énfasis añadidos, reordenamientos ni ajustes de ritmo. Jota aprobó el guion sin intervención editorial visible en el texto entregado.
 
 ## 3. Lo que funcionó / Lo que sorprendió
-* **Fortalezas:** La versión final mantiene un ritmo fluido y una estructura clara. La narración es coherente y logra transmitir la complejidad de la historia de Jan Koum, desde su infancia difícil hasta su éxito empresarial. El enfoque en la privacidad y los principios morales de Koum es consistente y relevante.
-* **Sorpresa/Tensión:** La sorpresa más notable es la ausencia de cambios notables entre el borrador y la versión final, lo que indica que el creador ya estaba produciendo un contenido muy cercano a su visión editorial desde el principio.
+* **Fortalezas:** El borrador de Gabo llega con una estructura ya sólida: gancho por contraste (infancia sin calefacción vs. cima tecnológica), un dato poco conocido que ancla la obsesión (los 16 años, la vigilancia), y un cierre con pregunta abierta que conecta con el mandato de marca ('el precio de la privacidad'). La cifra de $19 mil millones funciona como pico dramático a mitad de cierre. Estructuralmente el guion no necesitó intervención para sostenerse solo.
+* **Sorpresa/Tensión:** Lo inesperado no está en el texto sino en el proceso: la ausencia total de fricción editorial en el primer episodio del proyecto. Que Jota no haya tocado una sola palabra del borrador de Gabo en el episodio inaugural es una señal fuerte sobre el nivel de calibración inicial del generador de guiones — o, alternativamente, sobre la falta de tiempo/criterio aplicado en esta primera revisión. Sin un segundo episodio para comparar, no se puede distinguir todavía entre ambas hipótesis.
 
 ## 4. Experimento para el próximo episodio
-💡 **Hipótesis:** Probar la adición de una cita directa de Jan Koum sobre sus principios de privacidad para añadir un elemento de voz primaria y autenticidad a la narración.
+💡 **Hipótesis:** En el próximo episodio, pedir explícitamente a Jota que documente —aunque sea en una línea— el motivo de aprobar el guion sin cambios (si aplica) o registrar al menos un ajuste deliberado, de modo que el delta editorial empiece a generar señal real sobre su criterio en lugar de un archivo idéntico que no aporta evidencia comparativa.
 
 ---
 *Tales Rule: "Talese no mide éxito. Mide evolución."*

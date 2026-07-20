@@ -26,7 +26,7 @@ class TaleseAgent:
         load_env(base_dir)
         self.learnings_file = os.path.join(base_dir, "_LAB", "creator_learnings.json")
         self.system_prompt_path = os.path.join(base_dir, "agents", "talese", "prompts", "system_prompt.md")
-        self.client = None
+        self.model_name = "anthropic/claude-sonnet-5"
         if os.environ.get("OPENROUTER_API_KEY"):
             try:
                 self.client = OpenRouterClient()
@@ -101,7 +101,7 @@ class TaleseAgent:
         result_json = {}
         if self.client:
             try:
-                result_json = self.client.complete_json(prompt=prompt, system_prompt=system_prompt)
+                result_json = self.client.complete_json(prompt=prompt, system_prompt=system_prompt, model=self.model_name)
             except Exception as e:
                 print(f"[Talese] Error al consultar LLM: {e}. Generando fallback local.")
                 result_json = self._fallback_immediate(orig_script, final_script, episode_name)
@@ -202,7 +202,7 @@ class TaleseAgent:
         result_json = {}
         if self.client:
             try:
-                result_json = self.client.complete_json(prompt=prompt, system_prompt=system_prompt)
+                result_json = self.client.complete_json(prompt=prompt, system_prompt=system_prompt, model=self.model_name)
             except Exception as e:
                 print(f"[Talese] Error al consultar LLM: {e}. Usando fallback local.")
                 result_json = self._fallback_performance(metrics_data, episode_name)

@@ -1,19 +1,19 @@
 # Episode Review — EP0002_Hedy_Lamarr
 *Generado por Gay Talese (Director de Aprendizaje Editorial)*
-*Fecha: 2026-07-20 09:47*
+*Fecha: 2026-07-20 10:13*
 
 ## 1. Intención del Creador
-Destacar la vida y el legado de Hedy Lamarr, subrayando la contradicción entre su reconocimiento superficial como símbolo de belleza y su genio innovador no valorado en su tiempo. Además, resaltar cómo su invención revolucionaria sentó las bases para tecnologías modernas como el Bluetooth y el Wi-Fi.
+El episodio busca instalar una tesis clara —la inteligencia femenina invisibilizada por la belleza— y sostenerla con un caso histórico de alto contraste: glamour hollywoodense vs. genio técnico ignorado. La estructura persigue un arco clásico de injusticia-reivindicación: Hedy es subestimada, su invento rechazado, y décadas después la historia le da la razón. El cierre conecta el caso puntual con la identidad de marca de HUMANOS ('personas que desafiaron estereotipos').
 
 ## 2. Delta Editorial (Gabo vs. Versión Final de Jota)
-Jota mantuvo la estructura y contenido principal del borrador original de Gabo, con pocas modificaciones notables. No se realizaron cortes significativos ni cambios de ritmo. Los únicos ajustes fueron menores, como la eliminación de una redundancia en la frase 'Décadas después, ese mismo principio...' y la omisión de un fragmento final del párrafo sobre el llamado a reconocer la capacidad femenina en Borges, que no estaba presente en el guion final.
+No existe delta. El texto de Jota (script_short.md) es idéntico, palabra por palabra, al borrador original de Gabo (script_short_original.md). No hay cortes, énfasis añadidos, ni cambios de ritmo, ganchos o estructura. Esto es una evidencia atípica respecto al patrón habitual de revisión editorial: en este episodio la capa de criterio de Jota no dejó huella textual detectable.
 
 ## 3. Lo que funcionó / Lo que sorprendió
-* **Fortalezas:** La versión final conserva la estructura narrativa clara y coherente del borrador original. La historia de Hedy Lamarr es contada de manera fluida y con un tono que mantiene el enganche del oyente. La información clave sobre su invención y su impacto en la tecnología moderna se presenta de manera efectiva y fácil de entender.
-* **Sorpresa/Tensión:** Lo más sorprendente es que Jota no realizó cambios sustanciales en el borrador de Gabo. Esto sugiere que el guion original ya capturaba efectivamente la esencia y el mensaje de la historia de Hedy Lamarr, y que no se necesitaban ajustes importantes para mejorar su calidad.
+* **Fortalezas:** El borrador de Gabo ya presenta una estructura editorial sólida por sí mismo: pregunta-gancho fuerte, contraste narrativo (belleza vs. mente), un punto de giro dramático (la fuga del matrimonio), climax técnico (la patente rechazada) y resolución con pago diferido (Bluetooth/Wi-Fi décadas después). El hecho de que Jota no haya necesitado tocar el texto sugiere que Gabo entregó una pieza publicable en primera pasada, cumpliendo el estándar sin fricción.
+* **Sorpresa/Tensión:** Lo inesperado no es un giro dentro del guion, sino la ausencia total de intervención editorial. En los procesos de producción, la brecha entre borrador y versión final es la fuente primaria de aprendizaje sobre el criterio de Jota. Aquí esa fuente está vacía, lo cual impide extraer señal editorial directa de esta pieza y obliga a preguntarse si fue una aprobación por confianza, falta de tiempo de revisión, o simplemente un borrador que no requería ajuste.
 
 ## 4. Experimento para el próximo episodio
-💡 **Hipótesis:** Probar un giro dramático al inicio del episodio, como comenzar con una cita de Hedy Lamarr o un fragmento de la época en que vivió, para captar la atención del oyente de manera más inmediata y personal.
+💡 **Hipótesis:** Para el próximo episodio, introducir deliberadamente un punto de decisión visible en el flujo de aprobación (por ejemplo, marcar explícitamente en el borrador de Gabo 2-3 frases o estructuras 'candidatas a revisión') y observar si Jota las modifica, las conserva o las elimina — esto generará delta editorial trazable y permitirá empezar a construir señal real sobre su criterio, en lugar de depender de que la edición ocurra espontáneamente.
 
 ---
 *Tales Rule: "Talese no mide éxito. Mide evolución."*
