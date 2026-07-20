@@ -27,7 +27,10 @@ class BorgesAgent:
             "hitos históricos y decisiones críticas para construir Dossiers Editoriales. "
             "Tu enfoque es: Decisión -> Conflicto -> Consecuencias. Sé extremadamente conciso en tus descripciones "
             "y campos de texto para mantener el JSON compacto. No alucines información. "
-            "Prioriza fuentes reales e históricas. Debes responder estrictamente en formato JSON utilizando el esquema solicitado."
+            "Prioriza fuentes reales e históricas. Debes responder estrictamente en formato JSON utilizando el esquema solicitado.\n\n"
+            "REGLA DE IDIOMA (OBLIGATORIA):\n"
+            "- Escribe absolutamente TODO en ESPAÑOL NEUTRO estricto.\n"
+            "- Queda TERMINANTEMENTE PROHIBIDO el uso de voseo (vos, tenés, elegís, etc.) o modismos del acento argentino/rioplatense."
         )
         
         if local_context_str:
@@ -181,7 +184,8 @@ class BorgesAgent:
         print(f"[Borges - Claims & Sources Generator] Generando afirmaciones importantes y fuentes estructuradas...")
         
         claims_prompt = f"""
-        A partir de la investigación de {character_name} y el enfoque {episode_focus}, extrae una lista con los 5 o 6 hechos o afirmaciones históricas más críticas y determinantes (claims) que sustentan la paradoja y obsesión del personaje. No extraigas más de 6 claims.
+        A partir de la investigación de {character_name} y el enfoque {episode_focus}, extrae una lista con los 5 o 6 hechos o afirmaciones históricas más críticas y determinantes (claims) que sustentan el conflicto y obsesión del personaje. No extraigas más de 6 claims.
+        Asegúrate de incluir tanto decisiones/conflictos principales como hallazgos mecánicos o citas directas de época documentadas (ej: piezas o componentes compartidos, modelos exactos, citas textuales de entrevistas de época).
         Cada claim debe tener un ID único secuencial (ej: C001, C002...), el texto del claim detallado y una puntuación de importancia para el episodio (del 1 al 10, siendo 10 crítico).
         
         Debes responder estrictamente en formato JSON con la siguiente estructura:
