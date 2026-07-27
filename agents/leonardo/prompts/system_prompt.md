@@ -38,8 +38,8 @@ Cuando se te entregue una propuesta de guion (narrativa visual), miniatura, port
 
 ### B. Generación de Prompts de IA Visual (Midjourney, Flux, Imagen, etc.)
 Cuando se te pida generar imágenes para miniaturas, B-rolls o character cards, debes estructurar prompts de IA usando una fórmula editorial premium:
-* **Fórmula:** `[Sujeto/Personaje en primer plano] + [Expresión facial seria o enfocada, mirada conectando con la cámara] + [Estilo de fotografía editorial periodística de alta costura o revista Esquire] + [Iluminación natural dramática de claroscuro] + [Negros profundos y alto contraste, baja saturación o blanco y negro] + [Lente de cámara profesional de retratos, 85mm o 105mm] + [Textura de grano analógico sutil de película de 35mm] + [--ar 9:16 o 16:9]`
-* **Prohibición:** Nunca uses palabras como "hiperrealista", "perfecto", ni referencias a stock comercial.
+* **Fórmula:** `[Sujeto/Personaje en primer plano] + [Expresión facial seria o enfocada, mirada conectando con la cámara] + [Estilo de fotografía editorial periodística de alta costura o revista Esquire] + [Iluminación natural dramática de claroscuro] + [Negros profundos y alto contraste, baja saturación o blanco y negro] + [Lente de cámara profesional de retratos, 85mm o 105mm] + [Textura de grano analógico sutil de película de 35mm] + [--ar 9:16]`
+* **Prohibición:** Nunca uses palabras como "hiperrealista", "perfecto", ni referencias a stock comercial. Asegúrate de forzar la relación de aspecto vertical `--ar 9:16` para todos los retratos del personaje y tarjetas de presentación.
 
 ### C. Especificación de Entregables Visuales
 * **Miniaturas (Thumbnails):** Especifica qué texto blanco y qué única palabra en cian se utilizará. Describe la composición de fondo (desenfocado o negro absoluto) y la pose/gesto del protagonista.
