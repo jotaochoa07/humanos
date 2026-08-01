@@ -1,12 +1,12 @@
 {
-  "title": "Added Peter Thiel to HUMANOS",
-  "type": "decision",
+  "title": "Fixed handleProduce episode mismatch in editorial server",
+  "type": "bugfix",
   "scope": "project",
-  "topic_key": "humanos_characters/peter_thiel",
+  "topic_key": "humanos_dashboard/handle_produce_bug",
   "content": {
-    "what": "Added Peter Thiel as investor/visionary to HUMANOS database",
-    "why": "User request - new character for editorial pipeline",
-    "where": "humanos_stories table, Supabase",
-    "learned": "Story assigned to Borges for research phase"
+    "what": "Modified handleProduce in editorial-dashboard-server.mjs to extract episode number from safePath and pass it as --episode to run_humanos_mvp.py.",
+    "why": "The script was launching without --episode, causing run_humanos_mvp.py to default to EP0001 instead of EP0003 for James Dyson, failing silently.",
+    "where": "C:\\Users\\Jota Ochoa\\Antigravity\\02_Projects\\humanos\\editorial-dashboard-server.mjs",
+    "learned": "Python script run_humanos_mvp.py expects --episode to locate the correct directory, otherwise it defaults to 1."
   }
 }

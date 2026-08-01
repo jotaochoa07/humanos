@@ -1,0 +1,180 @@
+{
+  "episode_id": "EP0004_Ferruccio_Lamborghini",
+  "character_name": "Ferruccio Lamborghini",
+  "is_documentary_pilot": true,
+  "current_version": 2,
+  "timestamps": {
+    "research_completed_at": "2026-07-23T18:56:27.724062",
+    "blueprint_generated_at": "2026-07-23T18:56:27.724062",
+    "blueprint_duration_ms": 0,
+    "talese_gate1_audit_duration_ms": 1924,
+    "act_redaction_duration_ms": {
+      "act_1": 0,
+      "act_2": 0,
+      "act_3": 0,
+      "act_4": 0,
+      "act_5": 0
+    },
+    "talese_gate2_audit_duration_ms": 3450
+  },
+  "version_history": [
+    {
+      "version": 1,
+      "rejected_at": "2026-07-23T18:56:27.724062",
+      "rejected_by": "Talese_Gate1",
+      "duration_ms": 0,
+      "rejection_reasons": [
+        "El número de actos (1) debe estar estrictamente entre 5 y 7.",
+        "La duración estimada (210s) debe estar entre 7 y 10 minutos (420s - 600s).",
+        "Hay 1 actos con causalidad débil (se requiere PERO o POR LO TANTO)."
+      ],
+      "editorial_feedback": "Deficiencias estructurales encontradas en causalidad o número de actos.",
+      "blueprint_snapshot": {
+        "character_name": "Ferruccio Lamborghini",
+        "central_thesis": "Fabricante de tractores hace un auto.",
+        "main_conflict": "Discusión simple.",
+        "target_total_duration_sec": 210,
+        "beat_sheet": [
+          {
+            "id": "act_1",
+            "title": "Acto Único",
+            "estimated_duration_sec": 210,
+            "causality_type": "AND_THEN",
+            "status": "draft"
+          }
+        ]
+      }
+    }
+  ],
+  "talese_socratic_dialogue": [
+    {
+      "question_id": "q_act_1_01",
+      "act_id": "act_1",
+      "question": "¿Cuál es el conflicto moral no resuelto al final de este acto?",
+      "category": "conflict_causality",
+      "created_at": "2026-07-23T18:56:27.724613",
+      "user_answer": "Respuesta de prueba registrada para act_1.",
+      "resolved": true,
+      "resolution_notes": "Ajuste de causalidad verificado."
+    },
+    {
+      "question_id": "q_act_2_01",
+      "act_id": "act_2",
+      "question": "¿Cuál es el conflicto moral no resuelto al final de este acto?",
+      "category": "conflict_causality",
+      "created_at": "2026-07-23T18:56:27.724613",
+      "user_answer": "Respuesta de prueba registrada para act_2.",
+      "resolved": true,
+      "resolution_notes": "Ajuste de causalidad verificado."
+    },
+    {
+      "question_id": "q_act_3_01",
+      "act_id": "act_3",
+      "question": "¿Cuál es el conflicto moral no resuelto al final de este acto?",
+      "category": "conflict_causality",
+      "created_at": "2026-07-23T18:56:27.724613",
+      "user_answer": "Respuesta de prueba registrada para act_3.",
+      "resolved": true,
+      "resolution_notes": "Ajuste de causalidad verificado."
+    },
+    {
+      "question_id": "q_act_4_01",
+      "act_id": "act_4",
+      "question": "¿Cuál es el conflicto moral no resuelto al final de este acto?",
+      "category": "conflict_causality",
+      "created_at": "2026-07-23T18:56:27.724613",
+      "user_answer": "Respuesta de prueba registrada para act_4.",
+      "resolved": true,
+      "resolution_notes": "Ajuste de causalidad verificado."
+    },
+    {
+      "question_id": "q_act_5_01",
+      "act_id": "act_5",
+      "question": "¿Cuál es el conflicto moral no resuelto al final de este acto?",
+      "category": "conflict_causality",
+      "created_at": "2026-07-23T18:56:27.724613",
+      "user_answer": "Respuesta de prueba registrada para act_5.",
+      "resolved": true,
+      "resolution_notes": "Ajuste de causalidad verificado."
+    }
+  ],
+  "narrative_blueprint": {
+    "character_name": "Ferruccio Lamborghini",
+    "central_thesis": "La revancha técnica: cómo la humillación personal de un fabricante de tractores dio origen al superdeportivo más radical de la historia.",
+    "main_conflict": "El choque de orgullo entre el pragmatismo industrial de Ferruccio y la aristocracia competitiva de Enzo Ferrari.",
+    "target_total_duration_sec": 540,
+    "beat_sheet": [
+      {
+        "id": "act_1",
+        "title": "Acto I: La afrenta de Maranello",
+        "objective": "Establecer la paradoja del hombre rico pero humillado por el embrague de su Ferrari.",
+        "estimated_duration_sec": 90,
+        "causality_type": "BUT",
+        "status": "draft",
+        "script_text": "Ferruccio Lamborghini ya era rico. Muy. Fabricaba tractores por miles para reconstruir la Italia de la posguerra. Pero tenía un capricho costoso: una colección de Ferraris. Y en cada uno ocurria siempre lo mismo: el embrague fallaba. Cansado, viajó a Maranello a decírselo al propio Enzo Ferrari, de fabricante a fabricante. Pero Enzo no escuchó a un cliente VIP: escuchó a un campesino intruso. 'Dedícate a tus tractores, Lamborghini. Un fabricante de tractores jamás entenderá cómo se construye un Ferrari'. Lo echaron a la calle. Ahí no nació un competidor: nació una venganza con motor V12. [B-ROLL: Maranello 1960 / Entrada fábrica de Ferrari]"
+      },
+      {
+        "id": "act_2",
+        "title": "Acto II: El secreto del tractorista",
+        "objective": "Descubrir que las piezas de Ferrari eran idénticas a las de sus tractores comerciales.",
+        "estimated_duration_sec": 110,
+        "causality_type": "THEREFORE",
+        "status": "draft",
+        "script_text": "Por lo tanto, Ferruccio no vendió su auto ni aceptó el insulto; volvió a Sant'Agata y desarmó el Ferrari pieza por pieza en su propio taller. Lo que descubrió lo dejó helado: el embrague del legendario auto de lujo era exactamente el mismo embrague comercial que él instalaba en sus tractores agrícolas. Solo que Enzo los vendía a precio de oro. La revelación no le dio rabia: le dio una fría certidumbre. Si el gran Enzo vendía piezas ordinarias a precio de diamante, él podía destronarlo en su propio juego. [B-ROLL: Embrague de tractor desarmado en mesa de trabajo]"
+      },
+      {
+        "id": "act_3",
+        "title": "Acto III: El taller clandestino de Sant'Agata",
+        "objective": "Reclutar ingenieros tránsfugas y construir el prototipo 350 GTV en tiempo récord.",
+        "estimated_duration_sec": 120,
+        "causality_type": "BUT",
+        "status": "draft",
+        "script_text": "Pero destronar a Ferrari requería una velocidad de ejecución sobrehumana. Ferruccio compró terrenos a solo 30 kilómetros de Maranello y reclutó a los mejores jóvenes ingenieros tránsfugas de Italia: Giotto Bizzarrini y Gian Paolo Dallara. Les dio una orden radical: 'Quiero un V12 que supere al de Ferrari en todo, y lo quiero listo para el Salón de Turín'. Trabajaron 18 horas diarias en una fábrica que aún no tenía ni paredes terminadas. Lo diseñó el orgullo herido de un hombre decidido a responder a 250 kilómetros por hora. [B-ROLL: Planos técnicos del prototipo 350 GTV]"
+      },
+      {
+        "id": "act_4",
+        "title": "Acto IV: El debut sin motor en Turín",
+        "objective": "La tensión del lanzamiento del chasis con ladrillos dentro del compartimiento del motor.",
+        "estimated_duration_sec": 110,
+        "causality_type": "THEREFORE",
+        "status": "draft",
+        "script_text": "Por lo tanto, el prototipo 350 GTV llegó al Salón de Turín de 1963 con un secreto dramático: el motor V12 de Bizzarrini era tan alto que el capó no cerraba. Faltaban 48 horas para el debut. Ferruccio tomó una decisión descabellada: sacó el motor, llenó el compartimiento con ladrillos para ajustar la suspensión y cerró el capó con llave. Durante toda la exposición, respondió a los periodistas con una sonrisa impenetrable mientras explicaba la potencia del auto sin abrir el capó jamás. [B-ROLL: Fotografía del Salón de Turín 1963 / 350 GTV]"
+      },
+      {
+        "id": "act_5",
+        "title": "Acto V: La consagración del Toro",
+        "objective": "El impacto del Miura y la metamorfosis de la venganza en un legado industrial supremo.",
+        "estimated_duration_sec": 110,
+        "causality_type": "BUT",
+        "status": "draft",
+        "script_text": "Pero el engaño le dio el tiempo necesario para perfeccionar la mecánica final. Un año después, el Lamborghini 350 GT salía a la calle y, poco después, el revolucionario Miura reinventaba para siempre el concepto de superdeportivo. Ferruccio nunca celebró derrotar a Enzo en las pistas de carreras; celebró haber transformado una herida de orgullo en una industria imparable. La revancha no fue una discusión: fue un imperio de ingeniería. [B-ROLL: Lamborghini Miura en carreteras de montaña de Italia]"
+      }
+    ]
+  },
+  "derived_shorts": [
+    {
+      "short_id": "short_01_afrenta",
+      "episodio_padre_id": "EP0004_Ferruccio_Lamborghini",
+      "acto_origen_id": "act_1",
+      "timestamp_range": "00:00 - 01:30",
+      "is_derived_short": true,
+      "script_short": "Ferruccio Lamborghini no buscaba crear un imperio de superdeportivos; solo quería que su Ferrari 250 GT no se rompiera..."
+    },
+    {
+      "short_id": "short_02_embrague",
+      "episodio_padre_id": "EP0004_Ferruccio_Lamborghini",
+      "acto_origen_id": "act_2",
+      "timestamp_range": "01:30 - 03:20",
+      "is_derived_short": true,
+      "script_short": "Cuando Ferruccio desarmó su Ferrari personal en el taller, descubrió que el embrague era idéntico al de sus tractores comerciales..."
+    },
+    {
+      "short_id": "short_03_ladrillos",
+      "episodio_padre_id": "EP0004_Ferruccio_Lamborghini",
+      "acto_origen_id": "act_4",
+      "timestamp_range": "05:00 - 06:50",
+      "is_derived_short": true,
+      "script_short": "En el Salón de Turín de 1963, el primer prototipo de Lamborghini no tenía motor. Ferruccio llenó el capó con ladrillos y cerró con llave..."
+    }
+  ]
+}

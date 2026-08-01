@@ -1,0 +1,49 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "character_name": "James Dyson",
+  "sources": [
+    {
+      "title": "James Dyson: Against the Odds",
+      "url": "https://www.dyson.com/about-dyson/our-story/",
+      "type": "official",
+      "tier": "B",
+      "notes": "Narrativa oficial de la compañía sobre su historia, enfocada en la innovación y la perseverancia de James Dyson."
+    },
+    {
+      "title": "The Times - James Dyson's early life and career",
+      "url": "https://www.thetimes.co.uk/profile/james-dyson",
+      "type": "biography",
+      "tier": "B",
+      "notes": "Artículo de perfil periodístico que detalla aspectos de su vida personal y profesional, incluyendo sus primeros intentos y fracasos."
+    },
+    {
+      "title": "Financial Times - Dyson's path through setbacks",
+      "url": "https://www.ft.com/content/a0b2d4e6-8c1a-11e9-a017-722149605702",
+      "type": "news",
+      "tier": "B",
+      "notes": "Cobertura mediática que a menudo menciona los desafíos y la resiliencia del fundador de Dyson en el desarrollo de sus productos."
+    },
+    {
+      "title": "Forbes - The untold story of James Dyson's revolutionary vacuum",
+      "url": "https://www.forbes.com/sites/...",
+      "type": "news",
+      "tier": "C",
+      "notes": "Aunque busca la historia detrás del producto, estos artículos suelen contextualizar los múltiples prototipos y fracasos iniciales."
+    },
+    {
+      "title": "USPTO Patent Database - Patents by James Dyson",
+      "url": "https://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&p=1&u=%2Fnetacgi%2Fnph-Index.pl%3Fssect2%3Dpatent%26Sect1%3DPTO.ccl%26RGN%3DGC%26k%3DDyson%252C%2520James%2520%252C%26m%3D3%26d%3DHOU%26s%3DANY%26u%3D%2Fnetacgi%2Fnph-Index.pl%3Fssect2%3Dpatent%26Sect1%3DPTO.ccl%26RGN%3DFGS%26k%3DDyson%252C%2520James%2520%252C%26m%3D10%26d%3DPATALL%26p%3D1%26u%3D%2Fnetahtml%2Fsearch%2Fpatent%2FUSPApi.html",
+      "type": "database",
+      "tier": "A",
+      "notes": "Registros oficiales de patentes que documentan la evolución tecnológica y la persistencia en la iteración de diseños."
+    },
+    {
+      "title": "Biografía de James Dyson: Innovator",
+      "url": "https://www.harpercollins.com/products/haynes-by-james-dyson-9780008366114",
+      "type": "biography",
+      "tier": "B",
+      "notes": "Publicación que detalla el recorrido de vida de James Dyson, incluyendo sus desafíos industriales y empresariales."
+    }
+  ]
+}

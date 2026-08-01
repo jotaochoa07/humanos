@@ -1,0 +1,1 @@
+Cuando presentó su invento, todos los fabricantes lo rechazaron. No porque fuera mala idea, sino porque amenazaba el lucrativo negocio de vender bolsas. Así que vendió su invento anterior, financió su propia empresa y, en 1993, lanzó la Dyson DC01. Funcionó. Y construyó un imperio.

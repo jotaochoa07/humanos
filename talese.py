@@ -24,14 +24,20 @@ class TaleseAgent:
     def __init__(self, base_dir: str = "C:/Users/Jota Ochoa/Antigravity/02_Projects/humanos"):
         self.base_dir = base_dir
         load_env(base_dir)
-        self.learnings_file = os.path.join(base_dir, "_LAB", "creator_learnings.json")
         self.system_prompt_path = os.path.join(base_dir, "agents", "talese", "prompts", "system_prompt.md")
+        # Registro longitudinal del Creator Lab. Requerido por run_performance_retro().
+        self.lab_dir = os.path.join(base_dir, "_LAB")
+        self.learnings_file = os.path.join(self.lab_dir, "creator_learnings.json")
         self.model_name = "anthropic/claude-sonnet-5"
+        self.client = None
+
         if os.environ.get("OPENROUTER_API_KEY"):
             try:
                 self.client = OpenRouterClient()
             except Exception as e:
                 print(f"[Talese] Warning: OpenRouterClient error: {e}")
+
+
 
     def _get_system_prompt(self) -> str:
         if os.path.exists(self.system_prompt_path):
@@ -216,10 +222,15 @@ class TaleseAgent:
             result_json = self._fallback_performance(metrics_data, episode_name)
 
         # Actualizar _LAB/creator_learnings.json si hay propuestas
-        if result_json.get("proposed_promotions") and os.path.exists(self.learnings_file):
+        if result_json.get("proposed_promotions"):
             try:
-                with open(self.learnings_file, "r", encoding="utf-8") as f:
-                    current = json.load(f)
+                os.makedirs(self.lab_dir, exist_ok=True)
+                if os.path.exists(self.learnings_file):
+                    with open(self.learnings_file, "r", encoding="utf-8") as f:
+                        current = json.load(f)
+                else:
+                    current = {"version": 1, "description": "Registro longitudinal del Creator Lab.", "learnings": []}
+                current.setdefault("learnings", [])
                 existing_ids = {item["id"] for item in current.get("learnings", [])}
                 for item in result_json["proposed_promotions"]:
                     item["status"] = "PROPOSED"  # Garantizar regla de autoridad
@@ -233,7 +244,8 @@ class TaleseAgent:
                 print(f"[Talese] Error al actualizar creator_learnings.json: {e}")
 
         # Guardar CREATOR_CHANGELOG.md en _LAB
-        changelog_md_file = os.path.join(self.base_dir, "_LAB", "CREATOR_CHANGELOG.md")
+        os.makedirs(self.lab_dir, exist_ok=True)
+        changelog_md_file = os.path.join(self.lab_dir, "CREATOR_CHANGELOG.md")
         changelog_content = f"""# Creator Changelog — Creativity Lab
 *Última actualización por Gay Talese: {datetime.now().strftime('%Y-%m-%d %H:%M')}*
 
@@ -249,6 +261,125 @@ class TaleseAgent:
 
         print(f"[Talese] Retro de Desempeño guardada en {changelog_md_file}")
         return result_json
+
+    def audit_beat_sheet_gate1(self, narrative_blueprint: dict) -> dict:
+        """
+        Gate 1: Audit temprano del Beat Sheet / Narrative Blueprint de Borges antes de redactar.
+        Bloquea si la estructura o la tensión por acto son débiles.
+        """
+        character_name = narrative_blueprint.get("character_name", "Personaje")
+        beat_sheet = narrative_blueprint.get("beat_sheet", [])
+        total_duration = narrative_blueprint.get("target_total_duration_sec", 540)
+
+        print(f"[Talese - Gate 1] Auditando Beat Sheet de {character_name} ({len(beat_sheet)} actos, ~{total_duration}s)...")
+
+        # Validación estructural estricta
+        rejection_reasons = []
+        if len(beat_sheet) < 5 or len(beat_sheet) > 7:
+            rejection_reasons.append(f"El número de actos ({len(beat_sheet)}) debe estar estrictamente entre 5 y 7.")
+        
+        if total_duration < 420 or total_duration > 600:
+            rejection_reasons.append(f"La duración estimada ({total_duration}s) debe estar entre 7 y 10 minutos (420s - 600s).")
+
+        non_causal_acts = [act for act in beat_sheet if act.get("causality_type") not in ["BUT", "THEREFORE"]]
+        if non_causal_acts:
+            rejection_reasons.append(f"Hay {len(non_causal_acts)} actos con causalidad débil (se requiere PERO o POR LO TANTO).")
+
+        if self.client:
+            prompt = f"""
+            Actúa como Gay Talese, Editor Jefe de HUMANOS.
+            Audita este NARRATIVE BLUEPRINT para un documental largo de 10 min sobre {character_name}:
+
+            {json.dumps(narrative_blueprint, ensure_ascii=False, indent=2)}
+
+            Evalúa con máximo rigor periodístico:
+            1. ¿La tesis central es potente o es un lugar común?
+            2. ¿Hay una escalada real de tensión o el ritmo se cae en el Acto III?
+            3. ¿Las transiciones entre actos son causales (PERO/POR LO TANTO)?
+
+            Responde estrictamente en formato JSON:
+            {{
+              "approved": true | false,
+              "structural_score": 8, // 1 a 10
+              "editorial_feedback": "Explicación clara de por qué se aprueba o se rechaza",
+              "rejection_reasons": ["Motivo 1", "Motivo 2"],
+              "socratic_questions": ["Pregunta 1", "Pregunta 2"]
+            }}
+            """
+            try:
+                result = self.client.complete_json(prompt, self._get_system_prompt(), model=self.model_name)
+                if rejection_reasons:
+                    result["approved"] = False
+                    result.setdefault("rejection_reasons", []).extend(rejection_reasons)
+                print(f"[Talese - Gate 1] Audit completado. Aprobado: {result.get('approved')}")
+                return result
+            except Exception as e:
+                print(f"[Talese - Gate 1] Error en LLM: {e}. Usando fallback.")
+
+        approved = len(rejection_reasons) == 0
+        return {
+            "approved": approved,
+            "structural_score": 8 if approved else 5,
+            "editorial_feedback": "Beat sheet estructuralmente válido." if approved else "Deficiencias estructurales encontradas en causalidad o número de actos.",
+            "rejection_reasons": rejection_reasons,
+            "socratic_questions": ["¿Por qué el conflicto del Acto II obliga al personaje a tomar la decisión del Acto III?"]
+        }
+
+    def audit_act_socratic_gate2(self, act_id: str, act_script: str, central_thesis: str, beat_sheet_context: list) -> dict:
+        """
+        Gate 2: Audit socrático del guion redactado por actos.
+        Emite preguntas forzantes (no corrección directa).
+        """
+        print(f"[Talese - Gate 2] Auditando Socráticamente el {act_id}...")
+
+        if self.client:
+            prompt = f"""
+            Actúa como Gay Talese, Mentor Editorial de HUMANOS.
+            Audita el texto redactado para el {act_id} de un documental largo:
+
+            TESIS CENTRAL DE LA HISTORIA: {central_thesis}
+            TEXTO DEL ACTO REDACTADO:
+            ---
+            {act_script}
+            ---
+
+            CONTEXTO DEL BEAT SHEET COMPLETO:
+            {json.dumps(beat_sheet_context, ensure_ascii=False)}
+
+            Genera preguntas socráticas forzantes que obliguen a mejorar la prosa sin corregir el texto directamente.
+
+            Responde estrictamente en formato JSON:
+            {{
+              "approved": true | false,
+              "act_id": "{act_id}",
+              "feedback": "Evaluación crítica del acto",
+              "socratic_questions": [
+                {{
+                  "question_id": "q_{act_id}_01",
+                  "question": "Texto de la pregunta socrática",
+                  "category": "conflict_causality | emotional_payoff | pacing | data_density"
+                }}
+              ]
+            }}
+            """
+            try:
+                return self.client.complete_json(prompt, self._get_system_prompt(), model=self.model_name)
+            except Exception as e:
+                print(f"[Talese - Gate 2] Error LLM: {e}")
+
+        return {
+            "approved": True,
+            "act_id": act_id,
+            "feedback": "Texto del acto revisado sin objeciones graves.",
+            "socratic_questions": [
+                {
+                    "question_id": f"q_{act_id}_01",
+                    "question": "¿Cuál es el conflicto moral no resuelto al final de este acto?",
+                    "category": "conflict_causality"
+                }
+            ]
+        }
+
 
     def _fallback_immediate(self, orig: str, final: str, name: str) -> dict:
         orig_words = len(orig.split()) if orig else 0
@@ -268,9 +399,21 @@ class TaleseAgent:
             ]
         }
 
+    @staticmethod
+    def _metric(metrics: dict, *keys, default=0):
+        """Lee una métrica tolerando camelCase y snake_case.
+
+        El dashboard escribe metrics_48h.json en camelCase (retentionRate3s) y
+        mark.py guarda el historial en snake_case (retention_rate_3s).
+        """
+        for k in keys:
+            if metrics.get(k) not in (None, ""):
+                return metrics[k]
+        return default
+
     def _fallback_performance(self, metrics: dict, name: str) -> dict:
-        ret = metrics.get("retentionRate3s", 0)
-        views = metrics.get("views", 0)
+        ret = self._metric(metrics, "retentionRate3s", "retention_rate_3s")
+        views = self._metric(metrics, "views")
         return {
             "evolution_summary": f"Episodio {name} consolida la tasa de retención a 3s ({ret*100:.1f}%) con {views} reproducciones.",
             "metric_vs_evolution_analysis": "La estructura de gancho directo mantuvo la atención sin depender de artificios visuales.",

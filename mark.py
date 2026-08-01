@@ -27,25 +27,64 @@ class MarkAgent:
                     avg_watch_percentage: float, duration_seconds: float, hook_text: str, themes: list) -> None:
         """Registra métricas para un video/episodio en la base de datos histórica."""
         metrics = self._load_metrics()
+        previous = next((m for m in metrics if m.get("episode_id") == episode_id), {})
         new_entry = {
             "character_name": character_name,
             "episode_id": episode_id,
             "logged_at": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "metrics_status": "real",
             "views": views,
             "retention_rate_3s": retention_rate_3s,
             "avg_watch_percentage": avg_watch_percentage,
+            "duration_seconds": duration_seconds or previous.get("duration_seconds", 0),
+            "hook_text": hook_text or previous.get("hook_text", ""),
+            "themes": themes or previous.get("themes", [])
+        }
+        metrics = [m for m in metrics if m.get("episode_id") != episode_id]
+        metrics.append(new_entry)
+        self._save_metrics(metrics)
+        print(f"[Mark] Métricas REALES registradas para {character_name} ({episode_id}).")
+
+    def register_episode(self, character_name: str, episode_id: str, duration_seconds: float,
+                         hook_text: str, themes: list) -> None:
+        """Registra la ficha del episodio SIN métricas de audiencia.
+
+        El pipeline no conoce el rendimiento real al terminar la producción.
+        Se crea la entrada con `metrics_status: "pending"` y las cifras se
+        completan más tarde vía log_metrics() cuando Jota carga los datos
+        reales de 48h desde el panel. Nunca se inventan métricas.
+        """
+        metrics = self._load_metrics()
+        existing = next((m for m in metrics if m.get("episode_id") == episode_id), None)
+        if existing and existing.get("metrics_status") != "pending":
+            print(f"[Mark] {episode_id} ya tiene métricas reales registradas. No se sobrescribe.")
+            return
+
+        entry = {
+            "character_name": character_name,
+            "episode_id": episode_id,
+            "logged_at": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "metrics_status": "pending",
+            "views": None,
+            "retention_rate_3s": None,
+            "avg_watch_percentage": None,
             "duration_seconds": duration_seconds,
             "hook_text": hook_text,
             "themes": themes
         }
         metrics = [m for m in metrics if m.get("episode_id") != episode_id]
-        metrics.append(new_entry)
+        metrics.append(entry)
         self._save_metrics(metrics)
-        print(f"[Mark] Métricas registradas con éxito para {character_name} ({episode_id}).")
+        print(f"[Mark] Ficha de {character_name} ({episode_id}) registrada. Métricas: PENDIENTES de datos reales a 48h.")
 
     def analyze_performance(self) -> dict:
-        """Analiza el historial de métricas para detectar patrones ganadores."""
-        metrics = self._load_metrics()
+        """Analiza el historial de métricas para detectar patrones ganadores.
+
+        Solo considera episodios con métricas REALES cargadas. Los que están en
+        `metrics_status: "pending"` se excluyen para no contaminar el aprendizaje.
+        """
+        metrics = [m for m in self._load_metrics() if m.get("metrics_status") != "pending"
+                   and m.get("avg_watch_percentage") is not None]
         if not metrics:
             return {
                 "total_videos": 0,
@@ -130,6 +169,23 @@ class MarkAgent:
             
         return dashboard
 
+    def _find_cover(self, ep_path: str) -> str:
+        """Busca la portada/thumbnail del episodio sin depender de un nombre fijo de personaje.
+
+        Devuelve la ruta del primer archivo válido encontrado en 10_EXPORTS, o "" si no hay.
+        Prioriza nombres que empiecen por 'cover' o 'thumbnail'.
+        """
+        exports_dir = os.path.join(ep_path, "10_EXPORTS")
+        if not os.path.isdir(exports_dir):
+            return ""
+        images = [f for f in os.listdir(exports_dir) if f.lower().endswith((".png", ".jpg", ".jpeg"))]
+        if not images:
+            return ""
+        for f in images:
+            if f.lower().startswith(("cover", "thumbnail", "portada")):
+                return os.path.join(exports_dir, f)
+        return os.path.join(exports_dir, images[0])
+
     def verify_prepublication_checklist(self, ep_path: str) -> dict:
         """Valida que todos los entregables de producción y branding estén presentes antes de distribuir."""
         checklist = {
@@ -152,20 +208,24 @@ class MarkAgent:
         if folder_name.startswith("EP") and "_" in folder_name:
             checklist["Nombre correcto"] = True
 
-        # Comprobar existencia de Thumbnail
-        cover_path = os.path.join(ep_path, "10_EXPORTS", "cover_jan_koum.png")
-        if os.path.exists(cover_path):
+        # Comprobar existencia de Thumbnail (cualquier portada del episodio, no un personaje fijo)
+        if self._find_cover(ep_path):
             checklist["Thumbnail (Leonardo)"] = True
 
         # Comprobar existencia de Character Card (video o asset gráfico)
-        cc_path = os.path.join(self.base_dir, "assets", "branding", "Character_card_CANVA.mp4")
-        if os.path.exists(cc_path):
+        cc_candidates = [
+            os.path.join(self.base_dir, "MEDIA_LIBRARY", "BRANDING", "video", "Character_card_CANVA.mp4"),
+            os.path.join(self.base_dir, "assets", "branding", "Character_card_CANVA.mp4"),
+            os.path.join(ep_path, "10_EXPORTS", "character_card_canva_img.png"),
+        ]
+        if any(os.path.exists(p) for p in cc_candidates):
             checklist["Character Card"] = True
 
-        # Comprobar existencia de Audio final
-        audio_path = os.path.join(ep_path, "06_AUDIO", "voz_off_jan_koum.wav")
-        if os.path.exists(audio_path):
-            checklist["Audio"] = True
+        # Comprobar existencia de Audio final (cualquier locución en 06_AUDIO)
+        audio_dir = os.path.join(ep_path, "06_AUDIO")
+        if os.path.isdir(audio_dir):
+            if any(f.lower().endswith((".wav", ".mp3", ".m4a")) for f in os.listdir(audio_dir)):
+                checklist["Audio"] = True
 
         # Comprobar existencia de Export final
         export_video_path = os.path.join(ep_path, "10_EXPORTS", f"001_{folder_name[7:]}_HUMANOS.mp4")
@@ -273,13 +333,46 @@ class MarkAgent:
                 self._generate_local_fallback(platform_dir, platform, character_name, scripts_data)
 
             # Copiar recursos gráficos a carpetas que los requieran
-            cover_source = os.path.join(ep_path, "10_EXPORTS", "cover_jan_koum.png")
-            if os.path.exists(cover_source):
+            cover_source = self._find_cover(ep_path)
+            if cover_source and os.path.exists(cover_source):
                 if platform in ["youtube", "instagram", "facebook"]:
                     shutil.copy(cover_source, os.path.join(platform_dir, "thumbnail.png"))
 
-        print(f"[Mark] Paquete de distribución creado con éxito en: {dist_dir}")
+        print(f"[Mark] Empaquetado completo de distribución finalizado para {character_name}.")
         return True
+
+    def package_dual_distribution(self, episode_dir: str, character_name: str, narrative_blueprint: dict, derived_shorts: list) -> dict:
+        """
+        Empaqueta la distribución doble para el piloto:
+        1. Master Pack del Documental de 7-10 min.
+        2. Paquete de 3 Shorts Derivados trazables (con episodio_padre_id y acto_origen_id).
+        """
+        print(f"[Mark] Empaquetando distribución dual (Documental + 3 Shorts derivados) para {character_name}...")
+
+        dist_dir = os.path.join(episode_dir, "11_DIST")
+        os.makedirs(dist_dir, exist_ok=True)
+
+        dual_package = {
+          "episode_id": os.path.basename(episode_dir),
+          "character_name": character_name,
+          "is_documentary_pilot": True,
+          "created_at": datetime.datetime.now().isoformat(),
+          "master_documentary": {
+            "title": f"HUMANOS Doc — {character_name}",
+            "central_thesis": narrative_blueprint.get("central_thesis", ""),
+            "total_acts": len(narrative_blueprint.get("beat_sheet", [])),
+            "target_duration_sec": narrative_blueprint.get("target_total_duration_sec", 540)
+          },
+          "derived_shorts": derived_shorts
+        }
+
+        dist_json_file = os.path.join(dist_dir, "distribution_dual_pack.json")
+        with open(dist_json_file, "w", encoding="utf-8") as f:
+            json.dump(dual_package, f, ensure_ascii=False, indent=2)
+
+        print(f"[Mark] Paquete de distribución dual guardado en {dist_json_file}.")
+        return dual_package
+
 
     def _generate_local_fallback(self, platform_dir: str, platform: str, character_name: str, scripts_data: dict) -> None:
         """Genera una estructura de fallback local básica si falla la llamada de IA o no hay cliente."""

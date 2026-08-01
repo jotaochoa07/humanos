@@ -37,8 +37,22 @@
         "method": "POST",
         "url": "https://api.tavily.com/search",
         "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"api_key\": \"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\",\n  \"query\": \"{{$node[\\\"Supabase - Leer personaje\\\"].json.protagonist_name}} early life childhood poverty family background origin\",\n  \"search_depth\": \"advanced\"\n}\n",
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "api_key",
+              "value": "YOUR_TAVILY_API_KEY"
+            },
+            {
+              "name": "query",
+              "value": "={{$json.protagonist_name}} early life childhood poverty family background origin"
+            },
+            {
+              "name": "search_depth",
+              "value": "advanced"
+            }
+          ]
+        },
         "options": {}
       },
       "id": "tavily-origen-id",
@@ -55,8 +69,22 @@
         "method": "POST",
         "url": "https://api.tavily.com/search",
         "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"api_key\": \"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\",\n  \"query\": \"{{$node[\\\"Supabase - Leer personaje\\\"].json.protagonist_name}} failures struggles obstacles rejection difficulties\",\n  \"search_depth\": \"advanced\"\n}\n",
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "api_key",
+              "value": "YOUR_TAVILY_API_KEY"
+            },
+            {
+              "name": "query",
+              "value": "={{$json.protagonist_name}} failures struggles obstacles rejection difficulties"
+            },
+            {
+              "name": "search_depth",
+              "value": "advanced"
+            }
+          ]
+        },
         "options": {}
       },
       "id": "tavily-conflicto-id",
@@ -73,8 +101,22 @@
         "method": "POST",
         "url": "https://api.tavily.com/search",
         "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"api_key\": \"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\",\n  \"query\": \"{{$node[\\\"Supabase - Leer personaje\\\"].json.protagonist_name}} key decision risk turning point bet everything\",\n  \"search_depth\": \"advanced\"\n}\n",
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "api_key",
+              "value": "YOUR_TAVILY_API_KEY"
+            },
+            {
+              "name": "query",
+              "value": "={{$json.protagonist_name}} key decision risk turning point bet everything"
+            },
+            {
+              "name": "search_depth",
+              "value": "advanced"
+            }
+          ]
+        },
         "options": {}
       },
       "id": "tavily-decision-id",
@@ -91,8 +133,22 @@
         "method": "POST",
         "url": "https://api.tavily.com/search",
         "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"api_key\": \"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\",\n  \"query\": \"{{$node[\\\"Supabase - Leer personaje\\\"].json.protagonist_name}} legacy impact why important today history\",\n  \"search_depth\": \"advanced\"\n}\n",
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "api_key",
+              "value": "YOUR_TAVILY_API_KEY"
+            },
+            {
+              "name": "query",
+              "value": "={{$json.protagonist_name}} legacy impact why important today history"
+            },
+            {
+              "name": "search_depth",
+              "value": "advanced"
+            }
+          ]
+        },
         "options": {}
       },
       "id": "tavily-legado-id",
@@ -214,6 +270,21 @@
             "node": "Tavily - Origen",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Tavily - Conflicto",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Tavily - Decision",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Tavily - Legado",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -222,7 +293,7 @@
       "main": [
         [
           {
-            "node": "Tavily - Conflicto",
+            "node": "OpenAI - Sintetizar Ficha",
             "type": "main",
             "index": 0
           }
@@ -233,9 +304,9 @@
       "main": [
         [
           {
-            "node": "Tavily - Decision",
+            "node": "OpenAI - Sintetizar Ficha",
             "type": "main",
-            "index": 0
+            "index": 1
           }
         ]
       ]
@@ -244,9 +315,9 @@
       "main": [
         [
           {
-            "node": "Tavily - Legado",
+            "node": "OpenAI - Sintetizar Ficha",
             "type": "main",
-            "index": 0
+            "index": 2
           }
         ]
       ]
@@ -257,7 +328,7 @@
           {
             "node": "OpenAI - Sintetizar Ficha",
             "type": "main",
-            "index": 0
+            "index": 3
           }
         ]
       ]

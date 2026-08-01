@@ -1,0 +1,34 @@
+{
+  "character_card": {
+    "category": "BUILDER",
+    "name": "FERRUCCIO LAMBORGHINI",
+    "description": "Fundador de Automobili Lamborghini",
+    "visual_style": "Retrato en blanco y negro de alto contraste, con ligera saturación reducida (-40), capturando una expresión de determinación y orgullo. El rostro ocupa el 70% del cuadro. Mucho espacio negativo a la derecha. Alineación inferior izquierda de los textos, con abundante aire."
+  },
+  "thumbnail": {
+    "headline": "De los tractores al V12",
+    "highlight_word": "V12",
+    "composition_description": "Primer plano de Ferruccio Lamborghini mirando directamente a la cámara con una expresión de orgullo y determinación. El rostro ocupa el 70-80% de la miniatura. El fondo es negro absoluto. El texto 'De los tractores al' está en blanco, y la palabra 'V12' está en cian (#01C9C7). Tipografía Montserrat Bold."
+  },
+  "midjourney_prompts": [
+    {
+      "purpose": "Retrato para miniatura y B-roll",
+      "prompt": "Ferruccio Lamborghini, headshot, focused intense gaze directly at the camera, journalistic high-fashion editorial style, dramatic chiaroscuro lighting, deep blacks and high contrast, desaturated (saturation -50), professional portrait lens (85mm), subtle 35mm film grain texture --ar 9:16"
+    },
+    {
+      "purpose": "Primer plano de manos trabajando en embrague",
+      "prompt": "Close-up detailed shot of weathered hands meticulously working on a vintage car clutch mechanism, gritty workshop environment, dramatic directional lighting, shallow depth of field, realistic textures, high contrast black and white photography --ar 16:9"
+    },
+    {
+      "purpose": "Lamborghini 350 GTV en carretera",
+      "prompt": "Dynamic shot of a classic Lamborghini 350 GTV driving at high speed on a deserted Italian country road, cinematic, low angle, motion blur, low saturation, high contrast, editorial automotive photography, captured with a telephoto lens --ar 16:9"
+    }
+  ],
+  "motion_specs": {
+    "camera_speed": "subtle_zoom",
+    "default_transition": "subtle_fade",
+    "branding_color_use": "El color cian (#01C9C7) se utiliza para resaltar el nombre 'Lamborghini' en el logo de Automobili Lamborghini o para animar el texto de la palabra clave 'V12' en transiciones clave.",
+    "titles_font": "Montserrat Bold",
+    "subtitles_font": "Inter SemiBold"
+  }
+}

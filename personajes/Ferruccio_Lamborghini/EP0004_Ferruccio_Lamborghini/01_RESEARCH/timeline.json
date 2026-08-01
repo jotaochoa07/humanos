@@ -1,0 +1,88 @@
+{
+  "timeline": [
+    {
+      "date": "1916",
+      "event": "Nacimiento de Ferruccio Lamborghini en Cento, Italia.",
+      "importance": "Alto",
+      "source_url": "https://www.lamborghini.com/es-en/history",
+      "confidence": 10
+    },
+    {
+      "date": "1940s",
+      "event": "Servicio en la Fuerza Aérea Italiana durante la Segunda Guerra Mundial como mecánico.",
+      "importance": "Medio",
+      "source_url": "https://www.britannica.com/biography/Ferruccio-Lamborghini",
+      "confidence": 9
+    },
+    {
+      "date": "1948",
+      "event": "Fundación de 'Lamborghini Trattori', su primera empresa dedicada a la fabricación de tractores.",
+      "importance": "Alto",
+      "source_url": "https://www.lamborghini.com/es-en/history",
+      "confidence": 10
+    },
+    {
+      "date": "1950s",
+      "event": "Expansión de Lamborghini Trattori, convirtiéndose en un importante fabricante de maquinaria agrícola en Italia.",
+      "importance": "Alto",
+      "source_url": "https://www.topspeed.com/cars/ferruccio-lamborghini/bio-ferruccio-lamborghini-ar12602.html",
+      "confidence": 9
+    },
+    {
+      "date": "1959",
+      "event": "Fundación de 'Lamborghini Bruciatori', una empresa de sistemas de calefacción.",
+      "importance": "Medio",
+      "source_url": "https://books.google.com/books?id=3b-UAgAAQBAJ&pg=PT14&redir_esc=y#v=onepage&q&f=false",
+      "confidence": 8
+    },
+    {
+      "date": "1963",
+      "event": "Fundación de 'Automobili Lamborghini', motivado por su descontento con un embrague de Ferrari y su deseo de crear autos deportivos.",
+      "importance": "Alto",
+      "source_url": "https://www.lamborghini.com/es-en/history",
+      "confidence": 10
+    },
+    {
+      "date": "1963",
+      "event": "Presentación del primer prototipo de Lamborghini, el 350 GTV, en Turín.",
+      "importance": "Alto",
+      "source_url": "https://www.lamborghini.com/es-en/history",
+      "confidence": 10
+    },
+    {
+      "date": "1966",
+      "event": "Lanzamiento del icónico Lamborghini Miura, considerado uno de los primeros superdeportivos de la historia.",
+      "importance": "Alto",
+      "source_url": "https://www.lamborghini.com/es-en/history",
+      "confidence": 10
+    },
+    {
+      "date": "1972",
+      "event": "Venta de su participación mayoritaria en Automobili Lamborghini a Georges-Henri Rossetti.",
+      "importance": "Alto",
+      "source_url": "https://www.forbes.com/profile/ferruccio-lamborghini/?sh=1289f00b111b",
+      "confidence": 9
+    },
+    {
+      "date": "1974",
+      "event": "Venta del resto de sus acciones en Automobili Lamborghini.",
+      "importance": "Alto",
+      "source_url": "https://www.britannica.com/biography/Ferruccio-Lamborghini",
+      "confidence": 9
+    },
+    {
+      "date": "1975",
+      "event": "Se retira a su agroturismo 'La Fiorita' en Umbría, Italia, para dedicarse a la viticultura.",
+      "importance": "Medio",
+      "source_url": "https://www.topspeed.com/cars/ferruccio-lamborghini/bio-ferruccio-lamborghini-ar12602.html",
+      "confidence": 9
+    },
+    {
+      "date": "1993",
+      "event": "Fallecimiento de Ferruccio Lamborghini en Perugia, Italia.",
+      "importance": "Alto",
+      "source_url": "https://www.lamborghini.com/es-en/history",
+      "confidence": 10
+    }
+  ]
+}

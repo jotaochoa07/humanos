@@ -158,7 +158,67 @@ class GaboAgent:
         for i, tweet in enumerate(thread_list, 1):
             twitter_thread_md += f"### {i}/{len(thread_list)}\n{tweet}\n\n"
 
-        logs = f"Narrativa multiformato creada bajo reglas de duración estrictas de HUMANOS. Se definieron {len(scripts_data.get('scenes', []))} escenas secuenciales para el guion vertical."
-        print(f"[Gabo] Estructura narrativa multiformato finalizada para {character_name}.")
+        logs = f"Generación narrativa finalizada para {character_name}. Se generaron 5 entregarles principales."
+        print(f"[Gabo] Estructura narrativa V1 (Short) y V2 (Documental) generadas con éxito.")
 
         return scripts_data, script_short_md, script_long_md, newsletter_md, twitter_thread_md, logs
+
+    def execute_narrative_by_act(self, character_name: str, narrative_blueprint: dict, act_index: int, short_script_baseline: str = "") -> dict:
+        """
+        Redacta un acto específico del documental largo inyectando la tesis central,
+        el Beat Sheet completo y el guion corto aprobado como ANCLA DE VOZ Y ESTILO
+        para erradicar la prosa tibia y mantener la mordida del original.
+        """
+        beat_sheet = narrative_blueprint.get("beat_sheet", [])
+        if act_index < 0 or act_index >= len(beat_sheet):
+            raise ValueError(f"Índice de acto inválido: {act_index}. Total actos: {len(beat_sheet)}")
+
+        target_act = beat_sheet[act_index]
+        central_thesis = narrative_blueprint.get("central_thesis", "")
+        main_conflict = narrative_blueprint.get("main_conflict", "")
+
+        print(f"[Gabo - Act Generator] Redactando {target_act.get('id')} ({target_act.get('title')}) para {character_name}...")
+
+        system_prompt = (
+            "Eres GABO, Narrative Director de HUMANOS.\n"
+            "Estás redactando un acto específico para un documental largo de 10 minutos.\n\n"
+            "REGLAS EDITORIALES DE ACTO Y ESTILO (ESTRICTO):\n"
+            "1. ANCLA DE VOZ Y RITMO: Réplica el gancho, la mordida, la cadencia y la tensión del guion corto del autor. NUNCA escribas en tono informativo, enciclopédico o neutro aburrido.\n"
+            "2. CONTEXTO INMUTABLE: Respeta la Tesis Central y la posición de este acto dentro del Beat Sheet completo.\n"
+            "3. PROSA: Frases cortas, aire, tensión narrativa punzante. Evita explicaciones corporativas o moralejas.\n"
+            "4. SUGERENCIAS VISUALES: Incluye referencias entre corchetes [B-ROLL: ...] para guiar a Moore.\n"
+            "5. IDIOMA: Español neutro estricto (sin voseo en la locución final).\n"
+            "Responde strictly en formato JSON."
+        )
+
+        style_anchor_prompt = f"\n[ANCLA DE ESTILO Y VOZ DEL AUTOR - GUION CORTO APROBADO]:\n{short_script_baseline}\n" if short_script_baseline else ""
+
+        prompt = f"""
+        Personaje: {character_name}
+        {style_anchor_prompt}
+        [CONTEXTO INMUTABLE - TESIS CENTRAL]:
+        {central_thesis}
+
+        [CONTEXTO INMUTABLE - CONFLICTO PRINCIPAL]:
+        {main_conflict}
+
+        [BEAT SHEET COMPLETO (POSICIÓN EN LA HISTORIA)]:
+        {json.dumps(beat_sheet, ensure_ascii=False, indent=2)}
+
+        [ACTO ACTUAL A REDACTAR]:
+        {json.dumps(target_act, ensure_ascii=False, indent=2)}
+
+        Genera la locución y guion audiovisual para este acto en JSON con el siguiente esquema:
+        {{
+          "act_id": "{target_act.get('id')}",
+          "title": "{target_act.get('title')}",
+          "script_text": "Texto completo de la locución del acto en Markdown con [B-ROLL: ...] sugeridos. Mantiene la garra y cadencia del guion corto.",
+          "word_count": 250,
+          "estimated_duration_sec": {target_act.get('estimated_duration_sec', 90)},
+          "status": "draft"
+        }}
+        """
+
+        result = self.client.complete_json(prompt, system_prompt)
+        print(f"[Gabo - Act Generator] Redacción del {target_act.get('id')} finalizada ({result.get('word_count', 0)} palabras).")
+        return result

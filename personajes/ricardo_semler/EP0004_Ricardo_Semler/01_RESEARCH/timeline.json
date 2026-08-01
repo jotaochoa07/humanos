@@ -1,0 +1,67 @@
+{
+  "timeline": [
+    {
+      "date": "1952",
+      "event": "Nacimiento de Ricardo Semler en São Paulo, Brasil.",
+      "importance": "Bajo",
+      "source_url": "https://www.biografiasyvidas.com/biografia/s/semler.htm",
+      "confidence": 9
+    },
+    {
+      "date": "1974",
+      "event": "Asume la dirección de Semco, empresa fundada por su padre.",
+      "importance": "Alto",
+      "source_url": "https://www.semco.com.br/en/about-us/our-history/",
+      "confidence": 9
+    },
+    {
+      "date": "1970s-1980s",
+      "event": "Implementación de prácticas laborales innovadoras, reduciendo la jornada laboral y fomentando la autogestión.",
+      "importance": "Alto",
+      "source_url": "https://www.forbes.com/sites/hbsworkingknowledge/2021/05/27/ricardo-semlers-radical-approach-to-democratizing-the-workplace/",
+      "confidence": 9
+    },
+    {
+      "date": "1990",
+      "event": "Publicación de 'Managing Mayor' (Mandando a Llamar), su primer libro sobre gestión.",
+      "importance": "Medio",
+      "source_url": "https://www.goodreads.com/book/show/109042.Managing_Mayor",
+      "confidence": 8
+    },
+    {
+      "date": "1990s",
+      "event": "Semco se expande internacionalmente y diversifica sus operaciones.",
+      "importance": "Medio",
+      "source_url": "https://www.economist.com/business/2009/01/15/the-new-semco-model",
+      "confidence": 9
+    },
+    {
+      "date": "2009",
+      "event": "Publicación de 'The Seven-Day Weekend: Finding the Balance Between Work and Life' (El Fin de Semana de Siete Días).",
+      "importance": "Medio",
+      "source_url": "https://www.goodreads.com/book/show/6020233-the-seven-day-weekend",
+      "confidence": 8
+    },
+    {
+      "date": "2013",
+      "event": "Su hijo, Christiane Semler, se convierte en CEO de Semco.",
+      "importance": "Medio",
+      "source_url": "https://insight.kellogg.northwestern.edu/article/ricardo-semler-semco-leadership-management-style",
+      "confidence": 8
+    },
+    {
+      "date": "2014",
+      "event": "La familia Semler dona la mayoría de sus acciones a los empleados, Semco se convierte en una empresa totalmente propiedad de los trabajadores.",
+      "importance": "Alto",
+      "source_url": "http://www.businessinsider.com/ricardo-semler-semco-shareholder-employees-2014-1",
+      "confidence": 9
+    },
+    {
+      "date": "2010s-Presente",
+      "event": "Ricardo Semler se enfoca en la educación, fundando la escola Lumiar y continuando su labor como escritor y conferencista.",
+      "importance": "Alto",
+      "source_url": "https://www.escolalumiar.com.br/site/pt/quem-somos/",
+      "confidence": 9
+    }
+  ]
+}

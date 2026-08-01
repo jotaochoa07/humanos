@@ -1,8 +1,10 @@
 import os
 import sys
 import argparse
-import random
 import json
+from dotenv import load_dotenv
+load_dotenv()
+
 from openrouter_client import OpenRouterClient
 from hermoso_core import HermosoCore
 from borges import BorgesAgent
@@ -13,6 +15,16 @@ from asset_collector import AssetCollector
 from mark import MarkAgent
 from leonardo import LeonardoAgent
 from scripts.youtube_searcher import search_episode_videos
+
+def stripMarkdownTitle(text: str) -> str:
+    """Elimina títulos markdown como '# Guion Corto: Name' del inicio del texto."""
+    lines = text.splitlines()
+    clean_lines = []
+    for line in lines:
+        if line.strip().startswith("#"):
+            continue
+        clean_lines.append(line)
+    return "\n".join(clean_lines).strip()
 
 def run_mvp(character_name: str, episode_focus: str, themes: list, episode_num: int = 1, stage: str = "all"):
     print("="*60)
@@ -152,13 +164,52 @@ def run_mvp(character_name: str, episode_focus: str, themes: list, episode_num: 
         if os.path.exists(dossier_file):
             with open(dossier_file, "r", encoding="utf-8") as f:
                 dossier_md = f.read()
-        elif 'dossier_md' in locals():
-            # dossier_md ya está en el scope si se ejecutó 'write' en esta misma corrida
-            pass
 
         # 4.5 Veritas: Quality Gate Final del Guion Editado
         veritas = VeritasAgent(client)
         print("[Veritas] Iniciando auditoría final del guion modificado manualmente...")
+        
+        # Leer el contenido real de script_short.md
+        script_short_real_path = os.path.join(ep_path, "02_SCRIPT", "script_short.md")
+        if os.path.exists(script_short_real_path):
+            with open(script_short_real_path, "r", encoding="utf-8") as sf:
+                raw_script_content = sf.read()
+                # Limpiar el título markdown si existe
+                script_short_clean = stripMarkdownTitle(raw_script_content)
+                scripts_json["script_short"] = script_short_clean
+                
+                # Forzar a recrear una estructura de escenas dinámicas y fluidas agrupando oraciones
+                import re
+                raw_sentences = [s.strip() for s in re.split(r'(?<=[.!?]) +', script_short_clean) if s.strip()]
+                
+                grouped_texts = []
+                current_chunk = []
+                current_count = 0
+                
+                for s in raw_sentences:
+                    words = s.split()
+                    # Si añadir la oración excede 22 palabras y ya tenemos texto acumulado, consolidamos el bloque anterior
+                    if current_count + len(words) > 22 and current_chunk:
+                        grouped_texts.append(" ".join(current_chunk))
+                        current_chunk = [s]
+                        current_count = len(words)
+                    else:
+                        current_chunk.append(s)
+                        current_count += len(words)
+                        
+                if current_chunk:
+                    grouped_texts.append(" ".join(current_chunk))
+                
+                new_scenes = []
+                for idx, text_block in enumerate(grouped_texts, 1):
+                    new_scenes.append({
+                        "scene": idx,
+                        "duration": max(4.0, min(10.0, round(len(text_block.split()) * 0.38, 1))),
+                        "voiceover": text_block,
+                        "visual_intent": f"Ilustrar visualmente: {text_block[:50]}..."
+                    })
+                scripts_json["scenes"] = new_scenes
+
         audit_json, veritas_logs = veritas.verify_manual_script(
             character_name, scripts_json, research_json, approved_claims_json
         )
@@ -203,6 +254,13 @@ def run_mvp(character_name: str, episode_focus: str, themes: list, episode_num: 
             search_episode_videos(ep_path)
         except Exception as e:
             print(f"[ERROR] Error al buscar candidatos de YouTube: {e}")
+
+        # 5.7 Ingestión y recolección automatizada de Assets
+        try:
+            from scripts.automated_asset_gatherer import run_gatherer
+            run_gatherer(ep_path)
+        except Exception as e:
+            print(f"[ERROR] Error al recolectar assets automáticamente: {e}")
 
 
         # 5.8 Leonardo: Dirección de Arte y Branding
@@ -260,19 +318,16 @@ def run_mvp(character_name: str, episode_focus: str, themes: list, episode_num: 
             client=client
         )
 
-        # 7. Registrar métricas simuladas con Mark
-        views = random.randint(300000, 800000)
-        retention = round(random.uniform(0.60, 0.85), 2)
-        avg_watch = round(random.uniform(0.40, 0.65), 2)
+        # 7. Registrar la FICHA del episodio (sin métricas inventadas).
+        #    Las métricas reales se cargan desde el panel a las 48h (/api/save-metrics).
+        #    Nunca simular audiencia: contamina metrics_history.json y el aprendizaje
+        #    de Mark, Talese y Mr. You.
         duration = production_package_json.get("estimated_voiceover_duration", 75.0)
         hook_text = scripts_json.get("script_short", "")[:120]
-        
-        mark.log_metrics(
+
+        mark.register_episode(
             character_name=character_name,
             episode_id=f"EP{episode_num:04d}",
-            views=views,
-            retention_rate_3s=retention,
-            avg_watch_percentage=avg_watch,
             duration_seconds=duration,
             hook_text=hook_text,
             themes=themes
@@ -290,6 +345,7 @@ if __name__ == "__main__":
     parser.add_argument("--focus", type=str, default=None, help="Enfoque del episodio (si se especifica un personaje)")
     parser.add_argument("--themes", nargs="+", default=None, help="Temas asociados (si se especifica un personaje)")
     parser.add_argument("--stage", type=str, choices=["write", "produce", "all"], default="all", help="Etapa del pipeline a ejecutar")
+    parser.add_argument("--episode", type=int, default=1, help="Número de episodio para el personaje")
 
     args = parser.parse_args()
 
@@ -332,12 +388,12 @@ if __name__ == "__main__":
         mark = MarkAgent()
         mark.generate_conceptual_dashboard()
         print(f"\nPROCESAMIENTO COMPLETADO. {success_count}/{len(lote)} episodios procesados con éxito.")
-        print("Dashboard de Mark generado en: C:/Users/Jota Ochoa/.gemini/antigravity/scratch/Humanos/Characters/PRODUCTION_METRICS_DASHBOARD.md")
+        print("Dashboard de Mark generado en: personajes/PRODUCTION_METRICS_DASHBOARD.md")
     else:
         # Correr personaje individual
         focus = args.focus or "Enfoque general del personaje"
         themes = args.themes or ["historia", "construcción"]
-        run_mvp(args.character, focus, themes, episode_num=1, stage=args.stage)
+        run_mvp(args.character, focus, themes, episode_num=args.episode, stage=args.stage)
         # Generar dashboard de Mark
         mark = MarkAgent()
         mark.generate_conceptual_dashboard()

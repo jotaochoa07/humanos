@@ -1,0 +1,29 @@
+{
+  "episode": "EP0004_Ferruccio_Lamborghini",
+  "timestamp": "2026-07-20T13:48:16.082542",
+  "mode": "immediate",
+  "report": {
+    "creator_intent": "Contar el origen de Lamborghini como una historia de venganza personal contra Enzo Ferrari, usando la humillación como motor narrativo del episodio, dentro del formato corto de HUMANOS que cierra con una pregunta o reflexión al espectador.",
+    "editorial_delta": "El delta entre ambas versiones es sustancial y revela una reescritura casi total, no un ajuste de estilo. Gabo entrega un resumen expositivo de hechos (rico, tractores, Ferrari lo desprecia, funda empresa, fin) con un gancho de pregunta directa al inicio. Jota elimina esa pregunta-gancho inicial y la reemplaza por una entrada declarativa ('Ferruccio Lamborghini ya era rico. Muy.') que construye ritmo mediante frases cortas y pausas. La escena bisagra —el encuentro con Ferrari— se expande considerablemente: Gabo la resume en una línea ('se topó con el Commendatore por un problema en su 250 GT'), mientras Jota la dramatiza con diálogo directo, escenografía (Maranello, mostrarle la puerta) y una frase-bisagra propia ('Ahí no nació un competidor; nació una venganza con motor V12'). Jota también añade una capa técnica que Gabo no tenía: el descubrimiento de que el embrague fallido de los Ferrari era el mismo que usaba en sus tractores, a menor costo. Esto no es adorno: es evidencia narrativa que sostiene el 'ingeniero ofendido' en vez de solo el 'rico ofendido'. El cierre cambia de una pregunta abierta genérica ('¿Y tú, qué harías con ese rechazo?') a una firma personal de marca ('Yo soy Jota y esto es... HUMANOS') seguida de una síntesis temática ('La revancha hecha imperio'), consolidando identidad de host sobre interpelación al espectador.",
+    "what_worked": "La inserción del detalle técnico del embrague compartido entre tractores y Ferraris es el hallazgo editorial más fuerte: convierte la venganza en algo verificable y mecánico, no solo emocional, y refuerza la tesis editorial de Borges sobre ingeniería y pasión combinadas. La expansión de la escena de humillación con diálogo directo genera tensión dramática ausente en el borrador. El cierre con frase-firma ('Yo soy Jota y esto es HUMANOS') establece una convención de marca reconocible y reemplaza un gancho genérico por una síntesis temática memorable ('La revancha hecha imperio').",
+    "what_surprised": "El giro más inesperado no es de tono sino de causalidad narrativa: Jota invierte el orden lógico del borrador de Gabo. En vez de 'Ferrari lo desprecia → Lamborghini se venga', Jota inserta un paso intermedio no presente en el original: Lamborghini vuelve a su fábrica y desarma sus propios Ferrari para investigar el fallo, encontrando ahí la prueba técnica de su superioridad. Este paso convierte la venganza de un impulso emocional puro en un acto de validación de ingeniero, un matiz que ni el borrador de Gabo ni el dossier de Borges desarrollaban explícitamente con ese nivel de detalle mecánico.",
+    "next_experiment": "Para el próximo episodio, probar si mantener una pregunta-gancho interrogativa en la apertura (como hacía el borrador original de Gabo) pero fusionada con el estilo declarativo de frases cortas de Jota, genera mejor retención en los primeros 3 segundos que la apertura puramente declarativa usada aquí — comparando ambos estilos de apertura en A/B si el formato de distribución lo permite.",
+    "proposed_observations": [
+      {
+        "axis": "hook_structure",
+        "title": "Jota elimina preguntas-gancho directas al espectador en la apertura",
+        "description": "El borrador de Gabo abre con '¿Sabías que...?' como gancho interrogativo clásico. Jota lo sustituye sistemáticamente por una afirmación seca y corta ('Ferruccio Lamborghini ya era rico. Muy.'). Es la primera vez que se documenta este patrón; se registra como OBSERVATION a la espera de si se repite en próximos episodios."
+      },
+      {
+        "axis": "evidence_layering",
+        "title": "Jota añade evidencia técnica/material no presente en el research inicial",
+        "description": "El detalle del embrague compartido entre tractores y Ferraris no aparece ni en el borrador de Gabo ni explícitamente en el dossier de Borges. Jota lo introduce como prueba concreta que sostiene la tesis editorial. Se registra como OBSERVATION: verificar si Jota tiende a incorporar hallazgos de research no explicitados en el dossier para reforzar el 'momento de prueba' de la historia."
+      },
+      {
+        "axis": "host_signature_closing",
+        "title": "Cierre con frase de marca personal reemplaza pregunta abierta al espectador",
+        "description": "Gabo cierra con una interpelación genérica ('¿Y tú, qué harías...?'). Jota la reemplaza por una firma de identidad ('Yo soy Jota y esto es HUMANOS') más una síntesis temática ('La revancha hecha imperio'). Se registra como OBSERVATION para verificar si esta estructura de cierre se vuelve consistente entre episodios."
+      }
+    ]
+  }
+}

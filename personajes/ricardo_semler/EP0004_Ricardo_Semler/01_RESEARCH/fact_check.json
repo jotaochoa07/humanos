@@ -1,0 +1,283 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "subject": "Ricardo Semler",
+  "checked_at": "2026-07-12 20:58:48",
+  "overall_confidence_score": 95,
+  "status": "APPROVED",
+  "format_audit_reports": {
+    "shorts": {
+      "confidence_score": 95,
+      "status": "APPROVED",
+      "notes": "Auditoría específica para formato vertical corto"
+    },
+    "long_form": {
+      "confidence_score": 95,
+      "status": "APPROVED",
+      "notes": "Auditoría específica para formato largo"
+    },
+    "newsletter": {
+      "confidence_score": 95,
+      "status": "APPROVED",
+      "notes": "Auditoría específica para newsletter editorial"
+    },
+    "twitter": {
+      "confidence_score": 95,
+      "status": "APPROVED",
+      "notes": "Auditoría específica para hilo de X/Twitter"
+    }
+  },
+  "claims_summary": {
+    "total": 6,
+    "verified": 5,
+    "partial": 1,
+    "unverified": 0,
+    "rejected": 0
+  },
+  "claims": [
+    {
+      "claim_id": "C001",
+      "claim": "Ricardo Semler heredó la empresa Semco a los 21 años y la encontró desmotivada, ineficiente y con alta rotación de personal.",
+      "importance": 9,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "source_authority": 9,
+      "source_independence": 9,
+      "primary_source_proximity": 9,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "Maverick: The Success Story Behind the World's Most Unusual Workplace",
+          "url": "https://www.amazon.com/Maverick-Success-Story-Behind-Unusual/dp/0887306558",
+          "type": "biography",
+          "tier": "B",
+          "notes": "Libro de Semler, describe la herencia y el estado inicial."
+        },
+        {
+          "title": "Semco Partners Website",
+          "url": "https://www.semco.com.br/",
+          "type": "official",
+          "tier": "A",
+          "notes": "Información general de la empresa."
+        }
+      ],
+      "notes": "La herencia a los 21 años y la condición inicial de la empresa se mencionan explícitamente en la biografía de Semler.",
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C002",
+      "claim": "Implementó un modelo de 'democracia corporativa' donde los empleados elegían a sus supervisores y directivos.",
+      "importance": 10,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 100,
+      "source_authority": 9,
+      "source_independence": 9,
+      "primary_source_proximity": 9,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "Maverick: The Success Story Behind the World's Most Unusual Workplace",
+          "url": "https://www.amazon.com/Maverick-Success-Story-Behind-Unusual/dp/0887306558",
+          "type": "biography",
+          "tier": "B",
+          "notes": "Detalla la implementación de elección de supervisores."
+        },
+        {
+          "title": "Ricardo Semler: The CEO Who Democratized His Company",
+          "url": "https://www.youtube.com/watch?v=kL0O5e92W30",
+          "type": "news",
+          "tier": "B",
+          "notes": "Documental que cubre este aspecto."
+        }
+      ],
+      "notes": "Ampliamente documentado en sus escritos y documentales.",
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C003",
+      "claim": "Permitió a los empleados definir sus propios horarios de trabajo, días de vacaciones y hasta proponer sus salarios.",
+      "importance": 9,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "source_authority": 9,
+      "source_independence": 9,
+      "primary_source_proximity": 9,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "Maverick: The Success Story Behind the World's Most Unusual Workplace",
+          "url": "https://www.amazon.com/Maverick-Success-Story-Behind-Unusual/dp/0887306558",
+          "type": "biography",
+          "tier": "B",
+          "notes": "El libro detalla estas flexibilidades."
+        },
+        {
+          "title": "When Work Is a Game",
+          "url": "https://hbr.org/1994/05/when-work-is-a-game",
+          "type": "news",
+          "tier": "B",
+          "notes": "Artículo HBR que menciona la flexibilidad."
+        }
+      ],
+      "notes": "Aspectos clave de su modelo de autogestión.",
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C004",
+      "claim": "Abrió toda la información financiera de la empresa a todos los niveles jerárquicos, promoviendo la transparencia total.",
+      "importance": 10,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 100,
+      "source_authority": 9,
+      "source_independence": 9,
+      "primary_source_proximity": 9,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "Maverick: The Success Story Behind the World's Most Unusual Workplace",
+          "url": "https://www.amazon.com/Maverick-Success-Story-Behind-Unusual/dp/0887306558",
+          "type": "biography",
+          "tier": "B",
+          "notes": "El libro describe esta política de transparencia."
+        },
+        {
+          "title": "TED Talk: RadicalMBA",
+          "url": "https://www.ted.com/talks/ricardo_semler_radical_mba",
+          "type": "news",
+          "tier": "B",
+          "notes": "Semler expone este principio en su charla TED."
+        }
+      ],
+      "notes": "Un pilar central de su filosofía de gestión.",
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C005",
+      "claim": "Redujo drásticamente el número de gerentes y niveles jerárquicos dentro de la organización.",
+      "importance": 8,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "source_authority": 9,
+      "source_independence": 9,
+      "primary_source_proximity": 9,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "Maverick: The Success Story Behind the World's Most Unusual Workplace",
+          "url": "https://www.amazon.com/Maverick-Success-Story-Behind-Unusual/dp/0887306558",
+          "type": "biography",
+          "tier": "B",
+          "notes": "Describe la eliminación de jerarquías."
+        },
+        {
+          "title": "Ricardo Semler: The CEO Who Democratized His Company",
+          "url": "https://www.youtube.com/watch?v=kL0O5e92W30",
+          "type": "news",
+          "tier": "B",
+          "notes": "Documental que menciona la reducción de jerarquías."
+        }
+      ],
+      "notes": "Consistente en todas las fuentes que describen su modelo descentralizado.",
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C006",
+      "claim": "Transformó Semco de un fabricante de partes de barco a una empresa de servicios diversificada y reconocida por su innovación.",
+      "importance": 9,
+      "status": "PARTIAL",
+      "applicable_formats": [
+        "long_form",
+        "newsletter"
+      ],
+      "confidence_score": 80,
+      "source_authority": 8,
+      "source_independence": 8,
+      "primary_source_proximity": 7,
+      "consistency": 8,
+      "contradiction_risk": 2,
+      "sources": [
+        {
+          "title": "Semco Partners Website",
+          "url": "https://www.semco.com.br/",
+          "type": "official",
+          "tier": "A",
+          "notes": "Muestra la diversificación actual de Semco."
+        },
+        {
+          "title": "Maverick: The Success Story Behind the World's Most Unusual Workplace",
+          "url": "https://www.amazon.com/Maverick-Success-Story-Behind-Unusual/dp/0887306558",
+          "type": "biography",
+          "tier": "B",
+          "notes": "Describe la evolución de la empresa, pero el origen exacto como 'fabricante de partes de barco' es menos explícito que la diversificación."
+        }
+      ],
+      "notes": "La diversificación y el reconocimiento por innovación están bien documentados. La descripción inicial como 'fabricante de partes de barco' no se corrobora explícitamente con la misma fuerza en las fuentes proporcionadas, aunque sí se menciona su origen y transformación.",
+      "recommendation": "Usar con precaución, enfocándose en la transformación y diversificación, y mencionando de forma general su origen industrial."
+    }
+  ],
+  "risks": [
+    {
+      "risk_id": "R001",
+      "risk_description": "La fuente principal 'Maverick' es una autobiografía, lo que puede introducir sesgos o una perspectiva subjetiva de los eventos.",
+      "mitigation_strategy": "Cruzar información con fuentes secundarias independientes como HBR y documentales.",
+      "claim_impacted": [
+        "C001",
+        "C002",
+        "C003",
+        "C004",
+        "C005",
+        "C006"
+      ]
+    }
+  ],
+  "missing_evidence": [
+    {
+      "evidence_id": "ME001",
+      "evidence_description": "Detalles específicos sobre la situación financiera y de rotación de personal de Semco antes de la llegada de Semler.",
+      "claim_impacted": "C001",
+      "potential_sources": "Archivos históricos de la empresa, entrevistas más antiguas con Wolfgang Semler o empleados de la época."
+    },
+    {
+      "evidence_id": "ME002",
+      "evidence_description": "Confirmación explícita y detallada del origen de Semco como 'fabricante de partes de barco'.",
+      "claim_impacted": "C006",
+      "potential_sources": "Registros de fundación de la empresa, historias empresariales brasileñas."
+    }
+  ],
+  "recommended_next_action": "Aprobar para producción de guión."
+}

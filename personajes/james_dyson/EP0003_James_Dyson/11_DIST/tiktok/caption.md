@@ -1,0 +1,1 @@
+¿5.127 intentos fallidos? 🤯 James Dyson no se rindió hasta que su aspiradora revolucionó el mundo. Descubre la historia de perseverancia que creó un imperio. ¡Suena increíble! #jamesdyson #innovacion #perseveranciahumana #historiasdeexito

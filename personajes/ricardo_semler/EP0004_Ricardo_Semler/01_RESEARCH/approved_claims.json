@@ -1,0 +1,84 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "subject": "Ricardo Semler",
+  "approved_claims": [
+    {
+      "claim_id": "C001",
+      "claim": "Ricardo Semler heredó la empresa Semco a los 21 años y la encontró desmotivada, ineficiente y con alta rotación de personal.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "usage_guidance": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C002",
+      "claim": "Implementó un modelo de 'democracia corporativa' donde los empleados elegían a sus supervisores y directivos.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 100,
+      "usage_guidance": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C003",
+      "claim": "Permitió a los empleados definir sus propios horarios de trabajo, días de vacaciones y hasta proponer sus salarios.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "usage_guidance": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C004",
+      "claim": "Abrió toda la información financiera de la empresa a todos los niveles jerárquicos, promoviendo la transparencia total.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 100,
+      "usage_guidance": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C005",
+      "claim": "Redujo drásticamente el número de gerentes y niveles jerárquicos dentro de la organización.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "usage_guidance": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C006",
+      "claim": "Transformó Semco de un fabricante de partes de barco a una empresa de servicios diversificada y reconocida por su innovación.",
+      "status": "PARTIAL",
+      "applicable_formats": [
+        "long_form",
+        "newsletter"
+      ],
+      "confidence_score": 80,
+      "usage_guidance": "Usar con precaución, enfocándose en la transformación y diversificación, y mencionando de forma general su origen industrial."
+    }
+  ],
+  "rejected_or_blocked_claims": []
+}

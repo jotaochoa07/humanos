@@ -1,0 +1,42 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "character_name": "Ferruccio Lamborghini",
+  "sources": [
+    {
+      "title": "Ferruccio Lamborghini. Una vida para el motor",
+      "url": "N/A",
+      "type": "biography",
+      "tier": "B",
+      "notes": "Biografía que detalla su vida, incluyendo la fundación de Lamborghini y la rivalidad con Ferrari."
+    },
+    {
+      "title": "Lamborghini: La historia completa de los autos deportivos italianos",
+      "url": "N/A",
+      "type": "biography",
+      "tier": "B",
+      "notes": "Profundiza en la trayectoria de la marca y el contexto histórico de su creación y los conflictos pasionales."
+    },
+    {
+      "title": "Enzo Ferrari: The Man and the Machine",
+      "url": "N/A",
+      "type": "biography",
+      "tier": "B",
+      "notes": "Ofrece perspectiva sobre Enzo Ferrari y la dinámica de la época, contextualizando la rivalidad."
+    },
+    {
+      "title": "The Legend of Lamborghini: The V12 Origins",
+      "url": "https://www.carmagazine.co.uk/features/long-reads/the-legend-of-lamborghini-the-v12-origins/",
+      "type": "news",
+      "tier": "C",
+      "notes": "Artículo periodístico que narra los inicios de la marca y las motivaciones detrás de su creación, incluyendo la anécdota con Ferrari."
+    },
+    {
+      "title": "Lamborghini. Tutto il catalogo",
+      "url": "N/A",
+      "type": "database",
+      "tier": "A",
+      "notes": "Catálogo detallado de modelos Lamborghini, útil para entender la evolución y los productos que buscaban competir."
+    }
+  ]
+}

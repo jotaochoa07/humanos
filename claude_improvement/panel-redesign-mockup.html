@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HUMANOS · Dashboard V2 híbrido (mockup)</title>
+<style>
+  :root{
+    --bg:#0b0d0c; --panel:#141815; --panel2:#1b201c; --line:#2a312c;
+    --ink:#eef2ee; --mut:#9aa79c; --emerald:#3fbf82; --amber:#d9a441;
+    --blue:#5b9bd5; --violet:#7d5bd5; --red:#e06a5c;
+    --font:'Montserrat','Segoe UI',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:14px;line-height:1.45;display:flex;min-height:100vh}
+
+  /* ── NAV LATERAL PERMANENTE ── */
+  nav{width:230px;flex-shrink:0;background:#0d100e;border-right:1px solid var(--line);padding:20px 0;position:sticky;top:0;height:100vh;overflow-y:auto}
+  nav .brand{padding:0 20px 18px;border-bottom:1px solid var(--line);margin-bottom:14px}
+  nav .brand b{font-size:15px;letter-spacing:.16em;font-weight:800}
+  nav .grp{padding:14px 20px 6px;font-size:10px;letter-spacing:.14em;color:#5f6b62;text-transform:uppercase;font-weight:700}
+  nav a{display:flex;align-items:center;gap:9px;padding:9px 20px;color:var(--mut);text-decoration:none;cursor:pointer;border-left:2px solid transparent;font-size:13px}
+  nav a:hover{background:var(--panel);color:var(--ink)}
+  nav a.on{background:var(--panel);color:var(--ink);border-left-color:var(--emerald);font-weight:600}
+  nav a .b{margin-left:auto;font-size:10px;background:var(--panel2);border:1px solid var(--line);border-radius:20px;padding:1px 7px;color:var(--amber)}
+  nav a.home{color:var(--ink);font-weight:700;font-size:13.5px}
+
+  /* ── MAIN ── */
+  main{flex:1;padding:22px 28px;max-width:1180px}
+  .crumb{color:#5f6b62;font-size:12px;margin-bottom:14px}
+  .crumb b{color:var(--mut);font-weight:500}
+  h2.view{margin:0 0 4px;font-size:20px}
+  .sub{color:var(--mut);font-size:12.5px;margin-bottom:22px}
+  .tag{font-size:11px;letter-spacing:.1em;color:var(--mut);text-transform:uppercase;font-weight:700;margin-bottom:10px;display:block}
+  .view-panel{display:none} .view-panel.on{display:block}
+
+  /* atención */
+  .attention{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px}
+  .att{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--emerald);border-radius:12px;padding:14px 16px;cursor:pointer;transition:.15s}
+  .att:hover{background:var(--panel2);transform:translateY(-2px)}
+  .att b{display:block;font-size:26px;font-weight:800;margin-bottom:2px}
+  .att.amber{border-left-color:var(--amber)}.att.blue{border-left-color:var(--blue)}.att.red{border-left-color:var(--red)}
+  .att small{color:var(--mut)}
+
+  /* kanban */
+  .kanban{display:grid;grid-template-columns:repeat(7,minmax(142px,1fr));gap:9px;overflow-x:auto;padding-bottom:6px}
+  .col{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px;min-height:190px}
+  .col h3{font-size:10px;letter-spacing:.07em;margin:2px 0 10px;color:var(--mut);text-transform:uppercase;display:flex;align-items:center;gap:6px}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--emerald)}
+  .col.you h3 .dot{background:var(--blue)}.col.jota h3 .dot{background:var(--amber)}.col.pub h3 .dot{background:var(--violet)}
+  .card{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:9px;margin-bottom:8px;cursor:pointer;transition:.15s}
+  .card:hover{border-color:var(--emerald);transform:translateY(-2px)}
+  .card b{font-size:12.5px}
+  .card .meta{color:var(--mut);font-size:10.5px;margin-top:4px;display:flex;gap:5px;flex-wrap:wrap}
+  .pill{font-size:10px;padding:2px 7px;border-radius:20px;border:1px solid var(--line);color:var(--mut)}
+  .pill.A{color:var(--amber)}.pill.B{color:var(--emerald)}.pill.go{color:var(--emerald)}
+  .note{background:#12100a;border-left:3px solid var(--amber);border-radius:8px;padding:11px 13px;font-size:12px;color:#e8d9b6;margin-top:20px}
+
+  /* tabla base de datos (nivel 3) */
+  .tools{display:flex;gap:8px;margin-bottom:14px}
+  .tools input,.tools select{background:var(--panel2);border:1px solid var(--line);color:var(--ink);padding:8px 11px;border-radius:8px;font-family:var(--font);font-size:12.5px}
+  .tools input{flex:1}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th{text-align:left;color:var(--mut);font-size:10px;letter-spacing:.09em;text-transform:uppercase;padding:8px 10px;border-bottom:1px solid var(--line)}
+  td{padding:9px 10px;border-bottom:1px solid #1e2320}
+  tr:hover td{background:var(--panel)}
+
+  /* copies (nivel 3) */
+  .plats{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+  .plat{padding:7px 13px;border:1px solid var(--line);border-radius:8px;font-size:12px;color:var(--mut);cursor:pointer;background:var(--panel)}
+  .plat.on{border-color:var(--emerald);color:var(--ink);background:var(--panel2)}
+  .copybox{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;white-space:pre-wrap;font-size:13px;line-height:1.6}
+  .copybox .lbl{font-size:10px;letter-spacing:.1em;color:var(--emerald);text-transform:uppercase;display:block;margin:14px 0 5px;font-weight:700}
+  .copybox .lbl:first-child{margin-top:0}
+
+  /* rail nivel 2 */
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.62);display:none;z-index:20}
+  .overlay.open{display:block}
+  .rail{position:fixed;top:0;right:0;height:100%;width:min(760px,94vw);background:var(--bg);border-left:1px solid var(--line);overflow-y:auto;z-index:21;transform:translateX(100%);transition:.28s;box-shadow:-20px 0 60px rgba(0,0,0,.55)}
+  .rail.open{transform:translateX(0)}
+  .rhead{position:sticky;top:0;background:linear-gradient(180deg,#0d100e,#0b0d0c);padding:17px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+  .rhead h2{margin:0;font-size:17px}
+  .rhead .x{margin-left:auto;cursor:pointer;color:var(--mut);font-size:21px;background:none;border:none}
+  .rnote{padding:12px 22px;background:#0f1310;border-bottom:1px solid var(--line);color:var(--mut);font-size:11.5px}
+  .stage{padding:15px 22px;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;gap:13px}
+  .stage .n{width:24px;height:24px;flex-shrink:0;border-radius:50%;background:var(--panel2);border:1px solid var(--line);display:grid;place-items:center;font-size:11px;margin-top:2px}
+  .stage .body{flex:1}
+  .stage h4{margin:0 0 5px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--emerald)}
+  .stage p{margin:0;color:var(--mut);font-size:12.5px}
+  .act{background:transparent;border:1px solid var(--line);color:var(--ink);padding:6px 12px;border-radius:8px;font-size:11.5px;cursor:pointer;margin-top:8px;font-family:var(--font)}
+  .act:hover{border-color:var(--emerald);color:var(--emerald)}
+  .score{color:var(--emerald);font-weight:700}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV LATERAL ══ -->
+<nav>
+  <div class="brand"><b>HUMANOS</b></div>
+  <a class="home on" data-v="sala" onclick="go('sala',this)">◉ Sala de Control</a>
+
+  <div class="grp">Biblioteca</div>
+  <a data-v="historias" onclick="go('historias',this)">Historias <span class="b">47</span></a>
+  <a data-v="guiones" onclick="go('guiones',this)">Guiones <span class="b">2</span></a>
+  <a data-v="episodios" onclick="go('episodios',this)">Episodios</a>
+
+  <div class="grp">Distribución</div>
+  <a data-v="copies" onclick="go('copies',this)">Copies &amp; Publicación</a>
+
+  <div class="grp">Inteligencia</div>
+  <a data-v="aprendizaje" onclick="go('aprendizaje',this)">Aprendizaje <span class="b">2</span></a>
+  <a data-v="metricas" onclick="go('metricas',this)">Métricas</a>
+</nav>
+
+<main>
+  <!-- ══════ NIVEL 1 — SALA DE CONTROL ══════ -->
+  <section class="view-panel on" id="v-sala">
+    <div class="crumb"><b>Sala de Control</b></div>
+    <h2 class="view">Sala de Control</h2>
+    <div class="sub">Nivel 1 · Presente. Responde una sola pregunta: ¿qué pasa hoy y dónde tengo que intervenir?</div>
+
+    <span class="tag">Hoy necesita tu atención</span>
+    <div class="attention">
+      <div class="att amber" onclick="openRail()"><b>2</b><small>guiones esperando edición</small></div>
+      <div class="att blue"><b>1</b><small>greenlight de canal · Mr. You</small></div>
+      <div class="att red"><b>3</b><small>assets pendientes</small></div>
+      <div class="att"><b>2</b><small>aprendizajes propuestos</small></div>
+    </div>
+
+    <span class="tag">Pipeline actual — solo lo que está en vuelo</span>
+    <div class="kanban">
+      <div class="col you"><h3><span class="dot"></span>Greenlight</h3>
+        <div class="card"><b>Lisa Su</b><div class="meta"><span class="pill">idea</span></div></div></div>
+      <div class="col"><h3><span class="dot"></span>Research</h3>
+        <div class="card"><b>Yvon Chouinard</b><div class="meta"><span class="pill A">Tier A</span></div></div></div>
+      <div class="col"><h3><span class="dot"></span>Veritas</h3>
+        <div class="card"><b>Sara Blakely</b><div class="meta"><span class="score">✓ 88</span></div></div></div>
+      <div class="col jota"><h3><span class="dot"></span>Guion</h3>
+        <div class="card" onclick="openRail()"><b>Ferruccio Lamborghini</b><div class="meta"><span class="pill">te espera</span><span class="pill B">Tier B</span></div></div>
+        <div class="card" onclick="openRail()"><b>Tobias Lütke</b><div class="meta"><span class="pill">te espera</span></div></div></div>
+      <div class="col"><h3><span class="dot"></span>Producción</h3>
+        <div class="card"><b>Margaret Hamilton</b><div class="meta"><span class="pill">3 gaps</span></div></div></div>
+      <div class="col"><h3><span class="dot"></span>Distribución</h3>
+        <div class="card"><b>Ehud Shabtai</b><div class="meta"><span class="pill">7 copies</span></div></div></div>
+      <div class="col pub"><h3><span class="dot"></span>Publicado</h3>
+        <div class="card"><b>James Dyson</b><div class="meta"><span class="pill">79% 3s</span></div></div></div>
+    </div>
+
+    <div class="note">🛡️ <b>Regla cero — la V2 es aditiva.</b> Esta vista es nueva y no reemplaza nada. Las 500 historias del backlog NO viven acá (serían inmanejables como tarjetas): viven en <b>Historias</b>, con búsqueda y filtros. El Kanban solo muestra lo que está en vuelo.</div>
+  </section>
+
+  <!-- ══════ NIVEL 3 — HISTORIAS (base de datos) ══════ -->
+  <section class="view-panel" id="v-historias">
+    <div class="crumb"><b>Biblioteca › Historias</b></div>
+    <h2 class="view">Historias</h2>
+    <div class="sub">Nivel 3 · Tu base de datos completa. Buscar, filtrar, ordenar, revisar estados. <b style="color:var(--emerald)">Esta vista se conserva íntegra.</b></div>
+    <div class="tools">
+      <input placeholder="Buscar por nombre, tema, ángulo humano…">
+      <select><option>Todos los estados</option><option>idea</option><option>needs_research</option><option>researching</option></select>
+      <select><option>Todas las categorías</option><option>FOUNDERS</option><option>INVENTORS</option></select>
+    </div>
+    <table>
+      <tr><th>Protagonista</th><th>Ángulo humano</th><th>Categoría</th><th>Estado</th><th>Tier</th></tr>
+      <tr><td>Ferruccio Lamborghini</td><td>El insulto de Enzo Ferrari</td><td>FOUNDERS</td><td>guion pendiente</td><td>B</td></tr>
+      <tr><td>Lisa Su</td><td>Rescatar AMD del borde</td><td>ENGINEERS</td><td>idea</td><td>—</td></tr>
+      <tr><td>Yvon Chouinard</td><td>El empresario que odiaba serlo</td><td>FOUNDERS</td><td>researching</td><td>A</td></tr>
+      <tr><td>Sara Blakely</td><td>5.000 dólares y un rechazo</td><td>FOUNDERS</td><td>verificado</td><td>B</td></tr>
+      <tr><td>Margaret Hamilton</td><td>El código que salvó el Apollo 11</td><td>ENGINEERS</td><td>producción</td><td>A</td></tr>
+      <tr style="opacity:.5"><td colspan="5">…42 historias más</td></tr>
+    </table>
+  </section>
+
+  <!-- ══════ NIVEL 3 — COPIES ══════ -->
+  <section class="view-panel" id="v-copies">
+    <div class="crumb"><b>Sala de Control › Ferruccio Lamborghini › </b>Distribución</div>
+    <h2 class="view">Copies &amp; Publicación</h2>
+    <div class="sub">Nivel 3 · El copy <b>completo</b> de cada plataforma. Un contador ("7 paquetes generados") nunca sustituye esto.</div>
+    <div class="plats">
+      <span class="plat on">YouTube</span><span class="plat">Instagram</span><span class="plat">TikTok</span>
+      <span class="plat">Facebook</span><span class="plat">X</span><span class="plat">LinkedIn</span><span class="plat">Newsletter</span>
+    </div>
+    <div class="copybox"><span class="lbl">title.txt</span>El insulto que fundó Lamborghini | HUMANOS
+<span class="lbl">caption.md</span>Ferruccio arreglaba tractores. Tenía las manos sucias de grasa y un Ferrari roto en su taller.
+
+Cuando descubrió que el embrague defectuoso era el MISMO que él fabricaba para sus tractores, fue a decírselo a Enzo Ferrari.
+
+La respuesta que recibió cambió la historia del automóvil.
+<span class="lbl">hashtags.txt</span>#humanos #lamborghini #historia
+<span class="lbl">pinned_comment.txt</span>¿Alguna vez un desprecio te empujó a construir algo? Te leo.</div>
+  </section>
+
+  <!-- placeholders -->
+  <section class="view-panel" id="v-guiones"><div class="crumb"><b>Biblioteca › Guiones</b></div><h2 class="view">Guiones</h2><div class="sub">Nivel 3 · Drafts, versiones y aprobados. Vista actual conservada — es donde editás de verdad, a ancho completo.</div></section>
+  <section class="view-panel" id="v-episodios"><div class="crumb"><b>Biblioteca › Episodios</b></div><h2 class="view">Episodios</h2><div class="sub">Nivel 3 · Producciones terminadas e histórico completo.</div></section>
+  <section class="view-panel" id="v-aprendizaje"><div class="crumb"><b>Inteligencia › Aprendizaje</b></div><h2 class="view">Aprendizaje</h2><div class="sub">Nivel 3 · Talese: log completo de <code>creator_learnings.json</code> + changelog. Futuro: Postmortems de Mr. You.</div></section>
+  <section class="view-panel" id="v-metricas"><div class="crumb"><b>Inteligencia › Métricas</b></div><h2 class="view">Métricas</h2><div class="sub">Nivel 3 · <b>Nueva.</b> Mark captura por episodio → se agrega a nivel canal → Mr. You lee las métricas generales (HUMANOS + Lab IA) y devuelve dirección.</div></section>
+</main>
+
+<!-- ══════ NIVEL 2 — CARRIL DE EPISODIO ══════ -->
+<div class="overlay" id="ov" onclick="closeRail()"></div>
+<aside class="rail" id="rail">
+  <div class="rhead">
+    <h2>Ferruccio Lamborghini</h2><span class="pill B">Tier B</span><span class="pill">EP0005</span>
+    <button class="x" onclick="closeRail()">✕</button>
+  </div>
+  <div class="rnote">Nivel 2 · <b style="color:var(--ink)">Inspeccionar y enrutar, no ejecutar.</b> Cada bloque es un resumen con una acción que abre la vista completa a ancho total.</div>
+
+  <div class="stage"><div class="n">1</div><div class="body">
+    <h4>Borges · Dossier</h4>
+    <p>El tractorista que reclamó a Enzo Ferrari por un embrague defectuoso. Ancla mental: la puerta de Maranello cerrándose.</p>
+    <button class="act">Ver dossier completo →</button></div></div>
+
+  <div class="stage"><div class="n">2</div><div class="body">
+    <h4>Veritas · Auditoría</h4>
+    <p><span class="score">Score 86</span> · 9/11 claims aprobados · 2 marcados UNVERIFIED</p>
+    <button class="act">Ver auditoría →</button></div></div>
+
+  <div class="stage"><div class="n">3</div><div class="body">
+    <h4>Gabo · Guion</h4>
+    <p>Draft de Gabo vs tu versión · −40 palabras, apertura reescrita</p>
+    <button class="act" onclick="go('guiones',document.querySelector('[data-v=guiones]'));closeRail()">Abrir editor →</button></div></div>
+
+  <div class="stage"><div class="n">4</div><div class="body">
+    <h4>Moore · Producción</h4>
+    <p style="color:var(--amber)">3 asset gaps sin resolver</p>
+    <button class="act">Abrir producción →</button></div></div>
+
+  <div class="stage"><div class="n">5</div><div class="body">
+    <h4>Mark · Distribución</h4>
+    <p>7 copies generados en <code>11_DIST/</code></p>
+    <button class="act" onclick="go('copies',document.querySelector('[data-v=copies]'));closeRail()">Ver copies →</button></div></div>
+
+  <div class="stage"><div class="n">6</div><div class="body">
+    <h4>Talese · Aprendizaje</h4>
+    <p>2 observaciones propuestas · patrón "abrir con imagen física &gt; abrir con dato"</p>
+    <button class="act" onclick="go('aprendizaje',document.querySelector('[data-v=aprendizaje]'));closeRail()">Ver historial →</button></div></div>
+
+  <div class="stage"><div class="n">7</div><div class="body">
+    <h4>Mr. You · Canal</h4>
+    <p>Nivel canal, no editorial. Ve este episodio dentro del portfolio general (HUMANOS + Lab IA) y aconseja cuándo publicarlo.</p>
+    <button class="act">Ver criterio de canal →</button></div></div>
+</aside>
+
+<script>
+  function go(v,el){
+    document.querySelectorAll('.view-panel').forEach(p=>p.classList.remove('on'));
+    document.getElementById('v-'+v).classList.add('on');
+    document.querySelectorAll('nav a').forEach(a=>a.classList.remove('on'));
+    if(el) el.classList.add('on');
+    window.scrollTo(0,0);
+  }
+  function openRail(){document.getElementById('ov').classList.add('open');document.getElementById('rail').classList.add('open')}
+  function closeRail(){document.getElementById('ov').classList.remove('open');document.getElementById('rail').classList.remove('open')}
+</script>
+</body>
+</html>

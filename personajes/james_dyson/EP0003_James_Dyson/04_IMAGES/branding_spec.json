@@ -1,0 +1,34 @@
+{
+  "character_card": {
+    "category": "INVENTOR | BUILDER",
+    "name": "JAMES DYSON",
+    "description": "Fundador de Dyson",
+    "visual_style": "Retrato en blanco y negro de alto contraste, con saturación reducida a -60%. El rostro de James Dyson debe ocupar aproximadamente el 70% del encuadre, con una mirada penetrante y directa a cámara. Composición asimétrica, alineación inferior izquierda, con abundante espacio negativo en la parte superior y derecha. Tipografía Montserrat Bold para el nombre en cian."
+  },
+  "thumbnail": {
+    "headline": "5.127 intentos fallidos",
+    "highlight_word": "5.127",
+    "composition_description": "Plano medio cerrado de James Dyson con una expresión de intensa concentración o frustración. El rostro ocupa el 75% del encuadre, mirando directamente a la cámara. Fondo negro absoluto. El texto '5.127' en cian (#01C9C7) y 'intentos fallidos' en blanco, ambos en Montserrat Bold, ubicados debajo del rostro con amplio espacio negativo."
+  },
+  "midjourney_prompts": [
+    {
+      "purpose": "Retrato principal para miniatura y B-roll",
+      "prompt": "James Dyson, inventor, mid-shot portrait, intense focus, looking directly at the camera, journalist documentary style, high contrast black and white photography, dramatic chiaroscuro lighting, deep blacks, low saturation (-60%), shot on 85mm lens, subtle 35mm film grain texture --ar 9:16"
+    },
+    {
+      "purpose": "Representación conceptual de prototipos fallidos",
+      "prompt": "A chaotic and messy workshop filled with dozens of early, crude vacuum cleaner prototypes in various states of disrepair. Some are sparking, some are broken, some are simply unfinished. Dramatic, harsh lighting casting deep shadows. High contrast black and white, desaturated, documentary film still. --ar 9:16"
+    },
+    {
+      "purpose": "Visualización de la tecnología ciclónica",
+      "prompt": "Abstract visualization of a powerful cyclone separating particles. Smooth, elegant curves of air flow, with fine dust particles being forcefully pushed outwards. Clean, high-tech aesthetic, white and grey tones with a subtle blue accent, inspired by industrial design. Cinematic quality, dramatic lighting. --ar 9:16"
+    }
+  ],
+  "motion_specs": {
+    "camera_speed": "slow_zoom | subtle_pan",
+    "default_transition": "subtle_fade",
+    "branding_color_use": "El color cian (#01C9C7) se utiliza exclusivamente para el nombre de James Dyson en las Character Cards y para resaltar la cifra '5.127' en títulos o gráficos clave. No se usa en transiciones ni elementos decorativos.",
+    "titles_font": "Montserrat Bold",
+    "subtitles_font": "Inter SemiBold"
+  }
+}

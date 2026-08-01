@@ -1,0 +1,74 @@
+{
+  "timeline": [
+    {
+      "date": "1979",
+      "event": "James Dyson desarrolla el primer prototipo de aspiradora sin bolsa basado en la tecnología de ciclón industrial.",
+      "importance": "Alto",
+      "source_url": "https://www.dyson.com/",
+      "confidence": 10
+    },
+    {
+      "date": "1980s",
+      "event": "Dyson enfrenta rechazo de los fabricantes de electrodomésticos establecidos, quienes se resisten a adoptar su tecnología innovadora.",
+      "importance": "Alto",
+      "source_url": "https://www.bbc.com/news/business-61940818",
+      "confidence": 10
+    },
+    {
+      "date": "1991",
+      "event": "Dyson funda Dyson Ltd. y lanza la 'G-Force' en Japón, una aspiradora que se vende a un precio premium.",
+      "importance": "Alto",
+      "source_url": "https://www.thetimes.co.uk/article/james-dyson-how-to-build-a-billion-pound-business-9956m7n9m",
+      "confidence": 10
+    },
+    {
+      "date": "1993",
+      "event": "Lanzamiento de la aspiradora 'DC01' en el Reino Unido, que rápidamente se convierte en un éxito de ventas.",
+      "importance": "Alto",
+      "source_url": "https://www.dyson.co.uk/inside-dyson/history/",
+      "confidence": 10
+    },
+    {
+      "date": "2000s",
+      "event": "Expansión internacional significativa de Dyson, estableciendo presencia en mercados clave como Estados Unidos y Europa.",
+      "importance": "Alto",
+      "source_url": "https://www.forbes.com/profile/james-dyson/",
+      "confidence": 9
+    },
+    {
+      "date": "2001",
+      "event": "Introduce la tecnología 'Root Cyclone' en sus aspiradoras, mejorando la succión y la eficiencia.",
+      "importance": "Alto",
+      "source_url": "https://www.dyson.com/vacuum-cleaners/how-does-a-dyson-vacuum-cleaner-work",
+      "confidence": 10
+    },
+    {
+      "date": "2016",
+      "event": "Anuncio de planes para desarrollar un vehículo eléctrico, marcando una diversificación ambiciosa de la compañía.",
+      "importance": "Medio",
+      "source_url": "https://www.bbc.com/news/business-37423146",
+      "confidence": 9
+    },
+    {
+      "date": "2020",
+      "event": "Dyson cancela su proyecto de vehículo eléctrico, citando que no es comercialmente viable.",
+      "importance": "Medio",
+      "source_url": "https://www.theguardian.com/business/2020/jan/23/dyson-electric-car-project-cancelled-funding",
+      "confidence": 9
+    },
+    {
+      "date": "2020",
+      "event": "Lanzamiento de la mascarilla purificadora 'Dyson Zone', combinando aire limpio y audio.",
+      "importance": "Medio",
+      "source_url": "https://www.dyson.com/wearables/dyson-zone",
+      "confidence": 9
+    },
+    {
+      "date": "Junio 2022",
+      "event": "Anuncio oficial del lanzamiento de la mascarilla purificadora 'Dyson Zone'.",
+      "importance": "Medio",
+      "source_url": "https://www.techradar.com/news/dyson-zone-release-date-and-price-confirmed",
+      "confidence": 9
+    }
+  ]
+}

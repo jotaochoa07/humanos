@@ -1,18 +1,23 @@
 {
   "episode": "EP0002_Hedy_Lamarr",
-  "timestamp": "2026-07-20T09:47:02.918752",
+  "timestamp": "2026-07-20T10:13:25.133004",
   "mode": "immediate",
   "report": {
-    "creator_intent": "Destacar la vida y el legado de Hedy Lamarr, subrayando la contradicción entre su reconocimiento superficial como símbolo de belleza y su genio innovador no valorado en su tiempo. Además, resaltar cómo su invención revolucionaria sentó las bases para tecnologías modernas como el Bluetooth y el Wi-Fi.",
-    "editorial_delta": "Jota mantuvo la estructura y contenido principal del borrador original de Gabo, con pocas modificaciones notables. No se realizaron cortes significativos ni cambios de ritmo. Los únicos ajustes fueron menores, como la eliminación de una redundancia en la frase 'Décadas después, ese mismo principio...' y la omisión de un fragmento final del párrafo sobre el llamado a reconocer la capacidad femenina en Borges, que no estaba presente en el guion final.",
-    "what_worked": "La versión final conserva la estructura narrativa clara y coherente del borrador original. La historia de Hedy Lamarr es contada de manera fluida y con un tono que mantiene el enganche del oyente. La información clave sobre su invención y su impacto en la tecnología moderna se presenta de manera efectiva y fácil de entender.",
-    "what_surprised": "Lo más sorprendente es que Jota no realizó cambios sustanciales en el borrador de Gabo. Esto sugiere que el guion original ya capturaba efectivamente la esencia y el mensaje de la historia de Hedy Lamarr, y que no se necesitaban ajustes importantes para mejorar su calidad.",
-    "next_experiment": "Probar un giro dramático al inicio del episodio, como comenzar con una cita de Hedy Lamarr o un fragmento de la época en que vivió, para captar la atención del oyente de manera más inmediata y personal.",
+    "creator_intent": "El episodio busca instalar una tesis clara —la inteligencia femenina invisibilizada por la belleza— y sostenerla con un caso histórico de alto contraste: glamour hollywoodense vs. genio técnico ignorado. La estructura persigue un arco clásico de injusticia-reivindicación: Hedy es subestimada, su invento rechazado, y décadas después la historia le da la razón. El cierre conecta el caso puntual con la identidad de marca de HUMANOS ('personas que desafiaron estereotipos').",
+    "editorial_delta": "No existe delta. El texto de Jota (script_short.md) es idéntico, palabra por palabra, al borrador original de Gabo (script_short_original.md). No hay cortes, énfasis añadidos, ni cambios de ritmo, ganchos o estructura. Esto es una evidencia atípica respecto al patrón habitual de revisión editorial: en este episodio la capa de criterio de Jota no dejó huella textual detectable.",
+    "what_worked": "El borrador de Gabo ya presenta una estructura editorial sólida por sí mismo: pregunta-gancho fuerte, contraste narrativo (belleza vs. mente), un punto de giro dramático (la fuga del matrimonio), climax técnico (la patente rechazada) y resolución con pago diferido (Bluetooth/Wi-Fi décadas después). El hecho de que Jota no haya necesitado tocar el texto sugiere que Gabo entregó una pieza publicable en primera pasada, cumpliendo el estándar sin fricción.",
+    "what_surprised": "Lo inesperado no es un giro dentro del guion, sino la ausencia total de intervención editorial. En los procesos de producción, la brecha entre borrador y versión final es la fuente primaria de aprendizaje sobre el criterio de Jota. Aquí esa fuente está vacía, lo cual impide extraer señal editorial directa de esta pieza y obliga a preguntarse si fue una aprobación por confianza, falta de tiempo de revisión, o simplemente un borrador que no requería ajuste.",
+    "next_experiment": "Para el próximo episodio, introducir deliberadamente un punto de decisión visible en el flujo de aprobación (por ejemplo, marcar explícitamente en el borrador de Gabo 2-3 frases o estructuras 'candidatas a revisión') y observar si Jota las modifica, las conserva o las elimina — esto generará delta editorial trazable y permitirá empezar a construir señal real sobre su criterio, en lugar de depender de que la edición ocurra espontáneamente.",
     "proposed_observations": [
       {
-        "axis": "hook_structure",
-        "title": "Efectividad del Gancho Inicial",
-        "description": "El gancho inicial del borrador original, que plantea la pregunta sobre la discriminación entre belleza y genio, es mantenido en la versión final sin cambios. Esto sugiere que Jota considera que la introducción es efectiva y capta la atención del oyente de manera adecuada. Sin embargo, se podría experimentar con un giro más dramático en futuros episodios para ver si mejora el engagement inicial."
+        "axis": "editorial_intervention_rate",
+        "title": "Aprobación sin edición: primera ocurrencia registrada",
+        "description": "EP0002 es el primer episodio observado donde script_short.md es idéntico a script_short_original.md. Como evidencia única (OBSERVATION), no permite todavía inferir si esto refleja madurez del borrador de Gabo, un proceso de revisión superficial, o ambas. Requiere contrastarse con el comportamiento en EP0001 y episodios futuros antes de escalar a SIGNAL."
+      },
+      {
+        "axis": "narrative_structure_reuse",
+        "title": "Plantilla de arco 'injusticia-reivindicación diferida'",
+        "description": "El guion sigue un patrón narrativo específico: subestimación inicial → acto de rebeldía personal → logro técnico → rechazo institucional → validación tardía por la historia. Es una única evidencia (OBSERVATION) de una estructura que podría convertirse en plantilla replicable de la serie si se confirma en otros episodios con arcos de reivindicación similares."
       }
     ]
   }

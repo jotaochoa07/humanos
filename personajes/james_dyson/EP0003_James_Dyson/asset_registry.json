@@ -1,0 +1,20 @@
+[
+  {
+    "asset_id": "001",
+    "hash": "ec647b96b9a6fd25c95065af0143a72d854edc5705cc97671dfbe55a35c50dbf",
+    "source": "Wikimedia Commons",
+    "storage_path": "personajes/james_dyson/EP0003_James_Dyson\\04_IMAGES\\JAM_001_JAMES_DYSON.jpg"
+  },
+  {
+    "asset_id": "002",
+    "hash": "6e580bb26f357550c1f8513f59d51b203c4a8982b677d81c0a55b522550e1300",
+    "source": "Sitio oficial corporativo (Archivo de Prensa)",
+    "storage_path": "personajes/james_dyson/EP0003_James_Dyson\\04_IMAGES\\JAM_002_JAMES_DYSON_EN_LA_SEDE_DE_DYSON.pdf"
+  },
+  {
+    "asset_id": "006",
+    "hash": "4c23384a32b91642e971e7f63b9bb15312be5c06cfeedebf86cab5b70b8683ae",
+    "source": "Sitio oficial corporativo",
+    "storage_path": "personajes/james_dyson/EP0003_James_Dyson\\04_IMAGES\\JAM_006_LOGO_DE_DYSON.pdf"
+  }
+]

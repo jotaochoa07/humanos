@@ -1,0 +1,1 @@
+El creador de Lamborghini fue despreciado por Enzo Ferrari, jurando no solo superarlo, sino humillarlo con sus propios autos deportivos. 🏎️💨 ¿El resultado de esta brutal venganza? Descúbrelo y comparte si crees que el orgullo impulsa el éxito. #Lamborghini #HistoriaAutomotriz #Venganza #EnzoFerrari

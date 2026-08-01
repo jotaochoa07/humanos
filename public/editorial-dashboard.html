@@ -4,27 +4,53 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>HUMANOS Editorial Dashboard</title>
+  <!-- Tipografías de marca (Leonardo §05): Montserrat Bold para títulos,
+       Inter SemiBold para datos y UI. Con fallback local si no hay red. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
+    /* ═══════════════════════════════════════════════════════════════
+       DIRECCIÓN DE ARTE — Leonardo · HUMANOS Brand Bible v1.0
+       Fuente de verdad: C:\JotaOS\agents\leonardo\brand_bible.md §04-05
+         Negro Profundo   #090909  fondo principal (el vacío, la seriedad)
+         Negro Secundario #141414  contenedores y capas
+         Blanco           #FFFFFF  texto principal
+         Grises           #A7A7A7 / #666666  texto secundario y metadatos
+         Cian             #01C9C7  ACENTO. Solo conceptos clave. Nunca se abusa.
+         Montserrat Bold (títulos) · Inter SemiBold (datos y UI)
+       Principios: espacio negativo, contraste extremo, simplicidad.
+       El diseño no compite con la historia: la eleva.
+       ═══════════════════════════════════════════════════════════════ */
     :root {
       color-scheme: dark;
-      --bg: hsl(246 38% 6%);
-      --panel-strong: hsl(250 32% 16% / 0.9);
-      --line: hsl(268 100% 78% / 0.24);
-      --text: hsl(270 60% 96%);
-      --muted: hsl(260 18% 70%);
-      --accent: hsl(276 100% 68%);
-      --accent-2: hsl(190 100% 62%);
-      --danger: hsl(0 82% 64%);
-      --success: hsl(142 76% 52%);
+      --bg: #090909;
+      --panel: #141414;
+      --panel-strong: #141414;
+      --line: hsl(0 0% 100% / 0.10);
+      --line-strong: hsl(0 0% 100% / 0.18);
+      --text: #FFFFFF;
+      --muted: #A7A7A7;
+      --muted-deep: #666666;
+      --accent: #01C9C7;
+      --accent-2: #01C9C7;
+      --danger: hsl(0 72% 58%);
+      --success: #01C9C7;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
+    h1, h2, .rail-head h2, .cr-att b {
+      font-family: Montserrat, Inter, ui-sans-serif, system-ui, sans-serif;
+      font-weight: 800;
+    }
     * { box-sizing: border-box; }
+    /* Leonardo §02: "No le temas al negro absoluto". Fondo plano, sin degradados
+       decorativos. Un único halo cian casi imperceptible aporta profundidad
+       sin competir con el contenido. */
     body {
       margin: 0; min-height: 100vh; color: var(--text);
       background:
-        radial-gradient(circle at top left, hsl(276 100% 48% / 0.25), transparent 32rem),
-        radial-gradient(circle at bottom right, hsl(190 100% 44% / 0.16), transparent 30rem),
-        linear-gradient(135deg, var(--bg), hsl(258 44% 8%));
+        radial-gradient(circle at 12% -8%, hsl(179 99% 40% / 0.05), transparent 34rem),
+        var(--bg);
     }
     .shell { width: min(1240px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 40px; }
     header { display:flex; justify-content:space-between; gap:24px; align-items:end; margin-bottom: 20px; }
@@ -34,18 +60,18 @@
     .toolbar { display:flex; gap:12px; align-items:center; }
     button, select, input, textarea {
       font: inherit; border:1px solid var(--line); color: var(--text);
-      background: hsl(250 30% 14% / .78); border-radius:16px;
+      background: hsl(0 0% 100% / .05); border-radius:16px;
     }
     button { cursor:pointer; padding:12px 16px; font-weight:800; transition: transform 160ms ease, border-color 160ms ease, background 160ms ease; }
-    button:hover { transform: translateY(-1px); border-color: hsl(276 100% 75% / .72); }
-    button.primary { background: linear-gradient(135deg, hsl(276 100% 56%), hsl(190 100% 44%)); border:0; box-shadow: 0 18px 54px hsl(276 100% 50% / .24); }
-    button.ghost { background: hsl(250 30% 14% / .66); }
+    button:hover { transform: translateY(-1px); border-color: hsl(179 99% 40% / .6); }
+    button.primary { background: var(--accent); color:#090909; font-weight:700; border:0; box-shadow: 0 14px 40px hsl(179 99% 40% / .18); }
+    button.ghost { background: hsl(0 0% 100% / .04); }
     button:disabled { cursor:not-allowed; opacity:.52; transform:none; }
     .tabs { display:flex; gap:10px; margin: 18px 0 16px; flex-wrap: wrap; }
-    .tab { padding: 10px 14px; border-radius: 999px; background: hsl(250 28% 12% / .72); border: 1px solid var(--line); }
-    .tab.active { background: linear-gradient(135deg, hsl(276 100% 56%), hsl(190 100% 44%)); border-color: transparent; }
+    .tab { padding: 10px 14px; border-radius: 999px; background: hsl(0 0% 100% / .04); border: 1px solid var(--line); }
+    .tab.active { background: var(--accent); color:#090909; font-weight:700; border-color: transparent; }
     .searchbar { margin-bottom: 14px; display:grid; gap:8px; }
-    .searchbar input, .review-header input { min-height:52px; padding:0 18px; border-radius:18px; background: hsl(250 30% 12% / .72); backdrop-filter: blur(18px); }
+    .searchbar input, .review-header input { min-height:52px; padding:0 18px; border-radius:18px; background: hsl(0 0% 100% / .04); backdrop-filter: blur(18px); }
     .search-hint, .muted { color: var(--muted); font-size:13px; }
     .toast {
       position: fixed;
@@ -57,8 +83,8 @@
       padding: 14px 16px;
       border: 1px solid var(--line);
       border-radius: 18px;
-      background: hsl(250 32% 14% / 0.92);
-      box-shadow: 0 24px 70px hsl(245 40% 2% / 0.5);
+      background: #141414;
+      box-shadow: 0 24px 70px hsl(0 0% 0% / .55);
       backdrop-filter: blur(18px);
       opacity: 0;
       transform: translateY(12px);
@@ -70,29 +96,29 @@
     .toast.show { opacity: 1; transform: translateY(0); }
     .toast.success { border-color: hsl(142 76% 52% / 0.45); }
     .toast.error { border-color: hsl(0 82% 64% / 0.55); }
-    .toast.info { border-color: hsl(276 100% 68% / 0.55); }
-    .status { margin-bottom: 18px; min-height: 48px; padding:14px 16px; border:1px solid var(--line); border-radius:18px; background:hsl(250 30% 12% / .54); backdrop-filter: blur(18px); color: var(--muted); }
+    .toast.info { border-color: hsl(179 99% 40% / .55); }
+    .status { margin-bottom: 18px; min-height: 48px; padding:14px 16px; border:1px solid var(--line); border-radius:18px; background:hsl(0 0% 100% / .03); backdrop-filter: blur(18px); color: var(--muted); }
     .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
     .card, .review-card {
       position:relative; overflow:hidden; padding:22px; border:1px solid var(--line); border-radius:28px;
-      background: linear-gradient(145deg, hsl(250 28% 16% / .78), hsl(250 30% 10% / .62));
-      box-shadow: 0 24px 70px hsl(245 40% 2% / .44); backdrop-filter: blur(18px);
+      background: #141414;
+      box-shadow: 0 24px 70px hsl(0 0% 0% / .5); backdrop-filter: blur(18px);
     }
-    .card::before, .review-card::before { content:""; position:absolute; inset:-60% -40% auto auto; width:220px; height:220px; background: radial-gradient(circle, hsl(276 100% 66% / .28), transparent 70%); pointer-events:none; }
+    .card::before, .review-card::before { content:""; position:absolute; inset:-60% -40% auto auto; width:220px; height:220px; background: radial-gradient(circle, hsl(179 99% 40% / .10), transparent 70%); pointer-events:none; }
     .category { color: var(--accent-2); font-size:12px; font-weight:900; letter-spacing:.16em; text-transform:uppercase; }
     .card h2, .review-card h2 { margin: 18px 0 12px; font-size: 28px; letter-spacing:-.04em; }
     .angle { color: var(--muted); line-height:1.45; min-height: 90px; }
     .card button { margin-top: 18px; width:100%; }
     .empty { grid-column:1 / -1; padding:42px; text-align:center; color:var(--muted); border:1px dashed var(--line); border-radius:28px; }
-    .drawer-backdrop { position:fixed; inset:0; display:none; justify-content:flex-end; background:hsl(245 50% 3% / .62); backdrop-filter: blur(8px); z-index:20; }
+    .drawer-backdrop { position:fixed; inset:0; display:none; justify-content:flex-end; background:hsl(0 0% 0% / .72); backdrop-filter: blur(8px); z-index:20; }
     .drawer-backdrop.open { display:flex; }
-    .drawer { width:min(540px, 100%); height:100vh; padding:28px; border-left:1px solid var(--line); background:var(--panel-strong); box-shadow:-30px 0 100px hsl(245 50% 2% / .64); overflow:auto; }
+    .drawer { width:min(540px, 100%); height:100vh; padding:28px; border-left:1px solid var(--line); background:var(--panel-strong); box-shadow:-30px 0 100px hsl(0 0% 0% / .7); overflow:auto; }
     .drawer h2 { font-size:36px; line-height:1; letter-spacing:-.05em; margin: 8px 0 24px; }
     label { display:block; margin:18px 0 8px; color:var(--muted); font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:.12em; }
     input, select, textarea { width:100%; padding:13px 14px; outline:none; }
     textarea { min-height: 150px; resize: vertical; line-height:1.5; }
     .formats { display:grid; gap:10px; }
-    .format { display:flex; gap:10px; align-items:start; padding:14px; border:1px solid var(--line); border-radius:18px; background:hsl(250 24% 12% / .66); }
+    .format { display:flex; gap:10px; align-items:start; padding:14px; border:1px solid var(--line); border-radius:18px; background:hsl(0 0% 100% / .04); }
     .format input { width:auto; margin-top:4px; accent-color: var(--accent); }
     .format strong { display:block; }
     .format span { color: var(--muted); font-size:13px; }
@@ -100,15 +126,15 @@
     .actions button { flex:1; }
     .review-layout { display:grid; grid-template-columns: 360px 1fr; gap:18px; align-items:start; }
     .review-list { display:grid; gap: 12px; }
-    .review-item { width:100%; text-align:left; padding:16px; border-radius:20px; background: hsl(250 30% 12% / .72); }
-    .review-item.active { border-color: hsl(276 100% 75% / .85); }
+    .review-item { width:100%; text-align:left; padding:16px; border-radius:20px; background: hsl(0 0% 100% / .04); }
+    .review-item.active { border-color: var(--accent); }
     .editor { display:grid; gap: 12px; }
     .editor textarea { min-height: 360px; }
     .review-top { display:flex; gap:12px; align-items:center; justify-content:space-between; margin-bottom: 14px; flex-wrap: wrap; }
     .review-title { margin:0; }
     .hidden { display:none !important; }
     .package-grid { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 18px; }
-    .package-block { padding: 16px; border: 1px solid var(--line); border-radius: 22px; background: hsl(250 30% 12% / .66); }
+    .package-block { padding: 16px; border: 1px solid var(--line); border-radius: 22px; background: hsl(0 0% 100% / .04); }
     .package-block h3 { margin: 0 0 10px; font-size: 16px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-2); }
     .package-block pre { margin: 0; white-space: pre-wrap; word-break: break-word; color: var(--text); line-height: 1.5; font-family: inherit; }
     .package-block ul { margin: 0; padding-left: 20px; color: var(--text); line-height: 1.5; }
@@ -120,8 +146,8 @@
       cursor: pointer;
     }
     details.package-block:hover {
-      border-color: hsl(276 100% 75% / 0.4);
-      background: hsl(250 30% 14% / .75);
+      border-color: hsl(179 99% 40% / .45);
+      background: hsl(0 0% 100% / .07);
     }
     details.package-block summary {
       display: flex;
@@ -160,9 +186,157 @@
     }
     @media (max-width: 920px) { .review-layout { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { header { display:block; } .toolbar { margin-top:18px; } .shell { width:min(100% - 20px, 1240px); padding-top:24px; } }
+    /* ═══════════════════════════════════════════════════════════════
+       DASHBOARD V2 — Navegación lateral + Sala de Control
+       Capa ADITIVA: no reemplaza ninguna vista existente. Las pestañas
+       originales siguen en el DOM (ocultas) y sus listeners intactos.
+       ═══════════════════════════════════════════════════════════════ */
+    body.v2 { display: flex; align-items: flex-start; }
+    body.v2 .shell { width: auto; flex: 1; min-width: 0; margin: 0; padding: 28px 32px 40px; }
+    /* Las pestañas horizontales quedan en el DOM por compatibilidad, ocultas visualmente. */
+    body.v2 .tabs { display: none; }
+
+    .sidenav {
+      width: 236px; flex-shrink: 0; position: sticky; top: 0; height: 100vh;
+      overflow-y: auto; padding: 26px 0; border-right: 1px solid var(--line);
+      background: #0d0d0d; backdrop-filter: blur(18px);
+    }
+    .sidenav .brandbox { padding: 0 20px 18px; border-bottom: 1px solid var(--line); margin-bottom: 12px; }
+    /* Logotipo HUMANOS en cian de marca (#01C9C7) — Leonardo §04: el cian es
+       la firma visual, reservada para lo que de verdad importa. */
+    .sidenav .brandbox b {
+      font-family: Montserrat, Inter, sans-serif;
+      font-size: 16px; letter-spacing: .2em; font-weight: 800; color: var(--accent);
+    }
+    .sidenav .brandbox small { display:block; margin-top:4px; font-size:9.5px; letter-spacing:.16em; color: var(--muted-deep); text-transform:uppercase; font-weight:600; }
+    .sidenav .navgrp {
+      padding: 16px 20px 6px; font-size: 10px; letter-spacing: .16em;
+      color: var(--muted); text-transform: uppercase; font-weight: 800; opacity: .7;
+    }
+    .sidenav .navlink {
+      display: flex; align-items: center; gap: 9px; padding: 9px 20px; cursor: pointer;
+      color: var(--muted); font-size: 13.5px; border-left: 2px solid transparent;
+      background: none; border-top: 0; border-right: 0; border-bottom: 0; border-radius: 0;
+      width: 100%; text-align: left;
+    }
+    .sidenav .navlink:hover { background: hsl(0 0% 100% / .04); color: var(--text); }
+    .sidenav .navlink.active {
+      background: hsl(0 0% 100% / .07); color: var(--text); font-weight: 700;
+      border-left-color: var(--accent);
+    }
+    .sidenav .navlink.home { font-weight: 800; color: var(--text); }
+    .sidenav .navbadge {
+      margin-left: auto; font-size: 10px; padding: 1px 8px; border-radius: 999px;
+      background: hsl(179 99% 40% / .16); color: var(--accent-2); font-weight: 800;
+    }
+
+    /* — Sala de Control — */
+    .cr-attention { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 26px; }
+    .cr-att {
+      background: var(--panel); border: 1px solid var(--line);
+      border-left: 3px solid var(--accent); border-radius: 16px; padding: 15px 17px;
+      cursor: pointer; transition: transform .15s, background .15s; text-align: left;
+    }
+    .cr-att:hover { transform: translateY(-2px); background: #1c1c1c; }
+    .cr-att b { display: block; font-size: 27px; font-weight: 800; line-height: 1.1; }
+    .cr-att small { color: var(--muted); font-size: 12px; }
+    .cr-att.cyan { border-left-color: var(--accent-2); }
+    .cr-att.warn { border-left-color: #A7A7A7; }
+    .cr-att.ok { border-left-color: var(--success); }
+
+    .cr-kanban { display: grid; grid-template-columns: repeat(7, minmax(138px, 1fr)); gap: 9px; overflow-x: auto; padding-bottom: 8px; }
+    .cr-col { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px; min-height: 180px; }
+    .cr-col h3 {
+      font-size: 10px; letter-spacing: .1em; margin: 2px 0 10px; color: var(--muted);
+      text-transform: uppercase; display: flex; align-items: center; gap: 6px; font-weight: 800;
+    }
+    .cr-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    .cr-card {
+      background: #1c1c1c; border: 1px solid var(--line); border-radius: 11px;
+      padding: 9px 10px; margin-bottom: 8px; cursor: pointer; transition: transform .15s, border-color .15s;
+    }
+    .cr-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .cr-card b { font-size: 12.5px; display: block; }
+    .cr-card .cr-meta { color: var(--muted); font-size: 10.5px; margin-top: 4px; display: flex; gap: 5px; flex-wrap: wrap; }
+    .cr-pill { font-size: 10px; padding: 2px 7px; border-radius: 999px; border: 1px solid var(--line); }
+    .cr-empty { color: var(--muted); font-size: 11px; opacity: .5; padding: 6px 2px; }
+    /* Agente responsable de cada etapa del pipeline */
+    .cr-owner {
+      font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700;
+      color: var(--muted-deep); margin: -4px 0 9px; padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+    }
+    .cr-owner.is-you { color: var(--accent); }
+    /* Aviso degradado: el panel sigue funcionando con los datos de disco
+       aunque Supabase no responda. */
+    .cr-warn {
+      display: none; align-items: center; gap: 10px; margin-bottom: 18px;
+      padding: 12px 15px; border-radius: 14px; font-size: 12.5px;
+      border: 1px solid hsl(0 72% 58% / .35); background: hsl(0 72% 58% / .08); color: var(--text);
+    }
+    .cr-warn.show { display: flex; }
+    .cr-warn button { margin-left: auto; padding: 6px 14px; border-radius: 12px; font-size: 11.5px; }
+    .cr-note {
+      background: hsl(179 99% 40% / .07); border-left: 3px solid var(--accent);
+      border-radius: 12px; padding: 12px 14px; font-size: 12.5px; color: var(--muted); margin-top: 22px;
+    }
+
+    /* — Carril de episodio (Nivel 2) — */
+    .rail-backdrop { position: fixed; inset: 0; background: hsl(0 0% 0% / .72); display: none; z-index: 40; }
+    .rail-backdrop.open { display: block; }
+    .rail {
+      position: fixed; top: 0; right: 0; height: 100%; width: min(760px, 94vw); z-index: 41;
+      background: #0d0d0d;
+      border-left: 1px solid var(--line); overflow-y: auto;
+      transform: translateX(100%); transition: transform .28s ease;
+    }
+    .rail.open { transform: translateX(0); }
+    .rail-head {
+      position: sticky; top: 0; z-index: 2; padding: 18px 22px; border-bottom: 1px solid var(--line);
+      display: flex; align-items: center; gap: 10px; background: #0d0d0dfa; backdrop-filter: blur(12px);
+    }
+    .rail-head h2 { margin: 0; font-size: 18px; letter-spacing: -.02em; }
+    .rail-head .rail-x { margin-left: auto; cursor: pointer; font-size: 20px; padding: 4px 12px; border-radius: 12px; }
+    .rail-hint { padding: 11px 22px; background: hsl(179 99% 40% / .06); border-bottom: 1px solid var(--line); color: var(--muted); font-size: 11.5px; }
+    .rail-stage { padding: 15px 22px; border-bottom: 1px solid var(--line); display: flex; gap: 13px; align-items: flex-start; }
+    .rail-stage .rail-n {
+      width: 25px; height: 25px; flex-shrink: 0; border-radius: 50%; margin-top: 2px;
+      background: #1c1c1c; border: 1px solid var(--line);
+      display: grid; place-items: center; font-size: 11px; font-weight: 800;
+    }
+    .rail-stage h4 { margin: 0 0 5px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-2); font-weight: 800; }
+    .rail-stage p { margin: 0; color: var(--muted); font-size: 12.5px; line-height: 1.5; }
+    .rail-act { margin-top: 9px; padding: 6px 13px; border-radius: 12px; font-size: 11.5px; cursor: pointer; }
+    .rail-act:hover { border-color: var(--accent); color: var(--accent-2); }
+
+    @media (max-width: 1024px) {
+      body.v2 { display: block; }
+      .sidenav { position: static; width: auto; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      .sidenav .navlink { display: inline-flex; width: auto; border-left: 0; border-bottom: 2px solid transparent; }
+      .sidenav .navlink.active { border-left: 0; border-bottom-color: var(--accent); }
+      .cr-attention { grid-template-columns: repeat(2, 1fr); }
+    }
   </style>
 </head>
-<body>
+<body class="v2">
+  <!-- ═══ NAV LATERAL (V2) — orquesta las vistas existentes, no las reemplaza ═══ -->
+  <nav class="sidenav" id="sideNav">
+    <div class="brandbox"><b>HUMANOS</b><small>Editorial OS</small></div>
+
+    <button type="button" class="navlink home active" data-view="control" onclick="navGo('control', this)">◉ Sala de Control</button>
+
+    <div class="navgrp">Biblioteca</div>
+    <button type="button" class="navlink" data-view="backlog" onclick="navGo('backlog', this)">Historias<span class="navbadge" id="navBadgeStories"></span></button>
+    <button type="button" class="navlink" data-view="review" onclick="navGo('review', this)">Guiones<span class="navbadge" id="navBadgeScripts"></span></button>
+    <button type="button" class="navlink" data-view="finalized" onclick="navGo('finalized', this)">Episodios</button>
+
+    <div class="navgrp">Distribución</div>
+    <button type="button" class="navlink" data-view="publisher" onclick="navGo('publisher', this)">Copies &amp; Publicación</button>
+
+    <div class="navgrp">Inteligencia</div>
+    <button type="button" class="navlink" data-view="talese" onclick="navGo('talese', this)">Aprendizaje<span class="navbadge" id="navBadgeLearnings"></span></button>
+  </nav>
+
   <main class="shell">
     <header>
       <section>
@@ -184,7 +358,43 @@
       <button id="tabTalese" class="tab" type="button">Aprendizaje Talese</button>
     </div>
 
-    <section id="backlogView">
+    <!-- ═══ NIVEL 1 · SALA DE CONTROL (nueva vista, no reemplaza ninguna) ═══ -->
+    <section id="controlRoomView">
+      <div class="cr-warn" id="crWarn">
+        <span id="crWarnText"></span>
+        <button type="button" onclick="loadControlRoom()">Reintentar</button>
+      </div>
+      <div class="eyebrow" style="margin-bottom:12px;">Hoy necesita tu atención</div>
+      <div class="cr-attention">
+        <button type="button" class="cr-att" onclick="navGo('review', document.querySelector('[data-view=review]'))">
+          <b id="crScripts">—</b><small>guiones esperando tu edición</small>
+        </button>
+        <button type="button" class="cr-att cyan" onclick="navGo('backlog', document.querySelector('[data-view=backlog]'))">
+          <b id="crGreenlight">—</b><small>historias esperando arranque</small>
+        </button>
+        <button type="button" class="cr-att warn" onclick="showToast('Los gaps de assets se resuelven en el episodio · abrí su carril')">
+          <b id="crGaps">—</b><small>assets pendientes</small>
+        </button>
+        <button type="button" class="cr-att ok" onclick="navGo('talese', document.querySelector('[data-view=talese]'))">
+          <b id="crLearnings">—</b><small>aprendizajes propuestos</small>
+        </button>
+      </div>
+
+      <div class="eyebrow" style="margin-bottom:12px;">Pipeline actual — solo lo que está en vuelo</div>
+      <div class="cr-kanban" id="crKanban">
+        <div class="cr-col"><h3><span class="cr-dot"></span>Greenlight</h3><div class="cr-owner">Mr. You</div><div id="crStageGreenlight"></div></div>
+        <div class="cr-col"><h3><span class="cr-dot"></span>Research</h3><div class="cr-owner">Borges</div><div id="crStageResearch"></div></div>
+        <div class="cr-col"><h3><span class="cr-dot"></span>Veritas</h3><div class="cr-owner">Veritas</div><div id="crStageVeritas"></div></div>
+        <div class="cr-col"><h3><span class="cr-dot"></span>Guion</h3><div class="cr-owner is-you">Gabo → Jota</div><div id="crStageGuion"></div></div>
+        <div class="cr-col"><h3><span class="cr-dot"></span>Producción</h3><div class="cr-owner">Moore · Leonardo</div><div id="crStageProduccion"></div></div>
+        <div class="cr-col"><h3><span class="cr-dot"></span>Distribución</h3><div class="cr-owner">Mark</div><div id="crStageDistribucion"></div></div>
+        <div class="cr-col"><h3><span class="cr-dot"></span>Publicado</h3><div class="cr-owner">Talese · Mr. You</div><div id="crStagePublicado"></div></div>
+      </div>
+
+      <div class="cr-note" id="crHint">Cargando estado del pipeline…</div>
+    </section>
+
+    <section id="backlogView" class="hidden">
       <div class="searchbar">
         <input id="searchInput" type="search" placeholder="Buscar por nombre, categoría o ángulo humano…" autocomplete="off" />
         <div id="searchHint" class="search-hint">Escribí para filtrar el backlog visible.</div>
@@ -202,14 +412,41 @@
       </div>
       <div class="review-layout">
         <div id="reviewList" class="review-list"></div>
-        <div class="review-card">
-          <div class="eyebrow">Editor / Guion corto</div>
+        <div class="review-card" style="grid-column: span 2;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div class="eyebrow" id="editorEyebrow">EDITOR EDITORIAL</div>
+            <div class="mode-tabs" style="display: flex; gap: 0.5rem;">
+              <button type="button" id="btnModeShort" class="tab-btn primary" onclick="switchEditorMode('short')" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">⚡ Guion Corto (90s)</button>
+              <button type="button" id="btnModeLong" class="tab-btn ghost" onclick="switchEditorMode('long')" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">🎬 Documental Largo (7-10 min)</button>
+            </div>
+          </div>
           <h2 id="reviewTitle">Seleccioná un episodio</h2>
-          <label for="reviewScript">Texto del guion</label>
-          <textarea id="reviewScript" placeholder="Elegí un episodio para editar su guion corto."></textarea>
-          <div class="actions">
-            <button id="openSelectedButton" type="button" class="ghost">Abrir episodio</button>
-            <button id="saveProduceButton" type="button" class="primary">Guardar y Producir</button>
+
+          <!-- VISTA EDITORIAL: MODO CORTO (90s) -->
+          <div id="editorShortView">
+            <label for="reviewScript">Texto del guion corto (90s)</label>
+            <textarea id="reviewScript" placeholder="Elegí un episodio para editar su guion corto."></textarea>
+            <div class="actions">
+              <button id="openSelectedButton" type="button" class="ghost">Abrir episodio</button>
+              <button id="saveProduceButton" type="button" class="primary">Guardar y Producir</button>
+            </div>
+          </div>
+
+          <!-- VISTA EDITORIAL: MODO DOCUMENTAL LARGO (7-10 MIN POR ACTOS) -->
+          <div id="editorLongView" style="display: none; margin-top: 1rem;">
+            <div id="docThesisBox" style="background: rgba(255,255,255,0.05); padding: 0.8rem; border-radius: 8px; margin-bottom: 1rem; border-left: 3px solid #6366f1; font-size: 0.85rem;">
+              <strong>Tesis Central:</strong> <span id="docCentralThesis">—</span><br>
+              <strong>Conflicto Principal:</strong> <span id="docMainConflict">—</span>
+            </div>
+
+            <h4 style="margin: 0.8rem 0 0.4rem 0;">Edición del Documental por Actos (Beat Sheet)</h4>
+            <div id="actsContainer" style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;"></div>
+
+            <h4 style="margin: 0.8rem 0 0.4rem 0;">Preguntas Socráticas de Talese (Creator Lab)</h4>
+            <div id="socraticContainer" style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem;"></div>
+
+            <h4 style="margin: 0.8rem 0 0.4rem 0;">Shorts Derivados Trazables</h4>
+            <div id="derivedShortsContainer" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;"></div>
           </div>
         </div>
       </div>
@@ -254,7 +491,7 @@
           <div class="eyebrow">Dossier / Guion Corto Finalizado</div>
           <h2 id="finalizedTitle">Seleccioná un episodio</h2>
           <label>Guion corto aprobado</label>
-          <div id="finalizedScriptText" class="draft-item" style="white-space: pre-wrap; font-family: inherit; line-height: 1.5; min-height: 120px; border: 1px solid var(--line); border-radius: 14px; padding: 14px; background: hsl(250 30% 10% / .4);">—</div>
+          <div id="finalizedScriptText" class="draft-item" style="white-space: pre-wrap; font-family: inherit; line-height: 1.5; min-height: 120px; border: 1px solid var(--line); border-radius: 14px; padding: 14px; background: hsl(0 0% 100% / .03);">—</div>
           <div id="finalizedCardContainer" style="margin-top: 16px; display: none; margin-bottom: 20px;">
             <label style="display: block; margin-bottom: 8px;">Ficha de Personaje (Character Card)</label>
             <img id="finalizedCardImage" src="" style="width: 100%; border-radius: 18px; border: 1px solid var(--line); background: #000; max-height: 360px; object-fit: contain;" />
@@ -334,6 +571,19 @@
     </section>
   </main>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- ═══ NIVEL 2 · CARRIL DE EPISODIO (V2) ═══
+       Inspecciona y enruta. No sustituye a ninguna vista: cada bloque
+       lleva a la vista completa donde realmente se trabaja. -->
+  <div id="railBackdrop" class="rail-backdrop" onclick="closeEpisodeRail()"></div>
+  <aside id="episodeRail" class="rail" aria-hidden="true">
+    <div class="rail-head">
+      <h2 id="railTitle">Episodio</h2>
+      <button type="button" class="rail-x" onclick="closeEpisodeRail()" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="rail-hint">Resumen del episodio. Para trabajar de verdad — editar guion, revisar claims o copies — usá los botones: abren la vista completa a ancho total.</div>
+    <div id="railBody"></div>
+  </aside>
 
   <aside id="drawerBackdrop" class="drawer-backdrop" aria-hidden="true">
     <form id="storyForm" class="drawer">
@@ -454,43 +704,168 @@
       state.selected = null; storyForm.reset(); drawerTitle.textContent = "Crear Personaje Nuevo"; protagonistField.style.display = "block"; protagonistName.required = true; protagonistName.value = ""; humanAngle.value = ""; domainCategory.value = "CREATORS"; storyForm.querySelector('input[value="complete"]').checked = true; startButton.textContent = "Crear e Iniciar Investigación"; drawerBackdrop.classList.add("open"); drawerBackdrop.setAttribute("aria-hidden", "false"); protagonistName.focus();
     }
     function closeDrawer() { drawerBackdrop.classList.remove("open"); drawerBackdrop.setAttribute("aria-hidden", "true"); protagonistField.style.display = "none"; protagonistName.required = false; storyForm.reset(); storyForm.querySelector('input[value="complete"]').checked = true; startButton.textContent = "Iniciar Investigación"; }
+    function getEl(id) { return document.getElementById(id); }
     async function loadReviewEpisodes() {
-      reviewHint.textContent = "Cargando episodios…";
-      reviewList.innerHTML = "";
-      try { const response = await fetch("/api/review-episodes"); const data = await response.json(); if (!response.ok) throw new Error(data.error || "No se pudieron leer los guiones pendientes"); state.reviewEpisodes = data.episodes || []; reviewHint.textContent = `${state.reviewEpisodes.length} episodios listos para edición.`; renderReviewEpisodes(); if (state.reviewEpisodes[0]) await openReviewEpisode(state.reviewEpisodes[0].episodePath); }
-      catch (error) { reviewHint.textContent = error.message; reviewList.innerHTML = `<div class="empty">No pude leer los guiones pendientes.</div>`; }
+      const hint = getEl("reviewHint");
+      const list = getEl("reviewList");
+      if (hint) hint.textContent = "Cargando episodios…";
+      if (list) list.innerHTML = "";
+      try { 
+        const response = await fetch("/api/review-episodes"); 
+        const data = await response.json(); 
+        if (!response.ok) throw new Error(data.error || "No se pudieron leer los guiones pendientes"); 
+        state.reviewEpisodes = data.episodes || []; 
+        if (hint) hint.textContent = `${state.reviewEpisodes.length} episodios listos para edición.`; 
+        renderReviewEpisodes(); 
+        if (state.reviewEpisodes[0]) await openReviewEpisode(state.reviewEpisodes[0].episodePath); 
+      }
+      catch (error) { 
+        if (hint) hint.textContent = error.message; 
+        if (list) list.innerHTML = `<div class="empty">No pude leer los guiones pendientes.</div>`; 
+      }
     }
+
     function renderReviewEpisodes() {
       if (!state.reviewEpisodes.length) { reviewList.innerHTML = `<div class="empty">No hay episodios en script_pending_review.</div>`; return; }
       reviewList.innerHTML = state.reviewEpisodes.map((episode) => `<button class="review-item ${state.selectedReviewPath === episode.episodePath ? 'active' : ''}" type="button" data-path="${episode.episodePath}"><strong>${episode.protagonistName}</strong><div class="muted">${episode.episodeDir}</div></button>`).join("");
       reviewList.querySelectorAll("button[data-path]").forEach((button) => button.addEventListener("click", () => openReviewEpisode(button.dataset.path)));
     }
+    function switchEditorMode(mode) {
+      const shortView = getEl("editorShortView");
+      const longView = getEl("editorLongView");
+      const btnShort = getEl("btnModeShort");
+      const btnLong = getEl("btnModeLong");
+
+      if (mode === "long") {
+        if (shortView) shortView.style.display = "none";
+        if (longView) longView.style.display = "block";
+        if (btnShort) { btnShort.className = "tab-btn ghost"; }
+        if (btnLong) { btnLong.className = "tab-btn primary"; }
+      } else {
+        if (shortView) shortView.style.display = "block";
+        if (longView) longView.style.display = "none";
+        if (btnShort) { btnShort.className = "tab-btn primary"; }
+        if (btnLong) { btnLong.className = "tab-btn ghost"; }
+      }
+    }
+
     async function openReviewEpisode(episodePath) {
-      const response = await fetch(`/api/review-episode?episodePath=${encodeURIComponent(episodePath)}`);
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error || "No se pudo abrir el episodio");
-      state.selectedReviewPath = data.episodePath;
-      reviewTitle.textContent = data.protagonistName;
-      reviewScript.value = data.scriptShort || "";
-      packageSummary.textContent = `${data.protagonistName} · ${data.status}`;
-      [packageVeritas, packageGabo, packageMoore, packageMarkReview].forEach((element) => {
-        if (element) delete element.dataset.formatted;
-      });
-      const packageDossier = document.getElementById("packageDossier");
-      if (packageDossier) {
-        packageDossier.innerHTML = data.dossier ? data.dossier.replace(/\n/g, "<br>") : "Sin dossier editorial generado.";
-      }
-      packageVeritas.textContent = JSON.stringify(data.veritas || {}, null, 2);
-      packageGabo.textContent = JSON.stringify(data.gabo || {}, null, 2);
-      packageMoore.textContent = JSON.stringify(data.moore || {}, null, 2);
-      packageMarkReview.textContent = JSON.stringify(data.mark || {}, null, 2);
-      const pkgTalese = document.getElementById("packageTaleseReview");
-      if (pkgTalese) {
-        pkgTalese.innerHTML = data.talese?.review ? data.talese.review.replace(/\n/g, "<br>") : "Pendiente de producción para generar la review de Gay Talese (Claude Sonnet 5).";
-      }
+      try {
+        const response = await fetch(`/api/review-episode?episodePath=${encodeURIComponent(episodePath)}`);
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "No se pudo abrir el episodio");
+        state.selectedReviewPath = data.episodePath;
+        if (getEl("reviewTitle")) getEl("reviewTitle").textContent = data.protagonistName;
+        if (getEl("reviewScript")) getEl("reviewScript").value = data.scriptShort || "";
+        if (getEl("packageSummary")) getEl("packageSummary").textContent = `${data.protagonistName} · ${data.status}`;
+
+        const packageVeritas = getEl("packageVeritas");
+        const packageGabo = getEl("packageGabo");
+        const packageMoore = getEl("packageMoore");
+        const packageMarkReview = getEl("packageMarkReview") || getEl("packageMark");
+        const packageDossier = getEl("packageDossier");
+
+        [packageVeritas, packageGabo, packageMoore, packageMarkReview].forEach((element) => {
+          if (element) delete element.dataset.formatted;
+        });
+
+        if (packageDossier) {
+          packageDossier.innerHTML = data.dossier ? data.dossier.replace(/\n/g, "<br>") : "Sin dossier editorial generado.";
+        }
+        if (packageVeritas) packageVeritas.textContent = JSON.stringify(data.veritas || {}, null, 2);
+        if (packageGabo) packageGabo.textContent = JSON.stringify(data.gabo || {}, null, 2);
+        if (packageMoore) packageMoore.textContent = JSON.stringify(data.moore || {}, null, 2);
+        if (packageMarkReview) packageMarkReview.textContent = JSON.stringify(data.mark || {}, null, 2);
+
+        const pkgTalese = getEl("packageTaleseReview");
+        if (pkgTalese) {
+          pkgTalese.innerHTML = data.talese?.review ? data.talese.review.replace(/\n/g, "<br>") : "Pendiente de producción para generar la review de Gay Talese (Claude Sonnet 5).";
+        }
+
+        if (data.scriptsLong && data.scriptsLong.is_documentary_pilot) {
+          const bp = data.scriptsLong.narrative_blueprint || {};
+          if (getEl("docCentralThesis")) getEl("docCentralThesis").textContent = bp.central_thesis || "—";
+          if (getEl("docMainConflict")) getEl("docMainConflict").textContent = bp.main_conflict || "—";
+
+          // Render Actos
+          const actsContainer = getEl("actsContainer");
+          if (actsContainer && bp.beat_sheet) {
+            actsContainer.innerHTML = bp.beat_sheet.map((act) => `
+              <div class="card" style="border: 1px solid rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px; background: rgba(255,255,255,0.02);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                  <h4 style="margin:0; color: #fff;">${act.title} <span style="font-size: 0.8rem; opacity: 0.7;">(~${act.estimated_duration_sec}s | Causalidad: ${act.causality_type})</span></h4>
+                  <span class="badge" style="background: #6366f1; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; color: #fff;">${act.status || 'draft'}</span>
+                </div>
+                <p style="font-size: 0.85rem; opacity: 0.8; margin-top:0;"><strong>Objetivo:</strong> ${act.objective || ''}</p>
+                <textarea id="act_text_${act.id}" style="width:100%; min-height: 100px; font-family: inherit; margin-bottom: 0.5rem;">${act.script_text || ''}</textarea>
+                <button type="button" class="primary" onclick="saveAct('${data.episodePath}', '${act.id}')" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Guardar ${act.id}</button>
+              </div>
+            `).join("");
+          }
+
+          // Render Preguntas Socráticas
+          const socraticContainer = getEl("socraticContainer");
+          if (socraticContainer) {
+            const dialogue = data.scriptsLong.talese_socratic_dialogue || [];
+            socraticContainer.innerHTML = dialogue.map((item) => `
+              <div style="background: rgba(99, 102, 241, 0.1); padding: 0.75rem; border-radius: 6px; border-left: 3px solid #6366f1;">
+                <p style="margin: 0 0 0.5rem 0; font-weight: 600;">[${item.act_id}] ${item.question}</p>
+                <textarea id="q_ans_${item.question_id}" placeholder="Escribí tu respuesta socrática..." style="width:100%; min-height: 60px; font-family: inherit; margin-bottom: 0.4rem;">${item.user_answer || ''}</textarea>
+                <button type="button" class="ghost" onclick="saveTalesQuestion('${item.question_id}')" style="padding: 0.3rem 0.6rem; font-size: 0.75rem;">${item.resolved ? '✓ Resolver' : 'Guardar Respuesta'}</button>
+              </div>
+            `).join("");
+          }
+
+          // Render Shorts Derivados
+          const derivedContainer = getEl("derivedShortsContainer");
+          if (derivedContainer) {
+            const shorts = data.scriptsLong.derived_shorts || [];
+            derivedContainer.innerHTML = shorts.map((s) => `
+              <div style="background: rgba(255,255,255,0.03); padding: 0.75rem; border-radius: 6px; border: 1px dashed rgba(255,255,255,0.2);">
+                <span class="badge" style="background: #10b981; color: #000; padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.7rem; font-weight: bold;">ORIGEN: ${s.acto_origen_id.toUpperCase()}</span>
+                <h5 style="margin: 0.5rem 0 0.2rem 0;">Short #${s.short_id} (${s.timestamp_range})</h5>
+                <p style="font-size: 0.8rem; opacity: 0.8; margin: 0;">${s.script_short}</p>
+              </div>
+            `).join("");
+          }
+
+          // Auto-activar vista documental si tiene piloto largo activo
+          switchEditorMode("long");
+        } else {
+          switchEditorMode("short");
+        }
+
       formatEditorialBlocks();
       renderReviewEpisodes();
+    } catch (error) {
+      console.error("[openReviewEpisode]", error);
+      const hint = getEl("reviewHint");
+      if (hint) hint.textContent = error.message;
     }
+  }
+
+  async function saveAct(episodePath, actId) {
+
+
+      const text = getEl(`act_text_${actId}`)?.value || "";
+      const res = await fetch("/api/save-act", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ episodePath, actId, scriptText: text, status: "approved" })
+      });
+      if (res.ok) showToast(`Acto ${actId} guardado.`, "success");
+    }
+
+    async function saveTalesQuestion(questionId) {
+      const ans = getEl(`q_ans_${questionId}`)?.value || "";
+      const res = await fetch("/api/save-talese-question", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ episodePath: state.selectedReviewPath, questionId, userAnswer: ans, resolved: true })
+      });
+      if (res.ok) showToast("Respuesta registrada en Creator Lab.", "success");
+    }
+
     async function saveAndProduce() {
       if (!state.selectedReviewPath || sendState.producing) return;
       sendState.producing = true;
@@ -517,6 +892,7 @@
       finalizedView.classList.add("hidden");
       publisherView.classList.add("hidden");
       document.getElementById("taleseView")?.classList.add("hidden");
+      document.getElementById("controlRoomView")?.classList.add("hidden");
       tabBacklog.classList.remove("active");
       tabReview.classList.remove("active");
       tabFinalized.classList.remove("active");
@@ -528,6 +904,203 @@
     function showFinalized() { hideAllViews(); finalizedView.classList.remove("hidden"); tabFinalized.classList.add("active"); if (!state.finalizedEpisodes.length) loadFinalizedEpisodes(); }
     function showPublisher() { hideAllViews(); publisherView.classList.remove("hidden"); tabPublisher.classList.add("active"); if (!state.publisherEpisodes.length) loadPublisherEpisodes(); }
     function showTalese() { hideAllViews(); document.getElementById("taleseView")?.classList.remove("hidden"); document.getElementById("tabTalese")?.classList.add("active"); loadTaleseLab(); }
+
+    /* ═══════════════════════════════════════════════════════════════
+       DASHBOARD V2 — Sala de Control (Nivel 1) y Carril de episodio (Nivel 2)
+       Capa ADITIVA. Reutiliza las funciones de vista existentes
+       (showBacklog / showReview / showFinalized / showPublisher / showTalese)
+       en lugar de duplicarlas. Ninguna vista original fue modificada.
+       ═══════════════════════════════════════════════════════════════ */
+    const NAV_TO_VIEW = {
+      control: showControlRoom,
+      backlog: showBacklog,
+      review: showReview,
+      finalized: showFinalized,
+      publisher: showPublisher,
+      talese: showTalese,
+    };
+
+    function navGo(viewKey, el) {
+      const fn = NAV_TO_VIEW[viewKey];
+      if (!fn) return;
+      document.querySelectorAll(".sidenav .navlink").forEach((n) => n.classList.remove("active"));
+      const target = el || document.querySelector(`.sidenav [data-view="${viewKey}"]`);
+      if (target) target.classList.add("active");
+      fn();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function showControlRoom() {
+      hideAllViews();
+      document.getElementById("controlRoomView")?.classList.remove("hidden");
+      loadControlRoom();
+    }
+
+    const STAGE_SLOTS = {
+      greenlight: "crStageGreenlight",
+      research: "crStageResearch",
+      veritas: "crStageVeritas",
+      guion: "crStageGuion",
+      produccion: "crStageProduccion",
+      distribucion: "crStageDistribucion",
+      publicado: "crStagePublicado",
+    };
+
+    function crCard(title, metaBits, onClickAttr) {
+      const meta = metaBits.filter(Boolean).map((m) => `<span class="cr-pill">${m}</span>`).join("");
+      return `<div class="cr-card" ${onClickAttr}><b>${title}</b><div class="cr-meta">${meta}</div></div>`;
+    }
+
+    async function loadControlRoom() {
+      const hint = document.getElementById("crHint");
+      const warn = document.getElementById("crWarn");
+      const warnText = document.getElementById("crWarnText");
+      warn?.classList.remove("show");
+      try {
+        const response = await fetch("/api/control-room");
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "No se pudo cargar la Sala de Control");
+
+        // Supabase caído: el panel sigue operativo con los datos de disco.
+        if (data.supabaseOk === false && warn && warnText) {
+          warnText.innerHTML = `<strong>Sin conexión a Supabase.</strong> Los episodios de abajo salen de tu disco y están completos; solo falta la columna Greenlight (que vive en la nube). Tus datos no corren riesgo.`;
+          warn.classList.add("show");
+        }
+
+        const c = data.counters || {};
+        document.getElementById("crScripts").textContent = c.scriptsWaiting ?? 0;
+        document.getElementById("crGreenlight").textContent = c.greenlight ?? 0;
+        document.getElementById("crGaps").textContent = c.assetGaps ?? 0;
+        document.getElementById("crLearnings").textContent = c.proposedLearnings ?? 0;
+
+        const badgeScripts = document.getElementById("navBadgeScripts");
+        if (badgeScripts) badgeScripts.textContent = c.scriptsWaiting ? c.scriptsWaiting : "";
+        const badgeLearn = document.getElementById("navBadgeLearnings");
+        if (badgeLearn) badgeLearn.textContent = c.proposedLearnings ? c.proposedLearnings : "";
+        const badgeStories = document.getElementById("navBadgeStories");
+        if (badgeStories) badgeStories.textContent = state.stories?.length ? state.stories.length : "";
+
+        // Limpiar columnas
+        Object.values(STAGE_SLOTS).forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) el.innerHTML = "";
+        });
+
+        // Greenlight viene de Supabase (historias sin arrancar). Solo lectura.
+        const glSlot = document.getElementById(STAGE_SLOTS.greenlight);
+        (data.greenlight || []).slice(0, 6).forEach((s) => {
+          glSlot.innerHTML += crCard(s.protagonist_name, [s.editorial_status], "");
+        });
+
+        // Episodios en vuelo, por etapa real de pipeline_state.json
+        (data.episodes || []).forEach((ep) => {
+          const slotId = STAGE_SLOTS[ep.stage];
+          const slot = document.getElementById(slotId);
+          if (!slot) return;
+          const meta = [
+            ep.status === "script_pending_review" ? "te espera" : null,
+            ep.veritasScore != null ? `✓ ${ep.veritasScore}` : null,
+            ep.assetGaps ? `${ep.assetGaps} gaps` : null,
+            ep.copyCount ? `${ep.copyCount} copies` : null,
+          ];
+          const safePath = encodeURIComponent(ep.episodePath);
+          slot.innerHTML += crCard(ep.protagonistName, meta, `onclick="openEpisodeRail('${safePath}')"`);
+        });
+
+        Object.values(STAGE_SLOTS).forEach((id) => {
+          const el = document.getElementById(id);
+          if (el && !el.innerHTML) el.innerHTML = `<div class="cr-empty">—</div>`;
+        });
+
+        const total = (data.episodes || []).length;
+        hint.innerHTML = `<strong>${total}</strong> episodios con estado en disco. Esta vista solo resume lo que está en vuelo: tu base completa vive en <strong>Historias</strong>, los copies completos en <strong>Copies &amp; Publicación</strong>. Clic en una tarjeta para abrir su carril.`;
+      } catch (error) {
+        // "Failed to fetch" es un fallo de red, no de datos: casi siempre el
+        // servidor todavía no está escuchando. Se explica en lenguaje humano.
+        const esRed = /failed to fetch|networkerror|load failed/i.test(error.message || "");
+        if (warn && warnText) {
+          warnText.innerHTML = esRed
+            ? `<strong>No hay conexión con el servidor del panel.</strong> Arrancalo con <code>npm run editorial</code> (o el .bat) y reintentá. Ningún dato se perdió: el panel solo lee.`
+            : `<strong>No se pudo cargar la Sala de Control:</strong> ${error.message}`;
+          warn.classList.add("show");
+        }
+        hint.textContent = esRed
+          ? "Esperando al servidor en http://127.0.0.1:3100 …"
+          : `Error: ${error.message}`;
+      }
+    }
+
+    /* ── Nivel 2 · Carril de episodio: inspeccionar y enrutar, no ejecutar ── */
+    async function openEpisodeRail(encodedPath) {
+      const episodePath = decodeURIComponent(encodedPath);
+      const backdrop = document.getElementById("railBackdrop");
+      const rail = document.getElementById("episodeRail");
+      const bodyEl = document.getElementById("railBody");
+      document.getElementById("railTitle").textContent = "Cargando…";
+      bodyEl.innerHTML = "";
+      backdrop.classList.add("open");
+      rail.classList.add("open");
+
+      try {
+        const response = await fetch(`/api/review-episode?episodePath=${encodeURIComponent(episodePath)}`);
+        const d = await response.json();
+        if (!response.ok) throw new Error(d.error || "No se pudo cargar el episodio");
+
+        document.getElementById("railTitle").textContent = d.protagonistName || "Episodio";
+
+        const fc = d.veritas?.factCheck;
+        const approved = Array.isArray(d.veritas?.approvedClaims) ? d.veritas.approvedClaims.length : null;
+        const claims = Array.isArray(d.veritas?.claims) ? d.veritas.claims.length : null;
+        const gaps = Array.isArray(d.moore?.assetGaps) ? d.moore.assetGaps.length : 0;
+        const copies = ["youtube", "instagram", "facebook", "linkedin", "tiktok", "x", "newsletter"]
+          .filter((p) => d.mark?.[p] && Object.values(d.mark[p]).some((v) => typeof v === "string" && v.trim())).length;
+        const dossier = (d.dossier || "").replace(/[#*`]/g, "").trim().slice(0, 190);
+
+        const stage = (n, title, text, actionLabel, actionJs) => `
+          <div class="rail-stage">
+            <div class="rail-n">${n}</div>
+            <div style="flex:1">
+              <h4>${title}</h4>
+              <p>${text}</p>
+              ${actionLabel ? `<button type="button" class="rail-act" onclick="${actionJs}">${actionLabel}</button>` : ""}
+            </div>
+          </div>`;
+
+        // Orden del carril: Mr. You → Borges → Veritas → Gabo/Jota → Moore → Mark → Talese
+        // Mr. You abre porque decide a nivel CANAL si la pieza entra al portfolio;
+        // la cocina editorial de HUMANOS empieza recién en Borges.
+        bodyEl.innerHTML = [
+          stage(1, "Mr. You · Canal",
+            "Nivel canal, no editorial. Evalúa esta pieza dentro del portfolio general (HUMANOS + Lab IA) y aconseja cuándo publicarla.",
+            null, null),
+          stage(2, "Borges · Dossier", dossier ? `${dossier}…` : "Sin dossier editorial generado.",
+            "Ver dossier completo →", `closeEpisodeRail(); navGo('finalized')`),
+          stage(3, "Veritas · Auditoría",
+            fc ? `Score <strong style="color:var(--accent)">${fc.overall_confidence_score ?? "—"}</strong> · ${approved ?? "—"}/${claims ?? "—"} claims aprobados · estado ${fc.status || "—"}`
+               : "Sin auditoría de Veritas todavía.",
+            "Revisar claims →", `closeEpisodeRail(); navGo('finalized')`),
+          stage(4, "Gabo → Jota · Guion",
+            d.gabo?.short ? `Guion corto listo (${d.gabo.short.trim().split(/\s+/).length} palabras).` : "Sin guion generado.",
+            "Editar guion →", `closeEpisodeRail(); navGo('review')`),
+          stage(5, "Moore · Storyboard y assets",
+            gaps ? `<span style="color:var(--text)">${gaps} asset gaps</span> sin resolver.` : "Sin gaps de assets registrados.",
+            "Revisar storyboard →", `closeEpisodeRail(); navGo('finalized')`),
+          stage(6, "Mark · Distribución",
+            copies ? `${copies} paquetes de copy generados en 11_DIST/.` : "Todavía no hay paquetes de distribución.",
+            "Ver copies →", `closeEpisodeRail(); navGo('publisher')`),
+          stage(7, "Talese · Aprendizaje",
+            d.talese?.review ? "Retro editorial inmediata disponible (delta Gabo vs tu edición)." : "Sin retro editorial todavía.",
+            "Revisar aprendizaje →", `closeEpisodeRail(); navGo('talese')`),
+        ].join("");
+      } catch (error) {
+        bodyEl.innerHTML = `<div class="rail-stage"><div style="flex:1"><p>${error.message}</p></div></div>`;
+      }
+    }
+
+    function closeEpisodeRail() {
+      document.getElementById("railBackdrop")?.classList.remove("open");
+      document.getElementById("episodeRail")?.classList.remove("open");
+    }
 
     async function loadTaleseLab() {
       const hint = document.getElementById("taleseHint");
@@ -749,7 +1322,11 @@
     openSelectedButton.addEventListener("click", async () => { if (state.selectedReviewPath) await openReviewEpisode(state.selectedReviewPath); });
     openSelectedFinalizedButton.addEventListener("click", async () => { if (state.selectedFinalizedPath) await openFinalizedEpisode(state.selectedFinalizedPath); });
     saveProduceButton.addEventListener("click", saveAndProduce);
-    loadStories();
+
+    /* Arranque V2: las historias se cargan igual que siempre (alimentan el
+       Backlog y el buscador) y el Home pasa a ser la Sala de Control.
+       Para volver al comportamiento anterior basta con llamar showBacklog(). */
+    loadStories().then(showControlRoom).catch(showControlRoom);
   </script>
 </body>
 <style>

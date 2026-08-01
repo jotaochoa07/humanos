@@ -1,0 +1,38 @@
+{
+  "estimated_voiceover_duration": 84.2,
+  "asset_count": 8,
+  "missing_assets_count": 3,
+  "estimated_edit_time_hours": 12.0,
+  "music_style": "Documental con tensión creciente, piano minimalista, toques de drama orquestal y sonido de época sutil",
+  "visual_style": "Cinematográfico, color gradado cálido con grano de película analógica, fondos oscuros de alta tensión, transiciones limpias y dinámicas",
+  "required_images": [
+    "Ferruccio Lamborghini portrait (asset 001)",
+    "Ferruccio Lamborghini con Miura (asset 004)"
+  ],
+  "required_videos": [
+    "Fragmento entrevista Ferruccio Lamborghini (asset 005)",
+    "Metraje de archivo de tractores Lamborghini (STOCK o AI GEN)",
+    "Metraje de archivo de coches Ferrari de época (STOCK o AI GEN)",
+    "Metraje de archivo de componentes mecánicos (STOCK o AI GEN)",
+    "Metraje de archivo de superdeportivos (STOCK o AI GEN)"
+  ],
+  "required_motion_graphics": [
+    "Logo original Lamborghini Trattori (asset 003) animado a logo moderno Lamborghini (asset 008)",
+    "Mapa animado Italia: Sant'Agata vs Maranello",
+    "Gráficos de comparación de costos de embrague",
+    "Título del programa 'HUMANOS' (YOUR ASSET)",
+    "Gráfico de 'La Puerta' animado (fallback)"
+  ],
+  "required_maps": [
+    "Mapa animado Italia: Sant'Agata vs Maranello (MG)"
+  ],
+  "required_historical_screenshots": [
+    "Capturas de pantalla de revistas de automoción de los 60s/70s (STOCK)"
+  ],
+  "required_ai_recreations": [
+    "Ferruccio Lamborghini dirigiendo producción de tractores",
+    "Rostro de Enzo Ferrari altivo y Ferruccio humillado",
+    "Manos de Ferruccio desarmando embragues (Ferrari/Tractor)",
+    "Lamborghini 350 GTV y coches deportivos a alta velocidad"
+  ]
+}

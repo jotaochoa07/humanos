@@ -1,0 +1,20 @@
+{
+  "episode_id": "EP0001_Jan_Koum",
+  "character_name": "Jan Koum",
+  "is_documentary_pilot": true,
+  "created_at": "2026-07-23T16:36:02.002836",
+  "master_documentary": {
+    "title": "HUMANOS Doc — Jan Koum",
+    "central_thesis": "Test",
+    "total_acts": 0,
+    "target_duration_sec": 540
+  },
+  "derived_shorts": [
+    {
+      "short_id": "short_01",
+      "episodio_padre_id": "EP_LAMBORGHINI_DOC",
+      "acto_origen_id": "act_1",
+      "is_derived_short": true
+    }
+  ]
+}

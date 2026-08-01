@@ -248,8 +248,11 @@ function loadEpisodePayload(episodePath) {
       changelog: readJson(path.join(safePath, "EPISODE_CHANGELOG.json")),
     },
     scriptsJson,
+    scriptsLong: readJson(path.join(safePath, "02_SCRIPT", "scripts_long.json")) || null,
   };
 }
+
+
 
 function loadEnv() {
   const env = { ...process.env };
@@ -543,7 +546,9 @@ async function handleSaveMetrics(req, res) {
   try {
     const markProc = spawn("python", [
       "-c",
-      `from mark import MarkAgent; mark = MarkAgent(); mark.log_metrics("${protagonistName}", "${episodeId}", ${metricsData.views}, ${metricsData.retentionRate3s}, ${metricsData.avgWatchPercentage}, ${metricsData.durationSeconds}, "${(metricsData.notes || '').replace(/"/g, '\\"')}", [])`
+      // hook_text y themes van vacíos a propósito: MarkAgent conserva los valores
+      // ya registrados por register_episode() en lugar de pisarlos con las notas.
+      `from mark import MarkAgent; mark = MarkAgent(); mark.log_metrics("${protagonistName}", "${episodeId}", ${metricsData.views}, ${metricsData.retentionRate3s}, ${metricsData.avgWatchPercentage}, ${metricsData.durationSeconds}, "", [])`
     ], { cwd: __dirname, env: getSupabaseConfig().env });
   } catch (e) {
     console.error("[Save Metrics] Error al actualizar Mark history:", e);
@@ -601,10 +606,195 @@ async function handleTaleseLab(res) {
   });
 }
 
+/**
+ * Sala de Control (Dashboard V2) — AGREGADOR DE SOLO LECTURA.
+ *
+ * No escribe en disco ni en Supabase. Reutiliza el estado que ya existe
+ * (pipeline_state.json, asset_gaps.json, creator_learnings.json) y lo resume
+ * para la vista de portfolio. Si algo falla, degrada a cero en vez de romper.
+ */
+function collectControlRoom() {
+  const personasRoot = getPersonajesRoot();
+  const episodes = [];
+  let assetGapsTotal = 0;
+
+  if (existsSync(personasRoot)) {
+    for (const protagonistFolder of readdirSync(personasRoot, { withFileTypes: true }).filter((d) => d.isDirectory())) {
+      const protagonistRoot = path.join(personasRoot, protagonistFolder.name);
+      for (const episodeDir of readdirSync(protagonistRoot, { withFileTypes: true }).filter((d) => d.isDirectory() && d.name.startsWith("EP"))) {
+        const episodePath = path.join(protagonistRoot, episodeDir.name);
+        const state = readJsonIfExists(path.join(episodePath, "pipeline_state.json"));
+        if (!state) continue;
+
+        // Compatibilidad con los DOS esquemas de pipeline_state.json que existen
+        // en disco (ver CLAUDE_AUDIT §4.2 B7):
+        //   A) {status, last_updated}                 ← hermoso_core.update_status_local()
+        //   B) {editorial_status, production_status…} ← fichas creadas antes del runner
+        // Se lee sin migrar nada: los archivos quedan intactos.
+        const rawStatus = state.status || state.editorial_status || "unknown";
+
+        const gaps = readJsonIfExists(path.join(episodePath, "03_STORYBOARD", "asset_gaps.json"), []);
+        const gapCount = Array.isArray(gaps) ? gaps.length : 0;
+        assetGapsTotal += gapCount;
+
+        const scriptsJson = readJsonIfExists(path.join(episodePath, "02_SCRIPT", "scripts.json"), {});
+        const factCheck = readJsonIfExists(path.join(episodePath, "01_RESEARCH", "fact_check.json"), null);
+        const distDir = path.join(episodePath, "11_DIST");
+        let copyCount = 0;
+        if (existsSync(distDir)) {
+          copyCount = readdirSync(distDir, { withFileTypes: true }).filter((d) => d.isDirectory()).length;
+        }
+
+        episodes.push({
+          protagonistName: protagonistFolder.name.replaceAll("_", " "),
+          episodeDir: episodeDir.name,
+          episodePath,
+          status: rawStatus,
+          lastUpdated: state.last_updated || state.created_at || "",
+          stage: mapStatusToStage(rawStatus, copyCount),
+          schemaVariant: state.status ? "runner" : "ficha",
+          category: scriptsJson?.domain_category || "",
+          veritasScore: factCheck?.overall_confidence_score ?? null,
+          assetGaps: gapCount,
+          copyCount,
+          hasReview: existsSync(path.join(episodePath, "EPISODE_REVIEW.md")),
+        });
+      }
+    }
+  }
+
+  const learnings = readJsonIfExists(path.join(__dirname, "_LAB", "creator_learnings.json"), { learnings: [] });
+  const proposedLearnings = (learnings.learnings || []).filter((l) => l.status === "PROPOSED").length;
+
+  return {
+    episodes: episodes.sort((a, b) => b.lastUpdated.localeCompare(a.lastUpdated)),
+    counters: {
+      scriptsWaiting: episodes.filter((e) => e.status === "script_pending_review").length,
+      assetGaps: assetGapsTotal,
+      proposedLearnings,
+      readyToPublish: episodes.filter((e) => e.stage === "distribucion").length,
+    },
+  };
+}
+
+/**
+ * Traduce el status real de pipeline_state.json a una columna del Kanban.
+ * Los estados cubiertos son los que escribe hermoso_core.update_status_local()
+ * más "idea" (episodio creado pero sin arrancar el pipeline).
+ * Un status desconocido cae en "greenlight" —no en "produccion"— para que
+ * salte a la vista en vez de fingir un avance que no ocurrió.
+ */
+function mapStatusToStage(status, copyCount = 0) {
+  switch (status) {
+    case "idea":
+      return "greenlight";
+    case "research_pending":
+    case "research_in_progress":
+    case "needs_research":
+      return "research";
+    case "verification_in_progress":
+    case "research_done":
+      return "veritas";
+    case "script_pending_review":
+      return "guion";
+    case "storyboard_done":
+      return copyCount > 0 ? "distribucion" : "produccion";
+    case "published":
+    case "publicado":
+      return "publicado";
+    default:
+      console.warn(`[control-room] status no mapeado: "${status}" → greenlight`);
+      return "greenlight";
+  }
+}
+
+async function handleControlRoom(res) {
+  // El estado de disco es la fuente principal y NUNCA depende de la nube.
+  // Si Supabase no responde, la Sala de Control sigue mostrando todos los
+  // episodios; solo se pierde la columna de Greenlight, y se avisa en la UI.
+  const local = collectControlRoom();
+  let greenlight = [];
+  let supabaseOk = true;
+  let supabaseError = null;
+  try {
+    greenlight = await supabaseRequest(
+      "humanos_stories?editorial_status=in.(idea,needs_research)&select=id,protagonist_name,human_angle,domain_category,editorial_status&order=protagonist_name.asc"
+    );
+  } catch (error) {
+    supabaseOk = false;
+    supabaseError = error.message || String(error);
+    console.error("[control-room] Supabase no disponible, se degrada sin greenlight:", supabaseError);
+  }
+  sendJson(res, 200, {
+    ...local,
+    greenlight,
+    supabaseOk,
+    supabaseError,
+    counters: { ...local.counters, greenlight: Array.isArray(greenlight) ? greenlight.length : 0 },
+  });
+}
+
 async function serveStatic(res, filePath, contentType) {
   const content = await readFile(filePath);
   res.writeHead(200, { "Content-Type": contentType });
   res.end(content);
+}
+
+async function handleSaveAct(req, res) {
+  const body = await readBody(req);
+  const episodePath = String(body.episodePath || "").trim();
+  const actId = String(body.actId || "").trim();
+  const scriptText = String(body.scriptText || "");
+  const status = String(body.status || "draft");
+
+  const safePath = getEpisodeByPath(episodePath);
+  if (!safePath || !actId) return sendJson(res, 400, { error: "Faltan datos de episodio o acto" });
+
+  const scriptsLongFile = path.join(safePath, "02_SCRIPT", "scripts_long.json");
+  let data = readJsonIfExists(scriptsLongFile, { is_documentary_pilot: true, narrative_blueprint: { beat_sheet: [] } });
+
+  if (data.narrative_blueprint && data.narrative_blueprint.beat_sheet) {
+    const act = data.narrative_blueprint.beat_sheet.find(a => a.id === actId);
+    if (act) {
+      act.script_text = scriptText;
+      act.status = status;
+      writeFileSync(scriptsLongFile, JSON.stringify(data, null, 2), "utf8");
+      return sendJson(res, 200, { ok: true, message: `Acto ${actId} guardado.`, act });
+    }
+  }
+  return sendJson(res, 404, { error: "Acto no encontrado" });
+}
+
+async function handleSaveTalesQuestion(req, res) {
+  const body = await readBody(req);
+  const episodePath = String(body.episodePath || "").trim();
+  const questionId = String(body.questionId || "").trim();
+  const userAnswer = String(body.userAnswer || "");
+  const resolved = Boolean(body.resolved);
+
+  const safePath = getEpisodeByPath(episodePath);
+  if (!safePath || !questionId) return sendJson(res, 400, { error: "Faltan datos de episodio o pregunta" });
+
+  const scriptsLongFile = path.join(safePath, "02_SCRIPT", "scripts_long.json");
+  let data = readJsonIfExists(scriptsLongFile, { talese_socratic_dialogue: [] });
+
+  if (!data.talese_socratic_dialogue) data.talese_socratic_dialogue = [];
+  const q = data.talese_socratic_dialogue.find(item => item.question_id === questionId);
+  if (q) {
+    q.user_answer = userAnswer;
+    q.resolved = resolved;
+    q.updated_at = new Date().toISOString();
+  } else {
+    data.talese_socratic_dialogue.push({
+      question_id: questionId,
+      user_answer: userAnswer,
+      resolved,
+      updated_at: new Date().toISOString()
+    });
+  }
+
+  writeFileSync(scriptsLongFile, JSON.stringify(data, null, 2), "utf8");
+  return sendJson(res, 200, { ok: true, message: "Respuesta socrática registrada." });
 }
 
 const server = createServer(async (req, res) => {
@@ -617,6 +807,7 @@ const server = createServer(async (req, res) => {
     if (req.method === "GET" && url.pathname === "/api/review-episode") return void await handleReviewEpisode(req, res, url);
     if (req.method === "GET" && url.pathname === "/api/get-metrics") return void await handleGetMetrics(req, res, url);
     if (req.method === "GET" && url.pathname === "/api/talese-lab") return void await handleTaleseLab(res);
+    if (req.method === "GET" && url.pathname === "/api/control-room") return void await handleControlRoom(res);
     if (req.method === "GET" && url.pathname === "/api/image") {
       const imgPath = url.searchParams.get("path");
       if (imgPath && existsSync(imgPath)) {
@@ -637,6 +828,8 @@ const server = createServer(async (req, res) => {
     if (req.method === "POST" && url.pathname === "/api/create-and-start") return void await handleCreateAndStart(req, res);
     if (req.method === "POST" && url.pathname === "/api/produce") return void await handleProduce(req, res);
     if (req.method === "POST" && url.pathname === "/api/save-metrics") return void await handleSaveMetrics(req, res);
+    if (req.method === "POST" && url.pathname === "/api/save-act") return void await handleSaveAct(req, res);
+    if (req.method === "POST" && url.pathname === "/api/save-talese-question") return void await handleSaveTalesQuestion(req, res);
     if (req.method === "GET" && (url.pathname === "/" || url.pathname === "/editorial")) return void await serveStatic(res, path.join(__dirname, "public", "editorial-dashboard.html"), "text/html; charset=utf-8");
     sendJson(res, 404, { error: "Not found" });
   } catch (error) {
@@ -644,6 +837,7 @@ const server = createServer(async (req, res) => {
     sendJson(res, 500, { error: error.message || "Unexpected error" });
   }
 });
+
 
 server.listen(PORT, "127.0.0.1", () => {
   console.log(`HUMANOS Editorial Dashboard running at http://127.0.0.1:${PORT}`);

@@ -1,0 +1,37 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "character_name": "James Dyson",
+  "claims": [
+    {
+      "claim_id": "C001",
+      "claim": "James Dyson inventó más de 5,127 prototipos fallidos de su aspiradora antes de lograr el éxito.",
+      "importance": 10
+    },
+    {
+      "claim_id": "C002",
+      "claim": "Dyson fue rechazado por fabricantes y distribuidores que consideraban su diseño radical y poco práctico.",
+      "importance": 9
+    },
+    {
+      "claim_id": "C003",
+      "claim": "El fracaso se convirtió en una herramienta de aprendizaje; cada prototipo fallido proporcionaba información para la siguiente iteración.",
+      "importance": 10
+    },
+    {
+      "claim_id": "C004",
+      "claim": "La persistencia de Dyson desafió la mentalidad convencional de que el fracaso es un punto final.",
+      "importance": 10
+    },
+    {
+      "claim_id": "C005",
+      "claim": "Su obsesión no era solo crear un producto, sino redefinir la tecnología existente para mejorarla radicalmente.",
+      "importance": 9
+    },
+    {
+      "claim_id": "C006",
+      "claim": "La fundación de su propia empresa fue una consecuencia directa de la negativa de otros a arriesgarse con su invención.",
+      "importance": 8
+    }
+  ]
+}

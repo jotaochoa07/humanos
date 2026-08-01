@@ -1,0 +1,1 @@
+Durante 15 años, James Dyson escuchó la misma respuesta una y otra vez: "No va a funcionar". Y todo empezó con una obsesión: descubrió que las aspiradoras perdían potencia porque las bolsas se tapaban. Mientras otros aceptaban el problema, él buscó una solución radical.

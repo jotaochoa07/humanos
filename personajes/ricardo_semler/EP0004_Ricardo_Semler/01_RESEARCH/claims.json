@@ -1,0 +1,37 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "character_name": "Ricardo Semler",
+  "claims": [
+    {
+      "claim_id": "C001",
+      "claim": "Ricardo Semler heredó la empresa Semco a los 21 años y la encontró desmotivada, ineficiente y con alta rotación de personal.",
+      "importance": 9
+    },
+    {
+      "claim_id": "C002",
+      "claim": "Implementó un modelo de 'democracia corporativa' donde los empleados elegían a sus supervisores y directivos.",
+      "importance": 10
+    },
+    {
+      "claim_id": "C003",
+      "claim": "Permitió a los empleados definir sus propios horarios de trabajo, días de vacaciones y hasta proponer sus salarios.",
+      "importance": 9
+    },
+    {
+      "claim_id": "C004",
+      "claim": "Abrió toda la información financiera de la empresa a todos los niveles jerárquicos, promoviendo la transparencia total.",
+      "importance": 10
+    },
+    {
+      "claim_id": "C005",
+      "claim": "Redujo drásticamente el número de gerentes y niveles jerárquicos dentro de la organización.",
+      "importance": 8
+    },
+    {
+      "claim_id": "C006",
+      "claim": "Transformó Semco de un fabricante de partes de barco a una empresa de servicios diversificada y reconocida por su innovación.",
+      "importance": 9
+    }
+  ]
+}

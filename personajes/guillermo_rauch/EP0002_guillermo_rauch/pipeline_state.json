@@ -1,0 +1,19 @@
+{
+  "normalized_name": "guillermo_rauch",
+  "protagonist_name": "Guillermo Rauch",
+  "episode_number": 2,
+  "episode_folder": "C:\\Users\\Jota Ochoa\\Antigravity\\02_Projects\\humanos\\personajes\\guillermo_rauch\\EP0002_guillermo_rauch",
+  "supabase_id": null,
+  "editorial_status": "idea",
+  "production_status": "pending",
+  "created_by": "hermoso",
+  "created_at": "2026-07-04T00:00:00Z",
+  "research_confidence": null,
+  "fact_check_status": null,
+  "next_steps": [
+    "Assign to Borges for research",
+    "Wait for research completion",
+    "Verify with Veritas",
+    "Assign to Gabo for scripting"
+  ]
+}

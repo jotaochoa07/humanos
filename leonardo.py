@@ -51,7 +51,7 @@ class LeonardoAgent:
         {{
           "character_card": {{
             "category": "INMIGRANTE | BUILDER | etc. (Inter SemiBold, Blanco, mayúsculas)",
-            "name": "Nombre en mayúsculas (Montserrat Bold, cian #01C9C7, ej: JAN KOUM)",
+            "name": "Nombre en mayúsculas (Montserrat, cian #01C9C7, tamaño 18 o 20, ej: JAMES DYSON)",
             "description": "Cargo breve (Inter SemiBold, Blanco, ej: Fundador de WhatsApp)",
             "visual_style": "Descripción de la composición siguiendo la Brand Bible (ej: Retrato de alto contraste en escala de grises con saturación -50, alineación inferior izquierda con mucho aire/espacio negativo)"
           }},

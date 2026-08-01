@@ -1,0 +1,47 @@
+[
+  {
+    "gap_id": "gap_001",
+    "scene": 1,
+    "missing_asset": "Metraje de archivo o recreación IA de Ferruccio Lamborghini en sus inicios, asociado fuertemente a la producción de tractores, idealmente en un entorno de posguerra italiano. Debe transmitir éxito y escala.",
+    "criticality": "high",
+    "reason": "Establece el punto de partida de Ferruccio como un industrial exitoso y rico, que es fundamental para el posterior conflicto con Ferrari.",
+    "suggested_solution": "Buscar en archivos de vídeo históricos de Lamborghini Trattori, documentales sobre la industria italiana de posguerra, o solicitar una recreación IA de Ferruccio dirigiendo la producción de tractores.",
+    "manual_search_queries": [
+      "Ferruccio Lamborghini tractor production post-war Italy",
+      "Lamborghini Trattori historical footage",
+      "Italian industrial recovery tractors"
+    ],
+    "ai_generation_allowed": true,
+    "ai_generation_prompt": "Recreación IA realista en estilo documental de época: Ferruccio Lamborghini (apariencia de los años 50-60) supervisando una cadena de montaje de tractores robustos, en una fábrica industrial limpia y activa en la Italia de posguerra. El ambiente debe transmitir prosperidad y dedicación al trabajo. Cámara sigue a Lamborghini mientras inspecciona un tractor recién salido de fábrica."
+  },
+  {
+    "gap_id": "gap_002",
+    "scene": 4,
+    "missing_asset": "Recreación cinematográfica IA o metraje de archivo que capture la humillación de Ferruccio Lamborghini por parte de Enzo Ferrari. Debe mostrarse la expresión de desdén de Enzo y la reacción de Ferruccio, culminando con la sensación de ser despedido.",
+    "criticality": "high",
+    "reason": "Este es el punto de inflexión emocional y narrativo central del episodio, donde el conflicto se intensifica y la motivación de venganza se forja.",
+    "suggested_solution": "Crear una escena IA que represente este conflicto directo. Alternativamente, usar metraje de archivo de Ferrari de época y actores que puedan simular las expresiones faciales, o utilizar recursos gráficos como 'la puerta' que se cierra.",
+    "manual_search_queries": [
+      "Enzo Ferrari dismissive meeting Ferruccio Lamborghini visual",
+      "Ferruccio Lamborghini humiliation Ferrari meeting reenactment",
+      "Enzo Ferrari quote 'stick to your tractors' visual"
+    ],
+    "ai_generation_allowed": true,
+    "ai_generation_prompt": "Recreación IA dramática y cinematográfica: Interior de una oficina de aspecto lujoso pero frío de Maranello en los años 60. Enzo Ferrari (apariencia característica, rostro altivo) habla de forma cortante a Ferruccio Lamborghini (rostro inicialmente esperanzado, luego herido y resignado). Enzo hace un gesto de despedida con la mano. La cámara enfatiza la distancia y la tensión entre ambos, terminando con Ferruccio saliendo por una puerta."
+  },
+  {
+    "gap_id": "gap_003",
+    "scene": 7,
+    "missing_asset": "Visualización clara de la similitud entre un embrague de tractor y un embrague de Ferrari, y la demostración de Ferruccio desarmándolo. Idealmente, un clip de vídeo o una secuencia de imágenes detalladas que muestre este proceso y descubrimiento.",
+    "criticality": "high",
+    "reason": "Este es un momento clave de revelación e ingenio, que conecta la humillación con la subsiguiente innovación y estrategia de negocio de Lamborghini.",
+    "suggested_solution": "Una combinación de recreación IA para el proceso de desarmado y visualización de partes, o metraje de archivo si existe sobre el diseño comparativo de componentes. Se puede usar gráficos explicativos de motion graphics.",
+    "manual_search_queries": [
+      "Lamborghini tractor clutch vs Ferrari clutch design",
+      "Ferruccio Lamborghini inspecting car parts visual",
+      "Automotive engineering comparison clutch tractor sportscar"
+    ],
+    "ai_generation_allowed": true,
+    "ai_generation_prompt": "Recreación IA detallada: Un primer plano de las manos de Ferruccio Lamborghini (basado en referencias de edad y vestimenta de la época) desarmando cuidadosamente un embrague de Ferrari. Las piezas se colocan en una mesa junto a un embrague de tractor Lamborghini, mostrando visualmente su gran parecido. Se utilizan gráficos animados (MG) para resaltar las partes idénticas y las diferencias sutiles (material, acabado) y una superposición de texto indicando la disparidad de precios entre la pieza de Ferrari y la de tractor."
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "character_name": "Ferruccio Lamborghini",
+  "claims": [
+    {
+      "claim_id": "C001",
+      "claim": "Ferruccio Lamborghini, fabricante de tractores exitoso, se reunió con Enzo Ferrari en 1962.",
+      "importance": 8
+    },
+    {
+      "claim_id": "C002",
+      "claim": "Lamborghini se quejó a Ferrari sobre la calidad y el rendimiento del embrague de su Ferrari 250 GT.",
+      "importance": 9
+    },
+    {
+      "claim_id": "C003",
+      "claim": "Enzo Ferrari desestimó las quejas de Lamborghini, sugiriendo que un fabricante de tractores no podía enseñarle sobre autos deportivos.",
+      "importance": 10
+    },
+    {
+      "claim_id": "C004",
+      "claim": "El desprecio de Ferrari hirió profundamente el orgullo de Lamborghini y alimentó su determinación.",
+      "importance": 10
+    },
+    {
+      "claim_id": "C005",
+      "claim": "Como resultado directo de la humillación, Lamborghini decidió diseñar y fabricar sus propios autos deportivos de lujo.",
+      "importance": 9
+    },
+    {
+      "claim_id": "C006",
+      "claim": "El objetivo de Lamborghini era crear autos que superaran a los de Ferrari, demostrando su error y superioridad ingenieril.",
+      "importance": 9
+    }
+  ]
+}

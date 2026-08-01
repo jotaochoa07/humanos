@@ -1,0 +1,1 @@
+Estudió las sierras industriales y encontró un sistema de separación ciclónica. Pensó: ¿y si una aspiradora nunca perdiera succión? Construyó un prototipo. Fracasó. Otro. Tampoco. Y otro. Tampoco. Hasta llegar al número 5.127.

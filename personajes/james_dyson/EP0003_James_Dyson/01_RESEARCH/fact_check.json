@@ -1,0 +1,255 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "subject": "James Dyson",
+  "checked_at": "2026-07-12 20:59:00",
+  "overall_confidence_score": 90,
+  "status": "APPROVED",
+  "format_audit_reports": {
+    "shorts": {
+      "confidence_score": 90,
+      "status": "APPROVED",
+      "notes": "Auditoría específica para formato vertical corto"
+    },
+    "long_form": {
+      "confidence_score": 90,
+      "status": "APPROVED",
+      "notes": "Auditoría específica para formato largo"
+    },
+    "newsletter": {
+      "confidence_score": 90,
+      "status": "APPROVED",
+      "notes": "Auditoría específica para newsletter editorial"
+    },
+    "twitter": {
+      "confidence_score": 90,
+      "status": "APPROVED",
+      "notes": "Auditoría específica para hilo de X/Twitter"
+    }
+  },
+  "claims_summary": {
+    "total": 6,
+    "verified": 5,
+    "partial": 1,
+    "unverified": 0,
+    "rejected": 0
+  },
+  "claims": [
+    {
+      "claim_id": "C001",
+      "claim": "James Dyson inventó más de 5,127 prototipos fallidos de su aspiradora antes de lograr el éxito.",
+      "importance": 10,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "source_authority": 9,
+      "source_independence": 8,
+      "primary_source_proximity": 9,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "James Dyson: Against the Odds",
+          "url": "https://www.dyson.com/about-dyson/our-story/",
+          "type": "official",
+          "tier": "B",
+          "notes": "Narrativa oficial de la compañía. Menciona \"más de 5.000 prototipos\"."
+        },
+        {
+          "title": "Relevant Quotes",
+          "url": null,
+          "type": "quote",
+          "tier": "A",
+          "notes": "Cita directa de Dyson: 'Tomé 5.127 prototipos para que la aspiradora funcionara.'"
+        }
+      ],
+      "notes": "El número exacto de 5,127 está citado directamente por Dyson. La narrativa de la empresa y fuentes periodísticas corroboran la existencia de miles de prototipos.",
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C002",
+      "claim": "Dyson fue rechazado por fabricantes y distribuidores que consideraban su diseño radical y poco práctico.",
+      "importance": 9,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 90,
+      "source_authority": 9,
+      "source_independence": 8,
+      "primary_source_proximity": 8,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "James Dyson: Against the Odds",
+          "url": "https://www.dyson.com/about-dyson/our-story/",
+          "type": "official",
+          "tier": "B",
+          "notes": "Afirma que \"la mayoría de las grandes empresas\" rechazaron su tecnología."
+        },
+        {
+          "title": "The Times - James Dyson's early life and career",
+          "url": "https://www.thetimes.co.uk/profile/james-dyson",
+          "type": "biography",
+          "tier": "B",
+          "notes": "Artículo periodístico que menciona el rechazo de la industria por considerarlo demasiado radical."
+        }
+      ],
+      "notes": "Consistente entre la narrativa oficial de Dyson y perfiles periodísticos.",
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C003",
+      "claim": "El fracaso se convirtió en una herramienta de aprendizaje; cada prototipo fallido proporcionaba información para la siguiente iteración.",
+      "importance": 10,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 90,
+      "source_authority": 9,
+      "source_independence": 8,
+      "primary_source_proximity": 8,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "Relevant Quotes",
+          "url": null,
+          "type": "quote",
+          "tier": "A",
+          "notes": "Dyson: 'La mayoría de la gente tiene una idea y espera que funcione. Yo no. Sé que no funcionará la primera vez.'"
+        },
+        {
+          "title": "newsletter_research",
+          "url": null,
+          "type": "research_summary",
+          "tier": "A",
+          "notes": "Investigación interna destaca la mente de Dyson valorando la resolución de problemas concretos y la evidencia empírica de sus prototipos."
+        }
+      ],
+      "notes": "La propia filosofía de Dyson y las descripciones de su proceso creativo respaldan esta afirmación.",
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C004",
+      "claim": "La persistencia de Dyson desafió la mentalidad convencional de que el fracaso es un punto final.",
+      "importance": 10,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 90,
+      "source_authority": 9,
+      "source_independence": 9,
+      "primary_source_proximity": 8,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "James Dyson: Against the Odds",
+          "url": "https://www.dyson.com/about-dyson/our-story/",
+          "type": "official",
+          "tier": "B",
+          "notes": "La narrativa general de la empresa se centra en la perseverancia y el desafío a las convenciones."
+        },
+        {
+          "title": "Biografía de James Dyson: Innovator",
+          "url": "https://www.harpercollins.com/products/haynes-by-james-dyson-9780008366114",
+          "type": "biography",
+          "tier": "B",
+          "notes": "Biografía que narra detalladamente los obstáculos y la tenacidad de Dyson."
+        }
+      ],
+      "notes": "La historia de vida y los temas recurrentes en las biografías y la comunicación de la marca validan la idea de la persistencia frente al fracaso.",
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C005",
+      "claim": "Su obsesión no era solo crear un producto, sino redefinir la tecnología existente para mejorarla radicalmente.",
+      "importance": 9,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 85,
+      "source_authority": 9,
+      "source_independence": 8,
+      "primary_source_proximity": 8,
+      "consistency": 9,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "short_format_research",
+          "url": null,
+          "type": "research_summary",
+          "tier": "A",
+          "notes": "Core obsession: 'Eliminar la ineficiencia inherente en los productos cotidianos'."
+        },
+        {
+          "title": "newsletter_research",
+          "url": null,
+          "type": "research_summary",
+          "tier": "A",
+          "notes": "Destaca la aversión a la ineficiencia y mediocridad, y el enfoque en la resolución de problemas concretos."
+        }
+      ],
+      "notes": "La investigación previa y la comunicación de la marca Dyson sugieren un enfoque en la mejora fundamental de la tecnología y la eliminación de ineficiencias, más allá de meras iteraciones de productos.",
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C006",
+      "claim": "La fundación de su propia empresa fue una consecuencia directa de la negativa de otros a arriesgarse con su invención.",
+      "importance": 8,
+      "status": "PARTIAL",
+      "applicable_formats": [
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 80,
+      "source_authority": 8,
+      "source_independence": 8,
+      "primary_source_proximity": 8,
+      "consistency": 9,
+      "contradiction_risk": 2,
+      "sources": [
+        {
+          "title": "James Dyson: Against the Odds",
+          "url": "https://www.dyson.com/about-dyson/our-story/",
+          "type": "official",
+          "tier": "B",
+          "notes": "Describe el proceso de tener que fundar Dyson Ltd. tras el rechazo."
+        },
+        {
+          "title": "The Times - James Dyson's early life and career",
+          "url": "https://www.thetimes.co.uk/profile/james-dyson",
+          "type": "biography",
+          "tier": "B",
+          "notes": "Menciona la creación de Dyson Ltd. como resultado de no poder licenciar la tecnología a grandes empresas."
+        }
+      ],
+      "notes": "Las fuentes indican claramente que el rechazo de otras empresas fue un factor clave para que fundara la suya. Sin embargo, no se especifica si fue la *única* consecuencia o si hubo otros factores que impulsaron la fundación de su propia compañía además del rechazo.",
+      "recommendation": "Se puede usar con precaución, asegurando que no se presente como el único motivo."
+    }
+  ],
+  "risks": [],
+  "missing_evidence": [],
+  "recommended_next_action": "Aprobar para producción de guión."
+}

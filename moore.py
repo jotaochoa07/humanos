@@ -12,19 +12,13 @@ class MooreAgent:
         Devuelve (storyboard_json_dict, asset_gaps_json_dict, shotlist_md_str, editing_notes_md_str, production_package_json_dict, logs_str).
         """
         print(f"[Moore] Analizando escenas de Gabo y mapeando de forma estricta contra assets reales descargados...")
-
         system_prompt = (
-            "Eres MOORE, el Visual Director de HUMANOS. Tu prioridad es la fuerza cinematográfica y la fidelidad documental.\n"
+            "Eres MOORE, el Visual Director y Lead Storyboarder del proyecto HUMANOS. Tu prioridad es la fuerza cinematográfica y la fidelidad documental.\n"
             "REGLAS VISUALES Y DE STORYBOARD:\n"
-            "1. NO construyas storyboards basados puramente en orden cronológico aburrido. Organízalos en torno a las transiciones emocionales: Conflicto -> Decisión -> Consecuencia.\n"
-            "2. PREGUNTA CLAVE: Para cada escena, ¿qué visual hace que esta decisión humana se sienta más grande?\n"
-            "3. PRIORIZACIÓN DE RECURSOS: Metraje en video, entrevistas, documentales de YouTube, mapas, recortes de periódicos e interfaces antiguas. Deja las imágenes fijas estáticas como último recurso (y aplícales Keyframe motions).\n"
-            "4. DURACIONES: La duración total estimada del voiceover debe ser entre 75-90 segundos (máximo 90s). Si se excede, marca una advertencia en la acción recomendada.\n"
-            "5. LENGUAJE VISUAL: CERO efectos CapCut chillonas o de distorsión. El movimiento se crea con Ken Burns (slow_zoom, pan_left, pan_right, pan_up, pan_down, reveal).\n"
-            "6. SUBTÍTULOS: Máximo dos líneas, un keyword resaltado.\n"
-            "7. TRANSICIONES: 80% Hard Cuts, 20% Short Dissolves. Nada de barridos chimbos.\n"
-            "8. REGLA DE EVITAR RECHAZADOS: No debes incluir ni proponer tomas o assets que respalden hechos catalogados como UNVERIFIED o REJECTED por Veritas.\n"
-            "9. ASSET GAPS: Si un recurso clave no está en asset_registry.json, márcalo honestamente como 'missing' o 'reference_only', asígnale un gap_id y descríbelo en 'asset_gaps'."
+            "1. ESTRUCTURACIÓN POR ACTOS: Divide obligatoriamente la narrativa en los 8 actos canónicos: Hook, Setup, Escalation, Conflict, Pivot, Payoff, Lesson, Sign-off, Outro.\n"
+            "2. CLASIFICACIÓN DE RECURSOS: Identifica el tipo exacto de source para cada toma: [REAL DYSON] (material real del personaje), [STOCK] (vídeo/foto genérica), [AI GEN] (para prompts de recreación IA), [MG] (Motion Graphics como contadores animados) y [YOUR ASSET] (para branding, intros/outros).\n"
+            "3. FIDELIDAD AL GUION EDITADO: Mapea cada toma línea por línea usando estrictamente los textos de la locución que se te pasan del guion finalizado del usuario.\n"
+            "4. DURACIONES Y CÁMARA: Define movimientos lentos y cinemáticos (slow_zoom, pan_left, pan_right, fade, cut, visual_reveal) y mantén un ritmo de edición preciso por escena."
         )
 
         dossier_context = ""
@@ -34,6 +28,9 @@ class MooreAgent:
         prompt = f"""
         A partir de las escenas de Gabo:
         {json.dumps(scripts_data.get('scenes', []), ensure_ascii=False, indent=2)}
+
+        Y el guion corto finalizado de Gabo/Usuario (script_short):
+        {json.dumps(scripts_data.get('script_short', ''), ensure_ascii=False, indent=2)}
 
         Y los assets reales del manifiesto de Borges (asset_manifest.json):
         {json.dumps(manifest_data.get('assets', []), ensure_ascii=False, indent=2)}
@@ -50,16 +47,17 @@ class MooreAgent:
           "storyboard": [
             {{
               "scene": 1,
+              "act": "Hook | Setup | Escalation | Conflict | Pivot | Payoff | Lesson | Sign-off | Outro",
               "duration": 5.0,
-              "voiceover": "Locución de la escena",
+              "voiceover": "Locución exacta del guion",
               "selected_asset": "Nombre físico del archivo si está descargado en asset_registry.json, de lo contrario null",
               "selected_asset_id": "asset_id correspondiente si está descargado en asset_registry.json, de lo contrario null",
-              "asset_status": "available | missing | reference_only", // available si está en registry.json, reference_only si está en manifest pero no descargado, missing si no hay asset real.
-              "fallback_asset_id": "asset_id alternativo del manifest de Borges (si aplica) o null",
+              "source_type": "REAL DYSON | STOCK | AI GEN | MG | YOUR ASSET",
+              "visual_description": "Descripción detallada del encuadre y composición siguiendo la Brand Bible",
               "fallback_strategy": "Explicación breve de qué hacer visualmente ante el gap",
               "effect": "slow_zoom | pan_left | pan_right | fade | cut | text_overlay",
               "caption": "Subtítulo de apoyo en pantalla (máximo 2 líneas, destaca una keyword)",
-              "gap_id": "gap_001 o null" // Si asset_status es missing o reference_only, debes asignar un gap_id único
+              "gap_id": "gap_001 o null"
             }}
           ],
           "asset_gaps": [
@@ -88,7 +86,6 @@ class MooreAgent:
             "required_maps": ["Lista de mapas geográficos o animaciones de mapas necesarias"],
             "required_historical_screenshots": ["Lista de capturas históricas de interfaces, software o prensa necesaria"],
             "required_ai_recreations": ["Lista de prompts o ideas para recrear pasajes visualmente con IA si no hay otra opción"],
-            "recommended_next_action": "Búsqueda manual de retratos del taller en 1948."
           }}
         }}
         """
@@ -107,19 +104,13 @@ class MooreAgent:
         for index, item in enumerate(storyboard_list, 1):
             asset_id = item.get("selected_asset_id")
             
-            # Regla 1: Si selected_asset_id no está registrado, debe forzarse a null
+            # Si se seleccionó un id de asset pero no está descargado, forzar a null
             if asset_id and asset_id not in registered_ids:
                 item["selected_asset_id"] = None
                 item["selected_asset"] = None
-                
-                # Clasificar estado
-                if asset_id in manifest_ids:
-                    item["asset_status"] = "reference_only"
-                else:
-                    item["asset_status"] = "missing"
+                item["asset_status"] = "reference_only" if asset_id in manifest_ids else "missing"
             elif asset_id and asset_id in registered_ids:
                 item["asset_status"] = "available"
-                # Rellenar con la ruta real del registro
                 for reg in registry_data:
                     if reg["asset_id"] == asset_id:
                         item["selected_asset"] = os.path.basename(reg["storage_path"])
@@ -129,7 +120,7 @@ class MooreAgent:
                 item["selected_asset_id"] = None
                 item["selected_asset"] = None
 
-            # Regla 2: Generar gap_id automático si falta el asset físicamente
+            # Generar gap_id si el recurso no está disponible físicamente
             if item["asset_status"] in ["missing", "reference_only"]:
                 if not item.get("gap_id"):
                     item["gap_id"] = f"gap_{index:03d}"
@@ -188,3 +179,27 @@ class MooreAgent:
         print(f"[Moore] Diseño de storyboard y producción completado bajo reglas estrictas.")
 
         return valid_storyboard, valid_gaps, shotlist_md, editing_notes_md, production_package_dict, asset_shotlist_md, logs
+
+    def map_assets_by_act(self, character_name: str, beat_sheet: list, manifest_assets: list) -> dict:
+        """
+        Mapea los assets visuales sugeridos asociando explícitamente cada uno al acto correspondiente (acto_id).
+        """
+        print(f"[Moore] Mapeando assets visuales por actos para {character_name}...")
+
+        act_mapped_assets = {}
+        for act in beat_sheet:
+            act_id = act.get("id", "act_unknown")
+            act_mapped_assets[act_id] = {
+                "act_title": act.get("title", ""),
+                "assets": []
+            }
+
+        for i, asset in enumerate(manifest_assets):
+            target_act = beat_sheet[i % len(beat_sheet)].get("id") if beat_sheet else "act_1"
+            asset_copy = dict(asset)
+            asset_copy["acto_origen_id"] = target_act
+            act_mapped_assets[target_act]["assets"].append(asset_copy)
+
+        print(f"[Moore] {len(manifest_assets)} assets alineados a través de {len(beat_sheet)} actos.")
+        return act_mapped_assets
+

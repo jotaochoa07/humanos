@@ -300,4 +300,64 @@ class BorgesAgent:
 
         return research_data, timeline_data, sources_md, asset_manifest, claims_data, sources_data, dossier_md, logs
 
+    def build_narrative_blueprint(self, character_name: str, episode_focus: str, dossier_md: str, research_data: dict = None, talese_feedback: str = None) -> dict:
+        """
+        Construye o re-itera el Narrative Blueprint (Beat Sheet de 5-7 actos + Tesis + Conflicto)
+        a partir del dossier ya existente, desacoplado de la investigación pesada.
+        Si se pasa talese_feedback, incorpora las correcciones del Gate 1 de Talese.
+        """
+        print(f"[Borges - Narrative Blueprint] Construyendo arquitectura narrativa para: {character_name}...")
+
+        system_prompt = (
+            "Eres BORGES, Chief Researcher y Arquitecto Narrativo de HUMANOS.\n"
+            "Tu tarea es tomar el Dossier Editorial ya investigado y transformarlo en un NARRATIVE BLUEPRINT de 5 a 7 actos "
+            "para un documental narrativo largo de 7 a 10 minutos (420 a 600 segundos).\n\n"
+            "REGLAS ESTRUCTURALES OBLIGATORIAS:\n"
+            "1. CAUSALIDAD: Cada transición entre actos DEBE basarse en PERO (conflicto) o POR LO TANTO (consecuencia), NUNCA en 'y entonces'.\n"
+            "2. TENSIÓN INVISIBLE: Identifica el conflicto moral o psicológico latente en cada acto.\n"
+            "3. BEAT SHEET: Genera exactamente entre 5 y 7 actos equilibrados en tiempo.\n"
+            "4. IDIOMA: Español neutro estricto (prohibido voseo).\n"
+            "Responde estrictamente en formato JSON."
+        )
+
+        feedback_context = ""
+        if talese_feedback:
+            feedback_context = f"\n\n[OBSERVACIONES EDITORIALES DE TALESE (RECHAZO PREVIO EN GATE 1 - OBLIGATORIO CORREGIR)]:\n{talese_feedback}\n"
+
+        prompt = f"""
+        Personaje: {character_name}
+        Enfoque: {episode_focus}
+
+        DOSSIER EDITORIAL BASE:
+        {dossier_md[:4000]}
+        {feedback_context}
+
+        Estructura el NARRATIVE BLUEPRINT respondiendo en JSON con la siguiente forma:
+        {{
+          "character_name": "{character_name}",
+          "central_thesis": "La tesis editorial principal del documental de 10 min",
+          "main_conflict": "El conflicto existencial/moral central",
+          "target_total_duration_sec": 540,
+          "beat_sheet": [
+            {{
+              "id": "act_1",
+              "title": "Título del Acto I",
+              "objective": "Objetivo narrativo del acto",
+              "estimated_duration_sec": 90,
+              "causality_type": "BUT | THEREFORE",
+              "notes": "Puntos clave de la escena y tensión implícita",
+              "status": "draft"
+            }}
+          ],
+          "talese_open_questions": [
+            "Pregunta 1 para auditar en Gate 1"
+          ]
+        }}
+        """
+
+        blueprint_data = self.client.complete_json(prompt, system_prompt)
+        print(f"[Borges - Narrative Blueprint] Blueprint generado con {len(blueprint_data.get('beat_sheet', []))} actos.")
+        return blueprint_data
+
+
 

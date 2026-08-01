@@ -1,0 +1,348 @@
+[2026-07-10 09:02:04] === Starting Supabase health check ===
+[2026-07-10 09:02:05] ✓ Credentials loaded
+[2026-07-10 09:02:05] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-10 09:02:07] HTTP Status: 200
+[2026-07-10 09:02:07] ✓ PING SUCCESS: Supabase is active
+[2026-07-10 09:02:08] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-10 09:32:16] === Starting Supabase health check ===
+[2026-07-10 09:32:17] ✓ Credentials loaded
+[2026-07-10 09:32:17] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-10 09:32:17] HTTP Status: 200
+[2026-07-10 09:32:17] ✓ PING SUCCESS: Supabase is active
+[2026-07-10 09:32:17] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-10 11:06:23] === Starting Supabase health check ===
+[2026-07-10 11:06:23] ✓ Credentials loaded
+[2026-07-10 11:06:23] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-10 11:06:25] HTTP Status: 200
+[2026-07-10 11:06:25] ✓ PING SUCCESS: Supabase is active
+[2026-07-10 11:06:25] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-10 11:17:06] === Starting Supabase health check ===
+[2026-07-10 11:17:07] ✓ Credentials loaded
+[2026-07-10 11:17:07] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-10 11:17:08] HTTP Status: 200
+[2026-07-10 11:17:08] ✓ PING SUCCESS: Supabase is active
+[2026-07-10 11:17:08] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-12 11:09:23] === Starting Supabase health check ===
+[2026-07-12 11:09:23] ✓ Credentials loaded
+[2026-07-12 11:09:23] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-12 11:09:25] HTTP Status: 200
+[2026-07-12 11:09:25] ✓ PING SUCCESS: Supabase is active
+[2026-07-12 11:09:25] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-12 11:40:30] === Starting Supabase health check ===
+[2026-07-12 11:40:30] ✓ Credentials loaded
+[2026-07-12 11:40:30] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-12 11:40:31] HTTP Status: 200
+[2026-07-12 11:40:32] ✓ PING SUCCESS: Supabase is active
+[2026-07-12 11:40:32] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-12 12:11:21] === Starting Supabase health check ===
+[2026-07-12 12:11:21] ✓ Credentials loaded
+[2026-07-12 12:11:21] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-12 12:11:23] HTTP Status: 200
+[2026-07-12 12:11:23] ✓ PING SUCCESS: Supabase is active
+[2026-07-12 12:11:23] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-12 12:42:14] === Starting Supabase health check ===
+[2026-07-12 12:42:14] ✓ Credentials loaded
+[2026-07-12 12:42:14] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-12 12:42:16] HTTP Status: 200
+[2026-07-12 12:42:16] ✓ PING SUCCESS: Supabase is active
+[2026-07-12 12:42:16] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-12 13:13:23] === Starting Supabase health check ===
+[2026-07-12 13:13:23] ✓ Credentials loaded
+[2026-07-12 13:13:24] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-12 13:13:25] HTTP Status: 200
+[2026-07-12 13:13:25] ✓ PING SUCCESS: Supabase is active
+[2026-07-12 13:13:25] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-12 13:44:17] === Starting Supabase health check ===
+[2026-07-12 13:44:17] ✓ Credentials loaded
+[2026-07-12 13:44:17] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-12 13:44:18] HTTP Status: 200
+[2026-07-12 13:44:18] ✓ PING SUCCESS: Supabase is active
+[2026-07-12 13:44:18] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-12 14:14:28] === Starting Supabase health check ===
+[2026-07-12 14:14:29] ✓ Credentials loaded
+[2026-07-12 14:14:29] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-12 14:14:30] HTTP Status: 200
+[2026-07-12 14:14:30] ✓ PING SUCCESS: Supabase is active
+[2026-07-12 14:14:30] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-12 14:45:16] === Starting Supabase health check ===
+[2026-07-12 14:45:16] ✓ Credentials loaded
+[2026-07-12 14:45:16] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-12 14:45:17] HTTP Status: 200
+[2026-07-12 14:45:17] ✓ PING SUCCESS: Supabase is active
+[2026-07-12 14:45:17] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-12 15:15:26] === Starting Supabase health check ===
+[2026-07-12 15:15:27] ✓ Credentials loaded
+[2026-07-12 15:15:27] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-12 15:15:28] HTTP Status: 200
+[2026-07-12 15:15:28] ✓ PING SUCCESS: Supabase is active
+[2026-07-12 15:15:28] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-12 15:46:18] === Starting Supabase health check ===
+[2026-07-12 15:46:18] ✓ Credentials loaded
+[2026-07-12 15:46:18] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-12 15:46:20] HTTP Status: 200
+[2026-07-12 15:46:20] ✓ PING SUCCESS: Supabase is active
+[2026-07-12 15:46:20] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-12 16:17:22] === Starting Supabase health check ===
+[2026-07-12 16:17:23] ✓ Credentials loaded
+[2026-07-12 16:17:23] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-12 16:17:24] HTTP Status: 200
+[2026-07-12 16:17:24] ✓ PING SUCCESS: Supabase is active
+[2026-07-12 16:17:24] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-12 16:48:33] === Starting Supabase health check ===
+[2026-07-12 16:48:33] ✓ Credentials loaded
+[2026-07-12 16:48:34] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-12 16:48:35] HTTP Status: 200
+[2026-07-12 16:48:35] ✓ PING SUCCESS: Supabase is active
+[2026-07-12 16:48:35] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-12 17:19:21] === Starting Supabase health check ===
+[2026-07-12 17:19:22] ✓ Credentials loaded
+[2026-07-12 17:19:22] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-12 17:19:23] HTTP Status: 200
+[2026-07-12 17:19:23] ✓ PING SUCCESS: Supabase is active
+[2026-07-12 17:19:23] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-12 17:50:26] === Starting Supabase health check ===
+[2026-07-12 17:50:26] ✓ Credentials loaded
+[2026-07-12 17:50:26] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-12 17:50:28] HTTP Status: 200
+[2026-07-12 17:50:28] ✓ PING SUCCESS: Supabase is active
+[2026-07-12 17:50:28] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-12 18:21:21] === Starting Supabase health check ===
+[2026-07-12 18:21:21] ✓ Credentials loaded
+[2026-07-12 18:21:21] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-12 18:21:23] HTTP Status: 200
+[2026-07-12 18:21:23] ✓ PING SUCCESS: Supabase is active
+[2026-07-12 18:21:23] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-12 18:52:22] === Starting Supabase health check ===
+[2026-07-12 18:52:22] ✓ Credentials loaded
+[2026-07-12 18:52:22] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-12 18:52:23] HTTP Status: 200
+[2026-07-12 18:52:23] ✓ PING SUCCESS: Supabase is active
+[2026-07-12 18:52:23] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-12 19:23:23] === Starting Supabase health check ===
+[2026-07-12 19:23:23] ✓ Credentials loaded
+[2026-07-12 19:23:23] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-12 19:23:25] HTTP Status: 200
+[2026-07-12 19:23:25] ✓ PING SUCCESS: Supabase is active
+[2026-07-12 19:23:25] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-12 19:54:21] === Starting Supabase health check ===
+[2026-07-12 19:54:22] ✓ Credentials loaded
+[2026-07-12 19:54:22] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-12 19:54:23] HTTP Status: 200
+[2026-07-12 19:54:23] ✓ PING SUCCESS: Supabase is active
+[2026-07-12 19:54:23] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-12 20:25:25] === Starting Supabase health check ===
+[2026-07-12 20:25:25] ✓ Credentials loaded
+[2026-07-12 20:25:25] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-12 20:25:27] HTTP Status: 200
+[2026-07-12 20:25:27] ✓ PING SUCCESS: Supabase is active
+[2026-07-12 20:25:27] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-12 20:56:29] === Starting Supabase health check ===
+[2026-07-12 20:56:29] ✓ Credentials loaded
+[2026-07-12 20:56:29] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-12 20:56:30] HTTP Status: 200
+[2026-07-12 20:56:30] ✓ PING SUCCESS: Supabase is active
+[2026-07-12 20:56:30] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-12 21:27:24] === Starting Supabase health check ===
+[2026-07-12 21:27:24] ✓ Credentials loaded
+[2026-07-12 21:27:25] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-12 21:27:26] HTTP Status: 200
+[2026-07-12 21:27:26] ✓ PING SUCCESS: Supabase is active
+[2026-07-12 21:27:26] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-13 09:35:21] === Starting Supabase health check ===
+[2026-07-13 09:35:21] ✓ Credentials loaded
+[2026-07-13 09:35:21] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-13 09:35:22] HTTP Status: 200
+[2026-07-13 09:35:22] ✓ PING SUCCESS: Supabase is active
+[2026-07-13 09:35:22] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-13 10:06:11] === Starting Supabase health check ===
+[2026-07-13 10:06:11] ✓ Credentials loaded
+[2026-07-13 10:06:11] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-13 10:06:12] HTTP Status: 200
+[2026-07-13 10:06:12] ✓ PING SUCCESS: Supabase is active
+[2026-07-13 10:06:12] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-13 10:37:23] === Starting Supabase health check ===
+[2026-07-13 10:37:23] ✓ Credentials loaded
+[2026-07-13 10:37:23] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-13 10:37:24] HTTP Status: 200
+[2026-07-13 10:37:24] ✓ PING SUCCESS: Supabase is active
+[2026-07-13 10:37:24] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-13 11:08:13] === Starting Supabase health check ===
+[2026-07-13 11:08:13] ✓ Credentials loaded
+[2026-07-13 11:08:13] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-13 11:08:15] HTTP Status: 200
+[2026-07-13 11:08:15] ✓ PING SUCCESS: Supabase is active
+[2026-07-13 11:08:15] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-13 11:39:17] === Starting Supabase health check ===
+[2026-07-13 11:39:17] ✓ Credentials loaded
+[2026-07-13 11:39:17] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-13 11:39:19] HTTP Status: 200
+[2026-07-13 11:39:19] ✓ PING SUCCESS: Supabase is active
+[2026-07-13 11:39:19] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-13 15:41:42] === Starting Supabase health check ===
+[2026-07-13 15:41:42] ✓ Credentials loaded
+[2026-07-13 15:41:43] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-13 15:41:44] HTTP Status: 200
+[2026-07-13 15:41:44] ✓ PING SUCCESS: Supabase is active
+[2026-07-13 15:41:44] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-13 16:43:34] === Starting Supabase health check ===
+[2026-07-13 16:43:34] ✓ Credentials loaded
+[2026-07-13 16:43:34] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-13 16:43:36] HTTP Status: 200
+[2026-07-13 16:43:36] ✓ PING SUCCESS: Supabase is active
+[2026-07-13 16:43:36] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-13 18:16:38] === Starting Supabase health check ===
+[2026-07-13 18:16:38] ✓ Credentials loaded
+[2026-07-13 18:16:38] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-13 18:16:39] HTTP Status: 200
+[2026-07-13 18:16:39] ✓ PING SUCCESS: Supabase is active
+[2026-07-13 18:16:39] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-13 19:18:32] === Starting Supabase health check ===
+[2026-07-13 19:18:32] ✓ Credentials loaded
+[2026-07-13 19:18:32] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-13 19:18:33] HTTP Status: 200
+[2026-07-13 19:18:33] ✓ PING SUCCESS: Supabase is active
+[2026-07-13 19:18:33] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-13 21:14:28] === Starting Supabase health check ===
+[2026-07-13 21:14:28] ✓ Credentials loaded
+[2026-07-13 21:14:28] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-13 21:14:29] HTTP Status: 200
+[2026-07-13 21:14:29] ✓ PING SUCCESS: Supabase is active
+[2026-07-13 21:14:29] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-13 21:45:24] === Starting Supabase health check ===
+[2026-07-13 21:45:24] ✓ Credentials loaded
+[2026-07-13 21:45:24] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-13 21:45:26] HTTP Status: 200
+[2026-07-13 21:45:26] ✓ PING SUCCESS: Supabase is active
+[2026-07-13 21:45:26] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-13 22:16:26] === Starting Supabase health check ===
+[2026-07-13 22:16:26] ✓ Credentials loaded
+[2026-07-13 22:16:26] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-13 22:16:27] HTTP Status: 200
+[2026-07-13 22:16:27] ✓ PING SUCCESS: Supabase is active
+[2026-07-13 22:16:27] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-13 22:47:27] === Starting Supabase health check ===
+[2026-07-13 22:47:27] ✓ Credentials loaded
+[2026-07-13 22:47:27] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-13 22:47:28] HTTP Status: 200
+[2026-07-13 22:47:28] ✓ PING SUCCESS: Supabase is active
+[2026-07-13 22:47:28] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-13 23:18:27] === Starting Supabase health check ===
+[2026-07-13 23:18:28] ✓ Credentials loaded
+[2026-07-13 23:18:28] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-13 23:18:29] HTTP Status: 200
+[2026-07-13 23:18:29] ✓ PING SUCCESS: Supabase is active
+[2026-07-13 23:18:29] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-13 23:49:27] === Starting Supabase health check ===
+[2026-07-13 23:49:27] ✓ Credentials loaded
+[2026-07-13 23:49:27] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-13 23:49:28] HTTP Status: 200
+[2026-07-13 23:49:28] ✓ PING SUCCESS: Supabase is active
+[2026-07-13 23:49:29] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-14 00:20:27] === Starting Supabase health check ===
+[2026-07-14 00:20:28] ✓ Credentials loaded
+[2026-07-14 00:20:28] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-14 00:20:29] HTTP Status: 200
+[2026-07-14 00:20:29] ✓ PING SUCCESS: Supabase is active
+[2026-07-14 00:20:29] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-14 00:51:28] === Starting Supabase health check ===
+[2026-07-14 00:51:28] ✓ Credentials loaded
+[2026-07-14 00:51:28] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-14 00:51:29] HTTP Status: 200
+[2026-07-14 00:51:29] ✓ PING SUCCESS: Supabase is active
+[2026-07-14 00:51:29] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-14 01:26:28] === Starting Supabase health check ===
+[2026-07-14 01:26:28] ✓ Credentials loaded
+[2026-07-14 01:26:28] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-14 01:26:30] HTTP Status: 200
+[2026-07-14 01:26:30] ✓ PING SUCCESS: Supabase is active
+[2026-07-14 01:26:30] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-14 01:57:04] === Starting Supabase health check ===
+[2026-07-14 01:57:04] ✓ Credentials loaded
+[2026-07-14 01:57:04] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-14 01:57:05] HTTP Status: 200
+[2026-07-14 01:57:05] ✓ PING SUCCESS: Supabase is active
+[2026-07-14 01:57:06] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-14 02:28:05] === Starting Supabase health check ===
+[2026-07-14 02:28:05] ✓ Credentials loaded
+[2026-07-14 02:28:05] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-14 02:28:06] HTTP Status: 200
+[2026-07-14 02:28:06] ✓ PING SUCCESS: Supabase is active
+[2026-07-14 02:28:06] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-14 02:59:06] === Starting Supabase health check ===
+[2026-07-14 02:59:06] ✓ Credentials loaded
+[2026-07-14 02:59:06] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-14 02:59:07] HTTP Status: 200
+[2026-07-14 02:59:07] ✓ PING SUCCESS: Supabase is active
+[2026-07-14 02:59:07] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-14 03:30:07] === Starting Supabase health check ===
+[2026-07-14 03:30:07] ✓ Credentials loaded
+[2026-07-14 03:30:07] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-14 03:30:09] HTTP Status: 200
+[2026-07-14 03:30:09] ✓ PING SUCCESS: Supabase is active
+[2026-07-14 03:30:09] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-14 04:31:25] === Starting Supabase health check ===
+[2026-07-14 04:31:25] ✓ Credentials loaded
+[2026-07-14 04:31:25] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-14 04:31:26] HTTP Status: 200
+[2026-07-14 04:31:27] ✓ PING SUCCESS: Supabase is active
+[2026-07-14 04:31:27] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-14 09:49:48] === Starting Supabase health check ===
+[2026-07-14 09:49:49] ✓ Credentials loaded
+[2026-07-14 09:49:49] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-14 09:49:50] HTTP Status: 200
+[2026-07-14 09:49:50] ✓ PING SUCCESS: Supabase is active
+[2026-07-14 09:49:50] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-14 10:20:50] === Starting Supabase health check ===
+[2026-07-14 10:20:50] ✓ Credentials loaded
+[2026-07-14 10:20:50] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-14 10:20:52] HTTP Status: 200
+[2026-07-14 10:20:52] ✓ PING SUCCESS: Supabase is active
+[2026-07-14 10:20:52] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-14 10:51:50] === Starting Supabase health check ===
+[2026-07-14 10:51:50] ✓ Credentials loaded
+[2026-07-14 10:51:50] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-14 10:51:51] HTTP Status: 200
+[2026-07-14 10:51:51] ✓ PING SUCCESS: Supabase is active
+[2026-07-14 10:51:51] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-14 11:22:50] === Starting Supabase health check ===
+[2026-07-14 11:22:50] ✓ Credentials loaded
+[2026-07-14 11:22:50] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-14 11:22:51] HTTP Status: 200
+[2026-07-14 11:22:51] ✓ PING SUCCESS: Supabase is active
+[2026-07-14 11:22:51] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-14 11:53:53] === Starting Supabase health check ===
+[2026-07-14 11:53:53] ✓ Credentials loaded
+[2026-07-14 11:53:53] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-14 11:53:55] HTTP Status: 200
+[2026-07-14 11:53:55] ✓ PING SUCCESS: Supabase is active
+[2026-07-14 11:53:55] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-14 12:24:50] === Starting Supabase health check ===
+[2026-07-14 12:24:51] ✓ Credentials loaded
+[2026-07-14 12:24:51] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-14 12:24:52] HTTP Status: 200
+[2026-07-14 12:24:52] ✓ PING SUCCESS: Supabase is active
+[2026-07-14 12:24:52] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-14 12:55:52] === Starting Supabase health check ===
+[2026-07-14 12:55:52] ✓ Credentials loaded
+[2026-07-14 12:55:52] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-14 12:55:54] HTTP Status: 200
+[2026-07-14 12:55:54] ✓ PING SUCCESS: Supabase is active
+[2026-07-14 12:55:54] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-14 13:26:53] === Starting Supabase health check ===
+[2026-07-14 13:26:53] ✓ Credentials loaded
+[2026-07-14 13:26:53] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-14 13:26:55] HTTP Status: 200
+[2026-07-14 13:26:55] ✓ PING SUCCESS: Supabase is active
+[2026-07-14 13:26:55] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-14 13:57:53] === Starting Supabase health check ===
+[2026-07-14 13:57:53] ✓ Credentials loaded
+[2026-07-14 13:57:53] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-14 13:57:54] HTTP Status: 200
+[2026-07-14 13:57:54] ✓ PING SUCCESS: Supabase is active
+[2026-07-14 13:57:54] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota
+[2026-07-14 14:28:54] === Starting Supabase health check ===
+[2026-07-14 14:28:54] ✓ Credentials loaded
+[2026-07-14 14:28:54] 📍 Pinging: https://nuswdrztixelsfkccfqc.supabase.co/rest/v1/?select=1
+[2026-07-14 14:28:55] HTTP Status: 200
+[2026-07-14 14:28:55] ✓ PING SUCCESS: Supabase is active
+[2026-07-14 14:28:55] ✓ Project: nuswdrztixelsfkccfqc | Organization: agente-jota

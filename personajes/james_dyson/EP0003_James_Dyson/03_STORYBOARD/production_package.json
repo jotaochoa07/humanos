@@ -1,0 +1,33 @@
+{
+  "estimated_voiceover_duration": 75.0,
+  "asset_count": 12,
+  "missing_assets_count": 3,
+  "estimated_edit_time_hours": 12.0,
+  "music_style": "Documental tension / piano minimalista / sonido de época",
+  "visual_style": "Cinematográfico, color gradado cálido con grano de película analógica, fondos oscuros de alta tensión",
+  "required_images": [
+    "Foto de James Dyson (JAM_001)",
+    "Foto de James Dyson en la sede de Dyson (JAM_002)",
+    "Foto de James Dyson con productos Dyson (JAM_007)"
+  ],
+  "required_videos": [
+    "Clips de actuacion de sierras industriales (stock)",
+    "Clips de prototipos de aspiradoras fallidos (IA/stock)",
+    "Clips de personas trabajando en taller/prototipos (stock)",
+    "Representacion grafica de tecnologia ciclónica (IA)"
+  ],
+  "required_motion_graphics": [
+    "Contador de prototipos (MG)",
+    "Grafico de bolsa de aspiradora perdiendo succion (MG)",
+    "Grafico de division 5126 vs 1 (MG)"
+  ],
+  "required_maps": [],
+  "required_historical_screenshots": [
+    "Simulacion de titulares de prensa negativos (IA)"
+  ],
+  "required_ai_recreations": [
+    "Prototipos de aspiradoras fallidos (escena 3)",
+    "Representacion visual de tecnologia ciclónica (escena 5)",
+    "Simulacion de titulares de prensa negativos (esc. 7/fallback)"
+  ]
+}

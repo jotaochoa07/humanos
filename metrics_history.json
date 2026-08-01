@@ -43,5 +43,19 @@
       "construcción",
       "obsesión"
     ]
+  },
+  {
+    "character_name": "Ferruccio Lamborghini",
+    "episode_id": "EP0004",
+    "logged_at": "2026-07-20 13:48:45",
+    "views": 496341,
+    "retention_rate_3s": 0.81,
+    "avg_watch_percentage": 0.53,
+    "duration_seconds": 84.2,
+    "hook_text": "Ferruccio Lamborghini ya era rico. Muy. Fabricaba tractores con los que araban la reconstrucción de la Italia de la posg",
+    "themes": [
+      "historia",
+      "construcción"
+    ]
   }
 ]

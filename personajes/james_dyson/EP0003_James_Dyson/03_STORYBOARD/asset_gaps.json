@@ -1,0 +1,50 @@
+[
+  {
+    "gap_id": "gap_001",
+    "scene": 3,
+    "missing_asset": "Clips cortos o imágenes de varios prototipos de aspiradoras de Dyson, mostrando diferentes formas y mecanismos, todos ellos evidentementes fallidos o toscos. Idealmente, se busca una imagen conceptual del 'primer prototipo de aspiradora sin bolsa' (asset 004) que ilustre el 'struggle'.",
+    "criticality": "high",
+    "reason": "Visualizar directamente los '5.127 prototipos' y el esfuerzo implícito en el 'struggle' y 'obsession' de Dyson es crucial para la narrativa del conflicto y la escala de su desafío.",
+    "suggested_solution": "Buscar en archivos de prensa de Dyson, documentales sobre su historia, o material de archivo de museos de diseño/tecnología. Si no se encuentra material visual directo, se puede intentar recrearlo con IA.",
+    "manual_search_queries": [
+      "Dyson vacuum cleaner prototypes history",
+      "James Dyson early vacuum designs",
+      "Dyson G-Force first prototype failed attempts",
+      "Dyson cyclone vacuum concept visualization"
+    ],
+    "ai_generation_allowed": true,
+    "ai_generation_prompt": "Genera una serie de imágenes de prototipos de aspiradoras antiguas y experimentales. Los diseños deben ser variopintos, algunos toscos, otros mecánicamente complejos pero claramente defectuosos. Se vislumbran elementos ciclónicos primitivos. El estilo visual debe evocar un 'estudio de bocetos o prototipos fallidos' de los años 80/90, con iluminacion dramatica y un toque de frustracion. Incluye una toma que se parezca a un primer diseño conceptual de aspiradora sin bolsa, con una estetica de fracaso."
+  },
+  {
+    "gap_id": "gap_002",
+    "scene": 5,
+    "missing_asset": "Secuencia de video o imágenes de archivo que muestren el funcionamiento de sierras industriales, intercaladas con una elegante representación visual (simulación o animación) de la tecnología ciclónica que se forma, mostrando la separación intuitiva de partículas.",
+    "criticality": "high",
+    "reason": "Visualizar la 'epifanía ciclónica' y cómo Dyson aplicó principios de ingeniería industrial (sierras) a un producto de consumo es clave para el 'Conflict' y la originalidad de su innovación.",
+    "suggested_solution": "Buscar clips de stock de sierras industriales en funcionamiento. Para la representación ciclónica, se puede buscar animaciones genéricas o intentar una recreación IA si no se encuentran materiales adecuados.",
+    "manual_search_queries": [
+      "Industrial saw machine operation stock video",
+      "Cyclone separation technology animation",
+      "Vortex air particle separation visualizer",
+      "Industrial cyclone dust collector animation"
+    ],
+    "ai_generation_allowed": true,
+    "ai_generation_prompt": "Genera una secuencia de video que comience con tomas dinámicas de sierras industriales (tipo sierra circular, de banda) cortando materiales. Transiciona fluidamente a una representación abstracta y limpia de la tecnología de separación ciclónica: un vórtice de aire y partículas (polvo, suciedad) girando en un cilindro transparente, mostrando cómo los elementos más pesados se separan y caen por un lado, y el aire limpio sale por el otro. El estilo debe ser técnico pero estéticamente agradable, evocando genialidad."
+  },
+  {
+    "gap_id": "gap_003",
+    "scene": 6,
+    "missing_asset": "Clips o imágenes de archivo que muestren a James Dyson o a su equipo construyendo prototipos (idealmente en un entorno de taller desordenado) con gestos de frustración o concentración intensa. Es vital para ilustrar 'otro. Tampoco.'",
+    "criticality": "medium",
+    "reason": "Humanizar la figura de Dyson y su equipo, mostrando el esfuerzo continuo y la frustración inherente a la creación de '5.127 prototipos' es esencial para el 'Conflict' y la narrativa de 'struggle'.",
+    "suggested_solution": "Buscar en documentales de Dyson, entrevistas con él donde hable de sus inicios, o en archivos fotográficos que muestren el proceso de diseño temprano. Si no se encuentra nada específico, se puede usar material de stock de alta calidad que represente a inventores trabajando con materiales y herramientas rudimentarias.",
+    "manual_search_queries": [
+      "James Dyson workshop early prototypes footage",
+      "Dyson engineers working on prototypes archive",
+      "Inventor frustration workshop stock video",
+      "Man building machine prototype in garage stock footage"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": null
+  }
+]

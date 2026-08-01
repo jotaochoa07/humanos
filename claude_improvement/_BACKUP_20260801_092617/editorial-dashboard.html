@@ -1,0 +1,1440 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HUMANOS Editorial Dashboard</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: hsl(246 38% 6%);
+      --panel-strong: hsl(250 32% 16% / 0.9);
+      --line: hsl(268 100% 78% / 0.24);
+      --text: hsl(270 60% 96%);
+      --muted: hsl(260 18% 70%);
+      --accent: hsl(276 100% 68%);
+      --accent-2: hsl(190 100% 62%);
+      --danger: hsl(0 82% 64%);
+      --success: hsl(142 76% 52%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; color: var(--text);
+      background:
+        radial-gradient(circle at top left, hsl(276 100% 48% / 0.25), transparent 32rem),
+        radial-gradient(circle at bottom right, hsl(190 100% 44% / 0.16), transparent 30rem),
+        linear-gradient(135deg, var(--bg), hsl(258 44% 8%));
+    }
+    .shell { width: min(1240px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 40px; }
+    header { display:flex; justify-content:space-between; gap:24px; align-items:end; margin-bottom: 20px; }
+    .eyebrow { color: var(--accent-2); letter-spacing: .24em; font-size:12px; font-weight:800; text-transform:uppercase; }
+    h1 { margin: 10px 0 0; font-size: clamp(34px, 5vw, 64px); line-height:.92; letter-spacing:-.06em; }
+    .lede { color: var(--muted); max-width: 740px; margin: 14px 0 0; line-height: 1.6; }
+    .toolbar { display:flex; gap:12px; align-items:center; }
+    button, select, input, textarea {
+      font: inherit; border:1px solid var(--line); color: var(--text);
+      background: hsl(250 30% 14% / .78); border-radius:16px;
+    }
+    button { cursor:pointer; padding:12px 16px; font-weight:800; transition: transform 160ms ease, border-color 160ms ease, background 160ms ease; }
+    button:hover { transform: translateY(-1px); border-color: hsl(276 100% 75% / .72); }
+    button.primary { background: linear-gradient(135deg, hsl(276 100% 56%), hsl(190 100% 44%)); border:0; box-shadow: 0 18px 54px hsl(276 100% 50% / .24); }
+    button.ghost { background: hsl(250 30% 14% / .66); }
+    button:disabled { cursor:not-allowed; opacity:.52; transform:none; }
+    .tabs { display:flex; gap:10px; margin: 18px 0 16px; flex-wrap: wrap; }
+    .tab { padding: 10px 14px; border-radius: 999px; background: hsl(250 28% 12% / .72); border: 1px solid var(--line); }
+    .tab.active { background: linear-gradient(135deg, hsl(276 100% 56%), hsl(190 100% 44%)); border-color: transparent; }
+    .searchbar { margin-bottom: 14px; display:grid; gap:8px; }
+    .searchbar input, .review-header input { min-height:52px; padding:0 18px; border-radius:18px; background: hsl(250 30% 12% / .72); backdrop-filter: blur(18px); }
+    .search-hint, .muted { color: var(--muted); font-size:13px; }
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 40;
+      min-width: 280px;
+      max-width: min(520px, calc(100vw - 40px));
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: hsl(250 32% 14% / 0.92);
+      box-shadow: 0 24px 70px hsl(245 40% 2% / 0.5);
+      backdrop-filter: blur(18px);
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: opacity 180ms ease, transform 180ms ease;
+      color: var(--text);
+      font-weight: 700;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    .toast.success { border-color: hsl(142 76% 52% / 0.45); }
+    .toast.error { border-color: hsl(0 82% 64% / 0.55); }
+    .toast.info { border-color: hsl(276 100% 68% / 0.55); }
+    .status { margin-bottom: 18px; min-height: 48px; padding:14px 16px; border:1px solid var(--line); border-radius:18px; background:hsl(250 30% 12% / .54); backdrop-filter: blur(18px); color: var(--muted); }
+    .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+    .card, .review-card {
+      position:relative; overflow:hidden; padding:22px; border:1px solid var(--line); border-radius:28px;
+      background: linear-gradient(145deg, hsl(250 28% 16% / .78), hsl(250 30% 10% / .62));
+      box-shadow: 0 24px 70px hsl(245 40% 2% / .44); backdrop-filter: blur(18px);
+    }
+    .card::before, .review-card::before { content:""; position:absolute; inset:-60% -40% auto auto; width:220px; height:220px; background: radial-gradient(circle, hsl(276 100% 66% / .28), transparent 70%); pointer-events:none; }
+    .category { color: var(--accent-2); font-size:12px; font-weight:900; letter-spacing:.16em; text-transform:uppercase; }
+    .card h2, .review-card h2 { margin: 18px 0 12px; font-size: 28px; letter-spacing:-.04em; }
+    .angle { color: var(--muted); line-height:1.45; min-height: 90px; }
+    .card button { margin-top: 18px; width:100%; }
+    .empty { grid-column:1 / -1; padding:42px; text-align:center; color:var(--muted); border:1px dashed var(--line); border-radius:28px; }
+    .drawer-backdrop { position:fixed; inset:0; display:none; justify-content:flex-end; background:hsl(245 50% 3% / .62); backdrop-filter: blur(8px); z-index:20; }
+    .drawer-backdrop.open { display:flex; }
+    .drawer { width:min(540px, 100%); height:100vh; padding:28px; border-left:1px solid var(--line); background:var(--panel-strong); box-shadow:-30px 0 100px hsl(245 50% 2% / .64); overflow:auto; }
+    .drawer h2 { font-size:36px; line-height:1; letter-spacing:-.05em; margin: 8px 0 24px; }
+    label { display:block; margin:18px 0 8px; color:var(--muted); font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:.12em; }
+    input, select, textarea { width:100%; padding:13px 14px; outline:none; }
+    textarea { min-height: 150px; resize: vertical; line-height:1.5; }
+    .formats { display:grid; gap:10px; }
+    .format { display:flex; gap:10px; align-items:start; padding:14px; border:1px solid var(--line); border-radius:18px; background:hsl(250 24% 12% / .66); }
+    .format input { width:auto; margin-top:4px; accent-color: var(--accent); }
+    .format strong { display:block; }
+    .format span { color: var(--muted); font-size:13px; }
+    .actions { display:flex; gap:10px; margin-top:24px; }
+    .actions button { flex:1; }
+    .review-layout { display:grid; grid-template-columns: 360px 1fr; gap:18px; align-items:start; }
+    .review-list { display:grid; gap: 12px; }
+    .review-item { width:100%; text-align:left; padding:16px; border-radius:20px; background: hsl(250 30% 12% / .72); }
+    .review-item.active { border-color: hsl(276 100% 75% / .85); }
+    .editor { display:grid; gap: 12px; }
+    .editor textarea { min-height: 360px; }
+    .review-top { display:flex; gap:12px; align-items:center; justify-content:space-between; margin-bottom: 14px; flex-wrap: wrap; }
+    .review-title { margin:0; }
+    .hidden { display:none !important; }
+    .package-grid { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 18px; }
+    .package-block { padding: 16px; border: 1px solid var(--line); border-radius: 22px; background: hsl(250 30% 12% / .66); }
+    .package-block h3 { margin: 0 0 10px; font-size: 16px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-2); }
+    .package-block pre { margin: 0; white-space: pre-wrap; word-break: break-word; color: var(--text); line-height: 1.5; font-family: inherit; }
+    .package-block ul { margin: 0; padding-left: 20px; color: var(--text); line-height: 1.5; }
+    .package-wide { grid-column: 1 / -1; }
+    
+    /* Estilos Premium para Details y Summary (Disclosure Triangles) */
+    details.package-block {
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+      cursor: pointer;
+    }
+    details.package-block:hover {
+      border-color: hsl(276 100% 75% / 0.4);
+      background: hsl(250 30% 14% / .75);
+    }
+    details.package-block summary {
+      display: flex;
+      align-items: center;
+      list-style: none; /* Oculta la flecha nativa fea del navegador */
+      outline: none;
+    }
+    details.package-block summary::-webkit-details-marker {
+      display: none; /* Oculta la flecha en navegadores basados en Webkit */
+    }
+    details.package-block summary h3 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0;
+      width: 100%;
+      user-select: none;
+    }
+    /* El Disclosure Triangle hecho con un pseudo-elemento animado */
+    details.package-block summary h3::before {
+      content: "▶";
+      display: inline-block;
+      font-size: 11px;
+      color: var(--accent-2);
+      transition: transform 0.24s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    details.package-block[open] summary h3::before {
+      transform: rotate(90deg);
+    }
+    /* Estilo del contenedor interno una vez desplegado */
+    details.package-block pre, details.package-block div.draft-item {
+      padding-top: 14px;
+      margin-top: 10px;
+      border-top: 1px solid var(--line);
+      cursor: default; /* Evita que el cursor se vea con puntero de link dentro del contenido */
+    }
+    @media (max-width: 920px) { .review-layout { grid-template-columns: 1fr; } }
+    @media (max-width: 720px) { header { display:block; } .toolbar { margin-top:18px; } .shell { width:min(100% - 20px, 1240px); padding-top:24px; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <section>
+        <div class="eyebrow">HUMANOS / Editorial Control</div>
+        <h1>Panel editorial.</h1>
+        <p class="lede">Backlog visual, creación manual y aprobación de guiones en un solo lugar. Sin terminal para el flujo diario.</p>
+      </section>
+      <div class="toolbar">
+        <button id="createManualButton" class="primary">+ Nuevo Personaje</button>
+        <button id="refreshButton">Actualizar</button>
+      </div>
+    </header>
+
+    <div class="tabs">
+      <button id="tabBacklog" class="tab active" type="button">Backlog</button>
+      <button id="tabReview" class="tab" type="button">Guiones pendientes</button>
+      <button id="tabFinalized" class="tab" type="button">Finalizados</button>
+      <button id="tabPublisher" class="tab" type="button">Publisher</button>
+      <button id="tabTalese" class="tab" type="button">Aprendizaje Talese</button>
+    </div>
+
+    <section id="backlogView">
+      <div class="searchbar">
+        <input id="searchInput" type="search" placeholder="Buscar por nombre, categoría o ángulo humano…" autocomplete="off" />
+        <div id="searchHint" class="search-hint">Escribí para filtrar el backlog visible.</div>
+      </div>
+      <div id="status" class="status">Cargando backlog editorial…</div>
+      <section id="grid" class="grid" aria-live="polite"></section>
+    </section>
+
+    <section id="reviewView" class="hidden">
+      <div class="review-top">
+        <div>
+          <h2 class="review-title">Guiones pendientes de aprobación</h2>
+          <div id="reviewHint" class="muted">Cargando episodios…</div>
+        </div>
+      </div>
+      <div class="review-layout">
+        <div id="reviewList" class="review-list"></div>
+        <div class="review-card" style="grid-column: span 2;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div class="eyebrow" id="editorEyebrow">EDITOR EDITORIAL</div>
+            <div class="mode-tabs" style="display: flex; gap: 0.5rem;">
+              <button type="button" id="btnModeShort" class="tab-btn primary" onclick="switchEditorMode('short')" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">⚡ Guion Corto (90s)</button>
+              <button type="button" id="btnModeLong" class="tab-btn ghost" onclick="switchEditorMode('long')" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">🎬 Documental Largo (7-10 min)</button>
+            </div>
+          </div>
+          <h2 id="reviewTitle">Seleccioná un episodio</h2>
+
+          <!-- VISTA EDITORIAL: MODO CORTO (90s) -->
+          <div id="editorShortView">
+            <label for="reviewScript">Texto del guion corto (90s)</label>
+            <textarea id="reviewScript" placeholder="Elegí un episodio para editar su guion corto."></textarea>
+            <div class="actions">
+              <button id="openSelectedButton" type="button" class="ghost">Abrir episodio</button>
+              <button id="saveProduceButton" type="button" class="primary">Guardar y Producir</button>
+            </div>
+          </div>
+
+          <!-- VISTA EDITORIAL: MODO DOCUMENTAL LARGO (7-10 MIN POR ACTOS) -->
+          <div id="editorLongView" style="display: none; margin-top: 1rem;">
+            <div id="docThesisBox" style="background: rgba(255,255,255,0.05); padding: 0.8rem; border-radius: 8px; margin-bottom: 1rem; border-left: 3px solid #6366f1; font-size: 0.85rem;">
+              <strong>Tesis Central:</strong> <span id="docCentralThesis">—</span><br>
+              <strong>Conflicto Principal:</strong> <span id="docMainConflict">—</span>
+            </div>
+
+            <h4 style="margin: 0.8rem 0 0.4rem 0;">Edición del Documental por Actos (Beat Sheet)</h4>
+            <div id="actsContainer" style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;"></div>
+
+            <h4 style="margin: 0.8rem 0 0.4rem 0;">Preguntas Socráticas de Talese (Creator Lab)</h4>
+            <div id="socraticContainer" style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem;"></div>
+
+            <h4 style="margin: 0.8rem 0 0.4rem 0;">Shorts Derivados Trazables</h4>
+            <div id="derivedShortsContainer" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="package-grid">
+        <details class="package-block package-wide" open>
+          <summary><h3>Dossier Editorial (Borges)</h3></summary>
+          <div id="packageDossier" class="draft-item" style="font-family: inherit; line-height: 1.6; white-space: pre-wrap; margin-top: 0; background: none; border: none; padding: 0;">—</div>
+        </details>
+        <details class="package-block">
+          <summary><h3>Veritas (Audit)</h3></summary>
+          <pre id="packageVeritas">—</pre>
+        </details>
+        <details class="package-block">
+          <summary><h3>Gabo (Drafts)</h3></summary>
+          <pre id="packageGabo">—</pre>
+        </details>
+        <details class="package-block package-wide" open>
+          <summary><h3>Moore (Storyboard & Assets)</h3></summary>
+          <pre id="packageMoore">—</pre>
+        </details>
+        <details class="package-block package-wide">
+          <summary><h3>Mark (Distribution Pack)</h3></summary>
+          <pre id="packageMarkReview">—</pre>
+        </details>
+        <details class="package-block package-wide" open>
+          <summary><h3>Gay Talese (Retro Inmediata)</h3></summary>
+          <div id="packageTaleseReview" class="draft-item" style="font-family: inherit; line-height: 1.6; white-space: pre-wrap; margin-top: 0; background: none; border: none; padding: 0;">—</div>
+        </details>
+      </div>
+    </section>
+
+    <section id="finalizedView" class="hidden">
+      <div class="review-top">
+        <div>
+          <h2 class="review-title">Episodios Finalizados (Diseño de Producción)</h2>
+          <div id="finalizedHint" class="muted">Cargando episodios finalizados…</div>
+        </div>
+      </div>
+      <div class="review-layout">
+        <div id="finalizedList" class="review-list"></div>
+        <div class="review-card">
+          <div class="eyebrow">Dossier / Guion Corto Finalizado</div>
+          <h2 id="finalizedTitle">Seleccioná un episodio</h2>
+          <label>Guion corto aprobado</label>
+          <div id="finalizedScriptText" class="draft-item" style="white-space: pre-wrap; font-family: inherit; line-height: 1.5; min-height: 120px; border: 1px solid var(--line); border-radius: 14px; padding: 14px; background: hsl(250 30% 10% / .4);">—</div>
+          <div id="finalizedCardContainer" style="margin-top: 16px; display: none; margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 8px;">Ficha de Personaje (Character Card)</label>
+            <img id="finalizedCardImage" src="" style="width: 100%; border-radius: 18px; border: 1px solid var(--line); background: #000; max-height: 360px; object-fit: contain;" />
+          </div>
+          <div class="actions">
+            <button id="openSelectedFinalizedButton" type="button" class="ghost">Actualizar Vista</button>
+          </div>
+        </div>
+      </div>
+      <div class="package-grid">
+        <details class="package-block package-wide" open>
+          <summary><h3>Dossier Editorial (Borges)</h3></summary>
+          <div id="finalizedDossier" class="draft-item" style="font-family: inherit; line-height: 1.6; white-space: pre-wrap; margin-top: 0; background: none; border: none; padding: 0;">—</div>
+        </details>
+        <details class="package-block">
+          <summary><h3>Veritas (Audit)</h3></summary>
+          <pre id="finalizedVeritas">—</pre>
+        </details>
+        <details class="package-block">
+          <summary><h3>Gabo (Drafts)</h3></summary>
+          <pre id="finalizedGabo">—</pre>
+        </details>
+        <details class="package-block package-wide" open>
+          <summary><h3>Moore (Storyboard & Assets)</h3></summary>
+          <pre id="finalizedMoore">—</pre>
+        </details>
+      </div>
+    </section>
+
+    <section id="publisherView" class="hidden">
+      <div class="review-top">
+        <div>
+          <h2 class="review-title">Publicador de Episodios Finalizados (Publisher)</h2>
+          <div id="publisherHint" class="muted">Cargando episodios finalizados…</div>
+        </div>
+      </div>
+      <div class="review-layout">
+        <div id="publisherList" class="review-list"></div>
+        <div class="review-card" style="grid-column: span 1;">
+          <div class="eyebrow">Visualizador de Entrega / Buffer</div>
+          <h2 id="publisherTitle">Seleccioná un episodio</h2>
+          
+          <div id="publisherVideoContainer" style="margin-top: 16px; display: none; margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 8px;">Video Final Exportado</label>
+            <video id="publisherVideoPlayer" src="" controls style="width: 100%; border-radius: 18px; border: 1px solid var(--line); background: #000; max-height: 480px;"></video>
+          </div>
+
+          <div id="packageMarkPublisher">
+            <div class="empty">Seleccioná un episodio de la lista para auditar sus copys e imágenes de redes.</div>
+          </div>
+    </section>
+
+    <section id="taleseView" class="hidden">
+      <div class="review-top">
+        <div>
+          <h2 class="review-title">Gay Talese — memoria & aprendizaje editorial</h2>
+          <div id="taleseHint" class="muted">Laboratorio longitudinal del creador para HUMANOS.</div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; margin-bottom: 24px;">
+        <div class="review-card" style="grid-column: span 1;">
+          <div class="eyebrow">Diario Cualitativo del Creador</div>
+          <h2 style="font-size: 22px; margin: 10px 0;">Creator Changelog</h2>
+          <div id="taleseCreatorChangelog" class="draft-item" style="font-family: inherit; line-height: 1.6; white-space: pre-wrap; background: rgba(0,0,0,0.3); border: 1px solid var(--line); border-radius: 14px; padding: 16px; max-height: 400px; overflow-y: auto;">Cargando...</div>
+        </div>
+        <div class="review-card" style="grid-column: span 1;">
+          <div class="eyebrow">Registro de Aprendizajes Etiquetados</div>
+          <h2 style="font-size: 22px; margin: 10px 0;">Creator Learnings (Observaciones / Señales / Patrones)</h2>
+          <div id="taleseLearningsList" style="display: grid; gap: 12px; max-height: 400px; overflow-y: auto;">Cargando...</div>
+        </div>
+      </div>
+      <div class="review-card" style="width: 100%;">
+        <div class="eyebrow">Reviews Inmediatas por Episodio</div>
+        <h2 style="font-size: 22px; margin: 10px 0;">Histórico de Reviews de Gay Talese (Claude Sonnet 5)</h2>
+        <div id="taleseEpisodeReviewsList" style="display: grid; gap: 16px; margin-top: 16px;">Cargando...</div>
+      </div>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <aside id="drawerBackdrop" class="drawer-backdrop" aria-hidden="true">
+    <form id="storyForm" class="drawer">
+      <div class="eyebrow">Configurar episodio</div>
+      <h2 id="drawerTitle">Personaje</h2>
+
+      <div id="protagonistField">
+        <label for="protagonistName">Nombre del protagonista</label>
+        <input id="protagonistName" name="protagonistName" type="text" autocomplete="off" />
+      </div>
+
+      <label for="humanAngle">Ángulo narrativo</label>
+      <textarea id="humanAngle" name="humanAngle" required></textarea>
+
+      <label for="domainCategory">Categoría</label>
+      <select id="domainCategory" name="domainCategory" required></select>
+
+      <label>Extensión / Formato</label>
+      <div class="formats">
+        <label class="format"><input type="radio" name="format" value="short" /> <span><strong>Short</strong>60-90s</span></label>
+        <label class="format"><input type="radio" name="format" value="long" /> <span><strong>Long Form</strong>8-15 min</span></label>
+        <label class="format"><input type="radio" name="format" value="complete" checked /> <span><strong>Completo</strong>Todos los formatos</span></label>
+      </div>
+
+      <div class="actions">
+        <button type="button" id="closeButton">Cancelar</button>
+        <button class="primary" id="startButton" type="submit">Iniciar Investigación</button>
+      </div>
+    </form>
+  </aside>
+
+  <script>
+    const CATEGORIES = ["ENTREPRENEURS","DESIGNERS","ARTISTS","MAKERS","FOUNDERS","BUILDERS","INVENTORS","CREATORS","SCIENTISTS","EXPLORERS","ENGINEERS","VISIONARIES"];
+    const state = { stories: [], selected: null, reviewEpisodes: [], selectedReviewPath: null, finalizedEpisodes: [], selectedFinalizedPath: null, publisherEpisodes: [], selectedPublisherPath: null };
+    const grid = document.getElementById("grid");
+    const searchInput = document.getElementById("searchInput");
+    const searchHint = document.getElementById("searchHint");
+    const status = document.getElementById("status");
+    const drawerBackdrop = document.getElementById("drawerBackdrop");
+    const storyForm = document.getElementById("storyForm");
+    const drawerTitle = document.getElementById("drawerTitle");
+    const protagonistField = document.getElementById("protagonistField");
+    const protagonistName = document.getElementById("protagonistName");
+    const humanAngle = document.getElementById("humanAngle");
+    const domainCategory = document.getElementById("domainCategory");
+    const startButton = document.getElementById("startButton");
+    const backlogView = document.getElementById("backlogView");
+    const reviewView = document.getElementById("reviewView");
+    const reviewHint = document.getElementById("reviewHint");
+    const reviewList = document.getElementById("reviewList");
+    const reviewTitle = document.getElementById("reviewTitle");
+    const reviewScript = document.getElementById("reviewScript");
+    const packageSummary = document.getElementById("packageSummary");
+    const packageVeritas = document.getElementById("packageVeritas");
+    const packageGabo = document.getElementById("packageGabo");
+    const packageMoore = document.getElementById("packageMoore");
+    const packageMark = document.getElementById("packageMark");
+    const saveProduceButton = document.getElementById("saveProduceButton");
+    const openSelectedButton = document.getElementById("openSelectedButton");
+    const tabBacklog = document.getElementById("tabBacklog");
+    const tabReview = document.getElementById("tabReview");
+    const tabFinalized = document.getElementById("tabFinalized");
+    const tabPublisher = document.getElementById("tabPublisher");
+    const finalizedView = document.getElementById("finalizedView");
+    const finalizedHint = document.getElementById("finalizedHint");
+    const finalizedList = document.getElementById("finalizedList");
+    const finalizedTitle = document.getElementById("finalizedTitle");
+    const finalizedScriptText = document.getElementById("finalizedScriptText");
+    const finalizedDossier = document.getElementById("finalizedDossier");
+    const finalizedVeritas = document.getElementById("finalizedVeritas");
+    const finalizedGabo = document.getElementById("finalizedGabo");
+    const finalizedMoore = document.getElementById("finalizedMoore");
+    const openSelectedFinalizedButton = document.getElementById("openSelectedFinalizedButton");
+    const finalizedCardContainer = document.getElementById("finalizedCardContainer");
+    const finalizedCardImage = document.getElementById("finalizedCardImage");
+    const publisherView = document.getElementById("publisherView");
+    const publisherHint = document.getElementById("publisherHint");
+    const publisherList = document.getElementById("publisherList");
+    const publisherTitle = document.getElementById("publisherTitle");
+    const publisherVideoContainer = document.getElementById("publisherVideoContainer");
+    const publisherVideoPlayer = document.getElementById("publisherVideoPlayer");
+    const toast = document.getElementById("toast");
+    const sendState = { producing: false };
+    domainCategory.innerHTML = CATEGORIES.map((category) => `<option value="${category}">${category}</option>`).join("");
+    function setStatus(message, tone = "neutral") {
+      status.textContent = message;
+      status.style.color = tone === "error" ? "var(--danger)" : tone === "success" ? "var(--success)" : "var(--muted)";
+    }
+    function showToast(message, tone = "info") {
+      toast.textContent = message;
+      toast.className = `toast show ${tone}`;
+      window.clearTimeout(showToast._timer);
+      showToast._timer = window.setTimeout(() => { toast.className = "toast"; }, 2200);
+    }
+    function normalizeCategory(value) { const category = String(value || "").toUpperCase(); return CATEGORIES.includes(category) ? category : "CREATORS"; }
+    function getFilteredStories() {
+      const query = searchInput.value.trim().toLowerCase();
+      if (!query) return state.stories;
+      return state.stories.filter((story) => [story.protagonist_name, story.human_angle, story.domain_category, story.editorial_status].filter(Boolean).join(" ").toLowerCase().includes(query));
+    }
+    function renderStories() {
+      const visibleStories = getFilteredStories();
+      if (!state.stories.length) { searchHint.textContent = "No hay historias pendientes para buscar."; grid.innerHTML = `<div class="empty">No hay personajes con estado editorial <strong>idea</strong> o <strong>needs_research</strong>.</div>`; return; }
+      searchHint.textContent = searchInput.value.trim() ? `${visibleStories.length} de ${state.stories.length} personajes coinciden con la búsqueda.` : `${state.stories.length} personajes disponibles en el backlog.`;
+      if (!visibleStories.length) { grid.innerHTML = `<div class="empty">No encontré personajes que coincidan con esa búsqueda.</div>`; return; }
+      grid.innerHTML = visibleStories.map((story, index) => `<article class="card"><div class="category">${normalizeCategory(story.domain_category)}</div><h2>${story.protagonist_name || "Unnamed protagonist"}</h2><p class="angle">${story.human_angle || "Sin ángulo humano definido todavía."}</p><button data-index="${index}">Configurar episodio</button></article>`).join("");
+      grid.querySelectorAll("button[data-index]").forEach((button) => button.addEventListener("click", () => openDrawer(getFilteredStories()[Number(button.dataset.index)])));
+    }
+    async function loadStories() {
+      setStatus("Cargando backlog editorial…"); grid.innerHTML = "";
+      try { const response = await fetch("/api/stories"); const data = await response.json(); if (!response.ok) throw new Error(data.error || "No se pudo leer Supabase"); state.stories = data.stories || []; setStatus(`${state.stories.length} personajes pendientes encontrados.`, "success"); renderStories(); }
+      catch (error) { setStatus(error.message, "error"); grid.innerHTML = `<div class="empty">Revisá que el servidor local esté corriendo y que .env tenga SUPABASE_URL y SUPABASE_KEY.</div>`; }
+    }
+    function openDrawer(story) {
+      state.selected = story; drawerTitle.textContent = story.protagonist_name || "Personaje"; protagonistField.style.display = "none"; protagonistName.required = false; protagonistName.value = story.protagonist_name || ""; humanAngle.value = story.human_angle || ""; domainCategory.value = normalizeCategory(story.domain_category); startButton.textContent = "Iniciar Investigación"; drawerBackdrop.classList.add("open"); drawerBackdrop.setAttribute("aria-hidden", "false");
+    }
+    function openCreateDrawer() {
+      state.selected = null; storyForm.reset(); drawerTitle.textContent = "Crear Personaje Nuevo"; protagonistField.style.display = "block"; protagonistName.required = true; protagonistName.value = ""; humanAngle.value = ""; domainCategory.value = "CREATORS"; storyForm.querySelector('input[value="complete"]').checked = true; startButton.textContent = "Crear e Iniciar Investigación"; drawerBackdrop.classList.add("open"); drawerBackdrop.setAttribute("aria-hidden", "false"); protagonistName.focus();
+    }
+    function closeDrawer() { drawerBackdrop.classList.remove("open"); drawerBackdrop.setAttribute("aria-hidden", "true"); protagonistField.style.display = "none"; protagonistName.required = false; storyForm.reset(); storyForm.querySelector('input[value="complete"]').checked = true; startButton.textContent = "Iniciar Investigación"; }
+    function getEl(id) { return document.getElementById(id); }
+    async function loadReviewEpisodes() {
+      const hint = getEl("reviewHint");
+      const list = getEl("reviewList");
+      if (hint) hint.textContent = "Cargando episodios…";
+      if (list) list.innerHTML = "";
+      try { 
+        const response = await fetch("/api/review-episodes"); 
+        const data = await response.json(); 
+        if (!response.ok) throw new Error(data.error || "No se pudieron leer los guiones pendientes"); 
+        state.reviewEpisodes = data.episodes || []; 
+        if (hint) hint.textContent = `${state.reviewEpisodes.length} episodios listos para edición.`; 
+        renderReviewEpisodes(); 
+        if (state.reviewEpisodes[0]) await openReviewEpisode(state.reviewEpisodes[0].episodePath); 
+      }
+      catch (error) { 
+        if (hint) hint.textContent = error.message; 
+        if (list) list.innerHTML = `<div class="empty">No pude leer los guiones pendientes.</div>`; 
+      }
+    }
+
+    function renderReviewEpisodes() {
+      if (!state.reviewEpisodes.length) { reviewList.innerHTML = `<div class="empty">No hay episodios en script_pending_review.</div>`; return; }
+      reviewList.innerHTML = state.reviewEpisodes.map((episode) => `<button class="review-item ${state.selectedReviewPath === episode.episodePath ? 'active' : ''}" type="button" data-path="${episode.episodePath}"><strong>${episode.protagonistName}</strong><div class="muted">${episode.episodeDir}</div></button>`).join("");
+      reviewList.querySelectorAll("button[data-path]").forEach((button) => button.addEventListener("click", () => openReviewEpisode(button.dataset.path)));
+    }
+    function switchEditorMode(mode) {
+      const shortView = getEl("editorShortView");
+      const longView = getEl("editorLongView");
+      const btnShort = getEl("btnModeShort");
+      const btnLong = getEl("btnModeLong");
+
+      if (mode === "long") {
+        if (shortView) shortView.style.display = "none";
+        if (longView) longView.style.display = "block";
+        if (btnShort) { btnShort.className = "tab-btn ghost"; }
+        if (btnLong) { btnLong.className = "tab-btn primary"; }
+      } else {
+        if (shortView) shortView.style.display = "block";
+        if (longView) longView.style.display = "none";
+        if (btnShort) { btnShort.className = "tab-btn primary"; }
+        if (btnLong) { btnLong.className = "tab-btn ghost"; }
+      }
+    }
+
+    async function openReviewEpisode(episodePath) {
+      try {
+        const response = await fetch(`/api/review-episode?episodePath=${encodeURIComponent(episodePath)}`);
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "No se pudo abrir el episodio");
+        state.selectedReviewPath = data.episodePath;
+        if (getEl("reviewTitle")) getEl("reviewTitle").textContent = data.protagonistName;
+        if (getEl("reviewScript")) getEl("reviewScript").value = data.scriptShort || "";
+        if (getEl("packageSummary")) getEl("packageSummary").textContent = `${data.protagonistName} · ${data.status}`;
+
+        const packageVeritas = getEl("packageVeritas");
+        const packageGabo = getEl("packageGabo");
+        const packageMoore = getEl("packageMoore");
+        const packageMarkReview = getEl("packageMarkReview") || getEl("packageMark");
+        const packageDossier = getEl("packageDossier");
+
+        [packageVeritas, packageGabo, packageMoore, packageMarkReview].forEach((element) => {
+          if (element) delete element.dataset.formatted;
+        });
+
+        if (packageDossier) {
+          packageDossier.innerHTML = data.dossier ? data.dossier.replace(/\n/g, "<br>") : "Sin dossier editorial generado.";
+        }
+        if (packageVeritas) packageVeritas.textContent = JSON.stringify(data.veritas || {}, null, 2);
+        if (packageGabo) packageGabo.textContent = JSON.stringify(data.gabo || {}, null, 2);
+        if (packageMoore) packageMoore.textContent = JSON.stringify(data.moore || {}, null, 2);
+        if (packageMarkReview) packageMarkReview.textContent = JSON.stringify(data.mark || {}, null, 2);
+
+        const pkgTalese = getEl("packageTaleseReview");
+        if (pkgTalese) {
+          pkgTalese.innerHTML = data.talese?.review ? data.talese.review.replace(/\n/g, "<br>") : "Pendiente de producción para generar la review de Gay Talese (Claude Sonnet 5).";
+        }
+
+        if (data.scriptsLong && data.scriptsLong.is_documentary_pilot) {
+          const bp = data.scriptsLong.narrative_blueprint || {};
+          if (getEl("docCentralThesis")) getEl("docCentralThesis").textContent = bp.central_thesis || "—";
+          if (getEl("docMainConflict")) getEl("docMainConflict").textContent = bp.main_conflict || "—";
+
+          // Render Actos
+          const actsContainer = getEl("actsContainer");
+          if (actsContainer && bp.beat_sheet) {
+            actsContainer.innerHTML = bp.beat_sheet.map((act) => `
+              <div class="card" style="border: 1px solid rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px; background: rgba(255,255,255,0.02);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                  <h4 style="margin:0; color: #fff;">${act.title} <span style="font-size: 0.8rem; opacity: 0.7;">(~${act.estimated_duration_sec}s | Causalidad: ${act.causality_type})</span></h4>
+                  <span class="badge" style="background: #6366f1; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; color: #fff;">${act.status || 'draft'}</span>
+                </div>
+                <p style="font-size: 0.85rem; opacity: 0.8; margin-top:0;"><strong>Objetivo:</strong> ${act.objective || ''}</p>
+                <textarea id="act_text_${act.id}" style="width:100%; min-height: 100px; font-family: inherit; margin-bottom: 0.5rem;">${act.script_text || ''}</textarea>
+                <button type="button" class="primary" onclick="saveAct('${data.episodePath}', '${act.id}')" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Guardar ${act.id}</button>
+              </div>
+            `).join("");
+          }
+
+          // Render Preguntas Socráticas
+          const socraticContainer = getEl("socraticContainer");
+          if (socraticContainer) {
+            const dialogue = data.scriptsLong.talese_socratic_dialogue || [];
+            socraticContainer.innerHTML = dialogue.map((item) => `
+              <div style="background: rgba(99, 102, 241, 0.1); padding: 0.75rem; border-radius: 6px; border-left: 3px solid #6366f1;">
+                <p style="margin: 0 0 0.5rem 0; font-weight: 600;">[${item.act_id}] ${item.question}</p>
+                <textarea id="q_ans_${item.question_id}" placeholder="Escribí tu respuesta socrática..." style="width:100%; min-height: 60px; font-family: inherit; margin-bottom: 0.4rem;">${item.user_answer || ''}</textarea>
+                <button type="button" class="ghost" onclick="saveTalesQuestion('${item.question_id}')" style="padding: 0.3rem 0.6rem; font-size: 0.75rem;">${item.resolved ? '✓ Resolver' : 'Guardar Respuesta'}</button>
+              </div>
+            `).join("");
+          }
+
+          // Render Shorts Derivados
+          const derivedContainer = getEl("derivedShortsContainer");
+          if (derivedContainer) {
+            const shorts = data.scriptsLong.derived_shorts || [];
+            derivedContainer.innerHTML = shorts.map((s) => `
+              <div style="background: rgba(255,255,255,0.03); padding: 0.75rem; border-radius: 6px; border: 1px dashed rgba(255,255,255,0.2);">
+                <span class="badge" style="background: #10b981; color: #000; padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.7rem; font-weight: bold;">ORIGEN: ${s.acto_origen_id.toUpperCase()}</span>
+                <h5 style="margin: 0.5rem 0 0.2rem 0;">Short #${s.short_id} (${s.timestamp_range})</h5>
+                <p style="font-size: 0.8rem; opacity: 0.8; margin: 0;">${s.script_short}</p>
+              </div>
+            `).join("");
+          }
+
+          // Auto-activar vista documental si tiene piloto largo activo
+          switchEditorMode("long");
+        } else {
+          switchEditorMode("short");
+        }
+
+      formatEditorialBlocks();
+      renderReviewEpisodes();
+    } catch (error) {
+      console.error("[openReviewEpisode]", error);
+      const hint = getEl("reviewHint");
+      if (hint) hint.textContent = error.message;
+    }
+  }
+
+  async function saveAct(episodePath, actId) {
+
+
+      const text = getEl(`act_text_${actId}`)?.value || "";
+      const res = await fetch("/api/save-act", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ episodePath, actId, scriptText: text, status: "approved" })
+      });
+      if (res.ok) showToast(`Acto ${actId} guardado.`, "success");
+    }
+
+    async function saveTalesQuestion(questionId) {
+      const ans = getEl(`q_ans_${questionId}`)?.value || "";
+      const res = await fetch("/api/save-talese-question", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ episodePath: state.selectedReviewPath, questionId, userAnswer: ans, resolved: true })
+      });
+      if (res.ok) showToast("Respuesta registrada en Creator Lab.", "success");
+    }
+
+    async function saveAndProduce() {
+      if (!state.selectedReviewPath || sendState.producing) return;
+      sendState.producing = true;
+      saveProduceButton.disabled = true;
+      saveProduceButton.textContent = "Enviando…";
+      showToast("Enviado a producción", "info");
+      try {
+        const episode = state.reviewEpisodes.find((item) => item.episodePath === state.selectedReviewPath);
+        const response = await fetch("/api/produce", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ episodePath: state.selectedReviewPath, protagonistName: episode?.protagonistName, scriptShort: reviewScript.value.trim() }) });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "No se pudo iniciar la producción");
+        reviewHint.textContent = `${episode?.protagonistName || "Episodio"} enviado a producción. PID: ${data.pid}. Talese generará su review en segundo plano.`;
+        showToast(`${episode?.protagonistName || "Episodio"} enviado a producción`, "success");
+      } catch (error) { reviewHint.textContent = error.message; }
+      finally {
+        sendState.producing = false;
+        saveProduceButton.disabled = false;
+        saveProduceButton.textContent = "Guardar y Producir";
+      }
+    }
+    function hideAllViews() {
+      backlogView.classList.add("hidden");
+      reviewView.classList.add("hidden");
+      finalizedView.classList.add("hidden");
+      publisherView.classList.add("hidden");
+      document.getElementById("taleseView")?.classList.add("hidden");
+      tabBacklog.classList.remove("active");
+      tabReview.classList.remove("active");
+      tabFinalized.classList.remove("active");
+      tabPublisher.classList.remove("active");
+      document.getElementById("tabTalese")?.classList.remove("active");
+    }
+    function showBacklog() { hideAllViews(); backlogView.classList.remove("hidden"); tabBacklog.classList.add("active"); }
+    function showReview() { hideAllViews(); reviewView.classList.remove("hidden"); tabReview.classList.add("active"); if (!state.reviewEpisodes.length) loadReviewEpisodes(); }
+    function showFinalized() { hideAllViews(); finalizedView.classList.remove("hidden"); tabFinalized.classList.add("active"); if (!state.finalizedEpisodes.length) loadFinalizedEpisodes(); }
+    function showPublisher() { hideAllViews(); publisherView.classList.remove("hidden"); tabPublisher.classList.add("active"); if (!state.publisherEpisodes.length) loadPublisherEpisodes(); }
+    function showTalese() { hideAllViews(); document.getElementById("taleseView")?.classList.remove("hidden"); document.getElementById("tabTalese")?.classList.add("active"); loadTaleseLab(); }
+
+    async function loadTaleseLab() {
+      const hint = document.getElementById("taleseHint");
+      const changelogEl = document.getElementById("taleseCreatorChangelog");
+      const learningsEl = document.getElementById("taleseLearningsList");
+      const reviewsEl = document.getElementById("taleseEpisodeReviewsList");
+
+      if (hint) hint.textContent = "Cargando datos de memoria de Gay Talese (Claude Sonnet 5)...";
+      try {
+        const response = await fetch("/api/talese-lab");
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "No se pudieron cargar los datos de Talese");
+
+        if (changelogEl) changelogEl.innerHTML = data.creatorChangelog ? data.creatorChangelog.replace(/\n/g, "<br>") : "Aún no hay changelog generado.";
+
+        if (learningsEl) {
+          if (!data.creatorLearnings?.length) {
+            learningsEl.innerHTML = `<div class="empty">No hay aprendizajes registrados en creator_learnings.json</div>`;
+          } else {
+            learningsEl.innerHTML = data.creatorLearnings.map((item) => `
+              <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--line); border-radius: 12px; padding: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span style="font-weight: 800; color: var(--accent-2); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;">${item.level} · ${item.axis || 'general'}</span>
+                  <span style="font-size: 11px; padding: 2px 8px; border-radius: 999px; background: ${item.status === 'APPROVED' ? 'rgba(34,197,94,0.2)' : 'rgba(234,179,8,0.2)'}; color: ${item.status === 'APPROVED' ? '#4ade80' : '#facc15'}; font-weight: 700;">${item.status}</span>
+                </div>
+                <strong style="display: block; font-size: 14px; color: #fff; margin-bottom: 4px;">${item.title}</strong>
+                <p style="margin: 0; font-size: 13px; color: var(--muted); line-height: 1.4;">${item.description}</p>
+              </div>
+            `).join("");
+          }
+        }
+
+        if (reviewsEl) {
+          if (!data.episodeReviews?.length) {
+            reviewsEl.innerHTML = `<div class="empty">No hay reviews por episodio generadas aún.</div>`;
+          } else {
+            reviewsEl.innerHTML = data.episodeReviews.map((rev) => `
+              <details class="package-block package-wide" open style="margin-bottom: 12px;">
+                <summary><h3 style="font-size: 16px;">${rev.protagonistName} (${rev.episodeDir})</h3></summary>
+                <div class="draft-item" style="font-family: inherit; line-height: 1.6; white-space: pre-wrap; background: none; border: none; padding: 10px 0 0 0;">${rev.reviewContent.replace(/\n/g, "<br>")}</div>
+              </details>
+            `).join("");
+          }
+        }
+
+        if (hint) hint.textContent = `Memoria activa: ${data.creatorLearnings?.length || 0} aprendizajes etiquetados, ${data.episodeReviews?.length || 0} reviews de episodio escritas por Claude Sonnet 5.`;
+      } catch (err) {
+        if (hint) hint.textContent = err.message;
+      }
+    }
+
+    async function loadFinalizedEpisodes() {
+      finalizedHint.textContent = "Cargando episodios finalizados…";
+      finalizedList.innerHTML = "";
+      try {
+        const response = await fetch("/api/finalized-episodes");
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "No se pudieron leer los episodios finalizados");
+        state.finalizedEpisodes = data.episodes || [];
+        finalizedHint.textContent = `${state.finalizedEpisodes.length} episodios listos.`;
+        renderFinalizedEpisodes();
+        if (state.finalizedEpisodes[0]) await openFinalizedEpisode(state.finalizedEpisodes[0].episodePath);
+      } catch (error) {
+        finalizedHint.textContent = error.message;
+        finalizedList.innerHTML = `<div class="empty">No pude leer los episodios finalizados.</div>`;
+      }
+    }
+
+    function renderFinalizedEpisodes() {
+      if (!state.finalizedEpisodes.length) {
+        finalizedList.innerHTML = `<div class="empty">No hay episodios finalizados listos.</div>`;
+        return;
+      }
+      finalizedList.innerHTML = state.finalizedEpisodes.map((episode) => `
+        <button class="review-item ${state.selectedFinalizedPath === episode.episodePath ? 'active' : ''}" type="button" data-path="${episode.episodePath}">
+          <strong>${episode.protagonistName}</strong>
+          <div class="muted">${episode.episodeDir}</div>
+        </button>
+      `).join("");
+      finalizedList.querySelectorAll("button[data-path]").forEach((button) => {
+        button.addEventListener("click", () => openFinalizedEpisode(button.dataset.path));
+      });
+    }
+
+    async function openFinalizedEpisode(episodePath) {
+      try {
+        const response = await fetch(`/api/review-episode?episodePath=${encodeURIComponent(episodePath)}`);
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "No se pudo abrir el episodio");
+        state.selectedFinalizedPath = data.episodePath;
+        finalizedTitle.textContent = data.protagonistName;
+        finalizedScriptText.textContent = data.scriptShort || "Sin guion corto.";
+        
+        if (data.characterCardExists) {
+          finalizedCardImage.src = `/api/image?path=${encodeURIComponent(data.characterCardPath)}`;
+          finalizedCardContainer.style.display = "block";
+        } else {
+          finalizedCardImage.src = "";
+          finalizedCardContainer.style.display = "none";
+        }
+
+        if (finalizedDossier) {
+          finalizedDossier.innerHTML = data.dossier ? data.dossier.replace(/\n/g, "<br>") : "Sin dossier editorial generado.";
+        }
+        [finalizedVeritas, finalizedGabo, finalizedMoore].forEach((element) => {
+          if (element) delete element.dataset.formatted;
+        });
+        finalizedVeritas.textContent = JSON.stringify(data.veritas || {}, null, 2);
+        finalizedGabo.textContent = JSON.stringify(data.gabo || {}, null, 2);
+        finalizedMoore.textContent = JSON.stringify(data.moore || {}, null, 2);
+        formatEditorialBlocks();
+        renderFinalizedEpisodes();
+      } catch (err) {
+        showToast(err.message, "error");
+      }
+    }
+
+    async function loadPublisherEpisodes() {
+      publisherHint.textContent = "Cargando episodios finalizados…";
+      publisherList.innerHTML = "";
+      try {
+        const response = await fetch("/api/publisher-episodes");
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "No se pudieron leer los episodios finalizados");
+        state.publisherEpisodes = data.episodes || [];
+        publisherHint.textContent = `${state.publisherEpisodes.length} episodios listos en el Publisher.`;
+        renderPublisherEpisodes();
+        if (state.publisherEpisodes[0]) await openPublisherEpisode(state.publisherEpisodes[0].episodePath);
+      } catch (error) {
+        publisherHint.textContent = error.message;
+        publisherList.innerHTML = `<div class="empty">No pude leer los episodios finalizados.</div>`;
+      }
+    }
+
+    function renderPublisherEpisodes() {
+      if (!state.publisherEpisodes.length) {
+        publisherList.innerHTML = `<div class="empty">No hay episodios listos en el Publisher.</div>`;
+        return;
+      }
+      publisherList.innerHTML = state.publisherEpisodes.map((episode) => `
+        <button class="review-item ${state.selectedPublisherPath === episode.episodePath ? 'active' : ''}" type="button" data-path="${episode.episodePath}">
+          <strong>${episode.protagonistName}</strong>
+          <div class="muted">${episode.episodeDir} · ${episode.status}</div>
+        </button>
+      `).join("");
+      publisherList.querySelectorAll("button[data-path]").forEach((button) => {
+        button.addEventListener("click", () => openPublisherEpisode(button.dataset.path));
+      });
+    }
+
+    async function openPublisherEpisode(episodePath) {
+      state.selectedPublisherPath = episodePath;
+      renderPublisherEpisodes();
+      try {
+        const response = await fetch(`/api/review-episode?episodePath=${encodeURIComponent(episodePath)}`);
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "No se pudo cargar el episodio");
+
+        publisherTitle.textContent = data.protagonistName;
+        
+        if (data.mark?.finalVideoExists) {
+          publisherVideoPlayer.src = `/api/video?path=${encodeURIComponent(data.mark.finalVideoPath)}`;
+          publisherVideoContainer.style.display = "block";
+        } else {
+          publisherVideoPlayer.src = "";
+          publisherVideoContainer.style.display = "none";
+        }
+
+        const packageMarkEl = document.getElementById("packageMarkPublisher");
+        if (packageMarkEl) {
+          delete packageMarkEl.dataset.formatted;
+          packageMarkEl.textContent = JSON.stringify(data.mark || {}, null, 2);
+        }
+        formatEditorialBlocks();
+      } catch (error) {
+        showToast(error.message, "error");
+      }
+    }
+    storyForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const isCreating = state.selected === null;
+      const payload = { id: state.selected?.id, protagonistName: isCreating ? protagonistName.value.trim() : state.selected.protagonist_name, humanAngle: humanAngle.value.trim(), domainCategory: domainCategory.value, format: new FormData(storyForm).get("format") };
+      startButton.disabled = true; startButton.textContent = isCreating ? "Creando…" : "Iniciando…";
+      showToast(`Iniciando investigación para ${payload.protagonistName}...`, "info");
+      try {
+        const response = await fetch(isCreating ? "/api/create-and-start" : "/api/start", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "No se pudo iniciar Borges");
+        setStatus(`${isCreating ? "Personaje creado y Borges iniciado" : "Borges iniciado"} para ${payload.protagonistName}. PID local: ${data.pid}.`, "success");
+        showToast(`Investigación iniciada para ${payload.protagonistName}`, "success");
+        closeDrawer();
+        await loadStories();
+      }
+      catch (error) {
+        setStatus(error.message, "error");
+        showToast(error.message, "error");
+      }
+      finally {
+        startButton.disabled = false;
+        startButton.textContent = state.selected === null ? "Crear e Iniciar Investigación" : "Iniciar Investigación";
+      }
+    });
+    searchInput.addEventListener("input", renderStories);
+    document.getElementById("createManualButton").addEventListener("click", openCreateDrawer);
+    document.getElementById("refreshButton").addEventListener("click", () => {
+      if (tabReview.classList.contains("active")) loadReviewEpisodes();
+      else if (tabFinalized.classList.contains("active")) loadFinalizedEpisodes();
+      else if (tabPublisher.classList.contains("active")) loadPublisherEpisodes();
+      else if (document.getElementById("tabTalese")?.classList.contains("active")) loadTaleseLab();
+      else loadStories();
+    });
+    document.getElementById("closeButton").addEventListener("click", closeDrawer);
+    drawerBackdrop.addEventListener("click", (event) => { if (event.target === drawerBackdrop) closeDrawer(); });
+    tabBacklog.addEventListener("click", showBacklog);
+    tabReview.addEventListener("click", showReview);
+    tabFinalized.addEventListener("click", showFinalized);
+    tabPublisher.addEventListener("click", showPublisher);
+    document.getElementById("tabTalese")?.addEventListener("click", showTalese);
+    openSelectedButton.addEventListener("click", async () => { if (state.selectedReviewPath) await openReviewEpisode(state.selectedReviewPath); });
+    openSelectedFinalizedButton.addEventListener("click", async () => { if (state.selectedFinalizedPath) await openFinalizedEpisode(state.selectedFinalizedPath); });
+    saveProduceButton.addEventListener("click", saveAndProduce);
+    loadStories();
+  </script>
+</body>
+<style>
+  .json-free-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border: 1px solid rgba(181, 107, 255, 0.28);
+    border-radius: 18px;
+    padding: 16px;
+    margin-top: 12px;
+  }
+  .json-free-card h4 {
+    margin: 0 0 10px;
+    font-size: 14px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #90e8ff;
+  }
+  .claim-block, .draft-block, .source-block {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 12px;
+    margin-top: 12px;
+  }
+  .claim-title {
+    font-size: 15px;
+    line-height: 1.45;
+    color: #f4f1ff;
+    margin-bottom: 10px;
+  }
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .metric-pill {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 8px 10px;
+    font-size: 12px;
+    color: #d7d0ea;
+  }
+  .metric-pill strong {
+    display: block;
+    color: #ffffff;
+    margin-top: 2px;
+    font-size: 13px;
+  }
+  .source-item, .draft-item {
+    background: rgba(10, 12, 24, 0.56);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 12px;
+    margin-top: 8px;
+  }
+  .source-item .title {
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+  }
+  .source-item .url {
+    color: #8fd7ff;
+    word-break: break-all;
+    font-size: 12px;
+  }
+  .source-item .notes {
+    margin-top: 6px;
+    color: #cfc8e6;
+    font-size: 13px;
+  }
+  .draft-label {
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-size: 12px;
+    color: #90e8ff;
+    margin-bottom: 6px;
+  }
+  .checklist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  .checklist-item.checked {
+    color: var(--success);
+    border-color: rgba(142, 228, 175, 0.25);
+  }
+  .checklist-item.failed {
+    color: var(--danger);
+    border-color: rgba(255, 107, 107, 0.25);
+  }
+</style>
+<script>
+  function safeParseJson(text) {
+    if (!text) return null;
+    try { return JSON.parse(text); } catch { return null; }
+  }
+
+  function metricPill(label, value) {
+    return `<div class="metric-pill">${label}<strong>${value ?? "—"}</strong></div>`;
+  }
+
+  function renderSources(sources) {
+    if (!Array.isArray(sources) || !sources.length) return "";
+    return `
+      <div class="source-block">
+        <h4>Sources</h4>
+        ${sources.map((source) => `
+          <div class="source-item">
+            <div class="title">${source.title || source.name || "Source"}</div>
+            ${source.url ? `<div class="url">${source.url}</div>` : ""}
+            ${source.notes ? `<div class="notes">${source.notes}</div>` : ""}
+          </div>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  function renderVeritas(value) {
+    const data = typeof value === "string" ? safeParseJson(value) : value;
+    if (!data) return value;
+    const root = data.veritas || data.factCheck || data;
+    const claims = Array.isArray(root.claims)
+      ? root.claims
+      : (Array.isArray(root.approvedClaims) ? root.approvedClaims : (Array.isArray(root) ? root : []));
+    if (!claims.length) {
+      return `
+        <div class="json-free-card">
+          <h4>Veritas</h4>
+          <div class="draft-item">${String(root.status || root.summary || root.message || JSON.stringify(root, null, 2)).replace(/\n/g, "<br>")}</div>
+        </div>
+      `;
+    }
+    return `
+      <div class="json-free-card">
+        <h4>Veritas</h4>
+        ${claims.map((claim) => `
+          <div class="claim-block">
+            <div class="claim-title">${claim.claim || claim.text || "Claim"}</div>
+            <div class="metrics-grid">
+              ${metricPill("confidence", claim.confidence_score ?? claim.confidence ?? "—")}
+              ${metricPill("authority", claim.source_authority ?? "—")}
+              ${metricPill("independence", claim.source_independence ?? "—")}
+              ${metricPill("proximity", claim.primary_source_proximity ?? "—")}
+              ${metricPill("consistency", claim.consistency ?? "—")}
+              ${metricPill("risk", claim.contradiction_risk ?? "—")}
+            </div>
+            ${renderSources(claim.sources)}
+          </div>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  function renderDrafts(value) {
+    const data = typeof value === "string" ? safeParseJson(value) : value;
+    if (!data) return value;
+    const root = data.gabo || data.drafts || data;
+    const blocks = [
+      ["Short", root.short],
+      ["Long Form", root.long],
+      ["Newsletter", root.newsletter],
+      ["Twitter Thread", root.twitter],
+    ];
+    const visible = blocks.filter(([, text]) => text);
+    if (!visible.length) {
+      return `
+        <div class="json-free-card">
+          <h4>Gabo</h4>
+          <div class="draft-item">${String(root.summary || root.message || JSON.stringify(root, null, 2)).replace(/\n/g, "<br>")}</div>
+        </div>
+      `;
+    }
+    return `
+      <div class="json-free-card">
+        <h4>Gabo</h4>
+        ${visible.map(([label, text]) => `
+          <div class="draft-block">
+            <div class="draft-label">${label}</div>
+            <div class="draft-item">${String(text).replace(/\n/g, "<br>")}</div>
+          </div>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  function renderMoore(value) {
+    const data = typeof value === "string" ? safeParseJson(value) : value;
+    if (!data) return value;
+    const root = data.moore || data;
+    const storyboard = Array.isArray(root.storyboard) ? root.storyboard : [];
+    const shotlist = root.shotlist || "";
+    const assetShotlist = root.assetShotlist || "";
+    const youtubeCandidates = root.youtubeCandidates || "";
+    const assetGaps = Array.isArray(root.assetGaps) ? root.assetGaps : [];
+    const editingNotes = root.editingNotes || root.notes || "";
+
+    const hasContent = storyboard.length || shotlist || assetShotlist || youtubeCandidates || assetGaps.length || editingNotes;
+    if (!hasContent) {
+      return `
+        <div class="json-free-card">
+          <h4>Moore</h4>
+          <div class="draft-item">${String(root.summary || root.message || JSON.stringify(root, null, 2)).replace(/\n/g, "<br>")}</div>
+        </div>
+      `;
+    }
+
+    return `
+      <div class="json-free-card">
+        <h4>Moore (Visual Director)</h4>
+        ${storyboard.length ? `
+          <div class="draft-block">
+            <div class="draft-label">Storyboard (Emotional Transitions)</div>
+            ${storyboard.map((scene, index) => `
+              <div class="draft-item">
+                <strong>Escena ${scene.scene || index + 1}</strong> (${scene.duration || 5}s) · <em>${scene.effect || 'cut'}</em><br>
+                <strong>Locución:</strong> ${scene.voiceover || '—'}<br>
+                <strong>Visual/Asset:</strong> ${scene.selected_asset || '—'} [${scene.asset_status || 'missing'}]<br>
+                ${scene.fallback_strategy ? `<strong>Fallback:</strong> ${scene.fallback_strategy}<br>` : ''}
+                <strong>Subtítulo:</strong> "${scene.caption || '—'}"
+              </div>
+            `).join("")}
+          </div>
+        ` : ""}
+        ${shotlist ? `
+          <div class="draft-block">
+            <div class="draft-label">Shot List</div>
+            <div class="draft-item" style="font-family: inherit; line-height: 1.6; white-space: pre-wrap;">${String(shotlist).replace(/\n/g, "<br>")}</div>
+          </div>
+        ` : ""}
+        ${assetShotlist ? `
+          <div class="draft-block">
+            <div class="draft-label">Asset Shot List (Technical Guide)</div>
+            <div class="draft-item" style="font-family: inherit; line-height: 1.6; white-space: pre-wrap;">${String(assetShotlist).replace(/\n/g, "<br>")}</div>
+          </div>
+        ` : ""}
+        ${youtubeCandidates ? `
+          <div class="draft-block">
+            <div class="draft-label">Búsqueda Automática de Videos (YouTube)</div>
+            <div class="draft-item" style="font-family: inherit; line-height: 1.6; white-space: pre-wrap;">${String(youtubeCandidates).replace(/\n/g, "<br>")}</div>
+          </div>
+        ` : ""}
+        ${assetGaps.length ? `
+          <div class="draft-block">
+            <div class="draft-label">Asset Gaps</div>
+            ${assetGaps.map((gap) => `
+              <div class="draft-item">
+                <strong>${gap.gap_id || 'GAP'}: ${gap.missing_asset || 'Asset faltante'}</strong> (Escena ${gap.scene || '—'})<br>
+                <strong>Prioridad:</strong> ${gap.criticality || '—'}<br>
+                <strong>Razón:</strong> ${gap.reason || '—'}<br>
+                <strong>Solución sugerida:</strong> ${gap.suggested_solution || '—'}<br>
+                <strong>Búsquedas sugeridas:</strong> <code>${(gap.manual_search_queries || []).join(", ") || '—'}</code>
+              </div>
+            `).join("")}
+          </div>
+        ` : ""}
+        ${editingNotes ? `
+          <div class="draft-block">
+            <div class="draft-label">Editing Notes</div>
+            <div class="draft-item" style="font-family: inherit; line-height: 1.6; white-space: pre-wrap;">${String(editingNotes).replace(/\n/g, "<br>")}</div>
+          </div>
+        ` : ""}
+      </div>
+    `;
+  }
+
+  function renderChecklist(checklist) {
+    if (!checklist) return "Sin datos de checklist pre-publicación.";
+    return `
+      <div class="checklist-grid">
+        ${Object.entries(checklist).map(([item, checked]) => `
+          <div class="checklist-item ${checked ? 'checked' : 'failed'}">
+            <span>${checked ? '✔' : '✖'}</span> ${item}
+          </div>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  async function saveMetrics(encodedEpisodePath, protagonistName) {
+    const episodePath = decodeURIComponent(encodedEpisodePath);
+    const views = Number(document.getElementById("metricViews")?.value || 0);
+    const retentionRate3s = Number(document.getElementById("metricRetention")?.value || 0);
+    const avgWatchPercentage = Number(document.getElementById("metricWatchPct")?.value || 0);
+    const durationSeconds = Number(document.getElementById("metricDuration")?.value || 0);
+    const notes = document.getElementById("metricNotes")?.value || "";
+
+    try {
+      const res = await fetch("/api/save-metrics", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ episodePath, protagonistName, views, retentionRate3s, avgWatchPercentage, durationSeconds, notes })
+      });
+      const data = await res.json();
+      if (res.ok) {
+        showToast("Métricas 48h guardadas con éxito", "success");
+      } else {
+        showToast(data.error || "Error al guardar métricas", "error");
+      }
+    } catch (err) {
+      showToast("Error de conexión al guardar métricas", "error");
+    }
+  }
+
+  async function loadMetricsForPublisher(episodePath) {
+    if (!episodePath) return;
+    try {
+      const res = await fetch(`/api/get-metrics?episodePath=${encodeURIComponent(episodePath)}`);
+      if (res.ok) {
+        const metrics = await res.json();
+        if (document.getElementById("metricViews")) document.getElementById("metricViews").value = metrics.views || "";
+        if (document.getElementById("metricRetention")) document.getElementById("metricRetention").value = metrics.retentionRate3s || "";
+        if (document.getElementById("metricWatchPct")) document.getElementById("metricWatchPct").value = metrics.avgWatchPercentage || "";
+        if (document.getElementById("metricDuration")) document.getElementById("metricDuration").value = metrics.durationSeconds || "";
+        if (document.getElementById("metricNotes")) document.getElementById("metricNotes").value = metrics.notes || "";
+      }
+    } catch (err) {
+      console.error("Error al cargar métricas:", err);
+    }
+  }
+
+  function renderMark(value) {
+    const data = typeof value === "string" ? safeParseJson(value) : value;
+    if (!data) return value;
+    const root = data.mark || data;
+    
+    if (!root || (!root.youtube && !root.checklist)) {
+      return `<div class="empty">No se ha generado el paquete de distribución (/DIST) todavía. Ejecuta la producción del episodio.</div>`;
+    }
+
+    const checklistHtml = renderChecklist(root.checklist);
+
+    if (root.episodePath) {
+      setTimeout(() => loadMetricsForPublisher(root.episodePath), 100);
+    }
+
+    return `
+      <div class="json-free-card">
+        <h4>Checklist de Calidad Pre-Publicación</h4>
+        ${checklistHtml}
+      </div>
+
+      <div class="json-free-card" style="margin-top: 16px; border: 1px solid var(--accent-2);">
+        <h4>📊 Carga / Registro de Métricas 48h (Tales & Mark Engine)</h4>
+        <form id="metricsForm" onsubmit="event.preventDefault(); saveMetrics('${encodeURIComponent(root.episodePath || '')}', '${(root.protagonistName || '').replace(/'/g, "\\'")}');" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 10px; align-items: end;">
+          <div>
+            <label style="margin-top:0;">Vistas Totales (Global)</label>
+            <input type="number" id="metricViews" placeholder="ej. 50000" min="0" required />
+          </div>
+          <div>
+            <label style="margin-top:0;">Retención 3s Hook (0-1)</label>
+            <input type="number" step="0.01" id="metricRetention" placeholder="ej. 0.75 (75%)" min="0" max="1" required />
+          </div>
+          <div>
+            <label style="margin-top:0;">% Promedio Visto (0-1)</label>
+            <input type="number" step="0.01" id="metricWatchPct" placeholder="ej. 0.60 (60%)" min="0" max="1" required />
+          </div>
+          <div>
+            <label style="margin-top:0;">Duración (segundos)</label>
+            <input type="number" id="metricDuration" placeholder="ej. 75" min="0" required />
+          </div>
+          <div style="grid-column: 1 / -1;">
+            <label style="margin-top:0;">Notas / Aprendizaje del Creador (48h)</label>
+            <textarea id="metricNotes" style="min-height: 60px;" placeholder="¿Qué funcionó? (ej. Cifra del hook disparó retención inicial)"></textarea>
+          </div>
+          <div style="grid-column: 1 / -1; display: flex; justify-content: flex-end;">
+            <button type="submit" class="primary" style="width: auto; padding: 10px 24px;">Guardar Métricas 48h</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="dist-platforms-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 16px; margin-top: 16px;">
+        <div class="json-free-card" style="margin-top: 0;">
+          <h4>YouTube Shorts</h4>
+          <div class="draft-item">
+            <strong>Título:</strong> ${root.youtube?.title || "—"}<br><br>
+            <strong>Descripción:</strong> ${String(root.youtube?.caption || "—").replace(/\n/g, "<br>")}<br><br>
+            <strong>Hashtags:</strong> <code>${root.youtube?.hashtags || "—"}</code><br><br>
+            <strong>Comentario fijado:</strong> ${root.youtube?.pinnedComment || "—"}<br><br>
+            <strong>Keywords SEO:</strong> ${root.youtube?.keywords || "—"}<br><br>
+            ${root.youtube?.thumbnailExists ? `<strong>Portada:</strong><br><img src="/api/image?path=${encodeURIComponent(root.youtube?.thumbnailPath)}" style="width: 120px; border-radius: 12px; margin-top: 8px; border: 1px solid var(--line);" />` : ""}
+          </div>
+        </div>
+
+        <div class="json-free-card" style="margin-top: 0;">
+          <h4>Instagram Reels</h4>
+          <div class="draft-item">
+            <strong>Caption:</strong> ${String(root.instagram?.caption || "—").replace(/\n/g, "<br>")}<br><br>
+            <strong>Hashtags:</strong> <code>${root.instagram?.hashtags || "—"}</code><br><br>
+            <strong>Texto ALT:</strong> ${root.instagram?.alt || "—"}<br><br>
+            ${root.instagram?.thumbnailExists ? `<strong>Portada:</strong><br><img src="/api/image?path=${encodeURIComponent(root.instagram?.thumbnailPath)}" style="width: 120px; border-radius: 12px; margin-top: 8px; border: 1px solid var(--line);" />` : ""}
+          </div>
+        </div>
+
+        <div class="json-free-card" style="margin-top: 0;">
+          <h4>TikTok</h4>
+          <div class="draft-item">
+            <strong>Hook Text (Pantalla):</strong> ${root.tiktok?.hook || "—"}<br><br>
+            <strong>Caption:</strong> ${String(root.tiktok?.caption || "—").replace(/\n/g, "<br>")}<br><br>
+            <strong>Hashtags:</strong> <code>${root.tiktok?.hashtags || "—"}</code>
+          </div>
+        </div>
+
+        <div class="json-free-card" style="margin-top: 0;">
+          <h4>Facebook Reels</h4>
+          <div class="draft-item">
+            <strong>Caption:</strong> ${String(root.facebook?.caption || "—").replace(/\n/g, "<br>")}<br><br>
+            <strong>Llamado a la Acción (CTA):</strong> ${root.facebook?.cta || "—"}<br><br>
+            <strong>Hashtags:</strong> <code>${root.facebook?.hashtags || "—"}</code><br><br>
+            ${root.facebook?.thumbnailExists ? `<strong>Portada:</strong><br><img src="/api/image?path=${encodeURIComponent(root.facebook?.thumbnailPath)}" style="width: 120px; border-radius: 12px; margin-top: 8px; border: 1px solid var(--line);" />` : ""}
+          </div>
+        </div>
+
+        <div class="json-free-card" style="grid-column: 1 / -1; margin-top: 0;">
+          <h4>LinkedIn (Aprendizaje)</h4>
+          <div class="draft-item" style="font-family: inherit; line-height: 1.6;">
+            ${String(root.linkedin?.learningPost || "—").replace(/\n/g, "<br>")}
+          </div>
+        </div>
+
+        <div class="json-free-card" style="grid-column: 1 / -1; margin-top: 0;">
+          <h4>X (Twitter Thread)</h4>
+          <div class="draft-item" style="font-family: inherit; line-height: 1.5;">
+            ${String(root.x?.thread || "—").replace(/\n/g, "<br>")}
+          </div>
+        </div>
+
+        <div class="json-free-card" style="grid-column: 1 / -1; margin-top: 0;">
+          <h4>Newsletter (Artículo largo)</h4>
+          <div class="draft-item" style="font-family: inherit; line-height: 1.6;">
+            ${String(root.newsletter?.post || "—").replace(/\n/g, "<br>")}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function formatEditorialBlocks() {
+    const veritasEl = document.getElementById("packageVeritas");
+    const gaboEl = document.getElementById("packageGabo");
+    const mooreEl = document.getElementById("packageMoore");
+    const markReviewEl = document.getElementById("packageMarkReview");
+    const markPublisherEl = document.getElementById("packageMarkPublisher");
+    
+    const finalizedVeritasEl = document.getElementById("finalizedVeritas");
+    const finalizedGaboEl = document.getElementById("finalizedGabo");
+    const finalizedMooreEl = document.getElementById("finalizedMoore");
+
+    if (veritasEl && !veritasEl.dataset.formatted) {
+      const raw = veritasEl.textContent?.trim();
+      const parsed = safeParseJson(raw);
+      if (parsed) {
+        veritasEl.innerHTML = renderVeritas(parsed);
+        veritasEl.dataset.formatted = "1";
+      }
+    }
+    if (gaboEl && !gaboEl.dataset.formatted) {
+      const raw = gaboEl.textContent?.trim();
+      const parsed = safeParseJson(raw);
+      if (parsed) {
+        gaboEl.innerHTML = renderDrafts(parsed);
+        gaboEl.dataset.formatted = "1";
+      }
+    }
+    if (mooreEl && !mooreEl.dataset.formatted) {
+      const raw = mooreEl.textContent?.trim();
+      const parsed = safeParseJson(raw);
+      if (parsed) {
+        mooreEl.innerHTML = renderMoore(parsed);
+        mooreEl.dataset.formatted = "1";
+      }
+    }
+    if (markReviewEl && !markReviewEl.dataset.formatted) {
+      const raw = markReviewEl.textContent?.trim();
+      const parsed = safeParseJson(raw);
+      if (parsed) {
+        markReviewEl.innerHTML = renderMark(parsed);
+        markReviewEl.dataset.formatted = "1";
+      }
+    }
+    if (markPublisherEl && !markPublisherEl.dataset.formatted) {
+      const raw = markPublisherEl.textContent?.trim();
+      const parsed = safeParseJson(raw);
+      if (parsed) {
+        markPublisherEl.innerHTML = renderMark(parsed);
+        markPublisherEl.dataset.formatted = "1";
+      }
+    }
+
+    if (finalizedVeritasEl && !finalizedVeritasEl.dataset.formatted) {
+      const raw = finalizedVeritasEl.textContent?.trim();
+      const parsed = safeParseJson(raw);
+      if (parsed) {
+        finalizedVeritasEl.innerHTML = renderVeritas(parsed);
+        finalizedVeritasEl.dataset.formatted = "1";
+      }
+    }
+    if (finalizedGaboEl && !finalizedGaboEl.dataset.formatted) {
+      const raw = finalizedGaboEl.textContent?.trim();
+      const parsed = safeParseJson(raw);
+      if (parsed) {
+        finalizedGaboEl.innerHTML = renderDrafts(parsed);
+        finalizedGaboEl.dataset.formatted = "1";
+      }
+    }
+    if (finalizedMooreEl && !finalizedMooreEl.dataset.formatted) {
+      const raw = finalizedMooreEl.textContent?.trim();
+      const parsed = safeParseJson(raw);
+      if (parsed) {
+        finalizedMooreEl.innerHTML = renderMoore(parsed);
+        finalizedMooreEl.dataset.formatted = "1";
+      }
+    }
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    formatEditorialBlocks();
+    const observer = new MutationObserver(() => formatEditorialBlocks());
+    ["packageVeritas", "packageGabo", "packageMoore", "packageMarkReview", "packageMarkPublisher", "finalizedVeritas", "finalizedGabo", "finalizedMoore"].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el, { childList: true, subtree: true, characterData: true });
+    });
+  });
+</script>
+</html>
+

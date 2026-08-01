@@ -1,0 +1,67 @@
+%%{init: {'theme':'dark','themeVariables':{'fontSize':'14px'}}}%%
+flowchart TB
+    subgraph PANEL["🖥️ PANEL EDITORIAL — editorial-dashboard-server.mjs (Node :3100)"]
+        UI["editorial-dashboard.html<br/>5 pestañas: Backlog · Guiones · Finalizados · Publisher · Talese"]
+    end
+
+    subgraph SPEC["📜 JotaOS — LO QUE ESTÁ ESCRITO (markdown, no corre)"]
+        MRYOU["🤖 Mr. You — Greenlight 10pts<br/>Prediction Snapshot · Postmortem<br/>❌ CERO ejecución en código"]
+        HERMOSO_SPEC["👑 Hermoso — 'Orquestador'<br/>⚠️ en código = solo utilidades FS"]
+    end
+
+    subgraph PIPE["⚙️ PIPELINE REAL — run_humanos_mvp.py (monolito 403 líneas)"]
+        H["① Hermoso Core<br/>crea 10 carpetas + MEDIA_LIBRARY"]
+        B["② Borges (borges.py + OpenRouter)<br/>⚠️ doble cerebro: también n8n/Tavily"]
+        AC["②' Asset Collector<br/>Wikimedia Commons"]
+        V1{"③ Veritas gate #1<br/>score ≥ 80?"}
+        G["④ Gabo — short/long/newsletter/twitter"]
+        PAUSE["✋ PAUSA HUMANA<br/>script_pending_review<br/>Jota edita el guion"]
+        V2{"④' Veritas gate #2<br/>guion editado ≥ 80?"}
+        CU["⑤ Curie — solo lee registry<br/>⚠️ RAG dormido"]
+        MO["⑥ Moore — storyboard + asset_gaps"]
+        LE["⑦ Leonardo — branding_spec"]
+        MK["⑧ Mark — 11_DIST/ + checklist<br/>🐛 return package_manifest indefinido<br/>🐛 métricas = random.randint()"]
+        DONE(["status: storyboard_done<br/>◄ EL PIPELINE TERMINA AQUÍ"])
+    end
+
+    subgraph MANUAL["✋ MANUAL / FUERA DEL PIPELINE"]
+        REM["Remotion render (npm run render:*)"]
+        CC["CapCut — capcut_packager.py<br/>⚠️ existe pero NO se invoca"]
+        PUB["Publicar en YouTube (manual)"]
+        MET["Cargar métricas 48h a mano (panel)"]
+    end
+
+    subgraph LEARN["🔁 APRENDIZAJE"]
+        TI["Talese immediate retro<br/>✅ delta Gabo vs Jota → EPISODE_REVIEW"]
+        TP["Talese performance retro 48h<br/>❌ ROTO: self.learnings_file indefinido"]
+        CL["creator_learnings.json<br/>⚠️ solo N=1 episodio"]
+        POST["Mr. You Postmortem<br/>❌ no existe"]
+    end
+
+    subgraph DATA["🗄️ ESTADO — split-brain"]
+        SUPA["Supabase: 4 tablas + 5 vistas<br/>⚠️ solo humanos_stories se usa"]
+        DISK["JSON local por episodio<br/>(fuente de verdad real)"]
+    end
+
+    UI -->|spawn python stage=write| H
+    H --> B --> AC --> V1
+    V1 -->|"< 80"| B
+    V1 -->|"≥ 80"| G --> PAUSE
+    PAUSE -->|Guardar y Producir| V2
+    PAUSE -.dispara background.-> TI
+    V2 -->|"< 80"| PAUSE
+    V2 -->|"≥ 80"| CU --> MO --> LE --> MK --> DONE
+    DONE --> REM & CC & PUB
+    PUB --> MET --> TP --> CL
+    MET -.debería.-> POST
+
+    MRYOU -.->|"DEBERÍA ir aquí, no está"| PAUSE
+    SUPA -.->|solo stories| UI
+    DISK --- PIPE
+
+    classDef broken fill:#5a1a1a,stroke:#ff6b6b,color:#fff
+    classDef missing fill:#4a3a1a,stroke:#ffd93d,color:#fff
+    classDef good fill:#1a4a2a,stroke:#6bcb77,color:#fff
+    class MK,TP broken
+    class MRYOU,POST,CC,CU missing
+    class V1,V2,PAUSE good
