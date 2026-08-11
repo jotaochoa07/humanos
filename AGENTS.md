@@ -16,6 +16,7 @@ HUMANOS es una biblioteca de microdramas reales sobre personas extraordinarias q
 2. **Priorizar el factor humano sobre el corporativo:** El foco está en el conflicto existencial, las pérdidas, las decisiones difíciles y la transformación del individuo.
 3. **Optimización del tiempo del fundador:** Toda automatización debe reducir la carga operativa de Jota (voz de HUMANOS y director creativo), dándole control de aprobación pero liberándolo de tareas mecánicas.
 4. **Validación antes de la narración:** Ningún guion puede pasar a Gabo sin antes ser auditado y aprobado por Veritas.
+5. **Ruta de Repositorio Canónica Exclusiva:** El repositorio canónico de producción del proyecto es **`C:\Users\Jota Ochoa\Antigravity\02_Projects\humanos`**. Queda estrictamente prohibido a cualquier agente leer, escribir, compilar o ejecutar scripts en la carpeta muerta/histórica `C:\Users\Jota Ochoa\.gemini\antigravity\scratch\humanos-mvp`. Toda acción de código debe ocurrir exclusivamente en la ruta canónica.
 
 ---
 

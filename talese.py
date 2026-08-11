@@ -20,6 +20,17 @@ def load_env(base_dir: str):
             if key not in os.environ:
                 os.environ[key] = val
 
+def _marca_anteponer(system_prompt: str, agente: str) -> str:
+    """Antepone la constitucion de marca. Tolerante: si el modulo no esta,
+    Talese sigue funcionando pero avisa que opera sin criterio de marca."""
+    try:
+        import marca
+        return marca.anteponer(system_prompt, agente=agente, compacta=True)
+    except ImportError:
+        print(f"[{agente}] AVISO: no encuentro marca.py. Opero SIN constitucion.")
+        return system_prompt
+
+
 class TaleseAgent:
     def __init__(self, base_dir: str = "C:/Users/Jota Ochoa/Antigravity/02_Projects/humanos"):
         self.base_dir = base_dir
@@ -40,6 +51,18 @@ class TaleseAgent:
 
 
     def _get_system_prompt(self) -> str:
+        """Devuelve el system prompt de Talese con la constitucion de marca
+        antepuesta.
+
+        Anadido 2026-08-01: hasta esa fecha ningun agente leia los documentos
+        de marca de Jota. Talese propone aprendizajes que se acumulan en
+        creator_learnings.json y terminan modelando el oficio editorial; si
+        aprende contra un criterio de marca equivocado, el error se compone.
+        Se usa la version compacta porque su prompt ya es extenso.
+        """
+        return _marca_anteponer(self._system_prompt_base(), "Talese")
+
+    def _system_prompt_base(self) -> str:
         if os.path.exists(self.system_prompt_path):
             with open(self.system_prompt_path, "r", encoding="utf-8") as f:
                 return f.read()

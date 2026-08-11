@@ -1,0 +1,471 @@
+[
+  {
+    "episodio": "EP0003_Adidas_vs_Puma",
+    "ruta": "personajes/Adidas_vs_Puma/EP0003_Adidas_vs_Puma",
+    "estado": "REVISION",
+    "puntaje_limpio": 0,
+    "conteo": {
+      "verde": 0,
+      "ambar": 1,
+      "rojo": 0
+    },
+    "assets_registrados": 1,
+    "archivos_en_disco": 1,
+    "huerfanos": [],
+    "detalle": [
+      {
+        "asset_id": "003",
+        "archivo": "ADI_003_ADIDAS_LOGO_ORIGINAL.svg",
+        "fuente": "Wikimedia Commons",
+        "licencia": "sin licencia declarada",
+        "semaforo": "ambar",
+        "nota": "sin licencia declarada: hay que abrir la ficha de origen",
+        "url_ficha": null
+      }
+    ],
+    "monetizado": false
+  },
+  {
+    "episodio": "EP0002_Ehud_Shabtai",
+    "ruta": "personajes/Ehud_Shabtai/EP0002_Ehud_Shabtai",
+    "estado": "APROBADO",
+    "puntaje_limpio": 0,
+    "conteo": {
+      "verde": 0,
+      "ambar": 0,
+      "rojo": 0
+    },
+    "assets_registrados": 0,
+    "archivos_en_disco": 0,
+    "huerfanos": [],
+    "detalle": [],
+    "monetizado": false
+  },
+  {
+    "episodio": "EP0004_Ferruccio_Lamborghini",
+    "ruta": "personajes/Ferruccio_Lamborghini/EP0004_Ferruccio_Lamborghini",
+    "estado": "APROBADO",
+    "puntaje_limpio": 100,
+    "conteo": {
+      "verde": 9,
+      "ambar": 0,
+      "rojo": 0
+    },
+    "assets_registrados": 9,
+    "archivos_en_disco": 9,
+    "huerfanos": [],
+    "detalle": [
+      {
+        "asset_id": "007",
+        "archivo": "FER_007_FERRUCCIO_LAMBORGHINI_EN_SUS_ÚLTIMOS_AÑOS.jpg",
+        "fuente": "Wikimedia Commons",
+        "licencia": "Dominio público",
+        "semaforo": "verde",
+        "nota": "dominio publico: uso libre, atribucion recomendada",
+        "url_ficha": "https://commons.wikimedia.org/wiki/File:Ferruccio_Lamborghini.jpg"
+      },
+      {
+        "asset_id": "FER_01_HOOK_FERRUCCIO_LAMBORGHINI_TRACTOR_",
+        "archivo": "FER_01_HOOK_FERRUCCIO_LAMBORGHINI_TRACTOR_.jpg",
+        "fuente": "generado",
+        "licencia": "propio / generado",
+        "semaforo": "verde",
+        "nota": "material propio o generado: sin derechos de terceros",
+        "url_ficha": null
+      },
+      {
+        "asset_id": "FER_02_SETUP_TRANSICIN_SUAVE_UNA_FOTO_DE_FE",
+        "archivo": "FER_02_SETUP_TRANSICIN_SUAVE_UNA_FOTO_DE_FE.jpg",
+        "fuente": "generado",
+        "licencia": "propio / generado",
+        "semaforo": "verde",
+        "nota": "material propio o generado: sin derechos de terceros",
+        "url_ficha": null
+      },
+      {
+        "asset_id": "FER_03_ESCALATION_SE_MUESTRA_EL_CONTENIDO_DEL_AS",
+        "archivo": "FER_03_ESCALATION_SE_MUESTRA_EL_CONTENIDO_DEL_AS.jpg",
+        "fuente": "generado",
+        "licencia": "propio / generado",
+        "semaforo": "verde",
+        "nota": "material propio o generado: sin derechos de terceros",
+        "url_ficha": null
+      },
+      {
+        "asset_id": "FER_04_CONFLICT_ENZO_FERRARI_DISMISSIVE_MEETIN",
+        "archivo": "FER_04_CONFLICT_ENZO_FERRARI_DISMISSIVE_MEETIN.jpg",
+        "fuente": "generado",
+        "licencia": "propio / generado",
+        "semaforo": "verde",
+        "nota": "material propio o generado: sin derechos de terceros",
+        "url_ficha": null
+      },
+      {
+        "asset_id": "FER_05_PIVOT_PLANO_SECUENCIA_DINMICO_DE_UN_",
+        "archivo": "FER_05_PIVOT_PLANO_SECUENCIA_DINMICO_DE_UN_.jpg",
+        "fuente": "generado",
+        "licencia": "propio / generado",
+        "semaforo": "verde",
+        "nota": "material propio o generado: sin derechos de terceros",
+        "url_ficha": null
+      },
+      {
+        "asset_id": "FER_06_PAYOFF_COMENZAMOS_CON_UNA_TOMA_DINMIC",
+        "archivo": "FER_06_PAYOFF_COMENZAMOS_CON_UNA_TOMA_DINMIC.jpg",
+        "fuente": "generado",
+        "licencia": "propio / generado",
+        "semaforo": "verde",
+        "nota": "material propio o generado: sin derechos de terceros",
+        "url_ficha": null
+      },
+      {
+        "asset_id": "FER_08_SIGN-OFF_RECREACIN_IA_AI_GEN_DEL_PROTOT",
+        "archivo": "FER_08_SIGN-OFF_RECREACIN_IA_AI_GEN_DEL_PROTOT.jpg",
+        "fuente": "generado",
+        "licencia": "propio / generado",
+        "semaforo": "verde",
+        "nota": "material propio o generado: sin derechos de terceros",
+        "url_ficha": null
+      },
+      {
+        "asset_id": "FER_09_OUTRO_PANTALLA_FINAL_DE_HUMANOS_YOUR",
+        "archivo": "FER_09_OUTRO_PANTALLA_FINAL_DE_HUMANOS_YOUR.jpg",
+        "fuente": "generado",
+        "licencia": "propio / generado",
+        "semaforo": "verde",
+        "nota": "material propio o generado: sin derechos de terceros",
+        "url_ficha": null
+      }
+    ],
+    "monetizado": false
+  },
+  {
+    "episodio": "EP0001_Jan_Koum",
+    "ruta": "personajes/Jan_Koum/EP0001_Jan_Koum",
+    "estado": "REVISION",
+    "puntaje_limpio": 0,
+    "conteo": {
+      "verde": 0,
+      "ambar": 2,
+      "rojo": 0
+    },
+    "assets_registrados": 2,
+    "archivos_en_disco": 4,
+    "huerfanos": [
+      "04_IMAGES/JAN_HERO_PORTRAIT.png",
+      "05_VIDEO/hook_jan_koum.mp4"
+    ],
+    "detalle": [
+      {
+        "asset_id": "001",
+        "archivo": "JAN_001_JAN_KOUM_PORTRAIT_2014.jpg",
+        "fuente": "Wikimedia Commons",
+        "licencia": "sin licencia declarada",
+        "semaforo": "ambar",
+        "nota": "sin licencia declarada: hay que abrir la ficha de origen",
+        "url_ficha": null
+      },
+      {
+        "asset_id": "002",
+        "archivo": "JAN_002_WHATSAPP_LOGO_ORIGINAL_VECTOR.svg",
+        "fuente": "Wikimedia Commons",
+        "licencia": "sin licencia declarada",
+        "semaforo": "ambar",
+        "nota": "sin licencia declarada: hay que abrir la ficha de origen",
+        "url_ficha": null
+      }
+    ],
+    "monetizado": false
+  },
+  {
+    "episodio": "EP0001_Margaret_Hamilton",
+    "ruta": "personajes/Margaret_Hamilton/EP0001_Margaret_Hamilton",
+    "estado": "APROBADO",
+    "puntaje_limpio": 0,
+    "conteo": {
+      "verde": 0,
+      "ambar": 0,
+      "rojo": 0
+    },
+    "assets_registrados": 0,
+    "archivos_en_disco": 0,
+    "huerfanos": [],
+    "detalle": [],
+    "monetizado": false
+  },
+  {
+    "episodio": "EP0002_guillermo_rauch",
+    "ruta": "personajes/guillermo_rauch/EP0002_guillermo_rauch",
+    "estado": "APROBADO",
+    "puntaje_limpio": 0,
+    "conteo": {
+      "verde": 0,
+      "ambar": 0,
+      "rojo": 0
+    },
+    "assets_registrados": 0,
+    "archivos_en_disco": 0,
+    "huerfanos": [],
+    "detalle": [],
+    "monetizado": false
+  },
+  {
+    "episodio": "EP0002_Hedy_Lamarr",
+    "ruta": "personajes/hedy_lamarr/EP0002_Hedy_Lamarr",
+    "estado": "REVISION",
+    "puntaje_limpio": 0,
+    "conteo": {
+      "verde": 0,
+      "ambar": 0,
+      "rojo": 0
+    },
+    "assets_registrados": 0,
+    "archivos_en_disco": 43,
+    "huerfanos": [
+      "04_IMAGES/6001963b-0603-4cc5-ac8f-f85c475e91da_1440x900.jpg",
+      "04_IMAGES/Bombshell_HedyLamarr2.png",
+      "04_IMAGES/CHARACTER_hedy_lamarr_video.mp4",
+      "04_IMAGES/cohete2.jpg",
+      "04_IMAGES/cohete_2war.jpg",
+      "04_IMAGES/esposo2.jpg",
+      "04_IMAGES/esposo3.jpg",
+      "04_IMAGES/esposo4.jpg",
+      "04_IMAGES/Esposo_hedy.jpg",
+      "04_IMAGES/George+Antheil.jpg",
+      "04_IMAGES/George+Antheil2.jpg",
+      "04_IMAGES/George_Anth.jpg",
+      "04_IMAGES/hedy-lamarr-2000-908a22cd2d3c490ab20edfa189e95a72.jpg",
+      "04_IMAGES/hedy_lamarr_character.png",
+      "04_IMAGES/hedy_lamarr_character_IMG.png",
+      "04_IMAGES/hedy_lamarr_img10_actriz.jpg",
+      "04_IMAGES/hedy_lamarr_img11.jpg",
+      "04_IMAGES/hedy_lamarr_img12.jpg",
+      "04_IMAGES/hedy_lamarr_img13.jpg",
+      "04_IMAGES/hedy_lamarr_img14.jpg",
+      "04_IMAGES/hedy_lamarr_img15.jpg",
+      "04_IMAGES/hedy_lamarr_img16.jpg",
+      "04_IMAGES/hedy_lamarr_img17.jpg",
+      "04_IMAGES/hedy_lamarr_img18.jpg",
+      "04_IMAGES/hedy_lamarr_img20.jpg",
+      "04_IMAGES/hedy_lamarr_img21.jpg",
+      "04_IMAGES/hedy_lamarr_img22.jpg",
+      "04_IMAGES/hedy_lamarr_img24.jpg",
+      "04_IMAGES/hedy_lamarr_img25.jpg",
+      "04_IMAGES/hedy_lamarr_img3.jpg",
+      "04_IMAGES/hedy_lamarr_img4.jpg",
+      "04_IMAGES/hedy_lamarr_img6.jpg",
+      "04_IMAGES/hedy_lamarr_img7.jpg",
+      "04_IMAGES/hedy_lamarr_img8.jpg",
+      "04_IMAGES/hedy_lamarr_img9.jpg",
+      "04_IMAGES/hedy_lamarr_img_5.png",
+      "04_IMAGES/lamarr_ondas.png",
+      "04_IMAGES/licensed-image.jpg",
+      "04_IMAGES/wifi.jpg",
+      "05_VIDEO/HOOK_Hedy_lamar.mp4",
+      "05_VIDEO/ÉXTASIS La película que escandalizó a Europa  El debut de Hedy Lamarr  Cine pre-code - ChoheCine (720p, h264).mp4",
+      "05_VIDEO/♥️ Hedy Lamar as Jenny 🎬 That Strange Woman  (1946) #shorts #love #valentinesday - Cult Cinema Classics (720p, h264).mp4",
+      "05_VIDEO/🟣HEDY LAMARR💥su Terrible Vida hasta la Ruina Total.9N Día del inventor【BIOGRAFÍAS - Grandes Mujeres】 - MUJERES Lila - BIOGRAFÍAS (480p, h264).mp4"
+    ],
+    "detalle": [],
+    "monetizado": false
+  },
+  {
+    "episodio": "EP0003_James_Dyson",
+    "ruta": "personajes/james_dyson/EP0003_James_Dyson",
+    "estado": "REVISION",
+    "puntaje_limpio": 0,
+    "conteo": {
+      "verde": 0,
+      "ambar": 3,
+      "rojo": 0
+    },
+    "assets_registrados": 3,
+    "archivos_en_disco": 59,
+    "huerfanos": [
+      "04_IMAGES/dyson-dc01.webp",
+      "04_IMAGES/dyson_10.jpg",
+      "04_IMAGES/dyson_11.jpg",
+      "04_IMAGES/dyson_12.jpg",
+      "04_IMAGES/dyson_13.jpg",
+      "04_IMAGES/dyson_14.jpg",
+      "04_IMAGES/dyson_15.jpg",
+      "04_IMAGES/dyson_16.jpg",
+      "04_IMAGES/dyson_17.jpg",
+      "04_IMAGES/dyson_18.jpg",
+      "04_IMAGES/dyson_19.jpg",
+      "04_IMAGES/dyson_2.jpg",
+      "04_IMAGES/dyson_3.jpg",
+      "04_IMAGES/dyson_4.jpg",
+      "04_IMAGES/dyson_5.jpg",
+      "04_IMAGES/dyson_6.jpg",
+      "04_IMAGES/dyson_7.jpg",
+      "04_IMAGES/dyson_8.jpg",
+      "04_IMAGES/dyson_9.jpg",
+      "04_IMAGES/dyson_grok.jpg",
+      "04_IMAGES/dyson_morado.jpg",
+      "04_IMAGES/hook_dyson.jpg",
+      "04_IMAGES/image (1).jpg",
+      "04_IMAGES/JAM_03_ESCALATION_FAILED_PROTOTYPES_IMAGES.jpg",
+      "04_IMAGES/JAM_03_ESCALATION_VACUUM_CLEANER_PROTOTYPES_HIST.jpg",
+      "04_IMAGES/JAM_04_ESCALATION_MACRO_PLANO_DE_UNA_BOLSA_DE_AS.jpg",
+      "04_IMAGES/JAM_05_CONFLICT_INDUSTRIAL_SAW_DUST_SEPARATION.jpg",
+      "04_IMAGES/JAM_06_PIVOT_SERIE_DE_RENDERS_IA_DE_PROTOTI.jpg",
+      "04_IMAGES/JAM_07_CONFLICT_UN_CONTADOR_DIGITAL_MG_MUESTRA.jpg",
+      "04_IMAGES/JAM_07_PIVOT_UN_CONTADOR_DE_NMEROS_MG_AVANZ.jpg",
+      "04_IMAGES/JAM_08_PAYOFF_COMPOSICIN_SPLITSCREEN_O_ANIMA.jpg",
+      "04_IMAGES/JAM_09_PAYOFF_GRFICO_ANIMADO_QUE_MUESTRA_UN_.jpg",
+      "04_IMAGES/JAM_09_PAYOFF_PLANO_DE_ASSET_007_SONRIENDO_R.jpg",
+      "04_IMAGES/JAM_10_LESSON_UN_GRFICO_ANIMADO_MG_MUESTRA_L.jpg",
+      "04_IMAGES/JAM_10_LESSON_VISUALIZACIN_ABSTRACTA_Y_CONCE.jpg",
+      "04_IMAGES/JAM_13_OUTRO_PANTALLA_DE_CIERRE_NEGRA_CON_E.jpg",
+      "04_IMAGES/JAM_13_OUTRO_PANTALLA_FINAL_CON_EL_LOGO_DE_.jpg",
+      "04_IMAGES/JAM_GAP_003_gap_001.jpg",
+      "04_IMAGES/JAM_GAP_005_gap_003.jpg",
+      "04_IMAGES/JAM_GAP_007_gap_003.jpg",
+      "04_IMAGES/prototipo1.jpg",
+      "04_IMAGES/prototipo2.jpg",
+      "04_IMAGES/prototipo3.jpg",
+      "04_IMAGES/prototipo4.jpg",
+      "04_IMAGES/prototipo5.jpg",
+      "05_VIDEO/Dyson Founder The Poor Fatherless Boy Who Turned Dyson Into Billions - Business Stories (720p, h264).mp4",
+      "05_VIDEO/intro_kling_dyson.mp4",
+      "05_VIDEO/JAM_04_CONFLICT_OLD_VACUUM_CLEANER_BAG_CLOGGIN.mp4",
+      "05_VIDEO/JAM_05_CONFLICT_INDUSTRIAL_SAW_MACHINE_OPERATI.mp4",
+      "05_VIDEO/JAM_06_CONFLICT_WORKSHOP_EARLY_PROTOTYPES.mp4",
+      "05_VIDEO/JAM_GAP_004_gap_002.mp4",
+      "05_VIDEO/JAM_YT_REF_02.mp4",
+      "05_VIDEO/JAM_YT_REF_03.mp4",
+      "05_VIDEO/JAM_YT_REF_04.mp4",
+      "05_VIDEO/JAM_YT_REF_05.mp4",
+      "05_VIDEO/JAM_YT_REF_07.mp4",
+      "05_VIDEO/JAM_YT_REF_08.mp4",
+      "05_VIDEO/Mi primer video de ChatCut 720p.mp4"
+    ],
+    "detalle": [
+      {
+        "asset_id": "001",
+        "archivo": "JAM_001_JAMES_DYSON.jpg",
+        "fuente": "Wikimedia Commons",
+        "licencia": "sin licencia declarada",
+        "semaforo": "ambar",
+        "nota": "sin licencia declarada: hay que abrir la ficha de origen",
+        "url_ficha": null
+      },
+      {
+        "asset_id": "002",
+        "archivo": "JAM_002_JAMES_DYSON_EN_LA_SEDE_DE_DYSON.pdf",
+        "fuente": "Sitio oficial corporativo (Archivo de Prensa)",
+        "licencia": "sin licencia declarada",
+        "semaforo": "ambar",
+        "nota": "sin licencia declarada: hay que abrir la ficha de origen",
+        "url_ficha": null
+      },
+      {
+        "asset_id": "006",
+        "archivo": "JAM_006_LOGO_DE_DYSON.pdf",
+        "fuente": "Sitio oficial corporativo",
+        "licencia": "sin licencia declarada",
+        "semaforo": "ambar",
+        "nota": "sin licencia declarada: hay que abrir la ficha de origen",
+        "url_ficha": null
+      }
+    ],
+    "monetizado": false
+  },
+  {
+    "episodio": "EP0002_lisa_su",
+    "ruta": "personajes/lisa_su/EP0002_lisa_su",
+    "estado": "APROBADO",
+    "puntaje_limpio": 0,
+    "conteo": {
+      "verde": 0,
+      "ambar": 0,
+      "rojo": 0
+    },
+    "assets_registrados": 0,
+    "archivos_en_disco": 0,
+    "huerfanos": [],
+    "detalle": [],
+    "monetizado": false
+  },
+  {
+    "episodio": "EP0002_ricardo_semler",
+    "ruta": "personajes/ricardo_semler/EP0002_ricardo_semler",
+    "estado": "APROBADO",
+    "puntaje_limpio": 0,
+    "conteo": {
+      "verde": 0,
+      "ambar": 0,
+      "rojo": 0
+    },
+    "assets_registrados": 0,
+    "archivos_en_disco": 0,
+    "huerfanos": [],
+    "detalle": [],
+    "monetizado": false
+  },
+  {
+    "episodio": "EP0004_Ricardo_Semler",
+    "ruta": "personajes/ricardo_semler/EP0004_Ricardo_Semler",
+    "estado": "APROBADO",
+    "puntaje_limpio": 0,
+    "conteo": {
+      "verde": 0,
+      "ambar": 0,
+      "rojo": 0
+    },
+    "assets_registrados": 0,
+    "archivos_en_disco": 0,
+    "huerfanos": [],
+    "detalle": [],
+    "monetizado": false
+  },
+  {
+    "episodio": "EP0002_sara_blakely",
+    "ruta": "personajes/sara_blakely/EP0002_sara_blakely",
+    "estado": "APROBADO",
+    "puntaje_limpio": 0,
+    "conteo": {
+      "verde": 0,
+      "ambar": 0,
+      "rojo": 0
+    },
+    "assets_registrados": 0,
+    "archivos_en_disco": 0,
+    "huerfanos": [],
+    "detalle": [],
+    "monetizado": false
+  },
+  {
+    "episodio": "EP0002_tobias_lutke",
+    "ruta": "personajes/tobias_lutke/EP0002_tobias_lutke",
+    "estado": "APROBADO",
+    "puntaje_limpio": 0,
+    "conteo": {
+      "verde": 0,
+      "ambar": 0,
+      "rojo": 0
+    },
+    "assets_registrados": 0,
+    "archivos_en_disco": 0,
+    "huerfanos": [],
+    "detalle": [],
+    "monetizado": false
+  },
+  {
+    "episodio": "EP0002_yvon_chouinard",
+    "ruta": "personajes/yvon_chouinard/EP0002_yvon_chouinard",
+    "estado": "APROBADO",
+    "puntaje_limpio": 0,
+    "conteo": {
+      "verde": 0,
+      "ambar": 0,
+      "rojo": 0
+    },
+    "assets_registrados": 0,
+    "archivos_en_disco": 0,
+    "huerfanos": [],
+    "detalle": [],
+    "monetizado": false
+  }
+]

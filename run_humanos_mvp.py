@@ -15,6 +15,7 @@ from asset_collector import AssetCollector
 from mark import MarkAgent
 from leonardo import LeonardoAgent
 from scripts.youtube_searcher import search_episode_videos
+from humanizer_agent import HumanizerAgent
 
 def stripMarkdownTitle(text: str) -> str:
     """Elimina títulos markdown como '# Guion Corto: Name' del inicio del texto."""
@@ -99,13 +100,27 @@ def run_mvp(character_name: str, episode_focus: str, themes: list, episode_num: 
             character_name, research_json, timeline_json, approved_claims_json
         )
 
-        # Persistir outputs de Gabo en 02_SCRIPT
+        # Persistir outputs de Gabo crudos (raw)
+        hermoso.write_json(os.path.join(ep_path, "02_SCRIPT", "scripts_raw.json"), scripts_json)
+        hermoso.write_markdown(os.path.join(ep_path, "02_SCRIPT", "script_short_raw.md"), script_short_md)
+        hermoso.write_markdown(os.path.join(ep_path, "02_SCRIPT", "script_long_raw.md"), script_long_md)
+        hermoso.write_markdown(os.path.join(ep_path, "02_SCRIPT", "newsletter_raw.md"), newsletter_md)
+        hermoso.write_markdown(os.path.join(ep_path, "02_SCRIPT", "twitter_thread_raw.md"), twitter_thread_md)
+        hermoso.log_agent_run(ep_path, "Gabo", "success", gabo_logs)
+
+        # 4.5. Humanizer: Pulido de textos y alineación de voz
+        humanizer = HumanizerAgent(client)
+        scripts_json, script_short_md, script_long_md, newsletter_md, twitter_thread_md, humanizer_logs = humanizer.execute_humanization(
+            character_name, scripts_json
+        )
+
+        # Persistir outputs humanizados finales en 02_SCRIPT
         hermoso.write_json(os.path.join(ep_path, "02_SCRIPT", "scripts.json"), scripts_json)
         hermoso.write_markdown(os.path.join(ep_path, "02_SCRIPT", "script_short.md"), script_short_md)
         hermoso.write_markdown(os.path.join(ep_path, "02_SCRIPT", "script_long.md"), script_long_md)
         hermoso.write_markdown(os.path.join(ep_path, "02_SCRIPT", "newsletter.md"), newsletter_md)
         hermoso.write_markdown(os.path.join(ep_path, "02_SCRIPT", "twitter_thread.md"), twitter_thread_md)
-        hermoso.log_agent_run(ep_path, "Gabo", "success", gabo_logs)
+        hermoso.log_agent_run(ep_path, "Humanizer", "success", humanizer_logs)
         
         hermoso.update_status_local(ep_path, "script_pending_review")
         print(f"\n[Fase Escritura Completada] Deteniendo pipeline para revisión manual del editor.")
@@ -275,6 +290,39 @@ def run_mvp(character_name: str, episode_focus: str, themes: list, episode_num: 
         hermoso.write_markdown(os.path.join(ep_path, "04_IMAGES", "branding_spec.md"), branding_spec_md)
         hermoso.log_agent_run(ep_path, "Leonardo", "success", leonardo_logs)
         
+        # 5.9 Gate de derechos: audita la procedencia de TODO el material.
+        #
+        # Va aqui, despues de que todos los agentes terminaron de traer y
+        # generar assets, y antes del paquete de produccion. No usa LLM: una
+        # licencia es un dato categorico y meter un modelo a opinar sobre
+        # derechos agregaria alucinacion a una decision legal.
+        #
+        # Rechaza si hay material inusable. Solo avisa si hay material sin
+        # verificar o sin registrar, porque bloquear el pipeline por eso
+        # frenaria episodios que solo necesitan que alguien mire una ficha.
+        try:
+            from derechos import auditar_episodio, imprimir
+            print("[Derechos] Auditando procedencia y licencias del material...")
+            auditoria = auditar_episodio(ep_path, monetizado=False)
+            imprimir(auditoria)
+            hermoso.write_json(
+                os.path.join(ep_path, "01_RESEARCH", "auditoria_derechos.json"),
+                auditoria)
+            hermoso.log_agent_run(
+                ep_path, "Derechos",
+                "success" if auditoria["estado"] != "RECHAZADO" else "blocked",
+                f"Veredicto {auditoria['estado']} ({auditoria['puntaje_limpio']}% limpio). "
+                f"verde {auditoria['conteo']['verde']}, ambar {auditoria['conteo']['ambar']}, "
+                f"rojo {auditoria['conteo']['rojo']}, sin registrar {len(auditoria['huerfanos'])}.")
+
+            if auditoria["estado"] == "RECHAZADO":
+                print("[Derechos - Quality Gate] RECHAZADO: hay material que no se puede usar.")
+                print("[Hermoso Core] Episodio detenido en 'assets_pending_rights'.")
+                hermoso.update_status_local(ep_path, "assets_pending_rights")
+                return
+        except Exception as e:
+            print(f"[ERROR] El gate de derechos no pudo correr: {e}")
+
         # 6. Generar ASSET_COLLECTION_REPORT.md en 01_RESEARCH
         print("[Asset Collector] Generando reporte de colección e ingesta...")
         total_assets = len(asset_manifest.get("assets", []))

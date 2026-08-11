@@ -607,6 +607,60 @@ async function handleTaleseLab(res) {
 }
 
 /**
+ * Análisis — cierre editorial de un episodio ya locutado.
+ *
+ * El gate es la existencia de storyboard_locutado.json: ese archivo solo
+ * existe si Moore ya corrió sobre la locución grabada de verdad, no sobre un
+ * borrador. Antes de eso no hay pestaña que mostrar — es justo lo que pidió
+ * Jota: "después de que yo grabe la versión manual corregida".
+ *
+ * Lee de disco, no ejecuta nada. Los nombres de archivo (veritas_audit_
+ * locutado_final.json, storyboard_locutado.json, asset_gaps_locutado.json,
+ * EPISODE_LEARNING_v3_vs_locutado.json) son genéricos por episodio; los
+ * research_acto*.json son ad-hoc (hoy solo existe research_acto4_turin.json,
+ * de Lamborghini) y se leen todos los que haya con ese prefijo.
+ */
+async function handleAnalisisLab(res) {
+  const personasRoot = getPersonajesRoot();
+  const episodes = [];
+
+  if (existsSync(personasRoot)) {
+    for (const protagonistFolder of readdirSync(personasRoot, { withFileTypes: true }).filter((d) => d.isDirectory())) {
+      const protagonistRoot = path.join(personasRoot, protagonistFolder.name);
+      for (const episodeDir of readdirSync(protagonistRoot, { withFileTypes: true }).filter((d) => d.isDirectory() && d.name.startsWith("EP"))) {
+        const episodePath = path.join(protagonistRoot, episodeDir.name);
+        const researchDir = path.join(episodePath, "01_RESEARCH");
+        const storyDir = path.join(episodePath, "03_STORYBOARD");
+        const storyboardFile = path.join(storyDir, "storyboard_locutado.json");
+        if (!existsSync(storyboardFile)) continue; // sin locución cerrada, sin pestaña
+
+        const investigacionesActo = [];
+        if (existsSync(researchDir)) {
+          for (const f of readdirSync(researchDir).filter((n) => n.startsWith("research_acto") && n.endsWith(".json"))) {
+            const data = readJsonIfExists(path.join(researchDir, f), null);
+            if (data) investigacionesActo.push({ archivo: f, ...data });
+          }
+        }
+
+        episodes.push({
+          protagonistName: protagonistFolder.name.replaceAll("_", " "),
+          episodeDir: episodeDir.name,
+          episodePath,
+          storyboard: readJsonIfExists(storyboardFile, null),
+          gaps: readJsonIfExists(path.join(storyDir, "asset_gaps_locutado.json"), []),
+          veritas: readJsonIfExists(path.join(researchDir, "veritas_audit_locutado_final.json"), null),
+          approvedClaims: readJsonIfExists(path.join(researchDir, "approved_claims.json"), null),
+          investigacionesActo,
+          talese: readJsonIfExists(path.join(episodePath, "EPISODE_LEARNING_v3_vs_locutado.json"), null),
+        });
+      }
+    }
+  }
+
+  sendJson(res, 200, { episodes: episodes.sort((a, b) => b.episodeDir.localeCompare(a.episodeDir)) });
+}
+
+/**
  * Sala de Control (Dashboard V2) — AGREGADOR DE SOLO LECTURA.
  *
  * No escribe en disco ni en Supabase. Reutiliza el estado que ya existe
@@ -807,6 +861,7 @@ const server = createServer(async (req, res) => {
     if (req.method === "GET" && url.pathname === "/api/review-episode") return void await handleReviewEpisode(req, res, url);
     if (req.method === "GET" && url.pathname === "/api/get-metrics") return void await handleGetMetrics(req, res, url);
     if (req.method === "GET" && url.pathname === "/api/talese-lab") return void await handleTaleseLab(res);
+    if (req.method === "GET" && url.pathname === "/api/analisis-lab") return void await handleAnalisisLab(res);
     if (req.method === "GET" && url.pathname === "/api/control-room") return void await handleControlRoom(res);
     if (req.method === "GET" && url.pathname === "/api/image") {
       const imgPath = url.searchParams.get("path");
@@ -824,6 +879,95 @@ const server = createServer(async (req, res) => {
       }
       return sendJson(res, 404, { error: "Video not found" });
     }
+
+    // --- YouTube OAuth (solo lectura) --------------------------------
+    // Anadido 2026-08-01. Aditivo: cuatro rutas nuevas, ninguna existente
+    // modificada. Si el modulo falla, el resto del panel sigue funcionando.
+    if (req.method === "GET" && url.pathname === "/api/auth/youtube") {
+      try {
+        const { urlDeConsentimiento } = await import("./youtube_oauth.mjs");
+        res.writeHead(302, { Location: urlDeConsentimiento() });
+        return void res.end();
+      } catch (e) {
+        return sendJson(res, 500, { error: String(e.message || e) });
+      }
+    }
+    if (req.method === "GET" && url.pathname === "/api/auth/youtube/callback") {
+      const code = url.searchParams.get("code");
+      const errorGoogle = url.searchParams.get("error");
+      if (errorGoogle) {
+        res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+        return void res.end(
+          `<body style="background:#090909;color:#fff;font-family:Inter,sans-serif;padding:48px">
+           <h2 style="color:#01C9C7">Autorizacion cancelada</h2>
+           <p>Google devolvio: <code>${errorGoogle}</code></p>
+           <p><a style="color:#01C9C7" href="/">Volver al panel</a></p></body>`
+        );
+      }
+      try {
+        const { canjearCodigo, estado } = await import("./youtube_oauth.mjs");
+        await canjearCodigo(__dirname, code, url.searchParams.get("state"));
+        const st = await estado(__dirname);
+        res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+        return void res.end(
+          `<body style="background:#090909;color:#fff;font-family:Inter,sans-serif;padding:48px">
+           <h2 style="color:#01C9C7">Canal conectado</h2>
+           <p><b>${st.canal || "?"}</b> — ${st.suscriptores || "?"} suscriptores · ${st.vistas_totales || "?"} vistas</p>
+           <p style="color:#A7A7A7">Permisos de solo lectura. Este sistema no puede publicar ni modificar nada del canal.</p>
+           <p><a style="color:#01C9C7" href="/">Volver al panel</a></p></body>`
+        );
+      } catch (e) {
+        return sendJson(res, 500, { error: String(e.message || e) });
+      }
+    }
+    // Insumos de produccion (Mr. You). Distincion de Jota, 2026-08-01:
+    // los datos alimentan el OFICIO, no la direccion editorial.
+    if (req.method === "GET" && url.pathname === "/api/mr-you/insumos") {
+      try {
+        const py = spawn(process.env.HUMANOS_PY || "python",
+                         ["insumos_produccion.py"], { cwd: __dirname });
+        let salida = "", error = "";
+        py.stdout.on("data", (d) => (salida += d));
+        py.stderr.on("data", (d) => (error += d));
+        py.on("close", () => {
+          try {
+            sendJson(res, 200, JSON.parse(salida));
+          } catch {
+            sendJson(res, 200, {
+              disponible: false,
+              motivo: error.slice(0, 300) || "insumos_produccion.py no devolvio JSON",
+              insumos: [],
+            });
+          }
+        });
+        return;
+      } catch (e) {
+        return sendJson(res, 200, {
+          disponible: false, motivo: String(e.message || e), insumos: [],
+        });
+      }
+    }
+
+    if (req.method === "GET" && url.pathname === "/api/youtube/status") {
+      try {
+        const { estado } = await import("./youtube_oauth.mjs");
+        return void sendJson(res, 200, await estado(__dirname));
+      } catch (e) {
+        return sendJson(res, 200, { conectado: false, motivo: String(e.message || e) });
+      }
+    }
+    if (req.method === "GET" && url.pathname === "/api/youtube/metrics") {
+      try {
+        const { metricasPorVideo } = await import("./youtube_oauth.mjs");
+        return void sendJson(res, 200, await metricasPorVideo(__dirname, {
+          desde: url.searchParams.get("desde") || undefined,
+          hasta: url.searchParams.get("hasta") || undefined,
+        }));
+      } catch (e) {
+        return sendJson(res, 200, { error: String(e.message || e), videos: [] });
+      }
+    }
+
     if (req.method === "POST" && url.pathname === "/api/start") return void await handleStart(req, res);
     if (req.method === "POST" && url.pathname === "/api/create-and-start") return void await handleCreateAndStart(req, res);
     if (req.method === "POST" && url.pathname === "/api/produce") return void await handleProduce(req, res);
@@ -839,7 +983,46 @@ const server = createServer(async (req, res) => {
 });
 
 
-server.listen(PORT, "127.0.0.1", () => {
-  console.log(`HUMANOS Editorial Dashboard running at http://127.0.0.1:${PORT}`);
-});
+// Escucha en las dos formas del loopback. En Windows `localhost` puede
+// resolver a ::1 (IPv6) mientras el server esta atado solo a 127.0.0.1,
+// y entonces la conexion se rechaza sin explicacion. Atar ambas evita ese
+// falso negativo. Sigue siendo solo local: no se expone a la red.
+const HOSTS = ["127.0.0.1", "::1"];
+let escuchando = 0;
+
+function banner() {
+  console.log("");
+  console.log("=".repeat(66));
+  console.log(` HUMANOS Editorial Dashboard  ->  http://localhost:${PORT}`);
+  console.log("=".repeat(66));
+  console.log(` Build cargado: ${new Date().toISOString()}`);
+  console.log(" Rutas de YouTube OAuth activas en ESTE proceso:");
+  console.log(`   GET  http://localhost:${PORT}/api/auth/youtube`);
+  console.log(`   GET  http://localhost:${PORT}/api/auth/youtube/callback`);
+  console.log(`   GET  http://localhost:${PORT}/api/youtube/status`);
+  console.log(`   GET  http://localhost:${PORT}/api/youtube/metrics`);
+  console.log("");
+  console.log(" Si no ves estas 4 lineas, estas corriendo un proceso viejo:");
+  console.log(" cerra esta ventana y volve a abrir el .bat.");
+  console.log("=".repeat(66));
+  console.log("");
+}
+
+for (const host of HOSTS) {
+  const s = host === HOSTS[0] ? server : createServer(server.listeners("request")[0]);
+  s.listen(PORT, host, () => {
+    if (++escuchando === 1) banner();
+  }).on("error", (e) => {
+    if (e.code === "EADDRINUSE" && host === "127.0.0.1") {
+      console.error("");
+      console.error("!".repeat(66));
+      console.error(`!! El puerto ${PORT} ya esta ocupado.`);
+      console.error("!! Hay OTRO servidor corriendo, probablemente con codigo viejo.");
+      console.error("!! Cerra esa ventana (o: taskkill /F /IM node.exe) y reintenta.");
+      console.error("!".repeat(66));
+      process.exit(1);
+    }
+    // ::1 puede no existir en algunos equipos. No es un fallo: se ignora.
+  });
+}
 
