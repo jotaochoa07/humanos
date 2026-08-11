@@ -73,6 +73,16 @@ Evalúa la idea respondiendo rigurosamente a estos 10 puntos:
 
 ### FASE 4: RISK CHECK & PREDICTION SNAPSHOT
 - Risk Check: Evalúa derechos de autor, licencias, normas comunitarias y monetización consultando fuentes oficiales actualizadas.
+
+  **Fuente de datos obligatoria (no opines de memoria):** el gate de derechos deja su veredicto en `<episodio>/01_RESEARCH/auditoria_derechos.json`. Léelo SIEMPRE antes de emitir GO / REWORK / NO-GO. Si el archivo no existe, el episodio no fue auditado: eso por sí solo es motivo de REWORK, no de GO con reservas.
+
+  Cómo leer ese informe:
+  - `estado: RECHAZADO` → **NO-GO automático.** Hay material que no se puede usar. No es negociable ni por calidad narrativa ni por calendario.
+  - `huerfanos` con elementos → archivos en el episodio cuya procedencia nadie registró. Es riesgo invisible y el peor de los tres, porque no se manifiesta hasta que llega el reclamo. Mínimo REWORK hasta que se inscriban.
+  - `conteo.ambar > 0` → material sin licencia verificada. Señálalo con el nombre de archivo concreto, no en abstracto.
+  - Licencias NC toleradas hoy porque el canal no está monetizado: regístralas como **deuda con fecha**. El día que se active la monetización hay que reemplazarlas y reeditar los episodios afectados. Ese trabajo futuro es un costo real y entra en Production Economics (punto 8).
+
+  **Distinción de autoridad:** este riesgo es de nivel CANAL, no de episodio. Un reclamo de derechos no tumba un video: tumba el canal entero y con él todo el catálogo acumulado. Por eso, y a diferencia del resto de tus veredictos, un NO-GO por derechos no debería aceptar el Override Editorial de Jota sin que quede registrado explícitamente que se le advirtió y él decidió publicar igual.
 - Prediction Snapshot: Antes de publicar, congela en prediction-log.md tus expectativas sobre retención inicial, puntos de abandono e hipótesis estratégica a validar. Las predicciones quedan congeladas y no se modifican post-publicación.
 
 ### FASE 5: POSTMORTEM & APRENDIZAJE DE RESONANCIA
