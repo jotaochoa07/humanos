@@ -160,11 +160,28 @@ class AssetCollector:
                 json.dump(metadata, f, ensure_ascii=False, indent=2)
 
             # 6. Registrar en el registro global del episodio
+            #
+            # La licencia y la ficha de origen VIAJAN AL REGISTRO, no solo al
+            # sidecar de metadatos. Antes se quedaban en el sidecar y el
+            # registro solo guardaba hash y ruta: eso hacia imposible auditar
+            # los derechos de un episodio sin abrir un archivo por asset, y
+            # por eso el Risk Check de Mr. You nunca fue ejecutable.
+            try:
+                from derechos import clasificar
+                semaforo, nota = clasificar(asset.get("license"))
+            except Exception:
+                semaforo, nota = "ambar", "sin clasificar"
+
             self.registry.append({
                 "asset_id": asset.get("asset_id"),
                 "hash": file_hash,
                 "source": asset.get("source"),
-                "storage_path": local_file_path
+                "storage_path": local_file_path,
+                "licencia": asset.get("license") or "sin licencia declarada",
+                "semaforo": semaforo,
+                "nota_licencia": nota,
+                "url_ficha": url,
+                "registrado_en": datetime_str(),
             })
             self._save_registry()
 
