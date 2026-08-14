@@ -1,0 +1,128 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "subject": "Camilo Cifuentes",
+  "recovery_gate": "GATE 2B",
+  "recovered_at": "2026-08-12T10:45:19+00:00",
+  "scope": "controlled recovery; orchestrator-browsed sources supplied to recovery writer; no media download or platform scraping",
+  "claims": [
+    {
+      "claim_id": "RC001",
+      "claim": "The official Linktree titled “Camilo Cifuentes” is the recovery identity anchor and links the supplied Facebook and Instagram URLs; it also states linked social accounts include Facebook, Instagram, TikTok and YouTube.",
+      "status": "RECOVERED",
+      "evidence_class": "CAMILO_SHOWED",
+      "identity_match": "strong",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "provenance": "S01 primary anchor; S04 located but unfetched",
+      "rights_status": "URL reference only",
+      "confidence": "high",
+      "usage": "May be used with account-focused wording; do not infer legal name."
+    },
+    {
+      "claim_id": "RC002",
+      "claim": "Telecafé’s 8 May 2025 press release says Telecafé and Camilo Cifuentes held an activity at CDI Solferino in Manizales that benefited 128 children.",
+      "status": "RECOVERED",
+      "evidence_class": "OFFICIAL_SOURCE",
+      "identity_match": "consistent",
+      "source_ids": [
+        "S06"
+      ],
+      "provenance": "Primary institutional press release",
+      "rights_status": "URL reference only",
+      "confidence": "high",
+      "usage": "May be used as attributed institutional statement."
+    },
+    {
+      "claim_id": "RC003",
+      "claim": "A Telecafé platform page lists a related Episode 4 identifying Camilo Cifuentes as a digital-content creator helping people in need in Manizales, Caldas.",
+      "status": "RECOVERED_WITH_LIMIT",
+      "evidence_class": "OFFICIAL_SOURCE",
+      "identity_match": "consistent",
+      "source_ids": [
+        "S05"
+      ],
+      "provenance": "Primary institutional reference-only listing; actual episode may be inaccessible",
+      "rights_status": "URL reference only",
+      "confidence": "moderate",
+      "usage": "Use as “Telecafé’s related-episode listing identifies…”; do not assert unseen episode content."
+    },
+    {
+      "claim_id": "RC004",
+      "claim": "El País reported that he buys from vendors in Manizales, Medellín and the Eje Cafetero, pays above value and redistributes goods; it also reported the phrase “Yo afán no tengo.”",
+      "status": "RECOVERED_WITH_LIMIT",
+      "evidence_class": "MEDIA_REPORTED",
+      "identity_match": "consistent",
+      "source_ids": [
+        "S08"
+      ],
+      "provenance": "Single secondary report",
+      "rights_status": "URL reference only",
+      "confidence": "moderate",
+      "usage": "Attribute explicitly to El País; do not state as directly verified."
+    },
+    {
+      "claim_id": "RC005",
+      "claim": "Vanguardia and Infobae reported that the activity began in December 2024 after helping Alejo, a disabled candy seller; they are secondary corroboration only.",
+      "status": "RECOVERED_WITH_LIMIT",
+      "evidence_class": "MEDIA_REPORTED",
+      "identity_match": "consistent",
+      "source_ids": [
+        "S09",
+        "S10"
+      ],
+      "provenance": "Two secondary reports; original source not supplied",
+      "rights_status": "URL reference only",
+      "confidence": "moderate",
+      "usage": "Use qualified attribution; do not present 200,000 COP or donation details as primary proof."
+    },
+    {
+      "claim_id": "RC006",
+      "claim": "La Kalle/Bluradio reported that in a Telecafé interview he said people use his name/videos for scams and that he does not ask for money.",
+      "status": "RECOVERED_WITH_LIMIT",
+      "evidence_class": "MEDIA_REPORTED",
+      "identity_match": "consistent",
+      "source_ids": [
+        "S11"
+      ],
+      "provenance": "Secondary report of direct statement; original not located",
+      "rights_status": "URL reference only",
+      "confidence": "moderate",
+      "usage": "Attribute to the outlet and retain uncertainty."
+    },
+    {
+      "claim_id": "RC007",
+      "claim": "Media outlets reported Nicolás Arrieta’s criticism of Camilo Cifuentes; the criticism is a reported allegation/opinion, not an established fact.",
+      "status": "RECOVERED_WITH_LIMIT",
+      "evidence_class": "MEDIA_REPORTED",
+      "identity_match": "not_applicable",
+      "source_ids": [
+        "S12",
+        "S13"
+      ],
+      "provenance": "Secondary reports; original video not independently verified",
+      "rights_status": "URL reference only",
+      "confidence": "moderate",
+      "usage": "Only describe that criticism was reported."
+    },
+    {
+      "claim_id": "RC008",
+      "claim": "El Universo reported a 30 Mar 2026 Pereira family case involving J Balvin and Camilo; Chica Noticias reported an alleged 36M COP-plus-equipment vendor case on 6 May 2026. Both remain leads, not primary-confirmed cases.",
+      "status": "LEADS_ONLY",
+      "evidence_class": "MEDIA_REPORTED",
+      "identity_match": "partial",
+      "source_ids": [
+        "S14",
+        "S15"
+      ],
+      "provenance": "Secondary reporting only",
+      "rights_status": "URL reference only",
+      "confidence": "low",
+      "usage": "Do not use as factual case studies without primary confirmation."
+    }
+  ]
+}

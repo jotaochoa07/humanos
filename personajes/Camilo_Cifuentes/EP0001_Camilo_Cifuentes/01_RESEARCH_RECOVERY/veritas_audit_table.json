@@ -1,0 +1,45 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "subject": "Camilo Cifuentes",
+  "recovery_gate": "GATE 2B",
+  "recovered_at": "2026-08-12T10:45:19+00:00",
+  "scope": "controlled recovery; orchestrator-browsed sources supplied to recovery writer; no media download or platform scraping",
+  "gate_authority": "deterministic source-first recovery audit",
+  "gate_status": "FAIL",
+  "rows": [
+    {
+      "dimension": "Identity",
+      "recovery_audit": "PASS (cross-account anchor only; no legal-name inference)",
+      "veritas_shadow": "not authoritative",
+      "effect": "No approval effect"
+    },
+    {
+      "dimension": "Institutional event",
+      "recovery_audit": "PASS for attributed 8 May 2025 release statement",
+      "veritas_shadow": "not authoritative",
+      "effect": "No approval effect"
+    },
+    {
+      "dimension": "Earthquake linkage",
+      "recovery_audit": "FAIL — UNKNOWN / NOT_LOCATED",
+      "veritas_shadow": "not authoritative",
+      "effect": "Blocks GATE 2"
+    },
+    {
+      "dimension": "Secondary claims",
+      "recovery_audit": "LIMITED — MEDIA_REPORTED/lead only",
+      "veritas_shadow": "not authoritative",
+      "effect": "Cannot establish core evidence"
+    },
+    {
+      "dimension": "Overall gate",
+      "recovery_audit": "FAIL",
+      "veritas_shadow": {
+        "status": "UNAVAILABLE",
+        "score": null
+      },
+      "effect": "GATE 2 remains FAIL regardless of shadow output"
+    }
+  ]
+}

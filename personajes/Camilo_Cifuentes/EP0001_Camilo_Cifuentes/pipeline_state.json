@@ -1,0 +1,20 @@
+{
+  "status": "script_pending_review",
+  "last_updated": "2026-08-12 13:08:46",
+  "episode_id": "EP0001_Camilo_Cifuentes",
+  "input_mode": "recovery",
+  "research_source": "01_RESEARCH_RECOVERY",
+  "forbidden_sources": [
+    "01_RESEARCH"
+  ],
+  "gate_2d": "PASS",
+  "execution_authorized": true,
+  "authorization_scope": "GATE_3_WRITE_ONLY",
+  "script_source": "recovery_only",
+  "legacy_research_excluded": true,
+  "script_origin": "human_editorial",
+  "creative_status": "approved_by_author",
+  "research_mode": "recovery",
+  "editorial_master_path": "02_SCRIPT/editorial_master.md",
+  "editorial_master_sha256": "90ffd5d4a5b4477e28e5a23415e20064defee208b41d51c937986fb50b9af5b3"
+}

@@ -1,45 +1,149 @@
-# Guion Largo (V2 Documental): Ferruccio Lamborghini
+# Guion Largo: Ferruccio Lamborghini
+**Canónico — versión locutada, 2026-08-06.** Fuente de verdad: `Claude_Cowork\GUIONES\Lamborghini largo..md` (texto que Jota grabó en `06_AUDIO\lamborghini_voz-off-termindo_wav.wav`). Reemplaza a `script_long_v3_optimizado.md` porque la edición manual del panel no se guardó (bug de `saveAct`, corregido).
+Assets referenciados: los `FER_XX` existen en `04_IMAGES/`. Los `GAP_XXX` son los huecos que Moore dejó marcados — siguen pendientes.
 
-# Acto 1: Gancho y Paradoja
+---
 
-[IMAGEN: Ferruccio Lamborghini en traje, mirando desafiante.]
+### Acto 1 — La afrenta de Maranello
 
-¿Qué sucede cuando el orgullo de un industrial choca de frente con la soberbia de un mito? ¿Cómo termina un hombre que amasó una fortuna construyendo tractores, jurando humillar al rey de los deportivos de lujo?
+`[IMAGEN: FER_01_HOOK — Ferruccio junto a un tractor Lamborghini]`
 
-Ferruccio Lamborghini. Un nombre que hoy evoca potencia, diseño y velocidad. Pero su camino no empezó en las pistas, sino en los campos de Italia después de la guerra. Imagina: Europa en ruinas, pero la necesidad de reconstruir crea oportunidades. Y Ferruccio, con ingenio y audacia, vio esa oportunidad en los tractores. [IMAGEN: Tractores Lamborghini antiguos en un campo.] Fundó Lamborghini Trattori en 1948, usando piezas de tanques y camiones de guerra para crear maquinaria agrícola robusta y accesible. Fue un éxito arrollador. Luego, quemadores, sistemas de calefacción... Lamborghini crecía, y con él, el bolsillo y el ego de Ferruccio.
+Ferruccio Lamborghini ya era rico. Muy.
 
-[IMAGEN: Un Ferrari 250 GT clásico.]
+Fabricaba tractores. Los mejores de Italia, según muchos. Después de la guerra, con Europa en escombros, alguien tenía que arar la reconstrucción. Ferruccio vio eso antes que otros: compró piezas de tanques y camiones militares sobrantes, los convirtió en maquinaria agrícola, y los vendió por miles.
 
-Ferruccio se sentía intocable, un igual a los grandes industriales. Y como muchos hombres de su talla, coleccionaba autos. Su elección: un Ferrari 250 GT. Pero la máquina, lejos de ser perfecta, empezó a darle problemas. El embrague, en particular. Harto del fallo, decidió visitar directamente al Commendatore, a Enzo Ferrari, en su cuartel general de Módena, en 1962. Esperaba una conversación entre iguales, un intercambio técnico. [IMAGEN: Exterior de la fábrica de Ferrari en Maranello en los años 60.] Lo que recibió fue una bofetada al orgullo.
+`[IMAGEN: GAP_001 — cadena de montaje de tractores, Italia posguerra]`
 
-# Acto 2: Construcción y Obsesión
+Luego vinieron los quemadores, los sistemas de calefacción. El hombre hacía dinero con todo lo que tocaba.
 
-[IMAGEN: Primer plano de una cara de Ferruccio, con expresión tensa o furiosa.]
+Pero el Midas italiano tenía un capricho costoso: los Ferrari.
 
-La respuesta de Enzo Ferrari fue lapidaria y despectiva. Según los relatos, le dijo algo así como: "Un fabricante de tractores no puede criticar a un Ferrari. Dedícate a tus tractores". ¡Zas! El golpe fue directo al corazón de Ferruccio. No era solo una crítica automotriz; era un insulto a su persona, a su éxito, a su capacidad. Ferrari lo había menospreciado por venir del mundo de la maquinaria agrícola.
+`[IMAGEN: FER_02_SETUP — Ferrari 250 GT]`
 
-[IMAGEN: Ferruccio Lamborghini mirando fijamente.]
+Compró varios. Un 250 GT entre ellos. Y con cada uno, siempre ocurría lo mismo. El embrague fallaba. Una vibración que no debía estar ahí. Un ruido que un hombre, que fabricaba máquinas por oficio, no podía ignorar.
 
-Ese desprecio caló hondo. Alimentó una determinación feroz. Lamborghini no solo quería arreglar su auto; quería demostrarle a Ferrari, y al mundo entero, que él podía construir algo infinitamente mejor. No solo un auto, sino un 'verdadero' auto deportivo. La obsesión nació ahí, en esa humillación. El objetivo era claro: superar a Ferrari, aplastar su arrogancia con ingeniería superior y diseño deslumbrante. [SONIDO: Rugido de motor de Lamborghini.]
+Entonces hizo lo que haría cualquier mecánico que entiende cómo funciona un motor. En 1962 se fue a Maranello a hablar directamente con Enzo Ferrari. De fabricante a fabricante.
 
-Se volcó en el proyecto con la misma fiereza con la que había construido su imperio de tractores. Fundó Automobili Lamborghini en 1963. Y para asegurarse de que la calidad fuera la máxima, hizo algo audaz: contrató a algunos de los mejores ingenieros de Ferrari, como Gian Paolo Dallara y Bob Wallace. ¡Ingenieros del rival, ahora trabajando para humillarlo!
+`[IMAGEN: FER_04_CONFLICT — el desprecio de Enzo]` `[SONIDO: ambiente de oficina, seco, sin música]`
 
-[IMAGEN: Prototipo del Lamborghini 350 GTV.]
+Enzo lo recibió. O más bien: lo escuchó un momento y después lo despachó.
 
-El primer gran desafío de esta nueva marca fue el 350 GTV, presentado ese mismo año. Este coche, y los que vendrían después, no eran solo máquinas; eran la manifestación física de la venganza de Ferruccio, la prueba tangible de que el hombre de los tractores podía crear maravillas sobre ruedas.
+"Dedícate a tus tractores, Lamborghini. Un fabricante de tractores no tiene nada que enseñarle a Ferrari." Parece que le dijo el Commendatore.
 
-# Acto 3: Ruptura e Impacto
+Hay versiones sobre las palabras exactas.
 
-[IMAGEN: Lamborghini Miura, vista lateral.]
+Lo que NO tiene versiones es lo que pasó después. Ferruccio salió de esa fábrica y no volvió a pisar Maranello como cliente.
 
-La ambición de Ferruccio no se detuvo. En 1966, llegó el Miura. Con su motor V12 montado transversalmente detrás del conductor, redefinió el concepto de superdeportivo. Era una máquina revolucionaria, diferente a todo lo que Ferrari ofrecía en ese momento. Era visceral, exótico, y capturó la imaginación del mundo.
+Ahí no nació solamente un competidor. Ahí nació una venganza con motor V12.
 
-[IMAGEN: Lamborghini Countach, con sus puertas de tijera.]
+---
 
-Luego vinieron el Espada, el Islero, y más tarde el radical Countach, con sus legendarias puertas de tijera. Cada modelo era un golpe más directo a la reputación de Ferrari. Lamborghini no solo competía; estaba marcando su propio territorio, atrayendo a un público que buscaba algo más allá de la tradición, algo que gritara audacia y poder.
+### Acto 2 — El secreto del tractorista
 
-[IMAGEN: Ferruccio Lamborghini en su viñedo, tranquilo.]
+`[IMAGEN: GAP_003 — manos desarmando un embrague sobre banco de taller]`
 
-Sin embargo, la intensidad de esta rivalidad y la presión de mantener a flote su imperio automotriz pasaron factura. Para 1972, Ferruccio ya había vendido su participación mayoritaria en Automobili Lamborghini, y para 1974, se desvinculó por completo. Se retiró a su viñedo, dejando atrás el rugido de los motores por el silencio de las vides. Murió en 1993, pero su legado, nacido de un insulto y alimentado por un orgullo inquebrantable, sigue rugiendo en cada Lamborghini que sale de Sant'Agata Bolognese. Ferruccio Lamborghini demostró que una herida al ego puede ser el combustible más potente para la creación, y que el camino a la gloria a veces se traza sobre las cenizas de viejas rencillas.
+Ferruccio no vendió el Ferrari ni aceptó el insulto. Volvió a su taller en Cento y desarmó el auto pieza por pieza. Con sus propias manos, las mismas que armaban tractores.
 
-¿Qué aprendemos de esto? Que un 'no' puede ser el principio de todo. Que el orgullo, mal gestionado, destruye. Pero bien canalizado, puede construir imperios. Ferruccio Lamborghini nunca olvidó el desprecio de Ferrari. Y gracias a eso, el mundo tiene hoy a Lamborghini. Yo soy Jota, y esto es HUMANOS. ¿Qué tal si buscamos una historia similar para la próxima?
+Lo que encontró lo dejó helado.
+
+El embrague del legendario auto de lujo italiano era un Borg & Beck. El mismo Borg & Beck que él compraba por catálogo y atornillaba en sus tractores agrícolas. La misma pieza, del mismo proveedor inglés.
+
+`[GRÁFICO: comparativa embrague tractor / embrague Ferrari, mismo número de parte]`
+
+Solo que Enzo lo vendía diez veces más caro.
+
+La revelación le dio algo más útil que rabia. Le dio un número.
+
+Si el gran Enzo Ferrari vendía piezas de catálogo envueltas en mística, él podía construir algo mejor. No un tractor disfrazado de coche. Un coche de verdad. Un deportivo mecánicamente impecable, más refinado, más cómodo que cualquier cosa que saliera de Maranello.
+
+Y sobre todo: que Enzo lo viera.
+
+---
+
+### Acto 3 — El taller clandestino
+
+`[IMAGEN: FER_05_PIVOT — construcción de la fábrica de Sant'Agata]`
+
+Destronar a Ferrari requería velocidad. No solo en las pistas, sino en la ejecución.
+
+En 1963 Ferruccio compró terrenos en Sant'Agata Bolognese, a media hora de Maranello. Lo suficientemente cerca para que la provocación fuera geográfica.
+
+Y reclutó a los mejores ingenieros jóvenes que pudo encontrar: Giotto Bizzarrini, que había diseñado el motor del Ferrari 250 GTO. Gian Paolo Dallara, que después sería leyenda propia. Bob Wallace, el neozelandés obsesionado con las pruebas en carretera.
+
+Algunos venían de la propia Ferrari. Ingenieros que Enzo había perdido por peleas internas, por su temperamento. Por su costumbre de tratar a la gente como Ferruccio acababa de comprobar que trataba a sus clientes.
+
+La orden que les dio fue simple: un V12 que superara al de Ferrari en todo. Y listo para el Salón de Turín.
+
+`[SONIDO: taller nocturno, herramienta, sin música]`
+
+Trabajaron contra el reloj en una fábrica que todavía no tenía las paredes terminadas.
+
+---
+
+### Acto 4 — El debut sin motor
+
+`[IMAGEN: FER_08_SIGNOFF — prototipo 350 GTV]`
+
+El prototipo 350 GTV llegó al Salón de Turín de 1963 con un problema.
+
+El V12 de Bizzarrini no entraba como debía. El capó no cerraba.
+
+Y faltaban horas para la presentación, no semanas.
+
+Ferruccio tomó una decisión que dice más sobre él que cualquier biografía: sacó el motor del coche, llenó el compartimiento con lastre para que la suspensión se asentara como si llevara el peso correcto, y cerró el capó con llave.
+
+Durante toda la exposición respondió preguntas de periodistas sobre la potencia del motor. Explicó las especificaciones. Habló de cilindros, de torque, de caballos de fuerza.
+
+Nunca abrió el capó.
+
+El coche más ambicioso de la exposición no tenía motor. Nadie lo supo hasta mucho después.
+
+Lo que los periodistas vieron fue un auto italiano que parecía mejor que un Ferrari.
+
+Pero cuando terminó el Salón de Turín, Lamborghini —sin motor— ya era una marca de automóviles. Y eso alcanzaba para empezar.
+
+---
+
+### Acto 5 — La consagración del Toro
+
+`[IMAGEN: archivo — Lamborghini 350 GT en calle, 1964]`
+
+Un año después el motor sí estaba. El Lamborghini 350 GT salió a la calle en 1964.
+
+Era todo lo que Ferruccio había prometido: un gran turismo refinado, silencioso cuando debía serlo, y con una mecánica a la altura en cada una de sus piezas.
+
+El golpe de gracia vino dos años después. En 1966, Lamborghini presentó el Miura.
+
+`[IMAGEN: FER_06_PAYOFF — Miura]` `[SONIDO: V12, primer plano]`
+
+Un V12 montado transversalmente detrás del conductor. Nadie había hecho algo así en un coche de calle. Y el diseño de Marcello Gandini rompía con todo lo que la industria consideraba proporcionado.
+
+Después vinieron el Espada y el Islero. Y después, el Countach, con sus puertas de tijera, que durante dos décadas fue el póster pegado en la pared de cualquier adolescente amante de los autos.
+
+`[IMAGEN: FER_007 — Ferruccio en sus últimos años]`
+
+Ferruccio vendió su participación en 1972. Para 1974 se había desvinculado por completo de la empresa. Se retiró a un viñedo en Umbría y se puso a hacer vino.
+
+Murió el 20 de febrero de 1993. A los 76 años, en un hospital de Perugia, lejos de Maranello, lejos de Sant'Agata.
+
+Pero la compañía que llevaba su apellido siguió haciendo exactamente lo que él había hecho desde el principio: construir cosas que, según otros, no tenían ningún derecho a construirse.
+
+Primero fueron tractores.
+
+Después, automóviles.
+
+Y terminó obligando al mundo entero a aprender a pronunciar su apellido.
+
+Lamborghini.
+
+---
+
+`[IMAGEN: FER_09_OUTRO]`
+
+Yo soy Jota.
+
+Y esto es HUMANOS. Historias de gente que convirtió un "usted no puede" en un: "pues míreme hacerlo".
+
+Si te gustan estas historias, suscríbete.
+
+Nos vemos en la próxima.

@@ -1,0 +1,75 @@
+{
+  "extraido": "2026-08-09T10:36:59.599249",
+  "claims": [
+    {
+      "claim_id": "C008",
+      "claim": "El prototipo 350 GTV llegó al Salón de Turín de 1963 con un problema: el V12 de Bizzarrini no entraba como debía y el capó no cerraba.",
+      "importance": 8,
+      "acto": "act_4",
+      "cita_del_guion": "El prototipo 350 GTV llegó al Salón de Turín de 1963 con un problema. El V12 de Bizzarrini no entraba como debía. El capó no cerraba."
+    },
+    {
+      "claim_id": "C009",
+      "claim": "Ferruccio Lamborghini tomó la decisión de sacar el motor del prototipo 350 GTV, llenar el compartimiento con lastre para que la suspensión se asentara y cerrar el capó con llave para la presentación en el Salón de Turín de 1963.",
+      "importance": 8,
+      "acto": "act_4",
+      "cita_del_guion": "Ferruccio tomó una decisión que dice más sobre él que cualquier biografía: sacó el motor del coche, llenó el compartimiento con lastre para que la suspensión se asentara como si llevara el peso correcto, y cerró el capó con llave."
+    },
+    {
+      "claim_id": "C010",
+      "claim": "Durante la exposición del Salón de Turín de 1963, Ferruccio Lamborghini respondió preguntas de periodistas sobre la potencia del motor, explicaciones de especificaciones, cilindros, torque y caballos de fuerza, sin abrir el capó del prototipo 350 GTV.",
+      "importance": 7,
+      "acto": "act_4",
+      "cita_del_guion": "Durante toda la exposición respondió preguntas de periodistas sobre la potencia del motor. Explicó las especificaciones. Habló de cilindros, de torque, de caballos de fuerza. Nunca abrió el capó."
+    },
+    {
+      "claim_id": "C011",
+      "claim": "Al terminar el Salón de Turín de 1963, Lamborghini, sin motor, ya era una marca de automóviles.",
+      "importance": 8,
+      "acto": "act_4",
+      "cita_del_guion": "Pero cuando terminó el Salón de Turín, Lamborghini —sin motor— ya era una marca de automóviles. Y eso alcanzaba para empezar."
+    },
+    {
+      "claim_id": "C012",
+      "claim": "El Lamborghini 350 GT salió a la calle en 1964.",
+      "importance": 7,
+      "acto": "act_5",
+      "cita_del_guion": "Un año después el motor sí estaba. El Lamborghini 350 GT salió a la calle en 1964."
+    },
+    {
+      "claim_id": "C013",
+      "claim": "En 1966, Lamborghini presentó el Miura.",
+      "importance": 8,
+      "acto": "act_5",
+      "cita_del_guion": "El golpe de gracia vino dos años después. En 1966, Lamborghini presentó el Miura."
+    },
+    {
+      "claim_id": "C014",
+      "claim": "Ferruccio Lamborghini vendió su participación en la compañía en 1972.",
+      "importance": 8,
+      "acto": "act_5",
+      "cita_del_guion": "Ferruccio vendió su participación en 1972."
+    },
+    {
+      "claim_id": "C015",
+      "claim": "Para 1974, Ferruccio Lamborghini se había desvinculado por completo de la empresa.",
+      "importance": 8,
+      "acto": "act_5",
+      "cita_del_guion": "Para 1974, se había desvinculado por completo de la empresa."
+    },
+    {
+      "claim_id": "C016",
+      "claim": "Ferruccio Lamborghini murió el 20 de febrero de 1993.",
+      "importance": 8,
+      "acto": "act_5",
+      "cita_del_guion": "Murió el 20 de febrero de 1993."
+    },
+    {
+      "claim_id": "C017",
+      "claim": "Ferruccio Lamborghini murió a los 76 años.",
+      "importance": 7,
+      "acto": "act_5",
+      "cita_del_guion": "A los 76 años, en un hospital de Perugia, lejos de Maranello, lejos de Sant'Agata."
+    }
+  ]
+}

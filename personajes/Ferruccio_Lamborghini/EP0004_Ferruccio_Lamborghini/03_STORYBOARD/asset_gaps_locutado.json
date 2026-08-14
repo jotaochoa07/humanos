@@ -1,0 +1,531 @@
+[
+  {
+    "gap_id": "gapL_002",
+    "scene": 2,
+    "acto": "act_1",
+    "media_type": "video_archivo",
+    "missing_asset": "Montaje rápido de imágenes de archivo de tractores trabajando en campos, seguido de una toma de un campo arado.",
+    "criticality": "high",
+    "reason": "Fabricaba tractores. Los mejores de Italia, según muchos. Después de la guerra, con Europa en escombros, alguien tenía que arar la reconstrucción. Ferruccio vio eso antes que otros",
+    "archivable": true,
+    "motivo_no_archivable": null,
+    "suggested_solution": "buscar en archivo historico",
+    "manual_search_queries": [
+      "tractores posguerra",
+      "maquinaria agricola reconstruccion"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": ""
+  },
+  {
+    "gap_id": "gapL_003",
+    "scene": 3,
+    "acto": "act_1",
+    "media_type": "foto_archivo",
+    "missing_asset": "Imagen de archivo de un complejo industrial, con chimeneas humeando, representando la diversidad de negocios de Lamborghini.",
+    "criticality": "medium",
+    "reason": "Luego vinieron los quemadores, los sistemas de calefacción. El hombre hacía dinero con todo lo que tocaba.",
+    "archivable": true,
+    "motivo_no_archivable": null,
+    "suggested_solution": "buscar en archivo historico",
+    "manual_search_queries": [
+      "fabrica Lamborghini",
+      "industria italiana posguerra"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": ""
+  },
+  {
+    "gap_id": "gapL_004",
+    "scene": 4,
+    "acto": "act_1",
+    "media_type": "foto_archivo",
+    "missing_asset": "Un Ferrari 250 GT clásico aparece en pantalla, con un ligero zoom out para enfatizar su exclusividad.",
+    "criticality": "medium",
+    "reason": "Pero el Midas italiano tenía un capricho costoso: los Ferrari.",
+    "archivable": true,
+    "motivo_no_archivable": null,
+    "suggested_solution": "buscar en archivo historico",
+    "manual_search_queries": [
+      "Ferrari 250 GT",
+      "coches deportivos clasicos"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": ""
+  },
+  {
+    "gap_id": "gapL_005",
+    "scene": 5,
+    "acto": "act_1",
+    "media_type": "motion_graphic",
+    "missing_asset": "Primer plano del detalle de un embrague de coche, con un leve temblor digital o un zoom lento y enfocado en el componente.",
+    "criticality": "medium",
+    "reason": "Compró varios. Un 250 GT entre ellos. Y con cada uno, siempre ocurría lo mismo. El embrague fallaba. Una vibración que no debía estar ahí. Un ruido que un hombre, que fabricaba máq",
+    "archivable": true,
+    "motivo_no_archivable": null,
+    "suggested_solution": "buscar en archivo historico",
+    "manual_search_queries": [
+      "mecanismos de embrague",
+      "componentes de coche"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": "Close up of a car clutch mechanism, with a subtle digital tremor effect to indicate vibration."
+  },
+  {
+    "gap_id": "gapL_006",
+    "scene": 6,
+    "acto": "act_1",
+    "media_type": "video_archivo",
+    "missing_asset": "Plano general de un coche clásico (tipo Ferrari) circulando por una carretera rural italiana, con un fundido a negro.",
+    "criticality": "high",
+    "reason": "Entonces hizo lo que haría cualquier mecánico que entiende cómo funciona un motor. En 1962 se fue a Maranello a hablar directamente con Enzo Ferrari. De fabricante a fabricante.",
+    "archivable": true,
+    "motivo_no_archivable": null,
+    "suggested_solution": "buscar en archivo historico",
+    "manual_search_queries": [
+      "Ferrari clasico carretera",
+      "viaje a Maranello"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": ""
+  },
+  {
+    "gap_id": "gapL_007",
+    "scene": 7,
+    "acto": "act_1",
+    "media_type": "foto_archivo",
+    "missing_asset": "Fotografía de archivo de Enzo Ferrari, con una expresión seria y distante. Transición seca a la siguiente imagen.",
+    "criticality": "medium",
+    "reason": "Enzo lo recibió. O más bien: lo escuchó un momento y después lo despachó.",
+    "archivable": true,
+    "motivo_no_archivable": null,
+    "suggested_solution": "buscar en archivo historico",
+    "manual_search_queries": [
+      "Enzo Ferrari",
+      "fotografias Enzo Ferrari"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": ""
+  },
+  {
+    "gap_id": "gapL_008",
+    "scene": 8,
+    "acto": "act_1",
+    "media_type": "recreacion_ia",
+    "missing_asset": "Recreación de una conversación en una oficina austera. Vemos a un hombre con gesto de desdén (representando a Enzo) mirando a otro (representando a Ferruccio) que se marcha.",
+    "criticality": "medium",
+    "reason": "\"Dedícate a tus tractores, Lamborghini. Un fabricante de tractores no tiene nada que enseñarle a Ferrari.\" Parece que le dijo el Commendatore.",
+    "archivable": false,
+    "motivo_no_archivable": "La escena de la conversacion privada entre Enzo Ferrari y Ferruccio Lamborghini no existe en archivos.",
+    "suggested_solution": "no existe en archivo: recreacion",
+    "manual_search_queries": [],
+    "ai_generation_allowed": true,
+    "ai_generation_prompt": "Interior of a formal office in the 1960s. One man, looking dismissive and stern, sits behind a desk. Another man, looking displeased, stands before him. The atmosphere is tense."
+  },
+  {
+    "gap_id": "gapL_009",
+    "scene": 9,
+    "acto": "act_1",
+    "media_type": "motion_graphic",
+    "missing_asset": "Texto en pantalla sobre un fondo negro, con una tipografía elegante y ligeramente temblorosa.",
+    "criticality": "medium",
+    "reason": "Hay versiones sobre las palabras exactas.",
+    "archivable": true,
+    "motivo_no_archivable": null,
+    "suggested_solution": "buscar en archivo historico",
+    "manual_search_queries": [
+      "fuentes de la historia Lamborghini Ferrari"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": ""
+  },
+  {
+    "gap_id": "gapL_010",
+    "scene": 10,
+    "acto": "act_1",
+    "media_type": "video_archivo",
+    "missing_asset": "Un plano cenital de un coche saliendo de un recinto industrial, seguido de una toma de un cartel de 'Maranello' borroso al fondo.",
+    "criticality": "high",
+    "reason": "Lo que NO tiene versiones es lo que pasó después. Ferruccio salió de esa fábrica y no volvió a pisar Maranello como cliente.",
+    "archivable": true,
+    "motivo_no_archivable": null,
+    "suggested_solution": "buscar en archivo historico",
+    "manual_search_queries": [
+      "salida fabrica coches",
+      "señal Maranello"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": ""
+  },
+  {
+    "gap_id": "gapL_011",
+    "scene": 11,
+    "acto": "act_1",
+    "media_type": "video_archivo",
+    "missing_asset": "Montaje rápido y potente: primer plano de un motor V12 rugiendo, seguido de un plano de un Lamborghini deportivo clásico acelerando en una carretera de montaña.",
+    "criticality": "high",
+    "reason": "Ahí no nació solamente un competidor. Ahí nació una venganza con motor V12.",
+    "archivable": true,
+    "motivo_no_archivable": null,
+    "suggested_solution": "buscar en archivo historico",
+    "manual_search_queries": [
+      "motor V12 Lamborghini",
+      "Lamborghini deportivo acelerando"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": ""
+  },
+  {
+    "gap_id": "gapL_012",
+    "scene": 12,
+    "acto": "act_2",
+    "media_type": "video_archivo",
+    "missing_asset": "Plano detalle de manos desarmando un embrague sobre un banco de taller. El ambiente sugiere un taller mecánico.",
+    "criticality": "high",
+    "reason": "Ferruccio no vendió el Ferrari ni aceptó el insulto. Volvió a su taller en Cento y desarmó el auto pieza por pieza. Con sus propias manos, las mismas que armaban tractores.",
+    "archivable": true,
+    "motivo_no_archivable": null,
+    "suggested_solution": "buscar en archivo historico",
+    "manual_search_queries": [
+      "taller mecánico manos",
+      "desarmar embrague",
+      "ferruccio lamborghini taller"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": ""
+  },
+  {
+    "gap_id": "gapL_014",
+    "scene": 14,
+    "acto": "act_2",
+    "media_type": "motion_graphic",
+    "missing_asset": "Gráfico animado comparando un embrague de tractor con un embrague de coche deportivo. Se resaltan la marca Borg & Beck y un número de parte idéntico.",
+    "criticality": "medium",
+    "reason": "El embrague del legendario auto de lujo italiano era un Borg & Beck. El mismo Borg & Beck que él compraba por catálogo y atornillaba en sus tractores agrícolas. La misma pieza, del",
+    "archivable": true,
+    "motivo_no_archivable": null,
+    "suggested_solution": "buscar en archivo historico",
+    "manual_search_queries": [
+      "comparativa embrague tractor ferrari borg beck",
+      "grafico piezas mecanicas"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": ""
+  },
+  {
+    "gap_id": "gapL_017",
+    "scene": 17,
+    "acto": "act_2",
+    "media_type": "foto_archivo",
+    "missing_asset": "Montaje rápido de imágenes: un tractor antiguo (FER_113), seguido de un deportivo Lamborghini clásico (FER_100), contrastando la robustez agrícola con la elegancia automotriz.",
+    "criticality": "medium",
+    "reason": "Si el gran Enzo Ferrari vendía piezas de catálogo envueltas en mística, él podía construir algo mejor. No un tractor disfrazado de coche. Un coche de verdad. Un deportivo mecánicam",
+    "archivable": true,
+    "motivo_no_archivable": null,
+    "suggested_solution": "buscar en archivo historico",
+    "manual_search_queries": [
+      "tractor antiguo",
+      "lamborghini 350 gtv",
+      "contraste tractor coche deportivo"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": ""
+  },
+  {
+    "gap_id": "gapL_018",
+    "scene": 18,
+    "acto": "act_2",
+    "media_type": "foto_archivo",
+    "missing_asset": "Plano final enfocado en el logo de Lamborghini, con un ligero desenfoque del fondo. Sugiere ambición y desafío.",
+    "criticality": "medium",
+    "reason": "Y sobre todo: que Enzo lo viera.",
+    "archivable": true,
+    "motivo_no_archivable": null,
+    "suggested_solution": "buscar en archivo historico",
+    "manual_search_queries": [
+      "logo lamborghini primer plano",
+      "ferruccio lamborghini desafio enzo"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": ""
+  },
+  {
+    "gap_id": "gapL_020",
+    "scene": 20,
+    "acto": "act_3",
+    "media_type": "motion_graphic",
+    "missing_asset": "Vista aérea de la campiña italiana, destacando Sant'Agata Bolognese y Maranello en un mapa estilizado.",
+    "criticality": "medium",
+    "reason": "En 1963 Ferruccio compró terrenos en Sant'Agata Bolognese, a media hora de Maranello. Lo suficientemente cerca para que la provocación fuera geográfica.",
+    "archivable": false,
+    "motivo_no_archivable": "Creación de gráfico para ilustrar geografía y provocación.",
+    "suggested_solution": "no existe en archivo: recreacion",
+    "manual_search_queries": [
+      "mapa Italia Sant'Agata Maranello"
+    ],
+    "ai_generation_allowed": true,
+    "ai_generation_prompt": "Animated map showing the proximity of Sant'Agata Bolognese and Maranello in Italy, highlighting a route between them."
+  },
+  {
+    "gap_id": "gapL_022",
+    "scene": 22,
+    "acto": "act_3",
+    "media_type": "recreacion_ia",
+    "missing_asset": "Una puerta cerrada, sugerente de una reunión privada y tensa. Cámara lenta entrando hacia la puerta.",
+    "criticality": "medium",
+    "reason": "Algunos venían de la propia Ferrari. Ingenieros que Enzo había perdido por peleas internas, por su temperamento. Por su costumbre de tratar a la gente como Ferruccio acababa de com",
+    "archivable": false,
+    "motivo_no_archivable": "Escena de reunión privada sin prensa, difícil de documentar.",
+    "suggested_solution": "no existe en archivo: recreacion",
+    "manual_search_queries": [
+      "oficina Enzo Ferrari",
+      "sala de reuniones tensa"
+    ],
+    "ai_generation_allowed": true,
+    "ai_generation_prompt": "Recreación IA de una puerta cerrada de una oficina de fábrica de los años 60, con una atmósfera tensa. La cámara se acerca lentamente."
+  },
+  {
+    "gap_id": "gapL_023",
+    "scene": 23,
+    "acto": "act_3",
+    "media_type": "motion_graphic",
+    "missing_asset": "Diseño conceptual de un motor V12, con líneas de diseño futuristas y potentes.",
+    "criticality": "medium",
+    "reason": "La orden que les dio fue simple: un V12 que superara al de Ferrari en todo. Y listo para el Salón de Turín.",
+    "archivable": false,
+    "motivo_no_archivable": "Creación gráfica para representar el diseño de un motor.",
+    "suggested_solution": "no existe en archivo: recreacion",
+    "manual_search_queries": [
+      "diseño motor V12"
+    ],
+    "ai_generation_allowed": true,
+    "ai_generation_prompt": "Stylized motion graphic of a V12 engine blueprint coming to life, emphasizing power and precision."
+  },
+  {
+    "gap_id": "gapL_024",
+    "scene": 24,
+    "acto": "act_3",
+    "media_type": "recreacion_ia",
+    "missing_asset": "Vista de un taller mecánico en construcción, con obreros trabajando en maquinaria, paredes a medio levantar.",
+    "criticality": "medium",
+    "reason": "Trabajaron contra el reloj en una fábrica que todavía no tenía las paredes terminadas.",
+    "archivable": false,
+    "motivo_no_archivable": "Recreación de un taller en construcción con personal trabajando. No hay archivo específico.",
+    "suggested_solution": "no existe en archivo: recreacion",
+    "manual_search_queries": [
+      "taller industrial en construcción",
+      "construcción fábrica años 60"
+    ],
+    "ai_generation_allowed": true,
+    "ai_generation_prompt": "AI recreation of a factory workshop under construction in the 1960s. Workers are assembling machinery amidst unfinished walls and exposed beams. Dynamic and urgent atmosphere."
+  },
+  {
+    "gap_id": "gapL_027",
+    "scene": 27,
+    "acto": "act_4",
+    "media_type": "motion_graphic",
+    "missing_asset": "Imagen de reloj o un gráfico de tiempo acelerado para enfatizar la urgencia.",
+    "criticality": "medium",
+    "reason": "Y faltaban horas para la presentación, no semanas.",
+    "archivable": false,
+    "motivo_no_archivable": "No hay material de archivo para esta metáfora visual.",
+    "suggested_solution": "no existe en archivo: recreacion",
+    "manual_search_queries": [
+      "urgencia presentación coche",
+      "tiempo límite evento automovilístico"
+    ],
+    "ai_generation_allowed": true,
+    "ai_generation_prompt": "Un gráfico animado de un reloj retro con las manecillas moviéndose rápidamente, transicionando a un calendario con los días tachados de forma acelerada. Estilo limpio y moderno."
+  },
+  {
+    "gap_id": "gapL_028",
+    "scene": 28,
+    "acto": "act_4",
+    "media_type": "recreacion_ia",
+    "missing_asset": "Montaje rápido: mano sacando una herramienta (no se ve el motor directamente), sacos de arena o peso visible en el compartimento del motor, el capó cerrándose.",
+    "criticality": "medium",
+    "reason": "Ferruccio tomó una decisión que dice más sobre él que cualquier biografía: sacó el motor del coche, llenó el compartimiento con lastre para que la suspensión se asentara como si ll",
+    "archivable": false,
+    "motivo_no_archivable": "La acción descrita es un evento específico y privado que no está documentado en archivo visual.",
+    "suggested_solution": "no existe en archivo: recreacion",
+    "manual_search_queries": [
+      "Lamborghini 350 GTV compartimento motor vacío",
+      "prototipo 350 GTV lastre motor"
+    ],
+    "ai_generation_allowed": true,
+    "ai_generation_prompt": "Recreación IA: Plano medio de un compartimento de motor de coche clásico vacío. Se ven manos masculinas colocando sacos de arena como lastre. El capó del coche está abierto y se acerca a cerrarse. Estilo cinematográfico, tonos oscuros y enfoque en la acción mecánica."
+  },
+  {
+    "gap_id": "gapL_033",
+    "scene": 33,
+    "acto": "act_4",
+    "media_type": "motion_graphic",
+    "missing_asset": "Plano general del 350 GTV estacionado, con una luz dorada del atardecer. Se superpone el logo de Lamborghini y el texto 'Lamborghini Automobili'.",
+    "criticality": "medium",
+    "reason": "Pero cuando terminó el Salón de Turín, Lamborghini —sin motor— ya era una marca de automóviles. Y eso alcanzaba para empezar.",
+    "archivable": true,
+    "motivo_no_archivable": null,
+    "suggested_solution": "buscar en archivo historico",
+    "manual_search_queries": [
+      "Lamborghini 350 GTV estacionado",
+      "logo Lamborghini Automobili"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": ""
+  },
+  {
+    "gap_id": "gapL_034",
+    "scene": 34,
+    "acto": "act_5",
+    "media_type": "video_archivo",
+    "missing_asset": "Plano medio de un Lamborghini 350 GT circulando por una calle de la época.",
+    "criticality": "high",
+    "reason": "Un año después el motor sí estaba. El Lamborghini 350 GT salió a la calle en 1964.",
+    "archivable": true,
+    "motivo_no_archivable": null,
+    "suggested_solution": "buscar en archivo historico",
+    "manual_search_queries": [
+      "Lamborghini 350 GT calle 1964 video"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": ""
+  },
+  {
+    "gap_id": "gapL_037",
+    "scene": 37,
+    "acto": "act_5",
+    "media_type": "motion_graphic",
+    "missing_asset": "Gráfico animado mostrando el corte transversal del motor V12 del Miura, resaltando su posición transversal.",
+    "criticality": "medium",
+    "reason": "Un V12 montado transversalmente detrás del conductor. Nadie había hecho algo así en un coche de calle. Y el diseño de Marcello Gandini rompía con todo lo que la industria considera",
+    "archivable": true,
+    "motivo_no_archivable": "La animación gráfica explicativa no existe en los assets descargados",
+    "suggested_solution": "buscar en archivo historico",
+    "manual_search_queries": [
+      "diagrama motor Lamborghini Miura V12 transversal"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": "Diagrama técnico de un motor V12 Lamborghini montado transversalmente detrás del conductor de un Miura, con flechas indicando el flujo de potencia."
+  },
+  {
+    "gap_id": "gapL_040",
+    "scene": 40,
+    "acto": "act_5",
+    "media_type": "motion_graphic",
+    "missing_asset": "Una toma aérea de un paisaje rural italiano, evocando Umbría, con una superposición sutil de texto indicando la fecha y lugar de fallecimiento.",
+    "criticality": "medium",
+    "reason": "Murió el 20 de febrero de 1993. A los 76 años, en un hospital de Perugia, lejos de Maranello, lejos de Sant'Agata.",
+    "archivable": true,
+    "motivo_no_archivable": "La combinación de paisaje y texto específico no existe como asset pre-generado.",
+    "suggested_solution": "buscar en archivo historico",
+    "manual_search_queries": [
+      "paisaje Umbría Italia"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": "Paisaje aéreo de la región de Umbría, Italia, con una sutil superposición de texto: 'Perugia, 20 de febrero de 1993'."
+  },
+  {
+    "gap_id": "gapL_043",
+    "scene": 43,
+    "acto": "act_5",
+    "media_type": "motion_graphic",
+    "missing_asset": "Transición suave de un tractor a un primer plano de la insignia de un Lamborghini moderno en un capó.",
+    "criticality": "medium",
+    "reason": "Después, automóviles.",
+    "archivable": true,
+    "motivo_no_archivable": "Transición gráfica entre dos tipos de vehículos de la marca.",
+    "suggested_solution": "buscar en archivo historico",
+    "manual_search_queries": [
+      "logo Lamborghini automóvil"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": "Animación gráfica que fusiona la silueta de un tractor Lamborghini con la de un coche deportivo Lamborghini, culminando en el logo de la marca."
+  },
+  {
+    "gap_id": "gapL_044",
+    "scene": 44,
+    "acto": "act_5",
+    "media_type": "recreacion_ia",
+    "missing_asset": "Una secuencia rápida de personas de diferentes etnias y edades intentando pronunciar \"Lamborghini\", con subtítulos de fonética apareciendo.",
+    "criticality": "medium",
+    "reason": "Y terminó obligando al mundo entero a aprender a pronunciar su apellido.",
+    "archivable": false,
+    "motivo_no_archivable": "La recreación de personas pronunciando una palabra específica no existe en los archivos.",
+    "suggested_solution": "no existe en archivo: recreacion",
+    "manual_search_queries": [
+      "gente pronunciando nombres marcas lujo",
+      "personas diciendo Lamborghini"
+    ],
+    "ai_generation_allowed": true,
+    "ai_generation_prompt": "Montaje de rostros diversos de hombres y mujeres de distintas edades, intentando pronunciar la palabra 'Lamborghini', con subtítulos fonéticos que se ajustan gradualmente a la pronunciación correcta. Estilo documental."
+  },
+  {
+    "gap_id": "gapL_046",
+    "scene": 46,
+    "acto": "act_5",
+    "media_type": "foto_archivo",
+    "missing_asset": "Transición a la pantalla final de HUMANOS, con el logo y el texto 'Yo soy Jota'.",
+    "criticality": "medium",
+    "reason": "Yo soy Jota.",
+    "archivable": true,
+    "motivo_no_archivable": null,
+    "suggested_solution": "buscar en archivo historico",
+    "manual_search_queries": [
+      "pantalla final HUMANOS Jota"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": ""
+  },
+  {
+    "gap_id": "gapL_047",
+    "scene": 47,
+    "acto": "act_5",
+    "media_type": "foto_archivo",
+    "missing_asset": "La pantalla final de HUMANOS, con el slogan principal del programa.",
+    "criticality": "medium",
+    "reason": "Y esto es HUMANOS. Historias de gente que convirtió un \"usted no puede\" en un: \"pues míreme hacerlo\".",
+    "archivable": true,
+    "motivo_no_archivable": null,
+    "suggested_solution": "buscar en archivo historico",
+    "manual_search_queries": [
+      "pantalla final HUMANOS slogan"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": ""
+  },
+  {
+    "gap_id": "gapL_048",
+    "scene": 48,
+    "acto": "act_5",
+    "media_type": "motion_graphic",
+    "missing_asset": "Elemento gráfico animado de un botón de suscripción y una campana de notificación.",
+    "criticality": "medium",
+    "reason": "Si te gustan estas historias, suscríbete.",
+    "archivable": true,
+    "motivo_no_archivable": "Gráfico interactivo de llamada a la acción.",
+    "suggested_solution": "buscar en archivo historico",
+    "manual_search_queries": [
+      "boton suscripcion animado",
+      "icono campana notificacion"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": "Animación gráfica de un botón interactivo de 'Suscríbete' con una mano haciendo clic, seguido por la aparición de un icono de campana de notificación animada."
+  },
+  {
+    "gap_id": "gapL_049",
+    "scene": 49,
+    "acto": "act_5",
+    "media_type": "foto_archivo",
+    "missing_asset": "Pantalla final de HUMANOS con un mensaje de despedida.",
+    "criticality": "medium",
+    "reason": "Nos vemos en la próxima.",
+    "archivable": true,
+    "motivo_no_archivable": null,
+    "suggested_solution": "buscar en archivo historico",
+    "manual_search_queries": [
+      "pantalla final HUMANOS despedida"
+    ],
+    "ai_generation_allowed": false,
+    "ai_generation_prompt": ""
+  }
+]

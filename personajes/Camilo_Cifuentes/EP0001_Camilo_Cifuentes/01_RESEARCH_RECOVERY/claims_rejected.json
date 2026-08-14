@@ -1,0 +1,87 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "subject": "Camilo Cifuentes",
+  "recovery_gate": "GATE 2B",
+  "recovered_at": "2026-08-12T10:45:19+00:00",
+  "scope": "controlled recovery; orchestrator-browsed sources supplied to recovery writer; no media download or platform scraping",
+  "claims": [
+    {
+      "claim_id": "RJ001",
+      "claim": "Camilo or his family suffered damage or took action connected to the 10 Aug 2026 Colombia earthquake.",
+      "status": "REJECTED",
+      "reason": "No verified original Camilo post or primary statement was found in the supplied evidence.",
+      "evidence_class": "UNKNOWN",
+      "identity_match": "unknown",
+      "source_ids": [],
+      "provenance": "UNTRUSTED_PREVIOUS_RUN / NOT_LOCATED",
+      "rights_status": "not_applicable"
+    },
+    {
+      "claim_id": "RJ002",
+      "claim": "Any legal name for Camilo Cifuentes.",
+      "status": "REJECTED",
+      "reason": "The supplied identity anchor supports accounts, not a legal-name inference.",
+      "evidence_class": "UNKNOWN",
+      "identity_match": "unknown",
+      "source_ids": [
+        "S01"
+      ],
+      "provenance": "Identity constraint",
+      "rights_status": "not_applicable"
+    },
+    {
+      "claim_id": "RJ003",
+      "claim": "Follower count, official donation channel, or authenticity of payment requests.",
+      "status": "REJECTED",
+      "reason": "No primary proof supplied; the Red Cross portal is only a CTA candidate and S11 is secondary reporting.",
+      "evidence_class": "UNKNOWN",
+      "identity_match": "unknown",
+      "source_ids": [
+        "S11",
+        "S16"
+      ],
+      "provenance": "Evidence limitation",
+      "rights_status": "not_applicable"
+    },
+    {
+      "claim_id": "RJ004",
+      "claim": "Strawberry seller grew from 20 to 300 portions weekly; 200,000 COP and donation-to-two-people details; 36M COP/equipment case as established fact.",
+      "status": "REJECTED",
+      "reason": "Media-reported or low-confidence secondary details without original/beneficiary confirmation.",
+      "evidence_class": "MEDIA_REPORTED",
+      "identity_match": "partial",
+      "source_ids": [
+        "S08",
+        "S10",
+        "S15"
+      ],
+      "provenance": "Qualification required",
+      "rights_status": "URL reference only"
+    },
+    {
+      "claim_id": "RJ005",
+      "claim": "The Venezuela Red Cross page proves a Colombian earthquake response or a Camilo-linked CTA.",
+      "status": "REJECTED",
+      "reason": "S17 is explicitly about Venezuela and must not be misapplied.",
+      "evidence_class": "OFFICIAL_SOURCE",
+      "identity_match": "not_applicable",
+      "source_ids": [
+        "S17"
+      ],
+      "provenance": "Context exclusion",
+      "rights_status": "URL reference only"
+    },
+    {
+      "claim_id": "RJ006",
+      "claim": "Any asset based on placeholder or example.com URL.",
+      "status": "REJECTED_CONTAMINATION",
+      "reason": "Recovery policy allows only real located URLs; none were carried into recovery assets.",
+      "evidence_class": "UNKNOWN",
+      "identity_match": "not_applicable",
+      "source_ids": [],
+      "provenance": "Controlled-recovery policy",
+      "rights_status": "not_applicable"
+    }
+  ]
+}

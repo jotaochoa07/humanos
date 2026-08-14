@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "episode_id": "EP0001_Camilo_Cifuentes",
+  "status": "PASS",
+  "evidence_class": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+  "asset_count": 36,
+  "source_registry": "01_RESEARCH_RECOVERY/gate_2d_evidence_pack.json",
+  "scope": "Basic inventory, SHA-256 and exact Telecafé podcast fragments; no microsegmentation.",
+  "demonstrated_claims": [
+    {
+      "claim_id": "HEB-001",
+      "claim": "Camilo identifies himself as Juan Camilo Jurado Cifuentes and says he is 29.",
+      "evidence": "Telecafé podcast around 01:15",
+      "support": "direct human-verified audio"
+    },
+    {
+      "claim_id": "HEB-002",
+      "claim": "Camilo describes a loving family and says “Mejor dar que recibir.”",
+      "evidence": "Telecafé podcast around 03:36",
+      "support": "direct human-verified audio"
+    },
+    {
+      "claim_id": "HEB-003",
+      "claim": "Camilo says everyone has needed a hand or help.",
+      "evidence": "Telecafé podcast around 06:30",
+      "support": "direct human-verified audio"
+    },
+    {
+      "claim_id": "HEB-004",
+      "claim": "Camilo says he does not want to be the protagonist; the people are.",
+      "evidence": "Telecafé podcast around 07:57",
+      "support": "direct human-verified audio"
+    },
+    {
+      "claim_id": "HEB-005",
+      "claim": "The curated primary-source set visibly includes purchase/payment, redistribution, recognition, gratitude and human interaction moments.",
+      "evidence": "36 user-curated local files listed and hashed in gate_2d_evidence_pack.json",
+      "support": "visual evidence available; no microsegmentation performed"
+    }
+  ],
+  "podcast_fragments": [
+    {
+      "timestamp_requested": "01:15",
+      "timestamp_exact": "01:15",
+      "transcription": "Me llamo Juan Camilo Jurado Cifuentes. Tengo 29 años.",
+      "claim_ids": [
+        "HEB-001"
+      ]
+    },
+    {
+      "timestamp_requested": "03:36",
+      "timestamp_exact": "03:36",
+      "transcription": "Vengo de una familia amorosa. Mejor dar que recibir.",
+      "claim_ids": [
+        "HEB-002"
+      ]
+    },
+    {
+      "timestamp_requested": "06:30",
+      "timestamp_exact": "06:30",
+      "transcription": "Todos hemos necesitado una mano. Y siempre todos hemos necesitado una ayuda.",
+      "claim_ids": [
+        "HEB-003"
+      ]
+    },
+    {
+      "timestamp_requested": "07:57",
+      "timestamp_exact": "07:57",
+      "transcription": "Yo no quiero ser el protagonista. Las protagonistas son las personas y no yo.",
+      "claim_ids": [
+        "HEB-004"
+      ]
+    }
+  ],
+  "provenance_rules": [
+    "Every local asset is user-curated and SHA-256 inventoried in gate_2d_evidence_pack.json.",
+    "Original URLs are retained where available; local files are not treated as content-free.",
+    "Use only HUMAN_VERIFIED_PRIMARY_SOURCE evidence and preserve provenance."
+  ],
+  "do_not_infer": [
+    "Do not infer Camilo is currently helping earthquake victims.",
+    "Do not infer family damage from temporal coincidence or third-party reporting.",
+    "Do not convert unsegmented filenames into exact dialogue, dates, amounts or actions.",
+    "Do not use the earthquake as biographical evidence about Camilo."
+  ],
+  "prohibited_claims": [
+    "Camilo is leading the earthquake response.",
+    "Camilo or his family suffered earthquake damage.",
+    "Camilo launched or endorses a current earthquake campaign."
+  ]
+}

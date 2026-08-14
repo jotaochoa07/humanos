@@ -1,0 +1,88 @@
+{
+  "generado": "2026-08-09T10:36:54.620218",
+  "acto": "act_4",
+  "investigacion": {
+    "hechos": [
+      {
+        "afirmacion": "El prototipo 350 GTV llegó al Salón de Turín de 1963 con un problema: el V12 de Bizzarrini no entraba como debía y el capó no cerraba.",
+        "estado_documental": "plausible_sin_fuente_primaria",
+        "que_dicen_las_fuentes": "Existe consenso en que el 350 GTV fue presentado en el Salón de Turín de 1963. La dificultad para encajar el motor y cerrar el capó se narra frecuentemente en relatos sobre la génesis de Lamborghini, pero rara vez se atribuye a una fuente primaria contemporánea específica.",
+        "fuentes": [
+          {
+            "titulo": "Lamborghini: A Complete History",
+            "tipo": "libro",
+            "fiabilidad": "media"
+          },
+          {
+            "titulo": "The Complete Book of Lamborghini",
+            "tipo": "libro",
+            "fiabilidad": "media"
+          }
+        ],
+        "recomendacion_editorial": "Mantener la afirmación como parte de la narrativa, pero reconocer su origen anecdótico si se busca precisión histórica."
+      },
+      {
+        "afirmacion": "Ferruccio Lamborghini tomó la decisión de sacar el motor, llenar el compartimiento con lastre para asentar la suspensión y cerrar el capó con llave.",
+        "estado_documental": "leyenda_repetida",
+        "que_dicen_las_fuentes": "Este es el núcleo de la anécdota popular sobre la presentación del 350 GTV. La procedencia de esta decisión (si fue Ferruccio directamente, su equipo, o una combinación) y los detalles específicos del lastre no están documentados en fuentes primarias de la época.",
+        "fuentes": [],
+        "recomendacion_editorial": "La anécdota es muy potente para la narrativa. Debe ser presentada como un relato sobre la astucia de Ferruccio, no como un hecho estrictamente verificado. Se puede decir que 'se cuenta que' o 'la leyenda dice'."
+      },
+      {
+        "afirmacion": "Faltaban horas para la presentación, no semanas.",
+        "estado_documental": "leyenda_repetida",
+        "que_dicen_las_fuentes": "Esta mención a la urgencia temporal es un detalle que realza la audacia de la supuesta maniobra. No hay registros precisos de las horas exactas de trabajo o de la cuenta regresiva que soporten esta afirmación como un dato concreto.",
+        "fuentes": [],
+        "recomendacion_editorial": "Similar a la anterior, usar como elemento narrativo de la urgencia, pero sin presentarla como un hecho medible. El concepto de 'último minuto' es suficiente."
+      },
+      {
+        "afirmacion": "Ferruccio Lamborghini respondió preguntas de periodistas sobre la potencia del motor, las especificaciones, cilindros, torque y caballos de fuerza, sin abrir nunca el capó.",
+        "estado_documental": "plausible_sin_fuente_primaria",
+        "que_dicen_las_fuentes": "Es altamente probable que Ferruccio y su equipo hayan promovido activamente el 350 GTV en el salón, destacando sus atributos técnicos, tal como harían con cualquier lanzamiento. La ausencia de aperturas del capó es coherente con la anécdota del motor ausente, pero no hay un registro específico de 'nunca' abrirlo o de todas las preguntas y respuestas.",
+        "fuentes": [
+          {
+            "titulo": "Artículos de prensa automotriz de 1963 (ej. 'Quattroruote', 'Autocar' sobre el Salón de Turín)",
+            "tipo": "prensa",
+            "fiabilidad": "media"
+          }
+        ],
+        "recomendacion_editorial": "Se puede afirmar que se promocionó el coche destacando sus especificaciones, y que el capó se mantuvo cerrado, como parte de la estrategia. El detalle de 'nunca' abreviar es una hipérbole narrativa."
+      },
+      {
+        "afirmacion": "El coche más ambicioso de la exposición no tenía motor. Nadie lo supo hasta mucho después.",
+        "estado_documental": "leyenda_repetida",
+        "que_dicen_las_fuentes": "La afirmación de que 'nadie lo supo hasta mucho después' es la parte más difícil de verificar. Si bien la anécdota del motor ausente se popularizó, la idea de que fue un secreto absoluto y prolongado es parte de la leyenda. Podría haber habido sospechas o conocimiento dentro de círculos especializados.",
+        "fuentes": [],
+        "recomendacion_editorial": "Presentar como la 'leyenda' o la 'historia contada' que se hizo famosa. La parte de 'nadie lo supo' es una generalización que no se sostiene sin evidencia directa."
+      },
+      {
+        "afirmacion": "Sin motor, Lamborghini ya era una marca de automóviles al terminar el Salón de Turín de 1963.",
+        "estado_documental": "documentado",
+        "que_dicen_las_fuentes": "La presentación del 350 GTV en el Salón de Turín de 1963, aunque fuera un prototipo, marcó la entrada oficial de Ferruccio Lamborghini en el mundo de la fabricación de automóviles deportivos. La marca Lamborghini Automobili S.p.A. se fundó oficialmente en 1963.",
+        "fuentes": [
+          {
+            "titulo": "Registro fundacional de Lamborghini Automobili S.p.A.",
+            "tipo": "museo",
+            "fiabilidad": "alta"
+          },
+          {
+            "titulo": "Lamborghini: The Complete Story",
+            "tipo": "libro",
+            "fiabilidad": "alta"
+          }
+        ],
+        "recomendacion_editorial": "Afirmación sólida y bien documentada. Establece el éxito conceptual y de marca de la presentación, independientemente de los problemas mecánicos."
+      }
+    ],
+    "contexto_verificado": "El Salone dell'Automobile di Torino de 1963 fue un evento clave para la industria automotriz italiana. Ferruccio Lamborghini presentó allí su primer prototipo de automóvil deportivo, el 350 GTV, diseñado para competir con marcas establecidas como Ferrari. La presentación generó gran interés y sentó las bases para la futura producción de modelos como el 350 GT.",
+    "riesgos": [
+      "Afirmar que el motor fue explícitamente retirado y que se usó lastre sin matices de leyenda o anécdota. Específicamente, la 'cantidad de horas' y el 'tipo de lastre' son datos sin soporte. Evitar estos detalles específicos en comunicaciones informativas.",
+      "Presentar la falta de motor como un secreto absoluto que nadie descubrió, lo cual es difícil de probar y probablemente una simplificación narrativa."
+    ],
+    "material_visual_probable": [
+      "Fotografías del prototipo 350 GTV en el stand del Salón de Turín de 1963 (disponibles en archivos de prensa de la época, colecciones privadas y museos Lamborghini).",
+      "Posibles imágenes de archivo del stand de Lamborghini en el salón.",
+      "Entrevistas posteriores con figuras clave de la época (ingenieros, diseñadores, periodistas) donde se pueda haber mencionado el evento, aunque no sean primarias de 1963."
+    ]
+  }
+}

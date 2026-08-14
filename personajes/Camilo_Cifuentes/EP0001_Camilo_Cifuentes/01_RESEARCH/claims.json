@@ -1,0 +1,37 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "character_name": "Camilo Cifuentes",
+  "claims": [
+    {
+      "claim_id": "C001",
+      "claim": "La indiferencia ante el sufrimiento ajeno durante la emergencia sísmica de Manizales genera una profunda crisis de empatía en Cifuentes.",
+      "importance": 9
+    },
+    {
+      "claim_id": "C002",
+      "claim": "Cifuentes decide enfocar su ayuda en acciones anónimas y concretas, rechazando el reconocimiento público.",
+      "importance": 8
+    },
+    {
+      "claim_id": "C003",
+      "claim": "Observa cómo la falta de recursos y la descoordinación impiden una ayuda efectiva, impulsándolo a buscar soluciones replicables.",
+      "importance": 7
+    },
+    {
+      "claim_id": "C004",
+      "claim": "El concepto de 'bondad sin techo' se consolida como su motor: la idea de una ayuda ilimitada y accesible para todos.",
+      "importance": 9
+    },
+    {
+      "claim_id": "C005",
+      "claim": "Documenta la necesidad de sistemas de ayuda eficientes y de bajo costo, diseñados para ser fácilmente reproducibles en crisis futuras.",
+      "importance": 8
+    },
+    {
+      "claim_id": "C006",
+      "claim": "La experiencia sísmica marca su obsesión por el 'efecto multiplicador' de la ayuda bien canalizada, buscando maximizar cada recurso.",
+      "importance": 10
+    }
+  ]
+}

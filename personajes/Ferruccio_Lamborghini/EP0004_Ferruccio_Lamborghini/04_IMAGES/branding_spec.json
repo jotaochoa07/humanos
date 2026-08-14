@@ -1,33 +1,33 @@
 {
   "character_card": {
-    "category": "BUILDER",
+    "category": "FABRICANTE | FUNDADOR",
     "name": "FERRUCCIO LAMBORGHINI",
     "description": "Fundador de Automobili Lamborghini",
-    "visual_style": "Retrato en blanco y negro de alto contraste, con ligera saturación reducida (-40), capturando una expresión de determinación y orgullo. El rostro ocupa el 70% del cuadro. Mucho espacio negativo a la derecha. Alineación inferior izquierda de los textos, con abundante aire."
+    "visual_style": "Retrato en blanco y negro de alto contraste, saturación reducida a -60%. El rostro de Ferruccio Lamborghini debe ocupar entre el 70% y el 75% del encuadre, expresión seria y orgullosa, mirada firme y directa a cámara (nunca sonriente: es un hombre que acaba de ser humillado y no lo olvida). Composición asimétrica, alineación inferior izquierda, abundante espacio negativo en la parte superior y derecha. Tipografía Montserrat Bold para el nombre en cian."
   },
   "thumbnail": {
-    "headline": "De los tractores al V12",
-    "highlight_word": "V12",
-    "composition_description": "Primer plano de Ferruccio Lamborghini mirando directamente a la cámara con una expresión de orgullo y determinación. El rostro ocupa el 70-80% de la miniatura. El fondo es negro absoluto. El texto 'De los tractores al' está en blanco, y la palabra 'V12' está en cian (#01C9C7). Tipografía Montserrat Bold."
+    "headline": "una VENGANZA con motor V12",
+    "highlight_word": "VENGANZA",
+    "composition_description": "Plano medio cerrado de Ferruccio Lamborghini con expresión de determinación fría, mandíbula tensa, mirada directa a cámara. El rostro ocupa el 70-75% del encuadre. Fondo negro absoluto fundido a negro. El texto 'una' y 'con motor V12' en Montserrat Bold blanco, y 'VENGANZA' en Montserrat Bold cian (#01C9C7), ubicado debajo del rostro con amplio espacio negativo."
   },
   "midjourney_prompts": [
     {
-      "purpose": "Retrato para miniatura y B-roll",
-      "prompt": "Ferruccio Lamborghini, headshot, focused intense gaze directly at the camera, journalistic high-fashion editorial style, dramatic chiaroscuro lighting, deep blacks and high contrast, desaturated (saturation -50), professional portrait lens (85mm), subtle 35mm film grain texture --ar 9:16"
+      "purpose": "Retrato principal para Character Card y Thumbnail",
+      "prompt": "Ferruccio Lamborghini, Italian industrialist in his 40s, proud and stern expression, jaw set, intense direct gaze into the camera, journalistic high-fashion editorial portrait photography style inspired by Esquire, dramatic chiaroscuro lighting, deep blacks and high contrast, black and white, desaturated to -60, shot on 85mm portrait lens, subtle 35mm film grain texture --ar 9:16"
     },
     {
-      "purpose": "Primer plano de manos trabajando en embrague",
-      "prompt": "Close-up detailed shot of weathered hands meticulously working on a vintage car clutch mechanism, gritty workshop environment, dramatic directional lighting, shallow depth of field, realistic textures, high contrast black and white photography --ar 16:9"
+      "purpose": "B-roll de escena - El desprecio de Enzo Ferrari en Maranello",
+      "prompt": "Two Italian men in a 1960s factory office in Maranello, one dismissive and condescending gesturing toward the door, the other rigid with wounded pride, tense confrontation, dramatic sidelighting, deep blacks and high contrast, black and white, desaturated, documentary film still, subtle 35mm film grain texture, shot on 85mm lens --ar 16:9"
     },
     {
-      "purpose": "Lamborghini 350 GTV en carretera",
-      "prompt": "Dynamic shot of a classic Lamborghini 350 GTV driving at high speed on a deserted Italian country road, cinematic, low angle, motion blur, low saturation, high contrast, editorial automotive photography, captured with a telephoto lens --ar 16:9"
+      "purpose": "B-roll de escena - El descubrimiento del embrague en el taller",
+      "prompt": "Close-up of weathered industrialist's hands disassembling a car clutch mechanism on a workbench in a dim mechanical workshop, tractor parts visible in the background, harsh single overhead light, deep shadows, high contrast black and white, desaturated, documentary style, subtle 35mm film grain texture, shot on 85mm lens --ar 16:9"
     }
   ],
   "motion_specs": {
-    "camera_speed": "subtle_zoom",
-    "default_transition": "subtle_fade",
-    "branding_color_use": "El color cian (#01C9C7) se utiliza para resaltar el nombre 'Lamborghini' en el logo de Automobili Lamborghini o para animar el texto de la palabra clave 'V12' en transiciones clave.",
+    "camera_speed": "slow_zoom_in | subtle_pan",
+    "default_transition": "subtle_fade_to_black",
+    "branding_color_use": "El color cian (#01C9C7) se usa exclusivamente para el nombre de Ferruccio Lamborghini en la Character Card y para resaltar la palabra 'VENGANZA' en la miniatura. No se aplica en transiciones ni elementos decorativos del episodio.",
     "titles_font": "Montserrat Bold",
     "subtitles_font": "Inter SemiBold"
   }

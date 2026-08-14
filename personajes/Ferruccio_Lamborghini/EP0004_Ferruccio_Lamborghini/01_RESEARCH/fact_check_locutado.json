@@ -1,0 +1,372 @@
+{
+  "auditado": "2026-08-09T10:37:14.600071",
+  "fact_check": {
+    "project": "HUMANOS",
+    "episode_id": "EP0001",
+    "subject": "Ferruccio Lamborghini",
+    "checked_at": "2026-08-09 10:36:59",
+    "overall_confidence_score": 79,
+    "status": "NEEDS_REVIEW",
+    "format_audit_reports": {
+      "shorts": {
+        "confidence_score": 79,
+        "status": "NEEDS_REVIEW",
+        "notes": "Auditoría específica para formato vertical corto"
+      },
+      "long_form": {
+        "confidence_score": 79,
+        "status": "NEEDS_REVIEW",
+        "notes": "Auditoría específica para formato largo"
+      },
+      "newsletter": {
+        "confidence_score": 79,
+        "status": "NEEDS_REVIEW",
+        "notes": "Auditoría específica para newsletter editorial"
+      },
+      "twitter": {
+        "confidence_score": 79,
+        "status": "NEEDS_REVIEW",
+        "notes": "Auditoría específica para hilo de X/Twitter"
+      }
+    },
+    "claims_summary": {
+      "total": 10,
+      "verified": 2,
+      "partial": 5,
+      "unverified": 3,
+      "rejected": 0
+    },
+    "claims": [
+      {
+        "claim_id": "C008",
+        "claim": "El prototipo 350 GTV llegó al Salón de Turín de 1963 con un problema: el V12 de Bizzarrini no entraba como debía y el capó no cerraba.",
+        "importance": 8,
+        "status": "PARTIAL",
+        "applicable_formats": [
+          "shorts",
+          "long_form",
+          "newsletter",
+          "twitter"
+        ],
+        "confidence_score": 70,
+        "source_authority": 6,
+        "source_independence": 6,
+        "primary_source_proximity": 5,
+        "consistency": 8,
+        "contradiction_risk": 2,
+        "sources": [
+          {
+            "title": "Lamborghini: A Complete History",
+            "type": "biography",
+            "tier": "B",
+            "notes": "Relata la presentación del prototipo."
+          },
+          {
+            "title": "The Complete Book of Lamborghini",
+            "type": "biography",
+            "tier": "B",
+            "notes": "Menciona problemas en la presentación del prototipo."
+          }
+        ],
+        "notes": "La presentación del prototipo con problemas mecánicos es ampliamente narrada, pero carece de fuente primaria directa.",
+        "recommendation": "Se puede usar, pero indicando que es una narración recurrente."
+      },
+      {
+        "claim_id": "C009",
+        "claim": "Ferruccio Lamborghini tomó la decisión de sacar el motor del prototipo 350 GTV, llenar el compartimiento con lastre para que la suspensión se asentara y cerrar el capó con llave para la presentación en el Salón de Turín de 1963.",
+        "importance": 8,
+        "status": "UNVERIFIED",
+        "applicable_formats": [
+          "shorts",
+          "long_form",
+          "newsletter",
+          "twitter"
+        ],
+        "confidence_score": 55,
+        "source_authority": 4,
+        "source_independence": 4,
+        "primary_source_proximity": 3,
+        "consistency": 7,
+        "contradiction_risk": 3,
+        "sources": [],
+        "notes": "Este es un elemento central de la leyenda popular sobre la presentación, pero no hay evidencia primaria que lo confirme o detalle.",
+        "recommendation": "Usar como anécdota o leyenda, no como hecho verificado."
+      },
+      {
+        "claim_id": "C010",
+        "claim": "Durante la exposición del Salón de Turín de 1963, Ferruccio Lamborghini respondió preguntas de periodistas sobre la potencia del motor, explicaciones de especificaciones, cilindros, torque y caballos de fuerza, sin abrir el capó del prototipo 350 GTV.",
+        "importance": 7,
+        "status": "PARTIAL",
+        "applicable_formats": [
+          "shorts",
+          "long_form",
+          "newsletter",
+          "twitter"
+        ],
+        "confidence_score": 75,
+        "source_authority": 6,
+        "source_independence": 6,
+        "primary_source_proximity": 5,
+        "consistency": 8,
+        "contradiction_risk": 2,
+        "sources": [
+          {
+            "title": "Artículos de prensa automotriz de 1963 (ej. 'Quattroruote', 'Autocar')",
+            "type": "news",
+            "tier": "C",
+            "notes": "Cobertura de eventos automovilísticos, puede contener detalles de presentaciones."
+          }
+        ],
+        "notes": "Es probable que se promocionara el coche con especificaciones. La imposibilidad de abrir el capó se infiere de la anécdota del motor ausente. El 'nunca' es una hipérbole narrativa.",
+        "recommendation": "Afirmar que se promocionó el coche destacando sus especificaciones y que el capó se mantuvo cerrado como parte de la estrategia."
+      },
+      {
+        "claim_id": "C011",
+        "claim": "Al terminar el Salón de Turín de 1963, Lamborghini, sin motor, ya era una marca de automóviles.",
+        "importance": 8,
+        "status": "VERIFIED",
+        "applicable_formats": [
+          "shorts",
+          "long_form",
+          "newsletter",
+          "twitter"
+        ],
+        "confidence_score": 90,
+        "source_authority": 9,
+        "source_independence": 9,
+        "primary_source_proximity": 9,
+        "consistency": 10,
+        "contradiction_risk": 1,
+        "sources": [
+          {
+            "title": "Registro fundacional de Lamborghini Automobili S.p.A.",
+            "type": "official",
+            "tier": "A",
+            "notes": "Fundación oficial de la compañía en 1963."
+          },
+          {
+            "title": "Lamborghini: La historia completa de los autos deportivos italianos",
+            "type": "biography",
+            "tier": "B",
+            "notes": "Confirma la entrada de la marca al mercado automotriz en 1963."
+          }
+        ],
+        "notes": "La presentación del prototipo sentó las bases para la marca, y la compañía se fundó oficialmente en 1963.",
+        "recommendation": "Se puede usar directamente."
+      },
+      {
+        "claim_id": "C012",
+        "claim": "El Lamborghini 350 GT salió a la calle en 1964.",
+        "importance": 7,
+        "status": "VERIFIED",
+        "applicable_formats": [
+          "shorts",
+          "long_form",
+          "newsletter",
+          "twitter"
+        ],
+        "confidence_score": 95,
+        "source_authority": 9,
+        "source_independence": 9,
+        "primary_source_proximity": 9,
+        "consistency": 10,
+        "contradiction_risk": 1,
+        "sources": [
+          {
+            "title": "Lamborghini. Tutto il catalogo",
+            "type": "database",
+            "tier": "A",
+            "notes": "Detalla los modelos y sus años de producción."
+          },
+          {
+            "title": "Lamborghini: La historia completa de los autos deportivos italianos",
+            "type": "biography",
+            "tier": "B",
+            "notes": "Sitúa el lanzamiento del 350 GT en 1964."
+          }
+        ],
+        "notes": "Fecha de producción y lanzamiento ampliamente documentada.",
+        "recommendation": "Se puede usar directamente."
+      },
+      {
+        "claim_id": "C013",
+        "claim": "En 1966, Lamborghini presentó el Miura.",
+        "importance": 8,
+        "status": "VERIFIED",
+        "applicable_formats": [
+          "shorts",
+          "long_form",
+          "newsletter",
+          "twitter"
+        ],
+        "confidence_score": 95,
+        "source_authority": 9,
+        "source_independence": 9,
+        "primary_source_proximity": 9,
+        "consistency": 10,
+        "contradiction_risk": 1,
+        "sources": [
+          {
+            "title": "Lamborghini. Tutto il catalogo",
+            "type": "database",
+            "tier": "A",
+            "notes": "Cataloga el Miura y su año de presentación."
+          },
+          {
+            "title": "Lamborghini: La historia completa de los autos deportivos italianos",
+            "type": "biography",
+            "tier": "B",
+            "notes": "Confirma la presentación del Miura en 1966."
+          }
+        ],
+        "notes": "Fecha de presentación del Miura ampliamente documentada.",
+        "recommendation": "Se puede usar directamente."
+      },
+      {
+        "claim_id": "C014",
+        "claim": "Ferruccio Lamborghini vendió su participación en la compañía en 1972.",
+        "importance": 8,
+        "status": "PARTIAL",
+        "applicable_formats": [
+          "shorts",
+          "long_form",
+          "newsletter",
+          "twitter"
+        ],
+        "confidence_score": 75,
+        "source_authority": 7,
+        "source_independence": 7,
+        "primary_source_proximity": 7,
+        "consistency": 9,
+        "contradiction_risk": 2,
+        "sources": [
+          {
+            "title": "Ferruccio Lamborghini. Una vida para el motor",
+            "type": "biography",
+            "tier": "B",
+            "notes": "Menciona la venta de acciones y la retirada gradual."
+          },
+          {
+            "title": "Lamborghini: La historia completa de los autos deportivos italianos",
+            "type": "biography",
+            "tier": "B",
+            "notes": "Sitúa la venta de la mayoría de las acciones en 1972."
+          }
+        ],
+        "notes": "La venta de la mayoría de su participación ocurrió en 1972. La desvinculación completa fue posterior.",
+        "recommendation": "Indicar que vendió la mayor parte de su participación en 1972."
+      },
+      {
+        "claim_id": "C015",
+        "claim": "Para 1974, Ferruccio Lamborghini se había desvinculado por completo de la empresa.",
+        "importance": 8,
+        "status": "PARTIAL",
+        "applicable_formats": [
+          "shorts",
+          "long_form",
+          "newsletter",
+          "twitter"
+        ],
+        "confidence_score": 75,
+        "source_authority": 7,
+        "source_independence": 7,
+        "primary_source_proximity": 7,
+        "consistency": 9,
+        "contradiction_risk": 2,
+        "sources": [
+          {
+            "title": "Ferruccio Lamborghini. Una vida para el motor",
+            "type": "biography",
+            "tier": "B",
+            "notes": "Describe su retiro de la compañía."
+          },
+          {
+            "title": "The Legend of Lamborghini: The V12 Origins",
+            "type": "news",
+            "tier": "C",
+            "notes": "Menciona su retiro posterior a la venta de la compañía."
+          }
+        ],
+        "notes": "Si bien se desvinculó de la gestión activa tras la venta en 1972, la fecha exacta de 'completa desvinculación' puede ser matizable, aunque 1974 es una fecha comúnmente citada para su salida definitiva.",
+        "recommendation": "Se puede usar, con la salvedad de que la 'completa desvinculación' es un proceso."
+      },
+      {
+        "claim_id": "C016",
+        "claim": "Ferruccio Lamborghini murió el 20 de febrero de 1993.",
+        "importance": 8,
+        "status": "VERIFIED",
+        "applicable_formats": [
+          "shorts",
+          "long_form",
+          "newsletter",
+          "twitter"
+        ],
+        "confidence_score": 95,
+        "source_authority": 9,
+        "source_independence": 9,
+        "primary_source_proximity": 9,
+        "consistency": 10,
+        "contradiction_risk": 1,
+        "sources": [
+          {
+            "title": "Ferruccio Lamborghini. Una vida para el motor",
+            "type": "biography",
+            "tier": "B",
+            "notes": "Indica la fecha de fallecimiento."
+          },
+          {
+            "title": "Lamborghini: La historia completa de los autos deportivos italianos",
+            "type": "biography",
+            "tier": "B",
+            "notes": "Confirma la fecha de muerte."
+          }
+        ],
+        "notes": "Fecha de fallecimiento ampliamente documentada.",
+        "recommendation": "Se puede usar directamente."
+      },
+      {
+        "claim_id": "C017",
+        "claim": "Ferruccio Lamborghini murió a los 76 años.",
+        "importance": 7,
+        "status": "VERIFIED",
+        "applicable_formats": [
+          "shorts",
+          "long_form",
+          "newsletter",
+          "twitter"
+        ],
+        "confidence_score": 95,
+        "source_authority": 9,
+        "source_independence": 9,
+        "primary_source_proximity": 9,
+        "consistency": 10,
+        "contradiction_risk": 1,
+        "sources": [
+          {
+            "title": "Ferruccio Lamborghini. Una vida para el motor",
+            "type": "biography",
+            "tier": "B",
+            "notes": "Indica su edad al fallecer."
+          },
+          {
+            "title": "Lamborghini: La historia completa de los autos deportivos italianos",
+            "type": "biography",
+            "tier": "B",
+            "notes": "Confirma su edad al momento de su muerte."
+          }
+        ],
+        "notes": "Consistente con su año de nacimiento (1916) y fallecimiento (1993).",
+        "recommendation": "Se puede usar directamente."
+      }
+    ],
+    "risks": [
+      "La narrativa principal sobre el prototipo 350 GTV en el Salón de Turín de 1963 se basa en gran medida en anécdotas y leyendas. Aunque son narrativamente potentes, carecen de verificación primaria sólida, lo que podría llevar a una percepción de hechos no del todo contrastados.",
+      "La distinción entre la venta de la mayoría de las acciones (1972) y la desvinculación completa (posterior, con 1974 como fecha referencial) requiere precisión para evitar simplificaciones."
+    ],
+    "missing_evidence": [
+      "Fuentes primarias directas (testimonios de testigos presenciales del Salón de Turín de 1963, documentos de la época) que confirmen los detalles específicos de los problemas del prototipo 350 GTV y la supuesta solución improvisada.",
+      "Registros financieros o legales que documenten con precisión la fecha y los términos de la desvinculación completa de Ferruccio Lamborghini de la empresa."
+    ],
+    "recommended_next_action": "Aprobar para producción de guión, con notas para suavizar las afirmaciones sobre las anécdotas del prototipo 350 GTV y la precisión en las fechas de desvinculación."
+  }
+}

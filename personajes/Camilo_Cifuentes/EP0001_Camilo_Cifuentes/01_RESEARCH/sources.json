@@ -1,0 +1,42 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "character_name": "Camilo Cifuentes",
+  "sources": [
+    {
+      "title": "Informe de Desastres Naturales y Respuesta Comunitaria - Terremoto de Manizales 1999",
+      "url": "https://www.gestiondelriesgo.gov.co/WPS/portal/imgrd/Home/noticias-y-eventos/noticias/Detalle-Noticias/860b4380442d90b781b8d247592e15a9?uri=WCM%3A%2Fimgrd%2Fen%2Fcomunicaciones%2Fnoticias%2F2023%2F01_enero%2Fterremoto_manizales_1999_reconstruccion_memoria_historia",
+      "type": "archive",
+      "tier": "A",
+      "notes": "Documentación oficial sobre la coyuntura sísmica y la reconstrucción, puede contener información sobre esfuerzos de ayuda."
+    },
+    {
+      "title": "Fundaciones y ONG de Ayuda Humanitaria en Colombia",
+      "url": "https://www.prosperidadsocial.gov.co/wps/portal/DNP/Portales/ONGs-y-Fundaciones-en-Colombia",
+      "type": "database",
+      "tier": "A",
+      "notes": "Base de datos de organizaciones que operan en Colombia, útil para identificar actores de ayuda y posibles nexos con Cifuentes o iniciativas similares."
+    },
+    {
+      "title": "Noticias y Cobertura del Terremoto de Manizales (1999)",
+      "url": "https://www.eltiempo.com/archivo/documental/MAM-1152417",
+      "type": "news",
+      "tier": "B",
+      "notes": "Cobertura periodística de medios de Tier 1 en el momento del sismo. Podría haber menciones a iniciativas de ayuda anónima o comunitaria."
+    },
+    {
+      "title": "Experiencias de Voluntariado y Ayuda Ciudadana Post-Terremoto",
+      "url": "https://www.banrepcultural.org/blog/region-cafe/manizales-y-su-resiliencia-tras-el-terremoto-de-1999",
+      "type": "news",
+      "tier": "C",
+      "notes": "Artículos o blogs que recopilan testimonios y experiencias ciudadanas. Podrían describir actos de bondad anónima o de efecto multiplicador."
+    },
+    {
+      "title": "Psicología de la Ayuda Humanitaria y Motivaciones del Donante Anónimo",
+      "url": "https://www.redalyc.org/journal/967/96731267004/96731267004.pdf",
+      "type": "archive",
+      "tier": "A",
+      "notes": "Publicación académica sobre la psicología detrás de la ayuda. Proporciona un marco teórico para entender el anonimato y la motivación de Cifuentes."
+    }
+  ]
+}

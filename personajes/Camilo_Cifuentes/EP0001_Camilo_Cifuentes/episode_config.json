@@ -1,0 +1,13 @@
+{
+  "episode_id": "EP0001_Camilo_Cifuentes",
+  "input_mode": "recovery",
+  "panel_status": "recovery_ready",
+  "execution_authorized": true,
+  "research_source": "01_RESEARCH_RECOVERY",
+  "forbidden_sources": [
+    "01_RESEARCH"
+  ],
+  "gate_2d": "PASS",
+  "notes": "Recovery-only input. Do not fall back to 01_RESEARCH.",
+  "authorization_scope": "GATE_3_WRITE_ONLY"
+}

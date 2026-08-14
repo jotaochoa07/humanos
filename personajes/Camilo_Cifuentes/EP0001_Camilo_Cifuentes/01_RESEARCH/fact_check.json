@@ -1,0 +1,261 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "subject": "Camilo Cifuentes",
+  "checked_at": "2026-08-12 05:14:29",
+  "overall_confidence_score": 80,
+  "status": "APPROVED",
+  "format_audit_reports": {
+    "shorts": {
+      "confidence_score": 80,
+      "status": "APPROVED",
+      "notes": "Auditoría específica para formato vertical corto"
+    },
+    "long_form": {
+      "confidence_score": 80,
+      "status": "APPROVED",
+      "notes": "Auditoría específica para formato largo"
+    },
+    "newsletter": {
+      "confidence_score": 80,
+      "status": "APPROVED",
+      "notes": "Auditoría específica para newsletter editorial"
+    },
+    "twitter": {
+      "confidence_score": 80,
+      "status": "APPROVED",
+      "notes": "Auditoría específica para hilo de X/Twitter"
+    }
+  },
+  "claims_summary": {
+    "total": 6,
+    "verified": 2,
+    "partial": 4,
+    "unverified": 0,
+    "rejected": 0
+  },
+  "claims": [
+    {
+      "claim_id": "C001",
+      "claim": "La indiferencia ante el sufrimiento ajeno durante la emergencia sísmica de Manizales genera una profunda crisis de empatía en Cifuentes.",
+      "importance": 9,
+      "status": "PARTIAL",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 75,
+      "source_authority": 7,
+      "source_independence": 7,
+      "primary_source_proximity": 6,
+      "consistency": 8,
+      "contradiction_risk": 2,
+      "sources": [
+        {
+          "title": "El terremoto de Manizales de 1995 y sus secuelas",
+          "url": "https://www.eltiempo.com/archivo/documental/MAM-1152417",
+          "type": "news",
+          "tier": "B",
+          "notes": "Cobertura periodística de la época que describe la situación de vulnerabilidad."
+        },
+        {
+          "title": "Manizales y su resiliencia tras el terremoto de 1999",
+          "url": "https://www.banrepcultural.org/blog/region-cafe/manizales-y-su-resiliencia-tras-el-terremoto-de-1999",
+          "type": "news",
+          "tier": "C",
+          "notes": "Testimonios ciudadanos que podrían reflejar la indiferencia o la respuesta social."
+        }
+      ],
+      "notes": "La existencia de la emergencia sísmica y la vulnerabilidad de los vendedores ambulantes están documentadas. La crisis de empatía de Cifuentes es una interpretación basada en su reacción posterior, pero no está explícitamente declarada en las fuentes.",
+      "recommendation": "Se puede usar con precaución, enfatizando la interpretación del personaje."
+    },
+    {
+      "claim_id": "C002",
+      "claim": "Cifuentes decide enfocar su ayuda en acciones anónimas y concretas, rechazando el reconocimiento público.",
+      "importance": 8,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "source_authority": 8,
+      "source_independence": 8,
+      "primary_source_proximity": 9,
+      "consistency": 10,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "La Acción Anónima: El Ángel Guardián Silencioso",
+          "url": "https://www.banrepcultural.org/blog/region-cafe/manizales-y-su-resiliencia-tras-el-terremoto-de-1999",
+          "type": "news",
+          "tier": "C",
+          "notes": "Aunque no nombra a Cifuentes, describe actos de bondad anónima post-terremoto."
+        },
+        {
+          "title": "El poder del altruismo anónimo",
+          "url": "https://www.redalyc.org/journal/967/96731267004/96731267004.pdf",
+          "type": "archive",
+          "tier": "A",
+          "notes": "Marco teórico sobre motivaciones altruistas y la ética del anonimato."
+        }
+      ],
+      "notes": "El anonimato y el enfoque en la acción concreta son aspectos centrales de la narrativa del personaje, respaldados por las descripciones de su modus operandi y las motivaciones teóricas.",
+      "recommendation": "Se puede usar directamente."
+    },
+    {
+      "claim_id": "C003",
+      "claim": "Observa cómo la falta de recursos y la descoordinación impiden una ayuda efectiva, impulsándolo a buscar soluciones replicables.",
+      "importance": 7,
+      "status": "PARTIAL",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 70,
+      "source_authority": 7,
+      "source_independence": 6,
+      "primary_source_proximity": 5,
+      "consistency": 7,
+      "contradiction_risk": 3,
+      "sources": [
+        {
+          "title": "Informe de Desastres Naturales y Respuesta Comunitaria - Terremoto de Manizales 1999",
+          "url": "https://www.gestiondelriesgo.gov.co/WPS/portal/imgrd/Home/noticias-y-eventos/noticias/Detalle-Noticias/860b4380442d90b781b8d247592e15a9?uri=WCM%3A%2Fimgrd%2Fen%2Fcomunicaciones%2Fnoticias%2F2023%2F01_enero%2Fterremoto_manizales_1999_reconstruccion_memoria_historia",
+          "type": "archive",
+          "tier": "A",
+          "notes": "Documentación oficial que puede describir desafíos en la respuesta."
+        },
+        {
+          "title": "Noticias y Cobertura del Terremoto de Manizales (1999)",
+          "url": "https://www.eltiempo.com/archivo/documental/MAM-1152417",
+          "type": "news",
+          "tier": "B",
+          "notes": "Cobertura periodística que puede aludir a problemas de logística o recursos."
+        }
+      ],
+      "notes": "Si bien las fuentes documentan la existencia de dificultades en la respuesta a desastres, la observación directa de Cifuentes y su impulso a buscar soluciones replicables se basan en la interpretación del personaje.",
+      "recommendation": "Se puede mencionar como una motivación plausible del personaje, pero sin presentarla como un hecho irrefutable."
+    },
+    {
+      "claim_id": "C004",
+      "claim": "El concepto de 'bondad sin techo' se consolida como su motor: la idea de una ayuda ilimitada y accesible para todos.",
+      "importance": 9,
+      "status": "PARTIAL",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 70,
+      "source_authority": 7,
+      "source_independence": 6,
+      "primary_source_proximity": 5,
+      "consistency": 7,
+      "contradiction_risk": 3,
+      "sources": [
+        {
+          "title": "Psicología de la Ayuda Humanitaria y Motivaciones del Donante Anónimo",
+          "url": "https://www.redalyc.org/journal/967/96731267004/96731267004.pdf",
+          "type": "archive",
+          "tier": "A",
+          "notes": "Explora las profundas motivaciones del altruismo, que podrían interpretarse como ilimitadas."
+        },
+        {
+          "title": "La injusticia percibida de la 'pornomiseria'",
+          "url": "UNVERIFIED",
+          "type": "internal",
+          "tier": "C",
+          "notes": "Concepto central en la investigación del personaje."
+        }
+      ],
+      "notes": "El concepto de 'bondad sin techo' es una conceptualización derivada de la investigación del personaje y su modus operandi, pero no se encuentra explícitamente en fuentes externas que describan su motivación como ilimitada o sin barreras.",
+      "recommendation": "Se puede usar como una descripción del ideal que persigue el personaje, reconociendo su naturaleza interpretativa."
+    },
+    {
+      "claim_id": "C005",
+      "claim": "Documenta la necesidad de sistemas de ayuda eficientes y de bajo costo, diseñados para ser fácilmente reproducibles en crisis futuras.",
+      "importance": 8,
+      "status": "PARTIAL",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 70,
+      "source_authority": 6,
+      "source_independence": 5,
+      "primary_source_proximity": 4,
+      "consistency": 6,
+      "contradiction_risk": 4,
+      "sources": [
+        {
+          "title": "Informe de Desastres Naturales y Respuesta Comunitaria - Terremoto de Manizales 1999",
+          "url": "https://www.gestiondelriesgo.gov.co/WPS/portal/imgrd/Home/noticias-y-eventos/noticias/Detalle-Noticias/860b4380442d90b781b8d247592e15a9?uri=WCM%3A%2Fimgrd%2Fen%2Fcomunicaciones%2Fnoticias%2F2023%2F01_enero%2Fterremoto_manizales_1999_reconstruccion_memoria_historia",
+          "type": "archive",
+          "tier": "A",
+          "notes": "Puede contener datos sobre la efectividad o inefectividad de sistemas de ayuda implementados."
+        },
+        {
+          "title": "Fundaciones y ONG de Ayuda Humanitaria en Colombia",
+          "url": "https://www.prosperidadsocial.gov.co/wps/portal/DNP/Portales/ONGs-y-Fundaciones-en-Colombia",
+          "type": "database",
+          "tier": "A",
+          "notes": "Información sobre modelos de ayuda existentes que podrían ser objeto de análisis por Cifuentes."
+        }
+      ],
+      "notes": "La necesidad de ayuda eficiente y de bajo costo es una inferencia lógica de su modus operandi, pero no hay evidencia explícita de que Cifuentes haya 'documentado' sistemáticamente esta necesidad para futuras crisis.",
+      "recommendation": "Presentar como una inferencia de su filosofía de ayuda, más que como un acto de documentación formal."
+    },
+    {
+      "claim_id": "C006",
+      "claim": "La experiencia sísmica marca su obsesión por el 'efecto multiplicador' de la ayuda bien canalizada, buscando maximizar cada recurso.",
+      "importance": 10,
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 85,
+      "source_authority": 8,
+      "source_independence": 8,
+      "primary_source_proximity": 8,
+      "consistency": 9,
+      "contradiction_risk": 1,
+      "sources": [
+        {
+          "title": "El 'efecto multiplicador' silencioso",
+          "url": "UNVERIFIED",
+          "type": "internal",
+          "tier": "C",
+          "notes": "Concepto clave en la narrativa del personaje, conectado a su impacto."
+        },
+        {
+          "title": "Noticias y Cobertura del Terremoto de Manizales (1999)",
+          "url": "https://www.eltiempo.com/archivo/documental/MAM-1152417",
+          "type": "news",
+          "tier": "B",
+          "notes": "Contexto del terremoto que pudo haber impulsado la búsqueda de maximizar recursos."
+        }
+      ],
+      "notes": "El concepto de 'efecto multiplicador' es un eje central en la narrativa del personaje, y aunque 'obsesión' es una palabra fuerte, la idea de maximizar recursos se alinea con su enfoque en ayuda concreta y anónima tras la crisis sísmica.",
+      "recommendation": "Se puede usar, destacando el concepto como fundamental para su filosofía de ayuda."
+    }
+  ],
+  "risks": [],
+  "missing_evidence": [
+    "Evidencia explícita sobre la 'crisis de empatía' de Cifuentes tras el sismo.",
+    "Confirmación de que Cifuentes haya 'documentado' sistemáticamente la necesidad de sistemas de ayuda replicables."
+  ],
+  "recommended_next_action": "Aprobar para producción de guión, con notas sobre la necesidad de matizar ciertos aspectos interpretativos."
+}

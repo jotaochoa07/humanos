@@ -1,0 +1,12 @@
+{
+  "audited_at": "2026-08-09T10:37:16.950061",
+  "target": "script_long.md (locutado_final)",
+  "script_audit": {
+    "subject": "Ferruccio Lamborghini",
+    "overall_accuracy_score": 100,
+    "status": "APPROVED",
+    "detected_issues": [],
+    "notes": "El guion se adhiere de manera excelente a la investigación autorizada y a los datos generales. Todos los hechos presentados están respaldados por las fuentes proporcionadas. La narrativa fluye lógicamente y la contextualización histórica es precisa. La emoción y la motivación de Ferruccio Lamborghini se presentan de forma coherente con la información disponible.",
+    "recommended_next_action": "Aprobar para producción de storyboard"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "subject": "Camilo Cifuentes",
+  "recovery_gate": "GATE 2B",
+  "recovered_at": "2026-08-12T10:45:19+00:00",
+  "scope": "controlled recovery; orchestrator-browsed sources supplied to recovery writer; no media download or platform scraping",
+  "validation_mode": "SHADOW_ONLY",
+  "approval_effect": "NONE — no shadow result; deterministic recovery gate remains FAIL.",
+  "executed_method": "VeritasAgent.execute_verification",
+  "input_claim_ids": [
+    "RC001",
+    "RC002",
+    "RC003",
+    "RC004",
+    "RC005",
+    "RC006",
+    "RC007",
+    "RC008"
+  ],
+  "execution_status": "unavailable_or_failed",
+  "error_type": "ValueError",
+  "error": "La variable de entorno OPENROUTER_API_KEY no está configurada.",
+  "traceback": "Traceback (most recent call last):\n  File \"<stdin>\", line 69, in <module>\n  File \"/mnt/c/Users/Jota Ochoa/Antigravity/02_Projects/humanos/veritas.py\", line 154, in execute_verification\n    output = self.client.complete_json(verification_prompt, system_prompt)\nValueError: La variable de entorno OPENROUTER_API_KEY no está configurada.\n"
+}

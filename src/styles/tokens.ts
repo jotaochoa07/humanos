@@ -14,5 +14,6 @@ export const HUMANOS_COLORS = {
 
 export const HUMANOS_TYPE = {
   brand: 'Outfit, Inter, Arial, sans-serif',
+  landscapeBrand: 'Montserrat, Inter, Arial, sans-serif',
   body: 'Inter, Arial, sans-serif',
 } as const;

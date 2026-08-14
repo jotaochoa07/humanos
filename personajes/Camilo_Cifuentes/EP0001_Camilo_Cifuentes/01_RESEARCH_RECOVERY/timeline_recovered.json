@@ -1,0 +1,62 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "subject": "Camilo Cifuentes",
+  "recovery_gate": "GATE 2B",
+  "recovered_at": "2026-08-12T10:45:19+00:00",
+  "scope": "controlled recovery; orchestrator-browsed sources supplied to recovery writer; no media download or platform scraping",
+  "events": [
+    {
+      "date": "2024-12",
+      "event": "Reported start of activity after helping Alejo, a disabled candy seller.",
+      "evidence_class": "MEDIA_REPORTED",
+      "source_ids": [
+        "S09",
+        "S10"
+      ],
+      "confidence": "moderate",
+      "usage": "attributed only"
+    },
+    {
+      "date": "2025-05-08",
+      "event": "Telecafé press release says activity at CDI Solferino in Manizales benefited 128 children.",
+      "evidence_class": "OFFICIAL_SOURCE",
+      "source_ids": [
+        "S06"
+      ],
+      "confidence": "high",
+      "usage": "attributed institutional statement"
+    },
+    {
+      "date": "2026-03-30",
+      "event": "Pereira/J Balvin case reported; lead only.",
+      "evidence_class": "MEDIA_REPORTED",
+      "source_ids": [
+        "S14"
+      ],
+      "confidence": "low",
+      "usage": "do not use as established fact"
+    },
+    {
+      "date": "2026-05-06",
+      "event": "Mazamorra-vendor case alleged; lead only.",
+      "evidence_class": "MEDIA_REPORTED",
+      "source_ids": [
+        "S15"
+      ],
+      "confidence": "low",
+      "usage": "do not use as established fact"
+    },
+    {
+      "date": "2026-08-10",
+      "event": "No verified original Camilo post or primary statement connecting him/family to the Colombia earthquake in supplied evidence.",
+      "evidence_class": "UNKNOWN",
+      "source_ids": [
+        "S18",
+        "S19"
+      ],
+      "confidence": "none",
+      "usage": "exclude from factual narrative"
+    }
+  ]
+}

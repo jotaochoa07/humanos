@@ -1,0 +1,40 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "subject": "Camilo Cifuentes",
+  "recovery_gate": "GATE 2B",
+  "recovered_at": "2026-08-12T10:45:19+00:00",
+  "scope": "controlled recovery; orchestrator-browsed sources supplied to recovery writer; no media download or platform scraping",
+  "identity_anchor": {
+    "source_id": "S01",
+    "url": "https://linktr.ee/CamiloCifuentes",
+    "title": "Camilo Cifuentes",
+    "identity_match": "strong",
+    "legal_name_inference": "prohibited",
+    "linked_accounts": [
+      {
+        "platform": "Facebook",
+        "url": "https://www.facebook.com/camilocifuentes962/",
+        "identity_match": "anchored",
+        "source_real": true,
+        "rights_status": "external URL only"
+      },
+      {
+        "platform": "Instagram",
+        "url": "https://www.instagram.com/camilocifuentes962",
+        "identity_match": "anchored",
+        "source_real": true,
+        "rights_status": "external URL only"
+      },
+      {
+        "platform": "TikTok",
+        "url": "https://www.tiktok.com/@camilocifuentes96",
+        "identity_match": "partial",
+        "source_real": true,
+        "rights_status": "external URL only",
+        "access_status": "primary URL located, content not fetched"
+      }
+    ],
+    "provenance": "orchestrator-browsed Linktree page classification"
+  }
+}

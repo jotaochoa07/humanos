@@ -1,0 +1,30 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "subject": "Camilo Cifuentes",
+  "recovery_gate": "GATE 2B",
+  "recovered_at": "2026-08-12T10:45:19+00:00",
+  "scope": "controlled recovery; orchestrator-browsed sources supplied to recovery writer; no media download or platform scraping",
+  "event_date": "2026-08-10",
+  "relation_to_camilo": "UNKNOWN",
+  "verified_original_camilo_post": false,
+  "verified_primary_statement": false,
+  "claims_status": "UNTRUSTED_PREVIOUS_RUN / NOT_LOCATED",
+  "official_context_leads": [
+    "S18",
+    "S19"
+  ],
+  "official_event_match": "pending/not matched in supplied recovery evidence",
+  "cta_candidate": {
+    "url": "https://ayuda.cruzrojacolombiana.org/",
+    "status": "candidate_only",
+    "evidence_class": "UNKNOWN",
+    "source_real": true,
+    "rights_status": "external URL only",
+    "provenance": "supplied candidate; no Camilo or earthquake linkage"
+  },
+  "misapplication_exclusion": {
+    "source_id": "S17",
+    "reason": "Venezuela response page; not evidence for Colombia."
+  }
+}

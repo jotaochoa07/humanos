@@ -1,0 +1,30 @@
+{
+  "character_card": {
+    "category": "BONDAD SIN TECHO",
+    "name": "CAMILO CIFUENTES",
+    "description": "MANIZALES, COLOMBIA",
+    "visual_style": "Retrato en escala de grises con alto contraste y saturación muy baja (-60%), ocupando la parte inferior izquierda con el 60-75% del encuadre. Mucho espacio negativo en la parte superior derecha, con texto de categoría arriba y descripción abajo, todo en blanco y siguiendo la jerarquía tipográfica definida."
+  },
+  "thumbnail": {
+    "headline": "la voz que da",
+    "highlight_word": "da",
+    "composition_description": "Retrato de Camilo Cifuentes ocupando el 70-80% del encuadre vertical (9:16), con mirada seria y directa a cámara. Fondo negro absoluto. El texto 'la voz que' en blanco, Montserrat Bold, y la palabra 'da' en cian, Montserrat Bold. Mucho espacio negativo alrededor."
+  },
+  "midjourney_prompts": [
+    {
+      "purpose": "Retrato de miniatura en B/N",
+      "prompt": "Close-up portrait of Camilo Cifuentes, looking directly at the camera with a serious and empathetic expression. Journalistic editorial style, high contrast black and white, very low saturation (-70%), dramatic chiaroscuro lighting. Shot with a professional portrait lens, 85mm. Subtle 35mm film grain texture. --ar 9:16"
+    },
+    {
+      "purpose": "B-roll de Camilo comprando y entregando",
+      "prompt": "Camilo Cifuentes in a candid, observational documentary shot, interacting with street vendors and individuals in Manizales. Focus on hands exchanging money and goods, genuine expressions of surprise and gratitude. Natural, slightly desaturated color grading with a strong emphasis on blacks and contrast. Shot with a 50mm lens, capturing authentic moments. --ar 16:9"
+    }
+  ],
+  "motion_specs": {
+    "camera_speed": "pan_slow",
+    "default_transition": "subtle_fade",
+    "branding_color_use": "El color cian (#01C9C7) se utiliza exclusivamente para la palabra clave principal en las tarjetas de título y como acento puntual en transiciones de texto muy sutiles, siempre alineado con la narración.",
+    "titles_font": "Montserrat Bold",
+    "subtitles_font": "Inter SemiBold"
+  }
+}

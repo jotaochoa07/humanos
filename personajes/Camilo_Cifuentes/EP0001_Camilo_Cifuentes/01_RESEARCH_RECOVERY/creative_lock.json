@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "episode_id": "EP0001_Camilo_Cifuentes",
+  "status": "LOCKED",
+  "source": "user_creative_lock",
+  "locks": [
+    {
+      "id": "format",
+      "requirement": "Epistle-like short-form HUMANOS piece; not a mini-biography."
+    },
+    {
+      "id": "duration",
+      "requirement": "Narrative target 60–90 seconds; final duration follows Jota voice recording."
+    },
+    {
+      "id": "anonymity",
+      "requirement": "Camilo remains unseen; absence of the face is the central narrative device."
+    },
+    {
+      "id": "opening_card",
+      "requirement": "BONDAD SIN TECHO / CAMILO CIFUENTES / MANIZALES, COLOMBIA / ROSTRO — DESCONOCIDO, with an empty portrait field."
+    },
+    {
+      "id": "voice_recognition",
+      "requirement": "Build recognition through the faces and reactions of people who recognize Camilo’s voice."
+    },
+    {
+      "id": "original_audio",
+      "requirement": "Use original voices only where present and verified; silence from Jota is structural."
+    },
+    {
+      "id": "action_beats",
+      "requirement": "Purchase/payment, redistribution, “Yo afán no tengo” only when evidenced, gratitude, warmth and humor."
+    },
+    {
+      "id": "gratitude_mosaic",
+      "requirement": "5–7 seconds of gratitude micro-moments; it is a MOSAICO DE GRATITUD, not suffering."
+    },
+    {
+      "id": "dignity",
+      "requirement": "The helped person is never emotional utility for elevating the protagonist."
+    },
+    {
+      "id": "earthquake",
+      "requirement": "Editorial context only; do not attribute earthquake response, family damage or campaigns to Camilo."
+    },
+    {
+      "id": "earthquake_visual",
+      "requirement": "Verified earthquake material may shift to black and white; do not use graphic suffering."
+    },
+    {
+      "id": "final_card",
+      "requirement": "Return to the same empty card; remove DESCONOCIDO, wait 1.5–2 seconds, typewrite PODRÍA SER EL TUYO|, leave cursor blinking."
+    },
+    {
+      "id": "echo",
+      "requirement": "Use gratitude voices as subtle echoes; then name LA VIDA ES UN ECO."
+    },
+    {
+      "id": "service",
+      "requirement": "Narrative and public-service block remain separate; no unverified accounts or banking details."
+    },
+    {
+      "id": "tone",
+      "requirement": "Prefer dignity over emotional intensity, truth over virality, and silence over explanation."
+    }
+  ]
+}

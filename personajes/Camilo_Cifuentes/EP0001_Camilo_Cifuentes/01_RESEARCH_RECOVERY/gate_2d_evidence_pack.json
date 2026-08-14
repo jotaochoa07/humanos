@@ -1,0 +1,513 @@
+{
+  "gate": "2D",
+  "status": "PASS",
+  "evidence_class": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+  "scope": "basic_inventory_and_podcast_fragments_only",
+  "no_microsegmentation": true,
+  "inventory": {
+    "folder": "/mnt/c/Users/Jota Ochoa/Antigravity/02_Projects/humanos/personajes/Camilo_Cifuentes/EP0001_Camilo_Cifuentes/Manual_assets",
+    "count": 36,
+    "items": [
+      {
+        "filename": "Camilo - abrazo poderoso - Repartiendo arroz con leche en la calle gesto.mp4",
+        "size_bytes": 55202465,
+        "sha256": "1d69b7c4956a281bf2d08d26034e12c4cc42277958807ca764bd39ec649895bc",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Camilo Abrazo Repartiendo postres en la calle foryoupage videoviral paratii Tambin desde su ca.mp4",
+        "size_bytes": 23181677,
+        "sha256": "ccf57e1076089c8046b8365784e1fa9ea2c01f793b4878c3cef94eebcdfb93d1",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Camilo Bendecido No todos tenemos los mismos privilegios parati foryou videoviral.mp4",
+        "size_bytes": 13901291,
+        "sha256": "4021eeb75ebdd25f4e0d74486137cc1b71b83ffad26d3fe75110d5ad7b37e0ba",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Camilo Bendecido Repartiendo buuelos en la calle foryoupage videoviral paratii Ubicada en el barr.mp4",
+        "size_bytes": 29173552,
+        "sha256": "f88dbfef83cc7267b9d24e7737c5bd37d46a2280e7af36224b142fbd2e8b821a",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Camilo Bendecido Repartiendo buuelos en la calle paratii foryoupage videoviral Tatiana recorre el.mp4",
+        "size_bytes": 30751084,
+        "sha256": "be7fb127c2a24066fa64e3a4b29162ff304780b63aeeb06eced02e2b5b5ecb25",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Camilo Bendecido Repartiendo natilla con buuelo en la calle paratii foryoupage videoviral.mp4",
+        "size_bytes": 30854618,
+        "sha256": "c563d61da7400566918633bd597ba8811dd881d45cac1a32a09df410eb304254",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Camilo Bendecido Repartiendo papitas y platanitos en la calle parati foryou videoviral medellin.mp4",
+        "size_bytes": 16609814,
+        "sha256": "b8d53cb73d00afac4da18ea476a370c871a4d593642034347d9e8ce785b06340",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Camilo Benedido 2 - Repartiendo arepitas en la calle parati foryou videoviral.mp4",
+        "size_bytes": 16878377,
+        "sha256": "1df73a693ccddf18dc7cea88740927f117f4dc1b39c0a84b1f2cdea81b53feec",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Camilo Cifuentes en Podcast Telecafé 💜 - Canal Telecafé (1080p, h264).mp4",
+        "size_bytes": 230959768,
+        "sha256": "ad2e308f116ce3140a0a1fe521cd6c63edc0a27105279d383681bf8f99ad81fd",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Camilo Cifuentes recaudando dinero.mp4",
+        "size_bytes": 39859700,
+        "sha256": "e5e45634f02158f531f1e2659f8e45e585f3164cbd00d2129d2525ef18922e21",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Camilo Llorando y reconocido -Repartiendo pastelitos en la calle paratii foryoupage videoviral America vende p.mp4",
+        "size_bytes": 24738333,
+        "sha256": "39ce39697d159ed5a87aaebeaacee34dfff8d7fc4b40afbe75600c1b37762424",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Camilo Reconocido Repartiendo almuercitos a las personas en la calle Doa lucero se encuentra ubica.mp4",
+        "size_bytes": 28487390,
+        "sha256": "c6f1c3d817ff6a324cae66b22a6f214c8315bc16fd39748c0450d08be0f1bc4d",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Camilo Repartiendo churros a las personas en la calle parati foryou videoviral La panad.mp4",
+        "size_bytes": 19868647,
+        "sha256": "df80b58041f9783013d7fa2ef128bd2fba9c73ccf8ac988dce3654d4ec757849",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Camilo afan no tengo Repartiendo almuercitos en la calle parati foryou videoviral Ubicadas en la call.mp4",
+        "size_bytes": 32358933,
+        "sha256": "8a4df415112c6a62467d1412523d6d3346ddce23c035f6be1749ca436048a069",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Camilo alimentando perro - Repartiendo carne en la calle parati foryou videoviral.mp4",
+        "size_bytes": 12720795,
+        "sha256": "58e8b49e3ea4b43cfafa86fb5cadc696b3ae4cbf8cac599af29d53529670a13e",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Camilo dando dinero El amor de un padre no acaba jams foryoupage emocional camilocifuentes.mp4",
+        "size_bytes": 18573060,
+        "sha256": "edc4ebd69caf02249ccde70931ae754b4e6d362ecbeab1f5035771fb19253722",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Camilo reconocido Repartiendo arepaburguer y perritos en la calle El puestico est ubicado en el ba.mp4",
+        "size_bytes": 15555622,
+        "sha256": "5a6c9f09e1c37f11a118c01afdb0cb38a8864f19b34498e1bbd8588f8db78e82",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Camilo reconocido Repartiendo donitas en la calle Su TikTok Little Sweet Donuts paratii foryoupage.mp4",
+        "size_bytes": 31164614,
+        "sha256": "4a7dcec8818b7c429667c2344552d607519cd96ef28cc5f91d272bebcaa6dbd4",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Camilo, abrazo vendedora.mp4",
+        "size_bytes": 27264983,
+        "sha256": "998463c873a8f0eb11548841bc846b0773cff7e94f15490cd77b6b20eae90b24",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Camilo- abrazo 2.mp4",
+        "size_bytes": 24260289,
+        "sha256": "5dba4f922e145c9acad9f63887ce518e1e32c3cd898ecf2a06ef08f75b596fd5",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Instagram_DW2RWt2kQhj_Video_by_camilocifuentes962.mp4",
+        "size_bytes": 148856920,
+        "sha256": "170155ba96598fc02983354cacf9644b19df34df5975ab3e7ea98ea3397ba50d",
+        "provenance": {
+          "source_url": "https://www.instagram.com/p/DW2RWt2kQhj/",
+          "platform": "Instagram",
+          "account": "@camilocifuentes962",
+          "acquisition": "yt-dlp 2026.07.04",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Instagram_DX-1MQ8x8iA_Video_by_camilocifuentes962.mp4",
+        "size_bytes": 68925366,
+        "sha256": "31862f12a52af3587894fa7a06a22b8a6e8dd48562f4f9dc873187dc0589bec5",
+        "provenance": {
+          "source_url": "https://www.instagram.com/p/DX-1MQ8x8iA/",
+          "platform": "Instagram",
+          "account": "@camilocifuentes962",
+          "acquisition": "yt-dlp 2026.07.04",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Instagram_DXK-geZERic_Video_by_camilocifuentes962.mp4",
+        "size_bytes": 75297664,
+        "sha256": "1debb0912a84f93afd95add458f3be0b90cd1ca805e3731f058393754d75d8e6",
+        "provenance": {
+          "source_url": "https://www.instagram.com/p/DXK-geZERic/",
+          "platform": "Instagram",
+          "account": "@camilocifuentes962",
+          "acquisition": "yt-dlp 2026.07.04",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Instagram_DYYMSYjxX4z_Video_by_camilocifuentes962.mp4",
+        "size_bytes": 70741017,
+        "sha256": "d78694f2c2d42cf6fa17754c4f525409ee823a1b095fe19b837b3ccaded5edb3",
+        "provenance": {
+          "source_url": "https://www.instagram.com/p/DYYMSYjxX4z/",
+          "platform": "Instagram",
+          "account": "@camilocifuentes962",
+          "acquisition": "yt-dlp 2026.07.04",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Repartiendo arepitas en la calle Ubicada en la Cra A N - Barrio Solferino foryou.mp4",
+        "size_bytes": 30193164,
+        "sha256": "7cc19e66c41c6fc4dc0d62c1fc731161f15539d0bb0c59487af364d928376eb7",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Repartiendo burritos en la calle parati videoviral foryou.mp4",
+        "size_bytes": 11884840,
+        "sha256": "61b1b457480e14d01c74719f3e22b8297b868ca68f5f0a711b0842736442777e",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Repartiendo empanadas a las personas en la calle ellos se encuentran ubicados en.mp4",
+        "size_bytes": 23964752,
+        "sha256": "c1c5a5d88853fcbd5328797d99b6eb23e06f5194e74df7e2bb547cefae475ebe",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Repartiendo empanadas en la calle🥟📍@ losnavas.navas en TkTk.mp4",
+        "size_bytes": 81200963,
+        "sha256": "e38c5570b027888556dd99f9eee149d2aa48274428f7d6911c7306b7e785661e",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Repartiendo fresitas con crema en la calle Sofa tobon Su TikTok.mp4",
+        "size_bytes": 37533617,
+        "sha256": "da30e9bdad74b95b3c04f6ceeeea2253c7af72b1b55f4f4a0e7bc404dc5ba872",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Repartiendo fresitas en la calle parati foryou videoviral.mp4",
+        "size_bytes": 16322667,
+        "sha256": "04d79fe03270e0a7b0a9fce66545c007be24722c6b68c35cacd234fc09b4a0e5",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Repartiendo hamburguesas en la calle Ubicados en la Calle N - Parque Liborio.mp4",
+        "size_bytes": 33843962,
+        "sha256": "3c2689b3e428049dd7d385c5b7752eb79bd1daf280c6dd70562d05662cdb8115",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Repartiendo obleas en la calle Ubicados en la Calle N a Barrio el Pomar (1).mp4",
+        "size_bytes": 49929042,
+        "sha256": "6b91af4c81f2f893168f7896bf314078763506d00c06dc80c204d79270bb2ff0",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "Repartiendo papitas en calle Ubicados frente a la gran estacin.mp4",
+        "size_bytes": 42692448,
+        "sha256": "410ebe90f480bdf671f4ed8aa2b949f94897db8194eb9f89b33a5c16dcb9de90",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "camilo - abrazo 01.mp4",
+        "size_bytes": 36171657,
+        "sha256": "bf16ce0877877ac4e2e347327d0ee9b9ab947dd14864dff07dcc10e3ead595e9",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "camilo-santa-elena.mp4",
+        "size_bytes": 37243882,
+        "sha256": "37d435e21d904ddc5aa3fb09832fe03ec7fe680576f88c46d537d51edd6d2f0e",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      },
+      {
+        "filename": "camilo-terremoto-familiar.mp4",
+        "size_bytes": 11529352,
+        "sha256": "bd541cd0a4717f86f1f0996e999dd9d508ef4c300058fb519c046b52bf2eb4c7",
+        "provenance": {
+          "source_url": null,
+          "platform": "Telecafe/social source",
+          "account": null,
+          "acquisition": "user-curated local file",
+          "source_status": "HUMAN_VERIFIED_PRIMARY_SOURCE",
+          "rights_status": "third_party_public_source"
+        }
+      }
+    ]
+  },
+  "podcast_fragments": [
+    {
+      "timestamp": "00:01:15",
+      "transcription": "Me llamo Juan Camilo Jurado Cifuentes. 29 años.",
+      "claim_supported": "Self-identification and stated age.",
+      "transcription_status": "human_verified_from_user_curated_notes"
+    },
+    {
+      "timestamp": "00:03:36",
+      "transcription": "Vengo de una familia amorosa. Mejor dar que recibir.",
+      "claim_supported": "Stated family value of giving.",
+      "transcription_status": "human_verified_from_user_curated_notes"
+    },
+    {
+      "timestamp": "00:06:30",
+      "transcription": "Todos hemos necesitado una mano. Y siempre todos hemos necesitado una ayuda.",
+      "claim_supported": "Shared-humanity framing.",
+      "transcription_status": "human_verified_from_user_curated_notes"
+    },
+    {
+      "timestamp": "00:07:57",
+      "transcription": "Yo no quiero ser el protagonista. Las protagonistas son las personas y no yo.",
+      "claim_supported": "Anonymity principle: people helped are protagonists.",
+      "transcription_status": "human_verified_from_user_curated_notes"
+    }
+  ],
+  "claims_excluded": [
+    "Camilo is helping earthquake victims now",
+    "Camilo or his family suffered earthquake damage",
+    "Camilo launched an earthquake campaign"
+  ],
+  "decision": "GATE 2D PASS — stop before Gabo."
+}

@@ -1,0 +1,39 @@
+{
+  "timeline": [
+    {
+      "date": "2019",
+      "event": "Denuncia pública por presunto acoso sexual y laboral durante su gestión como gerente de una discoteca en Bogotá.",
+      "importance": "Alto",
+      "source_url": "https://www.bluradio.com/judicial/denuncian-a-gerente-de-discoteca-por-presunto-acoso-sexual-y-laboral-233596",
+      "confidence": 8
+    },
+    {
+      "date": "2020",
+      "event": "Aparición en medios de comunicación y redes sociales como presunto implicado en actos de violencia.",
+      "importance": "Alto",
+      "source_url": "https://www.infobae.com/america/colombia/2020/10/12/camilo-cifuentes-el-empresario-senalado-de-ser-el-presunto-agresor-de-varias-mujeres-en-bogota/",
+      "confidence": 9
+    },
+    {
+      "date": "2020",
+      "event": "Múltiples víctimas hacen públicas sus experiencias de agresión y abuso.",
+      "importance": "Alto",
+      "source_url": "https://www.elespectador.com/bogota/camilo-cifuentes-y-las-denuncias-de-agresiones-sexuales-articulo-943562/",
+      "confidence": 9
+    },
+    {
+      "date": "Octubre 2020",
+      "event": "Fue capturado por las autoridades tras las denuncias y el revuelo mediático.",
+      "importance": "Alto",
+      "source_url": "https://caracol.com.co/radio/2020/10/13/judicial/1602576997_056762.html",
+      "confidence": 10
+    },
+    {
+      "date": "2021",
+      "event": "Procesos judiciales en curso y debates sobre la justicia y la reparación a las víctimas.",
+      "importance": "Medio",
+      "source_url": "https://www.rcnradio.com/judicial/camilo-cifuentes-podria-ser-dejado-en-libertad-por-vencimiento-de-terminos",
+      "confidence": 7
+    }
+  ]
+}

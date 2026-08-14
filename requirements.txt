@@ -1,0 +1,15 @@
+# HUMANOS — dependencias de Python
+#
+# Este archivo no existía. Se creó el 2026-08-01 tras descubrir que el
+# pipeline dependía de paquetes que solo estaban instalados en la máquina
+# de Jota, sin declararse en ninguna parte. Un repo que no declara sus
+# dependencias no es reproducible: es una máquina afortunada.
+
+python-dotenv>=1.0.0
+numpy>=1.24.0
+
+# turbovec — indice vectorial usado por Curie (curie.py L5).
+# No está en PyPI público ni en el repo. Si falla la instalación, Curie y
+# por lo tanto Borges no importan. Confirmar origen antes de asumir que
+# el entorno es reproducible en otra máquina.
+# turbovec

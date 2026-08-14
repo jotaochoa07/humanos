@@ -1,0 +1,45 @@
+{
+  "manifest_version": 1,
+  "episode_id": "EP0001_Camilo_Cifuentes",
+  "input_mode": "recovery",
+  "research_source": "01_RESEARCH_RECOVERY",
+  "forbidden_paths": [
+    "01_RESEARCH"
+  ],
+  "gate_2d": {
+    "status": "PASS",
+    "evidence_file": "gate_2d_evidence_pack.json",
+    "evidence_class": "HUMAN_VERIFIED_PRIMARY_SOURCE"
+  },
+  "required_files": [
+    {
+      "path": "gate_2d_evidence_pack.json",
+      "sha256": "7e085457da7b706df5a1f31a8001d4eadf5ffd33440fc61fd38896aa871784a6"
+    },
+    {
+      "path": "claims_recovered.json",
+      "sha256": "aaa9c33d9a83642cfeb57b8e44a9d70e29f0be86609215451a841f76562c4e5a"
+    },
+    {
+      "path": "timeline_recovered.json",
+      "sha256": "2a47622b6697ec186146f23edd8844f46d2077f5868eef61b218e75c6e3b3f40"
+    },
+    {
+      "path": "creative_lock.json",
+      "sha256": "3287335cb7531d1f415e2765f85dea2c57e81115a2ac9761b64412307e8b811b"
+    },
+    {
+      "path": "human_evidence_bridge.json",
+      "sha256": "f5e7e407f639c255a081ae4cfdd7ff9b9d025a42d2ad6522458bf0075ffa78db"
+    }
+  ],
+  "creative_lock_file": "creative_lock.json",
+  "human_evidence_bridge_file": "human_evidence_bridge.json",
+  "provenance": {
+    "source": "Gate 2D human evidence bridge",
+    "historical_run": "01_RESEARCH preserved untouched",
+    "assets": "user-curated local files, hashes in gate_2d_evidence_pack.json"
+  },
+  "validation_state": "ready_for_recovery_write",
+  "fallback_policy": "fail_closed_no_legacy_fallback"
+}

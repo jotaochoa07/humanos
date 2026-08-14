@@ -2,6 +2,14 @@ import os
 import json
 import time
 from datetime import datetime
+
+# Carga el .env ANTES de cualquier comprobacion de os.environ.
+# Sin esta linea, la comprobacion de la linea ~30 corria antes de que
+# TaleseAgent.__init__ cargara el .env, y el pilot caia siempre a los
+# guiones de fallback escritos a mano mas abajo. Asi se "produjo" EP0004
+# el 2026-07-20 sin que corriera un solo agente.
+import env_boot
+
 from openrouter_client import OpenRouterClient
 from borges import BorgesAgent
 from talese import TaleseAgent
@@ -28,6 +36,20 @@ def run_pilot():
             client = OpenRouterClient()
         except Exception as e:
             print(f"[Warning] OpenRouterClient: {e}")
+
+    # Este script contiene guiones de fallback escritos a mano (act_fallbacks).
+    # Si el cliente no existe, esos fallbacks se publican como si fueran
+    # salida de Gabo. Eso ya paso una vez. Ahora se avisa a gritos.
+    if client is None:
+        env_boot.avisar_degradacion(
+            "run_ferruccio_pilot",
+            "sin OPENROUTER_API_KEY: los 5 actos saldran de act_fallbacks, no de Gabo",
+        )
+        if os.environ.get("HUMANOS_STRICT", "1") != "0":
+            raise SystemExit(
+                "Abortado. Para correr igual con guiones de relleno: "
+                "set HUMANOS_STRICT=0"
+            )
 
     borges = BorgesAgent(client) if client else None
     talese = TaleseAgent(base_dir=BASE_DIR)

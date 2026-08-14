@@ -1,0 +1,17 @@
+{
+  "episode_id": "EP0001_Camilo_Cifuentes",
+  "event": "GATE_3C_HUMAN_CANONICAL_SCRIPT_INGESTION",
+  "origin": "JOTA / HUMAN",
+  "source_path": "C:\\JotaOS\\GUIONES\\Camilo Cifuentes.md",
+  "master_path": "02_SCRIPT/editorial_master.md",
+  "master_sha256": "90ffd5d4a5b4477e28e5a23415e20064defee208b41d51c937986fb50b9af5b3",
+  "gate_3a": "CREATIVE_FAIL",
+  "gate_3b": "CREATIVE_FAIL",
+  "current_version": "HUMAN_EDITORIAL_CANON",
+  "research_source": "01_RESEARCH_RECOVERY",
+  "forbidden_source": "01_RESEARCH",
+  "creative_lock": "01_RESEARCH_RECOVERY/creative_lock.json",
+  "human_evidence_bridge": "01_RESEARCH_RECOVERY/human_evidence_bridge.json",
+  "voiceover_extraction": "deterministic blockquote extraction only; no stylistic edits",
+  "model_execution": false
+}

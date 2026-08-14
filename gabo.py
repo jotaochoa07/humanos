@@ -6,7 +6,7 @@ class GaboAgent:
     def __init__(self, client: OpenRouterClient):
         self.client = client
 
-    def execute_narrative(self, character_name: str, research_data: dict, timeline_data: dict, approved_claims: dict) -> tuple:
+    def execute_narrative(self, character_name: str, research_data: dict, timeline_data: dict, approved_claims: dict, editorial_context: dict | None = None, human_evidence_context: dict | None = None) -> tuple:
         """
         Ejecuta la dirección narrativa de Gabo a partir de los datos de Borges y los claims aprobados por Veritas.
         Devuelve (scripts_json_dict, script_short_md, script_long_md, newsletter_md, twitter_thread_md, logs_str).
@@ -59,6 +59,16 @@ class GaboAgent:
             "   - Usa conjugaciones del español neutro estándar (tú, eliges, tienes, dime, piensas, etc.)."
         )
 
+        if (editorial_context or {}).get("rewrite_mode") == "GATE_3B_STRUCTURAL":
+            system_prompt += (
+                "\n\nGATE 3B STRUCTURAL REWRITE — OBLIGATORY:\n"
+                "- Write script_short as an audiovisual score, never as continuous biography.\n"
+                "- Use only the required audiovisual tags from the editorial context.\n"
+                "- Include the opening and final Character Cards, voice recognition, shown actions, explicit MOSAICO DE GRATITUD with Jota silence, Telecafé, earthquake in B&W, cursor/typewrite PODRÍA SER EL TUYO|, gratitude echoes and LA VIDA ES UN ECO.\n"
+                "- VO Jota must total at most 80 words. Do not add chronology, institutional figures, Linktree, scams or unnecessary cities.\n"
+                "- Never invent exact dialogue; use original-audio placeholders when no literal transcription is available."
+            )
+
         prompt = f"""
         Utilizando los datos de investigación recopilados por Borges:
         {json.dumps(research_data, ensure_ascii=False, indent=2)}
@@ -69,8 +79,22 @@ class GaboAgent:
         Y los AFIRMACIONES APROBADAS Y RECHAZADAS (approved_claims.json) de Veritas:
         {json.dumps(approved_claims, ensure_ascii=False, indent=2)}
 
+        CONTEXTO EDITORIAL PERSISTENTE (si existe; no lo reemplaces):
+        {json.dumps(editorial_context or {}, ensure_ascii=False, indent=2)}
+
+        PUENTE DE EVIDENCIA HUMANA (si existe; respeta provenance y restricciones):
+        {json.dumps(human_evidence_context or {}, ensure_ascii=False, indent=2)}
+
         Reescribe desde cero todo el contenido narrativo para {character_name}.
         Toma en cuenta de manera estricta que no debes usar hechos rechazados y debes respetar la guía de uso de cada claim aprobado.
+        SI rewrite_mode ES GATE_3B_STRUCTURAL, ESTA INSTRUCCIÓN REEMPLAZA EL FORMATO GENÉRICO:
+        script_short DEBE ser una partitura con líneas etiquetadas, no prosa. Debe contener literalmente:
+        [CHARACTER CARD], [AUDIO ORIGINAL — CAMILO], [AUDIO ORIGINAL — PERSONA], [TELECAFÉ — CAMILO],
+        [VO JOTA], [SILENCIO JOTA], [B&N — TERREMOTO], [TEXT ON SCREEN], la línea
+        "## MOSAICO DE GRATITUD", "PODRÍA SER EL TUYO|" y "LA VIDA ES UN ECO".
+        Incluye al menos una línea [VO JOTA] y suma máximo 80 palabras en todas esas líneas.
+        Abre con la Character Card vacía y termina con Character Card final + typewrite + eco. No incluyas cronología,
+        Linktree, estafas, cifras institucionales ni una pregunta final. Las líneas de audio no cuentan como VO Jota.
         Genera un objeto JSON que siga exactamente esta estructura:
         {{
           "script_short": "Locución COMPLETA y corrida del vídeo vertical V1 Short de 60-75 segundos. Debe tener ESTRICTAMENTE entre 150 y 180 palabras en total. Centrada en la obsesión y la paradoja, conversacional y sin rodeos.",

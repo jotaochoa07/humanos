@@ -44,7 +44,7 @@ class HumanizerAgent:
         4. Estilo conversacional de HUMANOS: Frases cortas, pausas claras, ironía seca, tono directo e intelectual.
         """
 
-    def execute_humanization(self, character_name: str, scripts_json: dict) -> tuple:
+    def execute_humanization(self, character_name: str, scripts_json: dict, editorial_context: dict | None = None, human_evidence_context: dict | None = None) -> tuple:
         """
         Ejecuta la humanización del material de Gabo.
         Devuelve (humanized_scripts_json_dict, script_short_md, script_long_md, newsletter_md, twitter_thread_md, logs_str).
@@ -61,6 +61,14 @@ class HumanizerAgent:
             f"{skill_instructions}\n"
         )
         
+        if (editorial_context or {}).get("rewrite_mode") == "GATE_3B_STRUCTURAL":
+            system_prompt += (
+                "\nGATE 3B: preserve the audiovisual score and every structural tag literally. "
+                "Do not convert it into continuous prose, fill [SILENCIO JOTA], remove MOSAICO DE GRATITUD, "
+                "Character Cards, B&W earthquake, PODRÍA SER EL TUYO| or LA VIDA ES UN ECO. "
+                "Keep VO Jota at 80 words maximum and add no claims.\n"
+            )
+
         if voice_sample:
             system_prompt += (
                 "\nVOICE CALIBRATION (ADN TONAL A IMITAR):\n"
@@ -71,6 +79,18 @@ class HumanizerAgent:
         prompt = f"""
         Toma el contenido original en JSON de Gabo para el personaje {character_name}:
         {json.dumps(scripts_json, ensure_ascii=False, indent=2)}
+
+        CONTEXTO EDITORIAL PERSISTENTE (si existe; preserva sus locks):
+        {json.dumps(editorial_context or {}, ensure_ascii=False, indent=2)}
+
+        PUENTE DE EVIDENCIA HUMANA (si existe; no agregues claims no soportados):
+        {json.dumps(human_evidence_context or {}, ensure_ascii=False, indent=2)}
+
+        Si rewrite_mode es GATE_3B_STRUCTURAL, conserva literalmente la partitura audiovisual de script_short.
+        No la conviertas en prosa. Debe mantener [CHARACTER CARD], [AUDIO ORIGINAL — CAMILO],
+        [AUDIO ORIGINAL — PERSONA], [TELECAFÉ — CAMILO], [VO JOTA], [SILENCIO JOTA],
+        [B&N — TERREMOTO], [TEXT ON SCREEN], ## MOSAICO DE GRATITUD, PODRÍA SER EL TUYO| y
+        LA VIDA ES UN ECO. No agregues claims ni texto fuera de esos bloques. VO Jota máximo: 80 palabras.
 
         Genera un nuevo objeto JSON con el mismo esquema, pero con TODO el contenido textual humanizado:
         - 'script_short': El guion corto reescrito, sin intro/outros genéricos, con tu firma intacta, adaptado al ADN de voz.

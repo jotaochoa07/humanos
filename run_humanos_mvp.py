@@ -2,6 +2,7 @@ import os
 import sys
 import argparse
 import json
+import shutil
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -27,6 +28,77 @@ def stripMarkdownTitle(text: str) -> str:
         clean_lines.append(line)
     return "\n".join(clean_lines).strip()
 
+def run_recovery_write(character_name: str, ep_path: str, client: OpenRouterClient, hermoso: HermosoCore, preflight: dict) -> bool:
+    """Panel-compatible recovery write; never reads legacy 01_RESEARCH."""
+    from recovery_pipeline import recovery_inputs, RECOVERY_DIR
+    research_json, timeline_json, approved_claims_json, creative_lock, evidence_bridge = recovery_inputs(preflight)
+    if not preflight.get("legacy_research_excluded") or preflight.get("research_source") != RECOVERY_DIR:
+        raise RuntimeError("recovery isolation receipt missing")
+    os.makedirs(os.path.join(ep_path, "02_SCRIPT"), exist_ok=True)
+    script_dir = os.path.join(ep_path, "02_SCRIPT")
+    revision_dir = os.path.join(script_dir, "revisions", "gate_3a_first_draft")
+    if os.path.exists(os.path.join(script_dir, "scripts_raw.json")) and not os.path.exists(revision_dir):
+        os.makedirs(revision_dir, exist_ok=True)
+        for filename in os.listdir(script_dir):
+            source = os.path.join(script_dir, filename)
+            if os.path.isfile(source):
+                shutil.copy2(source, os.path.join(revision_dir, filename))
+    creative_lock = {**creative_lock, "rewrite_mode": "GATE_3B_STRUCTURAL"}
+    print(f"[Recovery] Fuente canónica: {RECOVERY_DIR}; 01_RESEARCH excluido.")
+    hermoso.write_json(os.path.join(ep_path, "01_RESEARCH_RECOVERY", "recovery_dispatch_trace.json"), {
+        "episode_id": preflight["config"].get("episode_id"),
+        "input_mode": "recovery",
+        "research_source": RECOVERY_DIR,
+        "legacy_research_excluded": True,
+        "creative_lock_loaded": creative_lock.get("status") == "LOCKED",
+        "human_evidence_loaded": evidence_bridge.get("evidence_class") == "HUMAN_VERIFIED_PRIMARY_SOURCE",
+        "manifest_required_files": preflight["manifest"].get("required_files", []),
+        "agents_allowed_by_this_dispatch": ["Gabo", "Humanizer"],
+        "agents_forbidden_in_gate_2f": ["Borges", "Veritas", "Moore"],
+    })
+    gabo = GaboAgent(client)
+    scripts_json, script_short_md, script_long_md, newsletter_md, twitter_thread_md, gabo_logs = gabo.execute_narrative(
+        character_name, research_json, timeline_json, approved_claims_json,
+        editorial_context=creative_lock, human_evidence_context=evidence_bridge
+    )
+    hermoso.write_json(os.path.join(ep_path, "02_SCRIPT", "scripts_raw.json"), scripts_json)
+    hermoso.write_markdown(os.path.join(ep_path, "02_SCRIPT", "script_short_raw.md"), script_short_md)
+    hermoso.write_markdown(os.path.join(ep_path, "02_SCRIPT", "script_long_raw.md"), script_long_md)
+    hermoso.write_markdown(os.path.join(ep_path, "02_SCRIPT", "newsletter_raw.md"), newsletter_md)
+    hermoso.write_markdown(os.path.join(ep_path, "02_SCRIPT", "twitter_thread_raw.md"), twitter_thread_md)
+    hermoso.log_agent_run(ep_path, "Gabo", "success", gabo_logs)
+    humanizer = HumanizerAgent(client)
+    scripts_json, script_short_md, script_long_md, newsletter_md, twitter_thread_md, humanizer_logs = humanizer.execute_humanization(
+        character_name, scripts_json, editorial_context=creative_lock, human_evidence_context=evidence_bridge
+    )
+    hermoso.write_json(os.path.join(ep_path, "02_SCRIPT", "scripts.json"), scripts_json)
+    hermoso.write_markdown(os.path.join(ep_path, "02_SCRIPT", "script_short.md"), script_short_md)
+    hermoso.write_markdown(os.path.join(ep_path, "02_SCRIPT", "script_long.md"), script_long_md)
+    hermoso.write_markdown(os.path.join(ep_path, "02_SCRIPT", "newsletter.md"), newsletter_md)
+    hermoso.write_markdown(os.path.join(ep_path, "02_SCRIPT", "twitter_thread.md"), twitter_thread_md)
+    hermoso.log_agent_run(ep_path, "Humanizer", "success", humanizer_logs)
+    hermoso.update_status_local(ep_path, "script_pending_review")
+    state_path = os.path.join(ep_path, "pipeline_state.json")
+    state = {}
+    if os.path.exists(state_path):
+        with open(state_path, "r", encoding="utf-8") as stream:
+            state = json.load(stream)
+    state.update({
+        "episode_id": preflight["config"].get("episode_id"),
+        "status": "script_pending_review",
+        "input_mode": "recovery",
+        "research_source": RECOVERY_DIR,
+        "forbidden_sources": ["01_RESEARCH"],
+        "gate_2d": "PASS",
+        "execution_authorized": bool(preflight["config"].get("execution_authorized")),
+        "authorization_scope": preflight["config"].get("authorization_scope", "GATE_3_WRITE_ONLY"),
+        "script_source": "recovery_only",
+        "legacy_research_excluded": True,
+    })
+    with open(state_path, "w", encoding="utf-8") as stream:
+        json.dump(state, stream, ensure_ascii=False, indent=2)
+    return True
+
 def run_mvp(character_name: str, episode_focus: str, themes: list, episode_num: int = 1, stage: str = "all"):
     print("="*60)
     print(f"INICIANDO PIPELINE HUMANOS MVP EPISODIO {episode_num}: {character_name} [Etapa: {stage.upper()}]")
@@ -40,6 +112,21 @@ def run_mvp(character_name: str, episode_focus: str, themes: list, episode_num: 
     # Determinar ruta del episodio
     char_folder_name = character_name.strip().replace(" ", "_")
     ep_path = os.path.join("personajes", char_folder_name, f"EP{episode_num:04d}_{char_folder_name}")
+
+    recovery_config = os.path.join(ep_path, "episode_config.json")
+    if stage == "write" and os.path.exists(recovery_config):
+        from recovery_pipeline import validate_recovery_episode, recovery_inputs
+        preflight = validate_recovery_episode(ep_path)
+        _, _, _, creative_lock, evidence_bridge = recovery_inputs(preflight)
+        print(f"[Recovery] research_source={preflight['research_source']}")
+        print("[Recovery] forbidden_source=01_RESEARCH")
+        print(f"[Recovery] creative_lock_loaded={creative_lock.get('status') == 'LOCKED'}")
+        print(f"[Recovery] human_evidence_bridge_loaded={evidence_bridge.get('evidence_class') == 'HUMAN_VERIFIED_PRIMARY_SOURCE'}")
+        print(f"[Recovery] execution_authorized={bool(preflight['config'].get('execution_authorized'))}")
+        if not preflight["config"].get("execution_authorized"):
+            print("[Recovery] Preflight PASS; ejecución no autorizada. Gabo/Humanizer no ejecutados.")
+            return False
+        return run_recovery_write(character_name, ep_path, client, hermoso, preflight)
 
     if stage in ["write", "all"]:
         # 2. Hermoso Core: Crear estructura local (10 carpetas y biblioteca global de medios)

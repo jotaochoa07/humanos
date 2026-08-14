@@ -1,6 +1,8 @@
 import React from 'react';
 import {Composition} from 'remotion';
 import {HumanosBrandReveal} from './components/HumanosBrandReveal';
+import {HumanosLandscapeIntro} from './components/HumanosLandscapeIntro';
+import {CAMILO_PORTRAIT_WORDS, HumanosPortraitIntro} from './components/HumanosPortraitIntro';
 import {HumanosCharacterCard} from './components/HumanosCharacterCard';
 import {HumanosEndCard} from './components/HumanosEndCard';
 import {HumanosLogoReveal} from './components/HumanosLogoReveal';
@@ -16,6 +18,34 @@ import {HUMANOS_VIDEO} from './styles/tokens';
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+
+      <Composition
+        id="HumanosLandscapeIntroV3"
+        component={HumanosLandscapeIntro}
+        durationInFrames={130}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      <Composition
+        id="HumanosPortraitIntroV1"
+        component={HumanosPortraitIntro}
+        durationInFrames={130}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+
+      <Composition
+        id="HumanosPortraitIntroCamiloV1"
+        component={HumanosPortraitIntro}
+        durationInFrames={130}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={{words: CAMILO_PORTRAIT_WORDS}}
+      />
 
 
       <Composition

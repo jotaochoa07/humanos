@@ -2,7 +2,7 @@
   "episode_id": "EP0004_Ferruccio_Lamborghini",
   "character_name": "Ferruccio Lamborghini",
   "is_documentary_pilot": true,
-  "current_version": 2,
+  "current_version": "locutado_final_2026-08-06",
   "timestamps": {
     "research_completed_at": "2026-07-23T18:56:27.724062",
     "blueprint_generated_at": "2026-07-23T18:56:27.724062",
@@ -44,6 +44,21 @@
           }
         ]
       }
+    },
+    {
+      "version": "v3_optimizado",
+      "fecha": "2026-08-06",
+      "autor": "Claude (Cowork)",
+      "cambios": "Restaurados Cento, 1962, Borg & Beck y el multiplo de diez veces. Eliminadas dos punchlines fabricadas y una formula de aforismo. Suavizadas cifras sin verificar del Acto 4. Marcadores de produccion devueltos y mapeados a los assets FER_XX y a los gaps de Moore.",
+      "pendiente": "El Acto 4 (debut sin motor) no esta en approved_claims.json: pasarlo por Borges."
+    },
+    {
+      "version": "locutado_final",
+      "fecha": "2026-08-06",
+      "autor": "Jota (edicion manual en panel editorial, locutada en audio)",
+      "origen": "El boton Guardar Acto tenia un bug (ruta incrustada en el onclick, corregido en editorial-dashboard.html) y la edicion del panel nunca se guardo en este archivo. Se promueve como canonico el texto de Claude_Cowork/GUIONES/Lamborghini largo..md, que coincide con lo que Jota grabo en 06_AUDIO/lamborghini_voz-off-termindo_wav.wav.",
+      "cambios_vs_v3_optimizado": "Acto 1: restaurado 'el Midas italiano tenia un capricho costoso' y 'Parece que le dijo el Commendatore'. Acto 4: agregada la frase 'Pero cuando termino el Salon de Turin, Lamborghini -sin motor- ya era una marca de automoviles'. Acto 5: fecha y lugar de muerte mas precisos (20 de febrero de 1993, hospital de Perugia) y se elimino el cierre '¿esto es lo mejor que puede hacer el gran Enzo? La respuesta fue no' -que no estaba en el audio grabado- reemplazado por 'Primero fueron tractores. Despues, automoviles. Y termino obligando al mundo entero a aprender a pronunciar su apellido. Lamborghini.'",
+      "pendiente": "Pasar esta version por Veritas (fact-check) y Talese (aprendizaje entre versiones). El outro locutado usa 'suscribete', que la biblioteca de cierres de marca desaconseja como CTA generico -queda para que Jota decida si lo mantiene."
     }
   ],
   "talese_socratic_dialogue": [
@@ -110,8 +125,8 @@
         "objective": "Establecer la paradoja del hombre rico pero humillado por el embrague de su Ferrari.",
         "estimated_duration_sec": 90,
         "causality_type": "BUT",
-        "status": "draft",
-        "script_text": "Ferruccio Lamborghini ya era rico. Muy. Fabricaba tractores por miles para reconstruir la Italia de la posguerra. Pero tenía un capricho costoso: una colección de Ferraris. Y en cada uno ocurria siempre lo mismo: el embrague fallaba. Cansado, viajó a Maranello a decírselo al propio Enzo Ferrari, de fabricante a fabricante. Pero Enzo no escuchó a un cliente VIP: escuchó a un campesino intruso. 'Dedícate a tus tractores, Lamborghini. Un fabricante de tractores jamás entenderá cómo se construye un Ferrari'. Lo echaron a la calle. Ahí no nació un competidor: nació una venganza con motor V12. [B-ROLL: Maranello 1960 / Entrada fábrica de Ferrari]"
+        "status": "locutado_final",
+        "script_text": "Ferruccio Lamborghini ya era rico. Muy.\n\nFabricaba tractores. Los mejores de Italia, según muchos. Después de la guerra, con Europa en escombros, alguien tenía que arar la reconstrucción. Ferruccio vio eso antes que otros: compró piezas de tanques y camiones militares sobrantes, los convirtió en maquinaria agrícola, y los vendió por miles.\n\nLuego vinieron los quemadores, los sistemas de calefacción. El hombre hacía dinero con todo lo que tocaba.\n\nPero el Midas italiano tenía un capricho costoso: los Ferrari.\n\nCompró varios. Un 250 GT entre ellos. Y con cada uno, siempre ocurría lo mismo. El embrague fallaba. Una vibración que no debía estar ahí. Un ruido que un hombre, que fabricaba máquinas por oficio, no podía ignorar.\n\nEntonces hizo lo que haría cualquier mecánico que entiende cómo funciona un motor. En 1962 se fue a Maranello a hablar directamente con Enzo Ferrari. De fabricante a fabricante.\n\nEnzo lo recibió. O más bien: lo escuchó un momento y después lo despachó.\n\n\"Dedícate a tus tractores, Lamborghini. Un fabricante de tractores no tiene nada que enseñarle a Ferrari.\" Parece que le dijo el Commendatore.\n\nHay versiones sobre las palabras exactas.\n\nLo que NO tiene versiones es lo que pasó después. Ferruccio salió de esa fábrica y no volvió a pisar Maranello como cliente.\n\nAhí no nació solamente un competidor. Ahí nació una venganza con motor V12."
       },
       {
         "id": "act_2",
@@ -119,8 +134,8 @@
         "objective": "Descubrir que las piezas de Ferrari eran idénticas a las de sus tractores comerciales.",
         "estimated_duration_sec": 110,
         "causality_type": "THEREFORE",
-        "status": "draft",
-        "script_text": "Por lo tanto, Ferruccio no vendió su auto ni aceptó el insulto; volvió a Sant'Agata y desarmó el Ferrari pieza por pieza en su propio taller. Lo que descubrió lo dejó helado: el embrague del legendario auto de lujo era exactamente el mismo embrague comercial que él instalaba en sus tractores agrícolas. Solo que Enzo los vendía a precio de oro. La revelación no le dio rabia: le dio una fría certidumbre. Si el gran Enzo vendía piezas ordinarias a precio de diamante, él podía destronarlo en su propio juego. [B-ROLL: Embrague de tractor desarmado en mesa de trabajo]"
+        "status": "locutado_final",
+        "script_text": "Ferruccio no vendió el Ferrari ni aceptó el insulto. Volvió a su taller en Cento y desarmó el auto pieza por pieza. Con sus propias manos, las mismas que armaban tractores.\n\nLo que encontró lo dejó helado.\n\nEl embrague del legendario auto de lujo italiano era un Borg & Beck. El mismo Borg & Beck que él compraba por catálogo y atornillaba en sus tractores agrícolas. La misma pieza, del mismo proveedor inglés.\n\nSolo que Enzo lo vendía diez veces más caro.\n\nLa revelación le dio algo más útil que rabia. Le dio un número.\n\nSi el gran Enzo Ferrari vendía piezas de catálogo envueltas en mística, él podía construir algo mejor. No un tractor disfrazado de coche. Un coche de verdad. Un deportivo mecánicamente impecable, más refinado, más cómodo que cualquier cosa que saliera de Maranello.\n\nY sobre todo: que Enzo lo viera."
       },
       {
         "id": "act_3",
@@ -128,8 +143,8 @@
         "objective": "Reclutar ingenieros tránsfugas y construir el prototipo 350 GTV en tiempo récord.",
         "estimated_duration_sec": 120,
         "causality_type": "BUT",
-        "status": "draft",
-        "script_text": "Pero destronar a Ferrari requería una velocidad de ejecución sobrehumana. Ferruccio compró terrenos a solo 30 kilómetros de Maranello y reclutó a los mejores jóvenes ingenieros tránsfugas de Italia: Giotto Bizzarrini y Gian Paolo Dallara. Les dio una orden radical: 'Quiero un V12 que supere al de Ferrari en todo, y lo quiero listo para el Salón de Turín'. Trabajaron 18 horas diarias en una fábrica que aún no tenía ni paredes terminadas. Lo diseñó el orgullo herido de un hombre decidido a responder a 250 kilómetros por hora. [B-ROLL: Planos técnicos del prototipo 350 GTV]"
+        "status": "locutado_final",
+        "script_text": "Destronar a Ferrari requería velocidad. No solo en las pistas, sino en la ejecución.\n\nEn 1963 Ferruccio compró terrenos en Sant'Agata Bolognese, a media hora de Maranello. Lo suficientemente cerca para que la provocación fuera geográfica.\n\nY reclutó a los mejores ingenieros jóvenes que pudo encontrar: Giotto Bizzarrini, que había diseñado el motor del Ferrari 250 GTO. Gian Paolo Dallara, que después sería leyenda propia. Bob Wallace, el neozelandés obsesionado con las pruebas en carretera.\n\nAlgunos venían de la propia Ferrari. Ingenieros que Enzo había perdido por peleas internas, por su temperamento. Por su costumbre de tratar a la gente como Ferruccio acababa de comprobar que trataba a sus clientes.\n\nLa orden que les dio fue simple: un V12 que superara al de Ferrari en todo. Y listo para el Salón de Turín.\n\nTrabajaron contra el reloj en una fábrica que todavía no tenía las paredes terminadas."
       },
       {
         "id": "act_4",
@@ -137,8 +152,8 @@
         "objective": "La tensión del lanzamiento del chasis con ladrillos dentro del compartimiento del motor.",
         "estimated_duration_sec": 110,
         "causality_type": "THEREFORE",
-        "status": "draft",
-        "script_text": "Por lo tanto, el prototipo 350 GTV llegó al Salón de Turín de 1963 con un secreto dramático: el motor V12 de Bizzarrini era tan alto que el capó no cerraba. Faltaban 48 horas para el debut. Ferruccio tomó una decisión descabellada: sacó el motor, llenó el compartimiento con ladrillos para ajustar la suspensión y cerró el capó con llave. Durante toda la exposición, respondió a los periodistas con una sonrisa impenetrable mientras explicaba la potencia del auto sin abrir el capó jamás. [B-ROLL: Fotografía del Salón de Turín 1963 / 350 GTV]"
+        "status": "locutado_final",
+        "script_text": "El prototipo 350 GTV llegó al Salón de Turín de 1963 con un problema.\n\nEl V12 de Bizzarrini no entraba como debía. El capó no cerraba.\n\nY faltaban horas para la presentación, no semanas.\n\nFerruccio tomó una decisión que dice más sobre él que cualquier biografía: sacó el motor del coche, llenó el compartimiento con lastre para que la suspensión se asentara como si llevara el peso correcto, y cerró el capó con llave.\n\nDurante toda la exposición respondió preguntas de periodistas sobre la potencia del motor. Explicó las especificaciones. Habló de cilindros, de torque, de caballos de fuerza.\n\nNunca abrió el capó.\n\nEl coche más ambicioso de la exposición no tenía motor. Nadie lo supo hasta mucho después.\n\nLo que los periodistas vieron fue un auto italiano que parecía mejor que un Ferrari.\n\nPero cuando terminó el Salón de Turín, Lamborghini —sin motor— ya era una marca de automóviles. Y eso alcanzaba para empezar."
       },
       {
         "id": "act_5",
@@ -146,8 +161,8 @@
         "objective": "El impacto del Miura y la metamorfosis de la venganza en un legado industrial supremo.",
         "estimated_duration_sec": 110,
         "causality_type": "BUT",
-        "status": "draft",
-        "script_text": "Pero el engaño le dio el tiempo necesario para perfeccionar la mecánica final. Un año después, el Lamborghini 350 GT salía a la calle y, poco después, el revolucionario Miura reinventaba para siempre el concepto de superdeportivo. Ferruccio nunca celebró derrotar a Enzo en las pistas de carreras; celebró haber transformado una herida de orgullo en una industria imparable. La revancha no fue una discusión: fue un imperio de ingeniería. [B-ROLL: Lamborghini Miura en carreteras de montaña de Italia]"
+        "status": "locutado_final",
+        "script_text": "Un año después el motor sí estaba. El Lamborghini 350 GT salió a la calle en 1964.\n\nEra todo lo que Ferruccio había prometido: un gran turismo refinado, silencioso cuando debía serlo, y con una mecánica a la altura en cada una de sus piezas.\n\nEl golpe de gracia vino dos años después. En 1966, Lamborghini presentó el Miura.\n\nUn V12 montado transversalmente detrás del conductor. Nadie había hecho algo así en un coche de calle. Y el diseño de Marcello Gandini rompía con todo lo que la industria consideraba proporcionado.\n\nDespués vinieron el Espada y el Islero. Y después, el Countach, con sus puertas de tijera, que durante dos décadas fue el póster pegado en la pared de cualquier adolescente amante de los autos.\n\nFerruccio vendió su participación en 1972. Para 1974 se había desvinculado por completo de la empresa. Se retiró a un viñedo en Umbría y se puso a hacer vino.\n\nMurió el 20 de febrero de 1993. A los 76 años, en un hospital de Perugia, lejos de Maranello, lejos de Sant'Agata.\n\nPero la compañía que llevaba su apellido siguió haciendo exactamente lo que él había hecho desde el principio: construir cosas que, según otros, no tenían ningún derecho a construirse.\n\nPrimero fueron tractores.\n\nDespués, automóviles.\n\nY terminó obligando al mundo entero a aprender a pronunciar su apellido.\n\nLamborghini."
       }
     ]
   },

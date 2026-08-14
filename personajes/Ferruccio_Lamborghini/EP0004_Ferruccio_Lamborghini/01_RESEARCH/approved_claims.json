@@ -7,7 +7,12 @@
       "claim_id": "C001",
       "claim": "Ferruccio Lamborghini, fabricante de tractores exitoso, se reunió con Enzo Ferrari en 1962.",
       "status": "VERIFIED",
-      "applicable_formats": ["shorts", "long_form", "newsletter", "twitter"],
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
       "confidence_score": 95,
       "usage_guidance": "Can be used directly"
     },
@@ -15,7 +20,12 @@
       "claim_id": "C002",
       "claim": "Lamborghini se quejó a Ferrari sobre la calidad y el rendimiento del embrague de su Ferrari 250 GT.",
       "status": "VERIFIED",
-      "applicable_formats": ["shorts", "long_form", "newsletter", "twitter"],
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
       "confidence_score": 96,
       "usage_guidance": "Can be used directly"
     },
@@ -23,7 +33,12 @@
       "claim_id": "C003",
       "claim": "Enzo Ferrari desestimó las quejas de Lamborghini, sugiriendo que un fabricante de tractores no podía enseñarle sobre autos deportivos.",
       "status": "VERIFIED",
-      "applicable_formats": ["shorts", "long_form", "newsletter", "twitter"],
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
       "confidence_score": 95,
       "usage_guidance": "Can be used directly"
     },
@@ -31,7 +46,12 @@
       "claim_id": "C004",
       "claim": "El desprecio de Ferrari hirió profundamente el orgullo de Lamborghini y alimentó su determinación.",
       "status": "VERIFIED",
-      "applicable_formats": ["shorts", "long_form", "newsletter", "twitter"],
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
       "confidence_score": 97,
       "usage_guidance": "Can be used directly"
     },
@@ -39,7 +59,12 @@
       "claim_id": "C005",
       "claim": "Como resultado directo de la humillación, Lamborghini decidió diseñar y fabricar sus propios autos deportivos de lujo.",
       "status": "VERIFIED",
-      "applicable_formats": ["shorts", "long_form", "newsletter", "twitter"],
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
       "confidence_score": 94,
       "usage_guidance": "Can be used directly"
     },
@@ -47,7 +72,12 @@
       "claim_id": "C006",
       "claim": "El objetivo de Lamborghini era crear autos que superaran a los de Ferrari, demostrando su error y superioridad ingenieril.",
       "status": "VERIFIED",
-      "applicable_formats": ["shorts", "long_form", "newsletter", "twitter"],
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
       "confidence_score": 96,
       "usage_guidance": "Can be used directly"
     },
@@ -55,10 +85,86 @@
       "claim_id": "C007",
       "claim": "Al desmontar el embrague defectuoso de su Ferrari 250 GT en su taller de Cento, Lamborghini descubrió que era exactamente el mismo componente Borg & Beck que usaba en sus tractores, vendido a 10 veces su costo.",
       "status": "VERIFIED",
-      "applicable_formats": ["shorts", "long_form", "newsletter", "twitter"],
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
       "confidence_score": 98,
       "usage_guidance": "Can be used directly (Entrevista directa en primera persona, Thoroughbred & Classic Cars 1991)"
+    },
+    {
+      "claim_id": "C011",
+      "claim": "Al terminar el Salón de Turín de 1963, Lamborghini, sin motor, ya era una marca de automóviles.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 90,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C012",
+      "claim": "El Lamborghini 350 GT salió a la calle en 1964.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C013",
+      "claim": "En 1966, Lamborghini presentó el Miura.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C016",
+      "claim": "Ferruccio Lamborghini murió el 20 de febrero de 1993.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C017",
+      "claim": "Ferruccio Lamborghini murió a los 76 años.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "usage_guidance": "Can be used directly"
     }
   ],
-  "rejected_or_blocked_claims": []
+  "rejected_or_blocked_claims": [],
+  "ultima_ampliacion": {
+    "fecha": "2026-08-09T10:37:14.602105",
+    "origen": "guion locutado EP0004 + investigacion dirigida acto 4",
+    "anadidos": 5,
+    "bloqueados": 0
+  }
 }

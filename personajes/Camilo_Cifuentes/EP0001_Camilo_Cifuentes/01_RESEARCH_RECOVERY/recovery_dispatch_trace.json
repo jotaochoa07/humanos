@@ -1,0 +1,39 @@
+{
+  "episode_id": "EP0001_Camilo_Cifuentes",
+  "input_mode": "recovery",
+  "research_source": "01_RESEARCH_RECOVERY",
+  "legacy_research_excluded": true,
+  "creative_lock_loaded": true,
+  "human_evidence_loaded": true,
+  "manifest_required_files": [
+    {
+      "path": "claims_recovered.json",
+      "sha256": "aaa9c33d9a83642cfeb57b8e44a9d70e29f0be86609215451a841f76562c4e5a"
+    },
+    {
+      "path": "creative_lock.json",
+      "sha256": "3287335cb7531d1f415e2765f85dea2c57e81115a2ac9761b64412307e8b811b"
+    },
+    {
+      "path": "gate_2d_evidence_pack.json",
+      "sha256": "7e085457da7b706df5a1f31a8001d4eadf5ffd33440fc61fd38896aa871784a6"
+    },
+    {
+      "path": "human_evidence_bridge.json",
+      "sha256": "f5e7e407f639c255a081ae4cfdd7ff9b9d025a42d2ad6522458bf0075ffa78db"
+    },
+    {
+      "path": "timeline_recovered.json",
+      "sha256": "2a47622b6697ec186146f23edd8844f46d2077f5868eef61b218e75c6e3b3f40"
+    }
+  ],
+  "agents_allowed_by_this_dispatch": [
+    "Gabo",
+    "Humanizer"
+  ],
+  "agents_forbidden_in_gate_2f": [
+    "Borges",
+    "Veritas",
+    "Moore"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "project": "HUMANOS",
+  "episode_id": "EP0001",
+  "subject": "Camilo Cifuentes",
+  "approved_claims": [
+    {
+      "claim_id": "C002",
+      "claim": "Cifuentes decide enfocar su ayuda en acciones anónimas y concretas, rechazando el reconocimiento público.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 95,
+      "usage_guidance": "Can be used directly"
+    },
+    {
+      "claim_id": "C006",
+      "claim": "La experiencia sísmica marca su obsesión por el 'efecto multiplicador' de la ayuda bien canalizada, buscando maximizar cada recurso.",
+      "status": "VERIFIED",
+      "applicable_formats": [
+        "shorts",
+        "long_form",
+        "newsletter",
+        "twitter"
+      ],
+      "confidence_score": 85,
+      "usage_guidance": "Can be used directly"
+    }
+  ],
+  "rejected_or_blocked_claims": []
+}

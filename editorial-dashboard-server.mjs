@@ -37,7 +37,7 @@ function findEpisodeDirectories() {
     for (const episodeDir of readdirSync(protagonistRoot, { withFileTypes: true }).filter((d) => d.isDirectory() && d.name.startsWith("EP"))) {
       const episodePath = path.join(protagonistRoot, episodeDir.name);
       const state = readJsonIfExists(path.join(episodePath, "pipeline_state.json"));
-      if (!state || (state.status !== "script_pending_review" && state.status !== "storyboard_done")) continue;
+      if (!state || (state.status !== "recovery_ready" && state.status !== "script_pending_review" && state.status !== "storyboard_done")) continue;
 
       const scriptsPath = path.join(episodePath, "02_SCRIPT", "scripts.json");
       const scriptPath = path.join(episodePath, "02_SCRIPT", "script_short.md");
@@ -54,6 +54,8 @@ function findEpisodeDirectories() {
         newsletter: scriptsJson?.newsletter || "",
         twitterThread: scriptsJson?.twitter_thread || "",
         category: scriptsJson?.domain_category || "",
+        inputMode: state.input_mode || "normal",
+        researchSource: state.research_source || "01_RESEARCH",
       });
     }
   }
@@ -143,7 +145,8 @@ function loadEpisodePayload(episodePath) {
   const longScriptPath = path.join(safePath, "02_SCRIPT", "script_long.md");
   const newsletterPath = path.join(safePath, "02_SCRIPT", "newsletter.md");
   const twitterPath = path.join(safePath, "02_SCRIPT", "twitter_thread.md");
-  const researchDir = path.join(safePath, "01_RESEARCH");
+  const recoveryMode = state?.input_mode === "recovery";
+  const researchDir = path.join(safePath, recoveryMode ? (state.research_source || "01_RESEARCH_RECOVERY") : "01_RESEARCH");
   const storyboardDir = path.join(safePath, "03_STORYBOARD");
   const scriptShort = existsSync(scriptPath) ? stripMarkdownTitle(readFileSync(scriptPath, "utf8")) : (scriptsJson?.script_short || "");
   const readText = (filePath) => (existsSync(filePath) ? readFileSync(filePath, "utf8") : "");
@@ -178,6 +181,14 @@ function loadEpisodePayload(episodePath) {
     characterCardExists,
     characterCardPath,
     status: state?.status || "unknown",
+    inputMode: state?.input_mode || "normal",
+    researchSource: recoveryMode ? researchDir : "01_RESEARCH",
+    legacyResearchExcluded: recoveryMode,
+    recovery: recoveryMode ? {
+      manifest: readJson(path.join(researchDir, "panel_recovery_manifest.json")),
+      creativeLock: readJson(path.join(researchDir, "creative_lock.json")),
+      humanEvidenceBridge: readJson(path.join(researchDir, "human_evidence_bridge.json")),
+    } : null,
     scriptShort,
     dossier: readText(path.join(researchDir, "Editorial_Dossier.md")),
     veritas: {
@@ -330,7 +341,7 @@ function getNextEpisodeNumber() {
   return maxEpisode + 1;
 }
 
-function startPipeline(protagonistName, humanAngle, domainCategory, episodeNum) {
+function startPipeline(protagonistName, humanAngle, domainCategory, episodeNum, requestedEpisodePath = "") {
   const { env } = getSupabaseConfig();
   const args = [
     "run_humanos_mvp.py",
@@ -341,6 +352,16 @@ function startPipeline(protagonistName, humanAngle, domainCategory, episodeNum) 
   ];
   if (episodeNum) {
     args.push("--episode", String(episodeNum));
+  }
+  if (requestedEpisodePath) {
+    const safeEpisode = getEpisodeByPath(requestedEpisodePath);
+    const config = safeEpisode ? readJsonIfExists(path.join(safeEpisode, "episode_config.json")) : null;
+    if (config?.input_mode === "recovery") {
+      const episodeFlag = args.indexOf("--episode");
+      if (episodeFlag >= 0) args.splice(episodeFlag, 2);
+      args.push("--episode", String(Number(path.basename(safeEpisode).match(/^EP(\d+)/)?.[1] || episodeNum)));
+      console.log(`[Panel] Recovery dispatch: ${config.research_source}; legacy 01_RESEARCH excluded.`);
+    }
   }
 
   const child = spawn("python", args, {
@@ -378,6 +399,7 @@ async function handleStart(req, res) {
   const humanAngle = String(body.humanAngle || "").trim();
   const domainCategory = String(body.domainCategory || "").trim().toUpperCase();
   const format = String(body.format || "complete").trim();
+  const requestedEpisodePath = String(body.episodePath || "").trim();
 
   if (!id || !protagonistName || !humanAngle || !CATEGORIES.includes(domainCategory)) return sendJson(res, 400, { error: "Invalid story payload" });
 
@@ -387,7 +409,7 @@ async function handleStart(req, res) {
   });
 
   const episodeNum = getNextEpisodeNumber();
-  const child = startPipeline(protagonistName, humanAngle, domainCategory, episodeNum);
+  const child = startPipeline(protagonistName, humanAngle, domainCategory, episodeNum, requestedEpisodePath);
   child.on("exit", async (code) => {
     console.log(`[pipeline:${protagonistName}] exited with code ${code}`);
     if (code !== 0) {
@@ -749,6 +771,8 @@ function mapStatusToStage(status, copyCount = 0) {
     case "verification_in_progress":
     case "research_done":
       return "veritas";
+    case "recovery_ready":
+      return "greenlight";
     case "script_pending_review":
       return "guion";
     case "storyboard_done":
@@ -1025,4 +1049,3 @@ for (const host of HOSTS) {
     // ::1 puede no existir en algunos equipos. No es un fallo: se ignora.
   });
 }
-

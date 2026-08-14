@@ -1,0 +1,117 @@
+{
+  "gate": "2C",
+  "status": "FAIL",
+  "scope": "primary_source_recovery_only",
+  "generated_at": "2026-08-12",
+  "no_media_downloaded": true,
+  "sources": [
+    {
+      "id": "PS-IG-001",
+      "url": "https://www.instagram.com/reel/DTJusLCkW8_/",
+      "platform": "Instagram",
+      "account": "@camilocifuentes962",
+      "date": "2026-01-05 (reported; Instagram page inaccessible)",
+      "status": "PRIMARY_SOURCE_LOCATED_BUT_NOT_ACCESSIBLE",
+      "supports": [
+        "Camilo collaborated with Yeison Jimenez to surprise street singer Nycol/Nykol Herrera in Manizales"
+      ],
+      "observable": "Not independently observable from source because Instagram fetch was throttled; Pulzo identifies the embedded post as Camilo’s account.",
+      "provenance": "Pulzo article embed; exact Instagram URL extracted from link target."
+    },
+    {
+      "id": "PS-YT-001",
+      "url": "https://www.youtube.com/watch?v=NhQwYhXqb_0",
+      "platform": "YouTube",
+      "account": "Telecafe / institutional event record",
+      "date": "2025-05-08",
+      "status": "PRIMARY_SOURCE_LOCATED",
+      "supports": [
+        "Telecafe/Camilo activity at CDI Solferino in Manizales benefiting 128 children"
+      ],
+      "observable": "Institutional press release links this video; audiovisual content not downloaded or independently transcribed in this operation.",
+      "provenance": "Telecafe official press release."
+    },
+    {
+      "id": "PS-IG-ACCOUNT",
+      "url": "https://www.instagram.com/camilocifuentes962",
+      "platform": "Instagram",
+      "account": "@camilocifuentes962",
+      "date": null,
+      "status": "PRIMARY_ACCOUNT_LOCATED_BUT_PLATFORM_INACCESSIBLE",
+      "supports": [
+        "Identity/account anchor only"
+      ],
+      "observable": "Official account identity was cross-linked from Linktree; individual posts were not enumerated."
+    },
+    {
+      "id": "PS-TT-ACCOUNT",
+      "url": "https://www.tiktok.com/@camilocifuentes96",
+      "platform": "TikTok",
+      "account": "@camilocifuentes96",
+      "date": null,
+      "status": "PRIMARY_ACCOUNT_LOCATED_BUT_PLATFORM_INACCESSIBLE",
+      "supports": [
+        "Identity/account anchor only"
+      ],
+      "observable": "Profile is cross-referenced by reporting; platform denied automated access."
+    },
+    {
+      "id": "PS-FB-ACCOUNT",
+      "url": "https://www.facebook.com/camilocifuentes962/",
+      "platform": "Facebook",
+      "account": "camilocifuentes962",
+      "date": null,
+      "status": "PRIMARY_ACCOUNT_LOCATED_BUT_PLATFORM_INACCESSIBLE",
+      "supports": [
+        "Identity/account anchor only"
+      ],
+      "observable": "Account is linked from Linktree; individual posts were not enumerated."
+    }
+  ],
+  "earthquake": {
+    "target_date": "2026-08-10",
+    "status": "PRIMARY_SOURCE_NOT_RECOVERED",
+    "exact_original_url": null,
+    "literal_visuals_or_text": null,
+    "family_reference": "UNPROVEN",
+    "aid_announcement": "UNPROVEN",
+    "support_request": "UNPROVEN",
+    "secondary_lead": "User-reported Canal Trece reference was not independently located in accessible search during Gate 2C; therefore it is not entered as evidence.",
+    "classification": "UNKNOWN"
+  },
+  "character_material": {
+    "primary_publications_meeting_3_to_5_target": 0,
+    "recoverable_primary_items": [
+      "PS-IG-001 (exact Instagram URL, inaccessible; not sufficient to establish purchase/payment/redistribution)",
+      "PS-YT-001 (institutional event video; useful for Manizales/institutional activity, not a direct Camilo social post)"
+    ],
+    "secondary_only_claims": [
+      "vendor purchases",
+      "extraordinary payments",
+      "redistribution",
+      "Yo afan no tengo",
+      "anonymity rationale",
+      "multiplier effect"
+    ]
+  },
+  "cta": [
+    {
+      "url": "https://ayuda.cruzrojacolombiana.org/",
+      "status": "QUARANTINED",
+      "reason": "visible campaign evidence reviewed was Venezuela-specific, not this Colombian emergency"
+    },
+    {
+      "name": "Diocesis de Quibdo",
+      "status": "CANDIDATE_FOR_DAY_OF_PUBLICATION_VERIFICATION",
+      "reason": "manually supplied by user; bank details not transcribed"
+    }
+  ],
+  "claims_removable_without_harming_story": [
+    "Camilo is currently helping earthquake victims",
+    "Camilo or his family suffered earthquake damage",
+    "Camilo issued a disaster CTA",
+    "Exact payment amounts and named beneficiary cases unless the original posts are recovered",
+    "Follower/donation totals and multiplier claims unless independently evidenced"
+  ],
+  "decision": "GATE 2: FAIL"
+}

@@ -23,3 +23,20 @@ MEDIA_LIBRARY/BRANDING/audio/
 **/04_IMAGES/08_SUPPORTING/*.mp4
 
 
+
+# backups de entorno (nunca versionar)
+*.env.bak
+.env*
+
+# tokens de OAuth de YouTube (nunca versionar)
+_LAB/youtube_tokens.json
+*_tokens.json
+
+# Audacity 4 temps (never version)
+*.aup4
+*.aup4-shm
+*.aup4-wal
+
+# LAB logs reconstruibles
+_LAB/*.log
+

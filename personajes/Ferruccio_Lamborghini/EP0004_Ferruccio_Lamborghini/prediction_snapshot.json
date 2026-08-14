@@ -1,0 +1,59 @@
+{
+  "episode_id": "EP0004_Ferruccio_Lamborghini",
+  "idea": "Documental HUMANOS — EP0004_Ferruccio_Lamborghini",
+  "congelado_en": "2026-08-01T11:22:31",
+  "congelado_por": "mr_you.py",
+  "modelo": "anthropic/claude-sonnet-5",
+  "veredicto": "REWORK",
+  "pilar": "STORY",
+  "tier": "A",
+  "discovery": "Hybrid",
+  "objetivo": "Reach",
+  "viewer_payoff": "Despues de ver este video, el espectador entendera que el rechazo de un experto puede ser el catalizador exacto de una industria entera, y conocera el detalle mecanico especifico (el embrague de tractor) que la mayoria de las versiones populares de esta historia omiten.",
+  "packaging_congelado": {
+    "id": "A",
+    "titulo": "Como un INSULTO de Ferrari creo a Lamborghini",
+    "concepto_miniatura": "Ferruccio Lamborghini de pie, con gesto de reto, frente a un Ferrari rojo y un Lamborghini amarillo enfrentados en composicion simetrica, tipografia bold roja/amarilla.",
+    "prompt_miniatura": "Dramatic split-screen style photo illustration, a determined Italian industrialist in 1960s suit standing between a classic red Ferrari and a yellow Lamborghini 350 GTV, cinematic lighting, high contrast, warm color grade, documentary poster style, no text",
+    "visual_hook": "Primeros 3s: puerta de la oficina de Enzo Ferrari cerrandose de golpe mientras se escucha en voiceover la frase 'Dedicate a tus tractores'.",
+    "por_que_funciona": "Usa el gancho mas obvio y comprobado narrativamente (rivalidad + humillacion) que reduce friccion de entrada para audiencia general de autos.",
+    "tipo_evidencia": "BEST_PRACTICE_EXTERNA"
+  },
+  "packaging_alternativas": [
+    {
+      "id": "B",
+      "titulo": "El repuesto de 20 dolares que fundo un imperio de 9 mil millones",
+      "concepto_miniatura": "Primer plano de un embrague de tractor superpuesto con silueta de un Lamborghini Miura, cifra '$9B' en grande, textura industrial oxidada de fondo.",
+      "prompt_miniatura": "Close-up macro shot of a worn tractor clutch part transforming into the silhouette of a Lamborghini Miura, industrial rust texture background, dramatic rim lighting, bold number '$9B' overlay, high-end editorial photography style",
+      "visual_hook": "Primeros 3s: manos desarmando un motor de Ferrari y descubriendo la pieza identica a la de un tractor, con zoom brusco a la pieza.",
+      "por_que_funciona": "Information gap fuerte y contraintuitivo (repuesto barato vs imperio de lujo) que genera curiosidad incluso en audiencia no fan de autos, apostando a mayor shareability que el ángulo obvio de rivalidad.",
+      "tipo_evidencia": "HIPOTESIS"
+    },
+    {
+      "id": "C",
+      "titulo": "El fabricante de tractores que humillo a Ferrari",
+      "concepto_miniatura": "Tractor vintage y Ferrari clasico lado a lado con una flecha de transformacion hacia un Lamborghini, jugando con el choque de clases (industria pesada vs lujo aristocratico).",
+      "prompt_miniatura": "Split composition photo illustration: vintage 1960s tractor on the left, classic Ferrari on the right, both connected by a glowing arrow transforming into a Lamborghini silhouette in the center, contrast between rural industrial tone and glamorous automotive tone, cinematic documentary poster style",
+      "visual_hook": "Primeros 3s: toma de un tractor arando un campo que corta abruptamente a un Lamborghini acelerando en pista, con la pregunta en texto 'Del campo a los 250 km/h'.",
+      "por_que_funciona": "Ataca el angulo de choque de clase social/industrial (tractores vs lujo aristocratico automovilistico) que, a falta de datos de competencia consultados, se hipotetiza como menos explotado que el clasico framing de 'rivalidad Ferrari vs Lamborghini'.",
+      "tipo_evidencia": "HIPOTESIS"
+    }
+  ],
+  "prediccion": {
+    "ctr_objetivo": "5-9%",
+    "retencion_3s_objetivo": "70-80%",
+    "punto_de_abandono_esperado": "Entre 0:30 y 0:45, en la transicion del hook emocional (la humillacion) hacia la explicacion tecnica del embrague, si el ritmo narrativo no sostiene tension.",
+    "hipotesis_estrategica": "Un angulo de venganza personal combinado con un detalle mecanico verificable y poco contado (el embrague de tractor) generara mayor resonancia intelectual y compartibilidad que una narrativa estandar de rivalidad de marcas.",
+    "base_de_la_prediccion": "HIPOTESIS",
+    "como_se_mide": "A las 48h revisar CTR real vs rango objetivo, retencion a 30s y 3min en YouTube Studio, y comentarios que mencionen frases tipo 'no sabia esto' como proxy de Resonancia Intelectual."
+  },
+  "lo_que_no_se": [
+    "No hay metricas reales del canal (todas simuladas o pendientes): no se puede afirmar como responde la audiencia actual a piezas STORY de marcas automotrices.",
+    "No se consulto competencia via Apify en esta corrida, por lo que el angulo 'C' se basa en supuesto no verificado sobre que esta o no explotado en el mercado.",
+    "No se conoce aun el Veritas score del guion, por lo que no se puede certificar precision historica de la anecdota central.",
+    "No se sabe el detalle exacto de los 3 asset gaps abiertos ni su impacto real en cronograma de Tier A."
+  ],
+  "override_de_jota": null,
+  "resultado_real": null,
+  "postmortem": null
+}

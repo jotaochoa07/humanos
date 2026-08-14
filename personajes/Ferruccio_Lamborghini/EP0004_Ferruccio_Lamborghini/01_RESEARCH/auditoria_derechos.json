@@ -1,0 +1,530 @@
+{
+  "episodio": "EP0004_Ferruccio_Lamborghini",
+  "ruta": "personajes\\Ferruccio_Lamborghini\\EP0004_Ferruccio_Lamborghini",
+  "estado": "APROBADO",
+  "puntaje_limpio": 100,
+  "conteo": {
+    "verde": 57,
+    "ambar": 0,
+    "rojo": 0
+  },
+  "assets_registrados": 57,
+  "archivos_en_disco": 57,
+  "huerfanos": [],
+  "detalle": [
+    {
+      "asset_id": "007",
+      "archivo": "FER_007_FERRUCCIO_LAMBORGHINI_EN_SUS_ÚLTIMOS_AÑOS.jpg",
+      "fuente": "Wikimedia Commons",
+      "licencia": "Dominio público",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "https://commons.wikimedia.org/wiki/File:Ferruccio_Lamborghini.jpg"
+    },
+    {
+      "asset_id": "FER_01_HOOK_FERRUCCIO_LAMBORGHINI_TRACTOR_",
+      "archivo": "FER_01_HOOK_FERRUCCIO_LAMBORGHINI_TRACTOR_.jpg",
+      "fuente": "generado",
+      "licencia": "propio / generado",
+      "semaforo": "verde",
+      "nota": "material propio o generado: sin derechos de terceros",
+      "url_ficha": null
+    },
+    {
+      "asset_id": "FER_02_SETUP_TRANSICIN_SUAVE_UNA_FOTO_DE_FE",
+      "archivo": "FER_02_SETUP_TRANSICIN_SUAVE_UNA_FOTO_DE_FE.jpg",
+      "fuente": "generado",
+      "licencia": "propio / generado",
+      "semaforo": "verde",
+      "nota": "material propio o generado: sin derechos de terceros",
+      "url_ficha": null
+    },
+    {
+      "asset_id": "FER_03_ESCALATION_SE_MUESTRA_EL_CONTENIDO_DEL_AS",
+      "archivo": "FER_03_ESCALATION_SE_MUESTRA_EL_CONTENIDO_DEL_AS.jpg",
+      "fuente": "generado",
+      "licencia": "propio / generado",
+      "semaforo": "verde",
+      "nota": "material propio o generado: sin derechos de terceros",
+      "url_ficha": null
+    },
+    {
+      "asset_id": "FER_04_CONFLICT_ENZO_FERRARI_DISMISSIVE_MEETIN",
+      "archivo": "FER_04_CONFLICT_ENZO_FERRARI_DISMISSIVE_MEETIN.jpg",
+      "fuente": "generado",
+      "licencia": "propio / generado",
+      "semaforo": "verde",
+      "nota": "material propio o generado: sin derechos de terceros",
+      "url_ficha": null
+    },
+    {
+      "asset_id": "FER_05_PIVOT_PLANO_SECUENCIA_DINMICO_DE_UN_",
+      "archivo": "FER_05_PIVOT_PLANO_SECUENCIA_DINMICO_DE_UN_.jpg",
+      "fuente": "generado",
+      "licencia": "propio / generado",
+      "semaforo": "verde",
+      "nota": "material propio o generado: sin derechos de terceros",
+      "url_ficha": null
+    },
+    {
+      "asset_id": "FER_06_PAYOFF_COMENZAMOS_CON_UNA_TOMA_DINMIC",
+      "archivo": "FER_06_PAYOFF_COMENZAMOS_CON_UNA_TOMA_DINMIC.jpg",
+      "fuente": "generado",
+      "licencia": "propio / generado",
+      "semaforo": "verde",
+      "nota": "material propio o generado: sin derechos de terceros",
+      "url_ficha": null
+    },
+    {
+      "asset_id": "FER_08_SIGN-OFF_RECREACIN_IA_AI_GEN_DEL_PROTOT",
+      "archivo": "FER_08_SIGN-OFF_RECREACIN_IA_AI_GEN_DEL_PROTOT.jpg",
+      "fuente": "generado",
+      "licencia": "propio / generado",
+      "semaforo": "verde",
+      "nota": "material propio o generado: sin derechos de terceros",
+      "url_ficha": null
+    },
+    {
+      "asset_id": "FER_09_OUTRO_PANTALLA_FINAL_DE_HUMANOS_YOUR",
+      "archivo": "FER_09_OUTRO_PANTALLA_FINAL_DE_HUMANOS_YOUR.jpg",
+      "fuente": "generado",
+      "licencia": "propio / generado",
+      "semaforo": "verde",
+      "nota": "material propio o generado: sin derechos de terceros",
+      "url_ficha": null
+    },
+    {
+      "asset_id": "100",
+      "archivo": "FER_100_1963_LAMBORGHINI_350_GTV_FERRUCCIO_E_CAN.jpg",
+      "fuente": "Wikimedia Commons",
+      "licencia": "Public domain",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "https://commons.wikimedia.org/wiki/File:1963_Lamborghini_350_GTV_Ferruccio_e_Canestrini.jpg"
+    },
+    {
+      "asset_id": "101",
+      "archivo": "FER_101_1968ISH_BERTONE_LAMBORGHINIJPG.jpg",
+      "fuente": "Wikimedia Commons",
+      "licencia": "Public domain",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "https://commons.wikimedia.org/wiki/File:1968ish_Bertone_Lamborghini.jpg"
+    },
+    {
+      "asset_id": "102",
+      "archivo": "FER_102_RANCHERS_ON_TRACTOR.jpg",
+      "fuente": "Library of Congress",
+      "licencia": "dominio publico (verificar ficha)",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "http://www.loc.gov/item/ncr000680/"
+    },
+    {
+      "asset_id": "103",
+      "archivo": "FER_103_HAY_RAKE_ON_TRACTOR.jpg",
+      "fuente": "Library of Congress",
+      "licencia": "dominio publico (verificar ficha)",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "http://www.loc.gov/item/ncr000149/"
+    },
+    {
+      "asset_id": "104",
+      "archivo": "FER_104_NEHRU_VISITS_TRACTOR_PLANT.jpg",
+      "fuente": "Library of Congress",
+      "licencia": "dominio publico (verificar ficha)",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "http://www.loc.gov/item/93500695/"
+    },
+    {
+      "asset_id": "105",
+      "archivo": "FER_105_TRACTOR_PULLING_FLOAT.jpg",
+      "fuente": "Library of Congress",
+      "licencia": "dominio publico (verificar ficha)",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "http://www.loc.gov/item/afcwip000394/"
+    },
+    {
+      "asset_id": "106",
+      "archivo": "FER_106_BULLDOZER_FREEING_TRACTOR_STUCK_IN_MUD.jpg",
+      "fuente": "Library of Congress",
+      "licencia": "dominio publico (verificar ficha)",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "http://www.loc.gov/item/ncr000652/"
+    },
+    {
+      "asset_id": "107",
+      "archivo": "FER_107_CAMFW_TRACTOR_7024_JULY_2009.jpg",
+      "fuente": "Library of Congress",
+      "licencia": "dominio publico (verificar ficha)",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "http://www.loc.gov/item/2012645392/"
+    },
+    {
+      "asset_id": "108",
+      "archivo": "FER_108_MEAT_LOCKER_AND_TRACTOR_IN_MACHINE_SHED.jpg",
+      "fuente": "Library of Congress",
+      "licencia": "dominio publico (verificar ficha)",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "http://www.loc.gov/item/ncr000707/"
+    },
+    {
+      "asset_id": "109",
+      "archivo": "FER_109_SIDE_VIEW_OLIVER_61_71_81_TRACTOR.jpg",
+      "fuente": "Library of Congress",
+      "licencia": "dominio publico (verificar ficha)",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "http://www.loc.gov/item/2017645569/"
+    },
+    {
+      "asset_id": "110",
+      "archivo": "FER_110_AT_FORD_TRACTOR_SHOW.jpg",
+      "fuente": "Library of Congress",
+      "licencia": "dominio publico (verificar ficha)",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "http://www.loc.gov/item/93508590/"
+    },
+    {
+      "asset_id": "111",
+      "archivo": "FER_111_AT_FORD_TRACTOR_SHOW.jpg",
+      "fuente": "Library of Congress",
+      "licencia": "dominio publico (verificar ficha)",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "http://www.loc.gov/item/93508607/"
+    },
+    {
+      "asset_id": "112",
+      "archivo": "FER_112_USNC_CEMETERY_TRACTOR_NASHVILLE.jpg",
+      "fuente": "Library of Congress",
+      "licencia": "dominio publico (verificar ficha)",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "http://www.loc.gov/item/2020630152/"
+    },
+    {
+      "asset_id": "113",
+      "archivo": "FER_113_1906_TRACTOR.jpg",
+      "fuente": "Library of Congress",
+      "licencia": "dominio publico (verificar ficha)",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "http://www.loc.gov/item/2004677433/"
+    },
+    {
+      "asset_id": "114",
+      "archivo": "FER_114_CUPOLA_FERRUCCIO_LAMBORGHINI_ENTRATA_STA.png",
+      "fuente": "Openverse",
+      "licencia": "BY 4.0",
+      "semaforo": "verde",
+      "nota": "CC BY: se puede, con atribucion",
+      "url_ficha": "https://commons.wikimedia.org/w/index.php?curid=168443973"
+    },
+    {
+      "asset_id": "115",
+      "archivo": "FER_115_ATTREZZERIA_CUPOLA_FERRUCCIO_LAMBORGHINI.png",
+      "fuente": "Openverse",
+      "licencia": "BY 4.0",
+      "semaforo": "verde",
+      "nota": "CC BY: se puede, con atribucion",
+      "url_ficha": "https://commons.wikimedia.org/w/index.php?curid=168443969"
+    },
+    {
+      "asset_id": "116",
+      "archivo": "FER_116_BIZZARRINI_LAMBORGHINI_DALLARAJPG.jpg",
+      "fuente": "Wikimedia Commons",
+      "licencia": "Public domain",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "https://commons.wikimedia.org/wiki/File:Bizzarrini_Lamborghini_Dallara.jpg"
+    },
+    {
+      "asset_id": "117",
+      "archivo": "FER_117_BLUE_LAMBORGHINI_URRACOJPG.jpg",
+      "fuente": "Wikimedia Commons",
+      "licencia": "CC BY-SA 4.0",
+      "semaforo": "verde",
+      "nota": "CC BY-SA: se puede, con atribucion",
+      "url_ficha": "https://commons.wikimedia.org/wiki/File:Blue_Lamborghini_Urraco.jpg"
+    },
+    {
+      "asset_id": "118",
+      "archivo": "FER_118_BROWN_LAMBORGHINI_URRACOJPG.jpg",
+      "fuente": "Wikimedia Commons",
+      "licencia": "CC BY-SA 4.0",
+      "semaforo": "verde",
+      "nota": "CC BY-SA: se puede, con atribucion",
+      "url_ficha": "https://commons.wikimedia.org/wiki/File:Brown_Lamborghini_Urraco.jpg"
+    },
+    {
+      "asset_id": "119",
+      "archivo": "FER_119_BROWN_LAMBORGHINI_URRACO_REARJPG.jpg",
+      "fuente": "Wikimedia Commons",
+      "licencia": "CC BY-SA 4.0",
+      "semaforo": "verde",
+      "nota": "CC BY-SA: se puede, con atribucion",
+      "url_ficha": "https://commons.wikimedia.org/wiki/File:Brown_Lamborghini_Urraco_rear.jpg"
+    },
+    {
+      "asset_id": "120",
+      "archivo": "FER_120_FERRUCCIO_LAMBORGHINIS_OWN_FERRARI_250_G.jpg",
+      "fuente": "Wikimedia Commons",
+      "licencia": "CC BY 4.0",
+      "semaforo": "verde",
+      "nota": "CC BY: se puede, con atribucion",
+      "url_ficha": "https://commons.wikimedia.org/wiki/File:Ferruccio_Lamborghini%27s_own_Ferrari_250_GTE_in_the_Ferruccio_Lamborghini_Museum.jpg"
+    },
+    {
+      "asset_id": "121",
+      "archivo": "FER_121_FERRUCCIO_LAMBORGHINI_MUSEUMJPG.jpg",
+      "fuente": "Wikimedia Commons",
+      "licencia": "CC BY-SA 4.0",
+      "semaforo": "verde",
+      "nota": "CC BY-SA: se puede, con atribucion",
+      "url_ficha": "https://commons.wikimedia.org/wiki/File:Ferruccio_Lamborghini_Museum.jpg"
+    },
+    {
+      "asset_id": "122",
+      "archivo": "FER_122_FERRUCCIO_LAMBORGHINI_AUTOGRAPHJPG.jpg",
+      "fuente": "Wikimedia Commons",
+      "licencia": "Public domain",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "https://commons.wikimedia.org/wiki/File:Ferruccio_Lamborghini_autograph.jpg"
+    },
+    {
+      "asset_id": "123",
+      "archivo": "FER_123_FERRUCCIO_LAMBORGHINIJPG.jpg",
+      "fuente": "Wikimedia Commons",
+      "licencia": "Public domain",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "https://commons.wikimedia.org/wiki/File:Ferruccio_lamborghini.jpg"
+    },
+    {
+      "asset_id": "124",
+      "archivo": "FER_124_LAMBORGHINI_ESPADA_CHASSISJPG.jpg",
+      "fuente": "Wikimedia Commons",
+      "licencia": "CC BY-SA 4.0",
+      "semaforo": "verde",
+      "nota": "CC BY-SA: se puede, con atribucion",
+      "url_ficha": "https://commons.wikimedia.org/wiki/File:Lamborghini_Espada-Chassis.jpg"
+    },
+    {
+      "asset_id": "125",
+      "archivo": "FER_125_SILVER_LAMBORGHINI_ESPADAJPG.jpg",
+      "fuente": "Wikimedia Commons",
+      "licencia": "CC BY-SA 4.0",
+      "semaforo": "verde",
+      "nota": "CC BY-SA: se puede, con atribucion",
+      "url_ficha": "https://commons.wikimedia.org/wiki/File:Silver_Lamborghini_Espada.jpg"
+    },
+    {
+      "asset_id": "126",
+      "archivo": "FER_126_HAY_RAKE_ON_TRACTOR.jpg",
+      "fuente": "Library of Congress",
+      "licencia": "dominio publico (verificar ficha)",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "http://www.loc.gov/item/ncr000148/"
+    },
+    {
+      "asset_id": "127",
+      "archivo": "FER_127_TRACTOR_PLOWING_IN_THE_EMEK.jpg",
+      "fuente": "Library of Congress",
+      "licencia": "dominio publico (verificar ficha)",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "http://www.loc.gov/item/2002711290/"
+    },
+    {
+      "asset_id": "128",
+      "archivo": "FER_128_AANKOMST_VAN_TRACTORS_WEEKNUMMER_32_08_O.ogv",
+      "fuente": "Wikimedia Commons",
+      "licencia": "CC BY-SA 3.0 nl",
+      "semaforo": "verde",
+      "nota": "CC BY-SA: se puede, con atribucion",
+      "url_ficha": "https://commons.wikimedia.org/wiki/File:Aankomst_van_tractors_Weeknummer_32-08_-_Open_Beelden_-_45089.ogv"
+    },
+    {
+      "asset_id": "129",
+      "archivo": "FER_129_AUSTRO_DAIMLER_ARTILLERY_TRACTORWEBM.webm",
+      "fuente": "Wikimedia Commons",
+      "licencia": "Public domain",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "https://commons.wikimedia.org/wiki/File:Austro-Daimler_artillery_tractor.webm"
+    },
+    {
+      "asset_id": "130",
+      "archivo": "FER_130_THOMAS_EDISON_NATIONAL_HISTORICAL_PARK_I.jpg",
+      "fuente": "Openverse",
+      "licencia": "BY 2.0",
+      "semaforo": "verde",
+      "nota": "CC BY: se puede, con atribucion",
+      "url_ficha": "https://www.flickr.com/photos/13445173@N06/33450177325"
+    },
+    {
+      "asset_id": "131",
+      "archivo": "FER_131_FERRARI_250_GT_SPIDER_PININFARINA.jpg",
+      "fuente": "Openverse",
+      "licencia": "BY 2.0",
+      "semaforo": "verde",
+      "nota": "CC BY: se puede, con atribucion",
+      "url_ficha": "https://www.flickr.com/photos/31411679@N08/52181463757"
+    },
+    {
+      "asset_id": "132",
+      "archivo": "FER_132_1947_05_01_ENZO_FERRARI_FERRARI_125_02CJ.jpg",
+      "fuente": "Wikimedia Commons",
+      "licencia": "Public domain",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "https://commons.wikimedia.org/wiki/File:1947-05-01_Enzo_Ferrari_Ferrari_125_02C.jpg"
+    },
+    {
+      "asset_id": "133",
+      "archivo": "FER_133_1947_08_01_FERRARI_125_01C_ENZO_DINO_NAN.jpg",
+      "fuente": "Wikimedia Commons",
+      "licencia": "Public domain",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "https://commons.wikimedia.org/wiki/File:1947-08-01_Ferrari_125_01C_Enzo_Dino_Nando.jpg"
+    },
+    {
+      "asset_id": "134",
+      "archivo": "FER_134_1950S_ENZO_FERRARI_E_BINDO_MASERATIJPG.jpg",
+      "fuente": "Wikimedia Commons",
+      "licencia": "Public domain",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "https://commons.wikimedia.org/wiki/File:1950s_Enzo_Ferrari_e_Bindo_Maserati.jpg"
+    },
+    {
+      "asset_id": "135",
+      "archivo": "FER_135_1952_ENZO_FERRARI_E_BATTISTA_FARINA_E_FE.jpg",
+      "fuente": "Wikimedia Commons",
+      "licencia": "Public domain",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "https://commons.wikimedia.org/wiki/File:1952_Enzo_Ferrari_e_Battista_Farina_e_Ferrari_250_MM.jpg"
+    },
+    {
+      "asset_id": "136",
+      "archivo": "FER_136_1961_FERRARI_250_GTE_1287GT_ENZOJPG.jpg",
+      "fuente": "Wikimedia Commons",
+      "licencia": "Public domain",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "https://commons.wikimedia.org/wiki/File:1961_Ferrari_250_GTE_1287GT_Enzo.jpg"
+    },
+    {
+      "asset_id": "137",
+      "archivo": "FER_137_ENZO_FERRARI_1920JPG.jpg",
+      "fuente": "Wikimedia Commons",
+      "licencia": "Public domain",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "https://commons.wikimedia.org/wiki/File:Enzo_Ferrari_1920.jpg"
+    },
+    {
+      "asset_id": "138",
+      "archivo": "FER_138_ENZO_FERRARI_MONZA_1967JPG.jpg",
+      "fuente": "Wikimedia Commons",
+      "licencia": "Public domain",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "https://commons.wikimedia.org/wiki/File:Enzo_Ferrari_Monza_1967.jpg"
+    },
+    {
+      "asset_id": "139",
+      "archivo": "FER_139_ENZO_FERRARI.jpg",
+      "fuente": "Openverse",
+      "licencia": "BY 2.0",
+      "semaforo": "verde",
+      "nota": "CC BY: se puede, con atribucion",
+      "url_ficha": "https://www.flickr.com/photos/19616961@N00/12161787"
+    },
+    {
+      "asset_id": "140",
+      "archivo": "FER_140_TRACTOR_ANTIQUE_ANTIQUETRACTOR.jpg",
+      "fuente": "Openverse",
+      "licencia": "BY 2.0",
+      "semaforo": "verde",
+      "nota": "CC BY: se puede, con atribucion",
+      "url_ficha": "https://www.flickr.com/photos/81963835@N00/35585126740"
+    },
+    {
+      "asset_id": "141",
+      "archivo": "FER_141_1979_LAMBORGHINI_COUNTACH_LP400_S_CHASSI.jpg",
+      "fuente": "Library of Congress",
+      "licencia": "dominio publico (verificar ficha)",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "http://www.loc.gov/item/fl0940/"
+    },
+    {
+      "asset_id": "142",
+      "archivo": "FER_142_LAMBORGHINI_LOGO.jpg",
+      "fuente": "Openverse",
+      "licencia": "BY 2.0",
+      "semaforo": "verde",
+      "nota": "CC BY: se puede, con atribucion",
+      "url_ficha": "https://www.flickr.com/photos/69875617@N00/506637766"
+    },
+    {
+      "asset_id": "143",
+      "archivo": "FER_143_LAMBORGHINI_LOGO_DOF.jpg",
+      "fuente": "Openverse",
+      "licencia": "BY 2.0",
+      "semaforo": "verde",
+      "nota": "CC BY: se puede, con atribucion",
+      "url_ficha": "https://www.flickr.com/photos/26968630@N08/3494714427"
+    },
+    {
+      "asset_id": "144",
+      "archivo": "FER_144_LAMBORGHINI_LOGO.jpg",
+      "fuente": "Openverse",
+      "licencia": "BY 2.0",
+      "semaforo": "verde",
+      "nota": "CC BY: se puede, con atribucion",
+      "url_ficha": "https://www.flickr.com/photos/92748110@N00/3085905129"
+    },
+    {
+      "asset_id": "145",
+      "archivo": "FER_145_LAMBORGHINI_LOGO.jpg",
+      "fuente": "Openverse",
+      "licencia": "BY-SA 4.0",
+      "semaforo": "verde",
+      "nota": "CC BY-SA: se puede, con atribucion",
+      "url_ficha": "https://commons.wikimedia.org/w/index.php?curid=71027157"
+    },
+    {
+      "asset_id": "146",
+      "archivo": "FER_146_MINNESOTA20STATE20FAIR20231MP4.mp4",
+      "fuente": "descarga manual",
+      "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "https://archive.org/download/minnesota-state-fair-1960s/Minnesota%20State%20Fair%20%231.mp4"
+    },
+    {
+      "asset_id": "147",
+      "archivo": "FER_147_02297907MP4.mp4",
+      "fuente": "descarga manual",
+      "licencia": "dominio publico (Prelinger Collection, LOC)",
+      "semaforo": "verde",
+      "nota": "dominio publico: uso libre, atribucion recomendada",
+      "url_ficha": "https://tile.loc.gov/storage-services/service/mbrs/ntscrm/02297907/02297907.mp4"
+    }
+  ],
+  "monetizado": false
+}
