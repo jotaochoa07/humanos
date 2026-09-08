@@ -173,6 +173,11 @@ Los entregables y videos de **HUMANOS** deben seguir estrictas pautas de identid
 
 ---
 
+## Preparación de fotos para CapCut
+
+El workflow reusable de Ken Burns está en docs/CAPCUT_PHOTO_PREP.md. Para descubrir
+fotos sin renderizar: python scripts/prepare_capcut_photos.py --episode RUTA --dry-run.
+La selección de sujeto, crop seguro y movimiento requiere revisión visual humana.
 ## 🧪 Pruebas RAG y Curie
 
 El archivo `test_curie.py` permite verificar el funcionamiento de **Curie** de forma local. En este script, Curie indexa documentos textuales de prueba, calcula sus embeddings de forma determinista y realiza búsquedas de similitud en la biblioteca local (`base_de_datos/curie_library/`) usando la tecnología de compresión vectorial **TurboVec**.
