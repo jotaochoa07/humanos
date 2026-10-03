@@ -1,44 +1,20 @@
-"""Deterministic post-steps for Shorts Factory M2 candidates.
+"""Deterministic post-steps for Shorts Factory candidates (m2-v3).
 
-Timestamp grounding rules (`snap_rules_version: m2-v2`):
+Timestamp grounding + narrative-unit completion (`snap_rules_version: m2-v3`):
 1. Raw LLM start/end may be approximate floats in seconds.
-2. **Start snap:** choose the ASR segment whose time range contains `start`
-   (or the nearest segment if none contains it). Candidate start becomes
-   that segment's `start`.
-3. **End snap:** choose the ASR segment whose time range contains `end`
-   (or the nearest segment). Candidate end becomes that segment's `end`.
-4. If after snap `end <= start`, expand end to the end of the start segment;
-   if still invalid, reject the candidate.
-5. If duration is below `duration_min_sec`, greedily append following whole
-   segments until within window or no more segments.
-6. If duration is above `duration_max_sec`, greedily trim trailing whole
-   segments (keeping start fixed) until within window.
-7. **Boundary refinement (±1 segment max)** — after duration snap/trim, improve
-   self-containment using ASR segment *text* heuristics (does **not** change
-   the ranker model/prompt):
-   a. **Start looks mid-sentence** if the first segment text:
-      - starts with a lowercase letter (incl. Spanish áéíóúñü), OR
-      - starts with a mid-thought cue (`y`, `pero`, `porque`, `que`, `and`, …)
-      after stripping opening quotes/¿¡.
-      → If true and `i_start > 0`, expand **one** segment backward **only if**
-      the new duration stays ≤ `duration_max_sec`.
-   b. **End looks incomplete** if the last segment text does **not** end with
-      terminal punctuation (`.?!…` optionally followed by quotes/brackets)
-      after stripping trailing whitespace.
-      → If true and a next segment exists, expand **one** segment forward
-      **only if** the new duration stays ≤ `duration_max_sec`.
-   c. At most one expand backward and one expand forward (never ±2).
-   d. Prefer not expanding when the adjacent segment would clearly worsen
-      containment (e.g. backward expand into a segment that itself ends with
-      strong terminal punctuation *and* current start already looks like a
-      sentence start — skipped via the mid-sentence check).
-8. Transcript text is always rebuilt from the inclusive ASR segment span
-   (never trust LLM-copied transcript for timestamps).
-9. **Duration filter:** keep only candidates with
-   `duration_min_sec <= duration <= duration_max_sec` (after snap/refine).
-10. **NMS / dedupe:** sort by score desc; greedily keep if temporal IoU with
-    every kept candidate is < `overlap_iou_threshold`.
-11. Sort by score desc; take top `target_count`.
+2. **Start snap / end snap** to ASR segment boundaries (nearest containing).
+3. Expand/trim whole segments to satisfy `duration_min_sec` / `duration_max_sec`.
+4. **Multi-segment narrative completion** (within max duration):
+   - Expand **backward** while the start looks mid-sentence / pronoun-deictic /
+     continuation, as long as duration ≤ max.
+   - Expand **forward** while the end looks incomplete (no terminal punctuation
+     / trailing connector), as long as duration ≤ max.
+   - Prefer a well-closed ~45–60s idea over an incomplete short clip
+     (soft preference via scoring bonus; hard cap remains `duration_max_sec`).
+5. Rebuild transcript from inclusive ASR span.
+6. Attach score dimensions + apply deterministic standalone penalties.
+7. Duration filter → sort by final score → NMS by IoU → drop near-duplicate
+   ideas → take top N (fewer, better — default target_count=5).
 """
 
 from __future__ import annotations
@@ -46,53 +22,30 @@ from __future__ import annotations
 import re
 from typing import Any, Mapping, Sequence
 
-from shorts_factory.backends.ranking import RankingConfig, RawCandidate
-
-_SLUG_RE = re.compile(r"[^a-z0-9]+")
-
-# Terminal sentence endings (ES/EN). Optional closing quotes/brackets after.
-_TERMINAL_END_RE = re.compile(
-    r'[.!?…]+["\'”’»)\]\}]*\s*$'
+from shorts_factory.backends.ranking import RankingConfig, RawCandidate, ScoreDimensions
+from shorts_factory.pipeline.scoring import (
+    compose_final_score,
+    duplicate_idea_penalty,
+)
+from shorts_factory.pipeline.text_heuristics import (
+    looks_like_mid_sentence_start,
+    looks_like_sentence_end,
 )
 
-# Opening fluff stripped before start-of-sentence checks
+_SLUG_RE = re.compile(r"[^a-z0-9]+")
+_PRONOUN_START_RE = re.compile(
+    r"^(esto|eso|esta|ese|estos|esos|ellos?|ellas?|lo|la|le|les|"
+    r"this|that|these|those|they|them|it|he|she)\b",
+    re.IGNORECASE,
+)
 _OPEN_STRIP_RE = re.compile(r'^[\s"\'“”‘’¿¡(\[]+')
-
-# Mid-thought openers (lowercase, word boundary). Not a full NLP parse —
-# conservative cues that the clip starts mid-clause.
-_MID_THOUGHT_STARTERS = frozenset(
-    {
-        "y",
-        "e",
-        "o",
-        "u",
-        "pero",
-        "porque",
-        "que",
-        "sino",
-        "aunque",
-        "entonces",
-        "ademas",
-        "además",
-        "tambien",
-        "también",
-        "luego",
-        "asi",
-        "así",
-        "and",
-        "but",
-        "because",
-        "so",
-        "then",
-        "which",
-        "where",
-        "when",
-    }
+_TRAILING_CONNECTOR_RE = re.compile(
+    r"\b(porque|entonces|pero|y|o|aunque|asi|así|because|so|but|and|or|then)\s*$",
+    re.IGNORECASE,
 )
 
 
 def temporal_iou(a_start: float, a_end: float, b_start: float, b_end: float) -> float:
-    """Intersection-over-union on 1D time ranges."""
     inter = max(0.0, min(a_end, b_end) - max(a_start, b_start))
     if inter <= 0:
         return 0.0
@@ -144,39 +97,69 @@ def _slugify(text: str, fallback: str) -> str:
     return cleaned[:48] or fallback
 
 
-def looks_like_sentence_end(text: str) -> bool:
-    """True if *text* ends with terminal punctuation (complete thought)."""
-    t = (text or "").strip()
-    if not t:
-        return False
-    return bool(_TERMINAL_END_RE.search(t))
-
-
-def looks_like_mid_sentence_start(text: str) -> bool:
-    """True if *text* likely begins mid-thought (bad clip start)."""
-    t = (text or "").strip()
-    if not t:
-        return True
-    stripped = _OPEN_STRIP_RE.sub("", t)
-    if not stripped:
-        return True
-    first = stripped[0]
-    # Lowercase letter start → mid-thought (ASR often drops capitals, but we
-    # still treat clear lowercase as a signal when present).
-    if first.isalpha() and first == first.lower() and first != first.upper():
-        return True
-    # Mid-thought cue words even if capitalized oddly
-    first_word = re.split(r"\s+", stripped, maxsplit=1)[0]
-    first_word = re.sub(r"[^\wáéíóúñüÁÉÍÓÚÑÜ]+$", "", first_word, flags=re.UNICODE)
-    if first_word.lower() in _MID_THOUGHT_STARTERS:
-        return True
-    return False
-
-
 def _span_duration(segments: Sequence[Mapping[str, Any]], a: int, b: int) -> float:
     return float(segments[b]["end"]) - float(segments[a]["start"])
 
 
+def _needs_expand_start(text: str) -> bool:
+    if looks_like_mid_sentence_start(text):
+        return True
+    stripped = _OPEN_STRIP_RE.sub("", (text or "").strip())
+    return bool(_PRONOUN_START_RE.search(stripped))
+
+
+def _needs_expand_end(text: str) -> bool:
+    if not looks_like_sentence_end(text):
+        return True
+    trimmed = (text or "").strip().rstrip(".,!?;:…\"'”’")
+    return bool(_TRAILING_CONNECTOR_RE.search(trimmed))
+
+
+def complete_narrative_unit(
+    i_start: int,
+    i_end: int,
+    segments: Sequence[Mapping[str, Any]],
+    *,
+    duration_max_sec: float,
+) -> tuple[int, int, dict[str, int]]:
+    """Expand multiple ASR segments (±) to complete a self-contained unit.
+
+    Stops when start/end look complete or further expand would exceed max duration.
+    """
+    flags = {"expanded_start_segments": 0, "expanded_end_segments": 0}
+    n = len(segments)
+    if n == 0 or i_start < 0 or i_end < i_start:
+        return i_start, i_end, flags
+
+    # Expand backward while start is incomplete
+    while i_start > 0:
+        start_text = str(segments[i_start].get("text", ""))
+        if not _needs_expand_start(start_text):
+            break
+        trial = i_start - 1
+        if _span_duration(segments, trial, i_end) > duration_max_sec:
+            break
+        i_start = trial
+        flags["expanded_start_segments"] += 1
+
+    # Expand forward while end is incomplete
+    while i_end + 1 < n:
+        end_text = str(segments[i_end].get("text", ""))
+        if not _needs_expand_end(end_text):
+            break
+        trial = i_end + 1
+        if _span_duration(segments, i_start, trial) > duration_max_sec:
+            break
+        i_end = trial
+        flags["expanded_end_segments"] += 1
+
+    # Soft preference: if still short of preferred band and end is OK but we can
+    # include one more complete sentence forward without exceeding max, do it
+    # only when current duration < preferred_min (handled by caller via config).
+    return i_start, i_end, flags
+
+
+# Back-compat alias used by older tests
 def refine_boundaries(
     i_start: int,
     i_end: int,
@@ -184,30 +167,18 @@ def refine_boundaries(
     *,
     duration_max_sec: float,
 ) -> tuple[int, int, dict[str, bool]]:
-    """Expand by at most ±1 ASR segment to avoid mid-sentence cuts.
-
-    Returns (new_start_idx, new_end_idx, flags).
-    """
-    flags = {"expanded_start_back": False, "expanded_end_forward": False}
-    n = len(segments)
-    if n == 0 or i_start < 0 or i_end < i_start:
-        return i_start, i_end, flags
-
-    start_text = str(segments[i_start].get("text", ""))
-    if looks_like_mid_sentence_start(start_text) and i_start > 0:
-        trial = i_start - 1
-        if _span_duration(segments, trial, i_end) <= duration_max_sec:
-            i_start = trial
-            flags["expanded_start_back"] = True
-
-    end_text = str(segments[i_end].get("text", ""))
-    if not looks_like_sentence_end(end_text) and i_end + 1 < n:
-        trial = i_end + 1
-        if _span_duration(segments, i_start, trial) <= duration_max_sec:
-            i_end = trial
-            flags["expanded_end_forward"] = True
-
-    return i_start, i_end, flags
+    """Legacy ±1-style API wrapping multi-segment completion."""
+    a, b, counts = complete_narrative_unit(
+        i_start, i_end, segments, duration_max_sec=duration_max_sec
+    )
+    return (
+        a,
+        b,
+        {
+            "expanded_start_back": counts["expanded_start_segments"] > 0,
+            "expanded_end_forward": counts["expanded_end_segments"] > 0,
+        },
+    )
 
 
 def snap_candidate_to_segments(
@@ -216,7 +187,7 @@ def snap_candidate_to_segments(
     *,
     config: RankingConfig,
 ) -> dict[str, Any] | None:
-    """Snap/expand/trim/refine one raw candidate onto ASR boundaries. None = reject."""
+    """Snap/expand/complete one raw candidate onto ASR boundaries. None = reject."""
     if not segments:
         return None
 
@@ -225,29 +196,37 @@ def snap_candidate_to_segments(
     if i_end < i_start:
         i_start, i_end = i_end, i_start
 
-    # Expand to meet min duration by appending following segments
     while (
         _span_duration(segments, i_start, i_end) < config.duration_min_sec
         and i_end + 1 < len(segments)
     ):
         i_end += 1
 
-    # Trim from the end to meet max duration
     while (
         _span_duration(segments, i_start, i_end) > config.duration_max_sec
         and i_end > i_start
     ):
         i_end -= 1
 
-    # Boundary refinement (±1 segment) for sentence self-containment
-    i_start, i_end, refine_flags = refine_boundaries(
+    i_start, i_end, expand_counts = complete_narrative_unit(
         i_start,
         i_end,
         segments,
         duration_max_sec=config.duration_max_sec,
     )
 
-    # If refinement pushed over max, trim end again (keep refined start if possible)
+    # Soft grow toward preferred_min ONLY while the unit still looks incomplete
+    # (prefer a closed ~45–60s idea over a truncated short — never force-pad
+    # an already-closed unit).
+    while (
+        _span_duration(segments, i_start, i_end) < config.preferred_duration_min_sec
+        and i_end + 1 < len(segments)
+        and _span_duration(segments, i_start, i_end + 1) <= config.duration_max_sec
+        and _needs_expand_end(str(segments[i_end].get("text", "")))
+    ):
+        i_end += 1
+        expand_counts["expanded_end_segments"] += 1
+
     while (
         _span_duration(segments, i_start, i_end) > config.duration_max_sec
         and i_end > i_start
@@ -261,6 +240,25 @@ def snap_candidate_to_segments(
     start = float(segments[i_start]["start"])
     end = float(segments[i_end]["end"])
     transcript = _join_transcript(segments, i_start, i_end)
+    start_text = str(segments[i_start].get("text", ""))
+    end_text = str(segments[i_end].get("text", ""))
+
+    dims = raw.scores if isinstance(raw.scores, ScoreDimensions) else ScoreDimensions()
+    final_score, penalty, penalty_reasons = compose_final_score(
+        dims,
+        start_text=start_text,
+        end_text=end_text,
+        full_transcript=transcript,
+        payoff_text=raw.payoff,
+        duration_sec=duration,
+        preferred_min=config.preferred_duration_min_sec,
+        preferred_max=config.preferred_duration_max_sec,
+    )
+
+    # Prefer LLM score only as a seed; final is dimension+penalty composed
+    # Blend lightly with raw.score if LLM provided an overall
+    if raw.score > 0:
+        final_score = max(0.0, min(1.0, 0.85 * final_score + 0.15 * float(raw.score)))
 
     return {
         "start": start,
@@ -268,15 +266,24 @@ def snap_candidate_to_segments(
         "duration_sec": round(end - start, 3),
         "transcript": transcript,
         "hook": raw.hook,
+        "minimum_context": raw.minimum_context,
         "central_idea": raw.central_idea,
+        "idea_development": raw.idea_development,
+        "payoff": raw.payoff,
         "selection_reason": raw.selection_reason,
-        "score": float(raw.score),
         "suggested_title": raw.suggested_title,
+        "scores": dims.as_dict(),
+        "score": round(final_score, 4),
+        "score_penalty": round(penalty, 4),
+        "penalty_reasons": penalty_reasons,
         "segment_id_start": int(segments[i_start]["id"]),
         "segment_id_end": int(segments[i_end]["id"]),
         "boundary_refined": bool(
-            refine_flags["expanded_start_back"] or refine_flags["expanded_end_forward"]
+            expand_counts["expanded_start_segments"]
+            or expand_counts["expanded_end_segments"]
         ),
+        "expanded_start_segments": expand_counts["expanded_start_segments"],
+        "expanded_end_segments": expand_counts["expanded_end_segments"],
     }
 
 
@@ -285,7 +292,6 @@ def nms_by_iou(
     *,
     iou_threshold: float,
 ) -> list[dict[str, Any]]:
-    """Greedy non-maximum suppression by temporal IoU (input should be score-sorted)."""
     kept: list[dict[str, Any]] = []
     for cand in candidates:
         overlaps = False
@@ -300,12 +306,44 @@ def nms_by_iou(
                 overlaps = True
                 break
         if not overlaps:
-            kept.append(dict(cand))
-    return kept
+            # Penalize near-duplicate ideas vs already kept (better-resolved wins)
+            dup = duplicate_idea_penalty(cand, kept)
+            item = dict(cand)
+            if dup > 0:
+                item["score"] = max(0.0, float(item["score"]) - dup)
+                reasons = list(item.get("penalty_reasons") or [])
+                reasons.append("duplicate_of_better_resolved_idea")
+                item["penalty_reasons"] = reasons
+                item["score_penalty"] = round(float(item.get("score_penalty") or 0) + dup, 4)
+            kept.append(item)
+    # Re-sort after duplicate penalties
+    kept.sort(key=lambda c: float(c["score"]), reverse=True)
+    # Second pass NMS-style drop of heavily penalized dups that now score poorly
+    # Keep order; if duplicate flag and score collapsed below 0.25 vs peer, drop
+    final: list[dict[str, Any]] = []
+    for cand in kept:
+        if (
+            "duplicate_of_better_resolved_idea" in (cand.get("penalty_reasons") or [])
+            and float(cand["score"]) < 0.35
+        ):
+            continue
+        # re-check IoU against final (scores may have reordered)
+        if any(
+            temporal_iou(
+                float(cand["start"]),
+                float(cand["end"]),
+                float(o["start"]),
+                float(o["end"]),
+            )
+            >= iou_threshold
+            for o in final
+        ):
+            continue
+        final.append(cand)
+    return final
 
 
 def assign_ids(candidates: Sequence[Mapping[str, Any]]) -> list[dict[str, Any]]:
-    """Assign stable `id` / `folder` fields: 01-<slug>, 02-<slug>, …"""
     used: set[str] = set()
     out: list[dict[str, Any]] = []
     for idx, cand in enumerate(candidates, start=1):
@@ -330,7 +368,7 @@ def postprocess_candidates(
     *,
     config: RankingConfig,
 ) -> list[dict[str, Any]]:
-    """Full deterministic chain: snap → refine → filter → sort → NMS → top N → ids."""
+    """Full chain: snap → multi-expand → score → filter → NMS → top N → ids."""
     segments = transcript.get("segments") or []
     if not isinstance(segments, list) or not segments:
         return []

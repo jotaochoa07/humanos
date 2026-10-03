@@ -30,10 +30,12 @@ DEFAULT_LANGUAGE = "auto"
 DEFAULT_DEVICE = "auto"
 DEFAULT_COMPUTE_TYPE = "auto"
 
-# Milestone 2 ranking defaults (D5 / plan §6.6)
+# Milestone 2 ranking defaults (D5 / m2-v3: fewer, more self-contained)
 DEFAULT_DURATION_MIN_SEC = 20.0
 DEFAULT_DURATION_MAX_SEC = 90.0
-DEFAULT_TARGET_COUNT = 8
+DEFAULT_PREFERRED_DURATION_MIN_SEC = 45.0
+DEFAULT_PREFERRED_DURATION_MAX_SEC = 60.0
+DEFAULT_TARGET_COUNT = 5
 DEFAULT_OVERLAP_IOU = 0.45
 DEFAULT_RANKER_BACKEND = "openrouter"
 ENV_OPENROUTER_MODEL = "OPENROUTER_MODEL"
@@ -114,6 +116,8 @@ class PathsConfig:
         transcription_backend: str = "faster_whisper",
         duration_min_sec: float = DEFAULT_DURATION_MIN_SEC,
         duration_max_sec: float = DEFAULT_DURATION_MAX_SEC,
+        preferred_duration_min_sec: float = DEFAULT_PREFERRED_DURATION_MIN_SEC,
+        preferred_duration_max_sec: float = DEFAULT_PREFERRED_DURATION_MAX_SEC,
         target_count: int = DEFAULT_TARGET_COUNT,
         overlap_iou_threshold: float = DEFAULT_OVERLAP_IOU,
         ranker_backend: str = DEFAULT_RANKER_BACKEND,
@@ -131,6 +135,8 @@ class PathsConfig:
         self.transcription_backend = transcription_backend
         self.duration_min_sec = float(duration_min_sec)
         self.duration_max_sec = float(duration_max_sec)
+        self.preferred_duration_min_sec = float(preferred_duration_min_sec)
+        self.preferred_duration_max_sec = float(preferred_duration_max_sec)
         self.target_count = int(target_count)
         self.overlap_iou_threshold = float(overlap_iou_threshold)
         self.ranker_backend = ranker_backend
@@ -148,6 +154,8 @@ class PathsConfig:
         return RankingConfig(
             duration_min_sec=self.duration_min_sec,
             duration_max_sec=self.duration_max_sec,
+            preferred_duration_min_sec=self.preferred_duration_min_sec,
+            preferred_duration_max_sec=self.preferred_duration_max_sec,
             target_count=self.target_count,
             overlap_iou_threshold=self.overlap_iou_threshold,
             model=self.ranker_model,
@@ -241,6 +249,16 @@ def resolve_paths(
         or duration.get("max_sec")
         or DEFAULT_DURATION_MAX_SEC
     )
+    preferred_duration_min_sec = float(
+        overrides.get("preferred_duration_min_sec")
+        or duration.get("preferred_min_sec")
+        or DEFAULT_PREFERRED_DURATION_MIN_SEC
+    )
+    preferred_duration_max_sec = float(
+        overrides.get("preferred_duration_max_sec")
+        or duration.get("preferred_max_sec")
+        or DEFAULT_PREFERRED_DURATION_MAX_SEC
+    )
     target_count = int(
         overrides.get("target_count")
         or ranking.get("target_count")
@@ -275,6 +293,8 @@ def resolve_paths(
         transcription_backend=backend,
         duration_min_sec=duration_min_sec,
         duration_max_sec=duration_max_sec,
+        preferred_duration_min_sec=preferred_duration_min_sec,
+        preferred_duration_max_sec=preferred_duration_max_sec,
         target_count=target_count,
         overlap_iou_threshold=overlap_iou_threshold,
         ranker_backend=ranker_backend,

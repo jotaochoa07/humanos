@@ -25,6 +25,14 @@ class TranscriptDocument(TypedDict):
     segments: list[TranscriptSegment]
 
 
+class ScoreDimensionsDict(TypedDict, total=False):
+    hook_strength: float
+    context_completeness: float
+    conceptual_completeness: float
+    standalone_clarity: float
+    payoff_strength: float
+
+
 class CandidateItem(TypedDict, total=False):
     id: str
     start: float
@@ -32,15 +40,23 @@ class CandidateItem(TypedDict, total=False):
     duration_sec: float
     transcript: str
     hook: str
+    minimum_context: str
     central_idea: str
+    idea_development: str
+    payoff: str
     selection_reason: str
     score: float
+    scores: ScoreDimensionsDict
+    score_penalty: float
+    penalty_reasons: list[str]
     suggested_title: str
     folder: str
     segment_id_start: int
     segment_id_end: int
     boundary_refined: bool
-    clip_horizontal: str  # M3 relative path under run dir
+    expanded_start_segments: int
+    expanded_end_segments: int
+    clip_horizontal: str
 
 
 class CandidatesDocument(TypedDict, total=False):
@@ -79,6 +95,15 @@ REQUIRED_CANDIDATE = (
     "selection_reason",
     "score",
     "suggested_title",
+)
+
+# m2-v3 score dimension keys (required when snap_rules_version == m2-v3)
+SCORE_DIMENSION_KEYS = (
+    "hook_strength",
+    "context_completeness",
+    "conceptual_completeness",
+    "standalone_clarity",
+    "payoff_strength",
 )
 
 
@@ -129,6 +154,7 @@ def validate_candidates_shape(doc: Any) -> list[str]:
         for key in ("duration_min_sec", "duration_max_sec", "target_count"):
             if key not in cfg:
                 errors.append(f"config missing key: {key}")
+    require_scores = str(doc.get("snap_rules_version") or "") == "m2-v3"
     cands = doc.get("candidates")
     if cands is None:
         return errors
@@ -155,6 +181,25 @@ def validate_candidates_shape(doc: Any) -> list[str]:
                     errors.append(f"candidates[{i}] score out of range [0,1]")
             except (TypeError, ValueError):
                 errors.append(f"candidates[{i}] score must be a number")
+        if require_scores:
+            scores = item.get("scores")
+            if not isinstance(scores, dict):
+                errors.append(f"candidates[{i}] missing scores object (m2-v3)")
+            else:
+                for key in SCORE_DIMENSION_KEYS:
+                    if key not in scores:
+                        errors.append(f"candidates[{i}].scores missing {key}")
+                    else:
+                        try:
+                            v = float(scores[key])
+                            if v < 0 or v > 1:
+                                errors.append(
+                                    f"candidates[{i}].scores.{key} out of range"
+                                )
+                        except (TypeError, ValueError):
+                            errors.append(
+                                f"candidates[{i}].scores.{key} must be a number"
+                            )
     return errors
 
 
@@ -188,7 +233,7 @@ def build_candidates_document(
     config: RankingConfig,
     candidates: list[dict[str, Any]],
     ranker: str,
-    snap_rules_version: str = "m2-v1",
+    snap_rules_version: str = "m2-v3",
 ) -> CandidatesDocument:
     return {
         "source_video": source_video,
@@ -199,8 +244,11 @@ def build_candidates_document(
         "config": {
             "duration_min_sec": float(config.duration_min_sec),
             "duration_max_sec": float(config.duration_max_sec),
+            "preferred_duration_min_sec": float(config.preferred_duration_min_sec),
+            "preferred_duration_max_sec": float(config.preferred_duration_max_sec),
             "target_count": int(config.target_count),
             "overlap_iou_threshold": float(config.overlap_iou_threshold),
+            "editorial_criteria": "self_contained_narrative_unit",
         },
         "candidates": list(candidates),
     }

@@ -18,12 +18,14 @@ transcription:
   device: auto                  # auto | cpu | cuda
   compute_type: auto            # auto | int8 | float16 | float32 | …
 
-# Milestone 2 — candidate detection / ranking
+# Milestone 2 — candidate detection / ranking (m2-v3: fewer, self-contained)
 duration:
   min_sec: 20
   max_sec: 90
+  preferred_min_sec: 45         # soft: prefer closed ~45–60s units
+  preferred_max_sec: 60
 ranking:
-  target_count: 8               # deliver 5–10; default mid
+  target_count: 5               # fewer clips, more self-contained (m2-v3)
   overlap_iou_threshold: 0.45   # NMS: drop near-duplicates above this IoU
   backend: openrouter           # CandidateRanker impl
   model: null                   # null → OPENROUTER_MODEL env or flash-lite default

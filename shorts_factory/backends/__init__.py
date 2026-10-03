@@ -2,7 +2,12 @@
 
 from shorts_factory.backends.faster_whisper import FasterWhisperBackend
 from shorts_factory.backends.openrouter_ranker import OpenRouterCandidateRanker
-from shorts_factory.backends.ranking import CandidateRanker, RankingConfig, RawCandidate
+from shorts_factory.backends.ranking import (
+    CandidateRanker,
+    RankingConfig,
+    RawCandidate,
+    ScoreDimensions,
+)
 from shorts_factory.backends.transcription import (
     TranscriptionBackend,
     TranscriptionResult,
@@ -17,5 +22,6 @@ __all__ = [
     "CandidateRanker",
     "RankingConfig",
     "RawCandidate",
+    "ScoreDimensions",
     "OpenRouterCandidateRanker",
 ]

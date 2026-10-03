@@ -1,4 +1,4 @@
-"""OpenRouter-backed CandidateRanker for Shorts Factory M2.
+"""OpenRouter-backed CandidateRanker for Shorts Factory (m2-v3).
 
 Uses the same env conventions as repo `openrouter_client.py`
 (OPENROUTER_API_KEY, OPENROUTER_MODEL) but lives inside shorts_factory
@@ -17,42 +17,72 @@ import urllib.request
 from typing import Any, Mapping, Optional, Sequence
 
 from shorts_factory.backends.json_robust import loads_json_robust
-from shorts_factory.backends.ranking import CandidateRanker, RankingConfig, RawCandidate
+from shorts_factory.backends.ranking import (
+    CandidateRanker,
+    RankingConfig,
+    RawCandidate,
+    ScoreDimensions,
+)
+from shorts_factory.pipeline.scoring import parse_score_dimensions
 
 logger = logging.getLogger(__name__)
 
 DEFAULT_OPENROUTER_MODEL = "google/gemini-2.5-flash-lite"
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 
-# Ranking prompt intentionally unchanged (M2 editorial lock).
+# m2-v3 editorial criteria: self-contained narrative units (not mere interesting moments).
 SYSTEM_PROMPT = """\
-Eres un editor de Shorts verticales para un canal de pensamiento claro.
-Tu trabajo: leer una transcripción con timestamps (ASR) y proponer clips
-autocontenidos de 20–90 segundos (salvo que la config diga otra ventana).
+Eres un editor de Shorts. Tu trabajo NO es marcar momentos interesantes:
+es seleccionar UNIDADES NARRATIVAS AUTOCONTENIDAS.
 
-Criterios (en orden):
-1. Autocontenido: el clip se entiende sin contexto previo del video.
-2. Hook fuerte en los primeros segundos (tensión, contraste, pregunta, tesis).
-3. Una idea central clara (tesis), no un resumen vago.
-4. Evita cortes que dependan de referencias a “como dije antes” / hilos largos.
-5. Prefiere momentos con cambio de idea o punchline; evita intros/outros vacíos.
-6. Minimiza solapamiento / casi-duplicados entre candidatos.
+Cada candidato debe poder entenderse SIN ver el video largo. Para aprobarlo,
+debe contener (explícita o implícitamente) estas cuatro piezas:
+1) HOOK — por qué seguir viendo (tensión, contraste, pregunta, tesis provocadora)
+2) CONTEXTO MÍNIMO — qué problema / situación se está planteando
+3) IDEA / DESARROLLO — qué se explica o argumenta
+4) PAYOFF / CONCLUSIÓN — qué se lleva el espectador; la idea debe CERRAR
 
-NO inventes hechos fuera del transcript. Los timestamps start/end deben
-caer dentro del rango de segmentos ASR dados (puedes ser aproximado;
-el sistema hará snap a fronteras de segmento).
+No se exige estructura teatral completa, pero la idea debe resolverse.
+Prefiere un clip bien cerrado de ~45–60s a un clip incompleto de ~22s.
+Menos clips, más autocontenidos — no maximices cantidad.
 
-Responde SOLO JSON con esta forma:
+Rechaza / puntúa muy bajo si:
+- empieza con pronombres o referencias sin contexto (esto/eso/ellos/this/that…)
+- termina antes de la conclusión
+- depende de una frase anterior del video
+- es solo una observación sin resolución
+- duplica otra idea ya mejor resuelta
+
+Puntúa cada dimensión en [0,1]:
+- hook_strength
+- context_completeness
+- conceptual_completeness
+- standalone_clarity
+- payoff_strength
+El campo "score" debe ser tu juicio global YA penalizado por los fallos de arriba.
+
+NO inventes hechos fuera del transcript. Timestamps start/end dentro del rango
+ASR (aproximados OK; el sistema hará snap/expansión a fronteras de segmento).
+
+Responde SOLO JSON:
 {
   "candidates": [
     {
       "start": <float seconds>,
       "end": <float seconds>,
       "hook": "<string>",
+      "minimum_context": "<string>",
       "central_idea": "<string>",
+      "idea_development": "<string>",
+      "payoff": "<string>",
       "selection_reason": "<string>",
-      "score": <float 0..1>,
-      "suggested_title": "<string corto>"
+      "suggested_title": "<string corto>",
+      "hook_strength": <0..1>,
+      "context_completeness": <0..1>,
+      "conceptual_completeness": <0..1>,
+      "standalone_clarity": <0..1>,
+      "payoff_strength": <0..1>,
+      "score": <0..1>
     }
   ]
 }
@@ -122,8 +152,6 @@ class OpenRouterClient:
             "HTTP-Referer": "https://github.com/jotaochoa07/humanos",
             "X-Title": "HUMANOS Shorts Factory",
         }
-        # Same model + system/user prompts; slightly higher token budget reduces
-        # truncation. Parsing uses repair + re-request on Unterminated string etc.
         payload = {
             "model": model_name,
             "messages": [
@@ -149,7 +177,6 @@ class OpenRouterClient:
                 content = choices[0]["message"]["content"]
                 if not isinstance(content, str):
                     raise ValueError("OpenRouter message content is not a string")
-                # Prefer robust parse (repair truncated candidates array if safe)
                 return loads_json_robust(content)
             except (
                 urllib.error.URLError,
@@ -173,7 +200,7 @@ class OpenRouterClient:
 
 
 class OpenRouterCandidateRanker(CandidateRanker):
-    """LLM ranker that proposes short candidates from transcript segments."""
+    """LLM ranker that proposes self-contained narrative-unit candidates."""
 
     name = "OpenRouterCandidateRanker"
 
@@ -195,11 +222,14 @@ class OpenRouterCandidateRanker(CandidateRanker):
             f"Fuente: {transcript.get('source_video', '')}\n"
             f"Duración total (s): {transcript.get('duration_sec', '')}\n"
             f"Idioma: {transcript.get('language', '')}\n"
-            f"Ventana de duración objetivo: {config.duration_min_sec:.0f}–"
+            f"Ventana dura de duración: {config.duration_min_sec:.0f}–"
             f"{config.duration_max_sec:.0f} s\n"
-            f"Cantidad objetivo de candidatos: {config.target_count} "
-            f"(propón entre {max(5, config.target_count)} y "
-            f"{max(config.target_count, 12)} brutos; el post-proceso filtrará)\n\n"
+            f"Preferencia de duración (idea cerrada): "
+            f"{config.preferred_duration_min_sec:.0f}–"
+            f"{config.preferred_duration_max_sec:.0f} s\n"
+            f"Cantidad objetivo FINAL: {config.target_count} "
+            f"(propón como máximo {max(config.target_count + 3, 8)} brutos "
+            f"de alta calidad; el post-proceso filtrará. Menos es mejor.)\n\n"
             f"Segmentos ASR (id start-end text):\n{segment_block}\n"
         )
 
@@ -212,7 +242,7 @@ class OpenRouterCandidateRanker(CandidateRanker):
 
 
 def parse_ranker_payload(data: Mapping[str, Any]) -> list[RawCandidate]:
-    """Parse LLM JSON into RawCandidate list (tolerant)."""
+    """Parse LLM JSON into RawCandidate list (tolerant; m2-v3 fields optional)."""
     raw_list = data.get("candidates")
     if raw_list is None and isinstance(data.get("items"), list):
         raw_list = data["items"]
@@ -235,6 +265,7 @@ def parse_ranker_payload(data: Mapping[str, Any]) -> list[RawCandidate]:
             logger.warning("Skipping candidate %s: end <= start", i)
             continue
         title = str(item.get("suggested_title") or item.get("title") or f"clip-{i+1}").strip()
+        dims: ScoreDimensions = parse_score_dimensions(item)
         out.append(
             RawCandidate(
                 start=start,
@@ -249,6 +280,14 @@ def parse_ranker_payload(data: Mapping[str, Any]) -> list[RawCandidate]:
                 score=max(0.0, min(1.0, score)),
                 suggested_title=title,
                 transcript=str(item.get("transcript") or "").strip(),
+                minimum_context=str(
+                    item.get("minimum_context") or item.get("context") or ""
+                ).strip(),
+                idea_development=str(
+                    item.get("idea_development") or item.get("development") or ""
+                ).strip(),
+                payoff=str(item.get("payoff") or item.get("conclusion") or "").strip(),
+                scores=dims,
                 extra={"slug_hint": _slugify_title(title)},
             )
         )

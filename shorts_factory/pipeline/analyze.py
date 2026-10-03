@@ -19,7 +19,9 @@ from shorts_factory.pipeline.postprocess import postprocess_candidates
 logger = logging.getLogger(__name__)
 
 CANDIDATES_JSON = "candidates.json"
+CANDIDATES_M2V3_JSON = "candidates.m2-v3.json"
 TRANSCRIPT_JSON = "transcript.json"
+SNAP_RULES_VERSION = "m2-v3"
 
 
 def load_transcript_json(path: Path) -> dict[str, Any]:
@@ -83,7 +85,7 @@ def analyze_transcript(
         config=config,
         candidates=candidates,
         ranker=getattr(ranker, "name", ranker.__class__.__name__),
-        snap_rules_version="m2-v2",
+        snap_rules_version=SNAP_RULES_VERSION,
     )
     shape_errors = validate_candidates_shape(document)
     if shape_errors:
@@ -98,8 +100,14 @@ def run_candidates_stage(
     run_dir: Optional[Path] = None,
     from_transcript: Optional[Path] = None,
     candidates_out: Optional[Path] = None,
+    also_write_m2v3_alias: bool = True,
+    backup_existing: bool = True,
 ) -> dict[str, Any]:
-    """Load transcript, analyze, write candidates.json under the run directory."""
+    """Load transcript, analyze, write candidates.json under the run directory.
+
+    Also writes ``candidates.m2-v3.json``. If ``candidates.json`` already exists,
+    backs it up to ``candidates.m2-v2.prev.json`` (or .bak) before overwrite.
+    """
     transcript_path = resolve_transcript_path(
         run_dir=run_dir, from_transcript=from_transcript
     )
@@ -107,12 +115,24 @@ def run_candidates_stage(
     out_dir = Path(run_dir) if run_dir is not None else transcript_path.parent
     out_path = Path(candidates_out) if candidates_out else out_dir / CANDIDATES_JSON
 
+    if backup_existing and out_path.is_file() and candidates_out is None:
+        bak = out_dir / "candidates.prev.json"
+        if not bak.is_file():
+            bak.write_text(out_path.read_text(encoding="utf-8"), encoding="utf-8")
+            logger.info("Backed up previous candidates → %s", bak)
+
     document = analyze_transcript(transcript, ranker=ranker, config=config)
     write_candidates_json(document, out_path)
+    alias_path = out_dir / CANDIDATES_M2V3_JSON
+    if also_write_m2v3_alias:
+        write_candidates_json(document, alias_path)
+        logger.info("Wrote %s", alias_path)
+
     logger.info("Wrote %s (%s candidates)", out_path, len(document["candidates"]))
     return {
         "transcript_path": transcript_path,
         "candidates_path": out_path.resolve(),
+        "candidates_m2v3_path": alias_path.resolve(),
         "output_dir": out_dir.resolve(),
         "document": document,
     }
