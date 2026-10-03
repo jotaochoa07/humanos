@@ -30,10 +30,10 @@ DEFAULT_LANGUAGE = "auto"
 DEFAULT_DEVICE = "auto"
 DEFAULT_COMPUTE_TYPE = "auto"
 
-# Milestone 2 ranking defaults (D5 / m2-v3: fewer, more self-contained)
+# Milestone 2 ranking defaults (m2-v4 spans: prefer 30–60s spoken total)
 DEFAULT_DURATION_MIN_SEC = 20.0
 DEFAULT_DURATION_MAX_SEC = 90.0
-DEFAULT_PREFERRED_DURATION_MIN_SEC = 45.0
+DEFAULT_PREFERRED_DURATION_MIN_SEC = 30.0
 DEFAULT_PREFERRED_DURATION_MAX_SEC = 60.0
 DEFAULT_TARGET_COUNT = 5
 DEFAULT_OVERLAP_IOU = 0.45
@@ -120,6 +120,7 @@ class PathsConfig:
         preferred_duration_max_sec: float = DEFAULT_PREFERRED_DURATION_MAX_SEC,
         target_count: int = DEFAULT_TARGET_COUNT,
         overlap_iou_threshold: float = DEFAULT_OVERLAP_IOU,
+        max_spans: int = 3,
         ranker_backend: str = DEFAULT_RANKER_BACKEND,
         ranker_model: Optional[str] = None,
     ) -> None:
@@ -139,6 +140,7 @@ class PathsConfig:
         self.preferred_duration_max_sec = float(preferred_duration_max_sec)
         self.target_count = int(target_count)
         self.overlap_iou_threshold = float(overlap_iou_threshold)
+        self.max_spans = int(max_spans)
         self.ranker_backend = ranker_backend
         self.ranker_model = ranker_model
 
@@ -158,6 +160,7 @@ class PathsConfig:
             preferred_duration_max_sec=self.preferred_duration_max_sec,
             target_count=self.target_count,
             overlap_iou_threshold=self.overlap_iou_threshold,
+            max_spans=self.max_spans,
             model=self.ranker_model,
         )
 
@@ -264,6 +267,11 @@ def resolve_paths(
         or ranking.get("target_count")
         or DEFAULT_TARGET_COUNT
     )
+    max_spans = int(
+        overrides.get("max_spans")
+        or ranking.get("max_spans")
+        or 3
+    )
     overlap_iou_threshold = float(
         overrides.get("overlap_iou_threshold")
         or ranking.get("overlap_iou_threshold")
@@ -297,6 +305,7 @@ def resolve_paths(
         preferred_duration_max_sec=preferred_duration_max_sec,
         target_count=target_count,
         overlap_iou_threshold=overlap_iou_threshold,
+        max_spans=max_spans,
         ranker_backend=ranker_backend,
         ranker_model=ranker_model,
     )

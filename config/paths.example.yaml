@@ -21,11 +21,12 @@ transcription:
 # Milestone 2 — candidate detection / ranking (m2-v3: fewer, self-contained)
 duration:
   min_sec: 20
-  max_sec: 90
-  preferred_min_sec: 45         # soft: prefer closed ~45–60s units
+  max_sec: 90                   # hard max on sum of span durations
+  preferred_min_sec: 30         # soft: prefer ~30–60s spoken total (m2-v4)
   preferred_max_sec: 60
 ranking:
-  target_count: 5               # fewer clips, more self-contained (m2-v3)
+  target_count: 5               # fewer clips, more self-contained
+  max_spans: 3
   overlap_iou_threshold: 0.45   # NMS: drop near-duplicates above this IoU
   backend: openrouter           # CandidateRanker impl
   model: null                   # null → OPENROUTER_MODEL env or flash-lite default

@@ -24,52 +24,58 @@ from shorts_factory.backends.ranking import (
     ScoreDimensions,
 )
 from shorts_factory.pipeline.scoring import parse_score_dimensions
+from shorts_factory.pipeline.spans import parse_raw_spans
 
 logger = logging.getLogger(__name__)
 
 DEFAULT_OPENROUTER_MODEL = "google/gemini-2.5-flash-lite"
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 
-# m2-v3 editorial criteria: self-contained narrative units (not mere interesting moments).
+# m2-v4: self-contained narrative units assembled as 1–3 semantic spans.
 SYSTEM_PROMPT = """\
-Eres un editor de Shorts. Tu trabajo NO es marcar momentos interesantes:
-es seleccionar UNIDADES NARRATIVAS AUTOCONTENIDAS.
+Eres un editor de Shorts con MONTAJE SEMÁNTICO. No marques solo momentos
+interesantes: ensambla UNIDADES NARRATIVAS AUTOCONTENIDAS con 1–3 spans
+de audio real del video (nunca inventes ni re-grabes habla).
 
-Cada candidato debe poder entenderse SIN ver el video largo. Para aprobarlo,
-debe contener (explícita o implícitamente) estas cuatro piezas:
-1) HOOK — por qué seguir viendo (tensión, contraste, pregunta, tesis provocadora)
-2) CONTEXTO MÍNIMO — qué problema / situación se está planteando
-3) IDEA / DESARROLLO — qué se explica o argumenta
-4) PAYOFF / CONCLUSIÓN — qué se lleva el espectador; la idea debe CERRAR
+Cada candidato debe entenderse SIN el video largo. Debe contener
+(explícita o implícitamente):
+1) HOOK — por qué seguir viendo
+2) CONTEXTO MÍNIMO — problema / situación
+3) IDEA / DESARROLLO — qué se explica
+4) PAYOFF — conclusión / takeaway (la idea debe CERRAR)
 
-No se exige estructura teatral completa, pero la idea debe resolverse.
-Prefiere un clip bien cerrado de ~45–60s a un clip incompleto de ~22s.
-Menos clips, más autocontenidos — no maximices cantidad.
+MONTAJE (spans):
+- 1 a 3 spans por short, en orden temporal original.
+- role ∈ {hook, context, development, payoff}.
+- Si la unidad ya funciona en un tramo continuo → USA 1 SOLO span
+  (role "development" para el arco completo).
+- Si hay relleno irrelevante entre piezas → USA 2–3 spans y DEJA GAPS
+  (corta el filler). NO resuelvas completitud estirando un rango continuo
+  a 80–90s.
+- Preferencia de duración TOTAL HABLA (suma de spans): ~30–60s.
+  Más solo si es realmente necesario (nunca por relleno).
+- Cada span debe tener función narrativa clara.
 
-Rechaza / puntúa muy bajo si:
-- empieza con pronombres o referencias sin contexto (esto/eso/ellos/this/that…)
-- termina antes de la conclusión
-- depende de una frase anterior del video
-- es solo una observación sin resolución
-- duplica otra idea ya mejor resuelta
+Puntúa dimensiones [0,1] (igual que m2-v3):
+hook_strength, context_completeness, conceptual_completeness,
+standalone_clarity, payoff_strength.
+"score" = juicio global ya penalizado por: pronombres sin contexto,
+terminar antes del payoff, depender de frase previa, observación sin
+resolución, duplicar una idea mejor resuelta, o incluir filler inútil.
 
-Puntúa cada dimensión en [0,1]:
-- hook_strength
-- context_completeness
-- conceptual_completeness
-- standalone_clarity
-- payoff_strength
-El campo "score" debe ser tu juicio global YA penalizado por los fallos de arriba.
-
-NO inventes hechos fuera del transcript. Timestamps start/end dentro del rango
-ASR (aproximados OK; el sistema hará snap/expansión a fronteras de segmento).
+NO inventes hechos. Timestamps dentro del ASR (aproximados OK).
 
 Responde SOLO JSON:
 {
   "candidates": [
     {
-      "start": <float seconds>,
-      "end": <float seconds>,
+      "spans": [
+        {"role": "hook", "start": <float>, "end": <float>},
+        {"role": "context", "start": <float>, "end": <float>},
+        {"role": "payoff", "start": <float>, "end": <float>}
+      ],
+      "start": <float envelope start>,
+      "end": <float envelope end>,
       "hook": "<string>",
       "minimum_context": "<string>",
       "central_idea": "<string>",
@@ -222,14 +228,15 @@ class OpenRouterCandidateRanker(CandidateRanker):
             f"Fuente: {transcript.get('source_video', '')}\n"
             f"Duración total (s): {transcript.get('duration_sec', '')}\n"
             f"Idioma: {transcript.get('language', '')}\n"
-            f"Ventana dura de duración: {config.duration_min_sec:.0f}–"
-            f"{config.duration_max_sec:.0f} s\n"
-            f"Preferencia de duración (idea cerrada): "
+            f"Duración TOTAL HABLA (suma de spans) dura: "
+            f"{config.duration_min_sec:.0f}–{config.duration_max_sec:.0f} s\n"
+            f"Preferencia suma de spans: "
             f"{config.preferred_duration_min_sec:.0f}–"
             f"{config.preferred_duration_max_sec:.0f} s\n"
+            f"Máx spans por candidato: {config.max_spans}\n"
             f"Cantidad objetivo FINAL: {config.target_count} "
-            f"(propón como máximo {max(config.target_count + 3, 8)} brutos "
-            f"de alta calidad; el post-proceso filtrará. Menos es mejor.)\n\n"
+            f"(máx {max(config.target_count + 3, 8)} brutos; menos es mejor).\n"
+            f"Recuerda: gaps OK; no estires un tramo continuo a 80–90s.\n\n"
             f"Segmentos ASR (id start-end text):\n{segment_block}\n"
         )
 
@@ -266,6 +273,11 @@ def parse_ranker_payload(data: Mapping[str, Any]) -> list[RawCandidate]:
             continue
         title = str(item.get("suggested_title") or item.get("title") or f"clip-{i+1}").strip()
         dims: ScoreDimensions = parse_score_dimensions(item)
+        spans = parse_raw_spans(item, start=start, end=end)
+        # Envelope from spans if present
+        if spans:
+            start = min(sp.start for sp in spans)
+            end = max(sp.end for sp in spans)
         out.append(
             RawCandidate(
                 start=start,
@@ -288,6 +300,7 @@ def parse_ranker_payload(data: Mapping[str, Any]) -> list[RawCandidate]:
                 ).strip(),
                 payoff=str(item.get("payoff") or item.get("conclusion") or "").strip(),
                 scores=dims,
+                spans=list(spans),
                 extra={"slug_hint": _slugify_title(title)},
             )
         )

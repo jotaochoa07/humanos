@@ -1,20 +1,17 @@
-"""Deterministic post-steps for Shorts Factory candidates (m2-v3).
+"""Deterministic post-steps for Shorts Factory candidates (m2-v4 spans).
 
-Timestamp grounding + narrative-unit completion (`snap_rules_version: m2-v3`):
-1. Raw LLM start/end may be approximate floats in seconds.
-2. **Start snap / end snap** to ASR segment boundaries (nearest containing).
-3. Expand/trim whole segments to satisfy `duration_min_sec` / `duration_max_sec`.
-4. **Multi-segment narrative completion** (within max duration):
-   - Expand **backward** while the start looks mid-sentence / pronoun-deictic /
-     continuation, as long as duration ≤ max.
-   - Expand **forward** while the end looks incomplete (no terminal punctuation
-     / trailing connector), as long as duration ≤ max.
-   - Prefer a well-closed ~45–60s idea over an incomplete short clip
-     (soft preference via scoring bonus; hard cap remains `duration_max_sec`).
-5. Rebuild transcript from inclusive ASR span.
-6. Attach score dimensions + apply deterministic standalone penalties.
-7. Duration filter → sort by final score → NMS by IoU → drop near-duplicate
-   ideas → take top N (fewer, better — default target_count=5).
+`snap_rules_version: m2-v4` — semantic editing with 1–3 narrative spans.
+
+Rules:
+1. Each span snaps independently to ASR segment boundaries (light ±1 refine only).
+2. Do **not** solve conceptual completeness by expanding one continuous range
+   to 80–90s. Prefer cutting filler via gaps between spans.
+3. 1–3 spans, temporal order, gaps allowed, no invented speech.
+4. `duration_sec` = sum of span durations (spoken time). Prefer 30–60s total.
+5. If the unit already works continuously → keep **1 span**.
+6. Score dimensions from m2-v3 retained; add soft penalties for oversized
+   continuous singles and reward cutting interstitial gaps when multi-span.
+7. NMS by envelope IoU + conceptual near-duplicate drop → top N.
 """
 
 from __future__ import annotations
@@ -27,22 +24,18 @@ from shorts_factory.pipeline.scoring import (
     compose_final_score,
     duplicate_idea_penalty,
 )
+from shorts_factory.pipeline.spans import (
+    envelope_and_total,
+    interstitial_gap_sec,
+    synthesize_spans_from_envelope,
+    validate_and_snap_spans,
+)
 from shorts_factory.pipeline.text_heuristics import (
     looks_like_mid_sentence_start,
     looks_like_sentence_end,
 )
 
 _SLUG_RE = re.compile(r"[^a-z0-9]+")
-_PRONOUN_START_RE = re.compile(
-    r"^(esto|eso|esta|ese|estos|esos|ellos?|ellas?|lo|la|le|les|"
-    r"this|that|these|those|they|them|it|he|she)\b",
-    re.IGNORECASE,
-)
-_OPEN_STRIP_RE = re.compile(r'^[\s"\'“”‘’¿¡(\[]+')
-_TRAILING_CONNECTOR_RE = re.compile(
-    r"\b(porque|entonces|pero|y|o|aunque|asi|así|because|so|but|and|or|then)\s*$",
-    re.IGNORECASE,
-)
 
 
 def temporal_iou(a_start: float, a_end: float, b_start: float, b_end: float) -> float:
@@ -53,31 +46,6 @@ def temporal_iou(a_start: float, a_end: float, b_start: float, b_end: float) -> 
     if union <= 0:
         return 0.0
     return inter / union
-
-
-def _nearest_segment_index(segments: Sequence[Mapping[str, Any]], t: float) -> int:
-    best_i = 0
-    best_dist = float("inf")
-    for i, seg in enumerate(segments):
-        start = float(seg["start"])
-        end = float(seg["end"])
-        if start <= t <= end:
-            return i
-        if t < start:
-            dist = start - t
-        elif t > end:
-            dist = t - end
-        else:
-            dist = 0.0
-        if dist < best_dist:
-            best_dist = dist
-            best_i = i
-    return best_i
-
-
-def _join_transcript(segments: Sequence[Mapping[str, Any]], i0: int, i1: int) -> str:
-    parts = [str(segments[i].get("text", "")).strip() for i in range(i0, i1 + 1)]
-    return " ".join(p for p in parts if p)
 
 
 def _slugify(text: str, fallback: str) -> str:
@@ -97,173 +65,69 @@ def _slugify(text: str, fallback: str) -> str:
     return cleaned[:48] or fallback
 
 
-def _span_duration(segments: Sequence[Mapping[str, Any]], a: int, b: int) -> float:
-    return float(segments[b]["end"]) - float(segments[a]["start"])
-
-
-def _needs_expand_start(text: str) -> bool:
-    if looks_like_mid_sentence_start(text):
-        return True
-    stripped = _OPEN_STRIP_RE.sub("", (text or "").strip())
-    return bool(_PRONOUN_START_RE.search(stripped))
-
-
-def _needs_expand_end(text: str) -> bool:
-    if not looks_like_sentence_end(text):
-        return True
-    trimmed = (text or "").strip().rstrip(".,!?;:…\"'”’")
-    return bool(_TRAILING_CONNECTOR_RE.search(trimmed))
-
-
-def complete_narrative_unit(
-    i_start: int,
-    i_end: int,
-    segments: Sequence[Mapping[str, Any]],
-    *,
-    duration_max_sec: float,
-) -> tuple[int, int, dict[str, int]]:
-    """Expand multiple ASR segments (±) to complete a self-contained unit.
-
-    Stops when start/end look complete or further expand would exceed max duration.
-    """
-    flags = {"expanded_start_segments": 0, "expanded_end_segments": 0}
-    n = len(segments)
-    if n == 0 or i_start < 0 or i_end < i_start:
-        return i_start, i_end, flags
-
-    # Expand backward while start is incomplete
-    while i_start > 0:
-        start_text = str(segments[i_start].get("text", ""))
-        if not _needs_expand_start(start_text):
-            break
-        trial = i_start - 1
-        if _span_duration(segments, trial, i_end) > duration_max_sec:
-            break
-        i_start = trial
-        flags["expanded_start_segments"] += 1
-
-    # Expand forward while end is incomplete
-    while i_end + 1 < n:
-        end_text = str(segments[i_end].get("text", ""))
-        if not _needs_expand_end(end_text):
-            break
-        trial = i_end + 1
-        if _span_duration(segments, i_start, trial) > duration_max_sec:
-            break
-        i_end = trial
-        flags["expanded_end_segments"] += 1
-
-    # Soft preference: if still short of preferred band and end is OK but we can
-    # include one more complete sentence forward without exceeding max, do it
-    # only when current duration < preferred_min (handled by caller via config).
-    return i_start, i_end, flags
-
-
-# Back-compat alias used by older tests
-def refine_boundaries(
-    i_start: int,
-    i_end: int,
-    segments: Sequence[Mapping[str, Any]],
-    *,
-    duration_max_sec: float,
-) -> tuple[int, int, dict[str, bool]]:
-    """Legacy ±1-style API wrapping multi-segment completion."""
-    a, b, counts = complete_narrative_unit(
-        i_start, i_end, segments, duration_max_sec=duration_max_sec
-    )
-    return (
-        a,
-        b,
-        {
-            "expanded_start_back": counts["expanded_start_segments"] > 0,
-            "expanded_end_forward": counts["expanded_end_segments"] > 0,
-        },
-    )
-
-
 def snap_candidate_to_segments(
     raw: RawCandidate,
     segments: Sequence[Mapping[str, Any]],
     *,
     config: RankingConfig,
 ) -> dict[str, Any] | None:
-    """Snap/expand/complete one raw candidate onto ASR boundaries. None = reject."""
+    """Snap/validate spans → scored candidate dict. None = reject."""
     if not segments:
         return None
 
-    i_start = _nearest_segment_index(segments, raw.start)
-    i_end = _nearest_segment_index(segments, raw.end)
-    if i_end < i_start:
-        i_start, i_end = i_end, i_start
-
-    while (
-        _span_duration(segments, i_start, i_end) < config.duration_min_sec
-        and i_end + 1 < len(segments)
-    ):
-        i_end += 1
-
-    while (
-        _span_duration(segments, i_start, i_end) > config.duration_max_sec
-        and i_end > i_start
-    ):
-        i_end -= 1
-
-    i_start, i_end, expand_counts = complete_narrative_unit(
-        i_start,
-        i_end,
-        segments,
-        duration_max_sec=config.duration_max_sec,
-    )
-
-    # Soft grow toward preferred_min ONLY while the unit still looks incomplete
-    # (prefer a closed ~45–60s idea over a truncated short — never force-pad
-    # an already-closed unit).
-    while (
-        _span_duration(segments, i_start, i_end) < config.preferred_duration_min_sec
-        and i_end + 1 < len(segments)
-        and _span_duration(segments, i_start, i_end + 1) <= config.duration_max_sec
-        and _needs_expand_end(str(segments[i_end].get("text", "")))
-    ):
-        i_end += 1
-        expand_counts["expanded_end_segments"] += 1
-
-    while (
-        _span_duration(segments, i_start, i_end) > config.duration_max_sec
-        and i_end > i_start
-    ):
-        i_end -= 1
-
-    duration = _span_duration(segments, i_start, i_end)
-    if duration < config.duration_min_sec or duration > config.duration_max_sec:
+    raw_spans = synthesize_spans_from_envelope(raw)
+    snapped, errors = validate_and_snap_spans(raw_spans, segments, config=config)
+    if not snapped:
         return None
 
-    start = float(segments[i_start]["start"])
-    end = float(segments[i_end]["end"])
-    transcript = _join_transcript(segments, i_start, i_end)
-    start_text = str(segments[i_start].get("text", ""))
-    end_text = str(segments[i_end].get("text", ""))
+    env_start, env_end, spoken = envelope_and_total(snapped)
+    gap_sec = interstitial_gap_sec(snapped)
+
+    # Joined transcript with gap markers (not spoken — editorial only)
+    parts = [str(s.get("transcript") or "").strip() for s in snapped]
+    transcript = " […] ".join(p for p in parts if p)
+
+    start_text = str(snapped[0].get("transcript") or "")
+    end_text = str(snapped[-1].get("transcript") or "")
 
     dims = raw.scores if isinstance(raw.scores, ScoreDimensions) else ScoreDimensions()
     final_score, penalty, penalty_reasons = compose_final_score(
         dims,
         start_text=start_text,
         end_text=end_text,
-        full_transcript=transcript,
+        full_transcript=transcript.replace(" […]", ""),
         payoff_text=raw.payoff,
-        duration_sec=duration,
+        duration_sec=spoken,
         preferred_min=config.preferred_duration_min_sec,
         preferred_max=config.preferred_duration_max_sec,
     )
 
-    # Prefer LLM score only as a seed; final is dimension+penalty composed
-    # Blend lightly with raw.score if LLM provided an overall
+    # Soft penalty: single continuous span that balloons past preferred max
+    # (the anti-pattern of "expand to 80–90s for completeness")
+    if len(snapped) == 1 and spoken > config.preferred_duration_max_sec + 5:
+        over = (spoken - config.preferred_duration_max_sec) / max(
+            1.0, config.duration_max_sec - config.preferred_duration_max_sec
+        )
+        extra = min(0.25, 0.08 + 0.2 * over)
+        final_score = max(0.0, final_score - extra)
+        penalty = min(1.0, penalty + extra)
+        penalty_reasons = list(penalty_reasons) + ["oversized_continuous_span"]
+
+    # Soft reward: multi-span that cuts interstitial filler
+    if len(snapped) >= 2 and gap_sec >= 3.0:
+        final_score = min(1.0, final_score + 0.04)
+        penalty_reasons = list(penalty_reasons) + ["cut_interstitial_gap_bonus"]
+
     if raw.score > 0:
         final_score = max(0.0, min(1.0, 0.85 * final_score + 0.15 * float(raw.score)))
 
     return {
-        "start": start,
-        "end": end,
-        "duration_sec": round(end - start, 3),
+        "start": env_start,
+        "end": env_end,
+        "duration_sec": spoken,
+        "envelope_duration_sec": round(env_end - env_start, 3),
+        "interstitial_gap_sec": gap_sec,
+        "spans": snapped,
         "transcript": transcript,
         "hook": raw.hook,
         "minimum_context": raw.minimum_context,
@@ -276,14 +140,10 @@ def snap_candidate_to_segments(
         "score": round(final_score, 4),
         "score_penalty": round(penalty, 4),
         "penalty_reasons": penalty_reasons,
-        "segment_id_start": int(segments[i_start]["id"]),
-        "segment_id_end": int(segments[i_end]["id"]),
-        "boundary_refined": bool(
-            expand_counts["expanded_start_segments"]
-            or expand_counts["expanded_end_segments"]
-        ),
-        "expanded_start_segments": expand_counts["expanded_start_segments"],
-        "expanded_end_segments": expand_counts["expanded_end_segments"],
+        "segment_id_start": int(snapped[0]["segment_id_start"]),
+        "segment_id_end": int(snapped[-1]["segment_id_end"]),
+        "boundary_refined": True,
+        "span_count": len(snapped),
     }
 
 
@@ -306,7 +166,6 @@ def nms_by_iou(
                 overlaps = True
                 break
         if not overlaps:
-            # Penalize near-duplicate ideas vs already kept (better-resolved wins)
             dup = duplicate_idea_penalty(cand, kept)
             item = dict(cand)
             if dup > 0:
@@ -314,12 +173,11 @@ def nms_by_iou(
                 reasons = list(item.get("penalty_reasons") or [])
                 reasons.append("duplicate_of_better_resolved_idea")
                 item["penalty_reasons"] = reasons
-                item["score_penalty"] = round(float(item.get("score_penalty") or 0) + dup, 4)
+                item["score_penalty"] = round(
+                    float(item.get("score_penalty") or 0) + dup, 4
+                )
             kept.append(item)
-    # Re-sort after duplicate penalties
     kept.sort(key=lambda c: float(c["score"]), reverse=True)
-    # Second pass NMS-style drop of heavily penalized dups that now score poorly
-    # Keep order; if duplicate flag and score collapsed below 0.25 vs peer, drop
     final: list[dict[str, Any]] = []
     for cand in kept:
         if (
@@ -327,7 +185,6 @@ def nms_by_iou(
             and float(cand["score"]) < 0.35
         ):
             continue
-        # re-check IoU against final (scores may have reordered)
         if any(
             temporal_iou(
                 float(cand["start"]),
@@ -368,7 +225,7 @@ def postprocess_candidates(
     *,
     config: RankingConfig,
 ) -> list[dict[str, Any]]:
-    """Full chain: snap → multi-expand → score → filter → NMS → top N → ids."""
+    """Full chain: snap spans → score → filter → NMS → top N → ids."""
     segments = transcript.get("segments") or []
     if not isinstance(segments, list) or not segments:
         return []
@@ -383,3 +240,70 @@ def postprocess_candidates(
     kept = nms_by_iou(snapped, iou_threshold=config.overlap_iou_threshold)
     top = kept[: max(0, int(config.target_count))]
     return assign_ids(top)
+
+
+# --- Back-compat shims used by older boundary tests ---
+
+def refine_boundaries(
+    i_start: int,
+    i_end: int,
+    segments: Sequence[Mapping[str, Any]],
+    *,
+    duration_max_sec: float,
+) -> tuple[int, int, dict[str, bool]]:
+    """Legacy helper: light ±1 refine (no multi-expand to max)."""
+    flags = {"expanded_start_back": False, "expanded_end_forward": False}
+    if not segments:
+        return i_start, i_end, flags
+    # Operate on indices directly
+    i0, i1 = i_start, i_end
+    start_text = str(segments[i0].get("text", ""))
+    if looks_like_mid_sentence_start(start_text) and i0 > 0:
+        trial = i0 - 1
+        dur = float(segments[i1]["end"]) - float(segments[trial]["start"])
+        if dur <= duration_max_sec:
+            i0 = trial
+            flags["expanded_start_back"] = True
+    end_text = str(segments[i1].get("text", ""))
+    if not looks_like_sentence_end(end_text) and i1 + 1 < len(segments):
+        trial = i1 + 1
+        dur = float(segments[trial]["end"]) - float(segments[i0]["start"])
+        if dur <= duration_max_sec:
+            i1 = trial
+            flags["expanded_end_forward"] = True
+    return i0, i1, flags
+
+
+def complete_narrative_unit(
+    i_start: int,
+    i_end: int,
+    segments: Sequence[Mapping[str, Any]],
+    *,
+    duration_max_sec: float,
+) -> tuple[int, int, dict[str, int]]:
+    """m2-v4: completeness via spans/gaps — here only light ±1 refine."""
+    a, b, flags = refine_boundaries(
+        i_start, i_end, segments, duration_max_sec=duration_max_sec
+    )
+    return (
+        a,
+        b,
+        {
+            "expanded_start_segments": 1 if flags["expanded_start_back"] else 0,
+            "expanded_end_segments": 1 if flags["expanded_end_forward"] else 0,
+        },
+    )
+
+
+# Re-export sentence helpers for tests that imported from postprocess
+__all__ = [
+    "assign_ids",
+    "complete_narrative_unit",
+    "nms_by_iou",
+    "postprocess_candidates",
+    "refine_boundaries",
+    "snap_candidate_to_segments",
+    "temporal_iou",
+    "looks_like_mid_sentence_start",
+    "looks_like_sentence_end",
+]

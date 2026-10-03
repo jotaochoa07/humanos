@@ -20,8 +20,9 @@ logger = logging.getLogger(__name__)
 
 CANDIDATES_JSON = "candidates.json"
 CANDIDATES_M2V3_JSON = "candidates.m2-v3.json"
+CANDIDATES_M2V4_JSON = "candidates.m2-v4.json"
 TRANSCRIPT_JSON = "transcript.json"
-SNAP_RULES_VERSION = "m2-v3"
+SNAP_RULES_VERSION = "m2-v4"
 
 
 def load_transcript_json(path: Path) -> dict[str, Any]:
@@ -105,8 +106,8 @@ def run_candidates_stage(
 ) -> dict[str, Any]:
     """Load transcript, analyze, write candidates.json under the run directory.
 
-    Also writes ``candidates.m2-v3.json``. If ``candidates.json`` already exists,
-    backs it up to ``candidates.m2-v2.prev.json`` (or .bak) before overwrite.
+    Also writes ``candidates.m2-v4.json`` (and legacy ``candidates.m2-v3.json``
+    alias). Backs up existing ``candidates.json`` once to ``candidates.prev.json``.
     """
     transcript_path = resolve_transcript_path(
         run_dir=run_dir, from_transcript=from_transcript
@@ -123,16 +124,19 @@ def run_candidates_stage(
 
     document = analyze_transcript(transcript, ranker=ranker, config=config)
     write_candidates_json(document, out_path)
-    alias_path = out_dir / CANDIDATES_M2V3_JSON
+    alias_v4 = out_dir / CANDIDATES_M2V4_JSON
+    write_candidates_json(document, alias_v4)
+    alias_v3 = out_dir / CANDIDATES_M2V3_JSON
     if also_write_m2v3_alias:
-        write_candidates_json(document, alias_path)
-        logger.info("Wrote %s", alias_path)
+        # Keep path for older docs; content is m2-v4
+        write_candidates_json(document, alias_v3)
 
     logger.info("Wrote %s (%s candidates)", out_path, len(document["candidates"]))
     return {
         "transcript_path": transcript_path,
         "candidates_path": out_path.resolve(),
-        "candidates_m2v3_path": alias_path.resolve(),
+        "candidates_m2v4_path": alias_v4.resolve(),
+        "candidates_m2v3_path": alias_v3.resolve(),
         "output_dir": out_dir.resolve(),
         "document": document,
     }
