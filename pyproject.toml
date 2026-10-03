@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "humanos-shorts-factory"
-version = "0.1.0"
-description = "HUMANOS Shorts Factory — milestone 1: long video → transcript + SRT"
+version = "0.2.0"
+description = "HUMANOS Shorts Factory — M1 transcript + M2 candidates"
 readme = "shorts_factory/README.md"
 requires-python = ">=3.10"
 dependencies = [

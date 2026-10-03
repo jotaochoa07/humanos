@@ -1,6 +1,7 @@
-# Shorts Factory (milestone 1) — Python deps
+# Shorts Factory (M1 transcript + M2 candidates) — Python deps
 # System requirement: ffmpeg (+ ffprobe) must be installed and on PATH
 # (or set HUMANOS_FFMPEG / config.ffmpeg).
+# M2 live ranking also needs OPENROUTER_API_KEY (stdlib HTTP; no extra pip dep).
 #
 # Install:
 #   pip install -r requirements-shorts.txt

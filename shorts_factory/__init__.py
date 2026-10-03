@@ -1,9 +1,10 @@
-"""Shorts Factory — long video → transcript (+ later: candidates → clips → 9:16).
+"""Shorts Factory — long video → transcript → candidates (+ later clips → 9:16).
 
-Milestone 1 (this package surface): validate → audio → ASR → transcript.json + captions.srt.
-Later milestones add candidates, clip extract, reframe, burn-in, NLE packaging.
+Milestone 1: validate → audio → ASR → transcript.json + captions.srt.
+Milestone 2: transcript.json → candidates.json (rank + deterministic post-steps).
+Later: clip extract, reframe, burn-in, NLE packaging.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
-MILESTONE = 1
+MILESTONE = 2
