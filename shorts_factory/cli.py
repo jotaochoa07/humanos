@@ -75,7 +75,7 @@ def _add_ranking_flags(parser: argparse.ArgumentParser) -> None:
         "--count",
         type=int,
         default=None,
-        help=f"Target candidate count (default: {DEFAULT_TARGET_COUNT})",
+        help=f"Target candidate count (default: {DEFAULT_TARGET_COUNT}; m2-v3 prefers fewer)",
     )
     parser.add_argument(
         "--overlap-iou",

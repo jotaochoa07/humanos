@@ -5,9 +5,9 @@ Long horizontal video → timed transcript + SRT → ranked Shorts candidates �
 **Staging rule (Jota):**
 
 1. **Done (M1):** `video → transcript.json + captions.srt`
-2. **Done (M2):** `transcript → candidates.json` (editorial QA approved; see fixes below)
-3. **This PR (M3):** `candidates → horizontal clips` (no reframe yet)
-4. Later: `9:16 + captions burn-in + previews`
+2. **Done (M2 → m2-v3):** `transcript → candidates.json` as **self-contained narrative units**
+3. **Done (M3):** `candidates → horizontal clips` (no reframe yet)
+4. Later (M4): `9:16 + captions burn-in + previews` — **not started**
 
 ## Milestone 1 — closed QA decisions (2026-10-03)
 
@@ -16,42 +16,54 @@ Long horizontal video → timed transcript + SRT → ranked Shorts candidates �
 - Keep **`small`** as the default model.
 - Future optional iteration (**not M2/M3**): glossary / context prompt; post-processing of known terms; technical entity correction.
 
-## Milestone 2 — editorial approval + required fixes
+## Milestone 2 — editorial evolution (`m2-v3`)
 
-Jota approved M2 editorially (Buzz pilot human eval: **4 strong / 2 recoverable / 2 redundant**).
+Earlier M2 picked smart moments; several failed as **independent conceptual units**.
 
-Required post-approval fixes (same ranking **model** and **prompt** — unchanged):
+**m2-v3 rule:** each short must be understandable without the long video. A candidate must contain (explicitly or implicitly):
 
-1. **Boundary refinement (`m2-v2`):** after ranking, avoid mid-sentence starts/ends. Expand by **at most 1 ASR segment** backward/forward when segment text heuristics say the cut is mid-thought / incomplete, and duration still fits the max window. Rules documented in `pipeline/postprocess.py`.
-2. **OpenRouter JSON robustness:** truncated JSON (`Unterminated string`, etc.) → safe repair of complete candidate objects + re-request. See `backends/json_robust.py`.
+1. **Hook** — why keep watching  
+2. **Minimum context** — what problem/situation  
+3. **Idea / development** — what is being explained  
+4. **Payoff / conclusion** — what the viewer takes away (the idea must close)
+
+Output philosophy: **fewer clips, more self-contained** (default `--count` 5). Prefer a well-closed ~45–60s idea over an incomplete ~22s clip.
+
+### Score dimensions (in `candidates.json`)
+
+`hook_strength`, `context_completeness`, `conceptual_completeness`, `standalone_clarity`, `payoff_strength`, plus final `score` with heavy deterministic penalties for: pronoun/reference starts without context; ending before conclusion; depending on a prior sentence; observation without resolution; duplicating a better-resolved idea.
+
+### Prior M2 notes
+
+- Buzz human eval (pre-v3): **4 strong / 2 recoverable / 2 redundant** — approved with fixes, then criteria upgraded to m2-v3.
+- `m2-v2` boundary ±1 segment + OpenRouter JSON robustness remain (v3 expands **multi-segment** within max duration).
+- Whisper stays **`small`**. Ranking **prompt updated** for narrative units. OpenRouter model still via env/config override.
 
 ## What each milestone does
 
 | Stage | Input | Output |
 |-------|--------|--------|
 | M1 | video | `transcript.json`, `captions.srt` |
-| M2 | `transcript.json` | `candidates.json` |
+| M2 | `transcript.json` | `candidates.json` + `candidates.m2-v3.json` |
 | M3 | `candidates.json` + source video | `01-<slug>/meta.json` + `clip_horizontal.mp4` |
 
 ## What is NOT implemented yet
 
-- 9:16 reframe (center-crop) / face tracking / saliency
-- Burn-in caption preview
+- **M4:** 9:16 reframe / face tracking / burn-in captions
 - Glossary / ASR post-correction / medium model bump
 - Remotion / DaVinci / CapCut packaging
 - UI
 
-## Timestamp grounding + boundary rules (`m2-v2`)
-
-LLM timestamps are approximate. Pipeline re-grounds them:
+## Timestamp grounding + narrative completion (`m2-v3`)
 
 1. Snap start/end to ASR segment boundaries  
-2. Expand/trim whole segments to fit duration window  
-3. **Boundary refine (±1 segment):**  
-   - Start mid-sentence (lowercase / mid-thought cue like `y`, `pero`, `porque`…) → expand **one** segment back if ≤ max duration  
-   - End without terminal punctuation (`.?!…`) → expand **one** segment forward if ≤ max duration  
-4. Rebuild transcript text from the inclusive ASR span  
-5. Duration filter → NMS by IoU → top N  
+2. Expand/trim whole segments to fit hard duration window (20–90s)  
+3. **Multi-segment narrative completion** (within max duration):  
+   - Expand **backward** while start looks mid-sentence / pronoun-deictic / continuation  
+   - Expand **forward** while end looks incomplete (no terminal punctuation / trailing connector)  
+   - Soft prefer ~45–60s closed units (scoring bonus; hard cap still max)  
+4. Rebuild transcript from inclusive ASR span; attach score dimensions + penalties  
+5. Duration filter → sort by final score → NMS / near-duplicate idea drop → top N  
 
 ## Requirements
 
@@ -114,49 +126,74 @@ outputs/shorts_factory/<source_name>/
     clip_horizontal.mp4
 ```
 
-### `candidates.json` shape (M2/M3)
+### `candidates.json` shape (m2-v3 / M3)
 
 ```json
 {
   "source_video": "/abs/path/to/video.mp4",
   "generated_at": "2026-10-03T12:00:00+00:00",
-  "milestone": 3,
+  "milestone": 2,
   "ranker": "OpenRouterCandidateRanker",
-  "snap_rules_version": "m2-v2",
+  "snap_rules_version": "m2-v3",
   "config": {
     "duration_min_sec": 20,
     "duration_max_sec": 90,
-    "target_count": 8,
-    "overlap_iou_threshold": 0.45
+    "preferred_duration_min_sec": 45,
+    "preferred_duration_max_sec": 60,
+    "target_count": 5,
+    "overlap_iou_threshold": 0.45,
+    "editorial_criteria": "self_contained_narrative_unit"
   },
   "candidates": [
     {
       "id": "01-example-slug",
       "start": 45.2,
-      "end": 78.6,
-      "duration_sec": 33.4,
+      "end": 98.6,
+      "duration_sec": 53.4,
       "transcript": "...",
       "hook": "...",
+      "minimum_context": "...",
       "central_idea": "...",
+      "idea_development": "...",
+      "payoff": "...",
       "selection_reason": "...",
-      "score": 0.87,
       "suggested_title": "...",
+      "scores": {
+        "hook_strength": 0.9,
+        "context_completeness": 0.85,
+        "conceptual_completeness": 0.88,
+        "standalone_clarity": 0.9,
+        "payoff_strength": 0.87
+      },
+      "score": 0.86,
+      "score_penalty": 0.05,
+      "penalty_reasons": [],
       "folder": "01-example-slug/",
       "segment_id_start": 12,
-      "segment_id_end": 20,
+      "segment_id_end": 28,
       "boundary_refined": true,
+      "expanded_start_segments": 2,
+      "expanded_end_segments": 1,
       "clip_horizontal": "01-example-slug/clip_horizontal.mp4"
     }
   ]
 }
 ```
 
+### Re-run m2-v3 on an existing Buzz run (local)
+
+```bash
+humanos shorts candidates outputs/shorts_factory/<buzz-source>/
+# Writes candidates.json + candidates.m2-v3.json
+# Previous candidates.json backed up once → candidates.prev.json
+```
+
 ## Architecture notes
 
-- `TranscriptionBackend` + `FasterWhisperBackend` (M1)
-- `CandidateRanker` + `OpenRouterCandidateRanker` (M2) — AI for ranking only; **prompt/model locked** after editorial QA
-- Deterministic post-steps: snap, boundary refine, NMS (`pipeline/postprocess.py`)
-- M3: ffmpeg stream-copy cut only (`pipeline/extract_clips.py`) — no face tracking / 9:16
+- `TranscriptionBackend` + `FasterWhisperBackend` (M1); Whisper default remains **`small`**
+- `CandidateRanker` + `OpenRouterCandidateRanker` (M2) — **prompt updated for m2-v3** narrative units; OpenRouter model via env/config
+- Deterministic post-steps: multi-segment completion, score penalties, NMS (`pipeline/postprocess.py`, `pipeline/scoring.py`)
+- M3: ffmpeg stream-copy cut only — no face tracking / 9:16
 - Local OpenRouter client inside `shorts_factory/` (editorial agents untouched)
 
 ## Human evaluation (Buzz pilot)

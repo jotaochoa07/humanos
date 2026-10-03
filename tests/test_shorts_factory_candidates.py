@@ -9,13 +9,22 @@ from pathlib import Path
 from typing import Any, Mapping, Sequence
 from unittest import mock
 
-from shorts_factory.backends.ranking import CandidateRanker, RankingConfig, RawCandidate
+from shorts_factory.backends.ranking import (
+    CandidateRanker,
+    RankingConfig,
+    RawCandidate,
+    ScoreDimensions,
+)
 from shorts_factory.config import PathsConfig, resolve_paths
 from shorts_factory.contracts import validate_candidates_shape
 from shorts_factory.pipeline.analyze import analyze_transcript, run_candidates_stage
 from shorts_factory.pipeline.run import run_milestone2
 
 FIXTURE = Path(__file__).parent / "fixtures" / "shorts_factory" / "transcript.json"
+
+
+def _dims(x: float = 0.85) -> ScoreDimensions:
+    return ScoreDimensions(x, x, x, x, x)
 
 
 class MockRanker(CandidateRanker):
@@ -25,13 +34,59 @@ class MockRanker(CandidateRanker):
         self.raw = list(
             raw
             or [
-                RawCandidate(20, 55, "Más agentes ≠ productividad", "Más agentes no dan más output", "Tesis clara y autocontenida", 0.93, "Más agentes no es mejor"),
-                RawCandidate(36, 72, "El cuello es la orquestación", "Coordinar es el problema", "Punchline fuerte", 0.88, "Orquestacion cara"),
-                RawCandidate(4, 40, "Copian el organigrama", "Burocracia digital", "Escena memorable", 0.86, "Organigrama de agentes"),
-                RawCandidate(52, 90, "Un solo agente gana", "Ejército vs uno", "Contraste útil", 0.84, "Un solo agente"),
-                RawCandidate(60, 100, "Tokens y lentitud", "Costo de tokens", "Consecuencia concreta", 0.82, "Tokens lentos"),
-                RawCandidate(100, 140, "Contexto saturado", "Saturación de contexto", "Idea secundaria", 0.70, "Contexto saturado"),
-                RawCandidate(22, 58, "Near dup organigrama", "Dup", "Debería caer por NMS", 0.75, "Organigrama dup"),
+                RawCandidate(
+                    20, 55, "Más agentes ≠ productividad", "Más agentes no dan más output",
+                    "Tesis clara y autocontenida", 0.93, "Más agentes no es mejor",
+                    minimum_context="empresas apilan agentes",
+                    idea_development="cada agente suma fricción",
+                    payoff="productividad no escala con headcount de agentes",
+                    scores=_dims(0.9),
+                ),
+                RawCandidate(
+                    36, 72, "El cuello es la orquestación", "Coordinar es el problema",
+                    "Punchline fuerte", 0.88, "Orquestacion cara",
+                    minimum_context="multi-agente",
+                    idea_development="orquestar es caro",
+                    payoff="el cuello es coordinación",
+                    scores=_dims(0.88),
+                ),
+                RawCandidate(
+                    4, 40, "Copian el organigrama", "Burocracia digital",
+                    "Escena memorable", 0.86, "Organigrama de agentes",
+                    minimum_context="copian org chart",
+                    idea_development="burocracia en software",
+                    payoff="teatro de eficiencia",
+                    scores=_dims(0.86),
+                ),
+                RawCandidate(
+                    52, 90, "Un solo agente gana", "Ejército vs uno",
+                    "Contraste útil", 0.84, "Un solo agente",
+                    minimum_context="tropa vs uno",
+                    idea_development="un agente cierra el loop",
+                    payoff="mejor uno bien diseñado",
+                    scores=_dims(0.84),
+                ),
+                RawCandidate(
+                    60, 100, "Tokens y lentitud", "Costo de tokens",
+                    "Consecuencia concreta", 0.82, "Tokens lentos",
+                    minimum_context="uso de tokens",
+                    idea_development="latencia y costo",
+                    payoff="el sistema se vuelve lento",
+                    scores=_dims(0.82),
+                ),
+                RawCandidate(
+                    100, 140, "Contexto saturado", "Saturación de contexto",
+                    "Idea secundaria", 0.70, "Contexto saturado",
+                    minimum_context="contexto",
+                    idea_development="se satura",
+                    payoff="cortar ideas autocontenidas",
+                    scores=_dims(0.7),
+                ),
+                RawCandidate(
+                    22, 58, "Near dup organigrama", "Dup",
+                    "Debería caer por NMS", 0.75, "Organigrama dup",
+                    scores=_dims(0.75),
+                ),
             ]
         )
         self.calls = 0
@@ -60,7 +115,7 @@ class TestAnalyze(unittest.TestCase):
         )
         self.assertEqual(validate_candidates_shape(out), [])
         self.assertEqual(out["milestone"], 2)
-        self.assertEqual(out["snap_rules_version"], "m2-v2")
+        self.assertEqual(out["snap_rules_version"], "m2-v3")
         self.assertEqual(out["config"]["target_count"], 5)
         self.assertLessEqual(len(out["candidates"]), 5)
         self.assertGreaterEqual(len(out["candidates"]), 3)
@@ -75,9 +130,17 @@ class TestAnalyze(unittest.TestCase):
                 "selection_reason",
                 "score",
                 "suggested_title",
+                "scores",
             ):
                 self.assertIn(key, cand)
-            # grounded to fixture segment boundaries
+            for dim in (
+                "hook_strength",
+                "context_completeness",
+                "conceptual_completeness",
+                "standalone_clarity",
+                "payoff_strength",
+            ):
+                self.assertIn(dim, cand["scores"])
             starts = {float(s["start"]) for s in doc["segments"]}
             ends = {float(s["end"]) for s in doc["segments"]}
             self.assertIn(float(cand["start"]), starts)
