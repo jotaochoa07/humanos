@@ -23,12 +23,13 @@ def _sample_candidates(video: Path) -> dict:
         "generated_at": "2026-10-03T00:00:00+00:00",
         "milestone": 2,
         "ranker": "MockRanker",
-        "snap_rules_version": "m2-v2",
+        "snap_rules_version": "m2-v4",
         "config": {
             "duration_min_sec": 20,
             "duration_max_sec": 90,
             "target_count": 2,
             "overlap_iou_threshold": 0.45,
+            "max_spans": 3,
         },
         "candidates": [
             {
@@ -43,12 +44,22 @@ def _sample_candidates(video: Path) -> dict:
                 "score": 0.9,
                 "suggested_title": "Organigrama",
                 "folder": "01-organigrama/",
+                "scores": {
+                    "hook_strength": 0.9,
+                    "context_completeness": 0.9,
+                    "conceptual_completeness": 0.9,
+                    "standalone_clarity": 0.9,
+                    "payoff_strength": 0.9,
+                },
+                "spans": [
+                    {"role": "development", "start": 12.0, "end": 44.0},
+                ],
             },
             {
                 "id": "02-orquestacion",
-                "start": 44.0,
+                "start": 20.0,
                 "end": 76.0,
-                "duration_sec": 32.0,
+                "duration_sec": 40.0,
                 "transcript": "texto dos",
                 "hook": "hook2",
                 "central_idea": "idea2",
@@ -56,6 +67,17 @@ def _sample_candidates(video: Path) -> dict:
                 "score": 0.8,
                 "suggested_title": "Orquestacion",
                 "folder": "02-orquestacion/",
+                "scores": {
+                    "hook_strength": 0.8,
+                    "context_completeness": 0.8,
+                    "conceptual_completeness": 0.8,
+                    "standalone_clarity": 0.8,
+                    "payoff_strength": 0.8,
+                },
+                "spans": [
+                    {"role": "hook", "start": 20.0, "end": 36.0},
+                    {"role": "payoff", "start": 52.0, "end": 76.0},
+                ],
             },
         ],
     }
@@ -94,6 +116,13 @@ class TestExtractClips(unittest.TestCase):
                 self.assertEqual(meta["start"], cand["start"])
                 self.assertEqual(meta["end"], cand["end"])
                 self.assertIn("clip_horizontal", cand)
+                self.assertIn("spans", meta)
+                self.assertGreaterEqual(len(meta["spans"]), 1)
+
+            # multi-span candidate kept 2 spans and spoken duration < envelope
+            multi = updated["candidates"][1]
+            self.assertEqual(multi["span_count"], 2)
+            self.assertLess(multi["duration_sec"], multi["envelope_duration_sec"])
 
     def test_respects_hand_edited_timestamps(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -103,7 +132,10 @@ class TestExtractClips(unittest.TestCase):
             run_dir = root / "run"
             run_dir.mkdir()
             doc = _sample_candidates(video)
-            # Hand-edit first candidate
+            # Hand-edit first candidate spans (M3 re-reads spans)
+            doc["candidates"][0]["spans"] = [
+                {"role": "development", "start": 15.5, "end": 50.5}
+            ]
             doc["candidates"][0]["start"] = 15.5
             doc["candidates"][0]["end"] = 50.5
             (run_dir / "candidates.json").write_text(
@@ -113,10 +145,11 @@ class TestExtractClips(unittest.TestCase):
             seen_ranges: list[tuple[float, float]] = []
 
             def runner(cmd):
-                # cmd: ffmpeg -y -ss START -i VIDEO -t DUR -c copy ... OUT
-                ss = float(cmd[cmd.index("-ss") + 1])
-                dur = float(cmd[cmd.index("-t") + 1])
-                seen_ranges.append((ss, ss + dur))
+                # Cut cmds include -ss; concat cmds do not
+                if "-ss" in cmd:
+                    ss = float(cmd[cmd.index("-ss") + 1])
+                    dur = float(cmd[cmd.index("-t") + 1])
+                    seen_ranges.append((ss, ss + dur))
                 return _mock_runner(cmd)
 
             result = run_clips_stage(
