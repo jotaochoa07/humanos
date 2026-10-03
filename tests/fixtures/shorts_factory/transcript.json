@@ -1,0 +1,33 @@
+{
+  "source_video": "/fixtures/buzz-ai-agents-sample.mp4",
+  "duration_sec": 180.0,
+  "language": "es",
+  "engine": "fixture",
+  "model": "small",
+  "device": "cpu",
+  "compute_type": "int8",
+  "segments": [
+    {"id": 1, "start": 0.0, "end": 5.0, "text": "Hoy vamos a hablar de agentes de IA en las empresas."},
+    {"id": 2, "start": 5.0, "end": 12.0, "text": "Muchas compañías están a copiar el organigrama corporativo y ponerlo en software."},
+    {"id": 3, "start": 12.0, "end": 20.0, "text": "Creen que si arman una burocracia de agentes van a obtener los mismos resultados."},
+    {"id": 4, "start": 20.0, "end": 28.0, "text": "Pero más agentes no significa automáticamente más productividad."},
+    {"id": 5, "start": 28.0, "end": 36.0, "text": "Al contrario, cada agente nuevo suma tokens, latencia y fricción."},
+    {"id": 6, "start": 36.0, "end": 44.0, "text": "El problema de fondo no es la inteligencia individual, es la orquestación."},
+    {"id": 7, "start": 44.0, "end": 52.0, "text": "Coordinar un ejército de agentes es caro y lento."},
+    {"id": 8, "start": 52.0, "end": 60.0, "text": "A veces un solo agente bien diseñado supera a toda la tropa."},
+    {"id": 9, "start": 60.0, "end": 68.0, "text": "Cuando sube el uso de tokens, el sistema se vuelve lento y costoso."},
+    {"id": 10, "start": 68.0, "end": 76.0, "text": "La burocracia digital copia los peores hábitos de la empresa tradicional."},
+    {"id": 11, "start": 76.0, "end": 84.0, "text": "Hay reuniones entre agentes que no aportan nada al usuario final."},
+    {"id": 12, "start": 84.0, "end": 92.0, "text": "La pregunta correcta no es cuántos agentes tienes, sino qué decisión toman."},
+    {"id": 13, "start": 92.0, "end": 100.0, "text": "Si no hay una tesis clara, el short no funciona."},
+    {"id": 14, "start": 100.0, "end": 108.0, "text": "Otro bloque: el contexto se satura y el modelo olvida lo importante."},
+    {"id": 15, "start": 108.0, "end": 116.0, "text": "Por eso conviene cortar ideas autocontenidas, no hilos infinitos."},
+    {"id": 16, "start": 116.0, "end": 124.0, "text": "Volvamos a la idea del organigrama: suena ordenado, pero es teatro."},
+    {"id": 17, "start": 124.0, "end": 132.0, "text": "La orquestación mal hecha multiplica errores en cadena."},
+    {"id": 18, "start": 132.0, "end": 140.0, "text": "Un agente enfocado puede cerrar el loop de punta a punta."},
+    {"id": 19, "start": 140.0, "end": 150.0, "text": "Al final, productividad es menos coordinación inútil y más resultado."},
+    {"id": 20, "start": 150.0, "end": 160.0, "text": "Cierre suave sin punchline para que el ranker lo ignore."},
+    {"id": 21, "start": 160.0, "end": 170.0, "text": "Gracias por ver este ejemplo de fixture para tests unitarios."},
+    {"id": 22, "start": 170.0, "end": 180.0, "text": "Fin del material de prueba."}
+  ]
+}

@@ -102,6 +102,13 @@ class TestCliHelp(unittest.TestCase):
             main(["shorts", "--help"])
         self.assertEqual(ctx.exception.code, 0)
 
+    def test_cli_shorts_run_help(self):
+        from shorts_factory.cli import main
+
+        with self.assertRaises(SystemExit) as ctx:
+            main(["shorts", "run", "--help"])
+        self.assertEqual(ctx.exception.code, 0)
+
     def test_cli_no_command(self):
         from shorts_factory.cli import main
 
