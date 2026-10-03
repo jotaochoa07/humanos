@@ -30,6 +30,14 @@ DEFAULT_LANGUAGE = "auto"
 DEFAULT_DEVICE = "auto"
 DEFAULT_COMPUTE_TYPE = "auto"
 
+# Milestone 2 ranking defaults (D5 / plan §6.6)
+DEFAULT_DURATION_MIN_SEC = 20.0
+DEFAULT_DURATION_MAX_SEC = 90.0
+DEFAULT_TARGET_COUNT = 8
+DEFAULT_OVERLAP_IOU = 0.45
+DEFAULT_RANKER_BACKEND = "openrouter"
+ENV_OPENROUTER_MODEL = "OPENROUTER_MODEL"
+
 _SOURCE_NAME_RE = re.compile(r"[^a-zA-Z0-9._-]+")
 
 
@@ -89,7 +97,7 @@ def _as_optional_path(value: Any, base: Path) -> Optional[Path]:
 
 
 class PathsConfig:
-    """Resolved runtime paths + transcription defaults for milestone 1."""
+    """Resolved runtime paths + transcription / ranking defaults (M1+M2)."""
 
     def __init__(
         self,
@@ -104,6 +112,12 @@ class PathsConfig:
         device: str = DEFAULT_DEVICE,
         compute_type: str = DEFAULT_COMPUTE_TYPE,
         transcription_backend: str = "faster_whisper",
+        duration_min_sec: float = DEFAULT_DURATION_MIN_SEC,
+        duration_max_sec: float = DEFAULT_DURATION_MAX_SEC,
+        target_count: int = DEFAULT_TARGET_COUNT,
+        overlap_iou_threshold: float = DEFAULT_OVERLAP_IOU,
+        ranker_backend: str = DEFAULT_RANKER_BACKEND,
+        ranker_model: Optional[str] = None,
     ) -> None:
         self.repo_root = repo_root
         self.outputs_root = outputs_root
@@ -115,12 +129,29 @@ class PathsConfig:
         self.device = device
         self.compute_type = compute_type
         self.transcription_backend = transcription_backend
+        self.duration_min_sec = float(duration_min_sec)
+        self.duration_max_sec = float(duration_max_sec)
+        self.target_count = int(target_count)
+        self.overlap_iou_threshold = float(overlap_iou_threshold)
+        self.ranker_backend = ranker_backend
+        self.ranker_model = ranker_model
 
     def source_output_dir(self, source_name: str) -> Path:
         return self.outputs_root / sanitize_source_name(source_name)
 
     def ffmpeg_bin(self) -> str:
         return self.ffmpeg or "ffmpeg"
+
+    def ranking_config(self):
+        from shorts_factory.backends.ranking import RankingConfig
+
+        return RankingConfig(
+            duration_min_sec=self.duration_min_sec,
+            duration_max_sec=self.duration_max_sec,
+            target_count=self.target_count,
+            overlap_iou_threshold=self.overlap_iou_threshold,
+            model=self.ranker_model,
+        )
 
 
 def resolve_paths(
@@ -193,6 +224,44 @@ def resolve_paths(
     )
     backend = str(tx.get("backend") or "faster_whisper")
 
+    duration = yaml_data.get("duration") or {}
+    if not isinstance(duration, dict):
+        duration = {}
+    ranking = yaml_data.get("ranking") or {}
+    if not isinstance(ranking, dict):
+        ranking = {}
+
+    duration_min_sec = float(
+        overrides.get("duration_min_sec")
+        or duration.get("min_sec")
+        or DEFAULT_DURATION_MIN_SEC
+    )
+    duration_max_sec = float(
+        overrides.get("duration_max_sec")
+        or duration.get("max_sec")
+        or DEFAULT_DURATION_MAX_SEC
+    )
+    target_count = int(
+        overrides.get("target_count")
+        or ranking.get("target_count")
+        or DEFAULT_TARGET_COUNT
+    )
+    overlap_iou_threshold = float(
+        overrides.get("overlap_iou_threshold")
+        or ranking.get("overlap_iou_threshold")
+        or DEFAULT_OVERLAP_IOU
+    )
+    ranker_backend = str(
+        overrides.get("ranker_backend")
+        or ranking.get("backend")
+        or DEFAULT_RANKER_BACKEND
+    )
+    ranker_model = overrides.get("ranker_model") or ranking.get("model")
+    if ranker_model is None:
+        ranker_model = os.environ.get(ENV_OPENROUTER_MODEL)
+    if ranker_model is not None:
+        ranker_model = str(ranker_model)
+
     return PathsConfig(
         repo_root=repo_root,
         outputs_root=outputs,
@@ -204,4 +273,10 @@ def resolve_paths(
         device=device,
         compute_type=compute_type,
         transcription_backend=backend,
+        duration_min_sec=duration_min_sec,
+        duration_max_sec=duration_max_sec,
+        target_count=target_count,
+        overlap_iou_threshold=overlap_iou_threshold,
+        ranker_backend=ranker_backend,
+        ranker_model=ranker_model,
     )
