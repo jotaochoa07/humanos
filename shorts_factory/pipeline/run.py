@@ -1,4 +1,4 @@
-"""Shorts Factory orchestrators: M1 (transcript) + M2 (candidates)."""
+"""Shorts Factory orchestrators: M1 (transcript) + M2 (candidates) + M3 (clips)."""
 
 from __future__ import annotations
 
@@ -19,6 +19,7 @@ from shorts_factory.pipeline.analyze import (
 )
 from shorts_factory.pipeline.captions import write_srt
 from shorts_factory.pipeline.extract_audio import extract_audio
+from shorts_factory.pipeline.extract_clips import Milestone3Result, run_clips_stage
 from shorts_factory.pipeline.transcribe import transcribe_audio
 from shorts_factory.pipeline.validate import VideoInfo, validate_video
 
@@ -74,10 +75,7 @@ def run_milestone1(
     keep_audio: bool = True,
     source_name: Optional[str] = None,
 ) -> Milestone1Result:
-    """Run milestone 1 only: ingest → audio → ASR → transcript.json + captions.srt.
-
-    Does **not** select candidates, extract clips, reframe, or burn-in captions.
-    """
+    """Run milestone 1 only: ingest → audio → ASR → transcript.json + captions.srt."""
     video_info = validate_video(video, ffmpeg_bin=paths.ffmpeg_bin())
     name = sanitize_source_name(source_name or video_info.path)
     out_dir = paths.source_output_dir(name)
@@ -161,6 +159,26 @@ def run_milestone2(
     )
 
 
+def run_milestone3(
+    paths: PathsConfig,
+    *,
+    run_dir: Path,
+    video: Optional[Path] = None,
+    runner=None,
+) -> Milestone3Result:
+    """Run milestone 3 only: candidates.json → horizontal clips + meta.json.
+
+    Does **not** reframe 9:16, face-track, burn-in captions, or Remotion/NLE.
+    Re-reads possibly hand-edited start/end from candidates.json.
+    """
+    return run_clips_stage(
+        run_dir=Path(run_dir),
+        ffmpeg_bin=paths.ffmpeg_bin(),
+        video=Path(video) if video is not None else None,
+        runner=runner,
+    )
+
+
 def run_shorts_pipeline(
     video: str | Path,
     paths: PathsConfig,
@@ -172,13 +190,10 @@ def run_shorts_pipeline(
     skip_transcribe: bool = False,
     skip_candidates: bool = False,
     force_transcribe: bool = False,
-) -> tuple[Optional[Milestone1Result], Optional[Milestone2Result]]:
-    """Run M1 then M2 under outputs/shorts_factory/<source_name>/.
-
-    If transcript.json already exists and ``skip_transcribe`` / reuse is desired,
-    pass ``skip_transcribe=True`` (or leave default and set ``force_transcribe=False``
-    with an existing transcript — see CLI).
-    """
+    with_clips: bool = False,
+    clip_runner=None,
+) -> tuple[Optional[Milestone1Result], Optional[Milestone2Result], Optional[Milestone3Result]]:
+    """Run M1 → M2 (and optionally M3) under outputs/shorts_factory/<source_name>/."""
     video_path = Path(video)
     name = sanitize_source_name(source_name or video_path)
     out_dir = paths.source_output_dir(name)
@@ -210,4 +225,17 @@ def run_shorts_pipeline(
     if not skip_candidates:
         m2 = run_milestone2(paths, run_dir=out_dir, ranker=ranker)
 
-    return m1, m2
+    m3: Optional[Milestone3Result] = None
+    if with_clips:
+        if skip_candidates and not (out_dir / CANDIDATES_JSON).is_file():
+            raise FileNotFoundError(
+                f"--with-clips requires {out_dir / CANDIDATES_JSON}"
+            )
+        m3 = run_milestone3(
+            paths,
+            run_dir=out_dir,
+            video=video_path if video_path.is_file() else None,
+            runner=clip_runner,
+        )
+
+    return m1, m2, m3

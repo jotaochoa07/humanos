@@ -39,6 +39,8 @@ class CandidateItem(TypedDict, total=False):
     folder: str
     segment_id_start: int
     segment_id_end: int
+    boundary_refined: bool
+    clip_horizontal: str  # M3 relative path under run dir
 
 
 class CandidatesDocument(TypedDict, total=False):

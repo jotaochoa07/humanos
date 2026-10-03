@@ -1,13 +1,13 @@
 """CLI for Shorts Factory.
 
-Milestone 1+2:
+Milestones 1–3:
   humanos shorts <video>
+  humanos shorts <video> --with-clips
   humanos shorts candidates <run_dir>
-  humanos shorts candidates --from-transcript path/to/transcript.json
+  humanos shorts clips <run_dir>
 
 Also:
   python -m shorts_factory shorts <video>
-  python -m shorts_factory.cli shorts <video>
 """
 
 from __future__ import annotations
@@ -30,7 +30,11 @@ from shorts_factory.config import (
     DEFAULT_WHISPER_MODEL,
     resolve_paths,
 )
-from shorts_factory.pipeline.run import run_milestone2, run_shorts_pipeline
+from shorts_factory.pipeline.run import (
+    run_milestone2,
+    run_milestone3,
+    run_shorts_pipeline,
+)
 
 
 def _add_shared_path_flags(parser: argparse.ArgumentParser) -> None:
@@ -90,7 +94,7 @@ def _add_ranking_flags(parser: argparse.ArgumentParser) -> None:
 def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="humanos",
-        description="HUMANOS tooling. Shorts Factory: transcript (M1) + candidates (M2).",
+        description="HUMANOS tooling. Shorts Factory: transcript (M1) + candidates (M2) + clips (M3).",
     )
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
 
@@ -98,14 +102,13 @@ def _build_parser() -> argparse.ArgumentParser:
 
     shorts = sub.add_parser(
         "shorts",
-        help="Shorts Factory: long video → transcript → candidates.json (M1+M2)",
+        help="Shorts Factory: long video → transcript → candidates → clips",
     )
     shorts_sub = shorts.add_subparsers(dest="shorts_cmd")
 
-    # humanos shorts <video> …
     run_p = shorts_sub.add_parser(
         "run",
-        help="Run M1+M2 for a source video (also accepted as: humanos shorts <video>)",
+        help="Run M1+M2 (+ optional M3) for a source video (also: humanos shorts <video>)",
     )
     run_p.add_argument("video", type=str, help="Path to source long video")
     _add_shared_path_flags(run_p)
@@ -161,15 +164,19 @@ def _build_parser() -> argparse.ArgumentParser:
     run_p.add_argument(
         "--skip-transcribe",
         action="store_true",
-        help="Reuse existing transcript.json under the source output dir (M2 only)",
+        help="Reuse existing transcript.json under the source output dir",
     )
     run_p.add_argument(
         "--force-transcribe",
         action="store_true",
         help="Re-run ASR even if transcript.json already exists",
     )
+    run_p.add_argument(
+        "--with-clips",
+        action="store_true",
+        help="Also run milestone 3 (horizontal clip extract) after candidates",
+    )
 
-    # humanos shorts candidates <run_dir> | --from-transcript
     cand_p = shorts_sub.add_parser(
         "candidates",
         help="Milestone 2 only: transcript.json → candidates.json",
@@ -179,7 +186,7 @@ def _build_parser() -> argparse.ArgumentParser:
         nargs="?",
         type=str,
         default=None,
-        help="Run directory containing transcript.json (outputs/shorts_factory/<source>/)",
+        help="Run directory containing transcript.json",
     )
     cand_p.add_argument(
         "--from-transcript",
@@ -190,28 +197,42 @@ def _build_parser() -> argparse.ArgumentParser:
     _add_shared_path_flags(cand_p)
     _add_ranking_flags(cand_p)
 
+    clips_p = shorts_sub.add_parser(
+        "clips",
+        help="Milestone 3 only: candidates.json → horizontal clips (no reframe)",
+    )
+    clips_p.add_argument(
+        "run_dir",
+        type=str,
+        help="Run directory containing candidates.json",
+    )
+    clips_p.add_argument(
+        "--video",
+        type=str,
+        default=None,
+        help="Override source video path (default: candidates.json source_video)",
+    )
+    clips_p.add_argument(
+        "--ffmpeg",
+        type=str,
+        default=None,
+        help="Path to ffmpeg binary (default: PATH / config)",
+    )
+    _add_shared_path_flags(clips_p)
+
     return parser
 
 
 def _normalize_argv(argv: list[str]) -> list[str]:
-    """Allow `humanos shorts <video>` without an explicit `run` subcommand.
-
-    Transforms:
-      shorts path/to.mp4 …  →  shorts run path/to.mp4 …
-    Leaves intact:
-      shorts run …
-      shorts candidates …
-      shorts --help
-    """
+    """Allow `humanos shorts <video>` without an explicit `run` subcommand."""
     if not argv or argv[0] != "shorts":
         return argv
     if len(argv) == 1:
         return argv
     second = argv[1]
-    if second in ("run", "candidates", "-h", "--help"):
+    if second in ("run", "candidates", "clips", "-h", "--help"):
         return argv
     if second.startswith("-"):
-        # flags before video are not supported in shorthand; keep as-is for argparse error
         return ["shorts", "run", *argv[1:]]
     return ["shorts", "run", *argv[1:]]
 
@@ -256,6 +277,18 @@ def _print_m2(result) -> None:
         )
 
 
+def _print_m3(result) -> None:
+    print(f"source:      {result.source_video}")
+    print(f"output_dir:  {result.output_dir}")
+    print(f"candidates:  {result.candidates_json}")
+    print(f"clips:       {len(result.clip_paths)}")
+    for cand in result.document.get("candidates", []):
+        print(
+            f"  - {cand.get('folder', cand.get('id'))}: "
+            f"{cand['start']:.1f}-{cand['end']:.1f}s → {cand.get('clip_horizontal')}"
+        )
+
+
 def main(argv: Optional[Sequence[str]] = None) -> int:
     argv_list = _normalize_argv(list(argv) if argv is not None else sys.argv[1:])
     parser = _build_parser()
@@ -264,9 +297,11 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     if not args.command:
         parser.print_help()
         print(
-            "\nShorts Factory: humanos shorts <video> → transcript.json + candidates.json\n"
-            "M2 only: humanos shorts candidates <run_dir>\n"
-            "Not implemented yet: clip extract, 9:16 reframe, burn-in, Remotion/NLE.",
+            "\nShorts Factory:\n"
+            "  humanos shorts <video> [--with-clips]\n"
+            "  humanos shorts candidates <run_dir>\n"
+            "  humanos shorts clips <run_dir>\n"
+            "Not implemented yet: 9:16 reframe, burn-in, Remotion/NLE.",
             file=sys.stderr,
         )
         return 2
@@ -302,7 +337,6 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             from_transcript = (
                 Path(args.from_transcript) if args.from_transcript else None
             )
-            # If only --from-transcript given, derive run_dir from its parent
             if run_dir is None and from_transcript is not None:
                 tp = from_transcript
                 if tp.is_dir():
@@ -318,8 +352,17 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             _print_m2(result)
             return 0
 
+        if args.shorts_cmd == "clips":
+            result = run_milestone3(
+                paths,
+                run_dir=Path(args.run_dir),
+                video=Path(args.video) if args.video else None,
+            )
+            _print_m3(result)
+            return 0
+
         # shorts run <video>
-        m1, m2 = run_shorts_pipeline(
+        m1, m2, m3 = run_shorts_pipeline(
             args.video,
             paths,
             keep_audio=args.keep_audio,
@@ -327,6 +370,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             skip_transcribe=args.skip_transcribe,
             skip_candidates=args.skip_candidates,
             force_transcribe=args.force_transcribe,
+            with_clips=args.with_clips,
         )
         if m1 is not None:
             print(f"source:     {m1.source_video}")
@@ -345,6 +389,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             _print_m2(m2)
         elif args.skip_candidates:
             print("candidates: skipped (--skip-candidates)")
+        if m3 is not None:
+            _print_m3(m3)
     except Exception as exc:
         logging.getLogger(__name__).error("%s", exc)
         return 1
