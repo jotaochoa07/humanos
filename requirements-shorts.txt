@@ -1,0 +1,11 @@
+# Shorts Factory (milestone 1) — Python deps
+# System requirement: ffmpeg (+ ffprobe) must be installed and on PATH
+# (or set HUMANOS_FFMPEG / config.ffmpeg).
+#
+# Install:
+#   pip install -r requirements-shorts.txt
+#   # or editable with CLI entry point:
+#   pip install -e .
+
+faster-whisper>=1.0.0
+PyYAML>=6.0
