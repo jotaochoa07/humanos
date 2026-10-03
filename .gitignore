@@ -5,8 +5,14 @@ out/
 .env
 __pycache__/
 *.pyc
+*.egg-info/
+.eggs/
+dist/
 assets/branding/audio/
 MEDIA_LIBRARY/BRANDING/audio/
+
+# Shorts Factory local artifacts (SF2) — never commit renders/transcripts
+outputs/
 
 # Audacity projects (very large files)
 *.aup3
