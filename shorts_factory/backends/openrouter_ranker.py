@@ -16,6 +16,7 @@ import urllib.error
 import urllib.request
 from typing import Any, Mapping, Optional, Sequence
 
+from shorts_factory.backends.json_robust import loads_json_robust
 from shorts_factory.backends.ranking import CandidateRanker, RankingConfig, RawCandidate
 
 logger = logging.getLogger(__name__)
@@ -23,6 +24,7 @@ logger = logging.getLogger(__name__)
 DEFAULT_OPENROUTER_MODEL = "google/gemini-2.5-flash-lite"
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 
+# Ranking prompt intentionally unchanged (M2 editorial lock).
 SYSTEM_PROMPT = """\
 Eres un editor de Shorts verticales para un canal de pensamiento claro.
 Tu trabajo: leer una transcripción con timestamps (ASR) y proponer clips
@@ -55,17 +57,6 @@ Responde SOLO JSON con esta forma:
   ]
 }
 """
-
-
-def _strip_code_fence(content: str) -> str:
-    text = content.strip()
-    if text.startswith("```json"):
-        text = text[7:]
-    elif text.startswith("```"):
-        text = text[3:]
-    if text.endswith("```"):
-        text = text[:-3]
-    return text.strip()
 
 
 def _format_segments_for_prompt(segments: Sequence[Mapping[str, Any]], *, max_chars: int = 48000) -> str:
@@ -131,6 +122,8 @@ class OpenRouterClient:
             "HTTP-Referer": "https://github.com/jotaochoa07/humanos",
             "X-Title": "HUMANOS Shorts Factory",
         }
+        # Same model + system/user prompts; slightly higher token budget reduces
+        # truncation. Parsing uses repair + re-request on Unterminated string etc.
         payload = {
             "model": model_name,
             "messages": [
@@ -138,7 +131,7 @@ class OpenRouterClient:
                 {"role": "user", "content": prompt},
             ],
             "response_format": {"type": "json_object"},
-            "max_tokens": 8000,
+            "max_tokens": 12000,
         }
         body = json.dumps(payload).encode("utf-8")
         last_error: Optional[BaseException] = None
@@ -156,8 +149,15 @@ class OpenRouterClient:
                 content = choices[0]["message"]["content"]
                 if not isinstance(content, str):
                     raise ValueError("OpenRouter message content is not a string")
-                return json.loads(_strip_code_fence(content))
-            except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, json.JSONDecodeError, ValueError) as exc:
+                # Prefer robust parse (repair truncated candidates array if safe)
+                return loads_json_robust(content)
+            except (
+                urllib.error.URLError,
+                urllib.error.HTTPError,
+                TimeoutError,
+                json.JSONDecodeError,
+                ValueError,
+            ) as exc:
                 last_error = exc
                 logger.warning(
                     "OpenRouter attempt %s/%s failed: %s",
