@@ -1,0 +1,21 @@
+{
+  "source_video": "/fixtures/boundary-test.mp4",
+  "duration_sec": 80.0,
+  "language": "es",
+  "engine": "fixture",
+  "model": "small",
+  "device": "cpu",
+  "compute_type": "int8",
+  "segments": [
+    {"id": 1, "start": 0.0, "end": 8.0, "text": "Primera idea completa sobre burocracia."},
+    {"id": 2, "start": 8.0, "end": 16.0, "text": "y entonces copian el organigrama corporativo"},
+    {"id": 3, "start": 16.0, "end": 24.0, "text": "sin preguntarse si tiene sentido."},
+    {"id": 4, "start": 24.0, "end": 32.0, "text": "Más agentes no significa más productividad."},
+    {"id": 5, "start": 32.0, "end": 40.0, "text": "porque la orquestación se vuelve el cuello de botella"},
+    {"id": 6, "start": 40.0, "end": 48.0, "text": "y el costo de tokens dispara la lentitud."},
+    {"id": 7, "start": 48.0, "end": 56.0, "text": "Un solo agente bien diseñado"},
+    {"id": 8, "start": 56.0, "end": 64.0, "text": "puede superar a un ejército de agentes."},
+    {"id": 9, "start": 64.0, "end": 72.0, "text": "Cierre suave sin tesis nueva"},
+    {"id": 10, "start": 72.0, "end": 80.0, "text": "Fin del fixture de fronteras."}
+  ]
+}
