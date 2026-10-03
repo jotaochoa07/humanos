@@ -83,7 +83,7 @@ def analyze_transcript(
         config=config,
         candidates=candidates,
         ranker=getattr(ranker, "name", ranker.__class__.__name__),
-        snap_rules_version="m2-v1",
+        snap_rules_version="m2-v2",
     )
     shape_errors = validate_candidates_shape(document)
     if shape_errors:

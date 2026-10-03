@@ -60,7 +60,7 @@ class TestAnalyze(unittest.TestCase):
         )
         self.assertEqual(validate_candidates_shape(out), [])
         self.assertEqual(out["milestone"], 2)
-        self.assertEqual(out["snap_rules_version"], "m2-v1")
+        self.assertEqual(out["snap_rules_version"], "m2-v2")
         self.assertEqual(out["config"]["target_count"], 5)
         self.assertLessEqual(len(out["candidates"]), 5)
         self.assertGreaterEqual(len(out["candidates"]), 3)

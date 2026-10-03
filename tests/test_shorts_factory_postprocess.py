@@ -53,8 +53,10 @@ class TestSnap(unittest.TestCase):
         out = snap_candidate_to_segments(raw, self.segments, config=self.cfg)
         self.assertIsNotNone(out)
         assert out is not None
-        # start nearest/containing seg id 4 starts at 20; end expands/trim within window
-        self.assertEqual(out["start"], 20.0)
+        # Seg 4 starts with mid-thought cue "Pero" → boundary refine expands
+        # one segment back to seg 3 (12.0). Still within 20–90s window.
+        self.assertEqual(out["start"], 12.0)
+        self.assertTrue(out.get("boundary_refined"))
         self.assertGreaterEqual(out["duration_sec"], 20.0)
         self.assertLessEqual(out["duration_sec"], 90.0)
         self.assertIn("más agentes", out["transcript"].lower())
